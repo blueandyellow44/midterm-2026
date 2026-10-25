@@ -1,0 +1,23 @@
+{
+  "disclosure": true,
+  "race": {
+    "optionalClosed": true,
+    "path": "/race/tx-sen/",
+    "pending": false,
+    "view": "mobile"
+  },
+  "method": {
+    "active": true,
+    "heading": "METHOD · DOCUMENTED HEURISTIC\n\nShow the workings.\n\nThis is the method note frozen with the displayed",
+    "path": "/method/"
+  },
+  "grading": {
+    "path": "/grading/",
+    "text": "PROSPECTIVE RECORD\n\nWrite the rules before the results.\n\nThe freeze is scheduled for November 2, 2026. Certified outcomes are recorded later in a new immutable release.\n\nNo frozen predictions or certified results\n\nNo probabilities, winners or accuracy scores have been published in this release. The live tracker cannot silently rewrite a frozen prediction.\nPolling contract\n\nThe documented heuristic"
+  },
+  "keyboard": {
+    "id": "main",
+    "tag": "MAIN"
+  },
+  "console": []
+}
