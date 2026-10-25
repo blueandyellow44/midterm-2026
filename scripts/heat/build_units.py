@@ -61,10 +61,14 @@ def debate_units(race: str, meta: dict, candidates: dict, transcript_path: str |
         return {}, "debate found but no transcript with speaker turns was reachable"
     with open(transcript_path, encoding="utf-8") as f:
         turns = json.load(f)
+    if isinstance(turns, dict):
+        turns = turns.get("segments") or turns.get("turns") or []
     out = {"D": [], "R": []}
     merged: list[tuple[str, str]] = []
     for t in turns:
         if not isinstance(t, dict) or not t.get("speaker") or not t.get("text"):
+            if isinstance(t, dict) and t.get("text") and not t.get("speaker"):
+                merged.append(("__UNLABELED__", str(t["text"]).strip()))  # breaks a run so unlabeled text never merges into a candidate turn
             continue
         sp, tx = str(t["speaker"]).strip(), str(t["text"]).strip()
         if merged and merged[-1][0] == sp:
