@@ -119,6 +119,8 @@ def slug(s: str) -> str:
 
 def pollster_slug(name: str, members: str | None) -> str:
     text = f"{name or ''} {members or ''}".lower()
+    if "cygnal" in text and "beacon" in text:
+        return "cygnal-beacon"
     hits = [(len(pat), cid) for cid, pats in ALIASES.items() for pat in pats if pat in text]
     if hits:
         # prefer the longest matching pattern; partnerships (fox/beacon/shaw, nyt/siena) are listed before member firms

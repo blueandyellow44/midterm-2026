@@ -1,0 +1,140 @@
+{
+  "schema": "certified-comparators/1.0",
+  "records": [
+    {
+      "state": "GA",
+      "certification_date": "2022-11-21",
+      "certification_url": "https://sos.ga.gov/news/raffensperger-certifies-november-general-election-results",
+      "governor": {
+        "D_votes": 1813673,
+        "R_votes": 2111572,
+        "other_vote_counts": [
+          28163,
+          7,
+          18
+        ],
+        "D_candidate": "Stacey Abrams",
+        "R_candidate": "Brian Kemp",
+        "source_url": "https://raw.githubusercontent.com/openelections/openelections-sources-ga/master/2022/export-2022NovGen.json",
+        "source_locator": "Unprocessed official Georgia export results.ballotItems Governor; qualified write-ins7+18 added from state certification"
+      },
+      "senate": {
+        "D_votes": 1946117,
+        "R_votes": 1908442,
+        "other_vote_counts": [
+          81365
+        ],
+        "D_candidate": "Raphael Warnock",
+        "R_candidate": "Herschel Walker",
+        "source_url": "https://raw.githubusercontent.com/openelections/openelections-sources-ga/master/2022/export-2022NovGen.json",
+        "source_locator": "November8 general, results.ballotItems US Senate; NOT December runoff"
+      },
+      "additional_sources": [
+        "https://sos.ga.gov/sites/default/files/2022-11/Certification%20of%20Write-In%20Candidates_November%208%20General%20Election.pdf"
+      ],
+      "source_sha256": "055d1d5302a0a2583912541f4e62fb6d909046a5f8eac4235ae76e9f68efc7b6",
+      "provenance": "Official state JSON export dated2025-01-08, preserved unprocessed by OpenElections; archived primary source rather than a transformed precinct aggregation. Live official ZIP and legacy ENR returned403. Qualified write-ins separately read on the state certificate."
+    },
+    {
+      "state": "OH",
+      "certification_date": "2022-12-09",
+      "certification_url": "https://www.ohiosos.gov/office/media-center/categories/press-releases/2022-12-09",
+      "governor": {
+        "D_votes": 1545489,
+        "R_votes": 2580424,
+        "other_vote_counts": [
+          574,
+          77,
+          231,
+          8082
+        ],
+        "D_candidate": "Nan Whaley",
+        "R_candidate": "Mike DeWine",
+        "source_url": "https://assets.ohiosos.gov/q3i90m1u8zsl/QxWOkpfijwKNY6VosTmnk/69fa95d7ed1f6496fd8e0b5dd0744451/11-8-22-official-canvass-document-signed.pdf",
+        "source_locator": "Signed official canvass p.1, Governor and Lieutenant Governor"
+      },
+      "senate": {
+        "D_votes": 1939489,
+        "R_votes": 2192114,
+        "other_vote_counts": [
+          702,
+          78,
+          194,
+          403,
+          362
+        ],
+        "D_candidate": "Tim Ryan",
+        "R_candidate": "JD Vance",
+        "source_url": "https://assets.ohiosos.gov/q3i90m1u8zsl/QxWOkpfijwKNY6VosTmnk/69fa95d7ed1f6496fd8e0b5dd0744451/11-8-22-official-canvass-document-signed.pdf",
+        "source_locator": "Signed official canvass p.2, US Senator"
+      },
+      "provenance": "Primary signed PDF viewed in real Chrome; governor and Senate totals and every write-in copied from visible pages."
+    },
+    {
+      "state": "NH",
+      "certification_date": "NA",
+      "certification_url": "https://www.sos.nh.gov/elections/2022-election-results/2022-general-election-results",
+      "governor": {
+        "D_votes": 256766,
+        "R_votes": 352813,
+        "other_vote_counts": [
+          2772,
+          5071,
+          1713
+        ],
+        "D_candidate": "Tom Sherman",
+        "R_candidate": "Chris Sununu",
+        "source_url": "https://www.sos.nh.gov/sites/g/files/ehbemt561/files/inline-documents/sonh/2022-ge-governor-remediated.pdf",
+        "source_locator": "Official state general-election return p.1 summary totals; Scatter1713 included"
+      },
+      "senate": {
+        "D_votes": 332490,
+        "R_votes": 275631,
+        "other_vote_counts": [
+          12390,
+          464
+        ],
+        "D_candidate": "Maggie Hassan",
+        "R_candidate": "Donald Bolduc",
+        "source_url": "https://www.sos.nh.gov/sites/g/files/ehbemt561/files/inline-documents/sonh/2022-ge-us-senator-remediated_1.pdf",
+        "source_locator": "Official state general-election return p.1 summary totals; Scatter464 included"
+      },
+      "provenance": "Current official PDF returns viewed in real Chrome. Certification date not asserted because not stated on the inspected returns."
+    },
+    {
+      "state": "NV",
+      "certification_date": "2022-11-22",
+      "certification_url": "https://www.nvsos.gov/sos/home/showpublisheddocument/11241/638059319239170000",
+      "governor": {
+        "D_votes": 481991,
+        "R_votes": 497377,
+        "other_vote_counts": [
+          9918,
+          14919,
+          14866
+        ],
+        "D_candidate": "Steve Sisolak",
+        "R_candidate": "Joe Lombardo",
+        "source_url": "https://web.archive.org/web/20230101155253if_/https://www.nvsos.gov/sos/home/showpublisheddocument/11241/638059319239170000",
+        "source_locator": "Official abstract pp.1,5; includes None of These Candidates as valid nonmajor votes"
+      },
+      "senate": {
+        "D_votes": 498316,
+        "R_votes": 490388,
+        "other_vote_counts": [
+          8075,
+          5208,
+          6422,
+          12441
+        ],
+        "D_candidate": "Catherine Cortez Masto",
+        "R_candidate": "Adam Laxalt",
+        "source_url": "https://web.archive.org/web/20230101155253if_/https://www.nvsos.gov/sos/home/showpublisheddocument/11241/638059319239170000",
+        "source_locator": "Official abstract pp.1,3; includes None of These Candidates"
+      },
+      "source_sha256": "ab52971bf0b0274d73cf4039df6e3c7ee3725490fd6cde012909c8fe33e67eb8",
+      "provenance": "Primary official abstract recovered from Jan1,2023 archive. Title page expressly says canvassed by Supreme Court November22. Legacy webpage still says Unofficial; it was not used as certification evidence. Suppressed precinct rows in MEDSL were not summed."
+    }
+  ],
+  "framing": "Illustration, not a benchmark. Full valid-vote denominators, including certified write-ins and Nevada None of These Candidates; D minus R, without two-party renormalization."
+}

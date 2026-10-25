@@ -68,7 +68,13 @@ def section6(d):
                 rows.append([state, p["pollster_id"], p["sample_id"], f"{p['pop']}/{p['denominator_class']}/{p['round']}", f(p["governor_margin"], 1, " pt"), f(p["senate_margin"], 1, " pt"), f(p["gap"], 1, " pt")])
         else:
             rows.append([state, "", "", "", "", "", "NA: " + b["status"]])
-    return table(["State", "Pollster", "Sample", "Stratum", "Governor D margin", "Senate D margin", "Gap (gov minus Sen)"], rows) + "\n\nIllustration, not benchmark. 2022 comparators: see Section 11."
+    current = table(["State", "Pollster", "Sample", "Stratum", "Governor D margin", "Senate D margin", "Gap (gov minus Sen)"], rows)
+    old = g.get("_comparators_2022", {})
+    historical = []
+    for r in old.get("records", []):
+        sources = f"[Governor]({r['governor']['source_url']}) / [Senate]({r['senate']['source_url']})"
+        historical.append([r["state"], f(r["governor_result"]["margin"], 2, " pt"), f(r["senate_result"]["margin"], 2, " pt"), f(r["gap"], 2, " pt"), sources])
+    return current + "\n\n2022 November general-election comparators. " + old.get("note", "Illustration, not benchmark.") + "\n\n" + table(["State", "Governor D margin", "Senate D margin", "Gap", "Primary returns"], historical) + "\n\nGeorgia uses an unprocessed archive of the official state export, plus the state's qualified write-in certificate. Nevada uses an archived copy of its official Supreme Court canvass. Ohio and New Hampshire use current official PDF returns. Source locators, vote counts and provenance are frozen in derived.json."
 
 
 def section7(d):

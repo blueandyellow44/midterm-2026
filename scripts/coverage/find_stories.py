@@ -15,6 +15,7 @@ import argparse
 import json
 import os
 import re
+import ssl
 import sys
 import urllib.error
 import urllib.request
@@ -29,6 +30,8 @@ SURNAMES = {
     "2026-OH-SEN-SPECIAL": "Sherrod Brown Husted", "2026-MI-SEN": "El-Sayed Rogers", "2026-NC-SEN": "Cooper Whatley", "2026-GA-SEN": "Ossoff Collins Georgia",
     "2026-OH-GOV": "Acton Ramaswamy", "2026-IA-GOV": "Sand Lahn Iowa governor", "2026-MI-GOV": "Benson James Michigan", "2026-GA-GOV": "Bottoms Jackson Georgia governor", "2026-WI-GOV": "Crowley Tiffany",
 }
+CANDIDATE_TERMS = {race: (query.split()[0], query.split()[1]) for race, query in SURNAMES.items()}
+CANDIDATE_TERMS.update({"2026-ME-SEN": ("Jackson", "Collins"), "2026-OH-SEN-SPECIAL": ("Brown", "Husted")})
 
 
 def rpc(endpoint: str, method: str, params: dict, rid: int, session: str | None = None):
@@ -36,7 +39,13 @@ def rpc(endpoint: str, method: str, params: dict, rid: int, session: str | None 
     if session:
         headers["mcp-session-id"] = session
     req = urllib.request.Request(endpoint, data=json.dumps({"jsonrpc": "2.0", "id": rid, "method": method, "params": params}).encode(), headers=headers, method="POST")
-    with urllib.request.urlopen(req, timeout=60) as r:
+    context = ssl.create_default_context()
+    if ssl.get_default_verify_paths().cafile is None and not os.environ.get("SSL_CERT_FILE"):
+        # python.org macOS installs may lack the optional system CA symlink.
+        # Use an installed trust bundle while retaining certificate verification.
+        import certifi
+        context = ssl.create_default_context(cafile=certifi.where())
+    with urllib.request.urlopen(req, timeout=60, context=context) as r:
         body = r.read().decode()
         sid = r.headers.get("mcp-session-id")
     if body.lstrip().startswith("event:") or "\ndata:" in body or body.lstrip().startswith("data:"):
@@ -69,6 +78,7 @@ def extract(result: dict) -> dict:
             out["stories"] = stories
         if payload.get("stale") or payload.get("stale_flag") or payload.get("isStale"):
             out["stale"] = True
+        out["total"] = payload.get("total")
     if out["edition"] is None:
         m = re.search(r"(20\d\d-\d\d-\d\d)", out["text"])
         if m:
@@ -103,7 +113,7 @@ def main() -> int:
         query = SURNAMES.get(race, race)
         now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
         row = {"race": race, "query": query, "expected_edition": a.expected_edition, "returned_edition": "NA", "edition_status": "ACCESS_FAILED", "match_status": "ERROR",
-               "story_count": "0", "outlet_count": "0", "ph_low": "NA", "ph_high": "NA", "spread": "NA", "calmest_outlet": "NA", "hottest_outlet": "NA", "story_ids": "NA",
+               "story_count": "UNVERIFIED", "outlet_count": "UNVERIFIED", "ph_low": "NA", "ph_high": "NA", "spread": "NA", "calmest_outlet": "NA", "hottest_outlet": "NA", "story_ids": "NA",
                "error_text": "", "retrieved_at": now}
         if init_error:
             row["error_text"] = init_error[:300]
@@ -133,6 +143,10 @@ def main() -> int:
                 row["edition_status"] = "OLDER_THAN_EXPECTED"
             else:
                 row["edition_status"] = "OK"
+            if row["edition_status"] == "ACCESS_FAILED":
+                rows.append(row)
+                print(f"{race}: ACCESS_FAILED {row['error_text']}", flush=True)
+                continue
             stories = ex["stories"]
             scores, outlets, ids = [], set(), []
             calm, hot = None, None
@@ -144,7 +158,8 @@ def main() -> int:
                     v = s.get(k)
                     if isinstance(v, int):
                         outlets.add((ids[-1], v))
-                lo, hi = s.get("ph_low") or s.get("min_score") or (s.get("range") or {}).get("low"), s.get("ph_high") or s.get("max_score") or (s.get("range") or {}).get("high")
+                lo = s.get("ph_low", s.get("min_score", (s.get("low") or {}).get("score")))
+                hi = s.get("ph_high", s.get("max_score", (s.get("high") or {}).get("score")))
                 for v in (lo, hi):
                     try:
                         scores.append(float(v))
@@ -163,9 +178,15 @@ def main() -> int:
                     except (TypeError, ValueError):
                         pass
             row["story_count"] = str(len(stories))
-            row["outlet_count"] = str(sum(v for _, v in outlets)) if outlets else ("0" if not stories else "NA")
+            # Distinct outlets cannot be recovered by summing per-story counts.
+            # A single story's published outlet count is unambiguous.
+            if len(stories) == 1:
+                row["outlet_count"] = str(stories[0].get("outletCount", stories[0].get("outlet_count", "NA")))
+            else:
+                row["outlet_count"] = "0" if not stories else "UNVERIFIED"
             if scores:
-                row["ph_low"], row["ph_high"], row["spread"] = f"{min(scores):.1f}", f"{max(scores):.1f}", f"{max(scores) - min(scores):.1f}"
+                summary = weight.coverage_range(scores)
+                row.update(summary)
             row["calmest_outlet"] = (calm[1] if calm and calm[1] else "NA")
             row["hottest_outlet"] = (hot[1] if hot and hot[1] else "NA")
             row["story_ids"] = ";".join(i for i in ids if i) or "NA"
@@ -174,10 +195,11 @@ def main() -> int:
             elif not stories:
                 row["match_status"] = "ZERO"
             else:
-                surnames = [w.lower() for w in query.split() if len(w) > 3]
-                blob = json.dumps(stories).lower() + ex["text"].lower()
-                hits = sum(1 for w in surnames if w in blob)
-                row["match_status"] = "MATCHES" if hits >= min(2, len(surnames)) else "PARTIAL"
+                blob = json.dumps(stories).lower()
+                surnames = CANDIDATE_TERMS[race]
+                complete = all(w.lower() in blob for w in surnames)
+                paginated = isinstance(ex.get("total"), int) and ex["total"] > len(stories)
+                row["match_status"] = "MATCHES" if complete and not paginated else "PARTIAL"
             if not stories and not ex["stories"] and ex["text"]:
                 row["error_text"] = ex["text"][:300]
             print(f"{race}: {row['edition_status']} {row['match_status']} edition={row['returned_edition']} stories={row['story_count']}")

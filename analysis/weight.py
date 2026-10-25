@@ -190,6 +190,50 @@ def mean(xs):
     return (sum(xs) / len(xs)) if xs else None
 
 
+def coverage_range(scores):
+    """Format a connector range; absent or malformed readings remain unknown."""
+    valid = []
+    for x in scores or []:
+        try:
+            valid.append(num(x))
+        except (ValueError, TypeError):
+            continue
+    valid = [x for x in valid if x is not None and 1 <= x <= 5]
+    if not valid:
+        return {"ph_low": "NA", "ph_high": "NA", "spread": "NA"}
+    return {"ph_low": f"{min(valid):.1f}", "ph_high": f"{max(valid):.1f}", "spread": f"{max(valid) - min(valid):.1f}"}
+
+
+def certified_vote_margin(contest):
+    if not isinstance(contest, dict):
+        return None
+    try:
+        counts = [intnum(contest.get("D_votes")), intnum(contest.get("R_votes"))]
+        counts += [intnum(v) for v in (contest.get("other_vote_counts") or [])]
+    except (ValueError, TypeError):
+        return None
+    if any(v is None or v < 0 for v in counts) or sum(counts) <= 0:
+        return None
+    total = sum(counts)
+    d, r = 100 * counts[0] / total, 100 * counts[1] / total
+    return {"D": r4(d), "R": r4(r), "margin": r4(d - r), "valid_votes": total}
+
+
+def historical_comparators():
+    path = os.path.join(os.path.dirname(__file__), "..", "research", "comparators-2022.json")
+    if not os.path.isfile(path):
+        return {"note": "Primary certified-result comparators not yet collected", "records": []}
+    with open(path) as fh:
+        source = json.load(fh)
+    records = []
+    for raw in source.get("records") or []:
+        gov, sen = certified_vote_margin(raw.get("governor")), certified_vote_margin(raw.get("senate"))
+        if gov is None or sen is None:
+            raise ValidationError(f"invalid certified comparator: {raw.get('state')}")
+        records.append(raw | {"governor_result": gov, "senate_result": sen, "gap": r4(gov["margin"] - sen["margin"])})
+    return {"note": source["framing"], "records": records, "input_sha256": sha256_file(path)}
+
+
 def read_csv(path: str, header: list[str], required: bool = True) -> list[dict]:
     if not os.path.exists(path):
         if required:
@@ -909,10 +953,7 @@ class Bundle:
             pairs.sort(key=lambda p: (p["sample_id"], p["pop"], p["denominator_class"]))
             out[state] = {"pairs": pairs, "mean_gap": r4(mean([p["gap"] for p in pairs])) if pairs else None,
                           "status": "computed" if pairs else "NA: no pair shares an explicit sample_id, pop, denominator_class and round"}
-        out["_comparators_2022"] = {
-            "note": "2022 certified November general results, governor margin minus Senate margin (D minus R): illustration, not benchmark. Values are filled by the data builder from the cited state certifications.",
-            "states": ["GA (Kemp vs Walker)", "OH (DeWine vs Vance)", "NH (Sununu vs Hassan)", "NV (Lombardo vs Cortez Masto)"],
-        }
+        out["_comparators_2022"] = historical_comparators()
         return out
 
     # ----- Section 9 heat
