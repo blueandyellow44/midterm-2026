@@ -475,6 +475,39 @@ def choose_contrast_stratum(estimates: list[dict], race: str):
     return {"round": best[0], "denominator_class": best[1], "pop": best[2]}, fallback, None
 
 
+def latest_published_poll(estimates: list[dict] | None, race: str, as_of: date | None) -> dict | None:
+    """Display a source fact, never relax eligibility for an average or contrast.
+
+    RCV round precedence comes first. Within that round prefer newest field end,
+    then release, then denominator/population order and stable estimate ID.
+    """
+    if not as_of:
+        return None
+    pool = [e for e in (estimates or []) if e.get("flag_principal") and not e.get("quarantined")
+            and e.get("race") == race and e.get("window") == "BOTH"
+            and e.get("primary_verified") == "YES" and e.get("round") in ("NA", "FIRST", "FINAL")
+            and e.get("pop") in POPS and e.get("denominator_class") in DENOMS
+            and num(e.get("margin_num")) is not None
+            and parse_date(e.get("field_end")) is not None
+            and parse_date(e.get("field_end")) <= as_of
+            and parse_date(e.get("release_date")) is not None
+            and parse_date(e.get("release_date")) <= as_of
+            and str(e.get("source_url", "")).startswith("https://")]
+    pool, _, _ = apply_round_precedence(pool, race)
+    if not pool:
+        return None
+    e = sorted(pool, key=lambda e: (-parse_date(e["field_end"]).toordinal(),
+        -parse_date(e["release_date"]).toordinal(), DENOM_ORDER[e["denominator_class"]],
+        POP_ORDER[e["pop"]], e["estimate_id"]))[0]
+    return {"estimate_id": e["estimate_id"], "pollster_id": e["pollster_id"],
+            "source_url": e["source_url"], "source_locator": e.get("source_locator"),
+            "margin": e["margin_num"], "n": e.get("n_num"),
+            "field_start": e["field_start"], "field_end": e["field_end"],
+            "release_date": e["release_date"], "age_days": (as_of - parse_date(e["field_end"])).days,
+            "pop": e["pop"], "round": e["round"], "denominator_class": e["denominator_class"],
+            "average_exclusion_reasons": e.get("flag_reasons", [])}
+
+
 # ----------------------------------------------------------------------------- the bundle
 class Bundle:
     def __init__(self, bundle_dir: str, as_of: datetime | None, run_state: dict | None = None):
@@ -904,8 +937,23 @@ class Bundle:
         base = weighted_margin if weighted_margin is not None else preliminary
         if base is not None:
             scenarios = {k: r4(base - v) for k, v in SCENARIO_SHIFTS.items()}
+        latest = latest_published_poll(rows, race, self.as_of_date)
+        if weighted_margin is not None:
+            polling_read = {"kind": "WEIGHTED_AVERAGE", "margin": weighted_margin,
+                            "poll_count": len(in_avg), "field_end": field_ends[-1],
+                            "age_days": (self.as_of_date - parse_date(field_ends[-1])).days,
+                            "stratum": averaging, "latest_poll": None}
+        elif latest:
+            polling_read = {"kind": "LATEST_POLL", "margin": latest["margin"], "poll_count": 1,
+                            "field_end": latest["field_end"], "age_days": latest["age_days"],
+                            "stratum": {k: latest[k] for k in ("round", "denominator_class", "pop")},
+                            "latest_poll": latest}
+        else:
+            polling_read = {"kind": "UNAVAILABLE", "margin": None, "poll_count": 0,
+                            "field_end": None, "age_days": None, "stratum": None, "latest_poll": None}
         return {
             "race": race,
+            "polling_read": polling_read,
             "rcv": race in RCV_RACES,
             "weighted_margin": weighted_margin,
             "weighted_margin_status": "computed (heuristic; track-record stand-in)" if weighted_margin is not None else "not yet computed (Stage 2c not passed)" if in_avg else "NA (no estimate in the averaging stratum)",

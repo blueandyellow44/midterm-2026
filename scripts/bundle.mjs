@@ -47,5 +47,21 @@ export function validateBundle(directory) {
   if (d.derived_schema!=='1.0' || d.release_id!==m.release_id || d.analytical_as_of!==m.analytical_as_of || d.calc_version!==m.calc_version.commit) throw new Error('Mixed derived/manifest identity');
   if (!d.stage2c_passed && Object.values(d.races).some(r=>r.weighted_margin!==null)) throw new Error('Premature weighted margin');
   if (d.stage2c_passed && (m.stage_status.stage2c!=='PASSED' || Object.values(d.races).some(r=>r.retained_count>0 && !Number.isFinite(r.weighted_margin)))) throw new Error('Missing or unpassed weighted margin');
+  // Older sealed releases remain readable. New public-read releases must be complete.
+  if (Object.values(d.races).some(r=>r.polling_read!==undefined)) {
+    const estimates=new Map(d.estimates.map(e=>[e.estimate_id,e]));
+    for (const r of Object.values(d.races)) {
+      const read=r.polling_read;
+      if (!read || !['WEIGHTED_AVERAGE','LATEST_POLL','UNAVAILABLE'].includes(read.kind)) throw new Error('Missing or unknown public polling read');
+      if (read.kind==='UNAVAILABLE') {
+        if (read.margin!==null || read.poll_count!==0) throw new Error('Unavailable public read has a value');
+      } else if (!Number.isFinite(read.margin) || !Number.isInteger(read.age_days) || read.age_days<0) throw new Error('Invalid public polling read');
+      if (read.kind==='WEIGHTED_AVERAGE' && (read.margin!==r.weighted_margin || read.poll_count!==r.retained_count)) throw new Error('Public average disagrees with calculator');
+      if (read.kind==='LATEST_POLL') {
+        const e=estimates.get(read.latest_poll?.estimate_id);
+        if (r.weighted_margin!==null || read.poll_count!==1 || !e || !e.flags.principal || e.quarantined || e.primary_verified!=='YES' || e.window!=='BOTH' || !['NA','FIRST','FINAL'].includes(e.round) || e.race!==r.race || e.margin!==read.margin || e.source_url!==read.latest_poll.source_url || e.pop!==read.stratum?.pop || e.round!==read.stratum?.round || e.denominator_class!==read.stratum?.denominator_class || e.field_end!==read.field_end) throw new Error('Unverified or inconsistent latest-poll read');
+      }
+    }
+  }
   return { manifest:m, derived:d, manifestHash:sha256(manifestBytes) };
 }

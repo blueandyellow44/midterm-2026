@@ -1,0 +1,229 @@
+{
+  "prior_release_id": "20261025T121938-0700-stage2-63bbd1e-6ec76c0a50",
+  "existing_race_fields_unchanged": true,
+  "all_other_analytical_sections_unchanged": true,
+  "public_reads": {
+    "2026-TX-SEN": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 1.984,
+      "poll_count": 6,
+      "field_end": "2026-10-21",
+      "age_days": 4,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-IA-SEN": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": -2.0865,
+      "poll_count": 3,
+      "field_end": "2026-10-22",
+      "age_days": 3,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-ME-SEN": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 0.0293,
+      "poll_count": 3,
+      "field_end": "2026-10-23",
+      "age_days": 2,
+      "stratum": {
+        "round": "FIRST",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-AK-SEN": {
+      "kind": "LATEST_POLL",
+      "margin": 2.0,
+      "poll_count": 1,
+      "field_end": "2026-10-16",
+      "age_days": 9,
+      "stratum": {
+        "round": "FINAL",
+        "denominator_class": "TWO_WAY",
+        "pop": "LV"
+      },
+      "latest_poll": {
+        "estimate_id": "data-for-progress-2026-10-08-2026-10-16-2026-AK-SEN-LV-TWO_WAY-FINAL",
+        "pollster_id": "data-for-progress",
+        "source_url": "https://www.filesforprogress.org/datasets/2026/10/dfp_alaska_oct_2026.pdf",
+        "source_locator": "PDF Q[18] 'simulation ... after eliminating Sullivan, Daniel J. Jr.: (N=671)' p.12",
+        "margin": 2.0,
+        "n": 671,
+        "field_start": "2026-10-08",
+        "field_end": "2026-10-16",
+        "release_date": "2026-10-20",
+        "age_days": 9,
+        "pop": "LV",
+        "round": "FINAL",
+        "denominator_class": "TWO_WAY",
+        "average_exclusion_reasons": [
+          "recall_weighted UNVERIFIED: excluded from YES-NO contrasts, counted",
+          "weight 0.0259 below cutoff 0.05"
+        ]
+      }
+    },
+    "2026-OH-SEN-SPECIAL": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 4.2405,
+      "poll_count": 3,
+      "field_end": "2026-10-22",
+      "age_days": 3,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-MI-SEN": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 1.0,
+      "poll_count": 1,
+      "field_end": "2026-10-22",
+      "age_days": 3,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "LEANERS",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-NC-SEN": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 11.7105,
+      "poll_count": 2,
+      "field_end": "2026-10-20",
+      "age_days": 5,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-GA-SEN": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 7.1449,
+      "poll_count": 2,
+      "field_end": "2026-10-17",
+      "age_days": 8,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-OH-GOV": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 1.7705,
+      "poll_count": 2,
+      "field_end": "2026-10-20",
+      "age_days": 5,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-IA-GOV": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": 4.0,
+      "poll_count": 1,
+      "field_end": "2026-10-19",
+      "age_days": 6,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-MI-GOV": {
+      "kind": "LATEST_POLL",
+      "margin": 6.0,
+      "poll_count": 1,
+      "field_end": "2026-10-18",
+      "age_days": 7,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": {
+        "estimate_id": "marist-2026-10-15-2026-10-18-2026-MI-GOV-LV-FULL-NA",
+        "pollster_id": "marist",
+        "source_url": "https://maristpoll.marist.edu/wp-content/uploads/2026/10/Marist-Poll_MI-NOS-and-Tables_202610191238FFx09@Jal.pdf",
+        "source_locator": "Marist Michigan October GVVT26R",
+        "margin": 6.0,
+        "n": null,
+        "field_start": "2026-10-15",
+        "field_end": "2026-10-18",
+        "release_date": "2026-10-21",
+        "age_days": 7,
+        "pop": "LV",
+        "round": "NA",
+        "denominator_class": "FULL",
+        "average_exclusion_reasons": [
+          "n missing"
+        ]
+      }
+    },
+    "2026-GA-GOV": {
+      "kind": "WEIGHTED_AVERAGE",
+      "margin": -1.5021,
+      "poll_count": 2,
+      "field_end": "2026-10-17",
+      "age_days": 8,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "LV"
+      },
+      "latest_poll": null
+    },
+    "2026-WI-GOV": {
+      "kind": "LATEST_POLL",
+      "margin": 4.0,
+      "poll_count": 1,
+      "field_end": "2026-10-09",
+      "age_days": 16,
+      "stratum": {
+        "round": "NA",
+        "denominator_class": "FULL",
+        "pop": "A"
+      },
+      "latest_poll": {
+        "estimate_id": "yougov-2026-09-22-2026-10-09-wi-governor-2026-WI-GOV-A-FULL-NA",
+        "pollster_id": "yougov",
+        "source_url": "https://cityforwardcollective.org/wp-content/uploads/2026/10/CFCAF-Statewide-Oct.-Release-10.15.26-1.pdf",
+        "source_locator": "Release p.1 governor question base and p.3 methodology",
+        "margin": 4.0,
+        "n": 1715,
+        "field_start": "2026-09-22",
+        "field_end": "2026-10-09",
+        "release_date": "2026-10-15",
+        "age_days": 16,
+        "pop": "A",
+        "round": "NA",
+        "denominator_class": "FULL",
+        "average_exclusion_reasons": [
+          "recall_weighted UNVERIFIED: excluded from YES-NO contrasts, counted",
+          "sponsor_class UNKNOWN"
+        ]
+      }
+    }
+  }
+}
