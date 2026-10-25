@@ -1,0 +1,108 @@
+{
+  "version_id": "e234882a-bdc5-4904-9957-5dd3483519dd",
+  "routes": [
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/excluded/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/grading/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/method/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 2,
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 2,
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "wrongScale": false
+    },
+    {
+      "correctScale": 0,
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "wrongScale": false
+    }
+  ],
+  "console": []
+}

@@ -1,0 +1,112 @@
+{
+  "checked_at": "2026-10-25T21:23:10.317Z",
+  "base": "https://election-weather.max-sheahan.workers.dev",
+  "release_id": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+  "checks": [
+    {
+      "route": "/excluded/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/grading/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/method/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/ak-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/ga-gov/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/ga-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/ia-gov/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/ia-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/me-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/mi-gov/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/mi-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/nc-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/oh-gov/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/oh-sen-special/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/tx-sen/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/race/wi-gov/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/favicon.svg",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/favicon.png",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/og.png",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/not-a-published-race/",
+      "status": 404,
+      "errors": []
+    }
+  ]
+}
