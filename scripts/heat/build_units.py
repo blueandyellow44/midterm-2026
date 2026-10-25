@@ -110,6 +110,9 @@ def ad_units(race: str, slot: str, name: str, ads: list[dict], heat_dir: str) ->
         unit = {"race": race, "candidate": name, "slot": slot, "source_type": "AD", "unit_id": f"ad-{k}-{(ad.get('publish_date') or 'nodate')}",
                 "unit_label": (ad.get("title") or f"ad {k}")[:120], "source_url": ad.get("url") or "NA", "caption_source": ad.get("caption_source") or "AUTO", "sentences": [],
                 "notes": f"published {ad.get('publish_date') or 'unknown'}; {ad.get('duration') or ''}".strip()}
+        if unit["caption_source"] not in ("OFFICIAL", "BROADCASTER", "AUTO", "NA"):
+            unit["notes"] += f"; caption retrieval status {unit['caption_source']}"
+            unit["caption_source"] = "NA"
         if vtt and os.path.exists(vtt):
             text = normalize_case(captions.vtt_text(vtt))
             unit["sentences"] = captions.split_sentences(text)
