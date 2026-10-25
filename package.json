@@ -1,0 +1,44 @@
+{
+  "name": "election-weather",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "node scripts/validate-bundle.mjs && next build",
+    "build:cloudflare": "npm run build && node scripts/csp-hashes.mjs && opennextjs-cloudflare build --skipNextBuild && node scripts/static-routes.mjs",
+    "preview": "wrangler dev --port 8788",
+    "deploy": "node scripts/verify-static.mjs && wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@opennextjs/cloudflare": "1.20.13",
+    "csv-parse": "7.0.3",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "wrangler": "4.152.0"
+  },
+  "overrides": {
+    "@node-minify/core": {
+      "glob": "10.5.0"
+    },
+    "miniflare": {
+      "undici": "7.30.1"
+    }
+  }
+}

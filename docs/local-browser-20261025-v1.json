@@ -1,0 +1,2337 @@
+{
+  "started_at": "2026-10-25T21:00:01.821Z",
+  "route_checks": [
+    {
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "hydrated": "true",
+      "path": "/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Show the workings.",
+        "Midterm 2026 poll-weighting method and recall-vote test"
+      ],
+      "hydrated": "true",
+      "path": "/method/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Kept on record. Kept out of calculations."
+      ],
+      "hydrated": "true",
+      "path": "/excluded/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Write the rules before the results."
+      ],
+      "hydrated": "true",
+      "path": "/grading/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Texas Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Iowa Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Maine Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Alaska Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Ohio Senate · special"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Michigan Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "North Carolina Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Georgia Senate"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Ohio governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Iowa governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Michigan governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Georgia governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "headings": [
+        "Wisconsin governor"
+      ],
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    }
+  ],
+  "dark_checks": [
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/race/ak-sen/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/method/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "background": "rgb(23, 27, 32)",
+      "color": "rgb(237, 240, 237)",
+      "dark": true,
+      "path": "/grading/",
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    }
+  ],
+  "console": [
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:02.697Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:02.839Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:02.976Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.113Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.243Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.383Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.528Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.662Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.800Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:03.939Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:04.065Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:04.192Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:04.311Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:05.239Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:05.383Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:05.514Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:05.641Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:05.816Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:05.957Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.091Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.265Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.397Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.532Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.662Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.792Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:06.907Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:07.842Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:07.982Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.113Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.244Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.400Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.561Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.698Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.830Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:08.956Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:09.080Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:09.201Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:09.321Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:09.450Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:10.745Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:10.898Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.043Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.179Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.308Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.450Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.593Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.748Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:11.887Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:12.014Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:12.188Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:12.365Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:12.486Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:13.414Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:13.551Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:13.682Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:13.817Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:13.963Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.123Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.270Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.393Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.519Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.653Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.795Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:14.922Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:15.048Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.025Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.166Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.293Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.424Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.564Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.713Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.854Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:16.988Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:17.117Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:17.248Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:17.382Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:17.508Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:17.640Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:18.555Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:18.695Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:18.826Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:18.952Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.097Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.236Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.376Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.517Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.651Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.773Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:19.917Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:20.041Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:20.201Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:21.163Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:21.301Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:21.448Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:21.595Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:21.742Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:21.882Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.020Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.141Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.276Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.407Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.532Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.669Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:22.807Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:38.670Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:39.508Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:40.297Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:41.077Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:41.898Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:42.691Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:43.473Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    },
+    {
+      "level": "error",
+      "message": "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at r1 (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:57736)\n    at ih (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:109455)\n    at sw (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:150741)\n    at http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145656\n    at su (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:145757)\n    at sJ (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:172304)\n    at MessagePort.z (http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js:1:225243)",
+      "timestamp": "2026-10-25T21:00:44.282Z",
+      "url": "http://127.0.0.1:8788/_next/static/chunks/23uug2t-ue3p1.js"
+    }
+  ]
+}
