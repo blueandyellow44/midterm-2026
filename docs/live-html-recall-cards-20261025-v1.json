@@ -1,0 +1,90 @@
+{
+  "checked_at": "2026-10-25T22:30:49.628Z",
+  "checks": [
+    {
+      "route": "/excluded/",
+      "identical": true,
+      "sha256": "fc1bc2202575239f8452544a53f636be0964bc274713e94440adf2304e7f0b29"
+    },
+    {
+      "route": "/grading/",
+      "identical": true,
+      "sha256": "d7a2fbc19d02d14e5445679ac93d6ada3d60443b988b0098e8f26913c04c86a5"
+    },
+    {
+      "route": "/",
+      "identical": true,
+      "sha256": "a1ddfb5c26d68d47568699255bc44610dddd350e706f28811c27318b36e4ac5f"
+    },
+    {
+      "route": "/method/",
+      "identical": true,
+      "sha256": "2d510f8edd576d20f137afcf2ae20512210cadc8d6ab71f90a8301713e527ae5"
+    },
+    {
+      "route": "/race/ak-sen/",
+      "identical": true,
+      "sha256": "db2d1de32f9377ad036024ef38c0349a41598072614f274e9b7a5e2825c6e035"
+    },
+    {
+      "route": "/race/ga-gov/",
+      "identical": true,
+      "sha256": "650f66c873b9096d6970c90db163bb9f9bca2a807235f856184af2108d49cd52"
+    },
+    {
+      "route": "/race/ga-sen/",
+      "identical": true,
+      "sha256": "41cf1a27b6acdbace0270bf07df6fca31064beb10b19b6c7e33b96179bf786bd"
+    },
+    {
+      "route": "/race/ia-gov/",
+      "identical": true,
+      "sha256": "b7094e31918b4485eb72859ae3b17fdcfbf1ca853fa60047e26e7de4a5a6704d"
+    },
+    {
+      "route": "/race/ia-sen/",
+      "identical": true,
+      "sha256": "99db84417f1fd513cbc1ad9fab6928d4762b95fd54f1dcea310f53dc13b7323e"
+    },
+    {
+      "route": "/race/me-sen/",
+      "identical": true,
+      "sha256": "f1417aa7ba8388a994e971335596515b413d76cffb4ecc416ad2125c5a01c6ff"
+    },
+    {
+      "route": "/race/mi-gov/",
+      "identical": true,
+      "sha256": "267982249309a36ee16a295232937746cd77af4e5232c073557cf5a6591d8f1f"
+    },
+    {
+      "route": "/race/mi-sen/",
+      "identical": true,
+      "sha256": "dc69540402668829ea8c4292eca8d325b23ffd13c9ac651a72f9f3d515a3f9b5"
+    },
+    {
+      "route": "/race/nc-sen/",
+      "identical": true,
+      "sha256": "360d8cb761a20f9c3f20867976675e8cf5d53fba665421cdafe7e333fe9da879"
+    },
+    {
+      "route": "/race/oh-gov/",
+      "identical": true,
+      "sha256": "42b28ea10dde960842f4fb936e071d04697015983edbaeaccc88a322a25ef055"
+    },
+    {
+      "route": "/race/oh-sen-special/",
+      "identical": true,
+      "sha256": "dfe6191bdb0093c9e2aa8599eae14eabac40f2f0bea04a5776ccefee019e33d1"
+    },
+    {
+      "route": "/race/tx-sen/",
+      "identical": true,
+      "sha256": "d35fa2b921431f79d73882e9aacca1d467b9d385cba1680d316ca16dea90cbb4"
+    },
+    {
+      "route": "/race/wi-gov/",
+      "identical": true,
+      "sha256": "ec14aabfa6cb7d92a965cd518556b0cd7ff10fe9f94a7aed8ec56b02a2306e60"
+    }
+  ]
+}
