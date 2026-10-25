@@ -11,7 +11,7 @@ it('omits absent, empty, one-sided and malformed comparisons without false zeros
  for(const change of [(r:any)=>r.recallComparison.groups.NO.mean=null,(r:any)=>r.recallComparison.value=NaN,(r:any)=>r.recallComparison.groups.NO.pollsters=0,(r:any)=>r.recallComparison.groups.YES.estimates=Infinity]){const r=fixture();change(r);expect(render(r)).toBe('');}
 });
 it('labels the two methods and separates poll waves from pollster counts',()=>{
- const html=render(fixture());expect(html).toContain('Uses 2024 vote');expect(html).toContain('Does not use it');expect(html).toContain('2 polls · 1 pollster');expect(html).toContain('2.0 points more favorably for Candidate D');expect(html).toContain('Each pollster counts equally');expect(html).toContain('Different pollsters and dates may explain this gap');
+ const html=render(fixture());expect(html).toContain('average leads');expect(html).toContain('Uses 2024 vote');expect(html).toContain('Does not use it');expect(html).toContain('2 polls · 1 pollster');expect(html).toContain('2.0 points more favorably for Candidate D');expect(html).toContain('Each pollster counts equally');expect(html).toContain('Different pollsters and dates may explain this gap');
 });
 it('handles the reverse direction without inventing an accuracy winner',()=>{
  const r=fixture();r.recallComparison.value=-2;r.recallComparison.groups.YES.mean=-3;r.recallComparison.groups.NO.mean=-1;const html=render(r);expect(html).toContain('for Candidate R');expect(html).toContain('2.0 points more favorably for Candidate R');expect(html).toContain('It does not establish which method is better');

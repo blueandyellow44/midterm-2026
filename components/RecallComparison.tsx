@@ -15,7 +15,7 @@ export function RecallComparison({r,pollsterNames={}}:{r:any;pollsterNames?:Reco
  const unknown=r.recall_counts_principal_both?.UNVERIFIED;
  return <section className="recall-comparison" aria-label={`${r.name||'This race'}: how pollsters use the 2024 vote`}>
   <h4>How pollsters use the 2024 vote</h4>
-  <p className="recall-intro">Some polls adjust their sample using how people say they voted in 2024. Here is how the two groups compare.</p>
+  <p className="recall-intro">Some polls adjust their sample using how people say they voted in 2024. These are the two groups’ average leads.</p>
   <dl className="recall-groups">{(['YES','NO'] as const).map(key=>{
    const group=groups[key];const value=group.mean;const even=Math.abs(value)<0.05;
    const candidate=value>0?candidates.D.candidate:candidates.R.candidate;
