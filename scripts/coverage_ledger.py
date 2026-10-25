@@ -34,7 +34,9 @@ def main() -> int:
     for path in sorted(p for d in a.inputs for p in glob.glob(os.path.join(d, "*.json"))):
         with open(path) as f:
             d = json.load(f)
-        race = d.get("race") or os.path.basename(path)[:-5]
+        race = d.get("race")
+        if not isinstance(race, str) or race not in weight.IN_SCOPE_RACES:
+            race = os.path.basename(path)[:-5]
         rows = by_race.get(race, [])
         src = d.get("sources_checked") or []
         names = sorted({(s.get("name") or "")[:40] for s in src if s.get("name")})
