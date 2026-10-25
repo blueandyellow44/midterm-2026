@@ -30,9 +30,15 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "analysis"))
 import weight  # noqa: E402
 
+# Canonical quarantine evidence, re-read by the main session on 2026-10-25 (scratchpad/stage1/audit/reinspection.md). These records
+# always win over an agent's quarantine_candidates text so the evidence URL and date are the verified ones.
 QUARANTINE_FIRMS = {
-    "wedgewood": {"reason": "Admitted 2026-10-20, after the FiftyPlusOne investigation, that most releases had no real data", "evidence_date": "2026-10-20"},
-    "median-strategies": {"reason": "August 2026 admission that releases were not based on real survey data", "evidence_date": "2026-08-31"},
+    "wedgewood": {"reason": "Documented fabrication: on 2026-10-20 Wedgewood Polls admitted on social media it had been fabricating data, after FiftyPlusOne asked it to verify its surveys (FiftyPlusOne, 'FiftyPlusOne just caught a pollster faking data', 2026-10-20). Hosting on the firm's own site or an aggregator mirror does not override the authenticity failure.",
+                  "evidence_url": "https://blog.fiftyplusone.news/p/fiftyplusone-just-caught-a-pollster", "evidence_date": "2026-10-20"},
+    "median-strategies": {"reason": "Documented fabrication: the firm admitted to the Los Angeles Times that its poll results were entirely fabricated as a 'social experiment'; FiftyPlusOne suspended it on 2026-08-20 and AAPOR condemned the fabrication.",
+                          "evidence_url": "https://blog.fiftyplusone.news/p/suspending-two-pollsters-data-falsification-undisclosed-partisan-work", "evidence_date": "2026-08-20"},
+    "socal-strategies": {"reason": "Documented withdrawal after a verification request: FiftyPlusOne asked SoCal Strategies to verify its data on 2026-10-20; by 2026-10-22 the firm's website, X account and Substack were offline with no statement, and FiftyPlusOne removed two surveys and stopped collecting the firm (multiple sources alleged fabrication).",
+                         "evidence_url": "https://blog.fiftyplusone.news/p/more-pollster-funny-business-uncovered-socal-strategies", "evidence_date": "2026-10-22"},
 }
 ALIASES = {
     # canonical slug: patterns (lowercase substrings)
@@ -183,6 +189,13 @@ def main() -> int:
         if sole and (prec or {}).get("applicability") is None:
             applicability = "SURVEY"
         mid = f"{pid}-c26" if applicability == "CYCLE_BOILERPLATE" else f"{pid}-s-{race}-{field_end}"
+        mapped = overrides.get("method_map", {}).get(mid)
+        if mapped:
+            if mapped in method_records:
+                r = method_records[mapped]
+                return mapped, r["recall_weighted"], r.get("disclosure_status", "UNVERIFIED")
+            mid = mapped
+            applicability = "CYCLE_BOILERPLATE" if mapped.endswith("-c26") else applicability
         recall = enum((prec or {}).get("recall_weighted"), weight.RECALL_METHOD, "UNVERIFIED")
         quote = nz((prec or {}).get("weighting_quote"))
         if recall in ("YES", "NO") and quote == "NA":
@@ -199,6 +212,7 @@ def main() -> int:
             "rating_units": "NA", "rating_poll_count": "NA", "rating_bias_metric": "NA", "rating_bias_value": "NA", "rating_cohort": "NA", "track_status": "PROVISIONAL",
             "f_track": "1.0", "new_pollster": "NA", "track_ledger_ref": "NA", "notes": nz((prec or {}).get("notes"), ""),
         }
+        rec["disclosure_status"] = disclosure
         rec.update(ov)
         if mid in method_records and method_records[mid]["recall_weighted"] != rec["recall_weighted"]:
             method_conflicts[mid].add(method_records[mid]["recall_weighted"]); method_conflicts[mid].add(rec["recall_weighted"])
@@ -213,7 +227,11 @@ def main() -> int:
     for path in files:
         with open(path) as f:
             data = json.load(f)
-        race = data.get("race") or os.path.basename(path).replace(".json", "")
+        race = data.get("race")
+        if isinstance(race, dict):
+            race = race.get("race_id") or race.get("id") or race.get("race")
+        if not isinstance(race, str) or race not in weight.IN_SCOPE_RACES:
+            race = os.path.basename(path).replace(".json", "")
         prec_by_pid: dict[str, dict] = {}
         for p in data.get("pollsters") or []:
             pid = pollster_slug(p.get("pollster_name"), None)
@@ -222,8 +240,15 @@ def main() -> int:
             prec_by_pid[pid] = p
         for q in data.get("quarantine_candidates") or []:
             pid = pollster_slug(q.get("pollster_name"), None)
-            exclusions[("POLLSTER", pid)] = {"entity_type": "POLLSTER", "entity_id": pid, "reason": q.get("reason") or QUARANTINE_FIRMS.get(pid, {}).get("reason", "documented fabrication or withdrawal"),
-                                             "evidence_url": q.get("evidence_url") or "NA", "evidence_date": q.get("evidence_date") or QUARANTINE_FIRMS.get(pid, {}).get("evidence_date", "NA"), "recorded_at": now}
+            if pid in QUARANTINE_FIRMS:
+                c = QUARANTINE_FIRMS[pid]
+                exclusions[("POLLSTER", pid)] = {"entity_type": "POLLSTER", "entity_id": pid, "reason": c["reason"], "evidence_url": c["evidence_url"], "evidence_date": c["evidence_date"], "recorded_at": now}
+            elif ("POLLSTER", pid) not in exclusions or exclusions[("POLLSTER", pid)]["evidence_url"] == "NA":
+                if not q.get("evidence_url"):
+                    report.append(f"{race}: quarantine candidate {pid} has no evidence_url -> NOT quarantined (needs evidence); row kept selectable")
+                    continue
+                exclusions[("POLLSTER", pid)] = {"entity_type": "POLLSTER", "entity_id": pid, "reason": q.get("reason") or "documented fabrication or withdrawal",
+                                                 "evidence_url": q["evidence_url"], "evidence_date": q.get("evidence_date") or "NA", "recorded_at": now}
         polls = data.get("polls") or []
         counts_by_pid = Counter(pollster_slug(p.get("pollster_name"), p.get("members_or_partners")) for p in polls)
         for p in polls:
@@ -265,8 +290,8 @@ def main() -> int:
             mid, recall, disclosure = method_for(pid, prec, fe, sole, race)
             quarantined = pid in QUARANTINE_FIRMS or ("POLLSTER", pid) in exclusions
             if pid in QUARANTINE_FIRMS and ("POLLSTER", pid) not in exclusions:
-                exclusions[("POLLSTER", pid)] = {"entity_type": "POLLSTER", "entity_id": pid, "reason": QUARANTINE_FIRMS[pid]["reason"], "evidence_url": "NA",
-                                                 "evidence_date": QUARANTINE_FIRMS[pid]["evidence_date"], "recorded_at": now}
+                c = QUARANTINE_FIRMS[pid]
+                exclusions[("POLLSTER", pid)] = {"entity_type": "POLLSTER", "entity_id": pid, "reason": c["reason"], "evidence_url": c["evidence_url"], "evidence_date": c["evidence_date"], "recorded_at": now}
             series = p.get("tracking_series_name")
             tsid = f"TS-{pid}-{race}-{slug(series)[:20]}" if series else "NA"
             notes = nz(p.get("notes"), "")

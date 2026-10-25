@@ -51,6 +51,8 @@ def match_speaker(label: str, name: str) -> bool:
 
 def debate_units(race: str, meta: dict, candidates: dict, transcript_path: str | None) -> tuple[dict[str, list[dict]], str | None]:
     """Return {slot: [unit, ...]} in speaking order, or a reason string when no units can be built."""
+    if meta and meta.get("held") is False:
+        return {}, "no general-election debate between the two slot candidates held on or before analytical_as_of (" + str(meta.get("reason") or meta.get("notes") or "per the heat-material log")[:160] + ")"
     if not meta or not meta.get("debate_date"):
         return {}, (meta or {}).get("reason") or "no general-election debate between the two slot candidates found on or before analytical_as_of"
     if not transcript_path or not os.path.exists(transcript_path):
@@ -138,7 +140,13 @@ def main() -> int:
         if tpath and not os.path.isabs(tpath):
             tpath = os.path.join(a.heat_dir, tpath)
         d_units, reason = debate_units(race, debate, cands[race], tpath if os.path.exists(tpath) else None)
-        ads = meta.get("ads") or {}
+        ads_raw = meta.get("ads") or {}
+        ads = {}
+        for slot in ("D", "R"):
+            v = ads_raw.get(slot)
+            if isinstance(v, dict):
+                v = v.get("ads") or []
+            ads[slot] = [x for x in (v or []) if isinstance(x, dict)]
         per_race[race] = {"debate": d_units, "debate_reason": reason,
                           "ads": {slot: ad_units(race, slot, cands[race][slot], ads.get(slot) or [], a.heat_dir) for slot in ("D", "R")}}
         if reason:

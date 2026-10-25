@@ -27,7 +27,7 @@ ENDPOINT = "https://studio.myop.dev/m/c8zs1jq8oi7m"
 SURNAMES = {
     "2026-TX-SEN": "Talarico Paxton", "2026-IA-SEN": "Turek Hinson", "2026-ME-SEN": "Troy Jackson Collins Maine", "2026-AK-SEN": "Peltola Sullivan",
     "2026-OH-SEN-SPECIAL": "Sherrod Brown Husted", "2026-MI-SEN": "El-Sayed Rogers", "2026-NC-SEN": "Cooper Whatley", "2026-GA-SEN": "Ossoff Collins Georgia",
-    "2026-OH-GOV": "Acton Ramaswamy", "2026-IA-GOV": "Sand Lahn", "2026-MI-GOV": "Benson James Michigan", "2026-GA-GOV": "Bottoms Burt Jones Georgia governor", "2026-WI-GOV": "Crowley Tiffany",
+    "2026-OH-GOV": "Acton Ramaswamy", "2026-IA-GOV": "Sand Lahn Iowa governor", "2026-MI-GOV": "Benson James Michigan", "2026-GA-GOV": "Bottoms Jackson Georgia governor", "2026-WI-GOV": "Crowley Tiffany",
 }
 
 
