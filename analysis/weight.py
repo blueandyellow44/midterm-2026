@@ -1443,7 +1443,7 @@ def main(argv=None) -> int:
     if a.validate or a.release or a.compute:
         ok = b.validate()
         for n in b.notes:
-            print(f"NOTE: {n}")
+            print(f"NOTE: {n}", file=sys.stderr if a.compute else sys.stdout)
         for p in b.problems:
             print(f"HARD ERROR: {p}", file=sys.stderr)
         if not ok:

@@ -97,6 +97,10 @@ def ad_units(race: str, slot: str, name: str, ads: list[dict], heat_dir: str) ->
     out = []
     for k, ad in enumerate(ads or [], start=1):
         vtt = ad.get("caption_path") or ad.get("vtt_path")
+        if isinstance(vtt, list):
+            vtt = next((v for v in vtt if isinstance(v, str) and os.path.exists(v if os.path.isabs(v) else os.path.join(heat_dir, v))), vtt[0] if vtt else None)
+        if vtt and not isinstance(vtt, str):
+            vtt = None
         if vtt and not os.path.isabs(vtt):
             vtt = os.path.join(heat_dir, vtt)
         unit = {"race": race, "candidate": name, "slot": slot, "source_type": "AD", "unit_id": f"ad-{k}-{(ad.get('publish_date') or 'nodate')}",
