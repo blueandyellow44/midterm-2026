@@ -9,7 +9,7 @@ Usage:
 units.json: ordered list of units; the order is the scoring priority under the budget cap.
   {race, candidate, slot, source_type, unit_id, unit_label, source_url, caption_source, sentences: [..], status?: "MISSING_TRANSCRIPT", notes?}
 
-Every paid call is reserved first in run-state (units * unit_rate * 1.5); if spent + reserved would exceed the $3.00 ceiling the
+Every unit is reserved first using input-byte/output-token upper bounds; if spent + reserved would exceed the $3.00 ceiling the
 remaining units get SKIPPED_BUDGET rows and scoring stops. A unit already in heat-cache/ under the same cache key costs nothing.
 The passcode and keys never leave the meter's own files; this script only reads METER_PASSCODE to log in to the local meter.
 """
@@ -105,6 +105,23 @@ def weight_ctx() -> int:
     return 2
 
 
+def reserve_upper_bound(sentences: list[str]) -> float:
+    """Conservative reservation for the pinned meter, including its two verdict attempts.
+
+    Count every UTF-8 input byte as a token and allow 16,000 additional tokens
+    for the pinned prompts/tools/wrapping (measured request baseline < 11 KB).
+    Score calls have 600 output tokens; verdict calls have 1,200 each. The
+    configured prices are $1/M input and $5/M output, with no client retries.
+    """
+    lines = 0.0
+    for i, sentence in enumerate(sentences):
+        context = sentences[max(0, i - weight_ctx()):i]
+        size = len(sentence.encode()) + sum(len(c[:500].encode()) for c in context)
+        lines += (16000 + size + 600 * 5) / 1_000_000
+    verdict = 2 * (16000 + len("\n".join(sentences).encode()) + 1200 * 5) / 1_000_000
+    return round(lines + verdict, 6)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--units", required=True)
@@ -150,9 +167,6 @@ def main() -> int:
     for u in units:
         heat_id = f"{u['race']}-{u['slot']}-{u['source_type']}-{u['unit_id']}"
         prior = by_id.get(heat_id)
-        if prior and prior["status"] == "SCORED":
-            rows_out.append(prior)  # never re-scored
-            continue
         base = {"heat_id": heat_id, "race": u["race"], "candidate": u["candidate"], "slot": u["slot"], "source_type": u["source_type"], "unit_id": u["unit_id"],
                 "unit_label": u.get("unit_label", ""), "source_url": u.get("source_url") or "NA", "caption_source": u.get("caption_source") or "NA",
                 "unit_sha256": "NA", "status": "", "ph_score": "NA", "ph_label": "NA", "hottest_line": "", "calmest_line": "", "scorer_commit": "NA",
@@ -167,6 +181,9 @@ def main() -> int:
         unit_sha = weight.sha256_bytes(text.encode("utf-8"))
         key = weight.cache_key(unit_sha, a.scorer_commit, a.prompt_sha256, a.model, config_sha)
         base.update({"unit_sha256": unit_sha, "scorer_commit": a.scorer_commit, "prompt_sha256": a.prompt_sha256, "model": a.model, "config_sha256": config_sha})
+        if prior and prior["status"] == "SCORED" and all(prior.get(k) == base[k] for k in ("unit_sha256", "scorer_commit", "prompt_sha256", "model", "config_sha256")):
+            rows_out.append(prior)
+            continue
         cache_file = os.path.join(cache_dir, f"{key}.json")
         if stopped:
             base["status"], base["notes"] = "SKIPPED_BUDGET", "budget ceiling reached before this unit"
@@ -179,8 +196,8 @@ def main() -> int:
             print(f"cache hit  {heat_id}")
             cost_here = 0.0
         else:
-            unit_rate = len(sentences) * PER_LINE_USD + PER_VERDICT_USD
-            allowed, reserve = weight.budget_check(ledger["heat_spent_usd"], ledger["heat_reserved_usd"], 1, unit_rate, ledger["heat_ceiling_usd"])
+            reserve = reserve_upper_bound(sentences)
+            allowed = ledger["heat_spent_usd"] + ledger["heat_reserved_usd"] + reserve <= ledger["heat_ceiling_usd"]
             if not allowed:
                 print(f"BUDGET STOP at {heat_id}: spent {ledger['heat_spent_usd']:.4f} reserved {ledger['heat_reserved_usd']:.4f} + {reserve:.4f} > {ledger['heat_ceiling_usd']}")
                 stopped = True
@@ -206,10 +223,14 @@ def main() -> int:
                     json.dump(result, f, indent=1)
                 cost_here = result["cost_usd"]
             except Exception as e:  # a failure still records its cost
-                cost_here = 0.0
+                # The request may have reached the provider before the network
+                # failed. Hold the full reservation as cost until reconciled.
+                cost_here = reserve
                 base["status"], base["notes"] = "FAILED", f"{type(e).__name__}: {e}"[:300]
-                base["cost_usd"], base["reserved_usd"], base["scored_at"] = "0", f"{reserve:.4f}", now_iso()
+                base["cost_usd"], base["reserved_usd"], base["scored_at"] = f"{reserve:.6f}", f"{reserve:.6f}", now_iso()
                 ledger["heat_reserved_usd"] = round(ledger["heat_reserved_usd"] - reserve, 6)
+                ledger["heat_spent_usd"] = round(ledger["heat_spent_usd"] + cost_here, 6)
+                base["notes"] += "; cost is an unreconciled upper-bound charge, not measured usage"
                 save_rs()
                 rows_out.append(base)
                 print(f"FAILED     {heat_id}: {e}")

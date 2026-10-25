@@ -133,9 +133,15 @@ def main() -> int:
         shutil.copyfile(a.note, template)
     with open(template, encoding="utf-8") as fh:
         t = fh.read()
-    rel = os.path.basename(a.release_dir.rstrip("/"))
+    rel = d.get("release_id") or os.path.basename(a.release_dir.rstrip("/"))
+    registry_path = os.path.join(a.release_dir, "pollsters.csv")
+    registry = weight.read_csv(registry_path, weight.POLLSTERS_HEADER) if os.path.exists(registry_path) else []
     repl = {
         "RELEASE_ID_PLACEHOLDER": rel,
+        "RESULTS_REGISTRY_PLACEHOLDER": table(["Pollster", "Method ID", "Recall class", "Applicability", "Primary method evidence"], [
+            [p["pollster_name"], p["method_id"], p["recall_weighted"], p["applicability"], f"{p['method_url']} ({p['method_locator']})".replace("|", " / ")]
+            for p in sorted(registry, key=lambda p: p["method_id"])
+        ]),
         "RESULTS_SECTION5_PLACEHOLDER": section5(d),
         "RESULTS_SECTION6_PLACEHOLDER": section6(d),
         "RESULTS_SECTION7_PLACEHOLDER": section7(d),

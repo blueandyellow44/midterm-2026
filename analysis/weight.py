@@ -40,15 +40,15 @@ DEFAULT_NOTE = os.path.expanduser("~/Second Brain V2/Resources/methods/midterm-2
 
 BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
-    "polls": "1.1", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
-    "coverage": "1.0", "backtest": "1.1", "predictions": "1.0", "results": "1.0",
+    "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
+    "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
 }
 
 POLLS_HEADER = (
     "estimate_id,poll_id,sample_id,tracking_series_id,race,pollster_id,method_id,sponsor,sponsor_class,"
     "pollster_alignment,disclosure_status,field_start,field_end,release_date,n,pop,D,R,other,undecided,"
     "denominator_class,margin,round,window,recall_weighted,selected,exclusion_reason,supersedes,superseded_by,"
-    "source_url,source_locator,retrieved_at,notes"
+    "source_url,source_locator,primary_verified,retrieved_at,notes"
 ).split(",")
 POLLSTERS_HEADER = (
     "pollster_id,pollster_name,aliases,method_id,applicability,recall_weighted,weighting_quote,recall_target,mode,"
@@ -82,7 +82,7 @@ GOV_SEN_GAP_STATES = {"IA": ("2026-IA-GOV", "2026-IA-SEN"), "OH": ("2026-OH-GOV"
 
 POPS = ["LV", "RV", "A"]
 DENOMS = ["FULL", "TWO_WAY", "LEANERS"]
-ROUNDS = ["NA", "FIRST", "FINAL"]
+ROUNDS = ["NA", "FIRST", "FINAL", "UNVERIFIED"]
 WINDOWS = ["HOUSE_ONLY", "BOTH", "BACKTEST", "OUT_OF_WINDOW"]
 SPONSOR_CLASSES = ["INTERNAL", "PARTISAN_PUBLIC", "NONPARTISAN", "BIPARTISAN", "UNKNOWN"]
 ALIGNMENTS = ["D", "R", "NONE", "UNKNOWN"]
@@ -453,6 +453,7 @@ class Bundle:
             for field, allowed in (("pop", POPS), ("denominator_class", DENOMS), ("round", ROUNDS), ("window", WINDOWS),
                                    ("sponsor_class", SPONSOR_CLASSES), ("pollster_alignment", ALIGNMENTS),
                                    ("disclosure_status", DISCLOSURES), ("recall_weighted", RECALL_ESTIMATE),
+                                   ("primary_verified", ["YES", "UNVERIFIED"]),
                                    ("selected", ["0", "1"]), ("exclusion_reason", EXCLUSION_REASONS)):
                 self._enum(fname, i, field, r[field], allowed)
             race = r["race"]
@@ -691,9 +692,14 @@ class Bundle:
             in_both = r["window"] == ("BACKTEST" if backtest else "BOTH")
             if not in_both:
                 reasons.append(f"window {r['window']}")
+            verified_inputs = r["primary_verified"] == "YES" and r["round"] in ("NA", "FIRST", "FINAL")
+            if r["primary_verified"] != "YES":
+                reasons.append("primary-source inputs UNVERIFIED: inventory only")
+            if r["round"] == "UNVERIFIED":
+                reasons.append("round UNVERIFIED: a two-candidate question does not establish a final RCV tabulation")
             rc = principal and in_both and r["race"] in (BACKTEST_RACES if backtest else IN_SCOPE_RACES) and fs is not None and fe is not None \
                 and r["pop"] in POPS and e["D_num"] is not None and e["R_num"] is not None and r["denominator_class"] in DENOMS \
-                and r["round"] in ROUNDS and r["recall_weighted"] in ("YES", "NO")
+                and verified_inputs and r["recall_weighted"] in ("YES", "NO")
             if principal and in_both and r["recall_weighted"] == "UNVERIFIED":
                 reasons.append("recall_weighted UNVERIFIED: excluded from YES-NO contrasts, counted")
             e["flag_principal"] = principal
@@ -713,7 +719,7 @@ class Bundle:
             if all(v is not None for v in factors.values()):
                 w = ft * fr * fsm * fp * fsp * fd
             e["weight"] = r4(w)
-            wa = principal and in_both
+            wa = principal and in_both and verified_inputs and e["margin_num"] is not None
             if wa and e["n_num"] is None:
                 wa = False; reasons.append("n missing")
             if wa and r["sponsor_class"] == "UNKNOWN":
@@ -745,7 +751,7 @@ class Bundle:
         if stage2c_passed and in_avg:
             weighted_margin = r4(sum(e["weight"] * e["margin_num"] for e in in_avg) / sum(e["weight"] for e in in_avg))
             # no-cutoff sensitivity: every principal BOTH estimate in the stratum with a computable weight
-            pool = [e for e in rows if e["flag_principal"] and e["window"] == "BOTH" and e["weight"] is not None and e["sponsor_class"] != "UNKNOWN"
+            pool = [e for e in rows if e["flag_principal"] and e["primary_verified"] == "YES" and e["window"] == "BOTH" and e["weight"] is not None and e["margin_num"] is not None and e["sponsor_class"] != "UNKNOWN"
                     and (e["round"], e["denominator_class"], e["pop"]) == (averaging["round"], averaging["denominator_class"], averaging["pop"])]
             if pool:
                 no_cutoff_margin = r4(sum(e["weight"] * e["margin_num"] for e in pool) / sum(e["weight"] for e in pool))
@@ -1009,7 +1015,7 @@ class Bundle:
             "estimates": [
                 {k: e[k] for k in ("estimate_id", "poll_id", "sample_id", "tracking_series_id", "race", "pollster_id", "method_id", "sponsor_class",
                                     "pollster_alignment", "disclosure_status", "field_start", "field_end", "release_date", "pop", "denominator_class",
-                                    "round", "window", "recall_weighted", "selected", "exclusion_reason", "source_url")}
+                                    "round", "window", "recall_weighted", "selected", "exclusion_reason", "source_url", "primary_verified")}
                 | {"n": e["n_num"], "D": e["D_num"], "R": e["R_num"], "margin": e["margin_num"], "quarantined": e["quarantined"],
                    "field_midpoint": (e["fs"].toordinal() + e["fe"].toordinal()) / 2.0 - date(2026, 1, 1).toordinal() + 1 if e["fs"] and e["fe"] else None,
                    "flags": {"principal": e["flag_principal"], "recall_contrast": e["flag_recall_contrast"], "sponsor_restricted": e["flag_sponsor_restricted"], "weighted_average": e["flag_weighted_average"]},
@@ -1162,7 +1168,7 @@ def _mk(eid, race, pollster, fs, fe, rd, n, pop, d, r, denom="FULL", rnd="NA", r
         "disclosure_status": disclosure, "field_start": fs, "field_end": fe, "release_date": rd, "n": "NA" if n is None else str(n), "pop": pop,
         "D": str(d), "R": str(r), "other": "NA", "undecided": "NA", "denominator_class": denom, "margin": f"{d - r:.2f}", "round": rnd,
         "window": "BOTH", "recall_weighted": recall, "selected": selected, "exclusion_reason": excl, "supersedes": supersedes, "superseded_by": superseded_by,
-        "source_url": url or f"https://example.org/{eid}", "source_locator": "p1", "retrieved_at": "2026-10-25T18:00:00Z", "notes": "",
+        "source_url": url or f"https://example.org/{eid}", "source_locator": "p1", "primary_verified": "YES", "retrieved_at": "2026-10-25T18:00:00Z", "notes": "",
     }
 
 
@@ -1320,6 +1326,13 @@ def self_test(bundle_dir_for_tmp: str) -> int:
     polls_dup = polls + [_mk("K6", "2026-TX-SEN", "PX", "2026-10-20", "2026-10-23", "2026-10-24", 800, "LV", 50, 45, poll_id="P-K6", sample_id="S-K6", url="https://example.org/K4")]
     b2 = _bundle(tmp + "/trackerdup", polls_dup, [_mkm("PK"), _mkm("PX")])
     check("uniqueness: same pollster, same dates, same URL -> hard error", not b2.validate() and any("without distinct source URLs" in p for p in b2.problems))
+    # Unverified source inputs and unverified RCV rounds remain inventoried, never analytical.
+    unverified_source = _mk("UV-SOURCE", "2026-TX-SEN", "PUV", "2026-10-20", "2026-10-22", "2026-10-23", 800, "LV", 48, 46)
+    unverified_source["primary_verified"] = "UNVERIFIED"
+    unverified_round = _mk("UV-ROUND", "2026-AK-SEN", "PUV", "2026-10-20", "2026-10-22", "2026-10-23", 800, "LV", 48, 46, rnd="UNVERIFIED")
+    b = _bundle(tmp + "/unverified-inputs", [unverified_source, unverified_round], [_mkm("PUV")], run_state={"stage_outcomes": {"stage2c": "PASSED"}})
+    check("unverified source/round: valid inventory, no recall or weighted eligibility", b.validate() and all(e["flag_principal"] and not e["flag_recall_contrast"] and not e["flag_weighted_average"] for e in b.estimates()))
+    check("unverified source/round: no preliminary or weighted race mean", all(b.race_block(r, b.estimates(), True)["preliminary_unweighted_margin"] is None for r in ("2026-TX-SEN", "2026-AK-SEN")))
     # population alternatives: LV principal over RV over A; FULL over LEANERS over TWO_WAY
     polls = [
         _mk("A1", "2026-IA-SEN", "PA", "2026-10-20", "2026-10-22", "2026-10-23", 800, "RV", 48, 46, poll_id="P-A", sample_id="S-A"),

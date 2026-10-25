@@ -36,7 +36,7 @@ QUARANTINE_FIRMS = {
     "wedgewood": {"reason": "Documented fabrication: on 2026-10-20 Wedgewood Polls admitted on social media it had been fabricating data, after FiftyPlusOne asked it to verify its surveys (FiftyPlusOne, 'FiftyPlusOne just caught a pollster faking data', 2026-10-20). Hosting on the firm's own site or an aggregator mirror does not override the authenticity failure.",
                   "evidence_url": "https://blog.fiftyplusone.news/p/fiftyplusone-just-caught-a-pollster", "evidence_date": "2026-10-20"},
     "median-strategies": {"reason": "Documented fabrication: the firm admitted to the Los Angeles Times that its poll results were entirely fabricated as a 'social experiment'; FiftyPlusOne suspended it on 2026-08-20 and AAPOR condemned the fabrication.",
-                          "evidence_url": "https://blog.fiftyplusone.news/p/suspending-two-pollsters-data-falsification-undisclosed-partisan-work", "evidence_date": "2026-08-20"},
+                          "evidence_url": "https://www.latimes.com/california/story/2026-08-17/poll-showing-bass-leading-raman-by-double-digits-was-bogus-company-says", "evidence_date": "2026-08-17"},
     "socal-strategies": {"reason": "Documented withdrawal after a verification request: FiftyPlusOne asked SoCal Strategies to verify its data on 2026-10-20; by 2026-10-22 the firm's website, X account and Substack were offline with no statement, and FiftyPlusOne removed two surveys and stopped collecting the firm (multiple sources alleged fabrication).",
                          "evidence_url": "https://blog.fiftyplusone.news/p/more-pollster-funny-business-uncovered-socal-strategies", "evidence_date": "2026-10-22"},
 }
@@ -307,7 +307,9 @@ def main() -> int:
                 "field_start": fs, "field_end": fe, "release_date": rd, "n": numstr(p.get("n")), "pop": pop, "D": numstr(p.get("D")), "R": numstr(p.get("R")),
                 "other": numstr(p.get("other")), "undecided": numstr(p.get("undecided")), "denominator_class": denom, "margin": "NA", "round": rnd, "window": "NA",
                 "recall_weighted": recall if not (quarantined and prec is None) else "UNVERIFIED", "selected": "1", "exclusion_reason": excl, "supersedes": "NA", "superseded_by": "NA",
-                "source_url": nz(p.get("source_url")), "source_locator": nz(p.get("source_locator")), "retrieved_at": nz(p.get("retrieved_at"), now),
+                "source_url": nz(p.get("source_url")), "source_locator": nz(p.get("source_locator")),
+                "primary_verified": "YES" if p.get("verified_on_primary") is True else "UNVERIFIED",
+                "retrieved_at": nz(p.get("retrieved_at"), now),
                 "notes": (notes + ("" if p.get("verified_on_primary") else " [toplines not confirmed on the primary release; aggregator-only]")).strip(),
             }
             row.update(overrides.get("estimates", {}).get(eid, {}))

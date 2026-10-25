@@ -12,4 +12,5 @@ out/
 data/
 test-results/
 playwright-report/
-analysis/__pycache__/
+__pycache__/
+*.pyc
