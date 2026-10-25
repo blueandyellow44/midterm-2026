@@ -1,0 +1,107 @@
+{
+  "checked_at": "2026-10-25T21:55:39.284Z",
+  "checks": [
+    {
+      "path": "/excluded/",
+      "status": 200,
+      "identical": true,
+      "sha256": "76e6485a4ed5687add5679772c3f9a786a3763b129df4500cc0552fb9bf90479"
+    },
+    {
+      "path": "/grading/",
+      "status": 200,
+      "identical": true,
+      "sha256": "69fbe690e7eb6111618c9f8f74d9805cfe07391cf28d3de7909343db6cba138c"
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "identical": true,
+      "sha256": "bc60d27e9825cd71c1b9542928fdc81564cd75606654a7a07b50a0cf59f20842"
+    },
+    {
+      "path": "/method/",
+      "status": 200,
+      "identical": true,
+      "sha256": "8bb961647e5195d3857fc2c0942d3f336b641ea6c55b901ae85d94171a94fd2b"
+    },
+    {
+      "path": "/race/ak-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "815541683729e238c0b03d9bd21fd23d6d15804b36beb6f6cc8a4a4a6a8f3b21"
+    },
+    {
+      "path": "/race/ga-gov/",
+      "status": 200,
+      "identical": true,
+      "sha256": "8bcaa0f513e2aab50688a69a2d8cb8f3b1f6c7562f9126402ed20ffffb68f07a"
+    },
+    {
+      "path": "/race/ga-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "d651277349627abb1a02bdfa56716e94d1ac6e922ae230ffe95110f2f849632f"
+    },
+    {
+      "path": "/race/ia-gov/",
+      "status": 200,
+      "identical": true,
+      "sha256": "8a2dd47a1509e48ac26aa3a02d63a7e2e3f5e9258f93a112c479cf09c21e8441"
+    },
+    {
+      "path": "/race/ia-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "b779c8213e45a2a8f2dae53da836e35ea35408f200bfae2d106580ead74a9a5b"
+    },
+    {
+      "path": "/race/me-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "7b019866d465ac734d0b480b90da9836087384db1937fd0f532a921f8fc0f77e"
+    },
+    {
+      "path": "/race/mi-gov/",
+      "status": 200,
+      "identical": true,
+      "sha256": "a47457b59325588f6ea5022fe14617690ec8767acb72d3b23819f5b5631e97d3"
+    },
+    {
+      "path": "/race/mi-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "e8dead193dbde81b80dfc4821dc650b456230f105cef9631ac9b066688d75040"
+    },
+    {
+      "path": "/race/nc-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "21b1a456700f6bf3ef0af9360aee0272743219dbfd3c915955a2d87db23d3d8c"
+    },
+    {
+      "path": "/race/oh-gov/",
+      "status": 200,
+      "identical": true,
+      "sha256": "4393776dc7b1cb854814b1048a9d7bc3a5bb1a0e2802d4d142fb8cdb518843ec"
+    },
+    {
+      "path": "/race/oh-sen-special/",
+      "status": 200,
+      "identical": true,
+      "sha256": "d31e3ddcdebd0b48453e0c92e97eaef0a9d462a044c4cc866809b31691da437e"
+    },
+    {
+      "path": "/race/tx-sen/",
+      "status": 200,
+      "identical": true,
+      "sha256": "161f054c889203eaa7b9c701d849db2563f25b4299982d89bfd81ca9fb9a13b2"
+    },
+    {
+      "path": "/race/wi-gov/",
+      "status": 200,
+      "identical": true,
+      "sha256": "1377a01e80e58cf7902ec8035e5f5be6576c061c72cd5b011301dc202ab4b98c"
+    }
+  ]
+}

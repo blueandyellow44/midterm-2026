@@ -1,0 +1,31 @@
+{
+  "race": {
+    "optionalClosed": true,
+    "path": "/race/tx-sen/",
+    "view": "mobile"
+  },
+  "method": {
+    "path": "/method/",
+    "turnout": true,
+    "view": "mobile"
+  },
+  "grading": {
+    "empty": true,
+    "path": "/grading/",
+    "view": "mobile"
+  },
+  "repeatedNavigation": [
+    {
+      "hydrated": "true",
+      "path": "/",
+      "view": "desktop"
+    },
+    {
+      "hydrated": "true",
+      "path": "/",
+      "view": "desktop"
+    }
+  ],
+  "console": [],
+  "note": "An immediate switch click after Races navigation did not apply. After waiting for the new destination heading and hydration, both full navigation repetitions and the switch passed. No console or CSP error was recorded."
+}

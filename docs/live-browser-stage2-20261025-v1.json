@@ -1,0 +1,337 @@
+{
+  "started_at": "2026-10-25T21:55:14.874Z",
+  "routes": [
+    {
+      "hydrated": "true",
+      "path": "/excluded/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/grading/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/method/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "release": true,
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "zeroLead": false
+    }
+  ],
+  "homeStates": [
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 375,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 375,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 375,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 375,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 375,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 375,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 375,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 375,
+      "expectedView": "mobile",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 768,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 768,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 768,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 768,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 768,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 768,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 768,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 768,
+      "expectedView": "mobile",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 1280,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 1280,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 1280,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 1280,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 1280,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 1280,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 1280,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 1280,
+      "expectedView": "mobile",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 1440,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 1440,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 1440,
+      "unavailable": 3,
+      "view": "desktop",
+      "weighted": true,
+      "width": 1440,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": false,
+      "pending": false,
+      "scroll": 1440,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 1440,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "pending": false,
+      "scroll": 1440,
+      "unavailable": 3,
+      "view": "mobile",
+      "weighted": true,
+      "width": 1440,
+      "expectedView": "mobile",
+      "expectedDark": true
+    }
+  ],
+  "console": []
+}
