@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "bars": [
+        310.668,
+        413.46,
+        310.668,
+        413.46
+      ],
+      "scaleLabels": [
+        "5 pH · more hyperbole →",
+        "5 pH · more hyperbole →"
+      ],
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "bars": [
+        310.668,
+        413.46,
+        310.668,
+        413.46
+      ],
+      "scaleLabels": [
+        "5 pH · more hyperbole →",
+        "5 pH · more hyperbole →"
+      ],
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "bars": [
+        310.668,
+        413.46,
+        310.668,
+        413.46
+      ],
+      "scaleLabels": [
+        "5 pH · more hyperbole →",
+        "5 pH · more hyperbole →"
+      ],
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "bars": [
+        310.668,
+        413.46,
+        310.668,
+        413.46
+      ],
+      "scaleLabels": [
+        "5 pH · more hyperbole →",
+        "5 pH · more hyperbole →"
+      ],
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440
+    }
+  ],
+  "console": []
+}
