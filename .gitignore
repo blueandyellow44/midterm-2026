@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.open-next/
+.wrangler/
+dist/
+out/
+*.log
+.DS_Store
+.env
+.env.*
+.dev.vars
+data/
+test-results/
+playwright-report/
+analysis/__pycache__/
