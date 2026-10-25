@@ -1,0 +1,1224 @@
+{
+  "checked_at": "2026-10-25T22:08:40.952Z",
+  "light": [
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 279
+        }
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 279
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 279
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 279
+        }
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 642.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 642.5625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 642.5625
+        }
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 650.5625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 650.5625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 650.5625
+        }
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 244.40625
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 244.40625
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 244.40625
+        }
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 664
+        }
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 281.203125
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 281.203125
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 281.203125
+        }
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 664
+        },
+        {
+          "text": "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+          "width": 664
+        },
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 664
+        }
+      ],
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 287
+        }
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 335
+        }
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 654.171875
+        }
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 706.5625
+        }
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 196
+        }
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 720
+        }
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 196
+        }
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+          "width": 720
+        }
+      ],
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 287
+        }
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 335
+        }
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 654.171875
+        }
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 706.5625
+        }
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 196
+        }
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 720
+        }
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 196
+        }
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+          "width": 720
+        }
+      ],
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 287
+        }
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 335
+        }
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 654.171875
+        }
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 706.5625
+        }
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 196
+        }
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 720
+        }
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 196
+        }
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "footer": "Election Weather · A documented polling method and a separate look at campaign rhetoric.\n\nRelease\n20261025T121938-0700-stage2-df9d158-6ec76c0a50\nAnalytical cutoff\n2026-10-25T12:19:38-07:00\nManifest SHA-256\nf94ca8d31a182b22d3fd4feaab355cd49f8022e55c32b729a8ad43b972729d72\n\nSnapshot data. No runtime feeds. Probabilities appear only after a frozen release. Read limitations and source coverage.",
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        {
+          "text": "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗",
+          "width": 720
+        }
+      ],
+      "view": "mobile",
+      "width": 1440
+    }
+  ],
+  "dark": [
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/",
+      "reads": [
+        "WEIGHTED POLLING AVERAGE\n\nJames Talarico leads by 2.0 points\n\nR lead\nEven\nD lead\n\nBased on 6 comparable polls\n\nNewest poll finished Oct 21 · 4 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAshley Hinson leads by 2.1 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nEven at displayed precision\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 23 · 2 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nSherrod Brown leads by 4.2 points\n\nR lead\nEven\nD lead\n\nBased on 3 comparable polls\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAbdul El-Sayed leads by 1.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 22 · 3 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRoy Cooper leads by 11.7 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nJon Ossoff leads by 7.1 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nAmy Acton leads by 1.8 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 20 · 5 days old · snapshot Oct 25",
+        "WEIGHTED POLLING AVERAGE\n\nRob Sand leads by 4.0 points\n\nR lead\nEven\nD lead\n\nBased on 1 comparable poll\n\nNewest poll finished Oct 19 · 6 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗",
+        "WEIGHTED POLLING AVERAGE\n\nRick Jackson leads by 1.5 points\n\nR lead\nEven\nD lead\n\nBased on 2 comparable polls\n\nNewest poll finished Oct 17 · 8 days old · snapshot Oct 25",
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/ak-sen/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nMary Peltola leads by 2.0 points\n\nR lead\nEven\nD lead\n\nData for Progress · Likely voters\n\nPoll finished Oct 16 · 9 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · final round. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/mi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nJocelyn Benson leads by 6.0 points\n\nR lead\nEven\nD lead\n\nMarist Poll (Marist University) · Likely voters\n\nPoll finished Oct 18 · 7 days old · snapshot Oct 25\n\nSingle poll · no qualifying average · sample size unverified. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 375
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 768
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1280
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "dark": true,
+      "overflow": false,
+      "path": "/race/wi-gov/",
+      "reads": [
+        "LATEST PUBLISHED POLL\n\nDavid Crowley leads by 4.0 points\n\nR lead\nEven\nD lead\n\nYouGov · Adults\n\nPoll finished Oct 9 · 16 days old · snapshot Oct 25\n\nSingle poll · no qualifying average. Primary source ↗"
+      ],
+      "view": "mobile",
+      "width": 1440
+    }
+  ],
+  "console": []
+}
