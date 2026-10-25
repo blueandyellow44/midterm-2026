@@ -1,0 +1,15 @@
+{
+  "scorer": "LITMUS Live meter, local wrangler pages dev of ~/litmus-meter",
+  "meter_commit_pinned": "1f40f19",
+  "era_check_reference": "artifacts/era-check-2026-10-10 ran at 5c0ab14 (opinion floor removed); 1f40f19 adds the 600-token per-line reply limit (4a12b3f) and security headers (1f40f19); rubric, labels, verdict and synopsis files unchanged since 5c0ab14",
+  "model": "claude-haiku-4-5",
+  "opinion_floor": false,
+  "per_line_context_lines": 2,
+  "per_line_context_chars": 500,
+  "per_line_max_output_tokens": 600,
+  "verdict_max_output_tokens": 1200,
+  "unit_score": "whole-unit verdict (the LITMUS site composite computed in code from five dimensions), /api/synopsis",
+  "unit_text_hash": "sha256 over sentences joined by newline",
+  "moderator_questions": "excluded; only the candidate's own words are scored",
+  "ruling": "persuasive is not hyperbolic; score hyperbole only (Max, 2026-10-10)"
+}
