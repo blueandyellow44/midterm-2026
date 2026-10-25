@@ -763,7 +763,14 @@ class Bundle:
             cs = [e for e in rc if (e["round"], e["denominator_class"], e["pop"]) == (contrast["round"], contrast["denominator_class"], contrast["pop"])]
             yes = [e["margin_num"] for e in cs if e["recall_weighted"] == "YES"]
             no = [e["margin_num"] for e in cs if e["recall_weighted"] == "NO"]
-            per_race_contrast = {"yes_mean": r4(mean(yes)), "no_mean": r4(mean(no)), "yes_minus_no": r4(mean(yes) - mean(no)), "n_yes": len(yes), "n_no": len(no)}
+            balanced = {}
+            for group in ("YES", "NO"):
+                firms = defaultdict(list)
+                for e in cs:
+                    if e["recall_weighted"] == group:
+                        firms[e["pollster_id"]].append(e["margin_num"])
+                balanced[group] = mean([mean(values) for values in firms.values()])
+            per_race_contrast = {"yes_mean": r4(balanced["YES"]), "no_mean": r4(balanced["NO"]), "yes_minus_no": r4(balanced["YES"] - balanced["NO"]), "n_yes": len(yes), "n_no": len(no)}
         scenarios = None
         base = weighted_margin if weighted_margin is not None else preliminary
         if base is not None:
@@ -887,7 +894,7 @@ class Bundle:
     # ----- Section 6 governor-Senate gaps
     def gov_sen_gaps(self, ests: list[dict]) -> dict:
         out = {}
-        principal = [e for e in ests if e["flag_principal"] and e["window"] == "BOTH"]
+        principal = [e for e in ests if e["flag_principal"] and e["window"] == "BOTH" and e["primary_verified"] == "YES" and e["round"] in ("NA", "FIRST", "FINAL")]
         by_key = defaultdict(dict)
         for e in principal:
             by_key[(e["sample_id"], e["pop"], e["denominator_class"], e["round"])][e["race"]] = e
@@ -962,7 +969,7 @@ class Bundle:
         if not self.backtest:
             return None
         ests = self.estimates(self.backtest, backtest=True)
-        principal = [e for e in ests if e["flag_principal"] and e["window"] == "BACKTEST"]
+        principal = [e for e in ests if e["flag_principal"] and e["window"] == "BACKTEST" and e["primary_verified"] == "YES" and e["round"] in ("NA", "FIRST", "FINAL")]
         for e in principal:
             e["signed_error_num"] = num(e["signed_error"])
         by_state = {}
