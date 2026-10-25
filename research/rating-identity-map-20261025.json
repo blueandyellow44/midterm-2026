@@ -1,0 +1,352 @@
+{
+  "name": "Silver Bulletin",
+  "version_label": "January 2026 update, 2026-01-14",
+  "file_name": "Pollster_Stats_Full_2026.xlsx",
+  "downloaded_at": "2026-10-25T21:17:55.561941+00:00",
+  "sha256": "14f5aeba96e21c3535fca225869595557347d2a1005dbe0303fc082cf6261d61",
+  "source_url": "https://www.natesilver.net/p/pollster-ratings-silver-bulletin",
+  "download_url": "https://www.natesilver.net/api/v1/file/9e28b3fd-62d8-4d41-bdd2-04d40a1b2eef.xlsx",
+  "local_source": "/Users/maxsheahan/Second Brain V2/Resources/methods/midterm-2026/.backups/codex-stage2-20261025-141551/ratings/Pollster_Stats_Full_2026.xlsx",
+  "sheet": "pollster-stats-full-jan_2026",
+  "cohort": "Silver Bulletin database, all race types and years in the file",
+  "metric": "Simple Average Error",
+  "bias_metric": "Mean-Reverted Bias",
+  "mapping": {
+    "activote": {
+      "registry_name": "ActiVote",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "ajc-uga": {
+      "registry_name": "University of Georgia School of Public and International Affairs (SPIA Survey Research Center)",
+      "rating_id": 350,
+      "expected_rating_name": "University of Georgia",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "alaska-survey-research": {
+      "registry_name": "Alaska Survey Research",
+      "rating_id": 155,
+      "expected_rating_name": "Alaska Survey Research",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "big-data-poll": {
+      "registry_name": "Big Data Poll",
+      "rating_id": 251,
+      "expected_rating_name": "Big Data Poll",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "bowling-green": {
+      "registry_name": "Bowling Green State University / YouGov",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No BGSU/YouGov program profile; the YouGov member rating is not inherited."
+    },
+    "change-research": {
+      "registry_name": "Change Research",
+      "rating_id": 48,
+      "expected_rating_name": "Change Research",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "cnn-ssrs": {
+      "registry_name": "CNN / SSRS",
+      "rating_id": 297,
+      "expected_rating_name": "SSRS",
+      "reason": "CNN is the commissioning partner; the conducting firm is SSRS."
+    },
+    "co-efficient": {
+      "registry_name": "co/efficient",
+      "rating_id": 514,
+      "expected_rating_name": "co/efficient",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "cygnal": {
+      "registry_name": "Cygnal",
+      "rating_id": 67,
+      "expected_rating_name": "Cygnal",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "cygnal-beacon": {
+      "registry_name": "Cygnal / Beacon Research",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No exact joint profile; Cygnal or Beacon member ratings are not inherited."
+    },
+    "data-for-progress": {
+      "registry_name": "Data for Progress",
+      "rating_id": 522,
+      "expected_rating_name": "Data for Progress",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "east-carolina-university-ecu-center-for-survey-research": {
+      "registry_name": "East Carolina University (ECU Center for Survey Research)",
+      "rating_id": 523,
+      "expected_rating_name": "East Carolina University",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "elon": {
+      "registry_name": "Elon University Poll",
+      "rating_id": 86,
+      "expected_rating_name": "Elon University",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "emerson": {
+      "registry_name": "Emerson College Polling",
+      "rating_id": 88,
+      "expected_rating_name": "Emerson College",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "fabrizio-ward-impact": {
+      "registry_name": "Fabrizio Ward / Impact Research",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No exact Fabrizio Ward/Impact profile; Fabrizio Lee/Impact and the individual firms are not substituted."
+    },
+    "fox-beacon-shaw": {
+      "registry_name": "Fox News Poll",
+      "rating_id": 103,
+      "expected_rating_name": "Beacon Research/Shaw & Co. Research",
+      "reason": "Exact Beacon Research/Shaw & Co. conducting partnership; Fox is the sponsor."
+    },
+    "gbao": {
+      "registry_name": "GBAO",
+      "rating_id": 109,
+      "expected_rating_name": "GBAO",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "glengariff": {
+      "registry_name": "Glengariff Group",
+      "rating_id": 117,
+      "expected_rating_name": "Glengariff Group",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "gs-strategy-group-new-river-strategies": {
+      "registry_name": "GS Strategy Group / New River Strategies",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No exact conducting partnership profile; GS Strategy alone is not substituted."
+    },
+    "guidant-polling-strategy": {
+      "registry_name": "Guidant Polling & Strategy",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "harper-polling": {
+      "registry_name": "Harper Polling",
+      "rating_id": 132,
+      "expected_rating_name": "Harper Polling",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "high-point": {
+      "registry_name": "High Point University Survey Research Center",
+      "rating_id": 139,
+      "expected_rating_name": "High Point University",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "hobby-school-uh": {
+      "registry_name": "University of Houston Hobby School of Public Affairs",
+      "rating_id": 351,
+      "expected_rating_name": "University of Houston",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "insideradvantage": {
+      "registry_name": "InsiderAdvantage",
+      "rating_id": 243,
+      "expected_rating_name": "InsiderAdvantage",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "maine-people-s-resource-center": {
+      "registry_name": "Maine People's Resource Center",
+      "rating_id": 180,
+      "expected_rating_name": "Maine People's Resource Center",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "marist": {
+      "registry_name": "Marist Poll (Marist University)",
+      "rating_id": 183,
+      "expected_rating_name": "Marist College",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "marquette": {
+      "registry_name": "Marquette University Law School / SSRS",
+      "rating_id": 195,
+      "expected_rating_name": "Marquette University Law School",
+      "reason": "Marquette Law School polling program; SSRS is its fieldwork provider. This does not borrow the SSRS profile."
+    },
+    "mason-dixon": {
+      "registry_name": "Mason-Dixon Polling & Strategy",
+      "rating_id": 197,
+      "expected_rating_name": "Mason-Dixon Polling & Strategy",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "mitchell": {
+      "registry_name": "Mitchell Research & Communications",
+      "rating_id": 213,
+      "expected_rating_name": "Mitchell Research & Communications",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "new-river-strategies-gs-strategy-group": {
+      "registry_name": "New River Strategies / GS Strategy Group",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No exact conducting partnership profile; GS Strategy alone is not substituted."
+    },
+    "npa-polling-national-public-affairs": {
+      "registry_name": "NPA Polling (National Public Affairs)",
+      "rating_id": 768,
+      "expected_rating_name": "National Public Affairs",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "nyt-siena": {
+      "registry_name": "Siena Research Institute",
+      "rating_id": 448,
+      "expected_rating_name": "The New York Times/Siena College",
+      "reason": "Exact NYT/Siena joint program, not the separate Siena College profile."
+    },
+    "opinion-diagnostics": {
+      "registry_name": "Opinion Diagnostics",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "pollfinity-research": {
+      "registry_name": "Pollfinity Research",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "public-opinion-strategies": {
+      "registry_name": "Washington Post / Schar School (GMU)",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "Registry ID and named WaPo/Schar identity conflict; no rating assigned without primary resolution."
+    },
+    "public-policy-polling": {
+      "registry_name": "Public Policy Polling",
+      "rating_id": 263,
+      "expected_rating_name": "Public Policy Polling",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "pulse-decision-science": {
+      "registry_name": "Pulse Decision Science",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "quantus": {
+      "registry_name": "Quantus Insights",
+      "rating_id": 859,
+      "expected_rating_name": "Quantus Insights",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "rasmussen": {
+      "registry_name": "Rasmussen Reports",
+      "rating_id": 277,
+      "expected_rating_name": "Rasmussen Reports",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "socal-strategies": {
+      "registry_name": "SoCal Strategies",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "ssrs": {
+      "registry_name": "SSRS",
+      "rating_id": 297,
+      "expected_rating_name": "SSRS",
+      "reason": "Exact conducting-firm identity."
+    },
+    "stratus-intelligence": {
+      "registry_name": "Stratus Intelligence",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "suffolk-university": {
+      "registry_name": "Suffolk University",
+      "rating_id": 323,
+      "expected_rating_name": "Suffolk University",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "suffolk-university-political-research-center": {
+      "registry_name": "Suffolk University Political Research Center",
+      "rating_id": 323,
+      "expected_rating_name": "Suffolk University",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "texas-public-opinion-research": {
+      "registry_name": "Texas Public Opinion Research",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "texas-southern": {
+      "registry_name": "Texas Southern University",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "the-tyson-group": {
+      "registry_name": "The Tyson Group",
+      "rating_id": 334,
+      "expected_rating_name": "The Tyson Group",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "torchlight": {
+      "registry_name": "Torchlight Strategies",
+      "rating_id": 745,
+      "expected_rating_name": "Torchlight Strategies",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "trafalgar": {
+      "registry_name": "Trafalgar Group",
+      "rating_id": 338,
+      "expected_rating_name": "Trafalgar Group",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "university-of-new-hampshire-survey-center": {
+      "registry_name": "University of New Hampshire Survey Center",
+      "rating_id": 357,
+      "expected_rating_name": "University of New Hampshire",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "ut-austin-texas-politics-project": {
+      "registry_name": "University of Texas / Texas Politics Project",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No exact UT Austin/Texas Politics Project profile; UT Tyler and YouGov are not substituted."
+    },
+    "verasight": {
+      "registry_name": "Verasight",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "wedgewood": {
+      "registry_name": "Wedgewood Polls",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    },
+    "wral-surveyusa": {
+      "registry_name": "SurveyUSA",
+      "rating_id": 325,
+      "expected_rating_name": "SurveyUSA",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "yougov": {
+      "registry_name": "YouGov",
+      "rating_id": 391,
+      "expected_rating_name": "YouGov",
+      "reason": "Reviewed same conducting organization or polling program."
+    },
+    "z-to-a-research": {
+      "registry_name": "Z to A Research",
+      "rating_id": null,
+      "expected_rating_name": null,
+      "reason": "No compatible named profile found; remain provisional."
+    }
+  }
+}

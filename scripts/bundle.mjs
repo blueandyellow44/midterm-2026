@@ -46,5 +46,6 @@ export function validateBundle(directory) {
   const d=JSON.parse(readFileSync(join(directory,'derived.json'),'utf8'));
   if (d.derived_schema!=='1.0' || d.release_id!==m.release_id || d.analytical_as_of!==m.analytical_as_of || d.calc_version!==m.calc_version.commit) throw new Error('Mixed derived/manifest identity');
   if (!d.stage2c_passed && Object.values(d.races).some(r=>r.weighted_margin!==null)) throw new Error('Premature weighted margin');
+  if (d.stage2c_passed && (m.stage_status.stage2c!=='PASSED' || Object.values(d.races).some(r=>r.retained_count>0 && !Number.isFinite(r.weighted_margin)))) throw new Error('Missing or unpassed weighted margin');
   return { manifest:m, derived:d, manifestHash:sha256(manifestBytes) };
 }

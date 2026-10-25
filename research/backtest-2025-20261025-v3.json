@@ -1,0 +1,1151 @@
+{
+  "coverage": "Primary-verified eligible surveys from the fixed 2026 registry found in the saved finding-aid inventory; survey-specific ambiguity stays UNVERIFIED. Newly encountered partnerships and outside-registry firms are listed without recall classification. SoCal is already quarantined and contributes no calculation. This is not an exhaustive census of all released polls.",
+  "source_files": {
+    "retrieved_at": "2026-10-25T14:46:21.576579-07:00",
+    "files": [
+      {
+        "file": "emerson-va.html",
+        "url": "https://emersoncollegepolling.com/virginia-2025-spanberger-leads/",
+        "status": "DOWNLOADED",
+        "bytes": 101866,
+        "sha256": "312ae803e888f176b5b9e65f5e6c4e4ab4719dc2e4c68863734b84d311627024"
+      },
+      {
+        "file": "emerson-nj.html",
+        "url": "https://emersoncollegepolling.com/new-york-city-mayor-and-new-jersey-governor-2025/",
+        "status": "DOWNLOADED",
+        "bytes": 105418,
+        "sha256": "121ef628ffb3ad90fd3c7081de04d6ec6d85568d7dce8f26bdabb5e3600d074a"
+      },
+      {
+        "file": "emerson-va.xlsx",
+        "url": "https://docs.google.com/spreadsheets/d/1Htk94qwjuf1R5ZbashvPDXateo14mwOJ/export?format=xlsx",
+        "status": "DOWNLOADED",
+        "bytes": 608337,
+        "sha256": "51425bfad93a8bde3cba0e27c3392d8c84bc003c263304efcb9a323f109edc56"
+      },
+      {
+        "file": "emerson-nj.xlsx",
+        "url": "https://docs.google.com/spreadsheets/d/1qgpmF8np3cE8eu1aYHbIbA2rozRDJzu-/export?format=xlsx",
+        "status": "DOWNLOADED",
+        "bytes": 656718,
+        "sha256": "b2482f25e8e8c4883043569387c3527b1f949b5871cecd754cf5eb4ee7b3b7f0"
+      },
+      {
+        "file": "suffolk-methods.html",
+        "url": "https://www.suffolk.edu/academics/research-at-suffolk/political-research-center/polls/other-states/2025",
+        "status": "DOWNLOADED",
+        "bytes": 77565,
+        "sha256": "2a9758f5ba2eb14c24dfe68f7807523763341cdc8dc78004cea79744158d8e90"
+      },
+      {
+        "file": "suffolk-va.pdf",
+        "url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_22_2025_virginia_statewide_marginals.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 104651,
+        "sha256": "a0b5c202f536a78320b79352a95ff854317f7362b35174d5c0aecaad3b95916c"
+      },
+      {
+        "file": "suffolk-nj.pdf",
+        "url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_30_2025_new_jersey_statewide_final_marginals.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 171678,
+        "sha256": "12d33fd74a564124e940dbab5c999ba51b5a239bbe7d316457c7a7351a479207"
+      },
+      {
+        "file": "fox-nj-early.pdf",
+        "url": "https://static.foxnews.com/foxnews.com/content/uploads/2025/10/fox_october-10-14-2025_nj-gov_topline_october-16-release.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 578098,
+        "sha256": "d6660755f37816033ffbbf6af75d49742990bb47c229eecb3be700519660d0bc"
+      },
+      {
+        "file": "fox-nj-late.pdf",
+        "url": "https://static.foxnews.com/foxnews.com/content/uploads/2025/10/fox_october-24-28-2025_nj-gov_topline_october-30-release.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 515449,
+        "sha256": "68e672c55dcb0bb7521aa73167beff85a94047bf472e3ae679b4ebe1c1f168f2"
+      },
+      {
+        "file": "yougov-va.pdf",
+        "url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/virginia_20251030.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 331809,
+        "sha256": "7cf1bc1c1778662902d866b752f111cc31b4f1e083dd79516082469d9aabe5cb"
+      },
+      {
+        "file": "yougov-nj.pdf",
+        "url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/newjersey_20251030.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 333284,
+        "sha256": "c6352f7ece04518d259d0fbe5058bd6776b0b28118f9352c439732bd8fcc6050"
+      },
+      {
+        "file": "trafalgar-va.pdf",
+        "url": "https://www.thetrafalgargroup.org/wp-content/uploads/2025/11/VA-25Gen-Statewide-Poll-Report-1103.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 507288,
+        "sha256": "30d8966ec8aeca9feae1acda8b4cee4073636954d7fc6e6f7c6d2b57dabd03db"
+      },
+      {
+        "file": "insider-va.html",
+        "url": "https://insideradvantage.com/final-insideradvantage-survey-virginia-governors-race-winsome-earle-sears-continues-to-slide-spanberger-up-by-ten-points/",
+        "status": "DOWNLOADED",
+        "bytes": 87812,
+        "sha256": "ef6821e296823d437841e29178e053b5000ae08e52d6d664b261e9fae11c79f5"
+      },
+      {
+        "file": "quantus-va.pdf",
+        "url": "https://drive.google.com/uc?export=download&id=161EAL7JzXwgYfnkZ_AIerwfn1OoMEgqp",
+        "status": "DOWNLOADED",
+        "bytes": 2931428,
+        "sha256": "9c8408fac914e3c3bcdb9ece11aae2fd705e4bddeb2347924d9d14ce0ae6f656"
+      },
+      {
+        "file": "wapo-va.pdf",
+        "url": "https://www.washingtonpost.com/documents/84f0e3af-875c-4b14-8921-a008804ab25f.pdf",
+        "status": "FAILED",
+        "error": "curl: (92) HTTP/2 stream 1 was not closed cleanly: INTERNAL_ERROR (err 2)"
+      },
+      {
+        "file": "nj-certified.pdf",
+        "url": "https://nj.gov/state/elections/assets/pdf/election-results/2025/2025-official-general-results-governor.pdf",
+        "status": "DOWNLOADED",
+        "bytes": 67981,
+        "sha256": "ef28c114c11de275c35685d40361dd00c9a384c19a327650e98cadaac1d292e8"
+      },
+      {
+        "file": "coefficient-va-archived.html",
+        "url": "https://web.archive.org/web/20251021000000id_/https://coefficient.org/virginia-statewide-2025-general-election/",
+        "status": "DOWNLOADED",
+        "bytes": 445891,
+        "sha256": "fc62f412d7f9a07d58e8c52389861e5aea39483af631fbc4d3fc30a24e195e6c"
+      },
+      {
+        "file": "coefficient-nj-archived.html",
+        "url": "https://web.archive.org/web/20251031000000id_/https://coefficient.org/new-jersey-statewide-2025-general-election/",
+        "status": "DOWNLOADED",
+        "bytes": 406338,
+        "sha256": "9a58a4e6a4d47c2620c5b3b6a064bb337bf8966a72af5db0f496a3b46ec21315"
+      },
+      {
+        "file": "quantus-va-final-tweet.json",
+        "url": "https://cdn.syndication.twimg.com/tweet-result?id=1985508592301052158&lang=en&token=1",
+        "status": "DOWNLOADED",
+        "bytes": 2472,
+        "sha256": "4de20ce35c597586310b0dd02a08c09eab62d6238e0ecff76a94e11870f179ce"
+      },
+      {
+        "file": "quantus-va-final.jpg",
+        "url": "https://pbs.twimg.com/media/G43xcsUWEAA1VB8.jpg",
+        "status": "DOWNLOADED",
+        "bytes": 213337,
+        "sha256": "031acfe94362b57d43d29d118c416edc62c98f9be9aa11f02d0bc52bff86bbaf"
+      },
+      {
+        "file": "quantus-nj-archived.html",
+        "url": "https://quantusinsights.org/f/a-tightrope-in-trenton-sherrill-holds-small-lead-in-new-jersey",
+        "status": "DOWNLOADED",
+        "bytes": 157020,
+        "sha256": "8acbae8f73f60739eda537ca969964929eea46a75df597aafd29c7053d30b67c"
+      },
+      {
+        "file": "quantus-nj.pdf",
+        "url": "https://drive.google.com/file/d/1zmsKFcLKcFZN8frSvAbIucmNx-z-eoDj/view",
+        "status": "DOWNLOADED",
+        "bytes": 2890579,
+        "sha256": "32b10bde55f5f64dff0122083a724bcb3491b2c2d45357557d516b74dc26a5b8"
+      }
+    ]
+  },
+  "certified": {
+    "VA": {
+      "D_votes": 1976857,
+      "R_votes": 1449586,
+      "other_vote_counts": [
+        6897
+      ],
+      "source_url": "https://historical.elections.virginia.gov/contest/164996",
+      "result_locator": "State, Virginia row of primary linked CSV, includes 6897 write-ins in 3433340 valid votes. Certification documented in state annual report p.8.",
+      "certification_date": "2025-12-01",
+      "certification_source": "https://www.elections.virginia.gov/media/about/SBE_Annual_Report_2025.pdf"
+    },
+    "NJ": {
+      "D_votes": 1896610,
+      "R_votes": 1417705,
+      "other_vote_counts": [
+        11880,
+        8164
+      ],
+      "source_url": "https://nj.gov/state/elections/assets/pdf/election-results/2025/2025-official-general-results-governor.pdf",
+      "result_locator": "Official List dated 2025-12-03, candidate totals on pp.1-4; full published four-candidate denominator. December 3 is the official list date; a separate certification-signature date was not established.",
+      "certification_date": "UNVERIFIED"
+    }
+  },
+  "records": [
+    {
+      "pollster_id": "emerson",
+      "state": "VA",
+      "field_start": "2025-10-30",
+      "field_end": "2025-10-31",
+      "release_date": "2025-11-02",
+      "n": 880,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          54.94222049828639,
+          43.97038003372976,
+          "NA",
+          1.0873994679839227
+        ],
+        [
+          "LV",
+          "LEANERS",
+          55.56163596231875,
+          44.438364037681325,
+          "NA",
+          0
+        ]
+      ],
+      "source_url": "https://emersoncollegepolling.com/virginia-2025-spanberger-leads/",
+      "source_locator": "Primary linked XLSX Topline Results initial governor question and allocated-leaner result; HTML metadata datePublished 2025-11-02.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "The survey-specific methodology says previous vote history but gives no year or evidence that recalled 2024 choice is a weight. Questionnaire recall alone is insufficient.",
+      "mode": "MMS-to-web and online panels",
+      "method_url": "https://emersoncollegepolling.com/virginia-2025-spanberger-leads/"
+    },
+    {
+      "pollster_id": "emerson",
+      "state": "NJ",
+      "field_start": "2025-10-25",
+      "field_end": "2025-10-28",
+      "release_date": "2025-10-30",
+      "n": 1000,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          49.28088774359441,
+          47.93010650886642,
+          0.7014406876813822,
+          2.0875650598577
+        ],
+        [
+          "LV",
+          "LEANERS",
+          50.42828794142405,
+          48.411615227520926,
+          1.1600968310548816,
+          0
+        ]
+      ],
+      "source_url": "https://emersoncollegepolling.com/new-york-city-mayor-and-new-jersey-governor-2025/",
+      "source_locator": "Primary linked XLSX Topline Results initial governor question and allocated-leaner result; HTML metadata datePublished 2025-10-30.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Previous vote history does not specify 2024 recalled choice; no 2026 methodology is substituted.",
+      "mode": "MMS-to-web, IVR and online panel",
+      "method_url": "https://emersoncollegepolling.com/new-york-city-mayor-and-new-jersey-governor-2025/"
+    },
+    {
+      "pollster_id": "suffolk-university",
+      "state": "VA",
+      "field_start": "2025-10-19",
+      "field_end": "2025-10-21",
+      "release_date": "2025-10-23",
+      "n": 500,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          51.8,
+          43.2,
+          0.2,
+          3.4
+        ]
+      ],
+      "source_url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_22_2025_virginia_statewide_marginals.pdf",
+      "source_locator": "p.2 Q9; refusal kept in unresolved remainder, not allocated. Refused responses remain separate and are not recoded as undecided.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Survey-specific statement describes quotas and previous like elections but does not provide a complete explicit weighting-variable list. Past-vote question alone is not proof of use.",
+      "mode": "live telephone landline/cell",
+      "method_url": "https://www.suffolk.edu/academics/research-at-suffolk/political-research-center/polls/other-states/2025"
+    },
+    {
+      "pollster_id": "suffolk-university",
+      "state": "NJ",
+      "field_start": "2025-10-26",
+      "field_end": "2025-10-29",
+      "release_date": "2025-10-30",
+      "n": 500,
+      "variants": [
+        [
+          "LV",
+          "LEANERS",
+          46.2,
+          42.2,
+          2.2,
+          6.6
+        ]
+      ],
+      "source_url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_30_2025_new_jersey_statewide_final_marginals.pdf",
+      "source_locator": "p.2 Q7 explicitly asks vote or lean; undecided 6.6 and refused 2.8 remain unresolved. Refused responses remain separate and are not recoded as undecided.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Quota and demographic description does not establish a complete weighting list; 2024 question is not evidence of calibration.",
+      "mode": "live telephone landline/cell",
+      "method_url": "https://www.suffolk.edu/academics/research-at-suffolk/political-research-center/polls/other-states/2025"
+    },
+    {
+      "pollster_id": "fox-beacon-shaw",
+      "state": "NJ",
+      "field_start": "2025-10-10",
+      "field_end": "2025-10-14",
+      "release_date": "2025-10-16",
+      "n": 869,
+      "variants": [
+        [
+          "LV",
+          "LEANERS",
+          50,
+          45,
+          2,
+          2
+        ],
+        [
+          "RV",
+          "LEANERS",
+          48,
+          44,
+          3,
+          5,
+          1002
+        ]
+      ],
+      "source_url": "https://static.foxnews.com/foxnews.com/content/uploads/2025/10/fox_october-10-14-2025_nj-gov_topline_october-16-release.pdf",
+      "source_locator": "p.1 methods; p.2 Q3 includes lean probe and full-sample alternatives.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "The list is conditional and says weights are generally applied. That does not establish a complete applicable list or explicit non-use of recall.",
+      "mode": "live telephone and text-to-web",
+      "method_url": "https://static.foxnews.com/foxnews.com/content/uploads/2025/10/fox_october-10-14-2025_nj-gov_topline_october-16-release.pdf"
+    },
+    {
+      "pollster_id": "fox-beacon-shaw",
+      "state": "NJ",
+      "field_start": "2025-10-24",
+      "field_end": "2025-10-28",
+      "release_date": "2025-10-30",
+      "n": 956,
+      "variants": [
+        [
+          "LV",
+          "LEANERS",
+          52,
+          45,
+          2,
+          1
+        ],
+        [
+          "RV",
+          "LEANERS",
+          51,
+          44,
+          3,
+          2,
+          1107
+        ]
+      ],
+      "source_url": "https://static.foxnews.com/foxnews.com/content/uploads/2025/10/fox_october-24-28-2025_nj-gov_topline_october-30-release.pdf",
+      "source_locator": "p.1 methods; p.3 Q3 includes lean probe; p.3 LV/RV columns.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Conditional generally-applied targets are not a complete applicable weighting disclosure; no 2026 methodology is backfilled.",
+      "mode": "live telephone and text-to-web",
+      "method_url": "https://static.foxnews.com/foxnews.com/content/uploads/2025/10/fox_october-24-28-2025_nj-gov_topline_october-30-release.pdf"
+    },
+    {
+      "pollster_id": "yougov",
+      "state": "VA",
+      "field_start": "2025-10-17",
+      "field_end": "2025-10-28",
+      "release_date": "2025-10-30",
+      "n": 1179,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          55,
+          41,
+          0,
+          4
+        ],
+        [
+          "LV",
+          "LEANERS",
+          57,
+          42,
+          2,
+          0
+        ]
+      ],
+      "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/virginia_20251030.pdf",
+      "source_locator": "Initial vote choice Q5 and leaner allocation Q6; sample 1179 LV; leaner unweighted respondents 1162, p.6. n is the published LV population for both question variants; valid-answer Ns are not substituted.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "The survey says imputed 2024 vote choice. It does not establish whether this is recalled or self-reported choice; imputation is not silently equated to recall.",
+      "mode": "voter-list text-to-web",
+      "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/virginia_20251030.pdf"
+    },
+    {
+      "pollster_id": "yougov",
+      "state": "NJ",
+      "field_start": "2025-10-17",
+      "field_end": "2025-10-28",
+      "release_date": "2025-10-30",
+      "n": 1153,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          51,
+          42,
+          1,
+          5
+        ],
+        [
+          "LV",
+          "LEANERS",
+          54,
+          44,
+          2,
+          0
+        ]
+      ],
+      "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/newjersey_20251030.pdf",
+      "source_locator": "p.7 Q5 initial vote choice; p.8 Q6 with leaners; p.9 methodology. n is the published LV population for both question variants; valid-answer Ns are not substituted.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Imputed 2024 vote choice is explicitly listed, but its relation to respondent recall is not established; retain UNVERIFIED.",
+      "mode": "voter-list text-to-web",
+      "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/newjersey_20251030.pdf"
+    },
+    {
+      "pollster_id": "quantus",
+      "state": "VA",
+      "field_start": "2025-10-19",
+      "field_end": "2025-10-20",
+      "release_date": "2025-10-21",
+      "n": 1302,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          51,
+          46,
+          1,
+          2
+        ]
+      ],
+      "source_url": "https://drive.google.com/uc?export=download&id=161EAL7JzXwgYfnkZ_AIerwfn1OoMEgqp",
+      "source_locator": "p.2 methods and screen; p.5 governor graphic independently inspected.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "The questionnaire asks 2024 vote recall, but weighting says vote history without a year or explicit recalled-vote calibration. This cannot be promoted to YES.",
+      "mode": "voter-file matched SMS",
+      "method_url": "https://drive.google.com/uc?export=download&id=161EAL7JzXwgYfnkZ_AIerwfn1OoMEgqp"
+    },
+    {
+      "pollster_id": "insideradvantage",
+      "state": "VA",
+      "field_start": "2025-11-02",
+      "field_end": "2025-11-03",
+      "release_date": "2025-11-03",
+      "n": 800,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          50,
+          40,
+          5,
+          5
+        ]
+      ],
+      "source_url": "https://insideradvantage.com/final-insideradvantage-survey-virginia-governors-race-winsome-earle-sears-continues-to-slide-spanberger-up-by-ten-points/",
+      "source_locator": "Dated primary release, methods immediately preceding the governor question. Rounded primary toplines used instead of secondary decimals.",
+      "recall_weighted": "NO",
+      "weighting_quote": "Weighted for age, race, gender and political affiliation.",
+      "classification_reason": "Complete survey-specific weighting list omits recalled presidential vote.",
+      "mode": "cell/text",
+      "method_url": "https://insideradvantage.com/final-insideradvantage-survey-virginia-governors-race-winsome-earle-sears-continues-to-slide-spanberger-up-by-ten-points/"
+    },
+    {
+      "pollster_id": "trafalgar",
+      "state": "VA",
+      "field_start": "2025-11-01",
+      "field_end": "2025-11-02",
+      "release_date": "2025-11-03",
+      "n": 1057,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          49.8,
+          43.3,
+          1,
+          5.9
+        ]
+      ],
+      "source_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2025/11/VA-25Gen-Statewide-Poll-Report-1103.pdf",
+      "source_locator": "p.2 dates/sample; p.3 ballot graphic independently inspected. Primary filename -1103 and contemporaneous finding-aid publication establish pre-election release.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Report links a general methodology page but does not show survey-specific recalled-vote targets; no backfill.",
+      "mode": "UNVERIFIED",
+      "method_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2025/11/VA-25Gen-Statewide-Poll-Report-1103.pdf"
+    },
+    {
+      "pollster_id": "public-opinion-strategies",
+      "state": "VA",
+      "field_start": "2025-10-16",
+      "field_end": "2025-10-20",
+      "release_date": "2025-10-23",
+      "n": 927,
+      "variants": [
+        [
+          "LV",
+          "LEANERS",
+          54,
+          42,
+          2,
+          2
+        ],
+        [
+          "RV",
+          "LEANERS",
+          53,
+          40,
+          5,
+          3
+        ]
+      ],
+      "source_url": "https://www.washingtonpost.com/documents/84f0e3af-875c-4b14-8921-a008804ab25f.pdf",
+      "source_locator": "p.2 Q2; pp.6-7 full methods/weighting table; primary publisher article dated Oct23. Read through web PDF extraction; direct HTTP/2 and HTTP/1.1 downloads failed.",
+      "recall_weighted": "YES",
+      "weighting_quote": "2024 Presidential vote choice",
+      "classification_reason": "Survey-specific weighting table targets 2024 presidential vote choice to official election returns; the weighted sample reports respondents\u2019 Harris/Trump choice. Legacy registry ID names Public Opinion Strategies in error; all underlying records name WaPo/Schar. Identity is preserved with this explicit discrepancy, never treated as POS.",
+      "mode": "live telephone and text-to-web",
+      "method_url": "https://www.washingtonpost.com/documents/84f0e3af-875c-4b14-8921-a008804ab25f.pdf"
+    },
+    {
+      "pollster_id": "co-efficient",
+      "state": "VA",
+      "field_start": "2025-10-15",
+      "field_end": "2025-10-17",
+      "release_date": "2025-10-17",
+      "n": 937,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          49,
+          44,
+          1,
+          6
+        ]
+      ],
+      "source_url": "https://web.archive.org/web/20251021000000id_/https://coefficient.org/virginia-statewide-2025-general-election/",
+      "source_locator": "Archived publisher interactive; Governor Ballot and Methodology & Demographics sections; datePublished 2025-10-17.",
+      "recall_weighted": "NO",
+      "weighting_quote": "Age, Gender, Education Level, Race, DMA and Self-Reported Party",
+      "classification_reason": "Complete survey-specific weighting list omits recalled presidential vote. Current URL now renders a different site; preserved original archive used.",
+      "mode": "mobile text and landline",
+      "method_url": "https://web.archive.org/web/20251021000000id_/https://coefficient.org/virginia-statewide-2025-general-election/"
+    },
+    {
+      "pollster_id": "co-efficient",
+      "state": "NJ",
+      "field_start": "2025-10-23",
+      "field_end": "2025-10-27",
+      "release_date": "2025-10-27",
+      "n": 995,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          48,
+          47,
+          1,
+          5
+        ]
+      ],
+      "source_url": "https://web.archive.org/web/20251031000000id_/https://coefficient.org/new-jersey-statewide-2025-general-election/",
+      "source_locator": "Archived publisher interactive; Governor Ballot and Methodology & Demographics sections; datePublished 2025-10-27. Rounding yields 101 total.",
+      "recall_weighted": "NO",
+      "weighting_quote": "Age, Gender, Education Level, Race, and Congressional District",
+      "classification_reason": "Complete survey-specific weighting list omits recalled presidential vote. A past-2021-vote question is not a weighting input merely because it is asked.",
+      "mode": "mobile text and landline",
+      "method_url": "https://web.archive.org/web/20251031000000id_/https://coefficient.org/new-jersey-statewide-2025-general-election/"
+    },
+    {
+      "pollster_id": "quantus",
+      "state": "VA",
+      "field_start": "2025-11-03",
+      "field_end": "2025-11-03",
+      "release_date": "2025-11-03",
+      "n": 1201,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          52.6,
+          43.9,
+          0.9,
+          2.6
+        ]
+      ],
+      "source_url": "https://x.com/QuantusInsights/status/1985508592301052158",
+      "source_locator": "Publisher tweet via public syndication JSON and original image; graphic says Nov3; created_at 2025-11-04T00:45:12Z = Nov3 19:45:12 Eastern, before polls opened Nov4.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Primary post has no applicable weighting disclosure. Earlier October method is not backfilled.",
+      "mode": "UNVERIFIED",
+      "method_url": "https://x.com/QuantusInsights/status/1985508592301052158"
+    },
+    {
+      "pollster_id": "quantus",
+      "state": "NJ",
+      "field_start": "2025-10-26",
+      "field_end": "2025-10-27",
+      "release_date": "2025-10-28",
+      "n": 1380,
+      "variants": [
+        [
+          "LV",
+          "FULL",
+          49,
+          46,
+          "NA",
+          5
+        ],
+        [
+          "LV",
+          "LEANERS",
+          49.2,
+          45.9,
+          "NA",
+          "NA"
+        ]
+      ],
+      "source_url": "https://quantusinsights.org/f/a-tightrope-in-trenton-sherrill-holds-small-lead-in-new-jersey",
+      "source_locator": "Publisher embedded blog post JSON published 2025-10-28; linked original Google Drive PDF p.2 methods and p.5 ballot graphic. Leaner variant reported in blog text; unreported residuals left NA.",
+      "recall_weighted": "UNVERIFIED",
+      "weighting_quote": "NA",
+      "classification_reason": "Survey methods mention vote history and voter-file calibration, without explicit recalled-2024 weighting. UNVERIFIED is preserved.",
+      "mode": "targeted SMS",
+      "method_url": "https://quantusinsights.org/f/a-tightrope-in-trenton-sherrill-holds-small-lead-in-new-jersey"
+    }
+  ],
+  "finding_aid_inventory": [
+    {
+      "state": "Virginia",
+      "row": "Quantus Insights (R) [ 142 ] November 3, 2025 1,201 (LV) \u00b1 2.7% 44% 53% 1% 2%",
+      "sources": [
+        "https://x.com/QuantusInsights/status/1985508592301052158",
+        "https://web.archive.org/web/20251104004512/https://twitter.com/QuantusInsights/status/1985508592301052158"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "InsiderAdvantage (R) [ 143 ] November 2\u20133, 2025 800 (LV) \u00b1 3.5% 40% 50% 5% [ j ] 5%",
+      "sources": [
+        "https://web.archive.org/web/20260120041119/https://insideradvantage.com/final-insideradvantage-survey-virginia-governors-race-winsome-earle-sears-continues-to-slide-spanberger-up-by-ten-points/",
+        "https://insideradvantage.com/final-insideradvantage-survey-virginia-governors-race-winsome-earle-sears-continues-to-slide-spanberger-up-by-ten-points/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Research Co. [ 144 ] November 2\u20133, 2025 423 (LV) \u00b1 4.6% 46% 54% \u2013 \u2013",
+      "sources": [
+        "https://web.archive.org/web/20251105011615/https://researchco.ca/2025/11/03/2025-governors/",
+        "https://researchco.ca/2025/11/03/2025-governors/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "The Trafalgar Group (R) [ 145 ] November 1\u20132, 2025 1,057 (LV) \u00b1 2.9% 43% 50% 1% [ k ] 6%",
+      "sources": [
+        "https://web.archive.org/web/20260120041119/https://www.thetrafalgargroup.org/wp-content/uploads/2025/11/VA-25Gen-Statewide-Poll-Report-1103.pdf",
+        "https://www.thetrafalgargroup.org/wp-content/uploads/2025/11/VA-25Gen-Statewide-Poll-Report-1103.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Emerson College [ 146 ] [ B ] October 30\u201331, 2025 880 (LV) \u00b1 3.2% 44% 55% 0% 1%",
+      "sources": [
+        "https://web.archive.org/web/20260118131306/https://emersoncollegepolling.com/virginia-2025-spanberger-leads/",
+        "https://emersoncollegepolling.com/virginia-2025-spanberger-leads/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Echelon Insights [ 147 ] October 28\u201331, 2025 606 (LV) \u00b1 4.7% 43% 55% \u2013 2%",
+      "sources": [
+        "https://web.archive.org/web/20251225094328/https://echeloninsights.com/2025-virginia-election-survey-2/",
+        "https://echeloninsights.com/2025-virginia-election-survey-2/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "AtlasIntel [ 148 ] October 25\u201330, 2025 1,325 (LV) \u00b1 3.0% 45% 54% 0% [ l ] 1%",
+      "sources": [
+        "https://web.archive.org/web/20251230002601/https://cdn.atlasintel.org/dcbf3a96-f9f0-42ee-9ff9-c1807c983f7d.pdf",
+        "https://cdn.atlasintel.org/dcbf3a96-f9f0-42ee-9ff9-c1807c983f7d.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "SoCal Strategies (R) [ 149 ] [ C ] October 28\u201329, 2025 800 (LV) \u2013 43% 53% \u2013 4%",
+      "sources": [
+        "https://megalodon.jp/2026-0308-0803-36/https://socaldata.substack.com:443/p/virginians-may-split-their-tickets",
+        "https://socaldata.substack.com/p/virginians-may-split-their-tickets"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "QUARANTINED; no primary extraction or analytical use"
+    },
+    {
+      "state": "Virginia",
+      "row": "State Navigate [ 150 ] October 26\u201328, 2025 614 (LV) \u00b1 4.0% 41% 54% \u2013 5%",
+      "sources": [
+        "https://web.archive.org/web/20251101163002/https://statenavigate.org/virginia-poll-shows-spanberger-maintaining-wide-lead-and-a-dead-heat-for-attorney-general/",
+        "https://statenavigate.org/virginia-poll-shows-spanberger-maintaining-wide-lead-and-a-dead-heat-for-attorney-general"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "InsiderAdvantage (R)/ The Trafalgar Group (R) [ 151 ] October 27\u201328, 2025 800 (LV) \u00b1 3.5% 42% 46% 4% [ m ] 8%",
+      "sources": [
+        "https://web.archive.org/web/20251104150439/https://insideradvantage.com/virginia-race-for-governor-joint-insideradvantage-trafalgar-group-survey-spanberger-holds-four-point-lead/",
+        "https://insideradvantage.com/virginia-race-for-governor-joint-insideradvantage-trafalgar-group-survey-spanberger-holds-four-point-lead/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "OUTSIDE_FIXED_REGISTRY joint partnership; not classified or assigned member methods"
+    },
+    {
+      "state": "Virginia",
+      "row": "Roanoke College [ 152 ] October 22\u201327, 2025 1,041 (LV) \u00b1 4.1% 41% 51% 3% [ n ] 5%",
+      "sources": [
+        "https://web.archive.org/web/20260118133321/https://www.roanoke.edu/news/rc_poll_politics_october_2025",
+        "https://www.roanoke.edu/news/rc_poll_politics_october_2025"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "YouGov [ 153 ] October 17\u201328, 2025 1,179 (LV) \u00b1 4.0% 42% 57% 2% \u2013",
+      "sources": [
+        "https://web.archive.org/web/20260108030559/https://d3nkl3psvxxpe9.cloudfront.net/documents/virginia_20251030.pdf",
+        "https://d3nkl3psvxxpe9.cloudfront.net/documents/virginia_20251030.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "A2 Insights [ 154 ] October 24\u201326, 2025 776 (LV) \u2013 46% 54% \u2013 1%",
+      "sources": [
+        "https://web.archive.org/web/20260113170315/https://data.ddhq.io/polls/2025/10/27/A2%20Insights-Virginia",
+        "https://data.ddhq.io/polls/2025/10/27/A2%20Insights-Virginia"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Christopher Newport University [ 155 ] October 21\u201323, 2025 803 (LV) \u00b1 4.1% 43% 50% \u2013 6%",
+      "sources": [
+        "https://web.archive.org/web/20260118132931/https://cnu.edu/wasoncenter/surveys/archive/2025-10-27.html",
+        "https://cnu.edu/wasoncenter/surveys/archive/2025-10-27.html"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Suffolk University [ 156 ] October 19\u201321, 2025 500 (LV) \u00b1 4.4% 43% 52% 1% [ o ] 4%",
+      "sources": [
+        "https://web.archive.org/web/20260102212137/https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_22_2025_virginia_statewide_marginals.pdf",
+        "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_22_2025_virginia_statewide_marginals.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Quantus Insights (R) [ 157 ] October 19\u201320, 2025 1,302 (RV) \u00b1 2.8% 46% 51% 1% 2%",
+      "sources": [
+        "https://web.archive.org/web/20260307225457/https://drive.google.com/file/d/161EAL7JzXwgYfnkZ_AIerwfn1OoMEgqp/view",
+        "https://drive.google.com/file/d/161EAL7JzXwgYfnkZ_AIerwfn1OoMEgqp/view"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "State Navigate [ 158 ] October 17\u201320, 2025 694 (LV) \u00b1 4.0% 42% 55% \u2013 3%",
+      "sources": [
+        "https://web.archive.org/web/20251117144047/https://statenavigate.org/state-navigate-poll-shows-spanberger-with-13-point-lead-in-virginia-governor-race/",
+        "https://statenavigate.org/state-navigate-poll-shows-spanberger-with-13-point-lead-in-virginia-governor-race/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "The Washington Post / Schar School [ 159 ] October 16\u201320, 2025 927 (LV) \u00b1 3.5% 42% 54% 2% [ p ] 2%",
+      "sources": [
+        "https://web.archive.org/web/20251028003529/https://www.washingtonpost.com/documents/84f0e3af-875c-4b14-8921-a008804ab25f.pdf",
+        "https://www.washingtonpost.com/documents/84f0e3af-875c-4b14-8921-a008804ab25f.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Kaplan Strategies (R) [ 160 ] October 16\u201318, 2025 556 (LV) \u00b1 4.2% 41% 51% \u2013 7%",
+      "sources": [
+        "https://web.archive.org/web/20251024155143/https://kaplanstrategies.com/wp-content/uploads/2025/10/Virginia-Oct-18-2025-with-Write-Up.pdf",
+        "https://kaplanstrategies.com/wp-content/uploads/2025/10/Virginia-Oct-18-2025-with-Write-Up.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "co/efficient (R) [ 161 ] October 15\u201317, 2025 937 (LV) \u00b1 3.2% 44% 49% 1% [ k ] 6%",
+      "sources": [
+        "https://web.archive.org/web/20251230041603/https://coefficient.org/web/20251230041603/https://coefficient.org/web/20251230041603/https://coefficient.org/virginia-statewide-2025-general-election/",
+        "https://coefficient.org/virginia-statewide-2025-general-election/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Clarity Campaign Labs (D) [ 162 ] [ D ] October 14\u201317, 2025 958 (RV) \u00b1 3.2% 43% 53% \u2013 4%",
+      "sources": [
+        "https://web.archive.org/web/20251230222809/https://dems.ag/wp-content/uploads/2025/10/DAGA-Virginia-2025-Poll-4-Memo-October-2025.pdf",
+        "https://dems.ag/wp-content/uploads/2025/10/DAGA-Virginia-2025-Poll-4-Memo-October-2025.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "The Trafalgar Group (R)/ InsiderAdvantage (R) [ 163 ] October 13\u201315, 2025 1,039 (LV) \u00b1 2.9% 45% 47% 1% [ k ] 6%",
+      "sources": [
+        "https://web.archive.org/web/20251231111722/https://data.ddhq.io/polls/2025/10/16/InsiderAdvantage/Trafalgar%20Group-Virginia",
+        "https://data.ddhq.io/polls/2025/10/16/InsiderAdvantage/Trafalgar%20Group-Virginia"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "OUTSIDE_FIXED_REGISTRY joint partnership; not classified or assigned member methods"
+    },
+    {
+      "state": "Virginia",
+      "row": "Virginia Commonwealth University [ 164 ] October 6\u201314, 2025 842 (A) \u00b1 4.0% 42% 49% \u2013 9%",
+      "sources": [
+        "https://web.archive.org/web/20260118133416/https://wilder.vcu.edu/news-and-events/news-posts/commonwealth-poll-spanberger-leads-earle-sears-49-to-42-in-virginia-governors-race.html",
+        "https://wilder.vcu.edu/news-and-events/news-posts/commonwealth-poll-spanberger-leads-earle-sears-49-to-42-in-virginia-governors-race.html"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "The Trafalgar Group (R) [ 165 ] October 8\u201310, 2025 1,034 (LV) \u00b1 2.9% 45% 48% 2% [ r ] 6%",
+      "sources": [
+        "https://web.archive.org/web/20251205145912/https://www.thetrafalgargroup.org/news/va-poll-1011/",
+        "https://www.thetrafalgargroup.org/news/va-poll-1011/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Public Policy Polling (D) [ 166 ] [ E ] October 7\u20138, 2025 558 (RV) \u2013 43% 52% \u2013 5%",
+      "sources": [
+        "https://web.archive.org/web/20251101094823/https://democraticgovernors.org/wp-content/uploads/2025/10/ppp-va-poll.pdf",
+        "https://democraticgovernors.org/wp-content/uploads/2025/10/ppp-va-poll.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Cygnal (R) [ 167 ] October 6\u20137, 2025 600 (LV) \u00b1 4.0% 45% 49% \u2013 6%",
+      "sources": [
+        "https://megalodon.jp/2026-0308-0720-25/https://wjla.com:443/news/elections/new-poll-shows-virginia-governors-race-tightening-spanberger-still-leads-abigail-spanberger-winsome-earle-sears-undecided-republican-democrat-cygnal",
+        "https://wjla.com/news/elections/new-poll-shows-virginia-governors-race-tightening-spanberger-still-leads-abigail-spanberger-winsome-earle-sears-undecided-republican-democrat-cygnal"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "Christopher Newport University [ 168 ] September 29 \u2013 October 1, 2025 805 (RV) \u00b1 3.9% 42% 52% \u2013 6%",
+      "sources": [
+        "https://web.archive.org/web/20260111162616/https://cnu.edu/wasoncenter/surveys/archive/2025-10-06.html",
+        "https://cnu.edu/wasoncenter/surveys/archive/2025-10-06.html"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "Virginia",
+      "row": "The Trafalgar Group (R) [ 169 ] September 29 \u2013 October 1, 2025 1,034 (LV) \u00b1 2.9% 42% 47% 2% [ r ] 9%",
+      "sources": [
+        "https://web.archive.org/web/20251223155058/https://www.thetrafalgargroup.org/news/va-statewide-1002/",
+        "https://www.thetrafalgargroup.org/news/va-statewide-1002/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Research Co. [ 376 ] November 2\u20133, 2025 429 (LV) \u00b1 4.6% 51% 48% 1% [ x ] \u2013",
+      "sources": [
+        "https://researchco.ca/2025/11/03/2025-governors/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "John Zogby Strategies (D) [ 377 ] October 31 \u2013 November 3, 2025 1,205 (LV) \u00b1 2.9% 55% 43% 2% [ y ] \u2013",
+      "sources": [
+        "https://data.ddhq.io/polls/2025/11/03/John%20Zogby%20Strategies-New%20Jersey"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "AtlasIntel [ 378 ] October 25\u201330, 2025 1,639 (LV) \u00b1 2.0% 50% 49% \u2013 1%",
+      "sources": [
+        "https://cdn.atlasintel.org/f8620f18-a3c6-4a27-9f4a-85152be28aad.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "SoCal Strategies (R) [ 379 ] [ M ] October 28\u201329, 2025 800 (LV) \u2013 52% 45% \u2013 3%",
+      "sources": [
+        "https://substack.com/inbox/post/177533030"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "QUARANTINED; no primary extraction or analytical use"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Suffolk University [ 380 ] October 26\u201329, 2025 500 (LV) \u00b1 4.4% 46% 42% 2% [ z ] 7%",
+      "sources": [
+        "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2025/10_30_2025_new_jersey_statewide_final_marginals.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Emerson College [ 381 ] [ N ] October 25\u201328, 2025 1,000 (LV) \u00b1 3.0% 50% [ aa ] 48% 1% [ ab ] 1%",
+      "sources": [
+        "https://pix11.com/news/local-news/new-jersey-governors-race-toss-up-pix11-poll/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Beacon Research (D)/ Shaw & Company Research (R) [ 382 ] [ O ] October 24\u201328, 2025 956 (LV) \u00b1 3.0% 52% 45% \u2013 3%",
+      "sources": [
+        "https://www.foxnews.com/politics/fox-news-poll-sherrill-leads-ciattarelli-new-jersey-governors-race"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Quinnipiac University [ 383 ] October 23\u201328, 2025 1,166 (LV) \u00b1 3.8% 51% 43% 2% [ z ] 4%",
+      "sources": [
+        "https://poll.qu.edu/poll-release?releaseid=3941"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "YouGov [ 384 ] October 17\u201328, 2025 1,153 (LV) \u00b1 4.0% 54% 44% 2% [ ad ] \u2013",
+      "sources": [
+        "https://d3nkl3psvxxpe9.cloudfront.net/documents/newjersey_20251030.pdf"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Quantus Insights (R) [ 385 ] October 26\u201327, 2025 1,380 (LV) \u00b1 2.6% 49% 46% \u2013 5%",
+      "sources": [
+        "https://quantusinsights.org/f/a-tightrope-in-trenton-sherrill-holds-small-lead-in-new-jersey"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "co/efficient (R) [ 386 ] October 23\u201327, 2025 995 (LV) \u00b1 3.3% 48% 47% 1% [ x ] 5%",
+      "sources": [
+        "https://coefficient.org/new-jersey-statewide-2025-general-election/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "A2 Insights [ 387 ] October 24\u201326, 2025 812 (LV) \u2013 51% 47% \u2013 2%",
+      "sources": [
+        "https://data.ddhq.io/polls/2025/10/27/A2%20Insights-New%20Jersey"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "GQR (D) [ 388 ] [ B ] October 15\u201320, 2025 1,000 (LV) \u00b1 4.0% 52% 40% \u2013 8%",
+      "sources": [
+        "https://data.ddhq.io/polls/2025/10/24/GQR/One%20Giant%20Leap-New%20Jersey-2025-10-15-2025-10-20"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Concord Public Opinion Partners (D) [ 389 ] [ P ] October 16\u201318, 2025 605 (LV) \u00b1 3.9% 49% 40% \u2013 11%",
+      "sources": [
+        "https://newjerseyglobe.com/governor/poll-from-pro-sherrill-education-reform-group-gives-her-49-40-lead-over-ciattarelli/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Rutgers-Eagleton [ 390 ] October 3\u201317, 2025 795 (LV) \u00b1 4.7% 50% 45% \u2013 5%",
+      "sources": [
+        "https://newjerseyglobe.com/governor/rutgers-eagleton-poll-puts-sherrill-up-50-45/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "KAConsulting (R) [ 391 ] [ Q ] October 15\u201316, 2025 601 (RV/LV) \u00b1 4.0% 47% 44% \u2013 9%",
+      "sources": [
+        "https://newjerseyglobe.com/governor/ciattarelli-pac-poll-puts-sherrill-narrowly-ahead/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "InsiderAdvantage (R)/ Trafalgar Group (R) [ 392 ] October 14\u201315, 2025 800 (LV) \u00b1 3.5% 45% 44% 4% 7%",
+      "sources": [
+        "https://insideradvantage.com/breaking-insideradvantage-trafalgar-group-new-jersey-survey-sherrill-leads-ciattarelli-by-one-point/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "OUTSIDE_FIXED_REGISTRY joint partnership; not classified or assigned member methods"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Fairleigh Dickinson University [ 393 ] October 9\u201315, 2025 814 (RV) \u00b1 3.4% 52% 45% \u2013 3%",
+      "sources": [
+        "https://www.fdu.edu/news/fdu-poll-finds-sherrill-maintains-lead-in-governors-race/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Beacon Research (D)/ Shaw & Company Research (R) [ 394 ] [ O ] October 10\u201314, 2025 869 (LV) \u00b1 3.0% 50% 45% \u2013 5%",
+      "sources": [
+        "https://www.foxnews.com/politics/fox-news-poll-new-jersey-governors-race-has-tightened"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Quinnipiac University [ 395 ] October 9\u201313, 2025 1,327 (LV) \u00b1 3.6% 50% 44% 2% [ z ] 4%",
+      "sources": [
+        "https://poll.qu.edu/poll-release?releaseid=3936"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Rasmussen Reports (R) [ 396 ] October 8\u20139, 2025 955 (LV) \u00b1 3.0% 46% 40% 4% [ ae ] 9%",
+      "sources": [
+        "https://www.rasmussenreports.com/public_content/politics/trump_administration_second_term/new_jersey_democrat_sherrill_6_in_governor_s_race#google_vignette"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Neighborhood Research (R) [ 397 ] October 6\u20139, 2025 311 (LV) \u00b1 5.6% 44% 44% \u2013 12%",
+      "sources": [
+        "https://newjerseyglobe.com/governor/n-j-governors-race-tied-conservative-pollster-says/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "Public Policy Polling (D) [ 398 ] [ R ] October 2\u20133, 2025 703 (RV) \u00b1 3.7% 49% 43% \u2013 8%",
+      "sources": [
+        "https://www.nationaljournal.com/s/729829/exclusive-mikie-sherrill-holds-single-digit-lead-in-dga-commissioned-poll/?unlock=JM9KS7GBN2RMOMID"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    },
+    {
+      "state": "New_Jersey",
+      "row": "John Zogby Strategies (D) [ 399 ] September 30 \u2013 October 2, 2025 912 (LV) \u00b1 3.3% 50% 42% \u2013 8%",
+      "sources": [
+        "https://johnzogbystrategies.com/new-zogby-strategies-new-jersey-governor-poll-democrat-mikie-sherrill-leads-jack-ciattarelli-50-42-top-issues-can-make-or-break-either-candidate-in-the-final-stretch/"
+      ],
+      "use": "Finding aid only. No numerical calculation uses this copied row.",
+      "status": "INVENTORY; see primary-verified records for analytical inclusion"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export function raceData(id:string) {
  const r=derived.races[id];const heat=derived.section9_heat.per_race[id];
  const contributing=derived.estimates.filter((e:{estimate_id:string})=>r.averaging_estimate_ids.includes(e.estimate_id));
  const ends=contributing.map((e:{field_end:string})=>e.field_end).sort();
- return {id,name:raceName(id),slug:slug(id),...r,newestPollEnd:ends.at(-1)||null,oldestPollEnd:ends.at(0)||null,heat,coverage:derived.section10_coverage.find((c:{race:string})=>c.race===id)};
+ return {id,name:raceName(id),slug:slug(id),...r,newestPollEnd:r.latest_contributing_field_end??ends.at(-1)??null,oldestPollEnd:r.oldest_contributing_field_end??ends.at(0)??null,heat,coverage:derived.section10_coverage.find((c:{race:string})=>c.race===id)};
 }
 export const races=raceIds.map(raceData);
 export const publicEstimates=(id:string)=>derived.estimates.filter((e:{race:string;quarantined:boolean})=>e.race===id && !e.quarantined);

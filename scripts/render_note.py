@@ -119,9 +119,31 @@ def section2a(d):
     for race, s in b["by_state"].items():
         rows.append([race, s["n"], f(s["certified_margin"], 1, " pt"), f(s["mean_signed_error"], 2, " pt"),
                      f"{s['groups']['YES']['n']} / {f(s['groups']['YES']['mean_signed_error'], 2, ' pt')}", f"{s['groups']['NO']['n']} / {f(s['groups']['NO']['mean_signed_error'], 2, ' pt')}",
-                     s["groups"]["UNVERIFIED"]["n"], f(s["yes_minus_no"], 2, " pt"), f(s["one_final_poll_per_firm"]["yes_minus_no"], 2, " pt")])
-    t = table(["Race", "Polls", "Certified D margin", "Mean signed error", "YES n / mean", "NO n / mean", "UNVERIFIED n", "YES minus NO", "One final poll per firm"], rows)
-    return f"Status: {b['status']}. {b['sign_convention']}.\n\n{t}\n\nWithin-state YES minus NO averaged equally across states with both groups: **{f(b['within_state_yes_minus_no_equal_average'], 2, ' pt')}** (states: {', '.join(b['states_with_both_groups']) or 'none'}); one-final-poll-per-firm sensitivity **{f(b['one_final_poll_per_firm_sensitivity'], 2, ' pt')}**. {b['framing'].capitalize()}."
+                     f"{s['groups']['UNVERIFIED']['n']} / {f(s['groups']['UNVERIFIED']['mean_signed_error'], 2, ' pt')}", f(s["yes_minus_no"], 2, " pt"), f(s["one_final_poll_per_firm"]["yes_minus_no"], 2, " pt")])
+    t = table(["Race", "Polls", "Certified D margin", "Mean signed error", "YES n / mean", "NO n / mean", "UNVERIFIED n / mean", "YES minus NO", "One final poll per firm"], rows)
+    return f"Status: {b['status']}. {b['sign_convention']}.\n\n{t}\n\nWithin-state YES minus NO averaged equally across states with both groups: **{f(b['within_state_yes_minus_no_equal_average'], 2, ' pt')}** (states: {', '.join(b['states_with_both_groups']) or 'none'}); one-final-poll-per-firm sensitivity **{f(b['one_final_poll_per_firm_sensitivity'], 2, ' pt')}**. {b['framing'].capitalize()}. {b.get('missing_contrast_reason', '')}"
+
+
+def section2b(d):
+    data = d.get("section2b_turnout")
+    if not data:
+        return "Not yet run (Stage 2)."
+    rows = []
+    for year, summary in data["years"].items():
+        for method, group in summary["methods"].items():
+            for party, value in group["parties"].items():
+                rows.append([year, method, party, f"{value['accepted_ballots']:,}", f(value["share_pct"], 2) + "%", f"{group['accepted_ballots']:,}"])
+    times = "\n\n".join(f"**{year}**: [official file]({summary['source_url']}), source Last-Modified {summary['source_last_modified']}; latest accepted return date {summary['latest_accepted_return_date']}; {summary['duplicate_accepted_rows_removed']} repeated accepted rows removed; {summary['conflicting_accepted_identities_excluded']} ambiguous identities excluded from every method total. SHA-256 `{summary['file_sha256']}`." for year, summary in data["years"].items())
+    return data["note"] + "\n\n" + table(["Year", "Method", "Registration code", "Accepted ballots", "Share within method", "Method denominator"], rows) + "\n\n" + times + f"\n\nRetrieved {data['retrieved_at']}. [Official layout]({data['layout_url']}); [identifier definitions]({data['identity_source']}). " + data["deduplication"] + "\n\n**Poll comparison: not comparable.** " + data["poll_comparison"]["harper_locator"] + f" [Harper questionnaire]({data['poll_comparison']['harper_source']}). " + data["poll_comparison"]["surveyusa_locator"]
+
+
+def ratings(d, registry):
+    source = d.get("rating_source")
+    if not source:
+        return "Track-record import not yet completed."
+    firms = {p["pollster_id"]: p for p in registry}
+    rows = [[p["pollster_name"], p["track_status"], f(p["rating_value"], 2), p["rating_poll_count"], p["f_track"], f(p["rating_bias_value"], 2)] for _, p in sorted(firms.items())]
+    return f"[Silver Bulletin source]({source['source_url']}), {source['version_label']}; file `{source['file_name']}`, downloaded {source['downloaded_at']}, SHA-256 `{source['sha256']}`. Metric **Simple Average Error**, percentage points; cohort **{source['cohort']}**. Mean-Reverted Bias is descriptive only.\n\n" + table(["Firm or partnership", "Status", "Simple Average Error", "Historical polls", "Track factor", "Mean-Reverted Bias"], rows) + "\n\nSparse histories are unstable; a one-poll history is not reliable evidence of persistent quality. Unmatched or incompatible identities retain PROVISIONAL 1.0, which is not an endorsement. Partner ratings are not borrowed. Publisher ban flags and identity reasons remain in each method record's notes; the threshold rule itself does not substitute for the integrity quarantine. No historical bias correction is applied. The project's threshold factors have not been shown to outperform a simple average."
 
 
 def main() -> int:
@@ -131,12 +153,14 @@ def main() -> int:
     ap.add_argument("--ledger")
     ap.add_argument("--deferred")
     ap.add_argument("--section2b")
+    ap.add_argument("--template", help="Explicit versioned template; the original remains preserved")
+    ap.add_argument("--active", action="store_true", help="Candidate active note only when all Stage 2 data gates passed")
     a = ap.parse_args()
     with open(os.path.join(a.release_dir, "derived.json")) as fh:
         d = json.load(fh)
     # Keep the original render source as a preserved snapshot, not an orphan
     # second method note beside the canonical report.
-    template = os.path.join(os.path.dirname(a.note), "midterm-2026", ".backups", "method-template-20261025.txt")
+    template = a.template or os.path.join(os.path.dirname(a.note), "midterm-2026", ".backups", "method-template-20261025.txt")
     if not os.path.exists(template):
         shutil.copyfile(a.note, template)
     with open(template, encoding="utf-8") as fh:
@@ -156,13 +180,18 @@ def main() -> int:
         "RESULTS_SECTION9_PLACEHOLDER": section9(d),
         "RESULTS_SECTION10_PLACEHOLDER": section10(d),
         "RESULTS_SECTION2A_PLACEHOLDER": section2a(d),
-        "RESULTS_SECTION2B_PLACEHOLDER": open(a.section2b, encoding="utf-8").read().strip() if a.section2b and os.path.exists(a.section2b) else "Not yet run (Stage 2).",
+        "RESULTS_SECTION2B_PLACEHOLDER": open(a.section2b, encoding="utf-8").read().strip() if a.section2b and os.path.exists(a.section2b) else section2b(d),
+        "RESULTS_RATINGS_PLACEHOLDER": ratings(d, registry),
         "RESULTS_SECTION11_PLACEHOLDER": open(a.ledger, encoding="utf-8").read().strip() if a.ledger and os.path.exists(a.ledger) else "Ledger pending.",
         "DEFERRED_RUNTIME_PLACEHOLDER": open(a.deferred, encoding="utf-8").read().strip() if a.deferred and os.path.exists(a.deferred) else "",
     }
     for k, v in repl.items():
         t = t.replace(k, v)
     t = t.replace("analytical_as_of PLACEHOLDER", d["analytical_as_of"])
+    if a.active:
+        if not all(d.get("stage_status", {}).get(stage) == "PASSED" for stage in ("stage2a", "stage2b", "stage2c")):
+            raise weight.ValidationError("an active candidate note requires every Stage 2 data gate")
+        t = t.replace("status: draft", "status: active", 1)
     weight.snapshot(a.note, os.path.dirname(a.note) + "/midterm-2026")
     with open(a.note, "w", encoding="utf-8") as fh:
         fh.write(t)

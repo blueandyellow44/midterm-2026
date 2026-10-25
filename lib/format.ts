@@ -6,7 +6,7 @@ export function number(value: unknown, digits=1): string {
 export function margin(value: unknown, pending=false): string {
   if (value === null || value === undefined || (typeof value==='string'&&!value.trim())) return pending?'not yet computed':'NA';
   const n=Number(value);if (!Number.isFinite(n)) return 'UNVERIFIED';
-  return n===0?'Even':`${n>0?'D':'R'} +${Math.abs(n).toFixed(1)}`;
+  return Math.abs(n)<0.05?'Even':`${n>0?'D':'R'} +${Math.abs(n).toFixed(1)}`;
 }
 export function shortDate(value: string): string {
   if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return 'UNVERIFIED';

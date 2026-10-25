@@ -344,6 +344,67 @@ def f_track_from_simple_average_error(sae: float | None) -> float:
     return 1.0
 
 
+def nc_absentee_summary(rows, election_date: str, quarantine_conflicts=False) -> dict:
+    """Aggregate accepted ballots only. Never return voter identifiers or names.
+
+    The official layout makes voter_reg_num county-specific; NCID is statewide.
+    Deduplicate accepted voters within this election using NCID, falling back to
+    county plus voter_reg_num. Conflicts stop by default; explicit quarantine
+    removes the identity from every method and reports the missing count.
+    """
+    counts = defaultdict(Counter)
+    seen = {}
+    total_rows = duplicates = not_accepted = 0
+    conflicts = set()
+    latest = None
+    for row in rows:
+        total_rows += 1
+        if row.get("election_dt") != election_date:
+            raise ValidationError("NC absentee file contains an unexpected election date")
+        if row.get("ballot_rtn_status", "").strip().upper() != "ACCEPTED":
+            not_accepted += 1
+            continue
+        kind = row.get("ballot_req_type", "").strip().upper()
+        if kind in ("ONE-STOP", "EARLY VOTING"):
+            method = "EARLY_IN_PERSON"
+        elif kind == "MAIL":
+            method = "RETURNED_MAIL"
+        else:
+            raise ValidationError(f"unknown accepted NC ballot request type: {kind!r}")
+        party = row.get("voter_party_code", "").strip().upper()
+        if not party:
+            raise ValidationError("accepted NC ballot has missing party registration")
+        ncid = row.get("ncid", "").strip()
+        county, registration = row.get("county_desc", "").strip(), row.get("voter_reg_num", "").strip()
+        if not ncid and not (county and registration):
+            raise ValidationError("accepted NC ballot lacks a deduplication key")
+        key = ("NCID", ncid) if ncid else ("COUNTY_REG", county, registration)
+        returned = datetime.strptime(row.get("ballot_rtn_dt", ""), "%m/%d/%Y").date()
+        latest = max(latest, returned) if latest else returned
+        value = (method, party)
+        if key in seen:
+            if seen[key] != value:
+                if not quarantine_conflicts:
+                    raise ValidationError("conflicting accepted records for one NC voter; source review required")
+                conflicts.add(key)
+            duplicates += 1
+            continue
+        seen[key] = value
+    for key, (method, party) in seen.items():
+        if key not in conflicts:
+            counts[method][party] += 1
+    methods = {}
+    for method in ("EARLY_IN_PERSON", "RETURNED_MAIL"):
+        total = sum(counts[method].values())
+        methods[method] = {"accepted_ballots": total, "parties": {
+            party: {"accepted_ballots": count, "share_pct": r4(100 * count / total) if total else None}
+            for party, count in sorted(counts[method].items())}}
+    return {"election_date": election_date, "source_rows": total_rows, "not_accepted_rows": not_accepted,
+            "duplicate_accepted_rows_removed": duplicates, "accepted_unique": len(seen) - len(conflicts),
+            "conflicting_accepted_identities_excluded": len(conflicts),
+            "latest_accepted_return_date": latest.isoformat() if latest else None, "methods": methods}
+
+
 def cache_key(unit_sha256: str, scorer_commit: str, prompt_sha256: str, model: str, config_sha256: str) -> str:
     return sha256_bytes("|".join([unit_sha256, scorer_commit, prompt_sha256, model, config_sha256]).encode("utf-8"))
 
@@ -480,10 +541,23 @@ class Bundle:
                 self.hard(f"pollsters.csv row {i}: rating_metric must be exactly 'Simple Average Error' or NA")
             if p["track_status"] == "RATED":
                 try:
-                    if num(p["rating_value"]) is None:
-                        self.hard(f"pollsters.csv row {i}: RATED without rating_value")
+                    sae = num(p["rating_value"])
+                    if sae is None or not math.isfinite(sae) or sae < 0:
+                        self.hard(f"pollsters.csv row {i}: RATED requires a finite nonnegative rating_value")
+                    elif num(p["f_track"]) != f_track_from_simple_average_error(sae):
+                        self.hard(f"pollsters.csv row {i}: f_track does not match Simple Average Error thresholds")
+                    if p["rating_metric"] != "Simple Average Error" or p["rating_units"] != "percentage points":
+                        self.hard(f"pollsters.csv row {i}: RATED requires Simple Average Error in percentage points")
+                    if intnum(p["rating_poll_count"]) is None or intnum(p["rating_poll_count"]) < 1:
+                        self.hard(f"pollsters.csv row {i}: RATED requires a positive rating_poll_count")
+                    if p["rating_cohort"] != "Silver Bulletin database, all race types and years in the file":
+                        self.hard(f"pollsters.csv row {i}: incompatible rating cohort")
+                    if is_na(p["rating_source"]) or is_na(p["rating_version"]):
+                        self.hard(f"pollsters.csv row {i}: missing rating provenance")
                 except ValueError as e:
                     self.hard(f"pollsters.csv row {i}: rating_value {e}")
+            if p["track_status"] == "PROVISIONAL" and (num(p["f_track"]) != 1.0 or not is_na(p["rating_metric"])):
+                self.hard(f"pollsters.csv row {i}: PROVISIONAL requires f_track 1.0 and rating_metric NA")
 
     def _validate_polls(self, rows, fname, backtest):
         seen_est = set()
@@ -676,6 +750,9 @@ class Bundle:
             d, rr = num(r["D"]), num(r["R"])
             m = margin_of(d, rr)
             r["margin"] = "NA" if m is None else f"{m:.2f}"
+            if backtest:
+                certified = num(r.get("certified_margin"))
+                r["signed_error"] = str(signed_error(d - rr, certified)) if d is not None and rr is not None and certified is not None else "NA"
             fe, rd = parse_date(r["field_end"]), parse_date(r["release_date"])
             r["window"] = window_of(fe, rd, self.as_of_date, backtest=backtest)
             if is_na(r.get("exclusion_reason")):
@@ -795,11 +872,19 @@ class Bundle:
         no_cutoff_margin = None
         if stage2c_passed and in_avg:
             weighted_margin = r4(sum(e["weight"] * e["margin_num"] for e in in_avg) / sum(e["weight"] for e in in_avg))
-            # no-cutoff sensitivity: every principal BOTH estimate in the stratum with a computable weight
-            pool = [e for e in rows if e["flag_principal"] and e["primary_verified"] == "YES" and e["window"] == "BOTH" and e["weight"] is not None and e["margin_num"] is not None and e["sponsor_class"] != "UNKNOWN"
-                    and (e["round"], e["denominator_class"], e["pop"]) == (averaging["round"], averaging["denominator_class"], averaging["pop"])]
+        # A sensitivity must remain available when every eligible weight is below
+        # the cutoff. Prefer the retained stratum, otherwise choose by the same
+        # deterministic rule from the otherwise eligible, positive-weight pool.
+        candidates = [e for e in rows if e["flag_principal"] and e["primary_verified"] == "YES"
+                      and e["window"] == "BOTH" and e["round"] in ("NA", "FIRST", "FINAL")
+                      and e["weight"] is not None and e["weight"] > 0
+                      and e["margin_num"] is not None and e["sponsor_class"] != "UNKNOWN"]
+        sensitivity_stratum = averaging or choose_averaging_stratum(candidates, race)[0]
+        if stage2c_passed and sensitivity_stratum:
+            pool = [e for e in candidates if all(e[k] == sensitivity_stratum[k] for k in ("round", "denominator_class", "pop"))]
             if pool:
                 no_cutoff_margin = r4(sum(e["weight"] * e["margin_num"] for e in pool) / sum(e["weight"] for e in pool))
+        field_ends = sorted(e["field_end"] for e in in_avg)
         preliminary = r4(mean([e["margin_num"] for e in in_avg])) if in_avg else None
         excluded_cutoff = [e["estimate_id"] for e in rows if e["flag_principal"] and e["window"] == "BOTH" and not e["flag_weighted_average"]]
         per_race_contrast = None
@@ -826,6 +911,11 @@ class Bundle:
             "weighted_margin_status": "computed (heuristic; track-record stand-in)" if weighted_margin is not None else "not yet computed (Stage 2c not passed)" if in_avg else "NA (no estimate in the averaging stratum)",
             "preliminary_unweighted_margin": preliminary,
             "no_cutoff_margin": no_cutoff_margin,
+            "no_cutoff_stratum": sensitivity_stratum,
+            "no_cutoff_stratum_note": "retained stratum" if averaging else "chosen from otherwise eligible positive-weight polls; none retained at the cutoff" if candidates else "no otherwise eligible positive-weight polls",
+            "latest_contributing_field_end": field_ends[-1] if field_ends else None,
+            "oldest_contributing_field_end": field_ends[0] if field_ends else None,
+            "newest_poll_age_days": (self.as_of_date - parse_date(field_ends[-1])).days if field_ends and self.as_of_date else None,
             "retained_count": len(in_avg),
             "excluded_count": len(excluded_cutoff),
             "excluded_estimate_ids": sorted(excluded_cutoff),
@@ -1007,7 +1097,7 @@ class Bundle:
 
     # ----- Section 2a backtest
     def backtest_block(self, stage2a_passed: bool) -> dict | None:
-        if not self.backtest:
+        if not stage2a_passed or not self.backtest:
             return None
         ests = self.estimates(self.backtest, backtest=True)
         principal = [e for e in ests if e["flag_principal"] and e["window"] == "BACKTEST" and e["primary_verified"] == "YES" and e["round"] in ("NA", "FIRST", "FINAL")]
@@ -1025,7 +1115,7 @@ class Bundle:
                 contrast = r4(groups["YES"]["mean_signed_error"] - groups["NO"]["mean_signed_error"])
             # one final poll per firm
             last = {}
-            for e in sorted(rows, key=lambda e: (e["fe"], e["release_date"])):
+            for e in sorted(rows, key=lambda e: (e["fe"], e["release_date"], e["estimate_id"])):
                 last[e["pollster_id"]] = e
             lg = {}
             for g in RECALL_ESTIMATE:
@@ -1044,10 +1134,30 @@ class Bundle:
             "states_with_both_groups": [r for r, b in by_state.items() if b["yes_minus_no"] is not None],
             "one_final_poll_per_firm_sensitivity": r4(mean(lvals)) if lvals else None,
             "sign_convention": "signed_error = poll margin minus certified margin; negative = miss toward Republicans",
-            "framing": "two-election descriptive check, not causal identification",
+            "framing": "two-election descriptive check on a primary-verified subset, not causal identification or held-out validation of the weighting heuristic. The January 2026 ratings incorporate 2025 results and are not used to score a supposedly independent 2025 prediction",
+            "missing_contrast_reason": "Each state needs a verified YES and NO survey. Ambiguous past-vote language, modeled or imputed vote choice, and recall questions without explicit weighting evidence remain UNVERIFIED.",
         }
 
     # ----- derived.json
+    def turnout_block(self):
+        if self.run_state.get("stage_outcomes", {}).get("stage2b") != "PASSED":
+            return None
+        source = self.run_state.get("turnout_source") or {}
+        repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(repo, source.get("path", ""))
+        if not source.get("sha256") or not os.path.isfile(path) or sha256_file(path) != source["sha256"]:
+            raise ValidationError("Stage 2b aggregate source is missing or its hash changed")
+        with open(path, encoding="utf-8") as stream:
+            data = json.load(stream)
+        for year in ("2026", "2022"):
+            summary = data["years"][year]
+            if sum(m["accepted_ballots"] for m in summary["methods"].values()) != summary["accepted_unique"]:
+                raise ValidationError("NC aggregate method counts do not reconcile")
+            for method in summary["methods"].values():
+                if sum(p["accepted_ballots"] for p in method["parties"].values()) != method["accepted_ballots"]:
+                    raise ValidationError("NC aggregate party counts do not reconcile")
+        return data
+
     def compute(self, calc_version: str, release_id: str | None) -> dict:
         ss = (self.run_state or {}).get("stage_outcomes", {})
         stage2c = ss.get("stage2c") == "PASSED"
@@ -1061,6 +1171,8 @@ class Bundle:
             "calc_version": calc_version,
             "release_id": release_id,
             "stage2c_passed": stage2c,
+            "stage_status": ss,
+            "rating_source": self.run_state.get("rating_source"),
             "scope": {"senate_races": SENATE_RACES, "governor_races": GOVERNOR_RACES, "deferred": DEFERRED_RACES, "rcv_races": sorted(RCV_RACES)},
             "weighting_spec": {
                 "formula": "weight = f_track * f_recency * f_sample * f_pop * f_sponsor * f_disclosure (heuristic, not an inverse variance)",
@@ -1085,6 +1197,7 @@ class Bundle:
             "section9_heat": heat,
             "section10_coverage": sorted(({k: c[k] for k in COVERAGE_HEADER} for c in self.coverage), key=lambda c: (c["expected_edition"], c["race"])),
             "section2a_backtest": self.backtest_block(stage2a),
+            "section2b_turnout": self.turnout_block(),
             "counts": self.counts(ests),
         }
         return derived

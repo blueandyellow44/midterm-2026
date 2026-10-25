@@ -1,0 +1,153 @@
+{
+  "source_page": "https://www.ncsbe.gov/results-data/absentee-and-provisional-data",
+  "layout_url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/layout_absentee.txt",
+  "layout_sha256": "3b2bb7adc590780c43fa8e9d32a1dc137a007c20faf4cd92536403a27c24029c",
+  "retrieved_at": "2026-10-25T14:37:16-07:00",
+  "note": "Party registration, not vote choice. Non-contemporaneous comparison of the 2026 current file against the final 2022 file; not validation or a prediction. Excludes explicitly counted ambiguous identities.",
+  "years": {
+    "2026": {
+      "election_date": "11/03/2026",
+      "source_rows": 1548224,
+      "not_accepted_rows": 9706,
+      "duplicate_accepted_rows_removed": 6,
+      "accepted_unique": 1538510,
+      "conflicting_accepted_identities_excluded": 2,
+      "latest_accepted_return_date": "2026-10-24",
+      "methods": {
+        "EARLY_IN_PERSON": {
+          "accepted_ballots": 1484823,
+          "parties": {
+            "DEM": {
+              "accepted_ballots": 615325,
+              "share_pct": 41.441
+            },
+            "GRE": {
+              "accepted_ballots": 514,
+              "share_pct": 0.0346
+            },
+            "LIB": {
+              "accepted_ballots": 3079,
+              "share_pct": 0.2074
+            },
+            "REP": {
+              "accepted_ballots": 357149,
+              "share_pct": 24.0533
+            },
+            "UNA": {
+              "accepted_ballots": 508756,
+              "share_pct": 34.2637
+            }
+          }
+        },
+        "RETURNED_MAIL": {
+          "accepted_ballots": 53687,
+          "parties": {
+            "DEM": {
+              "accepted_ballots": 22427,
+              "share_pct": 41.7736
+            },
+            "GRE": {
+              "accepted_ballots": 22,
+              "share_pct": 0.041
+            },
+            "LIB": {
+              "accepted_ballots": 123,
+              "share_pct": 0.2291
+            },
+            "REP": {
+              "accepted_ballots": 9397,
+              "share_pct": 17.5033
+            },
+            "UNA": {
+              "accepted_ballots": 21718,
+              "share_pct": 40.453
+            }
+          }
+        }
+      },
+      "source_url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_20261103.zip",
+      "file_sha256": "7d8b5f6bedaa2ad9705f83a5106ab5f2536b7fe6812581dd60c2f1c41420a648",
+      "source_last_modified": "2026-10-25T09:22:59Z"
+    },
+    "2022": {
+      "election_date": "11/08/2022",
+      "source_rows": 2275853,
+      "not_accepted_rows": 77883,
+      "duplicate_accepted_rows_removed": 5,
+      "accepted_unique": 2197962,
+      "conflicting_accepted_identities_excluded": 3,
+      "latest_accepted_return_date": "2022-11-17",
+      "methods": {
+        "EARLY_IN_PERSON": {
+          "accepted_ballots": 2010882,
+          "parties": {
+            "DEM": {
+              "accepted_ballots": 757262,
+              "share_pct": 37.6582
+            },
+            "GRE": {
+              "accepted_ballots": 129,
+              "share_pct": 0.0064
+            },
+            "LIB": {
+              "accepted_ballots": 5377,
+              "share_pct": 0.2674
+            },
+            "REP": {
+              "accepted_ballots": 647297,
+              "share_pct": 32.1897
+            },
+            "UNA": {
+              "accepted_ballots": 600817,
+              "share_pct": 29.8783
+            }
+          }
+        },
+        "RETURNED_MAIL": {
+          "accepted_ballots": 187080,
+          "parties": {
+            "DEM": {
+              "accepted_ballots": 82664,
+              "share_pct": 44.1864
+            },
+            "GRE": {
+              "accepted_ballots": 11,
+              "share_pct": 0.0059
+            },
+            "LIB": {
+              "accepted_ballots": 616,
+              "share_pct": 0.3293
+            },
+            "REP": {
+              "accepted_ballots": 34959,
+              "share_pct": 18.6867
+            },
+            "UNA": {
+              "accepted_ballots": 68830,
+              "share_pct": 36.7917
+            }
+          }
+        }
+      },
+      "source_url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2022_11_08/absentee_20221108.zip",
+      "file_sha256": "c6e85dde21c953d0a757c83a0191865516b020f1fd156e1a1f50c14cf7d2d126",
+      "source_last_modified": "2022-11-19T10:33:42Z"
+    }
+  },
+  "identity_source": "https://www.ncsbe.gov/voting/your-voter-record",
+  "deduplication": "One accepted record per election and statewide NCID; missing NCID falls back to county plus voter_reg_num. Identical accepted repeats count once. Conflicting accepted method or party for the same identity is excluded from every method total. This source ambiguity is not evidence about voter conduct.",
+  "poll_comparison": {
+    "status": "NOT_COMPARABLE",
+    "harper_source": "https://www.carolinajournal.com/wp-content/uploads/2026/10/H25035-CJ-NC-Oct26-Toplines.pdf",
+    "harper_locator": "p.8 Q26 asks voter registration; n=600 statewide likely voters, not an accepted-early-ballot subgroup. It cannot be compared as though both represent the same population.",
+    "harper_registration_pct": {
+      "DEM": 33.4,
+      "REP": 32.7,
+      "INDEPENDENT": 28.5,
+      "OTHER": 3.4,
+      "UNSURE": 1.9
+    },
+    "surveyusa_source": "https://results.surveyusa.com/client/PollReport.aspx?g=0a876c84-9a95-4995-9218-82b1015f5d77",
+    "surveyusa_locator": "Original saved PollPrint PDF for #28047: crosstabs label Party Affiliation; comparable registration-by-accepted-vote-method composition not established. Party identification is not substituted."
+  }
+}
