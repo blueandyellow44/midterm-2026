@@ -1,0 +1,321 @@
+{
+  "started_at": "2026-10-25T21:15:05.577Z",
+  "routes": [
+    {
+      "hydrated": "true",
+      "path": "/excluded/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/grading/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/method/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ak-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ga-gov/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ga-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ia-gov/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/ia-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/me-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/mi-gov/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/mi-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/nc-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/oh-gov/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/oh-sen-special/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/tx-sen/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    },
+    {
+      "hydrated": "true",
+      "path": "/race/wi-gov/",
+      "release": "20261025T121938-0700-stage1b-73514ef-a4cb7de3a4",
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440
+    }
+  ],
+  "layouts": [
+    {
+      "dark": false,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "expectedView": "desktop",
+      "expectedDark": false
+    },
+    {
+      "dark": false,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440,
+      "expectedView": "mobile",
+      "expectedDark": false
+    },
+    {
+      "dark": true,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 375,
+      "view": "desktop",
+      "width": 375,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 375,
+      "view": "mobile",
+      "width": 375,
+      "expectedView": "mobile",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 768,
+      "view": "desktop",
+      "width": 768,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 768,
+      "view": "mobile",
+      "width": 768,
+      "expectedView": "mobile",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 1280,
+      "view": "desktop",
+      "width": 1280,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 1280,
+      "view": "mobile",
+      "width": 1280,
+      "expectedView": "mobile",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "The 2026 midterms,race by race."
+      ],
+      "scroll": 1440,
+      "view": "desktop",
+      "width": 1440,
+      "expectedView": "desktop",
+      "expectedDark": true
+    },
+    {
+      "dark": true,
+      "headings": [
+        "2026 midterms.Race by race."
+      ],
+      "scroll": 1440,
+      "view": "mobile",
+      "width": 1440,
+      "expectedView": "mobile",
+      "expectedDark": true
+    }
+  ],
+  "console": [],
+  "note": "After an observed ERR_CONNECTION_CLOSED, ordinary Reload restored the site; curl remained HTTP 200. View assertions wait for selected DOM state."
+}
