@@ -128,7 +128,9 @@ def main() -> int:
     a = ap.parse_args()
     with open(os.path.join(a.release_dir, "derived.json")) as fh:
         d = json.load(fh)
-    template = a.note + ".template.md"
+    # Keep the original render source as a preserved snapshot, not an orphan
+    # second method note beside the canonical report.
+    template = os.path.join(os.path.dirname(a.note), "midterm-2026", ".backups", "method-template-20261025.txt")
     if not os.path.exists(template):
         shutil.copyfile(a.note, template)
     with open(template, encoding="utf-8") as fh:
