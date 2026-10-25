@@ -31,3 +31,8 @@ Max questioned green’s dominance. Explained it came from the weather-station c
 ## Polling-only core clarification, 2026-10-25
 
 A user-authorized side-chat decision was conveyed by Codex chat 01a174d6-18d1-7c12-b96d-0e9cd5fdec7f: one clear polling estimate per race, number and age of contributing polls, documented recency/sample/method/track-record weighting; rhetoric optional and separate, spending outside the core product. Attempted read_thread to inspect the originating turns; the ephemeral chat cannot expose turns through that API. This matches the current main-chat simplification and is incorporated as a scope clarification, without expanding the model. Dates shown on cards come from sorting the calculator-selected contributing rows; the app does not calculate a new statistic.
+
+
+## Recall comparison on public cards, 2026-10-25
+
+Max explicitly authorized bringing the recall-weighting comparison onto the main cards. Preserve the headline and palette. A full-width, line-separated section pairs “Uses 2024 vote” and “Does not use it,” with sealed pollster-balanced group means, candidate leads, poll and firm counts, a plain-language directional gap and visible timing/pollster limits. Neutral method labels; candidate blue/red encodes only the candidate lead. A native disclosure contains individual field dates and primary sources, population/ballot scope, race-wide unknown-method count, equal-pollster explanation and full confounding text. Only supported comparisons render; never add empty panels to the other eight races. Desktop and mobile keep their existing separate compositions. No estimator or release change.

@@ -323,3 +323,33 @@ button:active {transform:translateY(1px);}
 .lead-number-r {color:var(--party-r);}
 main a,footer a {min-height:44px;}
 main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
+
+
+/* Recall-method comparison stays secondary to the race's polling lead. */
+.recall-comparison {padding:22px 26px 0;border-top:1px solid var(--bezel-edge);}
+.recall-comparison h4 {font-size:15px;line-height:1.4;font-weight:700;letter-spacing:-.02em;}
+.recall-intro,.recall-limit {font-size:12px;line-height:1.65;color:var(--muted);margin-top:8px;}
+.recall-groups {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:20px 0 16px;}
+.recall-group {min-width:0;}
+.recall-group+ .recall-group {padding-left:20px;border-left:1px solid var(--line);}
+.recall-group dt {font-size:12px;font-weight:650;min-height:20px;}
+.recall-group-margin {font:400 26px/1.25 var(--font-mono);margin-top:8px;}
+.recall-group-margin small {font:400 11px/1.4 var(--font-sans);white-space:nowrap;}
+.recall-group-candidate {font-size:12px;line-height:1.5;margin-top:4px;}
+.recall-group-count {font-size:11px;color:var(--muted);margin-top:8px;}
+.recall-gap {font-size:13px;line-height:1.6;}
+.recall-gap strong {font-weight:650;}
+.recall-limit {margin-top:10px;}
+.recall-sources {margin-top:10px;}
+.recall-sources>summary {min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;font-weight:600;color:var(--accent);}
+.recall-sources>summary>span {font:400 18px var(--font-mono);}
+.recall-sources[open]>summary>span {transform:rotate(45deg);}
+.recall-sources>p {font-size:12px;line-height:1.7;color:var(--muted);margin:12px 0;}
+.recall-source-group {margin:20px 0;}
+.recall-source-group h5 {font-size:12px;font-weight:650;}
+.recall-source-group li {display:grid;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;}
+.recall-source-group li a {display:flex;align-items:center;min-height:44px;gap:8px;}
+.recall-source-group li>span {color:var(--muted);font-size:11px;}
+.voter-mobile-race .recall-comparison {padding:20px 0 0;margin-top:20px;}
+@media(max-width:767px){.recall-comparison {padding-inline:22px;}.recall-groups {gap:12px;}.recall-group+ .recall-group {padding-left:12px;}.recall-group-margin {font-size:24px;}}
+.voter-desktop-grid {align-items:start;}
