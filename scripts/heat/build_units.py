@@ -127,7 +127,7 @@ def main() -> int:
     ap.add_argument("--heat-dir", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--races")
-    ap.add_argument("--max-answers", type=int, default=3)
+    ap.add_argument("--max-answers", type=int, default=0, help="0 inventories every answer; scoring remains bounded by the spend ceiling")
     ap.add_argument("--candidates", required=True, help="JSON file {race: {D: name, R: name}}")
     a = ap.parse_args()
     with open(a.candidates) as f:
@@ -167,11 +167,13 @@ def main() -> int:
                 missing_rows.append({"race": race, "candidate": cands[race][slot], "slot": slot, "source_type": "AD", "unit_id": "ad-none", "unit_label": "ads", "source_url": "NA",
                                      "caption_source": "NA", "status": "MISSING_TRANSCRIPT", "notes": (meta.get("gaps_" + slot) or "no official campaign channel or no ads located"), "sentences": []})
     ordered = []
-    for k in range(1, a.max_answers + 1):
+    available = max((len(pr["debate"].get(slot, [])) for pr in per_race.values() for slot in ("D", "R")), default=0)
+    limit = a.max_answers if a.max_answers > 0 else available
+    for k in range(1, max(2, limit) + 1):
         for race in races:
             for slot in ("D", "R"):
                 du = per_race[race]["debate"].get(slot, [])
-                if len(du) >= k:
+                if k <= limit and len(du) >= k:
                     ordered.append(du[k - 1])
         if k <= 2:
             for race in races:

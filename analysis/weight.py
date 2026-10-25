@@ -32,6 +32,7 @@ import math
 import os
 import shutil
 import sys
+import tempfile
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 
@@ -799,6 +800,10 @@ class Bundle:
     # ----- Section 5 contrasts
     def contrasts(self, ests: list[dict], race_blocks: dict) -> dict:
         rc = [e for e in ests if e["flag_recall_contrast"]]
+        # A survey's FIRST and FINAL estimates are alternatives for this
+        # comparison, not two independent observations in the pooled result.
+        rc = [e for race in sorted({e["race"] for e in rc})
+              for e in apply_round_precedence([e for e in rc if e["race"] == race], race)[0]]
         unverified = [e for e in ests if e["flag_principal"] and e["window"] == "BOTH" and e["recall_weighted"] == "UNVERIFIED"]
 
         def pooled(pool, label, note):
@@ -845,7 +850,8 @@ class Bundle:
                 "status": "computed" if vals else "NA: no race has a contrast stratum with both groups",
                 "races_included": sorted(r for r, v in per_race.items() if v["value"] is not None),
                 "per_race": per_race,
-                "independent_waves": len({e["sample_id"] for e in pool if e["race"] in [r for r, v in per_race.items() if v["value"] is not None]}),
+                "independent_waves": len({e["sample_id"] for e in pool if e["estimate_id"] in {
+                    eid for v in per_race.values() if v["value"] is not None for eid in v["included_estimate_ids"]}}),
             }
 
         c1 = pooled(rc, "(i) pooled unweighted YES minus NO margin difference across all strata", "mixed-population, composition-sensitive description")
@@ -862,8 +868,11 @@ class Bundle:
         per_race_named = {}
         for race in PER_RACE_CONTRAST_RACES:
             blk = race_blocks.get(race)
-            if blk and blk["per_race_contrast"]:
-                per_race_named[race] = blk["per_race_contrast"] | {"stratum": blk["contrast_stratum"]}
+            balanced = c2["per_race"].get(race, {})
+            if balanced.get("value") is not None:
+                groups = balanced["groups"]
+                per_race_named[race] = {"yes_mean": groups["YES"]["mean"], "no_mean": groups["NO"]["mean"],
+                    "yes_minus_no": balanced["value"], "n_yes": groups["YES"]["estimates"], "n_no": groups["NO"]["estimates"], "stratum": balanced["stratum"]}
             else:
                 per_race_named[race] = {"value": None, "reason": (blk or {}).get("contrast_stratum_reason") or "race absent"}
         return {
@@ -1097,7 +1106,9 @@ class Bundle:
         rel_dir = os.path.join(self.dir, "releases", release_id)
         if os.path.exists(rel_dir):
             raise ValidationError(f"release {release_id} already exists; a release is written once and never modified")
-        os.makedirs(rel_dir)
+        final_dir = rel_dir
+        os.makedirs(os.path.dirname(final_dir), exist_ok=True)
+        rel_dir = tempfile.mkdtemp(prefix=".staging-", dir=os.path.dirname(final_dir))
         derived = self.compute(calc_version, release_id)
         derived["counts"]["races_with_averaging_stratum"] = sorted(r for r, b in derived["races"].items() if b["averaging_stratum"])
         derived["counts"]["races_with_contrast_stratum"] = sorted(r for r, b in derived["races"].items() if b["contrast_stratum"])
@@ -1122,8 +1133,8 @@ class Bundle:
             p = os.path.join(rel_dir, name)
             rows = None
             if name.endswith(".csv"):
-                with open(p, "r", encoding="utf-8") as f:
-                    rows = max(0, sum(1 for _ in f) - 1)
+                with open(p, "r", encoding="utf-8", newline="") as f:
+                    rows = max(0, sum(1 for _ in csv.reader(f)) - 1)
             files.append({"path": name, "sha256": sha256_file(p), "bytes": os.path.getsize(p), "rows": rows})
         rating = None
         rated = [p for p in self.pollsters if not is_na(p["rating_source"])]
@@ -1156,7 +1167,8 @@ class Bundle:
         with open(os.path.join(rel_dir, "manifest.json"), "w", encoding="utf-8") as f:
             json.dump(manifest, f, indent=2, sort_keys=True, ensure_ascii=False)
             f.write("\n")
-        return rel_dir
+        os.rename(rel_dir, final_dir)
+        return final_dir
 
 
 # ----------------------------------------------------------------------------- self-test

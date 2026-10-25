@@ -113,6 +113,9 @@ def reserve_upper_bound(sentences: list[str]) -> float:
     Score calls have 600 output tokens; verdict calls have 1,200 each. The
     configured prices are $1/M input and $5/M output, with no client retries.
     """
+    sentences = [s for s in (sentences or []) if isinstance(s, str) and s.strip()]
+    if not sentences:
+        return 0.0
     lines = 0.0
     for i, sentence in enumerate(sentences):
         context = sentences[max(0, i - weight_ctx()):i]
@@ -182,6 +185,15 @@ def main() -> int:
         key = weight.cache_key(unit_sha, a.scorer_commit, a.prompt_sha256, a.model, config_sha)
         base.update({"unit_sha256": unit_sha, "scorer_commit": a.scorer_commit, "prompt_sha256": a.prompt_sha256, "model": a.model, "config_sha256": config_sha})
         if prior and prior["status"] == "SCORED" and all(prior.get(k) == base[k] for k in ("unit_sha256", "scorer_commit", "prompt_sha256", "model", "config_sha256")):
+            prior = dict(prior)
+            prior_cache = os.path.join(cache_dir, f"{key}.json")
+            if os.path.exists(prior_cache):
+                with open(prior_cache, encoding="utf-8") as f:
+                    recorded = json.load(f)
+                prior["cost_usd"] = f"{float(recorded.get('cost_usd') or 0):.6f}"
+                if any(l.get("status") == "dropped" for l in recorded.get("lines", [])):
+                    prior.update(status="FAILED", ph_score="NA", ph_label="NA")
+                    prior["notes"] += "; partial unit excluded: at least one sentence failed scoring"
             rows_out.append(prior)
             continue
         cache_file = os.path.join(cache_dir, f"{key}.json")
@@ -194,7 +206,9 @@ def main() -> int:
                 result = json.load(f)
             ledger["heat_cache_hits"] += 1
             print(f"cache hit  {heat_id}")
-            cost_here = 0.0
+            # Preserve the historical charge on the row, without charging the
+            # operational ledger again for a cached result.
+            cost_here = float(result.get("cost_usd") or 0)
         else:
             reserve = reserve_upper_bound(sentences)
             allowed = ledger["heat_spent_usd"] + ledger["heat_reserved_usd"] + reserve <= ledger["heat_ceiling_usd"]
@@ -245,7 +259,10 @@ def main() -> int:
             print(f"scored     {heat_id}: {len(sentences)} lines, ${cost_here:.4f}, {time.time() - t0:.0f}s")
         verdict = (result.get("report") or {}).get("verdict") or {}
         scored_lines = [l for l in result.get("lines", []) if l.get("status") == "scored" and isinstance(l.get("score"), (int, float))]
-        if verdict.get("score") is None:
+        if any(l.get("status") == "dropped" for l in result.get("lines", [])):
+            base["status"] = "FAILED"
+            base["notes"] = "partial unit excluded: at least one sentence failed scoring; cached charges retained"
+        elif verdict.get("score") is None:
             base["status"] = "FAILED"
             base["notes"] = "no whole-unit verdict returned" + (f": {(result.get('report') or {}).get('error')}" if result.get("report") else "")
         else:
@@ -258,10 +275,13 @@ def main() -> int:
                 base["hottest_line"] = (hot.get("text") or hot["heard"])[:400]
                 base["calmest_line"] = (calm.get("text") or calm["heard"])[:400]
             base["notes"] = (u.get("notes", "") + f" lines={len(result.get('lines', []))} scored={len(scored_lines)} style={(result.get('report') or {}).get('style_name')}").strip()
-        base["cost_usd"] = f"{cost_here:.4f}"
+        base["cost_usd"] = f"{cost_here:.6f}"
         base["scored_at"] = result.get("scored_at", now_iso())
         rows_out.append(base)
 
+    if a.dry_run:
+        print("dry run complete: no scores, CSVs or budget records written")
+        return 0
     # keep rows for heat_ids not in this units file (other stages), replace the rest
     ids_now = {r["heat_id"] for r in rows_out}
     kept = [h for h in existing if h["heat_id"] not in ids_now]
