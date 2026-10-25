@@ -177,12 +177,12 @@ def main() -> int:
     exclusions: dict[tuple, dict] = {}
     pollster_names: dict[str, str] = {}
 
-    def method_for(pid: str, prec: dict | None, field_end: str, sole: bool) -> tuple[str, str, str]:
+    def method_for(pid: str, prec: dict | None, field_end: str, sole: bool, race: str = "") -> tuple[str, str, str]:
         """Return (method_id, recall_weighted, disclosure_status), creating the method record if needed."""
         applicability = enum((prec or {}).get("applicability"), weight.APPLICABILITY, "CYCLE_BOILERPLATE")
         if sole and (prec or {}).get("applicability") is None:
             applicability = "SURVEY"
-        mid = f"{pid}-c26" if applicability == "CYCLE_BOILERPLATE" else f"{pid}-s-{field_end}"
+        mid = f"{pid}-c26" if applicability == "CYCLE_BOILERPLATE" else f"{pid}-s-{race}-{field_end}"
         recall = enum((prec or {}).get("recall_weighted"), weight.RECALL_METHOD, "UNVERIFIED")
         quote = nz((prec or {}).get("weighting_quote"))
         if recall in ("YES", "NO") and quote == "NA":
@@ -230,6 +230,11 @@ def main() -> int:
             pid = pollster_slug(p.get("pollster_name"), p.get("members_or_partners"))
             pollster_names.setdefault(pid, p.get("pollster_name") or pid)
             fs, fe, rd = p.get("field_start"), p.get("field_end"), p.get("release_date")
+            if not rd:
+                key = f"{pid}|{race}|{fs}|{fe}"
+                rd = overrides.get("release_dates", {}).get(key)
+                if rd:
+                    p["notes"] = ((p.get("notes") or "") + f" [release_date {rd} is the earliest documented public date, not the firm's own stamp]").strip()
             if not (fs and fe and rd):
                 report.append(f"{race} {pid}: missing dates {fs} {fe} {rd} -> row skipped")
                 continue
@@ -249,9 +254,15 @@ def main() -> int:
                 report.append(f"{race} {pid} {fe}: pop={p.get('pop')!r} denominator={p.get('denominator_class')!r} unusable -> row skipped")
                 continue
             eid = f"{poll_id}-{pop}-{denom}-{rnd}"
+            if any(r["estimate_id"] == eid for r in poll_rows):
+                k = 2
+                while any(r["estimate_id"] == f"{eid}-v{k}" for r in poll_rows):
+                    k += 1
+                report.append(f"{eid}: a second variant with the same pop/denominator/round in one release ({(p.get('notes') or '')[:80]}) -> stored as {eid}-v{k}; the first stays principal")
+                eid = f"{eid}-v{k}"
             prec = prec_by_pid.get(pid)
             sole = counts_by_pid[pid] == 1 and len(counts_by_pid) == 1
-            mid, recall, disclosure = method_for(pid, prec, fe, sole)
+            mid, recall, disclosure = method_for(pid, prec, fe, sole, race)
             quarantined = pid in QUARANTINE_FIRMS or ("POLLSTER", pid) in exclusions
             if pid in QUARANTINE_FIRMS and ("POLLSTER", pid) not in exclusions:
                 exclusions[("POLLSTER", pid)] = {"entity_type": "POLLSTER", "entity_id": pid, "reason": QUARANTINE_FIRMS[pid]["reason"], "evidence_url": "NA",
