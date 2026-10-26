@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { validateBundle, readCsv } from '../scripts/bundle.mjs';
+import { toPublicNote } from './public-note';
 export const bundle=validateBundle(join(process.cwd(),'data'));
 export const { manifest, derived, manifestHash }=bundle;
 export const raceIds: string[]=[...manifest.scope.senate_races,...manifest.scope.governor_races];
@@ -17,7 +18,7 @@ export function raceData(id:string) {
 }
 export const races=raceIds.map(raceData);
 export const publicEstimates=(id:string)=>derived.estimates.filter((e:{race:string;quarantined:boolean})=>e.race===id && !e.quarantined);
-export const method=readFileSync(join(process.cwd(),'data/midterm-2026-poll-weighting.md'),'utf8').replace(/^---[\s\S]*?---\s*/,'');
+export const method=toPublicNote(readFileSync(join(process.cwd(),'data/midterm-2026-poll-weighting.md'),'utf8'));
 export const excluded=readCsv(readFileSync(join(process.cwd(),'data/exclusions.csv'),'utf8'));
 export const quarantine=derived.estimates.filter((e:{quarantined:boolean})=>e.quarantined);
 export const pollsterNames: Record<string,string>=Object.fromEntries(readCsv(readFileSync(join(process.cwd(),'data/pollsters.csv'),'utf8')).map((p:Record<string,string>)=>[p.pollster_id,p.pollster_name||p.pollster_id]));
