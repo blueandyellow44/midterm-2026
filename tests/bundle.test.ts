@@ -31,7 +31,7 @@ describe('signal-adjusted reading boundary',()=>{
   const cases:[(d:any)=>void,RegExp][]=[
    [d=>{d.signals.per_race['2026-TX-SEN'].adjusted_margin+=1;},/arithmetic/],
    [d=>{d.signals.per_race['2026-TX-SEN'].polling_margin+=1;},/different polling number/],
-   [d=>{const s=d.signals.per_race['2026-WI-GOV'];s.delta_spending=1;s.delta_total=1;s.adjusted_margin=s.polling_margin+1;},/No-signal race/],
+   [d=>{const s=d.signals.per_race['2026-TX-SEN'];s.alignment='NO_SIGNAL';s.delta_spending=1;s.delta_rhetoric=0;s.delta_total=1;s.adjusted_margin=s.polling_margin+1;},/No-signal race/],
    [d=>{d.signals.per_race['2026-TX-SEN'].alignment='VIBES';},/alignment/],
    [d=>{d.signals.per_race['2026-XX-SEN']=d.signals.per_race['2026-TX-SEN'];},/unknown race/],
   ];
