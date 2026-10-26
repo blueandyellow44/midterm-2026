@@ -37,7 +37,7 @@ it('names the leader correctly when the adjustment moves toward the Republican',
  const html=render(base({alignment:'SPENDING_ONLY',weight_rhetoric:0,delta_spending:-1.5,delta_rhetoric:0,delta_total:-1.5,adjusted_margin:-0.5,spending:{coverage:'FEC_SCHEDULE_E',d_fav_recent:1e6,r_fav_recent:1e6,excess_z:-1.3}}));
  expect(html).toContain('Arr');
  expect(html).toContain('1.5 points toward Arr');
- expect(html).toContain('Republicans feeling safe');
+ expect(html).toContain('lead being safer than the polls show');
 });
 
 it('renders the sealed release for every race without NaN or undefined',()=>{

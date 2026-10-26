@@ -113,7 +113,7 @@ F_SPONSOR = {"INTERNAL": 0.3, "PARTISAN_PUBLIC": 0.6, "NONPARTISAN": 1.0, "BIPAR
 F_DISCLOSURE_UNVERIFIED = 0.7
 WEIGHT_CUTOFF = 0.05
 TIE_THRESHOLD = 0.1
-HEAT_BUDGET_USD = 3.00
+HEAT_BUDGET_USD = 10.00  # raised from 3.00 on Max's word, 2026-10-26 ("lift spending cap")
 HEAT_RESERVE_MULTIPLIER = 1.5
 STAGE3_SIGMA = 5.0          # a heuristic standard deviation; not an estimate, not a flip threshold
 STAGE3_CLAMP = (0.03, 0.97)
@@ -289,7 +289,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.0"
+SIGNAL_METHOD_VERSION = "1.1"  # 1.1: missing money points to the poll leader (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (1.5, 1.0)   # points against the hotter side per point of LITMUS heat gap
 SIGNAL_RHETORIC_CAP = 3.0         # |rhetoric contribution| ceiling, points
@@ -338,6 +338,17 @@ def underdog_sign(pres_d_minus_r: float | None) -> int:
     return 1 if pres_d_minus_r < 0 else -1
 
 
+def spend_direction(z: float, underdog: int, poll_margin: float) -> int:
+    """Which side extra or missing money points to, +1 for D. Extra money (z > 0) reads as the fundamentals underdog doing
+    better than polls show, whether the favorite is defending or the underdog pressing. Missing money (z < 0) reads as the
+    race being settled for the current poll leader: parties pull out of races they think are decided (Max, 2026-10-26)."""
+    if z > 0:
+        return underdog
+    if poll_margin == 0:
+        return 0
+    return 1 if poll_margin > 0 else -1
+
+
 def spending_history_estimate(rows: list[dict]) -> dict:
     """Slope of the year-demeaned polling miss toward the fundamentals underdog on excess-spending z (2020 and 2022 Senate)."""
     clean = []
@@ -355,8 +366,8 @@ def spending_history_estimate(rows: list[dict]) -> dict:
     for c in clean:
         by_year[c[0]].append(c[2] - c[1])
     year_mean = {k: sum(v) / len(v) for k, v in by_year.items()}
-    toward = [((c[2] - c[1]) - year_mean[c[0]]) * c[4] for c in clean]
-    fit = _ols(z, toward)
+    toward = [((c[2] - c[1]) - year_mean[c[0]]) * spend_direction(z[i], c[4], c[1]) for i, c in enumerate(clean)]
+    fit = _ols([abs(v) for v in z], toward)
     if fit is None:
         return {"status": "undefined slope", "n": len(clean), "slope": None, "se": None}
     return {"status": "estimated", "n": len(clean), "years": sorted(by_year), "slope": r4(fit[1]), "se": r4(fit[2])}
@@ -1374,7 +1385,8 @@ class Bundle:
             sp = spend.get(race) or {}
             u = underdog_sign(fund.get(race))
             zr = zmap.get(race)
-            spend_signal = r4(zr * u) if (zr is not None and u) else None
+            direction = spend_direction(zr, u, polling[race]) if (zr is not None and polling[race] is not None) else 0
+            spend_signal = r4(abs(zr) * direction) if direction else None
             heat = rhetoric_gap(self.heat, race)
             out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma)
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
@@ -1799,9 +1811,9 @@ def self_test(bundle_dir_for_tmp: str) -> int:
     check("heat: ad gap undefined when one side has no SCORED ad; ads never pooled with debates", hb["ad_gap"]["gap"] is None and hb["candidates"]["D"]["DEBATE"]["mean"] == 3.0)
     check("heat: validation passes", b.validate(), "; ".join(b.problems))
     # budget reservation arithmetic
-    allowed, est = budget_check(spent=2.0, reserved=0.5, units=10, unit_rate=0.04)
+    allowed, est = budget_check(spent=2.0, reserved=0.5, units=10, unit_rate=0.04, ceiling=3.0)
     check("budget: 2.0 + 0.5 + 10*0.04*1.5=0.6 -> 3.1 > 3.0 refused", not allowed and abs(est - 0.6) < 1e-9)
-    allowed, est = budget_check(spent=2.0, reserved=0.4, units=10, unit_rate=0.04)
+    allowed, est = budget_check(spent=2.0, reserved=0.4, units=10, unit_rate=0.04, ceiling=3.0)
     check("budget: 2.0 + 0.4 + 0.6 = 3.0 allowed at equality", allowed)
     # Stage 3 mapping
     check("stage3: p(0)=0.5, p(5)=Phi(1), clamp at 0.97", abs(stage3_probability(0) - 0.5) < 1e-9 and abs(stage3_probability(5.0) - phi(1.0)) < 1e-9 and stage3_probability(40.0) == 0.97)

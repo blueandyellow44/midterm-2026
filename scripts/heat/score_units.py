@@ -9,7 +9,7 @@ Usage:
 units.json: ordered list of units; the order is the scoring priority under the budget cap.
   {race, candidate, slot, source_type, unit_id, unit_label, source_url, caption_source, sentences: [..], status?: "MISSING_TRANSCRIPT", notes?}
 
-Every unit is reserved first using input-byte/output-token upper bounds; if spent + reserved would exceed the $3.00 ceiling the
+Every unit is reserved first using input-byte/output-token upper bounds; if spent + reserved would exceed the ledger ceiling (weight.HEAT_BUDGET_USD) the
 remaining units get SKIPPED_BUDGET rows and scoring stops. A unit already in heat-cache/ under the same cache key costs nothing.
 The passcode and keys never leave the meter's own files; this script only reads METER_PASSCODE to log in to the local meter.
 """

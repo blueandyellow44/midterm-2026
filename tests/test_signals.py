@@ -99,6 +99,16 @@ class Arithmetic(unittest.TestCase):
         rows = [heat('X', 'D', 3), heat('X', 'D', 3), heat('X', 'R', 4), heat('X', 'R', 4)]
         self.assertEqual(weight.rhetoric_gap(rows, 'X')['gap'], 1.0)
 
+    def test_missing_money_points_to_the_poll_leader_not_the_favorite(self):
+        # Georgia-style: R is the fundamentals favorite (underdog D, +1) but D leads the polls and money dries up.
+        self.assertEqual(weight.spend_direction(-1.2, 1, 7.1), 1)
+        self.assertEqual(weight.spend_direction(-1.2, -1, -3.0), -1)
+        self.assertEqual(weight.spend_direction(-1.2, 1, 0.0), 0)
+
+    def test_extra_money_points_to_the_fundamentals_underdog(self):
+        self.assertEqual(weight.spend_direction(1.1, 1, -2.0), 1)
+        self.assertEqual(weight.spend_direction(1.1, -1, 5.0), -1)
+
     def test_underdog_sign_follows_the_presidential_loser(self):
         self.assertEqual(weight.underdog_sign(-13.7), 1)
         self.assertEqual(weight.underdog_sign(6.9), -1)

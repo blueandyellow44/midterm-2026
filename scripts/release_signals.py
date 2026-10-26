@@ -20,10 +20,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "analysis"))
 import weight  # noqa: E402
 
-VOLATILE = {"release_id", "calc_version", "signals"}
-POLLING_INPUTS = ("polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv", "backtest-2025.csv")
-REASON = ("Signal-adjusted reading (Max, 2026-10-26 big-swing ruling): adds outside spending and campaign rhetoric as an "
-          "experimental second reading beside the polling read; every polling number, eligibility rule and input is unchanged.")
+VOLATILE = {"release_id", "calc_version", "signals", "section9_heat"}  # heat scoring may grow; polling fields may not
+POLLING_INPUTS = ("polls.csv", "pollsters.csv", "exclusions.csv", "coverage.csv", "backtest-2025.csv")
+REASON = ("Signal-adjusted reading v1.1 (Max, 2026-10-26): 27 more campaign ads scored under the raised $10 heat ceiling; "
+          "missing outside money now points to the poll leader (abandonment). Every polling number, eligibility rule and polling input is unchanged.")
 
 
 def main() -> int:
@@ -65,7 +65,7 @@ def main() -> int:
         raise weight.ValidationError(f"existing derived fields changed: {changed}")
     if not new.get("signals"):
         raise weight.ValidationError("signals block missing from compute")
-    digest = weight.sha256_bytes(b"".join((bundle / n).read_bytes() for n in ("spending.csv", "fundamentals.csv", "spend-history.csv")))[:10]
+    digest = weight.sha256_bytes(b"".join((bundle / n).read_bytes() for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "heat.csv")))[:10]
     release_id = f"{cutoff.strftime('%Y%m%dT%H%M%S%z')}-stage2-signals-{commit[:7]}-{digest}"
     b.run_state = proposed
     sealed = Path(b.release(release_id, commit, weight.DEFAULT_NOTE))

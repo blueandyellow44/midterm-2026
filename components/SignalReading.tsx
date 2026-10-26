@@ -3,7 +3,6 @@ import { number } from '@/lib/format';
 // Formats the calculator's signal-adjusted reading. Every number comes from derived.json (weight.py); this file only
 // rounds, picks candidate names for a sign, and writes the plain-language explanation.
 const EVEN=0.05;
-const party:Record<string,string>={D:'Democrats',R:'Republicans'};
 const leanWord:Record<string,string>={D:'Democratic',R:'Republican'};
 const money=(v:number|null|undefined)=>Number.isFinite(v)?`$${((v as number)/1e6).toFixed(1)}M`:'NA';
 
@@ -16,7 +15,7 @@ export function signalLines(s:any,names:{D:string;R:string}) {
   const heavy=sp.excess_z>0;const total=(sp.d_fav_recent??0)+(sp.r_fav_recent??0);
   lines.push({key:'spending',label:'Outside spending',value:s.delta_spending,text:heavy
    ?`${money(total)} in outside money over two weeks, more than a race this close usually draws. In a state that leans ${leanWord[fav]}, heavy money from either side reads as ${names[fav==='D'?'R':'D']} doing better than the polls show.`
-   :`${money(total)} in outside money over two weeks, less than a race this close usually draws. That reads as ${party[fav]} feeling safe here.`});
+   :`${money(total)} in outside money over two weeks, less than a race this close usually draws. Parties pull money from races they think are decided, so this reads as ${names[Number(s.polling_margin)>0?'D':'R']}’s lead being safer than the polls show.`});
  }
  if(s.weight_rhetoric>0 && Number.isFinite(rh?.gap)) {
   const hot=rh.gap>0?'R':'D';
