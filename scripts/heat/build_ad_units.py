@@ -2,7 +2,7 @@
 """Turn captured ad transcripts into heat units for score_units.py.
 
 Usage: python3 scripts/heat/build_ad_units.py --sources sources/heat-ads-20261026 --bundle-dir <vault bundle> --out <units.json>
-Reads <sources>/manifest.csv and <sources>/<video_id>.txt. A unit reuses the unit_id of an existing unscored heat row with the
+Reads <sources>/manifest.csv and <sources>/<video_id>.txt. A unit reuses the unit_id of any existing heat row with the
 same source URL, so it replaces that placeholder instead of adding a duplicate. Caption noise ([music], >>) is removed;
 words are not edited.
 """
@@ -14,6 +14,26 @@ import weight  # noqa: E402
 from captions import split_sentences  # noqa: E402
 
 NOISE = re.compile(r"\[(?:music|applause|cheering|laughter)\]|>>", re.I)
+# A bare self-identification ("I'm Tom Tiffany.") carries no rhetoric and makes the pinned meter return malformed output
+# (HTTP 422, 2026-10-26: Benson "Fair Shot", Tiffany "Wisconsin Is Everything to Me"). Merge it into the next sentence.
+NAME_LINE = re.compile(r"^I'?m (?:Dr\. )?[A-Z][\w.'-]*(?: [A-Z][\w.'-]*){0,3}\.$")
+
+
+def merge_name_lines(sentences: list[str]) -> list[str]:
+    out: list[str] = []
+    carry = ""
+    for s in sentences:
+        if NAME_LINE.match(s.strip()):
+            carry = (carry + " " + s.strip()).strip()
+            continue
+        out.append((carry + " " + s).strip() if carry else s)
+        carry = ""
+    if carry:
+        if out:
+            out[-1] = out[-1] + " " + carry
+        else:
+            out.append(carry)
+    return out
 
 
 def clean(text: str) -> str:
@@ -29,7 +49,7 @@ def main() -> int:
     heat = weight.read_csv(os.path.join(a.bundle_dir, "heat.csv"), weight.HEAT_HEADER)
     by_url = {}
     for h in heat:
-        if h["status"] != "SCORED" and h["source_type"] == "AD" and h["source_url"].startswith("http"):
+        if h["source_type"] == "AD" and h["source_url"].startswith("http"):
             by_url[(h["race"], h["slot"], h["source_url"].split("v=")[-1][:11])] = h["unit_id"]
     units = []
     with open(os.path.join(a.sources, "manifest.csv"), newline="", encoding="utf-8") as f:
@@ -37,11 +57,13 @@ def main() -> int:
             path = os.path.join(a.sources, f"{m['video_id']}.txt")
             if not os.path.isfile(path):
                 raise SystemExit(f"missing transcript: {path}")
-            sentences = split_sentences(clean(open(path, encoding="utf-8").read()))
+            sentences = merge_name_lines(split_sentences(clean(open(path, encoding="utf-8").read())))
             if len(sentences) < 2:
                 raise SystemExit(f"transcript too short to score: {m['video_id']}")
             vid = m["video_id"]
-            url = f"https://www.youtube.com/watch?v={vid}" if re.fullmatch(r"[A-Za-z0-9_-]{11}", vid) else "https://www.youtube.com/watch?v=ThODr8zMACc"
+            url = (m.get("source_url") or "").strip() or (f"https://www.youtube.com/watch?v={vid}" if re.fullmatch(r"[A-Za-z0-9_-]{11}", vid) else "")
+            if not url.startswith("http"):
+                raise SystemExit(f"no source URL for {vid}: add one to manifest.csv")
             uid = by_url.get((m["race"], m["slot"], vid)) or f"ad-{vid}"
             units.append({"race": m["race"], "candidate": m["candidate"], "slot": m["slot"], "source_type": "AD", "unit_id": uid, "unit_label": m["label"],
                           "source_url": url, "caption_source": m["caption_source"], "sentences": sentences, "notes": m["notes"]})

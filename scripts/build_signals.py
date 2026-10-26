@@ -156,7 +156,17 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sources", required=True)
     ap.add_argument("--bundle-dir", default=weight.DEFAULT_BUNDLE_DIR)
+    ap.add_argument("--gov-digital", help="governor campaign digital spend CSV (Google + Meta, in-state), sources/gov-digital-*/governor-digital-spend.csv")
     a = ap.parse_args(argv)
+    gov = {}
+    if a.gov_digital:
+        with open(a.gov_digital, newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                g = num(r["google_usd_2026-09-27_to_2026-10-24"]); m = num(r["meta_in_state_usd_2026-09-24_to_2026-10-23"])
+                if g is None or m is None:
+                    raise SystemExit(f"governor digital spend incomplete: {r['race']} {r['slot']}")
+                gov[(r["race"], r["slot"])] = g + m
+        gov_sha = weight.sha256_file(a.gov_digital)
     src = Path(a.sources)
     paths = {k: src / v for k, v in SOURCES.items()}
     for k, p in paths.items():
@@ -180,8 +190,13 @@ def main(argv=None) -> int:
         fundamentals.append({"race": race, "state": st, "pres_year": "2024", "pres_d_minus_r": f"{pres24[st]:.4f}",
                              "source_file": SOURCES["pres2024"], "source_sha256": sha["pres2024"]})
         if race in weight.GOVERNOR_RACES:
-            spending.append({"race": race, "state": st, "fec_coverage": "NOT_FEDERAL", "window_end": cutoff.isoformat(),
-                             **{k: "NA" for k in SPENDING_HEADER[4:10]}, "source_file": "NA", "source_sha256": "NA"})
+            if (race, "D") in gov and (race, "R") in gov:
+                spending.append({"race": race, "state": st, "fec_coverage": "DIGITAL_CANDIDATE", "window_end": cutoff.isoformat(),
+                                 "d_fav_recent": f"{gov[(race, 'D')]:.2f}", "r_fav_recent": f"{gov[(race, 'R')]:.2f}", "d_fav_prior": "NA", "r_fav_prior": "NA",
+                                 "rows_recent": "2", "rows_dated_by_dissemination": "0", "source_file": os.path.basename(a.gov_digital), "source_sha256": gov_sha})
+            else:
+                spending.append({"race": race, "state": st, "fec_coverage": "NOT_FEDERAL", "window_end": cutoff.isoformat(),
+                                 **{k: "NA" for k in SPENDING_HEADER[4:10]}, "source_file": "NA", "source_sha256": "NA"})
             continue
         agg = aggregate_spending(ie, st, cutoff)
         spending.append({"race": race, "state": st, "fec_coverage": "FEC_SCHEDULE_E", "window_end": cutoff.isoformat(),

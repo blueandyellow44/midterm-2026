@@ -289,7 +289,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.1"  # 1.1: missing money points to the poll leader (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "1.2"  # 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (1.5, 1.0)   # points against the hotter side per point of LITMUS heat gap
 SIGNAL_RHETORIC_CAP = 3.0         # |rhetoric contribution| ceiling, points
@@ -297,6 +297,7 @@ SIGNAL_MIN_HEAT_UNITS = 2         # scored units required per candidate
 SIGNAL_WEIGHT_ALIGNED = 1.0
 SIGNAL_WEIGHT_OPPOSED = 0.25
 SIGNAL_WEIGHT_SINGLE = 0.5
+SIGNAL_SPEND_MEASURES = ("FEC_SCHEDULE_E", "DIGITAL_CANDIDATE")
 SIGNAL_SPEND_MIN_Z = 0.25        # |excess z| below this carries no direction
 # Heat gaps below TIE_THRESHOLD (the existing heat tie rule) carry no direction.
 
@@ -1369,17 +1370,23 @@ class Bundle:
         spend = {r["race"]: r for r in self.spending}
         races = SENATE_RACES + GOVERNOR_RACES
         polling = {race: ((blocks.get(race) or {}).get("polling_read") or {}).get("margin") for race in races}
-        covered = []
+        # Excess spending is fit within each measure separately: FEC outside money for Senate races, campaign digital
+        # spend (Google + Meta, in-state) for governor races. The two are never pooled.
+        groups = defaultdict(list)
         for race in races:
             sp = spend.get(race)
-            if not sp or sp["fec_coverage"] != "FEC_SCHEDULE_E" or polling[race] is None:
+            if not sp or sp["fec_coverage"] not in SIGNAL_SPEND_MEASURES or polling[race] is None:
                 continue
             d_rec, r_rec = num(sp["d_fav_recent"]), num(sp["r_fav_recent"])
             if d_rec is None or r_rec is None:
                 continue
-            covered.append((race, math.log1p((d_rec + r_rec) / 1e6), abs(polling[race])))
-        z = excess_spend_z([c[1] for c in covered], [c[2] for c in covered]) if len(covered) >= 3 else None
-        zmap = {c[0]: z[i] for i, c in enumerate(covered)} if z else {}
+            groups[sp["fec_coverage"]].append((race, math.log1p((d_rec + r_rec) / 1e6), abs(polling[race])))
+        zmap, covered = {}, []
+        for measure, rows in groups.items():
+            z = excess_spend_z([c[1] for c in rows], [c[2] for c in rows]) if len(rows) >= 3 else None
+            if z:
+                zmap.update({c[0]: z[i] for i, c in enumerate(rows)})
+                covered += rows
         per_race = {}
         for race in races:
             sp = spend.get(race) or {}
@@ -1399,6 +1406,7 @@ class Bundle:
                              "r_share_recent": r4(r_rec / (d_rec + r_rec)) if d_rec is not None and r_rec is not None and (d_rec + r_rec) > 0 else None,
                              "r_share_prior": r4(r_pri / (d_pri + r_pri)) if d_pri is not None and r_pri is not None and (d_pri + r_pri) > 0 else None,
                              "excess_z": r4(zr) if zr is not None else None, "signal_toward_d": spend_signal,
+                             "measure": {"FEC_SCHEDULE_E": "FEC outside spending, 14 days", "DIGITAL_CANDIDATE": "campaign digital ad spending in state (Google + Meta), about 4 weeks"}.get(sp.get("fec_coverage")),
                              "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
                 "rhetoric": heat,
             })

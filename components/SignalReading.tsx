@@ -12,10 +12,10 @@ export function signalLines(s:any,names:{D:string;R:string}) {
  const lines:{key:string;label:string;value:number|null;text:string}[]=[];
  const sp=s.spending; const rh=s.rhetoric; const fav=s.fundamentals?.underdog==='D'?'R':s.fundamentals?.underdog==='R'?'D':null;
  if(s.weight_spending>0 && Number.isFinite(sp?.excess_z) && fav) {
-  const heavy=sp.excess_z>0;const total=(sp.d_fav_recent??0)+(sp.r_fav_recent??0);
-  lines.push({key:'spending',label:'Outside spending',value:s.delta_spending,text:heavy
-   ?`${money(total)} in outside money over two weeks, more than a race this close usually draws. In a state that leans ${leanWord[fav]}, heavy money from either side reads as ${names[fav==='D'?'R':'D']} doing better than the polls show.`
-   :`${money(total)} in outside money over two weeks, less than a race this close usually draws. Parties pull money from races they think are decided, so this reads as ${names[Number(s.polling_margin)>0?'D':'R']}’s lead being safer than the polls show.`});
+  const heavy=sp.excess_z>0;const total=(sp.d_fav_recent??0)+(sp.r_fav_recent??0);const digital=sp.coverage==='DIGITAL_CANDIDATE';const what=digital?'in campaign digital ads (Google and Meta) over about four weeks':'in outside money over two weeks';const label=digital?'Campaign ad spending':'Outside spending';
+  lines.push({key:'spending',label,value:s.delta_spending,text:heavy
+   ?`${money(total)} ${what}, more than a race this close usually draws. In a state that leans ${leanWord[fav]}, heavy money from either side reads as ${names[fav==='D'?'R':'D']} doing better than the polls show.`
+   :`${money(total)} ${what}, less than a race this close usually draws. Parties pull money from races they think are decided, so this reads as ${names[Number(s.polling_margin)>0?'D':'R']}’s lead being safer than the polls show.`});
  }
  if(s.weight_rhetoric>0 && Number.isFinite(rh?.gap)) {
   const hot=rh.gap>0?'R':'D';
@@ -55,7 +55,7 @@ export function SignalReading({r,meta}:{r:any;meta?:any}) {
    {meta&&<p>Spending counts {number(meta.posterior?.beta?.[0],2)} points per standard deviation of extra money, a starting assumption of {number(meta.priors?.beta?.[0],1)} updated with {meta.history?.n} Senate races from {meta.history?.years?.join(' and ')}. Rhetoric counts {number(meta.posterior?.gamma?.[0],1)} points per point of heat gap, a starting assumption with no history behind it, capped at {number(meta.rules?.rhetoric_cap,0)} points.</p>}
    <dl className="signal-facts">
     <div><dt>2024 presidential result</dt><dd className="mono">{Number.isFinite(s.fundamentals?.pres_d_minus_r)?`${s.fundamentals.pres_d_minus_r>0?'D':'R'} +${number(Math.abs(s.fundamentals.pres_d_minus_r))}`:'NA'}</dd></div>
-    <div><dt>Outside money, two weeks</dt><dd className="mono">{money(s.spending?.d_fav_recent)} D-side · {money(s.spending?.r_fav_recent)} R-side</dd></div>
+    <div><dt>{s.spending?.coverage==='DIGITAL_CANDIDATE'?'Campaign digital ads, ~4 weeks':'Outside money, two weeks'}</dt><dd className="mono">{money(s.spending?.d_fav_recent)} D-side · {money(s.spending?.r_fav_recent)} R-side</dd></div>
     <div><dt>Extra money vs typical</dt><dd className="mono">{Number.isFinite(s.spending?.excess_z)?`${s.spending.excess_z>0?'+':''}${number(s.spending.excess_z,2)} SD`:'NA'}</dd></div>
     <div><dt>Heat, D / R</dt><dd className="mono">{number(s.rhetoric?.mean_d,2)} ({s.rhetoric?.n_d}) / {number(s.rhetoric?.mean_r,2)} ({s.rhetoric?.n_r})</dd></div>
     <div><dt>Uncertainty from the assumptions</dt><dd className="mono">± {number(s.delta_sd,1)} points</dd></div>
