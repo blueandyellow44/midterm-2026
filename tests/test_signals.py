@@ -1,0 +1,118 @@
+"""Signal-adjusted reading: unhappy paths first, then the alignment rule and the arithmetic."""
+from pathlib import Path
+import math
+import sys
+import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis'))
+import weight
+
+BETA = (1.0, 0.5)
+GAMMA = (1.5, 1.0)
+
+
+def heat(race, slot, score, status='SCORED'):
+    return {'race': race, 'slot': slot, 'ph_score': str(score), 'status': status}
+
+
+def bundle_stub(spending, fundamentals, heat_rows=(), history=()):
+    b = weight.Bundle.__new__(weight.Bundle)
+    b.spending, b.fundamentals, b.heat, b.spend_history = list(spending), list(fundamentals), list(heat_rows), list(history)
+    return b
+
+
+def spend_row(race, d, r, coverage='FEC_SCHEDULE_E'):
+    return {'race': race, 'fec_coverage': coverage, 'window_end': '2026-10-25', 'd_fav_recent': str(d), 'r_fav_recent': str(r),
+            'd_fav_prior': '0', 'r_fav_prior': '0'}
+
+
+class UnhappyPaths(unittest.TestCase):
+    def test_missing_inputs_return_no_block(self):
+        self.assertIsNone(bundle_stub([], []).signals_block({}))
+
+    def test_no_polling_read_never_invents_a_margin(self):
+        out = weight.signal_adjusted(None, 2.0, 1.0, BETA, GAMMA)
+        self.assertEqual(out['status'], 'NO_POLLING_READ')
+        self.assertIsNone(out['adjusted_margin'])
+
+    def test_no_signal_leaves_the_polling_read_unchanged(self):
+        out = weight.signal_adjusted(3.0, None, None, BETA, GAMMA)
+        self.assertEqual((out['status'], out['adjusted_margin'], out['delta_total'], out['lagging_side']), ('NO_SIGNAL', 3.0, 0.0, None))
+
+    def test_tiny_signals_carry_no_direction(self):
+        self.assertEqual(weight.alignment_weights(0.1, 0.05)[2], 'NO_SIGNAL')
+        self.assertEqual(weight.alignment_weights(0.3, 0.05)[2], 'SPENDING_ONLY')
+
+    def test_rhetoric_needs_two_scored_units_per_candidate(self):
+        rows = [heat('X', 'D', 3), heat('X', 'R', 4), heat('X', 'R', 4), heat('X', 'D', 5, status='FAILED')]
+        self.assertIsNone(weight.rhetoric_gap(rows, 'X')['gap'])
+        self.assertIsNone(weight.rhetoric_gap([], 'X')['gap'])
+
+    def test_unknown_fundamentals_give_no_spending_direction(self):
+        self.assertEqual(weight.underdog_sign(None), 0)
+        self.assertEqual(weight.underdog_sign(0.0), 0)
+
+    def test_undefined_excess_fit(self):
+        self.assertIsNone(weight.excess_spend_z([1.0, 1.0, 1.0], [2.0, 2.0, 2.0]))
+        self.assertIsNone(weight.excess_spend_z([1.0, 2.0], [1.0, 2.0]))
+
+    def test_thin_history_keeps_the_prior(self):
+        est = weight.spending_history_estimate([{'year': '2020', 'poll_margin': '1', 'result_margin': '2', 'log_recent_spend_m': '1', 'pres_d_minus_r': '-3'}])
+        self.assertEqual(est['status'], 'insufficient history')
+        self.assertEqual(weight.normal_posterior((1.5, 1.0), est['slope'], est['se']), (1.5, 1.0))
+
+    def test_governors_without_fec_coverage_stay_unadjusted(self):
+        races = weight.SENATE_RACES + weight.GOVERNOR_RACES
+        spending = [spend_row(r, 1e6 * (i + 1), 2e6) for i, r in enumerate(weight.SENATE_RACES)] + [spend_row(r, 'NA', 'NA', 'NOT_FEDERAL') for r in weight.GOVERNOR_RACES]
+        fundamentals = [{'race': r, 'pres_d_minus_r': '-5'} for r in races]
+        blocks = {r: {'polling_read': {'margin': 1.0 + i}} for i, r in enumerate(races)}
+        out = bundle_stub(spending, fundamentals).signals_block(blocks)
+        gov = out['per_race']['2026-OH-GOV']
+        self.assertEqual((gov['status'], gov['adjusted_margin'], gov['spending']['status']), ('NO_SIGNAL', blocks['2026-OH-GOV']['polling_read']['margin'], 'not federal: no FEC coverage'))
+        self.assertEqual(len(out['rules']['excess_fit_races']), len(weight.SENATE_RACES))
+
+
+class AlignmentRule(unittest.TestCase):
+    def test_aligned_signals_apply_at_full_weight(self):
+        out = weight.signal_adjusted(2.0, 1.0, 1.0, BETA, GAMMA)
+        self.assertEqual(out['alignment'], 'ALIGNED')
+        self.assertAlmostEqual(out['adjusted_margin'], 2.0 + 1.0 + 1.5)
+        self.assertEqual(out['lagging_side'], 'R')
+
+    def test_opposed_signals_apply_at_a_quarter(self):
+        out = weight.signal_adjusted(2.0, 1.0, -1.0, BETA, GAMMA)
+        self.assertEqual(out['alignment'], 'OPPOSED')
+        self.assertAlmostEqual(out['delta_total'], 0.25 * 1.0 - 0.25 * 1.5)
+
+    def test_single_signal_applies_at_half(self):
+        self.assertAlmostEqual(weight.signal_adjusted(0.0, -2.0, None, BETA, GAMMA)['delta_total'], -1.0)
+        self.assertAlmostEqual(weight.signal_adjusted(0.0, None, 1.0, BETA, GAMMA)['delta_total'], 0.75)
+
+    def test_rhetoric_contribution_is_capped(self):
+        out = weight.signal_adjusted(0.0, None, 4.0, BETA, GAMMA)
+        self.assertTrue(out['rhetoric_capped'])
+        self.assertAlmostEqual(out['delta_rhetoric'], 0.5 * weight.SIGNAL_RHETORIC_CAP)
+
+
+class Arithmetic(unittest.TestCase):
+    def test_hotter_republican_reads_as_lagging(self):
+        rows = [heat('X', 'D', 3), heat('X', 'D', 3), heat('X', 'R', 4), heat('X', 'R', 4)]
+        self.assertEqual(weight.rhetoric_gap(rows, 'X')['gap'], 1.0)
+
+    def test_underdog_sign_follows_the_presidential_loser(self):
+        self.assertEqual(weight.underdog_sign(-13.7), 1)
+        self.assertEqual(weight.underdog_sign(6.9), -1)
+
+    def test_posterior_is_precision_weighted(self):
+        m, s = weight.normal_posterior((1.5, 1.0), 0.5, 1.0)
+        self.assertAlmostEqual(m, 1.0)
+        self.assertAlmostEqual(s, math.sqrt(0.5))
+
+    def test_excess_spending_is_residual_on_poll_closeness(self):
+        z = weight.excess_spend_z([1.0, 2.0, 3.0, 10.0], [3.0, 2.0, 1.0, 0.5])
+        self.assertEqual(max(range(4), key=lambda i: z[i]), 3)
+        self.assertAlmostEqual(sum(z), 0.0, places=9)
+
+
+if __name__ == '__main__':
+    unittest.main()

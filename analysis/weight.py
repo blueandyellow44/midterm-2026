@@ -43,6 +43,7 @@ BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
     "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
+    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0",
 }
 
 POLLS_HEADER = (
@@ -69,6 +70,9 @@ COVERAGE_HEADER = (
 ).split(",")
 BACKTEST_EXTRA = "certified_D,certified_R,certified_margin,result_url,result_locator,certification_date,signed_error".split(",")
 BACKTEST_HEADER = POLLS_HEADER + BACKTEST_EXTRA
+SPENDING_HEADER = "race,state,fec_coverage,window_end,d_fav_recent,r_fav_recent,d_fav_prior,r_fav_prior,rows_recent,rows_dated_by_dissemination,source_file,source_sha256".split(",")
+FUNDAMENTALS_HEADER = "race,state,pres_year,pres_d_minus_r,source_file,source_sha256".split(",")
+SPEND_HISTORY_HEADER = "year,state,poll_margin,result_margin,log_recent_spend_m,pres_year,pres_d_minus_r,source_sha256".split(",")
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
 RESULTS_HEADER = "race,resolution_status,winner_slot,certified_margin,denominator_note,result_url,resolved_at".split(",")
 
@@ -280,6 +284,140 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
         dest = os.path.join(backups, f"{stem}.{stamp}-{n}{ext}")
     shutil.copy2(path, dest)
     return dest
+
+
+# ----------------------------------------------------------------------------- signal-adjusted reading
+# Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
+# Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
+SIGNAL_METHOD_VERSION = "1.0"
+SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
+SIGNAL_PRIOR_GAMMA = (1.5, 1.0)   # points against the hotter side per point of LITMUS heat gap
+SIGNAL_RHETORIC_CAP = 3.0         # |rhetoric contribution| ceiling, points
+SIGNAL_MIN_HEAT_UNITS = 2         # scored units required per candidate
+SIGNAL_WEIGHT_ALIGNED = 1.0
+SIGNAL_WEIGHT_OPPOSED = 0.25
+SIGNAL_WEIGHT_SINGLE = 0.5
+SIGNAL_SPEND_MIN_Z = 0.25        # |excess z| below this carries no direction
+# Heat gaps below TIE_THRESHOLD (the existing heat tie rule) carry no direction.
+
+
+def _ols(x: list[float], y: list[float]) -> tuple[float, float, float] | None:
+    """Simple regression y = a + b x. Returns (a, b, se_b) or None when undefined."""
+    n = len(x)
+    if n < 3 or n != len(y):
+        return None
+    mx, my = sum(x) / n, sum(y) / n
+    sxx = sum((v - mx) ** 2 for v in x)
+    if sxx <= 0:
+        return None
+    b = sum((x[i] - mx) * (y[i] - my) for i in range(n)) / sxx
+    a = my - b * mx
+    rss = sum((y[i] - a - b * x[i]) ** 2 for i in range(n))
+    se = math.sqrt(rss / (n - 2) / sxx) if n > 2 else float("inf")
+    return a, b, se
+
+
+def excess_spend_z(log_spend: list[float], abs_poll: list[float]) -> list[float] | None:
+    """Residual of log outside spending on |public margin|, in SDs. None when the fit is undefined."""
+    fit = _ols(abs_poll, log_spend)
+    if fit is None:
+        return None
+    a, b, _ = fit
+    resid = [log_spend[i] - a - b * abs_poll[i] for i in range(len(log_spend))]
+    n = len(resid)
+    sd = math.sqrt(sum(r * r for r in resid) / (n - 1)) if n > 1 else 0.0
+    if sd <= 0:
+        return None
+    return [r / sd for r in resid]
+
+
+def underdog_sign(pres_d_minus_r: float | None) -> int:
+    """+1 when D lost the state's last presidential vote (D is the fundamentals underdog), -1 when R did, 0 if tied or unknown."""
+    if pres_d_minus_r is None or pres_d_minus_r == 0:
+        return 0
+    return 1 if pres_d_minus_r < 0 else -1
+
+
+def spending_history_estimate(rows: list[dict]) -> dict:
+    """Slope of the year-demeaned polling miss toward the fundamentals underdog on excess-spending z (2020 and 2022 Senate)."""
+    clean = []
+    for r in rows:
+        p, y, sp, pres = num(r.get("poll_margin")), num(r.get("result_margin")), num(r.get("log_recent_spend_m")), num(r.get("pres_d_minus_r"))
+        if None in (p, y, sp, pres) or underdog_sign(pres) == 0:
+            continue
+        clean.append((r["year"], p, y, sp, underdog_sign(pres)))
+    if len(clean) < 10:
+        return {"status": "insufficient history", "n": len(clean), "slope": None, "se": None}
+    z = excess_spend_z([c[3] for c in clean], [abs(c[1]) for c in clean])
+    if z is None:
+        return {"status": "undefined excess fit", "n": len(clean), "slope": None, "se": None}
+    by_year = defaultdict(list)
+    for c in clean:
+        by_year[c[0]].append(c[2] - c[1])
+    year_mean = {k: sum(v) / len(v) for k, v in by_year.items()}
+    toward = [((c[2] - c[1]) - year_mean[c[0]]) * c[4] for c in clean]
+    fit = _ols(z, toward)
+    if fit is None:
+        return {"status": "undefined slope", "n": len(clean), "slope": None, "se": None}
+    return {"status": "estimated", "n": len(clean), "years": sorted(by_year), "slope": r4(fit[1]), "se": r4(fit[2])}
+
+
+def normal_posterior(prior: tuple[float, float], est: float | None, se: float | None) -> tuple[float, float]:
+    """Precision-weighted combination of a Normal prior and a Normal data estimate; the prior alone when data are missing."""
+    m0, s0 = prior
+    if est is None or se is None or not math.isfinite(se) or se <= 0:
+        return m0, s0
+    w0, w1 = 1 / s0 ** 2, 1 / se ** 2
+    return (m0 * w0 + est * w1) / (w0 + w1), math.sqrt(1 / (w0 + w1))
+
+
+def rhetoric_gap(heat_rows: list[dict], race: str) -> dict:
+    """Mean scored heat of the R side minus the D side; undefined unless both have SIGNAL_MIN_HEAT_UNITS scored units."""
+    scores = {"D": [], "R": []}
+    for h in heat_rows:
+        if h.get("race") == race and h.get("status") == "SCORED" and h.get("slot") in scores:
+            v = num(h.get("ph_score"))
+            if v is not None:
+                scores[h["slot"]].append(v)
+    n = {k: len(v) for k, v in scores.items()}
+    if min(n.values()) < SIGNAL_MIN_HEAT_UNITS:
+        return {"gap": None, "n_d": n["D"], "n_r": n["R"], "mean_d": r4(mean(scores["D"])) if scores["D"] else None,
+                "mean_r": r4(mean(scores["R"])) if scores["R"] else None, "status": f"needs {SIGNAL_MIN_HEAT_UNITS} scored units per candidate"}
+    md, mr = mean(scores["D"]), mean(scores["R"])
+    return {"gap": r4(mr - md), "n_d": n["D"], "n_r": n["R"], "mean_d": r4(md), "mean_r": r4(mr), "status": "defined"}
+
+
+def alignment_weights(spend_signal: float | None, heat_gap: float | None) -> tuple[float, float, str]:
+    """Max's alignment rule: full weight when spending and rhetoric point to the same lagging side."""
+    has_s = spend_signal is not None and abs(spend_signal) >= SIGNAL_SPEND_MIN_Z
+    has_h = heat_gap is not None and abs(heat_gap) >= TIE_THRESHOLD
+    if has_s and has_h:
+        if (spend_signal > 0) == (heat_gap > 0):
+            return SIGNAL_WEIGHT_ALIGNED, SIGNAL_WEIGHT_ALIGNED, "ALIGNED"
+        return SIGNAL_WEIGHT_OPPOSED, SIGNAL_WEIGHT_OPPOSED, "OPPOSED"
+    if has_s:
+        return SIGNAL_WEIGHT_SINGLE, 0.0, "SPENDING_ONLY"
+    if has_h:
+        return 0.0, SIGNAL_WEIGHT_SINGLE, "RHETORIC_ONLY"
+    return 0.0, 0.0, "NO_SIGNAL"
+
+
+def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap: float | None,
+                    beta: tuple[float, float], gamma: tuple[float, float]) -> dict:
+    """A = P + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap). All in D-minus-R points."""
+    ws, wr, alignment = alignment_weights(spend_signal, heat_gap)
+    if polling is None:
+        return {"status": "NO_POLLING_READ", "alignment": alignment, "adjusted_margin": None, "delta_spending": None, "delta_rhetoric": None, "delta_sd": None}
+    d_s = ws * beta[0] * spend_signal if ws else 0.0
+    raw_r = gamma[0] * heat_gap if wr else 0.0
+    d_r = wr * max(-SIGNAL_RHETORIC_CAP, min(SIGNAL_RHETORIC_CAP, raw_r))
+    sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2)
+    delta = d_s + d_r
+    return {"status": "ADJUSTED" if alignment != "NO_SIGNAL" else "NO_SIGNAL", "alignment": alignment,
+            "weight_spending": ws, "weight_rhetoric": wr,
+            "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
+            "delta_total": r4(delta), "delta_sd": r4(sd), "adjusted_margin": r4(polling + delta),
+            "lagging_side": None if delta == 0 else ("R" if delta > 0 else "D")}
 
 
 # ----------------------------------------------------------------------------- pure calculators
@@ -523,6 +661,9 @@ class Bundle:
         self.heat = read_csv(os.path.join(bundle_dir, "heat.csv"), HEAT_HEADER, required=False)
         self.coverage = read_csv(os.path.join(bundle_dir, "coverage.csv"), COVERAGE_HEADER, required=False)
         self.backtest = read_csv(os.path.join(bundle_dir, "backtest-2025.csv"), BACKTEST_HEADER, required=False)
+        self.spending = read_csv(os.path.join(bundle_dir, "spending.csv"), SPENDING_HEADER, required=False)
+        self.fundamentals = read_csv(os.path.join(bundle_dir, "fundamentals.csv"), FUNDAMENTALS_HEADER, required=False)
+        self.spend_history = read_csv(os.path.join(bundle_dir, "spend-history.csv"), SPEND_HISTORY_HEADER, required=False)
         self.quarantined_pollsters = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "POLLSTER"}
         self.quarantined_estimates = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "ESTIMATE"}
         self.method_by_id = {p["method_id"]: p for p in self.pollsters}
@@ -1206,6 +1347,65 @@ class Bundle:
                     raise ValidationError("NC aggregate party counts do not reconcile")
         return data
 
+    def signals_block(self, blocks: dict) -> dict | None:
+        """Signal-adjusted reading beside the polling read. None when the signal inputs are absent (older bundles)."""
+        if not self.spending or not self.fundamentals:
+            return None
+        hist = spending_history_estimate(self.spend_history)
+        beta = normal_posterior(SIGNAL_PRIOR_BETA, hist.get("slope"), hist.get("se"))
+        gamma = SIGNAL_PRIOR_GAMMA
+        fund = {r["race"]: num(r["pres_d_minus_r"]) for r in self.fundamentals}
+        spend = {r["race"]: r for r in self.spending}
+        races = SENATE_RACES + GOVERNOR_RACES
+        polling = {race: ((blocks.get(race) or {}).get("polling_read") or {}).get("margin") for race in races}
+        covered = []
+        for race in races:
+            sp = spend.get(race)
+            if not sp or sp["fec_coverage"] != "FEC_SCHEDULE_E" or polling[race] is None:
+                continue
+            d_rec, r_rec = num(sp["d_fav_recent"]), num(sp["r_fav_recent"])
+            if d_rec is None or r_rec is None:
+                continue
+            covered.append((race, math.log1p((d_rec + r_rec) / 1e6), abs(polling[race])))
+        z = excess_spend_z([c[1] for c in covered], [c[2] for c in covered]) if len(covered) >= 3 else None
+        zmap = {c[0]: z[i] for i, c in enumerate(covered)} if z else {}
+        per_race = {}
+        for race in races:
+            sp = spend.get(race) or {}
+            u = underdog_sign(fund.get(race))
+            zr = zmap.get(race)
+            spend_signal = r4(zr * u) if (zr is not None and u) else None
+            heat = rhetoric_gap(self.heat, race)
+            out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma)
+            d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
+            d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
+            out.update({
+                "polling_margin": polling[race],
+                "fundamentals": {"pres_year": 2024, "pres_d_minus_r": fund.get(race), "underdog": {1: "D", -1: "R"}.get(u)},
+                "spending": {"coverage": sp.get("fec_coverage", "MISSING"),
+                             "d_fav_recent": d_rec, "r_fav_recent": r_rec, "d_fav_prior": d_pri, "r_fav_prior": r_pri,
+                             "r_share_recent": r4(r_rec / (d_rec + r_rec)) if d_rec is not None and r_rec is not None and (d_rec + r_rec) > 0 else None,
+                             "r_share_prior": r4(r_pri / (d_pri + r_pri)) if d_pri is not None and r_pri is not None and (d_pri + r_pri) > 0 else None,
+                             "excess_z": r4(zr) if zr is not None else None, "signal_toward_d": spend_signal,
+                             "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
+                "rhetoric": heat,
+            })
+            per_race[race] = out
+        return {
+            "method_version": SIGNAL_METHOD_VERSION,
+            "method_note": "midterm-2026-signal-adjusted-reading.md",
+            "ruling": "Max, 2026-10-26: spending and rhetoric enter an adjusted reading beside the polling read (big swing)",
+            "window_days": 14, "window_end": self.spending[0].get("window_end"),
+            "priors": {"beta": list(SIGNAL_PRIOR_BETA), "gamma": list(SIGNAL_PRIOR_GAMMA)},
+            "history": hist,
+            "posterior": {"beta": [r4(beta[0]), r4(beta[1])], "gamma": [gamma[0], gamma[1]], "gamma_note": "no history: prior only"},
+            "rules": {"rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+                      "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
+                      "excess_fit_races": [c[0] for c in covered]},
+            "per_race": per_race,
+            "framing": "Experimental. Outside spending and campaign rhetoric are read as signs of campaigns' internal polls. History shows only a weak, unproven link; this reading may be less accurate than the polling read.",
+        }
+
     def compute(self, calc_version: str, release_id: str | None) -> dict:
         ss = (self.run_state or {}).get("stage_outcomes", {})
         stage2c = ss.get("stage2c") == "PASSED"
@@ -1248,6 +1448,7 @@ class Bundle:
             "section2b_turnout": self.turnout_block(),
             "counts": self.counts(ests),
         }
+        derived["signals"] = self.signals_block(blocks)
         return derived
 
     def counts(self, ests: list[dict]) -> dict:
@@ -1326,6 +1527,7 @@ class Bundle:
         copy_names = ["polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv"]
         if ss.get("stage2a") == "PASSED" and os.path.exists(os.path.join(self.dir, "backtest-2025.csv")):
             copy_names.append("backtest-2025.csv")
+        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv") if os.path.exists(os.path.join(self.dir, n))]
         for name in copy_names:
             src = os.path.join(self.dir, name)
             if os.path.exists(src):
