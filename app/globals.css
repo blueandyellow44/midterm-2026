@@ -353,3 +353,32 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 .voter-mobile-race .recall-comparison {padding:20px 0 0;margin-top:20px;}
 @media(max-width:767px){.recall-comparison {padding-inline:22px;}.recall-groups {gap:12px;}.recall-group+ .recall-group {padding-left:12px;}.recall-group-margin {font-size:24px;}}
 .voter-desktop-grid {align-items:start;}
+
+/* Signal-adjusted reading (experimental), 2026-10-26. Same tokens as the recall section; the chip marks it as a second, riskier reading. */
+.signal-reading {padding:22px 26px 4px;border-top:1px solid var(--bezel-edge);}
+.signal-heading {display:flex;align-items:center;gap:10px;}
+.signal-heading h4 {font-size:15px;line-height:1.4;font-weight:700;letter-spacing:-.02em;}
+.signal-chip {font:500 10px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:4px 8px;}
+.signal-intro,.signal-limit {font-size:12px;line-height:1.65;color:var(--muted);margin-top:8px;}
+.signal-lead {font-size:17px;line-height:1.35;margin-top:14px;font-weight:600;}
+.signal-lead strong {font:400 26px/1.2 var(--font-mono);letter-spacing:-.04em;}
+.signal-lead small {font:400 12px var(--font-sans);letter-spacing:0;}
+.signal-shift {font-size:13px;line-height:1.6;margin-top:4px;}
+.signal-lines {margin:14px 0 4px;}
+.signal-lines li {display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:4px;padding:10px 0;border-top:1px solid var(--line);}
+.signal-line-label {font-size:12px;font-weight:650;}
+.signal-line-value {font:400 12px/1.5 var(--font-mono);justify-self:end;text-align:right;}
+.signal-line-text {grid-column:1/-1;font-size:12px;line-height:1.6;color:var(--muted);}
+.signal-details {margin-top:6px;}
+.signal-details>summary {min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;font-weight:600;color:var(--accent);}
+.signal-details>summary>span {font:400 18px var(--font-mono);}
+.signal-details[open]>summary>span {transform:rotate(45deg);}
+.signal-details>p {font-size:12px;line-height:1.7;color:var(--muted);margin:12px 0;}
+.signal-facts {display:grid;gap:10px;margin:12px 0;}
+.signal-facts div {display:grid;grid-template-columns:1fr auto;gap:12px;font-size:12px;border-bottom:1px solid var(--line);padding-bottom:8px;}
+.signal-facts dt {color:var(--muted);}
+.signal-none {padding:14px 26px;border-top:1px solid var(--bezel-edge);font-size:12px;line-height:1.6;color:var(--muted);}
+.signal-none strong {color:var(--ink);font-weight:650;}
+.voter-mobile-race .signal-reading,.voter-mobile-race .signal-none,.mobile-reading .signal-reading,.mobile-reading .signal-none {padding-inline:0;margin-top:20px;}
+.signal-aside .signal-reading,.signal-aside .signal-none {padding-inline:0;margin-top:20px;}
+@media(max-width:767px){.signal-reading {padding-inline:22px;}.signal-lead strong {font-size:24px;}}

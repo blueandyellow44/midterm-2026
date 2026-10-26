@@ -14,9 +14,10 @@ export function raceData(id:string) {
  const recallSources=derived.estimates.filter((e:{estimate_id:string})=>recallComparison?.included_estimate_ids?.includes(e.estimate_id)).sort((a:{field_end:string},b:{field_end:string})=>b.field_end.localeCompare(a.field_end));
  const contributing=derived.estimates.filter((e:{estimate_id:string})=>r.averaging_estimate_ids.includes(e.estimate_id));
  const ends=contributing.map((e:{field_end:string})=>e.field_end).sort();
- return {id,name:raceName(id),slug:slug(id),...r,recallComparison,recallSources,recallFraming:derived.section5_contrasts.framing,newestPollEnd:r.latest_contributing_field_end??ends.at(-1)??null,oldestPollEnd:r.oldest_contributing_field_end??ends.at(0)??null,heat,coverage:derived.section10_coverage.find((c:{race:string})=>c.race===id)};
+ return {id,name:raceName(id),slug:slug(id),...r,recallComparison,recallSources,recallFraming:derived.section5_contrasts.framing,newestPollEnd:r.latest_contributing_field_end??ends.at(-1)??null,oldestPollEnd:r.oldest_contributing_field_end??ends.at(0)??null,heat,coverage:derived.section10_coverage.find((c:{race:string})=>c.race===id),signal:derived.signals?.per_race?.[id]??null};
 }
 export const races=raceIds.map(raceData);
+export const signalsMeta=derived.signals?{window_end:derived.signals.window_end,priors:derived.signals.priors,posterior:derived.signals.posterior,history:derived.signals.history,rules:derived.signals.rules,framing:derived.signals.framing}:null;
 export const publicEstimates=(id:string)=>derived.estimates.filter((e:{race:string;quarantined:boolean})=>e.race===id && !e.quarantined);
 export const method=toPublicNote(readFileSync(join(process.cwd(),'data/midterm-2026-poll-weighting.md'),'utf8'));
 export const excluded=readCsv(readFileSync(join(process.cwd(),'data/exclusions.csv'),'utf8'));
