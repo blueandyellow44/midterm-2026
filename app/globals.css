@@ -320,3 +320,15 @@ html[data-view=mobile] .recall-groups {gap:12px;} html[data-view=mobile] .recall
 .wall-ruler-mark.is-on {color:var(--ink);} .wall-ruler-mark.is-on i {background:var(--ink);height:10px;}
 .wall-ruler-mark span {padding:2px 4px;border-radius:4px;}
 .wall-ruler-mark.is-on span {background:var(--ink);color:var(--panel);}
+/* Recall chart: prominent, two groups in non-party colors, each with a labeled average line. */
+.recall-chart svg text {font-size:15px;}
+.recall-chart .recall-yes {fill:var(--yes);color:var(--yes);} .recall-chart .recall-no {fill:var(--no);color:var(--no);} .recall-chart .recall-unverified {fill:var(--unverified);color:var(--unverified);}
+.recall-chart g.recall-yes path,.recall-chart g.recall-no circle,.recall-chart g.recall-unverified rect {fill-opacity:.85;stroke:var(--panel);stroke-width:1.5;}
+.recall-line line {stroke-width:2.5;stroke-dasharray:7 5;} .recall-line.recall-yes line,.recall-line.recall-yes .recall-leader {stroke:var(--yes);} .recall-line.recall-no line,.recall-line.recall-no .recall-leader {stroke:var(--no);}
+.recall-leader {fill:none;stroke-width:1.5;}
+.recall-line-label {font-family:var(--font-sans);font-size:14px!important;font-weight:700;}
+.recall-line-value {font-family:var(--font-num);font-size:22px!important;font-weight:800;}
+.recall-chart-key {display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;font-weight:600;margin:8px 0 0;}
+.race-recall-grid {display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;align-items:start;}
+html[data-view=mobile] .race-recall-grid {grid-template-columns:1fr;}
+.recall-chart g.is-context {opacity:.28;}

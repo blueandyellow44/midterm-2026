@@ -45,7 +45,6 @@ function WhyPull({r}:{r:any}){const s=r.signal;if(!s||!Number.isFinite(s.adjuste
 
 function ThePolls({r}:{r:any}){const read=r.polling_read;const latest=read?.kind==='LATEST_POLL'?read.latest_poll:null;
  return <Panel className="race-polls" kicker="The polls">
-  <DotPlot estimates={publicEstimates(r.id)} name={r.name}/>
   <ul className="race-facts">
    {read&&<li>{latest?'One published poll':`${read.poll_count} comparable polls`} · newest finished {shortDate(read.field_end)} ({read.age_days} {read.age_days===1?'day':'days'} old)</li>}
    {read&&(latest||Number(read.poll_count)<=2)&&<li className="c-flag">Thin evidence: {latest?'one published poll':`only ${read.poll_count} polls`} behind this number.</li>}
@@ -68,7 +67,12 @@ export default async function Race({params}:{params:Promise<{slug:string}>}) {co
  return <div className="race-console">
   <RaceHead r={r}/>
   <Both desktop={<div className="race-grid"><WhyPull r={r}/><ThePolls r={r}/></div>} mobile={<div className="race-stack"><WhyPull r={r}/><ThePolls r={r}/></div>}/>
-  {r.recallComparison&&<Panel className="race-recall" kicker="Weighting by recalled 2024 vote"><RecallComparison r={r} pollsterNames={pollsterNames}/></Panel>}
+  <Panel className="race-recall" kicker="Every poll, by whether it weights on recalled 2024 vote">
+   <div className="race-recall-grid">
+    <DotPlot estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>
+    <div>{r.recallComparison?<RecallComparison r={r} pollsterNames={pollsterNames}/>:<p className="c-sub">Not enough polls on both sides to compare the two groups in this race.</p>}</div>
+   </div>
+  </Panel>
   <Ledger r={r}/>
   {drawers}
  </div>;}
