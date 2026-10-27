@@ -2012,6 +2012,14 @@ class Bundle:
             for race, series in polling_trend(derived["estimates"], self.as_of_date).items():
                 if race in blocks:
                     blocks[race]["trend"] = series
+            # Chart positions for polls that report only the two candidates: their shares sum to 100, so they are drawn
+            # on the race's full-ballot scale (the same scale the candidate lines use). The reported shares stay as D and R.
+            for e in derived["estimates"]:
+                x = (v2.get("per_race") or {}).get(e.get("race"))
+                d, rr = e.get("D"), e.get("R")
+                if x and e.get("denominator_class") == "TWO_WAY" and isinstance(d, (int, float)) and isinstance(rr, (int, float)) and d + rr > 0:
+                    sc, tp = x["full_ballot_scale"], 100.0 * (d - rr) / (d + rr)
+                    e["chart_d"], e["chart_r"] = r4(50 * sc + tp * sc / 2), r4(50 * sc - tp * sc / 2)
         derived["signals"] = self.signals_block(blocks)
         if derived["signals"] is not None and v2:
             derived["signals"]["polling_v2"] = v2

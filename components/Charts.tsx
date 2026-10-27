@@ -1,6 +1,6 @@
 import { Empty, RecallLegend } from './UI';
 import { number, margin, shortDate } from '@/lib/format';
-type Estimate={estimate_id:string; margin:number; D?:number; R?:number; field_start:string;field_end:string;field_midpoint:number;recall_weighted:string;pollster_id:string;round:string;pop:string;denominator_class:string;primary_verified:string;flags:{principal:boolean}};
+type Estimate={estimate_id:string; margin:number; D?:number; R?:number; chart_d?:number; chart_r?:number; field_start:string;field_end:string;field_midpoint:number;recall_weighted:string;pollster_id:string;round:string;pop:string;denominator_class:string;primary_verified:string;flags:{principal:boolean}};
 type Groups={YES?:{mean:number};NO?:{mean:number}};
 const lead=(v:number,names?:{D:string;R:string})=>Math.abs(v)<0.05?'Even':names?`${(v>0?names.D:names.R).trim().split(/\s+/).pop()} +${Math.abs(v).toFixed(1)}`:margin(v);
 // Poll margins by field midpoint, marked by whether each poll weights on recalled 2024 vote, with each group's average as a
@@ -45,7 +45,8 @@ export function CandidateChart({estimates,trend,name,names,compact}:{estimates:E
  if(!trend?.length) return <Empty title="No polling average yet">The polls behind this race are listed below.</Empty>;
  const W=compact?380:900,H=compact?300:380,L=compact?40:52,R=compact?300:720,T=16,B=compact?262:338;
  const start=240,end=305;
- const vals=[...points.flatMap(p=>[p.D as number,p.R as number]),...trend.flatMap(t=>[t.d,t.r])];
+ const cd=(p:Estimate)=>Number.isFinite(p.chart_d)?p.chart_d as number:p.D as number, cr=(p:Estimate)=>Number.isFinite(p.chart_r)?p.chart_r as number:p.R as number;
+ const vals=[...points.flatMap(p=>[cd(p),cr(p)]),...trend.flatMap(t=>[t.d,t.r])];
  const hi=Math.ceil((Math.max(...vals)+2)/5)*5, lo=Math.floor((Math.min(...vals)-2)/5)*5;
  const x=(v:number)=>L+(Math.max(start,Math.min(end,v))-start)/(end-start)*(R-L);const y=(v:number)=>T+(hi-v)/(hi-lo)*(B-T);
  const ticks=Array.from({length:Math.round((hi-lo)/5)+1},(_,i)=>lo+5*i).filter(t=>(hi-lo)<=30||t%10===0);
@@ -60,11 +61,11 @@ export function CandidateChart({estimates,trend,name,names,compact}:{estimates:E
 <desc>{`Blue: ${names.D}. Red: ${names.R}. Lines are the weekly polling average ending at the published number; dots are individual polls.`}</desc>
 {ticks.map(t=><g key={t}><line x1={L} x2={R} y1={y(t)} y2={y(t)} className="gridline"/><text x={L-10} y={y(t)+5} textAnchor="end">{t}%</text></g>)}
 {[[243,'Sep 1'],[273,'Oct 1'],[297,'Oct 25']].map(([v,label])=><text key={v} x={x(Number(v))} y={H-12} textAnchor="middle">{label}</text>)}
-{points.map(p=><g key={p.estimate_id}><title>{`${p.pollster_id}: ${sur(names.D)} ${p.D}, ${sur(names.R)} ${p.R}, ${shortDate(p.field_start)}–${shortDate(p.field_end)}; recall ${p.recall_weighted}; ${p.denominator_class}`}</title>{mark(p,p.D as number,'cand-d')}{mark(p,p.R as number,'cand-r')}</g>)}
+{points.map(p=><g key={p.estimate_id}><title>{`${p.pollster_id}: ${sur(names.D)} ${p.D}, ${sur(names.R)} ${p.R}${Number.isFinite(p.chart_d)?' (two-candidate poll, drawn on the full-ballot scale)':''}, ${shortDate(p.field_start)}–${shortDate(p.field_end)}; recall ${p.recall_weighted}; ${p.denominator_class}`}</title>{mark(p,cd(p),'cand-d')}{mark(p,cr(p),'cand-r')}</g>)}
 <path d={path('d')} className="cand-line cand-line-d"/><path d={path('r')} className="cand-line cand-line-r"/>
 {!compact&&<><text x={R+14} y={yd-2} className="cand-label cand-d">{sur(names.D)}</text><text x={R+14} y={yd+22} className="cand-value cand-d">{last.d.toFixed(1)}</text>
 <text x={R+14} y={yr-2} className="cand-label cand-r">{sur(names.R)}</text><text x={R+14} y={yr+22} className="cand-value cand-r">{last.r.toFixed(1)}</text></>}
 </svg>
-<p className="recall-chart-key" aria-hidden="true">{compact&&<><span className="cand-d">— {sur(names.D)} {last.d.toFixed(1)}</span><span className="cand-r">— {sur(names.R)} {last.r.toFixed(1)}</span></>}<span>▲ weights on 2024 vote</span><span>● does not</span><span>■ unverified</span><span className="muted">hollow: poll reports only the two candidates · lines: weekly polling average</span></p>
+<p className="recall-chart-key" aria-hidden="true">{compact&&<><span className="cand-d">— {sur(names.D)} {last.d.toFixed(1)}</span><span className="cand-r">— {sur(names.R)} {last.r.toFixed(1)}</span></>}<span>▲ weights on 2024 vote</span><span>● does not</span><span>■ unverified</span><span className="muted">hollow: a poll that reports only the two candidates, drawn on the full-ballot scale (exact numbers in the poll table) · lines: weekly polling average</span></p>
 </figure>;
 }
