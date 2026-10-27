@@ -2,7 +2,7 @@
 // never enter Next's server/ISR runtime or request an unconfigured cache binding.
 export default {
   fetch() {
-    return new Response('Not found. Return to the Election Weather race index at /.', {
+    return new Response('Not found. Return to the Undertow race index at /.', {
       status: 404,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
