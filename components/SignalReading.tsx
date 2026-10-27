@@ -24,6 +24,7 @@ export function signalLines(s:any,names:{D:string;R:string},meta?:any) {
   const hot=rh.gap>0?'R':'D';
   lines.push({key:'rhetoric',label:'Rhetoric',value:s.delta_rhetoric,text:`${names[hot]}’s ads and debate answers run hotter (${number(hot==='R'?rh.mean_r:rh.mean_d,1)} against ${number(hot==='R'?rh.mean_d:rh.mean_r,1)} on a 1 to 5 scale). Trailing candidates tend to attack, so this reads as ${names[hot]} behind in their own polls.${s.rhetoric_capped?' The rhetoric effect is capped.':''}`});
  }
+ if(rh?.in_reading===false && Number.isFinite(rh?.gap) && Math.abs(rh.gap)>=0.1) {const hot=rh.gap>0?'R':'D';lines.push({key:'rhetoric-test',label:'Rhetoric · tested, not counted',value:0,text:`${names[hot]}’s ads and debate answers run hotter (${number(hot==='R'?rh.mean_r:rh.mean_d,1)} against ${number(hot==='R'?rh.mean_d:rh.mean_r,1)} on a 1 to 5 scale). We think hotter rhetoric means a campaign is behind in its own polls, but there is no record to prove it yet, so it does not move this reading. It is graded after the election.`});}
  return lines;
 }
 
@@ -31,11 +32,11 @@ export function signalGaps(s:any) {
  const gaps:string[]=[];
  if(s.spending?.coverage==='NOT_FEDERAL') gaps.push('governor campaigns report spending to the state, not the FEC');
  else if(s.weight_spending===0) gaps.push(Number.isFinite(s.spending?.excess_z)?'outside spending is about what a race this close usually draws':'no usable outside-spending total');
- if(s.weight_rhetoric===0) gaps.push(Number.isFinite(s.rhetoric?.gap)?'the two candidates’ rhetoric runs about equally hot':'not enough scored ads or debate answers for both candidates');
+ if(s.weight_rhetoric===0&&s.rhetoric?.in_reading!==false) gaps.push(Number.isFinite(s.rhetoric?.gap)?'the two candidates’ rhetoric runs about equally hot':'not enough scored ads or debate answers for both candidates');
  return gaps;
 }
 
-const agreement:Record<string,string>={NO_SIGNAL:'No campaign signal is strong enough here, so only the polling-error lean applies.',ALIGNED:'Spending and rhetoric point the same way, so both count in full.',OPPOSED:'Spending and rhetoric point in opposite directions, so each counts at one quarter.',SPENDING_ONLY:'Only spending gives a signal here, so it counts at half.',RHETORIC_ONLY:'Only rhetoric gives a signal here, so it counts at half.'};
+const agreement:Record<string,string>={NO_SIGNAL:'No campaign signal is strong enough here, so only the polling-error lean applies.',ALIGNED:'Spending and rhetoric point the same way, so both count in full.',OPPOSED:'Spending and rhetoric point in opposite directions, so each counts at one quarter.',SPENDING_ONLY:'Spending counts at half weight, because its track record is thin and nothing else confirms it.',RHETORIC_ONLY:'Only rhetoric gives a signal here, so it counts at half.'};
 
 export function SignalReading({r,meta}:{r:any;meta?:any}) {
  const s=r?.signal;
@@ -48,13 +49,13 @@ export function SignalReading({r,meta}:{r:any;meta?:any}) {
  const a=s.adjusted_margin;const even=Math.abs(a)<EVEN;const shift=s.delta_total;const lines=signalLines(s,names,meta);
  return <section className="signal-reading" aria-label={`${r.name||'This race'}: reading adjusted for campaign spending and rhetoric`}>
   <div className="signal-heading"><h4>Our reading</h4><span className="signal-chip">Experimental</span></div>
-  <p className="signal-intro">Where we think this race really stands: the polls, adjusted for recent polling error, where outside money goes and how hot each side’s rhetoric runs.</p>
+  <p className="signal-intro">Where we think this race really stands: the polls, adjusted for recent polling error and for where outside money goes.</p>
   <p className="signal-lead">{rangeLead(s,names)}</p><p className="signal-midpoint">Midpoint: {even?'even':`${toward(a,names)} +${number(Math.abs(a))}`}</p>
   <p className="signal-shift">{Math.abs(shift)<EVEN?'About the same as the polls.':<>{number(Math.abs(shift))} points toward {toward(shift,names)} compared with the polls.</>}</p>
-  <ul className="signal-lines">{lines.map(l=><li key={l.key}><span className="signal-line-label">{l.label}</span><span className={`signal-line-value ${Number(l.value)>0?'lead-number-d':Number(l.value)<0?'lead-number-r':''}`}>{Math.abs(Number(l.value))<EVEN?'0.0':`${number(Math.abs(Number(l.value)))} toward ${toward(Number(l.value),names)}`}</span><span className="signal-line-text">{l.text}</span></li>)}</ul>
+  <ul className="signal-lines">{lines.map(l=><li key={l.key}><span className="signal-line-label">{l.label}</span><span className={`signal-line-value ${Number(l.value)>0?'lead-number-d':Number(l.value)<0?'lead-number-r':''}`}>{l.key==='rhetoric-test'?'not counted':Math.abs(Number(l.value))<EVEN?'0.0':`${number(Math.abs(Number(l.value)))} toward ${toward(Number(l.value),names)}`}</span><span className="signal-line-text">{l.text}</span></li>)}</ul>
   <p className="signal-limit">{agreement[s.alignment]} Graded against the results alongside the polls.</p>
   <details className="signal-details"><summary>How this is calculated<span aria-hidden="true">+</span></summary>
-   <p>The adjustment starts from the polling read above and adds three terms. Recent polling error: a fixed lean toward Democrats in every race. Spending: outside money in the two weeks to {s.window_end||meta?.window_end||'the snapshot'}, compared with what a race this close usually draws, read against the state’s 2024 presidential result. Rhetoric: the average LITMUS heat score of each side’s scored ads and debate answers.</p>
+   <p>The adjustment starts from the polling read above and adds two terms. Recent polling error: a lean toward Democrats, sized for each state. Spending: outside money in the two weeks to {s.window_end||meta?.window_end||'the snapshot'}, compared with what a race this close usually draws, read against the state’s 2024 presidential result. Rhetoric is scored but not counted: it has no track record yet, so it is frozen on November 2 and graded on its own.</p>
    {meta&&<p>Spending counts {number(meta.posterior?.beta?.[0],2)} points per standard deviation of extra money, a starting assumption of {number(meta.priors?.beta?.[0],1)} updated with {meta.history?.n} Senate races from {meta.history?.years?.join(' and ')}. Rhetoric counts {number(meta.posterior?.gamma?.[0],2)} points per point of heat gap, a starting assumption with no history behind it, capped at {number(meta.rules?.rhetoric_cap,1)} points. The national polling-error lean is {number(meta.rules?.poll_error_toward_d,1)} points, give or take {number(meta.rules?.poll_error_sd,1)}: in every off-year since 1999, about a third of that year’s polling miss repeated in the next year’s elections, and the 2025 miss was {number(meta.rules?.poll_error_2025_miss,1)} points toward Democrats. That history is thin, so the range above includes this uncertainty, along with the race-by-race error of a final polling average, about 4 points once the year’s shared miss is set aside. The true result should land inside the range about two times in three. Each state then moves by {number(meta.state_lean?.slope,2)} times its own average miss against the national miss over the last {meta.state_lean?.window_years} years; here that is {s.polling_error?.state_adjustment>0?'+':''}{number(s.polling_error?.state_adjustment,1)} points across {s.polling_error?.cycles} election cycles.</p>}
    <dl className="signal-facts">
     <div><dt>2024 presidential result</dt><dd className="mono">{Number.isFinite(s.fundamentals?.pres_d_minus_r)?`${s.fundamentals.pres_d_minus_r>0?'D':'R'} +${number(Math.abs(s.fundamentals.pres_d_minus_r))}`:'NA'}</dd></div>

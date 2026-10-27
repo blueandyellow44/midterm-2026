@@ -293,7 +293,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.5"  # 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "1.6"  # 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -317,6 +317,9 @@ SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one SD of race-level poll
 STATE_LEAN_WINDOW_YEARS = 12
 STATE_LEAN_MIN_CYCLES = 2
 STATE_LEAN_FIT_FROM = 2010
+# Rhetoric is measured, frozen and graded but not counted in the reading (Max, 2026-10-27: "Rhetoric is too soft to include
+# in data set as much as it breaks my heart"; "Yeah drop and keep testing"). Spending then counts at the single-signal weight.
+SIGNAL_RHETORIC_IN_READING = False
 SIGNAL_MIN_HEAT_UNITS = 2         # scored units required per candidate
 SIGNAL_WEIGHT_ALIGNED = 1.0
 SIGNAL_WEIGHT_OPPOSED = 0.25
@@ -1460,7 +1463,7 @@ class Bundle:
             heat = rhetoric_gap(self.heat, race)
             st_lean = (leans or {}).get("per_state", {}).get(race.split("-")[1]) if leans else None
             lean = st_lean["lean"] if st_lean else SIGNAL_POLL_ERROR_TOWARD_D
-            out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma, lean, SIGNAL_POLL_ERROR_SD)
+            out = signal_adjusted(polling[race], spend_signal, heat["gap"] if SIGNAL_RHETORIC_IN_READING else None, beta, gamma, lean, SIGNAL_POLL_ERROR_SD)
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
             d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
             out.update({
@@ -1473,7 +1476,7 @@ class Bundle:
                              "excess_z": r4(zr) if zr is not None else None, "signal_toward_d": spend_signal,
                              "measure": {"FEC_SCHEDULE_E": "FEC outside spending, 14 days", "DIGITAL_CANDIDATE": "campaign digital ad spending in state (Google + Meta), about 4 weeks"}.get(sp.get("fec_coverage")),
                              "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
-                "rhetoric": heat,
+                "rhetoric": {**heat, "in_reading": SIGNAL_RHETORIC_IN_READING},
                 "polling_error": {"national": SIGNAL_POLL_ERROR_TOWARD_D, "state": race.split("-")[1], **(st_lean or {"prior_residual": None, "cycles": 0, "state_adjustment": 0.0, "lean": SIGNAL_POLL_ERROR_TOWARD_D})},
             })
             per_race[race] = out
@@ -1486,11 +1489,11 @@ class Bundle:
             "history": hist,
             "posterior": {"beta": [r4(beta[0]), r4(beta[1])], "gamma": [gamma[0], gamma[1]], "gamma_note": "no history: prior only"},
             "state_lean": {k: v for k, v in (leans or {}).items() if k != "per_state"} or None,
-            "rules": {"poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "poll_error_sd": SIGNAL_POLL_ERROR_SD, "poll_error_carryover": list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+            "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "poll_error_sd": SIGNAL_POLL_ERROR_SD, "poll_error_carryover": list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,
-            "framing": "Experimental. Outside spending and campaign rhetoric are read as signs of campaigns' internal polls. It is a bet, frozen on November 2 and graded against certified results beside the polls.",
+            "framing": "Experimental. Recent polling error and outside spending are read as signs of where campaigns' internal polls stand. It is a bet, frozen on November 2 and graded against certified results beside the polls. Rhetoric is scored and graded separately, not counted.",
         }
 
     def compute(self, calc_version: str, release_id: str | None) -> dict:
