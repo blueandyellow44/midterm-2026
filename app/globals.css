@@ -341,3 +341,4 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .cand-chart .is-hollow {fill-opacity:0!important;stroke-width:2!important;} .cand-chart .cand-d.is-hollow {stroke:var(--d)!important;} .cand-chart .cand-r.is-hollow {stroke:var(--r)!important;}
 .cand-line {fill:none;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round;} .cand-line-d {stroke:var(--d);} .cand-line-r {stroke:var(--r);}
 .cand-label {font-family:var(--font-sans);font-size:15px!important;font-weight:700;} .cand-value {font-family:var(--font-num);font-size:26px!important;font-weight:800;}
+.cand-hollow-key {display:inline-flex;align-items:center;gap:5px;} .cand-hollow-key circle {fill:none;stroke:var(--ink);stroke-width:1.6;}
