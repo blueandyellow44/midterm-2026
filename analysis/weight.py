@@ -305,7 +305,11 @@ SIGNAL_POLL_ERROR_CARRYOVER = (0.3345, 0.2457)
 SIGNAL_POLL_ERROR_2025_MISS = 7.42
 SIGNAL_POLL_ERROR_TOWARD_D = round(SIGNAL_POLL_ERROR_CARRYOVER[0] * SIGNAL_POLL_ERROR_2025_MISS, 2)
 SIGNAL_POLL_ERROR_SD = round(SIGNAL_POLL_ERROR_CARRYOVER[1] * SIGNAL_POLL_ERROR_2025_MISS, 2)
-SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one SD of (polling-average error, STAGE3_SIGMA 5.0) combined with the adjustment SD
+# Race-level polling-average error once the year's shared miss is removed (the lean models the shared part, and its SD is
+# already in the adjustment SD). 538 raw polls, Senate and governor generals 2010-2024 with 5+ polls in the final 21 days,
+# 212 races: total SD 4.91, shared year-mean SD 3.03, within-year SD 4.06 (Max, 2026-10-27: "Five point standard deviation is huge yeah??").
+SIGNAL_RACE_POLL_SD = 4.06
+SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one SD of race-level polling error combined with the adjustment SD
 # State-specific lean (Max, 2026-10-26: "State specific lean"). Each state's polling miss relative to that year's national
 # mean miss persists: 2010-2024, 346 state-cycles, prior-12-year mean residual vs next residual, no-intercept slope 0.69
 # (leave-one-year-out 0.60-0.79; mean absolute residual 3.63 unadjusted, 3.23 adjusted). The lean is the national
@@ -480,8 +484,8 @@ def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap:
             "weight_spending": ws, "weight_rhetoric": wr,
             "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "delta_polling_error": r4(poll_error), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
             "delta_total": r4(delta), "delta_sd": r4(sd), "adjusted_margin": r4(polling + delta),
-            "range_sd": r4(math.sqrt(sd ** 2 + STAGE3_SIGMA ** 2)),
-            "range": [r4(polling + delta - SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + STAGE3_SIGMA ** 2)), r4(polling + delta + SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + STAGE3_SIGMA ** 2))],
+            "range_sd": r4(math.sqrt(sd ** 2 + SIGNAL_RACE_POLL_SD ** 2)),
+            "range": [r4(polling + delta - SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + SIGNAL_RACE_POLL_SD ** 2)), r4(polling + delta + SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + SIGNAL_RACE_POLL_SD ** 2))],
             "lagging_side": None if delta == 0 else ("R" if delta > 0 else "D")}
 
 
@@ -1482,7 +1486,7 @@ class Bundle:
             "history": hist,
             "posterior": {"beta": [r4(beta[0]), r4(beta[1])], "gamma": [gamma[0], gamma[1]], "gamma_note": "no history: prior only"},
             "state_lean": {k: v for k, v in (leans or {}).items() if k != "per_state"} or None,
-            "rules": {"poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "poll_error_sd": SIGNAL_POLL_ERROR_SD, "poll_error_carryover": list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+            "rules": {"poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "poll_error_sd": SIGNAL_POLL_ERROR_SD, "poll_error_carryover": list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,
