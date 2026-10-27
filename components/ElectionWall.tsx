@@ -11,6 +11,11 @@ export type WallRace = {
   spendLabel: string; dLetter: string;
 };
 type Office = 'SEN' | 'GOV';
+export type HistoryPreset = { year: number; miss_toward_d: number };
+// Dial presets are real past national misses from the archive, then no miss, my bet and last fall (Max, 2026-10-27).
+function presetList(history: HistoryPreset[], national: number, lastFall: number): [string, number][] {
+  return [...history.map(h => [`${h.year} again`, Math.round(h.miss_toward_d * 10) / 10] as [string, number]), ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
+}
 const EVEN = 0.05;
 const last = (n: string) => n.trim().split(/\s+/).pop() || n;
 // Square tile map, one tile per state, laid out roughly by geography (12 x 8).
@@ -32,10 +37,11 @@ export function shade(v: number) { const a = Math.abs(v); const side = v > 0 ? '
 const letter = (v: number, r: WallRace) => (v > 0 ? r.dLetter : 'R');
 const side = (v: number) => (v >= EVEN ? 'is-d' : v <= -EVEN ? 'is-r' : 'is-even');
 
-function Dial({ m, setM, national, lastFall, compact }: { m: number; setM: (v: number) => void; national: number; lastFall: number; compact?: boolean }) {
+function Dial({ m, setM, national, lastFall, history, compact }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean }) {
   const span = Math.max(8, Math.ceil(lastFall));
   const near = (x: number) => Math.abs(m - x) < 0.05;
-  const mark = near(national) ? 'My bet' : near(0) ? 'No national miss' : near(lastFall) ? 'Last fall repeats' : null;
+  const hit = presetList(history, national, lastFall).find(([, v]) => near(v));
+  const mark = hit ? (hit[1] === national ? 'My bet' : hit[0]) : null;
   const dir = m >= EVEN ? 'understate Democrats' : m <= -EVEN ? 'understate Republicans' : 'miss neither way';
   return <section className={`wall-panel wall-dial${compact ? ' is-compact' : ''}`} aria-label="How wrong are the polls?">
     <p className="wall-kicker">How wrong are the polls?</p>
@@ -43,13 +49,7 @@ function Dial({ m, setM, national, lastFall, compact }: { m: number; setM: (v: n
     <p className="wall-dial-dir">Polls {dir}{mark ? <> · <strong>{mark}</strong></> : null}</p>
     <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
     <div className="wall-scale"><span className="is-r">◀ Republicans</span><span className="is-d">Democrats ▶</span></div>
-    <div className="wall-presets">
-      <button type="button" aria-pressed={near(-5)} onClick={() => setM(-5)}>Miss R by 5</button>
-      <button type="button" aria-pressed={near(-2.5)} onClick={() => setM(-2.5)}>Miss R by 2.5</button>
-      <button type="button" aria-pressed={near(0)} onClick={() => setM(0)}>No miss</button>
-      <button type="button" aria-pressed={near(national)} onClick={() => setM(national)}>My bet {national.toFixed(1)}</button>
-      <button type="button" aria-pressed={near(lastFall)} onClick={() => setM(lastFall)}>Last fall {lastFall.toFixed(1)}</button>
-    </div>
+    <div className="wall-presets">{presetList(history, national, lastFall).map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}><span>{label}</span><small>{Math.abs(v) < EVEN ? 'polls right' : `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`}</small></button>)}</div>
     {!compact && <p className="wall-note">Slide to set this year’s national polling miss. Each race keeps its own state record, spending and early vote. The call I am graded on stays at my bet.</p>}
   </section>;
 }
@@ -98,24 +98,24 @@ function Board({ races, m, selected, select }: { races: WallRace[]; m: number; s
   </section>;
 }
 
-export function ElectionWall({ races, national, lastFall, initial }: { races: WallRace[]; national: number; lastFall: number; initial: string }) {
+export function ElectionWall({ races, national, lastFall, initial, history }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[] }) {
   const [m, setM] = useState(national);
   const [office, setOffice] = useState<Office>('SEN');
   const [selected, setSelected] = useState(initial);
   const sel = races.find(r => r.id === selected) || races[0];
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
-    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall}/><Tally races={races} m={m}/></aside>
+    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history}/><Tally races={races} m={m}/></aside>
     <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={sel.id} select={select}/>{sel && <Detail r={sel} m={m} national={national}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={sel.id} select={select}/></aside>
   </div>;
 }
 
-function DialBar({ m, setM, national, lastFall }: { m: number; setM: (v: number) => void; national: number; lastFall: number }) {
+function DialBar({ m, setM, national, lastFall, history }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[] }) {
   const span = Math.max(8, Math.ceil(lastFall));
   const near = (x: number) => Math.abs(m - x) < 0.05;
   const dir = m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way';
-  const presets: [string, number][] = [['Miss R 5', -5], ['Miss R 2.5', -2.5], ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
+  const presets = presetList(history, national, lastFall);
   return <section className="wall-dialbar" aria-label="How wrong are the polls?">
     <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{Math.abs(m).toFixed(1)}</span><span className="wall-dialbar-dir">{dir}<small>How wrong are the polls? Drag to change every race.</small></span></div>
     <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
@@ -123,7 +123,7 @@ function DialBar({ m, setM, national, lastFall }: { m: number; setM: (v: number)
   </section>;
 }
 
-export function MobileWall({ races, national, lastFall }: { races: WallRace[]; national: number; lastFall: number }) {
+export function MobileWall({ races, national, lastFall, history }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[] }) {
   const [m, setM] = useState(national);
   const [open, setOpen] = useState<string | null>(null);
   const [office, setOffice] = useState<Office>('SEN');
@@ -138,6 +138,6 @@ export function MobileWall({ races, national, lastFall }: { races: WallRace[]; n
         <span className="wall-mrow-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
       {open === r.id && <Detail r={r} m={m} national={national}/>}
     </li>)}</ol>
-    <DialBar m={m} setM={setM} national={national} lastFall={lastFall}/>
+    <DialBar m={m} setM={setM} national={national} lastFall={lastFall} history={history}/>
   </div>;
 }

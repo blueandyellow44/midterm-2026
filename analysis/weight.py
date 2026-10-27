@@ -782,6 +782,20 @@ def early_vote_block(rows: list[dict] | None, state: str, model: dict | None = N
     return None
 
 
+HISTORY_PRESET_YEARS = (2020, 2016, 2024, 2022)   # dial presets: "what if this year's polling miss repeats that year's"
+
+
+def national_misses(poll_history: list[dict] | None, years=HISTORY_PRESET_YEARS) -> list[dict]:
+    """Each preset year's national polling miss toward D: the mean of actual minus final polling margin across every
+    statewide race in the archive that year (Max, 2026-10-27: real past misses as the dial's presets)."""
+    by = defaultdict(list)
+    for r in poll_history or []:
+        a, p = num(r.get("actual_margin")), num(r.get("poll_margin"))
+        if a is not None and p is not None:
+            by[int(r["year"])].append(a - p)
+    return [{"year": y, "miss_toward_d": r4(sum(by[y]) / len(by[y])), "races": len(by[y])} for y in years if by.get(y)]
+
+
 def offyear_record(poll_history: list[dict] | None) -> dict | None:
     """The latest odd-year statewide polling miss toward D against every earlier odd year in the archive."""
     by = defaultdict(list)
@@ -1915,6 +1929,7 @@ class Bundle:
             "early_vote_model": ev_model,
             "witness_model": wit,
             "offyear_record": offyear_record(getattr(self, "poll_error_history", None)),
+            "history_presets": national_misses(getattr(self, "poll_error_history", None)),
             "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": national, "poll_error_sd": national_sd, "poll_error_carryover": [model["carryover_share"], model["carryover_se"]] if model else list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": model["offyear_miss_toward_d"] if model else SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "abandon_min_lead": SIGNAL_ABANDON_MIN_LEAD, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
