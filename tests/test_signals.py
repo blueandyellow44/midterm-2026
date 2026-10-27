@@ -182,7 +182,9 @@ class LeanUncertainty(unittest.TestCase):
     def test_range_includes_poll_error_sd(self):
         out = weight.signal_adjusted(2.0, None, None, (1.5, 1.0), (0.75, 0.5), 2.5, 1.8)
         self.assertAlmostEqual(out["delta_sd"], 1.8, places=4)
-        self.assertEqual(out["range"], [weight.r4(4.5 - 1.8), weight.r4(4.5 + 1.8)])
+        sd = (1.8 ** 2 + 5.0 ** 2) ** 0.5
+        self.assertAlmostEqual(out["range_sd"], sd, places=3)
+        self.assertEqual(out["range"], [weight.r4(4.5 - sd), weight.r4(4.5 + sd)])
 
     def test_lean_constants_match_refit(self):
         self.assertAlmostEqual(weight.SIGNAL_POLL_ERROR_TOWARD_D, 2.48, places=2)

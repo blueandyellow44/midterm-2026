@@ -305,7 +305,7 @@ SIGNAL_POLL_ERROR_CARRYOVER = (0.3345, 0.2457)
 SIGNAL_POLL_ERROR_2025_MISS = 7.42
 SIGNAL_POLL_ERROR_TOWARD_D = round(SIGNAL_POLL_ERROR_CARRYOVER[0] * SIGNAL_POLL_ERROR_2025_MISS, 2)
 SIGNAL_POLL_ERROR_SD = round(SIGNAL_POLL_ERROR_CARRYOVER[1] * SIGNAL_POLL_ERROR_2025_MISS, 2)
-SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one combined standard deviation
+SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one SD of (polling-average error, STAGE3_SIGMA 5.0) combined with the adjustment SD
 # State-specific lean (Max, 2026-10-26: "State specific lean"). Each state's polling miss relative to that year's national
 # mean miss persists: 2010-2024, 346 state-cycles, prior-12-year mean residual vs next residual, no-intercept slope 0.69
 # (leave-one-year-out 0.60-0.79; mean absolute residual 3.63 unadjusted, 3.23 adjusted). The lean is the national
@@ -480,7 +480,8 @@ def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap:
             "weight_spending": ws, "weight_rhetoric": wr,
             "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "delta_polling_error": r4(poll_error), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
             "delta_total": r4(delta), "delta_sd": r4(sd), "adjusted_margin": r4(polling + delta),
-            "range": [r4(polling + delta - SIGNAL_RANGE_Z * sd), r4(polling + delta + SIGNAL_RANGE_Z * sd)],
+            "range_sd": r4(math.sqrt(sd ** 2 + STAGE3_SIGMA ** 2)),
+            "range": [r4(polling + delta - SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + STAGE3_SIGMA ** 2)), r4(polling + delta + SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + STAGE3_SIGMA ** 2))],
             "lagging_side": None if delta == 0 else ("R" if delta > 0 else "D")}
 
 
