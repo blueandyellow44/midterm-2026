@@ -186,6 +186,9 @@ def main() -> int:
     per = (derived.get("signals") or {}).get("per_race")
     if not per:
         raise SystemExit("no signals block in data/derived.json: sync a signals release first")
+    # Only races with a reading get a card: districts with no public polls are listed on the site without a number.
+    heat = derived["section9_heat"]["per_race"]
+    per = {rid: s for rid, s in per.items() if isinstance(s.get("adjusted_margin"), (int, float)) and rid in heat}
     word = json.loads((ROOT / "lib/brand/wordmark-paths.json").read_text())["lower"]["d"]
     jobs = []
     with tempfile.TemporaryDirectory() as tmp:
