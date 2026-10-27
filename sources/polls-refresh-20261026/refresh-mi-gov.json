@@ -1,0 +1,48 @@
+{
+ "race": "2026-MI-GOV",
+ "analytical_as_of": "refresh 2026-10-26",
+ "sources_checked": [
+  "270toWin 13 race pages 2026-10-26",
+  "RealClearPolling latest Senate and governor 2026-10-26"
+ ],
+ "polls": [
+  {
+   "pollster_name": "Michigan State University IPPSR / YouGov",
+   "members_or_partners": "IPPSR Office for Survey Research / YouGov",
+   "sponsor": "self",
+   "sponsor_class": "NONPARTISAN",
+   "pollster_alignment": "NONE",
+   "field_start": "2026-10-02",
+   "field_end": "2026-10-19",
+   "release_date": "2026-10-26",
+   "n": 863,
+   "pop": "LV",
+   "D": 53.3,
+   "R": 40.9,
+   "other": null,
+   "undecided": null,
+   "denominator_class": "FULL",
+   "round": "NA",
+   "source_url": "https://ippsr.msu.edu/news/msu-poll-shows-benson-large-lead-while-el-sayed-roger-race-tight",
+   "source_locator": "release paragraph 1: Benson 53.3% to James 40.9% among likely voters; topline soss95.pdf",
+   "verified_on_primary": true,
+   "notes": "State of the State Survey; n=863 LV per RealClearPolling listing; MSU release gives margin and dates.",
+   "retrieved_at": "2026-10-26T17:20:00-07:00"
+  }
+ ],
+ "pollsters": [
+  {
+   "pollster_name": "Michigan State University IPPSR / YouGov",
+   "applicability": "SURVEY",
+   "recall_weighted": "YES",
+   "weighting_quote": "respondents were matched to a sampling frame of Michigan adults drawn from the 2023 American Community Survey, weighted by propensity score, and then post-stratified on 2024 presidential vote, gender, age, race, and education",
+   "method_url": "https://ippsr.msu.edu/news/msu-poll-shows-benson-large-lead-while-el-sayed-roger-race-tight",
+   "method_locator": "release, methodology paragraph",
+   "method_date": "2026-10-26",
+   "disclosure_status": "DISCLOSED",
+   "mode": "online panel (YouGov)",
+   "method_owner": "IPPSR",
+   "retrieved_at": "2026-10-26T17:20:00-07:00"
+  }
+ ]
+}

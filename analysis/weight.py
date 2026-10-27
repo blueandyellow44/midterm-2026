@@ -118,6 +118,9 @@ HEAT_RESERVE_MULTIPLIER = 1.5
 STAGE3_SIGMA = 5.0          # a heuristic standard deviation; not an estimate, not a flip threshold
 STAGE3_CLAMP = (0.03, 0.97)
 SCENARIO_SHIFTS = {"control_flip_toward_R": 2.5, "scale_2016_2020_toward_R": 5.0}
+# Recent polling error toward Democrats (Max, 2026-10-26: "i wnat this folded into our methodology"): six statewide or
+# well-polled races Nov 2025 to Apr 2026 missed toward the Democratic side by 4.9 to 9.8 points (mean 7.0 adjusted).
+SCENARIO_SHIFTS_TOWARD_D = {"recent_miss_low_toward_D": 5.0, "recent_miss_mean_toward_D": 7.0}
 SIMPLE_AVERAGE_ERROR_THRESHOLDS = ((3.0, 1.0), (5.0, 0.8), (float("inf"), 0.5))
 DENOM_ORDER = {"FULL": 0, "LEANERS": 1, "TWO_WAY": 2}
 POP_ORDER = {"LV": 0, "RV": 1, "A": 2}
@@ -1087,9 +1090,11 @@ class Bundle:
                 balanced[group] = mean([mean(values) for values in firms.values()])
             per_race_contrast = {"yes_mean": r4(balanced["YES"]), "no_mean": r4(balanced["NO"]), "yes_minus_no": r4(balanced["YES"] - balanced["NO"]), "n_yes": len(yes), "n_no": len(no)}
         scenarios = None
+        scenarios_d = None
         base = weighted_margin if weighted_margin is not None else preliminary
         if base is not None:
             scenarios = {k: r4(base - v) for k, v in SCENARIO_SHIFTS.items()}
+            scenarios_d = {k: r4(base + v) for k, v in SCENARIO_SHIFTS_TOWARD_D.items()}
         latest = latest_published_poll(rows, race, self.as_of_date)
         if weighted_margin is not None:
             polling_read = {"kind": "WEIGHTED_AVERAGE", "margin": weighted_margin,
@@ -1136,7 +1141,8 @@ class Bundle:
             "averaging_estimate_ids": sorted(e["estimate_id"] for e in in_avg),
             "per_race_contrast": per_race_contrast,
             "scenario_margins_toward_R": scenarios,
-            "scenario_note": "2.5-point uniform miss toward Republicans is the control-flipping scenario; 5-point is the 2016 and 2020 scale scenario. The 5.0 in the Stage 3 probability mapping is a standard deviation, not a flip threshold.",
+            "scenario_margins_toward_D": scenarios_d,
+            "scenario_note": "2.5-point uniform miss toward Republicans is the control-flipping scenario; 5-point is the 2016 and 2020 scale scenario. 5- and 7-point misses toward Democrats match the low end and mean of recent statewide misses (Nov 2025 to Apr 2026). The 5.0 in the Stage 3 probability mapping is a standard deviation, not a flip threshold.",
         }
 
     # ----- Section 5 contrasts
@@ -1447,7 +1453,7 @@ class Bundle:
                 "recency_half_life_days": RECENCY_HALF_LIFE_DAYS, "sample_cap_n": SAMPLE_CAP_N, "f_pop": F_POP, "f_sponsor": F_SPONSOR,
                 "f_disclosure_unverified": F_DISCLOSURE_UNVERIFIED, "weight_cutoff": WEIGHT_CUTOFF, "design_effects": "unmodeled",
                 "f_track": "provisional 1.0 until Stage 2c; then Silver Bulletin Simple Average Error thresholds 1.0 (<=3), 0.8 (3-5], 0.5 (>5)",
-                "stage3_sigma": STAGE3_SIGMA, "stage3_clamp": STAGE3_CLAMP, "scenario_shifts_toward_R": SCENARIO_SHIFTS,
+                "stage3_sigma": STAGE3_SIGMA, "stage3_clamp": STAGE3_CLAMP, "scenario_shifts_toward_R": SCENARIO_SHIFTS, "scenario_shifts_toward_D": SCENARIO_SHIFTS_TOWARD_D,
             },
             "estimates": [
                 {k: e[k] for k in ("estimate_id", "poll_id", "sample_id", "tracking_series_id", "race", "pollster_id", "method_id", "sponsor_class",

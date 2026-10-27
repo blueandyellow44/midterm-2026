@@ -1,0 +1,69 @@
+{
+ "race": "2026-NC-SEN",
+ "analytical_as_of": "refresh 2026-10-26",
+ "sources_checked": [
+  "270toWin 13 race pages 2026-10-26",
+  "RealClearPolling latest Senate and governor 2026-10-26"
+ ],
+ "polls": [
+  {
+   "pollster_name": "Quantus Insights",
+   "members_or_partners": null,
+   "sponsor": "self",
+   "sponsor_class": "NONPARTISAN",
+   "pollster_alignment": "R",
+   "field_start": "2026-10-24",
+   "field_end": "2026-10-25",
+   "release_date": "2026-10-26",
+   "n": 722,
+   "pop": "LV",
+   "D": 51.4,
+   "R": 42.8,
+   "other": null,
+   "undecided": 3.4,
+   "denominator_class": "FULL",
+   "round": "NA",
+   "source_url": "https://quantusinsights.org/f/north-carolina-senate-cooper-holds-a-9-point-lead-over-whatley",
+   "source_locator": "paragraph 2: Cooper 51.4, Whatley 42.8, 3.4 undecided (722 LV, Oct 24-25)",
+   "verified_on_primary": true,
+   "notes": "Leaners 52.4-43.4; head-to-head 53.2-44.1 (stored as TWO_WAY).",
+   "retrieved_at": "2026-10-26T17:25:00-07:00"
+  },
+  {
+   "pollster_name": "Quantus Insights",
+   "members_or_partners": null,
+   "sponsor": "self",
+   "sponsor_class": "NONPARTISAN",
+   "pollster_alignment": "R",
+   "field_start": "2026-10-24",
+   "field_end": "2026-10-25",
+   "release_date": "2026-10-26",
+   "n": 722,
+   "pop": "LV",
+   "D": 53.2,
+   "R": 44.1,
+   "other": null,
+   "undecided": null,
+   "denominator_class": "TWO_WAY",
+   "round": "NA",
+   "source_url": "https://quantusinsights.org/f/north-carolina-senate-cooper-holds-a-9-point-lead-over-whatley",
+   "source_locator": "paragraph 3: head-to-head Cooper 53.2, Whatley 44.1",
+   "verified_on_primary": true,
+   "notes": "two-candidate variant",
+   "retrieved_at": "2026-10-26T17:25:00-07:00"
+  }
+ ],
+ "pollsters": [
+  {
+   "pollster_name": "Quantus Insights",
+   "applicability": "SURVEY",
+   "recall_weighted": "NO",
+   "weighting_quote": "This survey was weighted to our likely voter frame, built from the voter file and our turnout model, and then calibrated against the certified 2024 result rather than forced to match it.",
+   "method_url": "https://quantusinsights.org/f/north-carolina-senate-cooper-holds-a-9-point-lead-over-whatley",
+   "method_locator": "section 'Why we trust the sample'",
+   "method_date": "2026-10-26",
+   "disclosure_status": "DISCLOSED",
+   "retrieved_at": "2026-10-26T17:25:00-07:00"
+  }
+ ]
+}

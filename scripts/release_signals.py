@@ -29,7 +29,11 @@ REASON = ("Signal-adjusted reading v1.1 (Max, 2026-10-26): 27 more campaign ads 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--bundle-dir", default=weight.DEFAULT_BUNDLE_DIR)
+    ap.add_argument("--refresh", action="store_true", help="new analytical cutoff: polling inputs and numbers may change; the cutoff must be later than the superseded release's")
+    ap.add_argument("--reason", help="supersedes reason recorded in the manifest (required with --refresh)")
     a = ap.parse_args()
+    if a.refresh and not a.reason:
+        raise weight.ValidationError("--refresh needs --reason")
     root = Path(__file__).resolve().parents[1]
     bundle = Path(a.bundle_dir)
     if subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"], cwd=root, text=True).strip():
@@ -43,16 +47,20 @@ def main() -> int:
     for f in manifest["files"]:
         if weight.sha256_file(str(current / f["path"])) != f["sha256"]:
             raise weight.ValidationError(f"current release file changed since sealing: {f['path']}")
-    for name in POLLING_INPUTS:
-        if (current / name).exists() and weight.sha256_file(str(current / name)) != weight.sha256_file(str(bundle / name)):
-            raise weight.ValidationError(f"polling input differs from the current release: {name}")
+    if not a.refresh:
+        for name in POLLING_INPUTS:
+            if (current / name).exists() and weight.sha256_file(str(current / name)) != weight.sha256_file(str(bundle / name)):
+                raise weight.ValidationError(f"polling input differs from the current release: {name}")
+    elif weight.parse_as_of(rs["analytical_as_of"]) <= weight.parse_as_of(manifest["analytical_as_of"]):
+        raise weight.ValidationError("a refresh needs an analytical cutoff later than the superseded release's")
     for name in ("spending.csv", "fundamentals.csv", "spend-history.csv"):
         if not (bundle / name).is_file():
             raise weight.ValidationError(f"signal input missing: {name} (run scripts/build_signals.py)")
     subprocess.run([sys.executable, str(root / "analysis/weight.py"), "--self-test"], cwd=root, check=True, stdout=subprocess.DEVNULL)
     cutoff = weight.parse_as_of(rs["analytical_as_of"])
     proposed = json.loads(json.dumps(rs))
-    proposed["supersedes"], proposed["supersedes_reason"] = current_id, REASON
+    reason = a.reason if a.refresh else REASON
+    proposed["supersedes"], proposed["supersedes_reason"] = current_id, reason
     b = weight.Bundle(str(bundle), cutoff, proposed)
     if not b.validate():
         raise weight.ValidationError("\n".join(b.problems))
@@ -61,12 +69,16 @@ def main() -> int:
     new["counts"]["races_with_averaging_stratum"] = sorted(r for r, x in new["races"].items() if x["averaging_stratum"])
     new["counts"]["races_with_contrast_stratum"] = sorted(r for r, x in new["races"].items() if x["contrast_stratum"])
     changed = sorted(k for k in set(old) | set(new) if k not in VOLATILE and json.dumps(old.get(k), sort_keys=True) != json.dumps(new.get(k), sort_keys=True))
-    if changed:
+    moved = {}
+    if a.refresh:
+        moved = {r: [old["races"][r]["polling_read"]["margin"], new["races"][r]["polling_read"]["margin"]] for r in new["races"]
+                 if old["races"].get(r, {}).get("polling_read", {}).get("margin") != new["races"][r]["polling_read"]["margin"]}
+    elif changed:
         raise weight.ValidationError(f"existing derived fields changed: {changed}")
     if not new.get("signals"):
         raise weight.ValidationError("signals block missing from compute")
     digest = weight.sha256_bytes(b"".join((bundle / n).read_bytes() for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "heat.csv")))[:10]
-    release_id = f"{cutoff.strftime('%Y%m%dT%H%M%S%z')}-stage2-signals-{commit[:7]}-{digest}"
+    release_id = f"{cutoff.strftime('%Y%m%dT%H%M%S%z')}-{'stage2-refresh' if a.refresh else 'stage2-signals'}-{commit[:7]}-{digest}"
     b.run_state = proposed
     sealed = Path(b.release(release_id, commit, weight.DEFAULT_NOTE))
     sealed_manifest = json.loads((sealed / "manifest.json").read_text())
@@ -74,13 +86,13 @@ def main() -> int:
         if weight.sha256_file(str(sealed / f["path"])) != f["sha256"]:
             raise weight.ValidationError(f"sealed file hash mismatch: {f['path']}")
     weight.snapshot(str(state_path), str(bundle))
-    rs["supersedes"], rs["supersedes_reason"] = current_id, REASON
+    rs["supersedes"], rs["supersedes_reason"] = current_id, reason
     rs["current_release_id"] = release_id
     rs.setdefault("release_ids", []).append(release_id)
     rs["last_checkpoint"] = datetime.now().astimezone().isoformat(timespec="seconds")
-    rs.setdefault("checkpoints", []).append({"at": rs["last_checkpoint"], "note": f"signal-adjusted reading sealed; immutable release {release_id}; supersedes {current_id}; all existing derived fields reproduced unchanged"})
+    rs.setdefault("checkpoints", []).append({"at": rs["last_checkpoint"], "note": f"signal-adjusted reading sealed; immutable release {release_id}; supersedes {current_id}; " + ("refresh: polling reads moved in " + ", ".join(sorted(moved)) if a.refresh else "all existing derived fields reproduced unchanged")})
     rs["signal_release"] = {"release_id": release_id, "supersedes": current_id, "calculator_commit": commit[:7],
-                            "manifest_sha256": weight.sha256_file(str(sealed / "manifest.json")), "existing_fields_unchanged": True}
+                            "manifest_sha256": weight.sha256_file(str(sealed / "manifest.json")), "existing_fields_unchanged": not a.refresh, "polling_reads_moved": moved}
     rs["resume_command"] = f"Continue from run-state.json and immutable release {release_id} (signal-adjusted reading added beside the polling read); Stage 3 freeze on 2026-11-02 records both readings."
     state_path.write_text(json.dumps(rs, indent=2) + "\n")
     print(json.dumps({"release_id": release_id, "supersedes": current_id, "adjusted": {r: v["adjusted_margin"] for r, v in new["signals"]["per_race"].items()}}, indent=2))
