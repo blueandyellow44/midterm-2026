@@ -152,3 +152,27 @@ class FreezeRecordsOurReading(unittest.TestCase):
         self.assertEqual([r["vector"] for r in rows], ["SIGNAL_ADJUSTED"])
         self.assertEqual(rows[0]["weighted_margin"], "7.20")
         self.assertEqual(rows[0]["n_retained"], 3)
+
+
+class StateLean(unittest.TestCase):
+    def rows(self):
+        out = []
+        for y in range(2000, 2026, 2):
+            out += [{"year": str(y), "state": "AA", "state_bias": "3.0"}, {"year": str(y), "state": "BB", "state_bias": "-1.0"},
+                    {"year": str(y), "state": "CC", "state_bias": "1.0"}]
+        return out
+
+    def test_persistent_overstatement_shrinks_lean(self):
+        l = weight.state_poll_error_leans(self.rows(), 3.3)
+        self.assertEqual(l["target_year"], 2026)
+        self.assertAlmostEqual(l["slope"], 1.0, places=3)
+        self.assertAlmostEqual(l["per_state"]["AA"]["lean"], 1.3, places=3)   # polls overstate D by 2 more than national
+        self.assertAlmostEqual(l["per_state"]["BB"]["lean"], 5.3, places=3)
+        self.assertAlmostEqual(l["per_state"]["CC"]["lean"], 3.3, places=3)
+
+    def test_thin_history_gets_national(self):
+        rows = self.rows() + [{"year": "2024", "state": "DD", "state_bias": "9.0"}]
+        self.assertEqual(weight.state_poll_error_leans(rows, 3.3)["per_state"]["DD"]["lean"], 3.3)
+
+    def test_no_rows(self):
+        self.assertEqual(weight.state_poll_error_leans([], 3.3)["per_state"], {})
