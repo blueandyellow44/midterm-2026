@@ -568,11 +568,30 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
         full = [(e["D"] + e["R"]) / 100.0 for e in es if e["denominator_class"] == "FULL"]
         scale = sorted(full)[len(full) // 2] if full else 0.95
         out[race] = {"margin": r4(tp * scale), "two_party_margin": r4(tp), "full_ballot_scale": r4(scale), "polls": len(es),
+                     "estimate_ids": sorted(e["estimate_id"] for e in es), "newest_field_end": max(e["field_end"] for e in es),
                      "pollsters": len({e["pollster_id"] for e in es}),
                      "house_adjustments": {e["pollster_id"]: r4(house.get(e["pollster_id"], 0.0)) for e in es if abs(house.get(e["pollster_id"], 0.0)) >= 0.05}}
     return {"method": "v2: every verified principal poll in window; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
             "lv_minus_rv_gap": r4(lv_shift), "lv_rv_pairs": len(gaps), "backtest": {"races": 259, "two_newest_polls": 4.50, "every_poll": 4.16, "every_poll_house_adjusted": 4.06, "source": "538 raw polls archive 2010-2024, scored 7 days out"},
             "per_race": out}
+
+
+def apply_polling_v2(blocks: dict, v2: dict, as_of_date: date) -> None:
+    """Make the v2 average the published polls number (Max, 2026-10-27: "yes"). The superseded stratum average is kept
+    beside it as stratum_average so the change stays visible."""
+    for race, x in (v2.get("per_race") or {}).items():
+        b = blocks.get(race)
+        if not b or x.get("margin") is None:
+            continue
+        b["stratum_average"] = {"weighted_margin": b.get("weighted_margin"), "retained_count": b.get("retained_count"),
+                                "averaging_estimate_ids": b.get("averaging_estimate_ids"), "polling_read": b.get("polling_read")}
+        b["weighted_margin"], b["retained_count"], b["averaging_estimate_ids"] = x["margin"], x["polls"], x["estimate_ids"]
+        b["weighted_margin_status"] = "computed (v2: every verified poll, house-adjusted)"
+        b["scenario_margins_toward_R"] = {k: r4(x["margin"] - v) for k, v in SCENARIO_SHIFTS.items()}
+        b["scenario_margins_toward_D"] = {k: r4(x["margin"] + v) for k, v in SCENARIO_SHIFTS_TOWARD_D.items()}
+        fe = x["newest_field_end"]
+        b["polling_read"] = {"kind": "WEIGHTED_AVERAGE", "method": "v2", "margin": x["margin"], "poll_count": x["polls"], "field_end": fe,
+                             "age_days": (as_of_date - parse_date(fe)).days, "stratum": None, "latest_poll": None}
 
 
 def early_vote_block(rows: list[dict] | None, state: str) -> dict | None:
@@ -1717,9 +1736,12 @@ class Bundle:
             "section2b_turnout": self.turnout_block(),
             "counts": self.counts(ests),
         }
+        v2 = polling_average_v2(derived["estimates"], self.as_of_date) if stage2c else None
+        if v2:
+            apply_polling_v2(blocks, v2, self.as_of_date)
         derived["signals"] = self.signals_block(blocks)
-        if derived["signals"] is not None:
-            derived["signals"]["polling_v2"] = polling_average_v2(derived["estimates"], self.as_of_date)
+        if derived["signals"] is not None and v2:
+            derived["signals"]["polling_v2"] = v2
         return derived
 
     def counts(self, ests: list[dict]) -> dict:
@@ -1757,12 +1779,13 @@ class Bundle:
         heat_set = ",".join(derived["section9_heat"]["races_with_defined_debate_gap"]) or "NA"
         ests = {e["estimate_id"]: e for e in derived["estimates"]}
         for race, blk in derived["races"].items():
-            if blk["weighted_margin"] is None or not blk["averaging_stratum"]:
+            if blk["weighted_margin"] is None:
                 continue
-            strat = blk["averaging_stratum"]
+            strat = blk["averaging_stratum"] or {"round": "NA", "denominator_class": "NA", "pop": "NA"}
             if race in RCV_RACES and strat["round"] != "FINAL":
                 continue  # a race with only FIRST is excluded from vectors with reason (recorded in derived.json)
-            in_avg = [ests[i] for i in blk["averaging_estimate_ids"]]
+            old_ids = (blk.get("stratum_average") or {}).get("averaging_estimate_ids") or blk["averaging_estimate_ids"]
+            in_avg = [ests[i] for i in old_ids if i in ests]
             for vector, pool in (("ALL_ELIGIBLE", in_avg), ("YES_ONLY", [e for e in in_avg if e["recall_weighted"] == "YES"]), ("NO_ONLY", [e for e in in_avg if e["recall_weighted"] == "NO"])):
                 if vector != "ALL_ELIGIBLE":
                     cs = blk["contrast_stratum"]
@@ -1772,12 +1795,15 @@ class Bundle:
                     other = "NO" if vector == "YES_ONLY" else "YES"
                     if not pool or not any(e["recall_weighted"] == other and (e["round"], e["denominator_class"], e["pop"]) == (cs["round"], cs["denominator_class"], cs["pop"]) for e in in_avg):
                         continue
-                if not pool:
-                    continue
-                m = sum(e["weight"] * e["margin"] for e in pool) / sum(e["weight"] for e in pool)
+                if vector == "ALL_ELIGIBLE":
+                    m = blk["weighted_margin"]   # the published (v2) average
+                else:
+                    if not pool or not sum(e["weight"] for e in pool):
+                        continue
+                    m = sum(e["weight"] * e["margin"] for e in pool) / sum(e["weight"] for e in pool)
                 rows.append({"race": race, "vector": vector, "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
                              "stratum_round": strat["round"], "stratum_denominator": strat["denominator_class"], "stratum_pop": strat["pop"],
-                             "n_retained": len(pool), "heat_race_set": heat_set, "frozen_at": frozen_at})
+                             "n_retained": blk["retained_count"] if vector == "ALL_ELIGIBLE" else len(pool), "heat_race_set": heat_set, "frozen_at": frozen_at})
         # Our reading (signal-adjusted, method v1.3) is frozen beside the polling vectors so both are graded (Max, 2026-10-26).
         for race, sig in sorted(((derived.get("signals") or {}).get("per_race") or {}).items()):
             m = sig.get("adjusted_margin")

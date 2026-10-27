@@ -237,7 +237,7 @@ class PollingAverageV2(unittest.TestCase):
     def est(self, race, pid, D, R, fe, n=800, pop="LV", den="FULL"):
         return {"race": race, "pollster_id": pid, "D": D, "R": R, "field_start": fe, "field_end": fe, "n": n, "pop": pop,
                 "denominator_class": den, "round": "NA", "window": "BOTH", "flags": {"principal": True}, "quarantined": False,
-                "primary_verified": "YES", "sample_id": f"{pid}-{fe}-{race}", "margin": D - R, "factors": {"f_track": 1.0}}
+                "primary_verified": "YES", "sample_id": f"{pid}-{fe}-{race}", "estimate_id": f"{pid}-{fe}-{race}-{pop}", "margin": D - R, "factors": {"f_track": 1.0}}
 
     def test_uses_every_poll_and_removes_house_lean(self):
         from datetime import date
