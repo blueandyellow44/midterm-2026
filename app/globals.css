@@ -555,3 +555,56 @@ button.wall-tile:hover {transform:translateY(-1px);}
 .wall-mobile .wall-panel-head {align-items:flex-start;}
 .wall-mobile .wall-link {white-space:normal;font-size:12px;}
 .wall-mrow-name {min-width:0;} .wall-mrow-v {flex-shrink:0;}
+/* Mobile wall v2 (Max, 2026-10-27: "Mobile looks too similar"; "Scrolling on mobile is clunky"): nothing pinned at the
+   top; the dial is a slim bar fixed at the bottom within thumb reach; the list scrolls freely above it. */
+.wall-mobile {padding:0;background:transparent;display:grid;gap:10px;padding-bottom:calc(150px + env(safe-area-inset-bottom));}
+.wall-mobile .wall-map {padding:10px;}
+.wall-mobile .wall-tiles {gap:2px;}
+.wall-mobile .wall-tile {aspect-ratio:1;border-width:1px;border-radius:3px;}
+.wall-mobile .wall-tile-v {display:none;}
+.wall-mobile .wall-tile-st {font-size:8px;}
+.wall-mobile .wall-legend {flex-wrap:wrap;font-size:9px;}
+.wall-mobile-list li {scroll-margin-top:12px;}
+.wall-dialbar {position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--w-panel);border-top:1px solid var(--w-line);box-shadow:0 -6px 20px rgba(11,26,58,.12);padding:8px 14px calc(8px + env(safe-area-inset-bottom));display:grid;gap:4px;color:var(--w-ink);}
+.wall-dialbar-top {display:flex;align-items:center;gap:10px;}
+.wall-dialbar-num {font-size:38px;font-weight:800;line-height:1;min-width:64px;}
+.wall-dialbar-num.is-even {color:var(--w-ink);}
+.wall-dialbar-dir {display:flex;flex-direction:column;font-size:14px;font-weight:700;line-height:1.2;}
+.wall-dialbar-dir small {font-weight:400;font-size:11px;color:var(--w-muted);}
+.wall-dialbar .wall-range {height:28px;}
+.wall-dialbar-presets {display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
+.wall-dialbar-presets button {flex:0 0 auto;min-height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--w-line);background:var(--w-panel2);color:var(--w-ink);font-size:12px;font-weight:600;}
+.wall-dialbar-presets button[aria-pressed=true] {background:var(--w-ink);color:var(--w-panel);border-color:var(--w-ink);}
+:root[data-view=desktop] .wall-dialbar {display:none;}
+.wall-mobile-strip .wall-strip-head {font-size:18px;} .wall-mobile-strip {flex-direction:column;align-items:flex-start;gap:4px;padding:10px 12px;}
+.wall-mobile-strip .wall-strip-meta {flex-wrap:wrap;gap:8px;font-size:10px;}
+/* Mobile header: one slim block (brand + controls on a row, links scroll sideways), white in light mode. */
+:root:not(.dark) .header-island {background:#ffffff;}
+html[data-view=mobile] .site-header {padding-top:8px;}
+html[data-view=mobile] .header-island {display:grid!important;grid-template-columns:auto 1fr;grid-template-areas:"brand controls" "nav nav";gap:6px 10px!important;padding:8px 12px!important;border-radius:14px;width:calc(100% - 24px);}
+html[data-view=mobile] .header-island .brand {grid-area:brand;min-height:36px;gap:8px;}
+html[data-view=mobile] .header-island .brand .station-mark {width:26px;height:26px;}
+html[data-view=mobile] .header-island .wordmark {height:20px;width:auto;}
+html[data-view=mobile] .header-island .brand .eyebrow {display:none;}
+html[data-view=mobile] .header-island nav {grid-area:nav;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;gap:16px!important;}
+html[data-view=mobile] .header-island nav a {min-height:32px;font-size:13px;white-space:nowrap;}
+html[data-view=mobile] .header-island > :last-child {grid-area:controls;justify-self:end;display:flex;gap:4px;flex-wrap:nowrap;}
+html[data-view=mobile] .header-island .view-switch button,html[data-view=mobile] .header-island .theme-button {min-height:30px;padding:4px 8px;font-size:11px;}
+html[data-view=mobile] main.shell {padding-top:10px;}
+/* Broadcast header (Max, 2026-10-27: "Need logo and name at top but needs to fit new aesthetic"): flat full-width bar,
+   navy mark and wordmark with the sheared undertow slice in red, a thin blue | red rule underneath. */
+.site-header {--h-ink:#0b1a3a;--h-red:#c3262b;--h-blue:#1f5fd6;--h-bg:#ffffff;--h-line:#dde3ee;padding-top:0!important;background:var(--h-bg);border-bottom:1px solid var(--h-line);}
+:root.dark .site-header {--h-ink:#f3f6ff;--h-red:#ff6f72;--h-blue:#6b9dff;--h-bg:#071531;--h-line:#24407a;}
+.site-header::after {content:"";display:block;height:4px;background:linear-gradient(90deg,var(--h-blue) 0 50%,var(--h-red) 50% 100%);}
+.site-header .header-island {width:min(1440px,100%)!important;max-width:none;border-radius:0!important;background:transparent!important;box-shadow:none!important;padding:10px clamp(20px,4vw,64px)!important;}
+.site-header .brand {color:var(--h-ink);--accent:var(--h-red);}
+.site-header .station-mark {color:var(--h-ink);}
+.site-header .wordmark {color:var(--h-ink);height:30px;}
+.site-header .brand .eyebrow {color:var(--h-ink);opacity:.6;}
+.site-header nav a {color:var(--h-ink);font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid transparent;}
+.site-header nav a:hover {border-bottom-color:var(--h-red);text-decoration:none;}
+.site-header .theme-button {color:var(--h-ink);border-color:var(--h-line);background:transparent;}
+html[data-view=mobile] .site-header .wordmark {height:20px;}
+.site-header nav a[aria-current=page] {border-bottom-color:var(--h-red);}
+.site-header + main.shell {padding-top:16px!important;}
+.wall-strip .freeze-countdown {color:var(--w-r);}

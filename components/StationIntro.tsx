@@ -15,3 +15,4 @@ export function ReadingKey(){return <details className="reading-key mb-7"><summa
 
 export function WallStrip(){return <div className="wall-strip"><p className="wall-strip-head">Polls have missed Democrats by {missText} since last fall. <span>I think they are missing it again.</span></p><div className="wall-strip-meta"><span>By Max Sheahan</span><span>Updated {snapshotDate}</span><FreezeCountdown builtAt={builtAt}/></div></div>}
 export const biggestPullId=top?.id||'';
+export function WallMeta(){return <div className="wall-strip wall-mobile-strip"><div className="wall-strip-meta"><span>Undertow · By Max Sheahan</span><span>Updated {snapshotDate}</span><FreezeCountdown builtAt={builtAt}/></div></div>}

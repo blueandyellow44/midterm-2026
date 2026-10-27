@@ -115,18 +115,34 @@ export function ElectionWall({ races, national, lastFall, initial }: { races: Wa
   </div>;
 }
 
+function DialBar({ m, setM, national, lastFall }: { m: number; setM: (v: number) => void; national: number; lastFall: number }) {
+  const span = Math.max(8, Math.ceil(lastFall));
+  const near = (x: number) => Math.abs(m - x) < 0.05;
+  const dir = m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way';
+  const presets: [string, number][] = [['Miss R 5', -5], ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
+  return <section className="wall-dialbar" aria-label="How wrong are the polls?">
+    <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{Math.abs(m).toFixed(1)}</span><span className="wall-dialbar-dir">{dir}<small>How wrong are the polls? Drag to change every race.</small></span></div>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
+    <div className="wall-dialbar-presets">{presets.map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}>{label}</button>)}</div>
+  </section>;
+}
+
 export function MobileWall({ races, national, lastFall }: { races: WallRace[]; national: number; lastFall: number }) {
   const mounted = useMounted(); mountedFlag = mounted;
   const [m, setM] = useState(national);
   const [open, setOpen] = useState<string | null>(null);
+  const [office, setOffice] = useState<Office>('SEN');
   const rows = useMemo(() => races.map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m]);
+  const pick = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
-    <div className="wall-mobile-pin"><Dial m={m} setM={setM} national={national} lastFall={lastFall} compact/><Tally races={races} m={m}/></div>
-    <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id}>
+    <Tally races={races} m={m}/>
+    <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick}/>
+    <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>
       <button type="button" className={`wall-mrow ${shade(v)}`} aria-expanded={open === r.id} onClick={() => setOpen(open === r.id ? null : r.id)}>
         <span className="wall-mrow-name">{r.name}<small>{last(r.d)} ({r.dLetter}) vs {last(r.r)} (R)</small></span>
         <span className="wall-mrow-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
       {open === r.id && <Detail r={r} m={m} national={national}/>}
     </li>)}</ol>
+    <DialBar m={m} setM={setM} national={national} lastFall={lastFall}/>
   </div>;
 }
