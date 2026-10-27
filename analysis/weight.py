@@ -295,7 +295,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.9"  # 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "2.0"  # 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -451,6 +451,13 @@ BACKTEST_FROM = 2010
 BACKTEST_MIN_POLLS = 3
 
 
+def regular_general(race: str) -> bool:
+    """Odd-year races in the carryover fit are regular generals only (538 race codes "_Gov-G_"/"_Sen-G_"). Specials (GS),
+    Louisiana open primaries (O) and runoffs (GR) are excluded (Max, 2026-10-27: "special elections are even more niche and
+    low turnout than midtermes. i worry we overweugh them"; "do it"). The 2025 input is NJ and VA governor, both regular."""
+    return "_Gov-G_" in race or "_Sen-G_" in race
+
+
 def poll_error_model(history: list[dict], target_year: int) -> dict | None:
     """Everything the polling-error lean needs, computed from race-level archive rows that precede target_year:
     the national carryover share and its SE (no-intercept fit over every off-year/next-year pair), the latest off-year
@@ -460,14 +467,14 @@ def poll_error_model(history: list[dict], target_year: int) -> dict | None:
     for r in history or []:
         b, pm, am, n = num(r.get("bias")), num(r.get("poll_margin")), num(r.get("actual_margin")), num(r.get("n_polls"))
         if None not in (b, pm, am, n):
-            races.append({"year": int(r["year"]), "state": r["state"], "type": r["type"], "bias": b, "poll": pm, "actual": am, "n": int(n)})
+            races.append({"year": int(r["year"]), "state": r["state"], "type": r["type"], "race": r.get("race", ""), "bias": b, "poll": pm, "actual": am, "n": int(n)})
     if not races:
         return None
 
     def year_means(before: int) -> dict:
         acc = defaultdict(list)
         for x in races:
-            if x["year"] < before:
+            if x["year"] < before and (x["year"] % 2 == 0 or regular_general(x["race"])):
                 acc[x["year"]].append(x["bias"])
         return {y: sum(v) / len(v) for y, v in acc.items()}
 
