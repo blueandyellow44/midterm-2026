@@ -1,27 +1,32 @@
 'use client';
 import { useMemo, useState } from 'react';
 
-// Exploration only: the frozen call is Undertow's number. At the dial's "national miss" m, each race moves by
-// m x (its state lean / the national lean), plus its spending term. At m = the national lean this reproduces
-// Undertow's number exactly; at 0 it is the polls plus spending.
-export type DialRace = { id: string; name: string; d: string; r: string; polls: number; lean: number; spending: number };
+// Exploration only: the frozen call is Undertow's number. The dial sets a national polling miss m, in either direction.
+// Each race = polls + m + its own state adjustment + its spending term. At m = the national lean this reproduces
+// Undertow's number exactly; at m = 0 it is the polls plus each state's record and the spending signal; a negative m
+// means polls are undercounting Republicans (Max, 2026-10-27: "poll slider needs to go both ways").
+export type DialRace = { id: string; name: string; d: string; r: string; polls: number; stateAdj: number; spending: number };
 const EVEN = 0.05;
 const last = (n: string) => n.trim().split(/\s+/).pop();
 
 export function PollMissDial({ races, national, lastFall }: { races: DialRace[]; national: number; lastFall: number }) {
   const [m, setM] = useState(national);
-  const rows = useMemo(() => races.map(r => ({ ...r, margin: r.polls + (national ? r.lean / national : 1) * m + r.spending }))
-    .sort((a, b) => b.margin - a.margin), [races, national, m]);
+  const span = Math.max(8, Math.ceil(lastFall));
+  const rows = useMemo(() => races.map(r => ({ ...r, margin: r.polls + m + r.stateAdj + r.spending })).sort((a, b) => b.margin - a.margin), [races, m]);
   const dLeads = rows.filter(r => r.margin >= EVEN).length, rLeads = rows.filter(r => r.margin <= -EVEN).length;
-  const mark = Math.abs(m - national) < 0.05 ? 'Undertow’s bet' : m < 0.05 ? 'No polling miss, spending only' : Math.abs(m - lastFall) < 0.05 ? 'Last fall’s miss repeats in full' : null;
+  const near = (x: number) => Math.abs(m - x) < 0.05;
+  const mark = near(national) ? 'my bet' : near(0) ? 'no national miss' : near(lastFall) ? 'last fall\u2019s miss repeats in full' : near(-lastFall) ? 'a miss this size the other way' : null;
+  const dir = m >= EVEN ? 'understate Democrats' : m <= -EVEN ? 'understate Republicans' : 'miss neither way';
   return <section className="dial" aria-label="How wrong are the polls?">
     <h2>How wrong are the polls?</h2>
-    <p className="dial-intro">Slide to set how far polls understate Democrats this year. My bet sits at {national.toFixed(1)} points. This is for exploring; the call I am graded on stays my number.</p>
+    <p className="dial-intro">Slide either way to set how far polls miss this year: right for polls that understate Democrats, left for polls that understate Republicans, as in 2016, 2020 and 2024. My bet sits at {national.toFixed(1)} points toward Democrats. Each race keeps its own state record and spending. This is for exploring; the call I am graded on stays my number.</p>
     <div className="dial-control">
-      <input type="range" min={0} max={Math.max(8, Math.ceil(lastFall))} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="Polling miss toward Democrats, in points"/>
-      <div className="dial-readout"><strong>{m.toFixed(1)}</strong> points toward Democrats{mark ? <span> · {mark}</span> : null}</div>
+      <input type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
+      <div className="dial-scale"><span>Understate Republicans</span><span>Understate Democrats</span></div>
+      <div className="dial-readout"><strong>{Math.abs(m).toFixed(1)}</strong> points: polls {dir}{mark ? <span> · {mark}</span> : null}</div>
       <div className="dial-presets">
-        <button type="button" onClick={() => setM(0)}>No polling miss</button>
+        <button type="button" onClick={() => setM(-5)}>Polls miss Republicans by 5</button>
+        <button type="button" onClick={() => setM(0)}>No national miss</button>
         <button type="button" onClick={() => setM(national)}>My bet</button>
         <button type="button" onClick={() => setM(lastFall)}>Last fall repeats</button>
       </div>
