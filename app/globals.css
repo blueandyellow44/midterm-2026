@@ -382,3 +382,5 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 .voter-mobile-race .signal-reading,.voter-mobile-race .signal-none,.mobile-reading .signal-reading,.mobile-reading .signal-none {padding-inline:0;margin-top:20px;}
 .signal-aside .signal-reading,.signal-aside .signal-none {padding-inline:0;margin-top:20px;}
 @media(max-width:767px){.signal-reading {padding-inline:22px;}.signal-lead strong {font-size:24px;}}
+
+.wordmark {display:block;height:34px;width:auto;color:var(--ink);}
