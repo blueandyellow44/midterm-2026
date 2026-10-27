@@ -47,7 +47,7 @@ it('names the leader correctly when the adjustment moves toward the Republican',
 
 it('renders the sealed release for every race without NaN or undefined',()=>{
  for(const r of races){const html=render(r);expect(html).not.toMatch(/NaN|undefined|\[object/);}
- const oh=races.find(r=>r.id==='2026-OH-SEN-SPECIAL');expect(render(oh)).toContain('Spending counts at half weight');expect(render(oh)).not.toContain('not counted');
+ const oh=races.find(r=>r.id==='2026-OH-SEN-SPECIAL');expect(render(oh)).toContain('weighed against each other');expect(render(oh)).not.toContain('not counted');
  const nc=races.find(r=>r.id==='2026-NC-SEN');expect(render(nc)).toContain('Early vote');expect(render(nc)).toContain('by party registration');
  const tx=races.find(r=>r.id==='2026-TX-SEN');expect(render(tx)).toContain('toward James Talarico');
 });
