@@ -395,3 +395,4 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 .pull-pm {font-size:15px;color:var(--muted);}
 .pull-pull strong {font:600 20px/1.2 var(--font-mono);letter-spacing:-.02em;}
 @media(max-width:767px){.pull-undertow strong {font-size:23px;}}
+.signal-record {font-size:12px;line-height:1.65;margin-top:10px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--soft);}

@@ -189,3 +189,25 @@ class LeanUncertainty(unittest.TestCase):
     def test_lean_constants_match_refit(self):
         self.assertAlmostEqual(weight.SIGNAL_POLL_ERROR_TOWARD_D, 2.48, places=2)
         self.assertAlmostEqual(weight.SIGNAL_POLL_ERROR_SD, 1.82, places=2)
+
+
+class PollErrorModel(unittest.TestCase):
+    def hist(self):
+        rows = []
+        for y in range(1999, 2026):
+            miss = 2.0 if y % 2 else 1.0   # off-year overstated D by 2, next year by 1 -> share 0.5
+            for st in ("AA", "BB", "CC"):
+                rows.append({"year": str(y), "state": st, "race": f"{y}{st}", "type": "Sen-G", "n_polls": "5",
+                             "poll_margin": str(miss), "actual_margin": "0", "bias": str(miss)})
+        return rows
+
+    def test_carryover_and_lean_from_history(self):
+        m = weight.poll_error_model(self.hist(), 2026)
+        self.assertAlmostEqual(m["carryover_share"], 0.5, places=3)
+        self.assertAlmostEqual(m["offyear_miss_toward_d"], -2.0, places=3)
+        self.assertAlmostEqual(m["lean_toward_d"], -1.0, places=3)
+        self.assertEqual(m["backtest"]["years"], 8)
+        self.assertAlmostEqual(m["backtest"]["mae_with_lean"], 0.0, places=3)   # lean exactly removes the 1-point miss
+
+    def test_no_history(self):
+        self.assertIsNone(weight.poll_error_model([], 2026))

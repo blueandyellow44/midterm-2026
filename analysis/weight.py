@@ -43,7 +43,7 @@ BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
     "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
-    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0",
+    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0",
 }
 
 POLLS_HEADER = (
@@ -74,6 +74,7 @@ SPENDING_HEADER = "race,state,fec_coverage,window_end,d_fav_recent,r_fav_recent,
 FUNDAMENTALS_HEADER = "race,state,pres_year,pres_d_minus_r,source_file,source_sha256".split(",")
 SPEND_HISTORY_HEADER = "year,state,poll_margin,result_margin,log_recent_spend_m,pres_year,pres_d_minus_r,source_sha256".split(",")
 STATE_POLL_ERROR_HEADER = "year,state,state_bias,n_races,source_sha256".split(",")
+POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
 RESULTS_HEADER = "race,resolution_status,winner_slot,certified_margin,denominator_note,result_url,resolved_at".split(",")
 
@@ -293,7 +294,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.6"  # 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "1.7"  # 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -309,6 +310,7 @@ SIGNAL_POLL_ERROR_SD = round(SIGNAL_POLL_ERROR_CARRYOVER[1] * SIGNAL_POLL_ERROR_
 # already in the adjustment SD). 538 raw polls, Senate and governor generals 2010-2024 with 5+ polls in the final 21 days,
 # 212 races: total SD 4.91, shared year-mean SD 3.03, within-year SD 4.06 (Max, 2026-10-27: "Five point standard deviation is huge yeah??").
 SIGNAL_RACE_POLL_SD = 4.06
+SIGNAL_TARGET_YEAR = 2026
 SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one SD of race-level polling error combined with the adjustment SD
 # State-specific lean (Max, 2026-10-26: "State specific lean"). Each state's polling miss relative to that year's national
 # mean miss persists: 2010-2024, 346 state-cycles, prior-12-year mean residual vs next residual, no-intercept slope 0.69
@@ -439,6 +441,98 @@ def alignment_weights(spend_signal: float | None, heat_gap: float | None) -> tup
     if has_h:
         return 0.0, SIGNAL_WEIGHT_SINGLE, "RHETORIC_ONLY"
     return 0.0, 0.0, "NO_SIGNAL"
+
+
+BACKTEST_FROM = 2010
+BACKTEST_MIN_POLLS = 3
+
+
+def poll_error_model(history: list[dict], target_year: int) -> dict | None:
+    """Everything the polling-error lean needs, computed from race-level archive rows that precede target_year:
+    the national carryover share and its SE (no-intercept fit over every off-year/next-year pair), the latest off-year
+    miss, the state rows for state_poll_error_leans, and a backtest of the whole lean on earlier cycles.
+    538 bias sign: positive = polls overstated Democrats; the lean is returned toward D."""
+    races = []
+    for r in history or []:
+        b, pm, am, n = num(r.get("bias")), num(r.get("poll_margin")), num(r.get("actual_margin")), num(r.get("n_polls"))
+        if None not in (b, pm, am, n):
+            races.append({"year": int(r["year"]), "state": r["state"], "type": r["type"], "bias": b, "poll": pm, "actual": am, "n": int(n)})
+    if not races:
+        return None
+
+    def year_means(before: int) -> dict:
+        acc = defaultdict(list)
+        for x in races:
+            if x["year"] < before:
+                acc[x["year"]].append(x["bias"])
+        return {y: sum(v) / len(v) for y, v in acc.items()}
+
+    def carryover(before: int):
+        ym = year_means(before)
+        pairs = [(-ym[y], -ym[y + 1]) for y in sorted(ym) if y % 2 == 1 and y + 1 in ym]
+        sxx = sum(a * a for a, _ in pairs)
+        if len(pairs) < 3 or not sxx:
+            return None
+        k = sum(a * b for a, b in pairs) / sxx
+        s = math.sqrt(sum((b - k * a) ** 2 for a, b in pairs) / (len(pairs) - 1))
+        return {"share": k, "se": s / math.sqrt(sxx), "pairs": len(pairs), "offyear_miss_toward_d": -ym[before - 1] if (before - 1) in ym else None}
+
+    def state_rows(before: int) -> list[dict]:
+        acc = defaultdict(list)
+        for x in races:
+            if x["year"] < before and x["year"] % 2 == 0 and x["state"] != "US" and len(x["state"]) == 2:
+                acc[(x["year"], x["state"])].append(x["bias"])
+        return [{"year": str(y), "state": s, "state_bias": str(sum(v) / len(v))} for (y, s), v in acc.items()]
+
+    now = carryover(target_year)
+    if not now or now["offyear_miss_toward_d"] is None:
+        return None
+    lean = now["share"] * now["offyear_miss_toward_d"]
+    leans = state_poll_error_leans(state_rows(target_year), lean)
+    by_year = {}
+    for y in range(BACKTEST_FROM, target_year, 2):
+        c = carryover(y)
+        if not c or c["offyear_miss_toward_d"] is None:
+            continue
+        nat = c["share"] * c["offyear_miss_toward_d"]
+        sl = state_poll_error_leans(state_rows(y), nat)["per_state"]
+        tgt = [x for x in races if x["year"] == y and x["type"] in ("Sen-G", "Gov-G") and x["n"] >= BACKTEST_MIN_POLLS]
+        if not tgt:
+            continue
+        e0 = [abs(x["poll"] - x["actual"]) for x in tgt]
+        e1 = [abs(x["poll"] + sl.get(x["state"], {}).get("lean", nat) - x["actual"]) for x in tgt]
+        by_year[y] = {"races": len(tgt), "lean_toward_d": r4(nat), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_lean": r4(sum(e1) / len(e1))}
+    n = sum(v["races"] for v in by_year.values())
+    return {"target_year": target_year, "carryover_share": r4(now["share"]), "carryover_se": r4(now["se"]), "pairs": now["pairs"],
+            "offyear_miss_toward_d": r4(now["offyear_miss_toward_d"]), "lean_toward_d": r4(lean), "lean_sd": r4(now["se"] * now["offyear_miss_toward_d"]),
+            "state_leans": leans,
+            "backtest": {"from": BACKTEST_FROM, "min_polls": BACKTEST_MIN_POLLS, "races": n, "by_year": by_year,
+                         "mae_polls": r4(sum(v["mae_polls"] * v["races"] for v in by_year.values()) / n) if n else None,
+                         "mae_with_lean": r4(sum(v["mae_with_lean"] * v["races"] for v in by_year.values()) / n) if n else None,
+                         "years_helped": sum(1 for v in by_year.values() if v["mae_with_lean"] < v["mae_polls"]), "years": len(by_year)}}
+
+
+def spending_backtest(history: list[dict]) -> dict | None:
+    """Leave-one-out test of the spending term on the history races: fit beta without each race, predict it at half weight."""
+    rows = [(num(r.get("poll_margin")), num(r.get("result_margin")), num(r.get("log_recent_spend_m")), num(r.get("pres_d_minus_r"))) for r in history or []]
+    rows = [x for x in rows if None not in x]
+    if len(rows) < 10:
+        return None
+    z = excess_spend_z([x[2] for x in rows], [abs(x[0]) for x in rows])
+    if not z:
+        return None
+    sig = []
+    for i, x in enumerate(rows):
+        d = spend_direction(z[i], underdog_sign(x[3]), x[0])
+        sig.append(abs(z[i]) * d if d else 0.0)
+    e0, e1 = [], []
+    for i, x in enumerate(rows):
+        tr = [(sig[j], rows[j][1] - rows[j][0]) for j in range(len(rows)) if j != i and sig[j]]
+        sxx = sum(a * a for a, _ in tr)
+        b = sum(a * c for a, c in tr) / sxx if sxx else 0.0
+        e0.append(abs(x[1] - x[0]))
+        e1.append(abs(x[1] - x[0] - SIGNAL_WEIGHT_SINGLE * b * sig[i]))
+    return {"races": len(rows), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_spending": r4(sum(e1) / len(e1)), "method": "leave-one-out, half weight"}
 
 
 def state_poll_error_leans(rows: list[dict], national: float) -> dict:
@@ -737,6 +831,7 @@ class Bundle:
         self.fundamentals = read_csv(os.path.join(bundle_dir, "fundamentals.csv"), FUNDAMENTALS_HEADER, required=False)
         self.spend_history = read_csv(os.path.join(bundle_dir, "spend-history.csv"), SPEND_HISTORY_HEADER, required=False)
         self.state_poll_error = read_csv(os.path.join(bundle_dir, "state-poll-error.csv"), STATE_POLL_ERROR_HEADER, required=False)
+        self.poll_error_history = read_csv(os.path.join(bundle_dir, "poll-error-history.csv"), POLL_ERROR_HISTORY_HEADER, required=False)
         self.quarantined_pollsters = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "POLLSTER"}
         self.quarantined_estimates = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "ESTIMATE"}
         self.method_by_id = {p["method_id"]: p for p in self.pollsters}
@@ -1434,8 +1529,13 @@ class Bundle:
         spend = {r["race"]: r for r in self.spending}
         races = SENATE_RACES + GOVERNOR_RACES
         polling = {race: ((blocks.get(race) or {}).get("polling_read") or {}).get("margin") for race in races}
-        spe = getattr(self, "state_poll_error", None)
-        leans = state_poll_error_leans(spe, SIGNAL_POLL_ERROR_TOWARD_D) if spe else None
+        model = poll_error_model(getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR)
+        if model:
+            national, national_sd, leans = model["lean_toward_d"], model["lean_sd"], model["state_leans"]
+        else:
+            spe = getattr(self, "state_poll_error", None)
+            national, national_sd = SIGNAL_POLL_ERROR_TOWARD_D, SIGNAL_POLL_ERROR_SD
+            leans = state_poll_error_leans(spe, national) if spe else None
         # Excess spending is fit within each measure separately: FEC outside money for Senate races, campaign digital
         # spend (Google + Meta, in-state) for governor races. The two are never pooled.
         groups = defaultdict(list)
@@ -1462,8 +1562,8 @@ class Bundle:
             spend_signal = r4(abs(zr) * direction) if direction else None
             heat = rhetoric_gap(self.heat, race)
             st_lean = (leans or {}).get("per_state", {}).get(race.split("-")[1]) if leans else None
-            lean = st_lean["lean"] if st_lean else SIGNAL_POLL_ERROR_TOWARD_D
-            out = signal_adjusted(polling[race], spend_signal, heat["gap"] if SIGNAL_RHETORIC_IN_READING else None, beta, gamma, lean, SIGNAL_POLL_ERROR_SD)
+            lean = st_lean["lean"] if st_lean else national
+            out = signal_adjusted(polling[race], spend_signal, heat["gap"] if SIGNAL_RHETORIC_IN_READING else None, beta, gamma, lean, national_sd)
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
             d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
             out.update({
@@ -1477,7 +1577,7 @@ class Bundle:
                              "measure": {"FEC_SCHEDULE_E": "FEC outside spending, 14 days", "DIGITAL_CANDIDATE": "campaign digital ad spending in state (Google + Meta), about 4 weeks"}.get(sp.get("fec_coverage")),
                              "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
                 "rhetoric": {**heat, "in_reading": SIGNAL_RHETORIC_IN_READING},
-                "polling_error": {"national": SIGNAL_POLL_ERROR_TOWARD_D, "state": race.split("-")[1], **(st_lean or {"prior_residual": None, "cycles": 0, "state_adjustment": 0.0, "lean": SIGNAL_POLL_ERROR_TOWARD_D})},
+                "polling_error": {"national": national, "state": race.split("-")[1], **(st_lean or {"prior_residual": None, "cycles": 0, "state_adjustment": 0.0, "lean": national})},
             })
             per_race[race] = out
         return {
@@ -1489,7 +1589,9 @@ class Bundle:
             "history": hist,
             "posterior": {"beta": [r4(beta[0]), r4(beta[1])], "gamma": [gamma[0], gamma[1]], "gamma_note": "no history: prior only"},
             "state_lean": {k: v for k, v in (leans or {}).items() if k != "per_state"} or None,
-            "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "poll_error_sd": SIGNAL_POLL_ERROR_SD, "poll_error_carryover": list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+            "poll_error_model": {k: v for k, v in model.items() if k != "state_leans"} if model else None,
+            "spending_backtest": spending_backtest(self.spend_history),
+            "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": national, "poll_error_sd": national_sd, "poll_error_carryover": [model["carryover_share"], model["carryover_se"]] if model else list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": model["offyear_miss_toward_d"] if model else SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,
@@ -1626,7 +1728,7 @@ class Bundle:
         copy_names = ["polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv"]
         if ss.get("stage2a") == "PASSED" and os.path.exists(os.path.join(self.dir, "backtest-2025.csv")):
             copy_names.append("backtest-2025.csv")
-        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv") if os.path.exists(os.path.join(self.dir, n))]
+        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv") if os.path.exists(os.path.join(self.dir, n))]
         for name in copy_names:
             src = os.path.join(self.dir, name)
             if os.path.exists(src):
