@@ -10,6 +10,7 @@ function toward(value:number,names:{D:string;R:string}) {return value>0?names.D:
 
 export function signalLines(s:any,names:{D:string;R:string}) {
  const lines:{key:string;label:string;value:number|null;text:string}[]=[];
+ if(Number.isFinite(s.delta_polling_error)&&Math.abs(s.delta_polling_error)>=EVEN) lines.push({key:'polling-error',label:'Recent polling error',value:s.delta_polling_error,text:`Polls have understated Democrats in every statewide race since November 2025, by 7.4 points last fall. Historically about 45% of an off-year miss repeats the next year, so we lean every race ${number(Math.abs(s.delta_polling_error))} points toward the Democrat.`});
  const sp=s.spending; const rh=s.rhetoric; const fav=s.fundamentals?.underdog==='D'?'R':s.fundamentals?.underdog==='R'?'D':null;
  if(s.weight_spending>0 && Number.isFinite(sp?.excess_z) && fav) {
   const heavy=sp.excess_z>0;const total=(sp.d_fav_recent??0)+(sp.r_fav_recent??0);const digital=sp.coverage==='DIGITAL_CANDIDATE';const what=digital?'in campaign digital ads (Google and Meta) over about four weeks':'in outside money over two weeks';const label=digital?'Campaign ad spending':'Outside spending';
@@ -32,7 +33,7 @@ export function signalGaps(s:any) {
  return gaps;
 }
 
-const agreement:Record<string,string>={ALIGNED:'Spending and rhetoric point the same way, so both count in full.',OPPOSED:'Spending and rhetoric point in opposite directions, so each counts at one quarter.',SPENDING_ONLY:'Only spending gives a signal here, so it counts at half.',RHETORIC_ONLY:'Only rhetoric gives a signal here, so it counts at half.'};
+const agreement:Record<string,string>={NO_SIGNAL:'No campaign signal is strong enough here, so only the polling-error lean applies.',ALIGNED:'Spending and rhetoric point the same way, so both count in full.',OPPOSED:'Spending and rhetoric point in opposite directions, so each counts at one quarter.',SPENDING_ONLY:'Only spending gives a signal here, so it counts at half.',RHETORIC_ONLY:'Only rhetoric gives a signal here, so it counts at half.'};
 
 export function SignalReading({r,meta}:{r:any;meta?:any}) {
  const s=r?.signal;
@@ -45,14 +46,14 @@ export function SignalReading({r,meta}:{r:any;meta?:any}) {
  const a=s.adjusted_margin;const even=Math.abs(a)<EVEN;const shift=s.delta_total;const lines=signalLines(s,names);
  return <section className="signal-reading" aria-label={`${r.name||'This race'}: reading adjusted for campaign spending and rhetoric`}>
   <div className="signal-heading"><h4>Our reading</h4><span className="signal-chip">Experimental</span></div>
-  <p className="signal-intro">Where we think this race really stands: the polls, adjusted for where outside money goes and how hot each side’s rhetoric runs.</p>
+  <p className="signal-intro">Where we think this race really stands: the polls, adjusted for recent polling error, where outside money goes and how hot each side’s rhetoric runs.</p>
   <p className="signal-lead">{even?'Even at displayed precision':<>{toward(a,names)}<span className="reading-lead-verb"> leads by </span><strong className={a>0?'lead-number-d':'lead-number-r'}>{number(Math.abs(a))}<small> points</small></strong></>}</p>
   <p className="signal-shift">{Math.abs(shift)<EVEN?'About the same as the polls.':<>{number(Math.abs(shift))} points toward {toward(shift,names)} compared with the polls.</>}</p>
   <ul className="signal-lines">{lines.map(l=><li key={l.key}><span className="signal-line-label">{l.label}</span><span className={`signal-line-value ${Number(l.value)>0?'lead-number-d':Number(l.value)<0?'lead-number-r':''}`}>{Math.abs(Number(l.value))<EVEN?'0.0':`${number(Math.abs(Number(l.value)))} toward ${toward(Number(l.value),names)}`}</span><span className="signal-line-text">{l.text}</span></li>)}</ul>
   <p className="signal-limit">{agreement[s.alignment]} Graded against the results alongside the polls.</p>
   <details className="signal-details"><summary>How this is calculated<span aria-hidden="true">+</span></summary>
-   <p>The adjustment starts from the polling read above and adds two terms. Spending: outside money in the two weeks to {s.window_end||meta?.window_end||'the snapshot'}, compared with what a race this close usually draws, read against the state’s 2024 presidential result. Rhetoric: the average LITMUS heat score of each side’s scored ads and debate answers.</p>
-   {meta&&<p>Spending counts {number(meta.posterior?.beta?.[0],2)} points per standard deviation of extra money, a starting assumption of {number(meta.priors?.beta?.[0],1)} updated with {meta.history?.n} Senate races from {meta.history?.years?.join(' and ')}. Rhetoric counts {number(meta.posterior?.gamma?.[0],1)} points per point of heat gap, a starting assumption with no history behind it, capped at {number(meta.rules?.rhetoric_cap,0)} points.</p>}
+   <p>The adjustment starts from the polling read above and adds three terms. Recent polling error: a fixed lean toward Democrats in every race. Spending: outside money in the two weeks to {s.window_end||meta?.window_end||'the snapshot'}, compared with what a race this close usually draws, read against the state’s 2024 presidential result. Rhetoric: the average LITMUS heat score of each side’s scored ads and debate answers.</p>
+   {meta&&<p>Spending counts {number(meta.posterior?.beta?.[0],2)} points per standard deviation of extra money, a starting assumption of {number(meta.priors?.beta?.[0],1)} updated with {meta.history?.n} Senate races from {meta.history?.years?.join(' and ')}. Rhetoric counts {number(meta.posterior?.gamma?.[0],2)} points per point of heat gap, a starting assumption with no history behind it, capped at {number(meta.rules?.rhetoric_cap,1)} points. The polling-error lean is {number(meta.rules?.poll_error_toward_d,1)} points: 45% of the 7.4-point 2025 miss, the share of off-year misses that carried into the next year from 2001 to 2021. A model that also counts the long-run tendency of polls to overstate Democrats gives about 1 point instead.</p>}
    <dl className="signal-facts">
     <div><dt>2024 presidential result</dt><dd className="mono">{Number.isFinite(s.fundamentals?.pres_d_minus_r)?`${s.fundamentals.pres_d_minus_r>0?'D':'R'} +${number(Math.abs(s.fundamentals.pres_d_minus_r))}`:'NA'}</dd></div>
     <div><dt>{s.spending?.coverage==='DIGITAL_CANDIDATE'?'Campaign digital ads, ~4 weeks':'Outside money, two weeks'}</dt><dd className="mono">{money(s.spending?.d_fav_recent)} D-side · {money(s.spending?.r_fav_recent)} R-side</dd></div>

@@ -70,9 +70,9 @@ export function validateBundle(directory) {
       if (!read) throw new Error(`Signal reading for an unknown race: ${race}`);
       if (s.polling_margin!==read.margin) throw new Error(`Signal reading starts from a different polling number: ${race}`);
       if (s.adjusted_margin===null) { if (read.margin!==null) throw new Error(`Signal reading missing: ${race}`); continue; }
-      if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
+      if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric+(s.delta_polling_error??0)))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
       if (!['ALIGNED','OPPOSED','SPENDING_ONLY','RHETORIC_ONLY','NO_SIGNAL'].includes(s.alignment)) throw new Error(`Unknown signal alignment: ${race}`);
-      if (s.alignment==='NO_SIGNAL' && s.delta_total!==0) throw new Error(`No-signal race was adjusted: ${race}`);
+      if (s.alignment==='NO_SIGNAL' && Math.abs(s.delta_total-(s.delta_polling_error??0))>0.001) throw new Error(`No-signal race was adjusted: ${race}`);
     }
   }
   return { manifest:m, derived:d, manifestHash:sha256(manifestBytes) };

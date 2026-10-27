@@ -14,6 +14,11 @@ it('renders nothing without a signal block or candidate names',()=>{
  for(const r of [null,{},{signal:null,heat:{candidates:names}},{signal:base().signal,heat:{}}])expect(render(r)).toBe('');
 });
 
+it('shows the polling-error lean as its own line',()=>{
+ const html=render(base({delta_polling_error:3.3,delta_total:5.3,adjusted_margin:6.3}));
+ expect(html).toContain('Recent polling error');expect(html).toContain('3.3 toward Dee');
+});
+
 it('explains a race with no usable signal in one line instead of an empty panel',()=>{
  const html=render(base({status:'NO_SIGNAL',alignment:'NO_SIGNAL',weight_spending:0,weight_rhetoric:0,adjusted_margin:1,delta_total:0,
   spending:{coverage:'NOT_FEDERAL'},rhetoric:{gap:null}}));

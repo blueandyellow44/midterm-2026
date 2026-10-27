@@ -292,10 +292,14 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.2"  # 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "1.3"  # 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
-SIGNAL_PRIOR_GAMMA = (1.5, 1.0)   # points against the hotter side per point of LITMUS heat gap
-SIGNAL_RHETORIC_CAP = 3.0         # |rhetoric contribution| ceiling, points
+SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
+SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
+# Recent polling error component (Max: "polling error is just one component"; "i want my bold vision"). Carryover model,
+# 538 archive 2001-2022: about 45% of an off-year statewide polling miss repeats in the next year's general (no-intercept fit,
+# ten off-year/next-year pairs). 2025 off-year mean miss 7.42 toward D -> 3.3. The with-intercept fit gives 1.0; SE about 2.
+SIGNAL_POLL_ERROR_TOWARD_D = 3.3
 SIGNAL_MIN_HEAT_UNITS = 2         # scored units required per candidate
 SIGNAL_WEIGHT_ALIGNED = 1.0
 SIGNAL_WEIGHT_OPPOSED = 0.25
@@ -418,19 +422,19 @@ def alignment_weights(spend_signal: float | None, heat_gap: float | None) -> tup
 
 
 def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap: float | None,
-                    beta: tuple[float, float], gamma: tuple[float, float]) -> dict:
-    """A = P + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap). All in D-minus-R points."""
+                    beta: tuple[float, float], gamma: tuple[float, float], poll_error: float = 0.0) -> dict:
+    """A = P + poll_error + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap). All in D-minus-R points."""
     ws, wr, alignment = alignment_weights(spend_signal, heat_gap)
     if polling is None:
-        return {"status": "NO_POLLING_READ", "alignment": alignment, "adjusted_margin": None, "delta_spending": None, "delta_rhetoric": None, "delta_sd": None}
+        return {"status": "NO_POLLING_READ", "alignment": alignment, "adjusted_margin": None, "delta_spending": None, "delta_rhetoric": None, "delta_polling_error": None, "delta_sd": None}
     d_s = ws * beta[0] * spend_signal if ws else 0.0
     raw_r = gamma[0] * heat_gap if wr else 0.0
     d_r = wr * max(-SIGNAL_RHETORIC_CAP, min(SIGNAL_RHETORIC_CAP, raw_r))
     sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2)
-    delta = d_s + d_r
-    return {"status": "ADJUSTED" if alignment != "NO_SIGNAL" else "NO_SIGNAL", "alignment": alignment,
+    delta = d_s + d_r + poll_error
+    return {"status": "ADJUSTED" if (alignment != "NO_SIGNAL" or poll_error) else "NO_SIGNAL", "alignment": alignment,
             "weight_spending": ws, "weight_rhetoric": wr,
-            "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
+            "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "delta_polling_error": r4(poll_error), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
             "delta_total": r4(delta), "delta_sd": r4(sd), "adjusted_margin": r4(polling + delta),
             "lagging_side": None if delta == 0 else ("R" if delta > 0 else "D")}
 
@@ -1401,7 +1405,7 @@ class Bundle:
             direction = spend_direction(zr, u, polling[race]) if (zr is not None and polling[race] is not None) else 0
             spend_signal = r4(abs(zr) * direction) if direction else None
             heat = rhetoric_gap(self.heat, race)
-            out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma)
+            out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma, SIGNAL_POLL_ERROR_TOWARD_D)
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
             d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
             out.update({
@@ -1425,7 +1429,7 @@ class Bundle:
             "priors": {"beta": list(SIGNAL_PRIOR_BETA), "gamma": list(SIGNAL_PRIOR_GAMMA)},
             "history": hist,
             "posterior": {"beta": [r4(beta[0]), r4(beta[1])], "gamma": [gamma[0], gamma[1]], "gamma_note": "no history: prior only"},
-            "rules": {"rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+            "rules": {"poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,

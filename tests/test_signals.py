@@ -68,8 +68,22 @@ class UnhappyPaths(unittest.TestCase):
         blocks = {r: {'polling_read': {'margin': 1.0 + i}} for i, r in enumerate(races)}
         out = bundle_stub(spending, fundamentals).signals_block(blocks)
         gov = out['per_race']['2026-OH-GOV']
-        self.assertEqual((gov['status'], gov['adjusted_margin'], gov['spending']['status']), ('NO_SIGNAL', blocks['2026-OH-GOV']['polling_read']['margin'], 'not federal: no FEC coverage'))
+        base = blocks['2026-OH-GOV']['polling_read']['margin']
+        self.assertEqual((gov['alignment'], gov['spending']['status']), ('NO_SIGNAL', 'not federal: no FEC coverage'))
+        self.assertAlmostEqual(gov['adjusted_margin'], base + weight.SIGNAL_POLL_ERROR_TOWARD_D)
+        self.assertAlmostEqual(gov['delta_polling_error'], weight.SIGNAL_POLL_ERROR_TOWARD_D)
         self.assertEqual(len(out['rules']['excess_fit_races']), len(weight.SENATE_RACES))
+
+
+class PollingError(unittest.TestCase):
+    def test_polling_error_adds_to_every_reading_and_counts_in_the_total(self):
+        out = weight.signal_adjusted(1.0, None, None, BETA, GAMMA, 3.3)
+        self.assertEqual((out['status'], out['alignment']), ('ADJUSTED', 'NO_SIGNAL'))
+        self.assertAlmostEqual(out['adjusted_margin'], 4.3)
+        self.assertAlmostEqual(out['delta_total'], out['delta_spending'] + out['delta_rhetoric'] + out['delta_polling_error'])
+
+    def test_no_polling_read_gets_no_polling_error(self):
+        self.assertIsNone(weight.signal_adjusted(None, 1.0, 1.0, BETA, GAMMA, 3.3)['adjusted_margin'])
 
 
 class AlignmentRule(unittest.TestCase):
