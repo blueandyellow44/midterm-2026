@@ -71,8 +71,8 @@ def main() -> int:
     changed = sorted(k for k in set(old) | set(new) if k not in VOLATILE and json.dumps(old.get(k), sort_keys=True) != json.dumps(new.get(k), sort_keys=True))
     moved = {}
     if a.refresh:
-        moved = {r: [old["races"][r]["polling_read"]["margin"], new["races"][r]["polling_read"]["margin"]] for r in new["races"]
-                 if old["races"].get(r, {}).get("polling_read", {}).get("margin") != new["races"][r]["polling_read"]["margin"]}
+        moved = {r: [old["races"].get(r, {}).get("polling_read", {}).get("margin"), new["races"][r]["polling_read"]["margin"]] for r in new["races"]
+                 if old["races"].get(r, {}).get("polling_read", {}).get("margin") != new["races"][r]["polling_read"]["margin"]}  # a new race moves from None
     elif changed:
         raise weight.ValidationError(f"existing derived fields changed: {changed}")
     if not new.get("signals"):
