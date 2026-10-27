@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-yougov-2026-10-05.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "None named on document",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-FL-SEN-SPECIAL-2026-10-05",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-10-05",
+  "release_date": "2026-10-06",
+  "n": 3813,
+  "pop": "LV",
+  "D": 44,
+  "R": 49,
+  "other": 2,
+  "undecided": 5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_fl_20260921_lv.pdf",
+  "source_locator": "Q6 Senate vote: Nixon 44, Moody 49, Someone else 1, Undecided 5, will not vote 1",
+  "notes": "other = someone else 1 + will not vote 1. Undecided asked preference and allocated per question note. Release date per Wikipedia (Oct 6). RCP lists field Sep 24-Oct 3; document says Sep 28-Oct 5.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to gender, age, race, in-state geography (using the current Florida voter list), party registration, and imputed education, 2024 presidential vote, and past Senate vote.",
+  "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_fl_20260921_lv.pdf",
+  "method_locator": "methodology box, Weighting",
+  "mode": "online (text-to-web from voter list)",
+  "method_owner": "YouGov",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-quantus-2026-09-10.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "quantus",
+ "name": "Quantus Insights",
+ "sponsor": "Quantus Insights (self)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "quantus-s-2026-FL-SEN-SPECIAL-2026-09-10",
+ "poll": {
+  "field_start": "2026-09-08",
+  "field_end": "2026-09-10",
+  "release_date": "2026-09-11",
+  "n": 733,
+  "pop": "LV",
+  "D": 42.7,
+  "R": 50.1,
+  "other": 3.2,
+  "undecided": 4.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://quantusinsights.org/f/new-quantus-polls-moody-leads-in-florida-flanagan-in-minnesota",
+  "source_locator": "initial ballot: Moody 50.1, Nixon 42.7, undecided 4.0, someone else/wouldn't vote 3.2",
+  "notes": "Initial (FULL) ballot used; after leaner push 50.4 Moody / 43.0 Nixon. Technical report: https://drive.google.com/file/d/16sHzNc56BcgsU-2TFKUziet9gzS3PYnE/view",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "results were weighted using iterative proportional fitting (raking) to supported population benchmarks for Age range, Sex, Education (modeled), Metro type, Race / ethnicity (reported), Party ID (reported), General vote frequency.",
+  "method_url": "https://drive.google.com/file/d/16sHzNc56BcgsU-2TFKUziet9gzS3PYnE/view",
+  "method_locator": "technical report p38 Methodology",
+  "mode": "SMS-to-web",
+  "method_owner": "Quantus Insights",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-11"
+ }
+}

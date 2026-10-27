@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-activote-2026-10-27.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "activote",
+ "name": "ActiVote",
+ "sponsor": "ActiVote (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "activote-s-2026-FL-SEN-SPECIAL-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-17",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-27",
+  "n": 400,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 53.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://www.activote.net/polls/2026/fl-u-s-senate/2026-10-27",
+  "source_locator": "headline: Moody 53.0, Nixon 47.0; 400 likely voters, Oct 17-27",
+  "notes": "Two-candidate shares only.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "We weight our polls for underrepresentation of any group, based on age, gender, party affiliation, ethnicity, income, education and region",
+  "method_url": "https://www.activote.net/trust/methodology",
+  "method_locator": "How to interpret the data",
+  "mode": "app-based online",
+  "method_owner": "ActiVote",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

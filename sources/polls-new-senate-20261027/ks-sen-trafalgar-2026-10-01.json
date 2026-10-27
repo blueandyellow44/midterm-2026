@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-trafalgar-2026-10-01.json",
+ "race": "2026-KS-SEN",
+ "pid": "trafalgar",
+ "name": "Trafalgar Group",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "trafalgar-s-2026-KS-SEN-2026-10-01",
+ "poll": {
+  "field_start": "2026-09-29",
+  "field_end": "2026-10-01",
+  "release_date": "2026-10-02",
+  "n": 1095,
+  "pop": "LV",
+  "D": 44.4,
+  "R": 43.5,
+  "other": 2.0,
+  "undecided": 10.1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/10/KS-Midterms-Report-1001.pdf",
+  "source_locator": "Report p.2 crosstab Total: Hamilton 44.4, Marshall 43.5, Graham 2.0, Undecided 10.1",
+  "notes": "Linked from https://www.thetrafalgargroup.org/news/ks-senate-general-1001/. PDF created 2026-10-02. Methodology referred to external page; weighting not stated in report.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.thetrafalgargroup.org/polling-methodology/",
+  "method_locator": "report p.1 methodology link",
+  "mode": "not stated in report",
+  "method_owner": "Trafalgar Group",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-02"
+ }
+}

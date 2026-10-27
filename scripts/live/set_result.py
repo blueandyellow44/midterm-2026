@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PATH = ROOT / "live/results.json"
-SLUGS = {"tx-sen", "ia-sen", "me-sen", "ak-sen", "oh-sen-special", "mi-sen", "nc-sen", "ga-sen", "oh-gov", "ia-gov", "mi-gov", "ga-gov", "wi-gov"}
+SLUGS = {"tx-sen", "ia-sen", "me-sen", "ak-sen", "oh-sen-special", "mi-sen", "nc-sen", "ga-sen", "oh-gov", "ia-gov", "mi-gov", "ga-gov", "wi-gov", "ks-sen", "ne-sen", "sc-sen", "ms-sen", "nh-sen", "fl-sen-special"}
 
 
 def main(argv=None) -> int:

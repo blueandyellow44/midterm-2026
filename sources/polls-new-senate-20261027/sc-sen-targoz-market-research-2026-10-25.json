@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-targoz-market-research-2026-10-25.json",
+ "race": "2026-SC-SEN",
+ "pid": "targoz-market-research",
+ "name": "Targoz Market Research",
+ "sponsor": "South Carolina Policy Council",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "targoz-market-research-s-2026-SC-SEN-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-26",
+  "n": 895,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 47.0,
+  "other": 3.0,
+  "undecided": 4.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.scpolicycouncil.org/the_south_carolina_policy_council_2026_fall_poll",
+  "source_locator": "'Graham leads ... Andrews 47% to 46%. Libertarian ... Whitener receives 2%, Constitution Party ... Hackett receives 1%, and 4% remain undecided.' LV n=895",
+  "notes": "Full sample 1,200 RV; candidate questions among 895 likely or already-voted voters. release_date from WHNS article publication (2026-10-26); sponsor page undated.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results were weighted by demographics, party, geography, and behavioral measures to properly reflect the profile of the state.",
+  "method_url": "https://www.scpolicycouncil.org/the_south_carolina_policy_council_2026_fall_poll",
+  "method_locator": "methodology footer",
+  "mode": "online: MMS text-to-web + PureSpectrum panel",
+  "method_owner": "Targoz Market Research",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-26"
+ }
+}

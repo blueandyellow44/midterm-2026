@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-insideradvantage-2026-10-14.json",
+ "race": "2026-KS-SEN",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-KS-SEN-2026-10-14",
+ "poll": {
+  "field_start": "2026-10-13",
+  "field_end": "2026-10-14",
+  "release_date": "2026-10-15",
+  "n": 1200,
+  "pop": "LV",
+  "D": 46.6,
+  "R": 47.7,
+  "other": 3.4,
+  "undecided": 2.3,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://x.com/InsiderPolling/status/2111096445063528539",
+  "source_locator": "Kansas top-line tab image (pbs.twimg.com/media/HUwfBpCbMAECC6S): Marshall 47.7, Hamilton 46.6, Graham (L) 3.4, Undecided 2.3; release post https://insideradvantage.com/insideradvantage-senate-surveys-texas-paxton-49-talarico-48-kansas-marshall-48-hamilton-47-maine-jackson-49-collins-47/",
+  "notes": "Question: 'for whom would you vote, or toward whom are you leaning?' so classed LEANERS. Release post headline Marshall 48, Hamilton 47; tabs posted to pollster's own X account.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Each state 1200 LV; Mixed Mode Text/ Panel;Weighted for Age, Race, Gender, and Political Affiliation; MOE 2.83%",
+  "method_url": "https://insideradvantage.com/insideradvantage-senate-surveys-texas-paxton-49-talarico-48-kansas-marshall-48-hamilton-47-maine-jackson-49-collins-47/",
+  "method_locator": "release post methodology line",
+  "mode": "mixed mode text + online panel",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-15"
+ }
+}

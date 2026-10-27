@@ -1,0 +1,14 @@
+{
+ "skipped": [
+  {"poll": "GBAO (D) for Hamilton campaign, Kansas, Sep 30-Oct 4 2026, 600 LV (Wikipedia: Hamilton 46, Marshall 41, Graham 7; two-way 49-44)", "reason": "primary memo (static.politico.com/37/ce/d434188d4d2b83a7e3c9bcf2427c/gbao-hamilton-polling-memo-100626.pdf) states only a 5-point Hamilton lead in both 3-way and 2-way; candidate shares appear only on a chart of all public polls without pollster labels, so shares cannot be attributed without guessing"},
+  {"poll": "Global Strategy Group (D), Kansas, Aug 12-16 2026", "reason": "fielded before 2026-09-01"},
+  {"poll": "Impact Research (D), Nebraska, late-September wave (Osborn 46, Ricketts 51, undecided 3)", "reason": "mentioned only inside the Oct 21 Impact memo; no field dates, sample size or release"},
+  {"poll": "GBAO (D) for Working Class Majority PAC, Nebraska, intermediate wave between Sep and Oct (Osborn 45, Ricketts 46, undecided 10)", "reason": "appears only as an unlabeled point on GBAO's Oct 23 trend chart; no dates or sample size"},
+  {"poll": "Impact Research (D), Nebraska, Aug 9-13 2026", "reason": "fielded before 2026-09-01"},
+  {"poll": "Abacus Data, South Carolina, Aug 26-28 2026", "reason": "fielded before 2026-09-01"},
+  {"poll": "Impact Research (D), South Carolina, Aug 14-22 and Aug 18-24 2026", "reason": "fielded before 2026-09-01"}
+ ],
+ "excluded_by_rule": "Wedgewood, Median Strategies, SoCal Strategies: none found for these three races",
+ "searched": "Wikipedia race pages (raw wikitext), 270toWin, RealClearPolling (read in user's Chrome), web search for additional pollsters",
+ "searched_at": "2026-10-27T13:05:00-07:00"
+}

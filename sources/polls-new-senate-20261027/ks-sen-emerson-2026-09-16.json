@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-emerson-2026-09-16.json",
+ "race": "2026-KS-SEN",
+ "pid": "emerson",
+ "name": "Emerson College Polling",
+ "sponsor": "Nexstar Media",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "emerson-s-2026-KS-SEN-2026-09-16",
+ "poll": {
+  "field_start": "2026-09-15",
+  "field_end": "2026-09-16",
+  "release_date": "2026-09-18",
+  "n": 750,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 43.0,
+  "other": 4.0,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://emersoncollegepolling.com/kansas-2026/",
+  "source_locator": "Release: 45% Hamilton, 43% Marshall, Graham (L) 4%, 8% undecided",
+  "notes": "Emerson/Nexstar.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data sets were weighted by gender, education, race, age, and region based on U.S. Census parameters and voter file data.",
+  "method_url": "https://emersoncollegepolling.com/kansas-2026/",
+  "method_locator": "methodology paragraph",
+  "mode": "MMS text-to-web (Aristotle voter file) + online panel (PureSpectrum)",
+  "method_owner": "Emerson College Polling",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-18"
+ }
+}

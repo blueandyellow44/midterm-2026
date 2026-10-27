@@ -21,7 +21,7 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parents[2]
 FONTS = Path(__file__).resolve().parent / "fonts"
 C = {"paper": "#f7f7f2", "ink": "#24272b", "muted": "#5c6268", "rust": "#a54816", "d": "#285b98", "r": "#a7474b", "line": "#ddddd5"}
-STATES = {"TX": "Texas", "IA": "Iowa", "ME": "Maine", "AK": "Alaska", "OH": "Ohio", "MI": "Michigan", "NC": "North Carolina", "GA": "Georgia", "WI": "Wisconsin"}
+STATES = {"TX": "Texas", "IA": "Iowa", "ME": "Maine", "AK": "Alaska", "OH": "Ohio", "MI": "Michigan", "NC": "North Carolina", "GA": "Georgia", "WI": "Wisconsin", "KS": "Kansas", "NE": "Nebraska", "SC": "South Carolina", "MS": "Mississippi", "NH": "New Hampshire", "FL": "Florida"}
 EVEN = 0.05
 
 

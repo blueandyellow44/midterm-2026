@@ -1,0 +1,38 @@
+{
+ "file": "ms-sen-change-research-2026-10-22.json",
+ "race": "2026-MS-SEN",
+ "pid": "change-research",
+ "name": "Change Research",
+ "sponsor": "365 Project (toplines PDF hosted by Politico)",
+ "scls": "UNKNOWN",
+ "align": "D",
+ "method_id": "change-research-s-2026-MS-SEN-2026-10-22",
+ "poll": {
+  "field_start": "2026-10-21",
+  "field_end": "2026-10-22",
+  "release_date": null,
+  "n": 842,
+  "pop": "LV",
+  "D": 40,
+  "R": 43,
+  "other": 6,
+  "undecided": 11,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.politico.com/f/?id=000001a1-6905-d95c-abe7-ffe73ad80000",
+  "source_locator": "p1 'US Senate Ballot (with leans)': Hyde-Smith 43, Colom 40, Pinkins (I) 6, Not sure 9, Would not vote 2",
+  "notes": "other = Ty Pinkins (I) 6; undecided = Not sure 9 + Would not vote 2. Toplines say '842 2026 voters'; classed LV per Wikipedia's listing (not stated as 'likely' on the PDF). Release date not printed on the PDF (Wikipedia access-date Oct 23). Sponsor identity of '365 Project' not disclosed; Change Research is a D-aligned firm. Politico blocks scripts; read in browser.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Post-stratification was performed on age, gender, race/ethnicity, education, region, and 2024 presidential vote.",
+  "method_url": "https://www.politico.com/f/?id=000001a1-6905-d95c-abe7-ffe73ad80000",
+  "method_locator": "p1 methodology footnote",
+  "mode": "online (Dynamic Online Sampling)",
+  "method_owner": "Change Research",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-npa-polling-national-public-affairs-2026-10-12.json",
+ "race": "2026-NH-SEN",
+ "pid": "npa-polling-national-public-affairs",
+ "name": "National Public Affairs (NPA Polling)",
+ "sponsor": "NPA Polling (memo to Interested Parties)",
+ "scls": "UNKNOWN",
+ "align": "R",
+ "method_id": "npa-polling-national-public-affairs-s-2026-NH-SEN-2026-10-12",
+ "poll": {
+  "field_start": "2026-10-08",
+  "field_end": "2026-10-12",
+  "release_date": "2026-10-16",
+  "n": 600,
+  "pop": "LV",
+  "D": 50,
+  "R": 43,
+  "other": 4,
+  "undecided": null,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://backend.natpublicaffairs.com/media/NH_General_Election_Memo_101526.2.pdf",
+  "source_locator": "memo p1: three-candidate ballot Pappas 50, Sununu 43, Laplante 4; 'Ballot totals include voters leaning toward a candidate'",
+  "notes": "Full three-candidate ballot used. Undecided not printed in memo (Wikipedia shows 3; not used). Head-to-head in same memo: Pappas 50, Sununu 45 (two-candidate only, undecided not printed). Wikipedia tags NPA (R).",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted to match the expected 2026 general electorate on key demographics.",
+  "method_url": "https://backend.natpublicaffairs.com/media/NH_General_Election_Memo_101526.2.pdf",
+  "method_locator": "p3 Methodology",
+  "mode": "live calls to landlines and text-to-web",
+  "method_owner": "NPA Polling",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-16"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-insideradvantage-2026-09-29.json",
+ "race": "2026-SC-SEN",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-SC-SEN-2026-09-29",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-09-29",
+  "release_date": "2026-10-02",
+  "n": 1200,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 46.0,
+  "other": 5.0,
+  "undecided": 4.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://insideradvantage.com/insideradvantage-south-carolina-senate-graham-leads-by-one-point/",
+  "source_locator": "Results: Graham (R) 46%, Andrews (D) 45%, Whitener (L) 2%, Hackett (C) 3%, Undecided 4%",
+  "notes": "Release text only; separate tabs not checked.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Conducted 9/28-29; 1200 SC LV; Mixed Mode Text/Panel; Weighted for Age, Race, Gender, and Political Affiliation; MOE 2.83%",
+  "method_url": "https://insideradvantage.com/insideradvantage-south-carolina-senate-graham-leads-by-one-point/",
+  "method_locator": "release methodology line",
+  "mode": "mixed mode text + online panel",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-02"
+ }
+}

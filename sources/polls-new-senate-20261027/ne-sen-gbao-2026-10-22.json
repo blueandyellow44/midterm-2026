@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-gbao-2026-10-22.json",
+ "race": "2026-NE-SEN",
+ "pid": "gbao",
+ "name": "GBAO",
+ "sponsor": "Working Class Majority PAC (pro-Osborn)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "gbao-s-2026-NE-SEN-2026-10-22",
+ "poll": {
+  "field_start": "2026-10-18",
+  "field_end": "2026-10-22",
+  "release_date": "2026-10-23",
+  "n": 800,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": 7.0,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://data.ddhq.io/polls/2026/10/23/GBAO/Working-Class-Majority-Nebraska-2026-10-18-2026-10-22",
+  "source_locator": "GBAO memo dated Oct 23, 2026 (PDF hosted by DDHQ), trend chart final wave: Osborn 46, Ricketts 45, Undecided 7; text: 'The head-to-head moves a net 2 points towards Osborn'",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Memo describes the ballot as head-to-head, so TWO_WAY. Memo is an image PDF; shares read from GBAO's own trend chart. Chart also shows an undated intermediate wave (Osborn 45, Ricketts 46, undecided 10) not recorded.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://data.ddhq.io/polls/2026/10/23/GBAO/Working-Class-Majority-Nebraska-2026-10-18-2026-10-22",
+  "method_locator": "footnote 1",
+  "mode": "live telephone + text-to-web",
+  "method_owner": "GBAO",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-23"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-surveyusa-2026-09-13.json",
+ "race": "2026-NE-SEN",
+ "pid": "surveyusa",
+ "name": "SurveyUSA",
+ "sponsor": "Grant Forbes, LLC",
+ "scls": "UNKNOWN",
+ "align": "NONE",
+ "method_id": "surveyusa-s-2026-NE-SEN-2026-09-13",
+ "poll": {
+  "field_start": "2026-09-08",
+  "field_end": "2026-09-13",
+  "release_date": "2026-09-14",
+  "n": 503,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 42.0,
+  "other": 4.0,
+  "undecided": 7.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://results.surveyusa.com/client/PollReport.aspx?g=d94236a7-5861-4b7f-9d81-d5a81ab786cc",
+  "source_locator": "Study #27995 narrative: 'Osborn ... takes 46% today, while ... Ricketts takes 42%. 4% say they will vote for another candidate; 7% are undecided.'",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Read in user's Chrome (page renders in frames). 680 adults, 595 RV, 503 LV statewide.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The full pool of respondents was weighted to US Census-derived targets for gender, age, ethnicity, education, and region, and to state of Nebraska voter registration statistics.",
+  "method_url": "https://results.surveyusa.com/client/PollReport.aspx?g=d94236a7-5861-4b7f-9d81-d5a81ab786cc",
+  "method_locator": "methodology box above Q1",
+  "mode": "mixed: online panel (Cint) 54%, IVR landline 17%, SMS-to-web 29%",
+  "method_owner": "SurveyUSA",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-14"
+ }
+}

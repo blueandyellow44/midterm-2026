@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-rasmussen-2026-10-04.json",
+ "race": "2026-NH-SEN",
+ "pid": "rasmussen",
+ "name": "Rasmussen Reports",
+ "sponsor": "Rasmussen Reports (self)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "rasmussen-s-2026-NH-SEN-2026-10-04",
+ "poll": {
+  "field_start": "2026-10-02",
+  "field_end": "2026-10-04",
+  "release_date": "2026-10-05",
+  "n": 979,
+  "pop": "LV",
+  "D": 49,
+  "R": 44,
+  "other": 3,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.rasmussenreports.com/public_content/archive/election_2026/n_h_senate_lead_narrows_for_democrat_pappas",
+  "source_locator": "article: Pappas 49, Sununu 44, Laplante 3, not sure 4; 979 LV Oct 2-4",
+  "notes": "other = Laplante 3.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "After the surveys are completed, the raw data is processed through a weighting program to ensure that the sample reflects the overall population in terms of age, race, gender, political party, and other factors.",
+  "method_url": "https://www.rasmussenreports.com/public_content/about_us/methodology",
+  "method_locator": "methodology page, weighting paragraph",
+  "mode": "telephone and online",
+  "method_owner": "Rasmussen Reports / Pulse Opinion Research",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-05"
+ }
+}

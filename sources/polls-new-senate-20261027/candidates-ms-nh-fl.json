@@ -1,0 +1,42 @@
+{
+ "races": [
+  {
+   "race": "2026-MS-SEN",
+   "D": {
+    "candidate": "Scott Colom",
+    "party": "Democratic"
+   },
+   "R": {
+    "candidate": "Cindy Hyde-Smith",
+    "party": "Republican"
+   },
+   "source_url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Mississippi"
+  },
+  {
+   "race": "2026-NH-SEN",
+   "D": {
+    "candidate": "Chris Pappas",
+    "party": "Democratic"
+   },
+   "R": {
+    "candidate": "John E. Sununu",
+    "party": "Republican"
+   },
+   "source_url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Hampshire"
+  },
+  {
+   "race": "2026-FL-SEN-SPECIAL",
+   "D": {
+    "candidate": "Angie Nixon",
+    "party": "Democratic"
+   },
+   "R": {
+    "candidate": "Ashley Moody",
+    "party": "Republican"
+   },
+   "source_url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Florida"
+  }
+ ],
+ "notes": "Nominees per Wikipedia nominee and primary-results sections (MS primary Mar 10: Hyde-Smith 80.8%, Colom 73%; NH primary Sep 8; FL primary Aug 18, Nixon 56.1%). Every primary poll release names the same matchups. State election office pages not fetched.",
+ "retrieved_at": "2026-10-27T13:40:00-07:00"
+}

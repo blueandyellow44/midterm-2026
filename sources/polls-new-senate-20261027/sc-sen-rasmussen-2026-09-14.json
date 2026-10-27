@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-rasmussen-2026-09-14.json",
+ "race": "2026-SC-SEN",
+ "pid": "rasmussen",
+ "name": "Rasmussen Reports",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "rasmussen-s-2026-SC-SEN-2026-09-14",
+ "poll": {
+  "field_start": "2026-09-14",
+  "field_end": "2026-09-14",
+  "release_date": "2026-09-15",
+  "n": 1006,
+  "pop": "LV",
+  "D": 43.0,
+  "R": 48.0,
+  "other": null,
+  "undecided": 9.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.rasmussenreports.com/public_content/archive/election_2026/south_carolina_senate_graham_leads_by_5_points",
+  "source_locator": "'48% ... would vote for Graham, while 43% would vote for Andrews. Nine percent (9%) are not sure.'",
+  "notes": "One-day field. Fieldwork by Pulse Opinion Research.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.rasmussenreports.com/public_content/archive/election_2026/south_carolina_senate_graham_leads_by_5_points",
+  "method_locator": "'See methodology' link",
+  "mode": "telephone and online",
+  "method_owner": "Rasmussen Reports / Pulse Opinion Research",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-15"
+ }
+}

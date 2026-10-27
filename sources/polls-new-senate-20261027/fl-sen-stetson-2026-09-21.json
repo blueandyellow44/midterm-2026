@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-stetson-2026-09-21.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "stetson",
+ "name": "Stetson University CPOR",
+ "sponsor": "Stetson University (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "stetson-s-2026-FL-SEN-SPECIAL-2026-09-21",
+ "poll": {
+  "field_start": "2026-09-14",
+  "field_end": "2026-09-21",
+  "release_date": "2026-09-23",
+  "n": null,
+  "pop": "LV",
+  "D": 40,
+  "R": 51,
+  "other": 3,
+  "undecided": 5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.stetson.edu/artsci/cpor/media/cpor-sept.-2026-poll-final.pdf",
+  "source_locator": "release: Moody 51, Nixon 40 incl. leaners; another 3, undecided 5",
+  "notes": "n: release gives 830 Florida adults; likely-voter count not stated (270toWin shows 522 LV, RCP/Wikipedia 830) so left null. The October report says September was later re-estimated with a 2024-recall anchor; these are the September release's own numbers.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted by age, race, ethnicity, education, gender and region to reflect the Florida adult population. Likely voters were identified using a modeled turnout score",
+  "method_url": "https://www.stetson.edu/artsci/cpor/media/cpor-sept.-2026-poll-final.pdf",
+  "method_locator": "Methodology paragraph",
+  "mode": "online non-probability panel (Qualtrics)",
+  "method_owner": "Stetson CPOR",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-23"
+ }
+}

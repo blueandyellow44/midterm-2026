@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-global-strategy-group-2026-09-16.json",
+ "race": "2026-KS-SEN",
+ "pid": "global-strategy-group",
+ "name": "Global Strategy Group",
+ "sponsor": "Democratic Attorneys General Association (per memo file name and Wikipedia; memo text names no sponsor)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "global-strategy-group-s-2026-KS-SEN-2026-09-16",
+ "poll": {
+  "field_start": "2026-09-13",
+  "field_end": "2026-09-16",
+  "release_date": null,
+  "n": 800,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 43.0,
+  "other": 5.0,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://static.politico.com/0f/52/d84e43ae45cf803b787113de4d91/daga-ks-interested-parties-memo-10-01-26.pdf",
+  "source_locator": "Memo Key Findings: 'Hamilton leads Roger Marshall ... 47% to 43% in the multi-way (5% vote for the Libertarian), 49% to 47% in the two-way'",
+  "notes": "Undecided not stated. Two-way also reported: Hamilton 49, Marshall 47. Memo dated 'September 2026' (PDF created 2026-09-29); published via Politico, file name dated 10-01-26; exact release date not stated so null. Poll is an AG-race memo.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "Care has been taken to ensure the geographic, political, and demographic divisions of the population of likely voters are properly represented.",
+  "method_url": "https://static.politico.com/0f/52/d84e43ae45cf803b787113de4d91/daga-ks-interested-parties-memo-10-01-26.pdf",
+  "method_locator": "ABOUT THE POLL",
+  "mode": "not stated",
+  "method_owner": "Global Strategy Group",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-29"
+ }
+}

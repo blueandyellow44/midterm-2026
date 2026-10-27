@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-gbao-2026-09-08.json",
+ "race": "2026-NE-SEN",
+ "pid": "gbao",
+ "name": "GBAO",
+ "sponsor": "Working Class Majority PAC (pro-Osborn)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "gbao-s-2026-NE-SEN-2026-09-08",
+ "poll": {
+  "field_start": "2026-09-03",
+  "field_end": "2026-09-08",
+  "release_date": "2026-09-17",
+  "n": 800,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": 7.0,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://static.washingtonsun.com/38/fa/94e79558460286cbf3847a27e4b5/working-class-majority-pac-september-survey-memo-091826.pdf",
+  "source_locator": "Memo: 'give Independent Dan Osborn a 47 - 46 percent advantage'; undecided 7 from the Sept wave point on GBAO's own trend chart in its Oct 23 memo",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Two-candidate matchup (no third parties named), so TWO_WAY. Undecided not stated in this memo; 7 read from GBAO's Oct 23 chart.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://static.washingtonsun.com/38/fa/94e79558460286cbf3847a27e4b5/working-class-majority-pac-september-survey-memo-091826.pdf",
+  "method_locator": "footnote 1",
+  "mode": "live telephone + text-to-web",
+  "method_owner": "GBAO",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-17"
+ }
+}

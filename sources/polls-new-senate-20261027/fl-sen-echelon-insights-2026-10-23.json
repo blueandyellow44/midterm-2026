@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-echelon-insights-2026-10-23.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "echelon-insights",
+ "name": "Echelon Insights",
+ "sponsor": "NetChoice",
+ "scls": "UNKNOWN",
+ "align": "R",
+ "method_id": "echelon-insights-s-2026-FL-SEN-SPECIAL-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-27",
+  "n": 515,
+  "pop": "LV",
+  "D": 43,
+  "R": 51,
+  "other": 3,
+  "undecided": 4,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://netchoice.org/wp-content/uploads/2026/10/NetChoice-October-2026-Antitrust-Tech-Survey-Topline.pdf",
+  "source_locator": "FL Senate ballot: Moody 51, Nixon 43, Gillespie 3, Unsure 4 (merged with full-ballot leaner)",
+  "notes": "Florida oversample (n=515) of a 3,644-voter multistate survey; topline says voted/full/leaner responses merged. NetChoice is a tech trade association. Release page: https://netchoice.org/netchoice-echelon-insights-poll-voters-rank-ai-regulation-far-behind-cost-of-living-want-one-national-ai-standard/",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighting dimensions included gender, age, race/ethnicity, education, designated market area (DMA), turnout probability, party by ideology, as well as gender by age.",
+  "method_url": "https://netchoice.org/wp-content/uploads/2026/10/NetChoice-October-2026-Antitrust-Tech-Survey-Topline.pdf",
+  "method_locator": "methodology section",
+  "mode": "online (L2 text invitation + matched online sample)",
+  "method_owner": "Echelon Insights",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

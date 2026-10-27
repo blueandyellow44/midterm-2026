@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-npa-polling-national-public-affairs-2026-10-05.json",
+ "race": "2026-NE-SEN",
+ "pid": "npa-polling-national-public-affairs",
+ "name": "NPA Polling (National Public Affairs)",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "npa-polling-national-public-affairs-s-2026-NE-SEN-2026-10-05",
+ "poll": {
+  "field_start": "2026-10-02",
+  "field_end": "2026-10-05",
+  "release_date": "2026-10-12",
+  "n": 800,
+  "pop": "LV",
+  "D": 43.0,
+  "R": 46.0,
+  "other": 6.0,
+  "undecided": 5.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://backend.natpublicaffairs.com/media/Nebraska_General_Election_Memo_100926.pdf",
+  "source_locator": "Memo: full five-candidate ballot Ricketts 46, Osborn 43 (leaners included); third parties 2/2/2 and Undecided 5 from Round 1 column of the Oct 22 trend memo",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). n = 800 total (600 statewide + 200 NE-02 oversample, weighted down); MoE based on 600. Memo dated October 12, 2026. Head-to-head also reported: 49 / 46, undecided 6.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "Statewide results are weighted on all 800 interviews, with the oversample weighted down to NE-02's share of the state.",
+  "method_url": "https://backend.natpublicaffairs.com/media/Nebraska_General_Election_Memo_100926.pdf",
+  "method_locator": "Methodology paragraph",
+  "mode": "live calls and text-to-web, voter file",
+  "method_owner": "NPA Polling",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-12"
+ }
+}

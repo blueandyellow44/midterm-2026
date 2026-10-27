@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-nyt-siena-2026-09-22.json",
+ "race": "2026-NH-SEN",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-NH-SEN-2026-09-22",
+ "poll": {
+  "field_start": "2026-09-15",
+  "field_end": "2026-09-22",
+  "release_date": "2026-09-24",
+  "n": 613,
+  "pop": "LV",
+  "D": 50,
+  "R": 45,
+  "other": 0.5,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.nytimes.com/interactive/2026/09/25/polls/times-siena-poll-crosstabs.html",
+  "source_locator": "NH crosstab: Pappas 50, Sununu 45, [VOL] another <1, [VOL] DK/refused 4; n=613",
+  "notes": "other recorded as 0.5 for '<1%'. Margin Pappas +5 from unrounded shares. Read in browser (paywall).",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters ...)",
+  "method_url": "https://www.nytimes.com/interactive/2026/09/25/polls/times-siena-poll-crosstabs.html",
+  "method_locator": "methodology section, energy-balancing variable list",
+  "mode": "live telephone",
+  "method_owner": "The New York Times / Siena",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-24"
+ }
+}

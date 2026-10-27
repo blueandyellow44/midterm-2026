@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-impact-research-2026-10-21.json",
+ "race": "2026-SC-SEN",
+ "pid": "impact-research",
+ "name": "Impact Research",
+ "sponsor": "Fresh Start SC (super PAC supporting Andrews; memo hosted on its site)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "impact-research-s-2026-SC-SEN-2026-10-21",
+ "poll": {
+  "field_start": "2026-10-15",
+  "field_end": "2026-10-21",
+  "release_date": "2026-10-22",
+  "n": 800,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 44.0,
+  "other": 5.0,
+  "undecided": 5.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://freshstartpac.org/wp-content/uploads/2026/10/SC-Senate-Track-Public-Memo.pdf",
+  "source_locator": "Memo: full ballot 45% Andrews / 44% Graham / 3% Whitener / 2% Hackett / 5% undecided",
+  "notes": "NA",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://freshstartpac.org/wp-content/uploads/2026/10/SC-Senate-Track-Public-Memo.pdf",
+  "method_locator": "methodology line",
+  "mode": "mixed phone and text-to-web",
+  "method_owner": "Impact Research",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-22"
+ }
+}

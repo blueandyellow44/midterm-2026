@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-saint-anselm-2026-09-29.json",
+ "race": "2026-NH-SEN",
+ "pid": "saint-anselm",
+ "name": "Saint Anselm College Survey Center",
+ "sponsor": "AARP",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "saint-anselm-s-2026-NH-SEN-2026-09-29",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-09-29",
+  "release_date": "2026-10-06",
+  "n": 1042,
+  "pop": "LV",
+  "D": 51,
+  "R": 44,
+  "other": 3,
+  "undecided": 2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-new-hampshire.doi.10.26419-2fres.01065.022.pdf",
+  "source_locator": "Weighted Marginals: Pappas 533 (51), Sununu 460 (44), Someone Else 30 (3), Undecided 19 (2)",
+  "notes": "Release date per Wikipedia/270toWin (Oct 6); PDF created Oct 5. Report says results are weighted but does not list weighting variables; it asks 2024 presidential vote.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-new-hampshire.doi.10.26419-2fres.01065.022.pdf",
+  "method_locator": "Survey Notes p.104 (no weighting description)",
+  "mode": "UNVERIFIED",
+  "method_owner": "Saint Anselm College Survey Center",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-05"
+ }
+}

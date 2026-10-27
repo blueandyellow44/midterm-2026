@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-saint-anselm-2026-10-20.json",
+ "race": "2026-NH-SEN",
+ "pid": "saint-anselm",
+ "name": "Saint Anselm College Survey Center",
+ "sponsor": "Saint Anselm College (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "saint-anselm-s-2026-NH-SEN-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-20",
+  "release_date": "2026-10-22",
+  "n": 1672,
+  "pop": "LV",
+  "D": 50,
+  "R": 43,
+  "other": 5,
+  "undecided": 2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.anselm.edu/sites/default/files/2026-10/October%2019-20%20Poll%20Results.pdf",
+  "source_locator": "toplines: Pappas 838 (50), Sununu 715 (43), Other 91 (5), Unsure 29 (2)",
+  "notes": "Single question with definitely/probably categories; Pappas/Sununu totals include 'probably'. Release page: https://www.anselm.edu/about/anselmian-hub/news/new-saint-anselm-college-poll-finds-democrats-leading-congressional-races-affordability-concerns-shape-election-landscape",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data are weighted for party registration, age, gender, geography, and education based on a voter demographic model derived from historical voting patterns.",
+  "method_url": "https://www.anselm.edu/about/anselmian-hub/news/new-saint-anselm-college-poll-finds-democrats-leading-congressional-races-affordability-concerns-shape-election-landscape",
+  "method_locator": "release methodology paragraph",
+  "mode": "online (cell phone users drawn from registered-voter sample)",
+  "method_owner": "Saint Anselm College Survey Center",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-22"
+ }
+}

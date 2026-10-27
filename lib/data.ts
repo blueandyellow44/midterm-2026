@@ -5,7 +5,7 @@ import { toPublicNote } from './public-note';
 export const bundle=validateBundle(join(process.cwd(),'data'));
 export const { manifest, derived, manifestHash }=bundle;
 export const raceIds: string[]=[...manifest.scope.senate_races,...manifest.scope.governor_races];
-export const states: Record<string,string>={TX:'Texas',IA:'Iowa',ME:'Maine',AK:'Alaska',OH:'Ohio',MI:'Michigan',NC:'North Carolina',GA:'Georgia',WI:'Wisconsin'};
+export const states: Record<string,string>={TX:'Texas',IA:'Iowa',ME:'Maine',AK:'Alaska',OH:'Ohio',MI:'Michigan',NC:'North Carolina',GA:'Georgia',WI:'Wisconsin',KS:'Kansas',NE:'Nebraska',SC:'South Carolina',MS:'Mississippi',NH:'New Hampshire',FL:'Florida'};
 export const slug=(id:string)=>id.replace('2026-','').toLowerCase();
 export const raceName=(id:string)=>`${states[id.split('-')[1]]} ${id.includes('GOV')?'governor':'Senate'}${id.includes('SPECIAL')?' · special':''}`;
 export function raceData(id:string) {

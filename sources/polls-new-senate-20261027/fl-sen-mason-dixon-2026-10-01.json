@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-mason-dixon-2026-10-01.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "mason-dixon",
+ "name": "Mason-Dixon Polling & Strategy",
+ "sponsor": "NBC 6 / Telemundo Station Group",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "mason-dixon-s-2026-FL-SEN-SPECIAL-2026-10-01",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-10-01",
+  "release_date": null,
+  "n": 625,
+  "pop": "LV",
+  "D": 40,
+  "R": 50,
+  "other": 2,
+  "undecided": 8,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://s3.documentcloud.org/documents/28724874/fl1026results.pdf",
+  "source_locator": "Senate question p4 STATE row: Nixon 40, Moody 50, Gillespie 2, Undecided 8",
+  "notes": "625 registered voters who all stated they were likely to vote (RCP lists RV). Release date not printed on the PDF (Wikipedia Oct 6). DocumentCloud blocks scripts; read in browser.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://s3.documentcloud.org/documents/28724874/fl1026results.pdf",
+  "method_locator": "p2 How the poll was conducted (county turnout quotas; no weighting described)",
+  "mode": "live telephone",
+  "method_owner": "Mason-Dixon Polling & Strategy",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": null
+ }
+}

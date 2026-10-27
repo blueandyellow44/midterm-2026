@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-insideradvantage-2026-09-21.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "InsiderAdvantage (self)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-FL-SEN-SPECIAL-2026-09-21",
+ "poll": {
+  "field_start": "2026-09-20",
+  "field_end": "2026-09-21",
+  "release_date": "2026-09-22",
+  "n": 600,
+  "pop": "LV",
+  "D": 41.8,
+  "R": 49.3,
+  "other": 2.4,
+  "undecided": 6.5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://insideradvantage.com/fl-u-s-senate-survey-top-line-tabs/",
+  "source_locator": "topline image: Moody 49.3, Nixon 41.8, Gillespie 2.4, Undecided 6.5",
+  "notes": "Question asks 'or toward whom are you leaning'. No methodology on this poll's page.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://insideradvantage.com/fl-u-s-senate-survey-top-line-tabs/",
+  "method_locator": "topline image only",
+  "mode": "UNVERIFIED",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-22"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-yougov-2026-10-03.json",
+ "race": "2026-NE-SEN",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-NE-SEN-2026-10-03",
+ "poll": {
+  "field_start": "2026-09-24",
+  "field_end": "2026-10-03",
+  "release_date": "2026-10-06",
+  "n": 1809,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 47.0,
+  "other": 0.0,
+  "undecided": 3.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ne_20260921_lv.pdf",
+  "source_locator": "Toplines Q6 U.S. Senator: Ricketts 47, Osborn 48, Someone else 0, Undecided 3, Will not vote in this race 1",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Undecided voters asked their preference and allocated, so LEANERS. release_date not in PDF; 2026-10-06 from aggregator listing.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to gender, age, in-state geography (using the current Nebraska voter list), party registration, and imputed education, 2024 presidential vote, and past Senate vote.",
+  "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ne_20260921_lv.pdf",
+  "method_locator": "methodology box, last page",
+  "mode": "text-to-web from voter list (YouGov web system)",
+  "method_owner": "YouGov",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-06"
+ }
+}

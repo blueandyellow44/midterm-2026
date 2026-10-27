@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-echelon-insights-2026-10-23.json",
+ "race": "2026-NE-SEN",
+ "pid": "echelon-insights",
+ "name": "Echelon Insights",
+ "sponsor": "NetChoice",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "echelon-insights-s-2026-NE-SEN-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-27",
+  "n": 407,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 47.0,
+  "other": 3.0,
+  "undecided": 3.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://netchoice.org/netchoice-echelon-insights-poll-voters-rank-ai-regulation-far-behind-cost-of-living-want-one-national-ai-standard/",
+  "source_locator": "Nebraska (n=407, +/-6.3): Senate: Ricketts (R) 47%, Osborn (I) 46%, Richards 2%, Conboy 1%, unsure 3%",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). State oversample within a multistate NetChoice survey; online (L2 text invitations + matched exchanges).",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "Results are weighted to reflect the modeled 2026 likely electorate, and state oversamples are weighted down to the proportion in the population of voters in the likely electorate in those states.",
+  "method_url": "https://netchoice.org/netchoice-echelon-insights-poll-voters-rank-ai-regulation-far-behind-cost-of-living-want-one-national-ai-standard/",
+  "method_locator": "Methodology Note",
+  "mode": "online (L2 text-to-web + sample exchanges matched to L2)",
+  "method_owner": "Echelon Insights",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

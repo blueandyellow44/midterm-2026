@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-impact-research-2026-10-20.json",
+ "race": "2026-NE-SEN",
+ "pid": "impact-research",
+ "name": "Impact Research",
+ "sponsor": "not named in memo (Wikipedia attributes to the Osborn campaign)",
+ "scls": "UNKNOWN",
+ "align": "D",
+ "method_id": "impact-research-s-2026-NE-SEN-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-14",
+  "field_end": "2026-10-20",
+  "release_date": "2026-10-21",
+  "n": 600,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 49.0,
+  "other": 2.0,
+  "undecided": 1.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://mcusercontent.com/34be366ade846d769ee678a97/files/3ae10722-76ee-42da-fe74-aaa63817df92/IMPACT_NEBRASKA_INTERESTED_PARTIES_POLL_MEMO_OCTOBER_2026.pdf",
+  "source_locator": "Key Findings: full vote 47 Osborn / 49 Ricketts / 2 Third-Party / 1 Undecided",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Two-way also reported: 48 Osborn / 50 Ricketts / 1 Undecided. Memo also cites a late-September Impact wave (46 Osborn / 51 Ricketts / 3 Undecided) with no dates or n; not recorded.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://mcusercontent.com/34be366ade846d769ee678a97/files/3ae10722-76ee-42da-fe74-aaa63817df92/IMPACT_NEBRASKA_INTERESTED_PARTIES_POLL_MEMO_OCTOBER_2026.pdf",
+  "method_locator": "footer methodology line",
+  "mode": "phone and text-to-web",
+  "method_owner": "Impact Research",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-21"
+ }
+}

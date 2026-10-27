@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-trafalgar-2026-10-18.json",
+ "race": "2026-SC-SEN",
+ "pid": "trafalgar",
+ "name": "Trafalgar Group",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "trafalgar-s-2026-SC-SEN-2026-10-18",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-18",
+  "release_date": "2026-10-18",
+  "n": 1095,
+  "pop": "LV",
+  "D": 45.6,
+  "R": 48.6,
+  "other": 4.7,
+  "undecided": 1.2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/10/SC-Midterms-Survey-Report-1019.pdf",
+  "source_locator": "Report crosstab Total: Graham 48.6, Andrews 45.6, Whitener 3.9, Hackett 0.8, Undecided 1.2",
+  "notes": "other = Whitener 3.9 + Hackett 0.8. Question wording 'most likely vote' and 1.2% undecided suggest a pushed ballot, but no leaner question shown, so kept FULL per Trafalgar convention. PDF created 2026-10-18.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.thetrafalgargroup.org/polling-methodology/",
+  "method_locator": "report p.1 methodology link",
+  "mode": "not stated in report",
+  "method_owner": "Trafalgar Group",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-18"
+ }
+}

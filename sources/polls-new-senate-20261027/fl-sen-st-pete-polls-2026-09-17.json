@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-st-pete-polls-2026-09-17.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "st-pete-polls",
+ "name": "St. Pete Polls",
+ "sponsor": "FloridaPolitics.com",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "st-pete-polls-s-2026-FL-SEN-SPECIAL-2026-09-17",
+ "poll": {
+  "field_start": "2026-09-15",
+  "field_end": "2026-09-17",
+  "release_date": "2026-09-17",
+  "n": 913,
+  "pop": "LV",
+  "D": 44.8,
+  "R": 45.2,
+  "other": 2.9,
+  "undecided": 7.1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "http://stpetepolls.org/files/StPetePolls_2026_State_Gov_September17_G7V29XU6.pdf",
+  "source_locator": "Senate: Moody 45.2, Nixon 44.8, Someone else 2.9, Undecided 7.1",
+  "notes": "",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The weighting demographics used were: political party, race, age, gender and media market.",
+  "method_url": "http://stpetepolls.org/files/StPetePolls_2026_State_Gov_September17_G7V29XU6.pdf",
+  "method_locator": "Methodology",
+  "mode": "IVR phone + P2P SMS",
+  "method_owner": "St. Pete Polls",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-17"
+ }
+}

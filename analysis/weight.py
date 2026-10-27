@@ -80,9 +80,10 @@ POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_mar
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
 RESULTS_HEADER = "race,resolution_status,winner_slot,certified_margin,denominator_note,result_url,resolved_at".split(",")
 
-SENATE_RACES = ["2026-TX-SEN", "2026-IA-SEN", "2026-ME-SEN", "2026-AK-SEN", "2026-OH-SEN-SPECIAL", "2026-MI-SEN", "2026-NC-SEN", "2026-GA-SEN"]
+SENATE_RACES = ["2026-TX-SEN", "2026-IA-SEN", "2026-ME-SEN", "2026-AK-SEN", "2026-OH-SEN-SPECIAL", "2026-MI-SEN", "2026-NC-SEN", "2026-GA-SEN",
+                "2026-KS-SEN", "2026-NE-SEN", "2026-SC-SEN", "2026-MS-SEN", "2026-NH-SEN", "2026-FL-SEN-SPECIAL"]  # last six added 2026-10-27 (Max: "add all senate races please"; the six deferred)
 GOVERNOR_RACES = ["2026-OH-GOV", "2026-IA-GOV", "2026-MI-GOV", "2026-GA-GOV", "2026-WI-GOV"]
-DEFERRED_RACES = ["2026-KS-SEN", "2026-NE-SEN", "2026-FL-SEN-SPECIAL", "2026-SC-SEN", "2026-MS-SEN", "2026-NH-SEN", "2026-AZ-GOV", "2026-NV-GOV", "2026-FL-GOV", "2026-KS-GOV"]
+DEFERRED_RACES = ["2026-AZ-GOV", "2026-NV-GOV", "2026-FL-GOV", "2026-KS-GOV"]
 BACKTEST_RACES = ["2025-VA-GOV", "2025-NJ-GOV"]
 RCV_RACES = {"2026-ME-SEN", "2026-AK-SEN"}
 IN_SCOPE_RACES = set(SENATE_RACES) | set(GOVERNOR_RACES)

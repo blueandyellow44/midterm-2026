@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-rasmussen-2026-09-10.json",
+ "race": "2026-NH-SEN",
+ "pid": "rasmussen",
+ "name": "Rasmussen Reports",
+ "sponsor": "Rasmussen Reports (self)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "rasmussen-s-2026-NH-SEN-2026-09-10",
+ "poll": {
+  "field_start": "2026-09-08",
+  "field_end": "2026-09-10",
+  "release_date": "2026-09-11",
+  "n": 1000,
+  "pop": "LV",
+  "D": 45,
+  "R": 34,
+  "other": 13,
+  "undecided": 9,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.rasmussenreports.com/public_content/archive/election_2026/n_h_senate_democrat_pappas_leads_by_double_digits",
+  "source_locator": "article: Pappas 45, Sununu 34, Laplante 2, Day 4, Harris 4, Lopez 2, Morrow 1, not sure 9; 1,000 LV Sep 8-10",
+  "notes": "other = five minor candidates summed (2+4+4+2+1). RCP lists n=1033; primary says 1,000. Wikipedia's citation URL for this poll now redirects to the October release; archive URL used.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "After the surveys are completed, the raw data is processed through a weighting program to ensure that the sample reflects the overall population in terms of age, race, gender, political party, and other factors.",
+  "method_url": "https://www.rasmussenreports.com/public_content/about_us/methodology",
+  "method_locator": "methodology page, weighting paragraph",
+  "mode": "telephone and online",
+  "method_owner": "Rasmussen Reports / Pulse Opinion Research",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-11"
+ }
+}

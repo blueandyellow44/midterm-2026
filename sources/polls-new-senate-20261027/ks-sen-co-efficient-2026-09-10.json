@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-co-efficient-2026-09-10.json",
+ "race": "2026-KS-SEN",
+ "pid": "co-efficient",
+ "name": "co/efficient",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "co-efficient-s-2026-KS-SEN-2026-09-10",
+ "poll": {
+  "field_start": "2026-09-08",
+  "field_end": "2026-09-10",
+  "release_date": null,
+  "n": 915,
+  "pop": "LV",
+  "D": 44.0,
+  "R": 49.0,
+  "other": 2.0,
+  "undecided": 5.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://battlegrounds.coefficient.org/ks/",
+  "source_locator": "Ballot: Marshall 49, Hamilton 44, Graham (L) 2, Undecided 5",
+  "notes": "Page says 'Released September 2026'; exact day not stated, so release_date null.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted on age, gender, race, education, registered party, and geography to reflect the likely 2026 general electorate.",
+  "method_url": "https://battlegrounds.coefficient.org/ks/",
+  "method_locator": "methodology paragraph",
+  "mode": "mobile text and landline",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-10"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-npa-polling-national-public-affairs-2026-10-18.json",
+ "race": "2026-NE-SEN",
+ "pid": "npa-polling-national-public-affairs",
+ "name": "NPA Polling (National Public Affairs)",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "npa-polling-national-public-affairs-s-2026-NE-SEN-2026-10-18",
+ "poll": {
+  "field_start": "2026-10-15",
+  "field_end": "2026-10-18",
+  "release_date": "2026-10-22",
+  "n": 598,
+  "pop": "LV",
+  "D": 43.0,
+  "R": 46.0,
+  "other": 5.0,
+  "undecided": 5.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://backend.natpublicaffairs.com/media/NE_Tracker_R2_Trend_Memo_102226.7.pdf",
+  "source_locator": "Round 2 full ballot: Ricketts 46, Osborn 43, Marvin 2, Richards 1, Conboy 2, Undecided 5 ('Ballot totals include voters leaning toward a candidate')",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). n = 598 statewide interviews (plus an NE-02 oversample weighted down, size not stated). Head-to-head also reported: Ricketts 50, Osborn 47, Undecided 3.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "Results are weighted to match the expected statewide electorate on key demographics and geography.",
+  "method_url": "https://backend.natpublicaffairs.com/media/NE_Tracker_R2_Trend_Memo_102226.7.pdf",
+  "method_locator": "Methodology paragraph",
+  "mode": "live calls and text-to-web, voter file",
+  "method_owner": "NPA Polling",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-22"
+ }
+}

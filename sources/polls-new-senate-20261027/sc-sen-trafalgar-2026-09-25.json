@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-trafalgar-2026-09-25.json",
+ "race": "2026-SC-SEN",
+ "pid": "trafalgar",
+ "name": "Trafalgar Group",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "trafalgar-s-2026-SC-SEN-2026-09-25",
+ "poll": {
+  "field_start": "2026-09-23",
+  "field_end": "2026-09-25",
+  "release_date": "2026-09-26",
+  "n": 1087,
+  "pop": "LV",
+  "D": 42.3,
+  "R": 43.4,
+  "other": 5.9,
+  "undecided": 8.5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/09/SC-Midterms-Survey-Report-0926.pdf",
+  "source_locator": "Report crosstab Total: Graham 43.4, Andrews 42.3, Other 5.9, Undecided 8.5",
+  "notes": "release_date from report file name/aggregators (0926).",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.thetrafalgargroup.org/polling-methodology/",
+  "method_locator": "report p.1 methodology link",
+  "mode": "not stated in report",
+  "method_owner": "Trafalgar Group",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-26"
+ }
+}

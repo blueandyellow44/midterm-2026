@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-unh-2026-09-21.json",
+ "race": "2026-NH-SEN",
+ "pid": "unh",
+ "name": "UNH Survey Center (Granite State Poll)",
+ "sponsor": "University of New Hampshire (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "unh-s-2026-NH-SEN-2026-09-21",
+ "poll": {
+  "field_start": "2026-09-17",
+  "field_end": "2026-09-21",
+  "release_date": "2026-09-24",
+  "n": 1418,
+  "pop": "LV",
+  "D": 50,
+  "R": 42,
+  "other": 4,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2004&context=survey_center_polls",
+  "source_locator": "p1: Pappas 50, Sununu 42, Laplante 2, write-in 2, undecided 4 (1,418 likely voters)",
+  "notes": "PDF behind Cloudflare challenge; read in browser. other = Laplante 2 + write-in 2.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data were weighted by respondent sex, age, education, and region of the state to targets from the most recent American Community Survey ... as well as to party registration levels provided by the NH Secretary of State and to 2024 election results in New Hampshire.",
+  "method_url": "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2004&context=survey_center_polls",
+  "method_locator": "p9 Granite State Poll Methodology",
+  "mode": "online probability panel (Granite State Panel)",
+  "method_owner": "UNH Survey Center",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-24"
+ }
+}

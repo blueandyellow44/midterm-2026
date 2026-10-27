@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-change-research-2026-09-27.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "change-research",
+ "name": "Change Research",
+ "sponsor": "Freedom Project USA",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "change-research-s-2026-FL-SEN-SPECIAL-2026-09-27",
+ "poll": {
+  "field_start": "2026-09-25",
+  "field_end": "2026-09-27",
+  "release_date": "2026-09-28",
+  "n": 1063,
+  "pop": "LV",
+  "D": 47,
+  "R": 48,
+  "other": 1,
+  "undecided": 5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://changeresearch.com/research/2026/2026-09-28-florida-aapor-methodology-statement",
+  "source_locator": "Senate (with 'If you had to choose' push): Nixon 47, Moody 48, Not sure 5, Would not vote 1",
+  "notes": "other = would not vote 1. Statement gives 1,063 likely voters in its opening and 1,107 in a later boilerplate sentence copied from the Sep 7-9 statement; 1,063 used. Read in browser (site rate-limits scripts).",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Post-stratification was performed on age, gender, race/ethnicity, education, 2024 presidential vote, and region.",
+  "method_url": "https://changeresearch.com/research/2026/2026-09-28-florida-aapor-methodology-statement",
+  "method_locator": "Methodology",
+  "mode": "online (social ads + text to SurveyMonkey)",
+  "method_owner": "Change Research",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-28"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-stetson-2026-10-09.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "stetson",
+ "name": "Stetson University CPOR",
+ "sponsor": "Stetson University (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "stetson-s-2026-FL-SEN-SPECIAL-2026-10-09",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-09",
+  "release_date": "2026-10-13",
+  "n": 716,
+  "pop": "LV",
+  "D": 41,
+  "R": 52,
+  "other": 2,
+  "undecided": 6,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.stetson.edu/artsci/cpor/media/cpor-fall-2026-report-wave-2-october.pdf",
+  "source_locator": "p1: Moody 52, Nixon 41 incl. leaners; 6% undecided, 2% another candidate",
+  "notes": "Electoral items computed on 716 self-reported registered voters, weighted by modeled turnout probability and described as 'likely voters'.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "w_weight ... respondents are raked to the demographic margins above plus the certified 2024 Florida presidential result (Trump 56.09%, Harris 42.99%, other 0.92%...)",
+  "method_url": "https://www.stetson.edu/artsci/cpor/media/cpor-fall-2026-report-wave-2-october.pdf",
+  "method_locator": "Methodology section 3",
+  "mode": "online non-probability panel (Qualtrics)",
+  "method_owner": "Stetson CPOR",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-13"
+ }
+}

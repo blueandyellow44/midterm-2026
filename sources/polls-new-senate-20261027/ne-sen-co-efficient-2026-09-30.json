@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-co-efficient-2026-09-30.json",
+ "race": "2026-NE-SEN",
+ "pid": "co-efficient",
+ "name": "co/efficient",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "co-efficient-s-2026-NE-SEN-2026-09-30",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-09-30",
+  "release_date": null,
+  "n": 1113,
+  "pop": "LV",
+  "D": 40.0,
+  "R": 45.0,
+  "other": 4.0,
+  "undecided": 11.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://battlegrounds.coefficient.org/ne/",
+  "source_locator": "Ballot: Ricketts 45, Osborn (Nonpartisan) 40, Marvin 2, Richards 1, Conboy 1, Undecided 11",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Page says 'Released October 2026'; exact day not stated, so release_date null.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted on age, gender, race, education, congressional district, and community type to reflect the likely 2026 general electorate.",
+  "method_url": "https://battlegrounds.coefficient.org/ne/",
+  "method_locator": "methodology paragraph",
+  "mode": "mobile text and landline",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-09-30"
+ }
+}

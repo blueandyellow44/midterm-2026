@@ -1,0 +1,31 @@
+{
+ "skipped": [
+  {
+   "poll": "Univision/YouGov Florida, Oct 2-15, 825 RV (crosstab: Republican candidate 51, Democratic candidate 42)",
+   "reason": "Senate item is a party ballot ('Democratic candidate' / 'Republican candidate'); El Nuevo Dia's write-up says the Senate question was asked without naming the candidates. Not a named Moody-Nixon matchup. Primary: https://st1.uvnimg.com/65/9b/a8b15584426684070c3d05cf6e34/n-univision-florida-poll-crosstabs-base-final.pdf"
+  },
+  {
+   "poll": "Wedgewood Polls Mississippi, Oct 12-14 (Hyde-Smith 52, Colom 48)",
+   "reason": "excluded pollster (admitted fabrication); Newsweek article retracted"
+  },
+  {
+   "poll": "Fabrizio, Lee & Associates / NRSC New Hampshire, Aug 27-30",
+   "reason": "fielded before Sep 1"
+  },
+  {
+   "poll": "Data for Progress / Way to Lead PAC Mississippi, Aug 5-15",
+   "reason": "fielded before Sep 1"
+  },
+  {
+   "poll": "co/efficient New Hampshire rows on RCP dated 10/9-10/13 and 9/10-9/12 (marked **)",
+   "reason": "2025 polls (Oct 9-13, 2025; Sep 10-12, 2025) per Wikipedia and 270toWin, not 2026"
+  }
+ ],
+ "aggregators_checked": [
+  "Wikipedia (3 race pages)",
+  "270toWin (NH, FL, MS)",
+  "RealClearPolling (NH, FL, MS) in Chrome",
+  "DecisionDeskHQ (individual polls paywalled; not usable)"
+ ],
+ "searched_at": "2026-10-27T13:40:00-07:00"
+}

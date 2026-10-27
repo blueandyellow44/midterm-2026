@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-insideradvantage-2026-10-10.json",
+ "race": "2026-KS-SEN",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-KS-SEN-2026-10-10",
+ "poll": {
+  "field_start": "2026-10-09",
+  "field_end": "2026-10-10",
+  "release_date": "2026-10-11",
+  "n": 1200,
+  "pop": "LV",
+  "D": 47.5,
+  "R": 46.7,
+  "other": 3.4,
+  "undecided": 2.4,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://x.com/InsiderPolling/status/2109439147522007169",
+  "source_locator": "Kansas top-line tab image (pbs.twimg.com/media/HUY7uPhaUAAFHnu): Marshall 46.7, Hamilton 47.5, Graham (L) 3.4, Undecided 2.4; release post https://insideradvantage.com/insideradvantage-u-s-senate-surveys-alaska-ranks-choice-peltola-50-sullivan-48-kansas-hamilton-48-marshall-47-michigan-el-sayed-48-rogers-46/",
+  "notes": "Question includes 'or toward whom are you leaning?' so classed LEANERS. Release post headline Hamilton 48, Marshall 47.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "All surveys 1200 LV; Conducted 10/9-10; Weighted for Age, Race, Gender, and Political Affiliation; MOE 2.83%",
+  "method_url": "https://insideradvantage.com/insideradvantage-u-s-senate-surveys-alaska-ranks-choice-peltola-50-sullivan-48-kansas-hamilton-48-marshall-47-michigan-el-sayed-48-rogers-46/",
+  "method_locator": "release post methodology line",
+  "mode": "mixed mode text + online panel",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-11"
+ }
+}

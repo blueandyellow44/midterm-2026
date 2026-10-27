@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-unf-2026-10-19.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "unf",
+ "name": "UNF Public Opinion Research Lab",
+ "sponsor": "University of North Florida (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "unf-s-2026-FL-SEN-SPECIAL-2026-10-19",
+ "poll": {
+  "field_start": "2026-10-12",
+  "field_end": "2026-10-19",
+  "release_date": "2026-10-21",
+  "n": 1471,
+  "pop": "LV",
+  "D": 45,
+  "R": 49,
+  "other": null,
+  "undecided": 5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://static1.squarespace.com/static/6994d571bce3436c60d86870/t/6ad8a5ec13c20404a1f8052b/1792583148294/UNF+PORL+FALL+Statewide+2026+FLLV+-+Press+Release+1021+EMBARGO.pdf",
+  "source_locator": "release: 'including leaners, 49% ... Moody, and 45% ... Nixon. Five percent were undecided'",
+  "notes": "Embargoed until Oct 21. Methodology mentions vote-choice weights from Division of Elections results without naming which election, so recall left UNVERIFIED.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "All data are weighted in two steps: first by educational attainment, and then by partisan registration, age, race and ethnicity, sex, and geography to match the population of voters in the 2022 general midterm election ... vote choice was calculated using election result data from the Florida Division of Elections.",
+  "method_url": "https://static1.squarespace.com/static/6994d571bce3436c60d86870/t/6ad8a5ec13c20404a1f8052b/1792583148294/UNF+PORL+FALL+Statewide+2026+FLLV+-+Press+Release+1021+EMBARGO.pdf",
+  "method_locator": "Methodology p3",
+  "mode": "live-interviewer telephone",
+  "method_owner": "UNF PORL",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-21"
+ }
+}

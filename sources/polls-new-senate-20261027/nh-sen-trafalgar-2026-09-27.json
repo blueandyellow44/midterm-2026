@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-trafalgar-2026-09-27.json",
+ "race": "2026-NH-SEN",
+ "pid": "trafalgar",
+ "name": "Trafalgar Group",
+ "sponsor": "Trafalgar Group (self)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "trafalgar-s-2026-NH-SEN-2026-09-27",
+ "poll": {
+  "field_start": "2026-09-26",
+  "field_end": "2026-09-27",
+  "release_date": "2026-09-27",
+  "n": 1082,
+  "pop": "LV",
+  "D": 47.4,
+  "R": 40.5,
+  "other": 1.1,
+  "undecided": 11.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/09/NH-Midterms-Survey-Report-0927.pdf",
+  "source_locator": "Senate ballot totals: Pappas 47.4, Sununu 40.5, Laplante 1.1, Undecided 11.0",
+  "notes": "Release date = PDF creation date (Sep 27). Methodology page lists contact modes but no weighting.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://thetrafalgargroup.org/polling-methodology/",
+  "method_locator": "methodology page (modes only)",
+  "mode": "mixed: live, IVR, text, email, online",
+  "method_owner": "Trafalgar Group",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-27"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-nyt-siena-2026-09-30.json",
+ "race": "2026-KS-SEN",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-KS-SEN-2026-09-30",
+ "poll": {
+  "field_start": "2026-09-22",
+  "field_end": "2026-09-30",
+  "release_date": "2026-10-03",
+  "n": 605,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 45.0,
+  "other": 5.0,
+  "undecided": 6.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.nytimes.com/interactive/2026/10/04/polls/times-siena-kansas-poll-toplines.html",
+  "source_locator": "Toplines, '(Combined Senate ballot, includes leaners and third-party candidates)': Hamilton 45, Marshall 45, Graham (L) 5, another candidate 0, DK/Refused 6",
+  "notes": "Read in user's Chrome (NYT blocks scripts). Also reported: leaners to major-party candidates only, Marshall 47, Hamilton 46, DK 7; initial ask Hamilton 41, Marshall 42, Graham 5, DK 12.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters ...)",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/04/polls/times-siena-kansas-poll-toplines.html",
+  "method_locator": "Full Methodology > Weighting",
+  "mode": "live telephone (about 99% cellphone), L2 voter file",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-03"
+ }
+}

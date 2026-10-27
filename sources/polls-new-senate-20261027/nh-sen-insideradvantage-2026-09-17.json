@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-insideradvantage-2026-09-17.json",
+ "race": "2026-NH-SEN",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "InsiderAdvantage (self)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-NH-SEN-2026-09-17",
+ "poll": {
+  "field_start": "2026-09-16",
+  "field_end": "2026-09-17",
+  "release_date": "2026-09-18",
+  "n": 1200,
+  "pop": "LV",
+  "D": 47.8,
+  "R": 39.9,
+  "other": 3.2,
+  "undecided": 9.1,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://insideradvantage.com/nh-top-line-tabs/",
+  "source_locator": "topline image: Pappas 47.8, Sununu 39.9, Laplante 1.4, Giovonizzi 1.0, Harris 0.8, Undecided 9.1",
+  "notes": "Question asks 'or toward whom are you leaning', so LEANERS. No methodology on this poll's page.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://insideradvantage.com/nh-top-line-tabs/",
+  "method_locator": "topline image only",
+  "mode": "UNVERIFIED",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-09-18"
+ }
+}

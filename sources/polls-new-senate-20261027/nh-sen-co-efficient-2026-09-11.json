@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-co-efficient-2026-09-11.json",
+ "race": "2026-NH-SEN",
+ "pid": "co-efficient",
+ "name": "co/efficient",
+ "sponsor": "co/efficient (self; not sponsored)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "co-efficient-s-2026-NH-SEN-2026-09-11",
+ "poll": {
+  "field_start": "2026-09-09",
+  "field_end": "2026-09-11",
+  "release_date": null,
+  "n": 958,
+  "pop": "LV",
+  "D": 46,
+  "R": 46,
+  "other": null,
+  "undecided": 9,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://battlegrounds.coefficient.org/nh/",
+  "source_locator": "Q6: Sununu 46, Pappas 46, Undecided 9",
+  "notes": "Page says 'Released September 2026' with no day (Wikipedia gives Sep 14).",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted on age, gender, race, education, county, and party affiliation to reflect the likely 2026 general electorate.",
+  "method_url": "https://battlegrounds.coefficient.org/nh/",
+  "method_locator": "Methodology paragraph",
+  "mode": "mobile text and landline interviews",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-concord-public-opinion-partners-2026-10-18.json",
+ "race": "2026-NE-SEN",
+ "pid": "concord-public-opinion-partners",
+ "name": "Concord Public Opinion Partners",
+ "sponsor": "Education Reform Now Advocacy",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "concord-public-opinion-partners-s-2026-NE-SEN-2026-10-18",
+ "poll": {
+  "field_start": "2026-10-15",
+  "field_end": "2026-10-18",
+  "release_date": "2026-10-18",
+  "n": 500,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 41.0,
+  "other": 6.0,
+  "undecided": 5.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://concordpublicopinionpartners.org/polls/nebraska-ge-2026",
+  "source_locator": "Key Findings: 'Osborn leads by +7 points ... (48% Osborn / 41% Ricketts) ... with 6% choosing someone else and 5% undecided'",
+  "notes": "D slot = Dan Osborn (Independent); Democrats fielded no nominee (Burbank withdrew July 2026, party backs Osborn). Memo dated October 18, 2026.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data was weighted by Race, Age, Gender, College Attainment, Party, Partisanship, and Mode.",
+  "method_url": "https://concordpublicopinionpartners.org/polls/nebraska-ge-2026",
+  "method_locator": "Methodology",
+  "mode": "live calls (cell + landline) and text-to-web",
+  "method_owner": "Concord Public Opinion Partners",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-18"
+ }
+}

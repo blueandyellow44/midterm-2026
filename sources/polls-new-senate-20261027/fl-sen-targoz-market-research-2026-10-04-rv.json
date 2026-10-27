@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-targoz-market-research-2026-10-04-rv.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "targoz-market-research",
+ "name": "Targoz Market Research",
+ "sponsor": "James Madison Institute",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "NONE",
+ "method_id": "targoz-market-research-s-2026-FL-SEN-SPECIAL-2026-10-04",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-10-04",
+  "release_date": "2026-10-06",
+  "n": 1171,
+  "pop": "RV",
+  "D": 38,
+  "R": 50,
+  "other": 4,
+  "undecided": 8,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://jamesmadison.org/wp-content/uploads/JMI-October-2026-Poll-Marginals.pdf",
+  "source_locator": "Senate Ballot, Total column (n=1,171): Moody 50, Nixon 38, Another 4, Undecided 8",
+  "notes": "JMI is a conservative think tank. Release page says 1,200 RV; marginals base is 1,171.",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Sampling was stratified by demographics and geography, and results were weighted by demographics, party, geography, and behavioral measures to reflect Florida's electorate.",
+  "method_url": "https://jamesmadison.org/new-jmi-poll-republicans-hold-double-digit-leads-in-key-statewide-races-florida-voters-focused-on-affordability/",
+  "method_locator": "Poll Methodology",
+  "mode": "online",
+  "method_owner": "Targoz Market Research",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": "2026-10-06"
+ }
+}

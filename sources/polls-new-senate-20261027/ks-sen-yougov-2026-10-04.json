@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-yougov-2026-10-04.json",
+ "race": "2026-KS-SEN",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-KS-SEN-2026-10-04",
+ "poll": {
+  "field_start": "2026-09-24",
+  "field_end": "2026-10-04",
+  "release_date": "2026-10-06",
+  "n": 2255,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 45.0,
+  "other": 1.0,
+  "undecided": 5.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ks_20260921_lv.pdf",
+  "source_locator": "Toplines Q6 U.S. Senator: Hamilton 48, Marshall 45, Someone else 1, Undecided 5, Will not vote in this race 1",
+  "notes": "Q6 note: 'Undecided voters were asked their preference and allocated', so classed LEANERS. 'Will not vote in this race' 1% excluded. Libertarian not listed in the question. release_date not printed in the PDF; 2026-10-06 is the aggregator (270toWin/Wikipedia) publication date.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to gender, age, race, in-state geography (using the current Kansas voter list), party registration, and imputed education, 2024 presidential vote, and past Senate vote.",
+  "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ks_20260921_lv.pdf",
+  "method_locator": "methodology box, last page",
+  "mode": "text-to-web from voter list (YouGov web system)",
+  "method_owner": "YouGov",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-06"
+ }
+}

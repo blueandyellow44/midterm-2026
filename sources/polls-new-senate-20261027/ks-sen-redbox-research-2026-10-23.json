@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-redbox-research-2026-10-23.json",
+ "race": "2026-KS-SEN",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (super PAC, FEC C00933085)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-s-2026-KS-SEN-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 1301,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 45.7,
+  "other": 4.3,
+  "undecided": 3.7,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/kansas",
+  "source_locator": "Full results: Marshall 45.7, Hamilton 45.0, Undecided 3.7, Graham (L) 3.0, Someone else 1.3, Prefer not to answer 1.0, Did not vote in this race 0.4",
+  "notes": "other = Graham 3.0 + someone else 1.3; 'prefer not to answer' 1.0 and 'did not vote in this race' 0.4 excluded. Ballot includes a leaner follow-up (Q4) and early-vote recall (Q2), so classed LEANERS. Sponsor is a super PAC; RedBox is its in-house polling unit. Text-to-web, voter file.",
+  "retrieved_at": "2026-10-27T13:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "We weighted the results to party registration, gender, age, congressional district, education and race and ethnicity, and to the certified 2024 result through how people told us they voted.",
+  "method_url": "https://afightworthhaving.com/polling/2026/kansas/methodology",
+  "method_locator": "Methodology page, 'How this poll's estimate was built'",
+  "mode": "text-message invitation to self-administered web survey (voter file)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-10-27T13:05:00-07:00",
+  "method_date": "2026-10-25"
+ }
+}

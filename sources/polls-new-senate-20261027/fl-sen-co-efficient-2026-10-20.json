@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-co-efficient-2026-10-20.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "co-efficient",
+ "name": "co/efficient",
+ "sponsor": "co/efficient (self; not sponsored)",
+ "scls": "NONPARTISAN",
+ "align": "R",
+ "method_id": "co-efficient-s-2026-FL-SEN-SPECIAL-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-18",
+  "field_end": "2026-10-20",
+  "release_date": null,
+  "n": 1014,
+  "pop": "LV",
+  "D": 40,
+  "R": 48,
+  "other": 2,
+  "undecided": 11,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://battlegrounds.coefficient.org/fl/",
+  "source_locator": "Senate ballot: Moody 48, Nixon 40, Gillespie 2, Undecided 11",
+  "notes": "Page says 'Released October 2026' with no day (Wikipedia access Oct 21).",
+  "retrieved_at": "2026-10-27T13:40:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted on age, gender, race, education, geography, and registered party to reflect the likely 2026 general electorate.",
+  "method_url": "https://battlegrounds.coefficient.org/fl/",
+  "method_locator": "Methodology paragraph",
+  "mode": "mobile text and landline interviews",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-10-27T13:40:00-07:00",
+  "method_date": null
+ }
+}
