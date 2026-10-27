@@ -261,3 +261,28 @@ class RegularGeneralsOnly(unittest.TestCase):
         self.assertFalse(weight.regular_general("2017_Sen-GS_AL"))
         self.assertFalse(weight.regular_general("2019_Gov-O_LA"))
         self.assertFalse(weight.regular_general("2015_Gov-GR_LA"))
+
+
+class AuditFixes(unittest.TestCase):
+    def est(self, sample, rnd, D, R, pop="LV", den="FULL", verified="YES"):
+        return {"race": "2026-AK-SEN", "pollster_id": sample, "D": D, "R": R, "field_start": "2026-10-20", "field_end": "2026-10-20", "n": 800,
+                "pop": pop, "denominator_class": den, "round": rnd, "window": "BOTH", "flags": {"principal": True}, "quarantined": False,
+                "primary_verified": verified, "sample_id": sample, "estimate_id": f"{sample}-{rnd}-{pop}-{den}", "margin": D - R, "factors": {"f_track": 1.0}}
+
+    def test_one_estimate_per_survey_final_round_first(self):
+        from datetime import date
+        v = weight.polling_average_v2([self.est("s1", "FIRST", 45, 44), self.est("s1", "FINAL", 51, 49)], date(2026, 10, 27))
+        x = v["per_race"]["2026-AK-SEN"]
+        self.assertEqual(x["polls"], 1)
+        self.assertEqual(x["rounds"], "FINAL")
+
+    def test_unverified_round_excluded(self):
+        from datetime import date
+        v = weight.polling_average_v2([self.est("s1", "UNVERIFIED", 45, 44), self.est("s2", "FIRST", 46, 44)], date(2026, 10, 27))
+        self.assertEqual(v["per_race"]["2026-AK-SEN"]["polls"], 1)
+
+    def test_lv_rv_gap_ignores_unverified_pairs(self):
+        from datetime import date
+        ests = [self.est("a", "NA", 50, 45, pop="LV"), self.est("a", "NA", 52, 44, pop="RV"),
+                self.est("b", "NA", 40, 55, pop="LV", verified="UNVERIFIED"), self.est("b", "NA", 60, 30, pop="RV", verified="UNVERIFIED")]
+        self.assertEqual(weight.polling_average_v2(ests, date(2026, 10, 27))["lv_rv_pairs"], 1)

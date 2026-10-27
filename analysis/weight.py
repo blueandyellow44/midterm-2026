@@ -561,17 +561,30 @@ V2_HALF_LIFE_DAYS = 7.0
 V2_SAMPLE_CAP = 1500
 V2_HOUSE_SHRINK_K = 5.0
 V2_POP_WEIGHT = {"LV": 1.0, "RV": 0.7, "A": 0.4}
+V2_ROUND_RANK = {"FINAL": 0, "NA": 1, "FIRST": 2}   # UNVERIFIED rounds are excluded
+V2_POP_RANK = {"LV": 0, "RV": 1, "A": 2}
+V2_DEN_RANK = {"FULL": 0, "LEANERS": 1, "TWO_WAY": 2}
 
 
 def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
     """Per race: weighted mean of two-party margins over every verified principal poll in the BOTH window, after removing
     each pollster's shrunk house effect and shifting RV/A polls by the measured LV-minus-RV gap; rescaled to the race's
     typical full-ballot share so it is comparable with the published polling read."""
-    use = [e for e in estimates if e.get("window") in ("BOTH", "HOUSE_ONLY") and (e.get("flags") or {}).get("principal") and not e.get("quarantined")
-           and e.get("primary_verified") == "YES" and isinstance(e.get("D"), (int, float)) and isinstance(e.get("R"), (int, float)) and (e["D"] + e["R"]) > 0]
+    cand = [e for e in estimates if e.get("window") in ("BOTH", "HOUSE_ONLY") and (e.get("flags") or {}).get("principal") and not e.get("quarantined")
+            and e.get("primary_verified") == "YES" and e.get("round") in V2_ROUND_RANK
+            and isinstance(e.get("D"), (int, float)) and isinstance(e.get("R"), (int, float)) and (e["D"] + e["R"]) > 0]
+    # One estimate per survey per race (Codex audit 2026-10-27: Alaska's 18 contributors were 11 samples). Precedence: the
+    # decisive ranked-choice round, then likely voters, then the full ballot.
+    best = {}
+    for e in cand:
+        k = (e["sample_id"], e["race"])
+        rank = (V2_ROUND_RANK[e["round"]], V2_POP_RANK.get(e["pop"], 9), V2_DEN_RANK.get(e["denominator_class"], 9))
+        if k not in best or rank < best[k][0]:
+            best[k] = (rank, e)
+    use = [v[1] for v in best.values()]
     pairs = defaultdict(dict)
     for e in estimates:
-        if isinstance(e.get("margin"), (int, float)):
+        if isinstance(e.get("margin"), (int, float)) and e.get("primary_verified") == "YES" and not e.get("quarantined") and e.get("round") in V2_ROUND_RANK:
             pairs[(e["sample_id"], e["race"], e["denominator_class"], e["round"])][e["pop"]] = e["margin"]
     gaps = [v["LV"] - v["RV"] for v in pairs.values() if "LV" in v and "RV" in v]
     lv_shift = sum(gaps) / len(gaps) if gaps else 0.0
@@ -606,6 +619,7 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
         scale = sorted(full)[len(full) // 2] if full else 0.95
         out[race] = {"margin": r4(tp * scale), "two_party_margin": r4(tp), "full_ballot_scale": r4(scale), "polls": len(es),
                      "estimate_ids": sorted(e["estimate_id"] for e in es), "newest_field_end": max(e["field_end"] for e in es),
+                     "rounds": "+".join(sorted({e["round"] for e in es})),
                      "pollsters": len({e["pollster_id"] for e in es}),
                      "house_adjustments": {e["pollster_id"]: r4(house.get(e["pollster_id"], 0.0)) for e in es if abs(house.get(e["pollster_id"], 0.0)) >= 0.05}}
     return {"method": "v2: every verified principal poll since September 1; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
@@ -627,7 +641,7 @@ def apply_polling_v2(blocks: dict, v2: dict, as_of_date: date) -> None:
         b["scenario_margins_toward_R"] = {k: r4(x["margin"] - v) for k, v in SCENARIO_SHIFTS.items()}
         b["scenario_margins_toward_D"] = {k: r4(x["margin"] + v) for k, v in SCENARIO_SHIFTS_TOWARD_D.items()}
         fe = x["newest_field_end"]
-        b["polling_read"] = {"kind": "WEIGHTED_AVERAGE", "method": "v2", "margin": x["margin"], "poll_count": x["polls"], "field_end": fe,
+        b["polling_read"] = {"kind": "WEIGHTED_AVERAGE", "method": "v2", "rounds": x.get("rounds"), "margin": x["margin"], "poll_count": x["polls"], "field_end": fe,
                              "age_days": (as_of_date - parse_date(fe)).days, "stratum": None, "latest_poll": None}
 
 
@@ -1819,35 +1833,37 @@ class Bundle:
         for race, blk in derived["races"].items():
             if blk["weighted_margin"] is None:
                 continue
-            strat = blk["averaging_stratum"] or {"round": "NA", "denominator_class": "NA", "pop": "NA"}
-            if race in RCV_RACES and strat["round"] != "FINAL":
-                continue  # a race with only FIRST is excluded from vectors with reason (recorded in derived.json)
-            old_ids = (blk.get("stratum_average") or {}).get("averaging_estimate_ids") or blk["averaging_estimate_ids"]
-            in_avg = [ests[i] for i in old_ids if i in ests]
-            for vector, pool in (("ALL_ELIGIBLE", in_avg), ("YES_ONLY", [e for e in in_avg if e["recall_weighted"] == "YES"]), ("NO_ONLY", [e for e in in_avg if e["recall_weighted"] == "NO"])):
-                if vector != "ALL_ELIGIBLE":
-                    cs = blk["contrast_stratum"]
-                    if not cs:
-                        continue
-                    pool = [e for e in in_avg if e["recall_weighted"] == vector.split("_")[0] and (e["round"], e["denominator_class"], e["pop"]) == (cs["round"], cs["denominator_class"], cs["pop"])]
-                    other = "NO" if vector == "YES_ONLY" else "YES"
-                    if not pool or not any(e["recall_weighted"] == other and (e["round"], e["denominator_class"], e["pop"]) == (cs["round"], cs["denominator_class"], cs["pop"]) for e in in_avg):
-                        continue
-                if vector == "ALL_ELIGIBLE":
-                    m = blk["weighted_margin"]   # the published (v2) average
-                else:
-                    if not pool or not sum(e["weight"] for e in pool):
-                        continue
-                    m = sum(e["weight"] * e["margin"] for e in pool) / sum(e["weight"] for e in pool)
+            read = blk.get("polling_read") or {}
+            # The published average is frozen for every race (Codex audit 2026-10-27: Alaska and Maine had Undertow rows
+            # but no polling rows); its ballot rounds are recorded so an incompatible result can be left ungraded.
+            rows.append({"race": race, "vector": "ALL_ELIGIBLE", "p_d_slot": f"{stage3_probability(blk['weighted_margin']):.4f}",
+                         "weighted_margin": f"{blk['weighted_margin']:.2f}", "stratum_round": read.get("rounds") or "NA",
+                         "stratum_denominator": "MIXED" if read.get("method") == "v2" else "NA", "stratum_pop": "MIXED" if read.get("method") == "v2" else "NA",
+                         "n_retained": blk["retained_count"], "heat_race_set": heat_set, "frozen_at": frozen_at})
+            # Recall-contrast vectors keep their own stratum and only finite-weight polls; unavailable contrasts are skipped.
+            strat = blk["averaging_stratum"]
+            cs = blk["contrast_stratum"]
+            if not strat or not cs or (race in RCV_RACES and strat["round"] != "FINAL"):
+                continue
+            old_ids = (blk.get("stratum_average") or {}).get("averaging_estimate_ids") or []
+            in_avg = [ests[i] for i in old_ids if i in ests and isinstance(ests[i].get("weight"), (int, float)) and isinstance(ests[i].get("margin"), (int, float))]
+            same = lambda e: (e["round"], e["denominator_class"], e["pop"]) == (cs["round"], cs["denominator_class"], cs["pop"])
+            for vector in ("YES_ONLY", "NO_ONLY"):
+                grp, other = vector.split("_")[0], ("NO" if vector == "YES_ONLY" else "YES")
+                pool = [e for e in in_avg if e["recall_weighted"] == grp and same(e)]
+                if not pool or not any(e["recall_weighted"] == other and same(e) for e in in_avg) or not sum(e["weight"] for e in pool):
+                    continue
+                m = sum(e["weight"] * e["margin"] for e in pool) / sum(e["weight"] for e in pool)
                 rows.append({"race": race, "vector": vector, "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
-                             "stratum_round": strat["round"], "stratum_denominator": strat["denominator_class"], "stratum_pop": strat["pop"],
-                             "n_retained": blk["retained_count"] if vector == "ALL_ELIGIBLE" else len(pool), "heat_race_set": heat_set, "frozen_at": frozen_at})
+                             "stratum_round": cs["round"], "stratum_denominator": cs["denominator_class"], "stratum_pop": cs["pop"],
+                             "n_retained": len(pool), "heat_race_set": heat_set, "frozen_at": frozen_at})
         # Our reading (signal-adjusted, method v1.3) is frozen beside the polling vectors so both are graded (Max, 2026-10-26).
         for race, sig in sorted(((derived.get("signals") or {}).get("per_race") or {}).items()):
             m = sig.get("adjusted_margin")
             if m is None or not math.isfinite(m):
                 continue
-            strat = derived["races"].get(race, {}).get("averaging_stratum") or {}
+            read = derived["races"].get(race, {}).get("polling_read") or {}
+            strat = {"round": read.get("rounds") or "NA", "denominator_class": "MIXED", "pop": "MIXED"}
             rows.append({"race": race, "vector": "SIGNAL_ADJUSTED", "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
                          "stratum_round": strat.get("round", "NA"), "stratum_denominator": strat.get("denominator_class", "NA"), "stratum_pop": strat.get("pop", "NA"),
                          "n_retained": derived["races"].get(race, {}).get("retained_count", 0), "heat_race_set": heat_set, "frozen_at": frozen_at})
