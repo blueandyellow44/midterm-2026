@@ -197,7 +197,7 @@ class PollErrorModel(unittest.TestCase):
         for y in range(1999, 2026):
             miss = 2.0 if y % 2 else 1.0   # off-year overstated D by 2, next year by 1 -> share 0.5
             for st in ("AA", "BB", "CC"):
-                rows.append({"year": str(y), "state": st, "race": f"{y}{st}", "type": "Sen-G", "n_polls": "5",
+                rows.append({"year": str(y), "state": st, "race": f"{y}_Sen-G_{st}", "type": "Sen-G", "n_polls": "5",
                              "poll_margin": str(miss), "actual_margin": "0", "bias": str(miss)})
         return rows
 
@@ -253,3 +253,11 @@ class PollingAverageV2(unittest.TestCase):
         a = self.est("X", "a", 50, 45, "2026-10-25"); b = dict(self.est("X", "b", 40, 55, "2026-10-25"), primary_verified="UNVERIFIED")
         c = dict(self.est("X", "c", 40, 55, "2026-10-25"), quarantined=True)
         self.assertEqual(weight.polling_average_v2([a, b, c], date(2026, 10, 27))["per_race"]["X"]["polls"], 1)
+
+
+class RegularGeneralsOnly(unittest.TestCase):
+    def test_specials_and_la_primaries_excluded(self):
+        self.assertTrue(weight.regular_general("2025_Gov-G_NJ"))
+        self.assertFalse(weight.regular_general("2017_Sen-GS_AL"))
+        self.assertFalse(weight.regular_general("2019_Gov-O_LA"))
+        self.assertFalse(weight.regular_general("2015_Gov-GR_LA"))
