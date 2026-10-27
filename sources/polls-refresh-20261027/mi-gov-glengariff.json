@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-glengariff.json",
+ "race": "2026-MI-GOV",
+ "pid": "glengariff",
+ "name": "Glengariff Group",
+ "sponsor": "The Detroit News / WDIV-TV",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "glengariff-s-2026-MI-SEN-2026-10-22",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-22",
+  "release_date": "2026-10-27",
+  "n": 600,
+  "pop": "LV",
+  "D": 51.4,
+  "R": 44.5,
+  "other": null,
+  "undecided": 4.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.clickondetroit.com/decision-2026/2026/10/27/heres-where-michigan-voters-stand-on-the-2026-governors-race-per-new-poll/",
+  "source_locator": "WDIV (co-sponsor) article: Benson 51.4, James 44.5, undecided 4.0; 600 LV, Oct 19-22",
+  "notes": "Same sample as the Senate question. Duggan not included in this ballot per the WDIV page. Classed LEANERS to match the September Glengariff convention.",
+  "retrieved_at": "2026-10-27T11:41:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.clickondetroit.com/decision-2026/2026/10/27/heres-where-michigan-voters-stand-on-the-2026-governors-race-per-new-poll/",
+  "method_locator": "methodology paragraph",
+  "mode": "live-operator telephone",
+  "method_owner": "Glengariff Group",
+  "retrieved_at": "2026-10-27T11:41:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

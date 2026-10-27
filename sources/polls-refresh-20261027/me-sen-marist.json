@@ -1,0 +1,33 @@
+{
+ "file": "me-sen-marist.json",
+ "race": "2026-ME-SEN",
+ "pid": "marist",
+ "name": "Marist Poll",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "marist-c26",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-27",
+  "n": null,
+  "pop": "LV",
+  "D": 49.0,
+  "R": 47.0,
+  "other": 1.0,
+  "undecided": 3.0,
+  "denominator_class": "FULL",
+  "round": "FIRST",
+  "source_url": "https://maristpoll.marist.edu/polls/the-midterm-elections-in-maine-october-2026/",
+  "source_locator": "Tables PDF SNVT26R, Likely voters row: Jackson 49, Collins 47, another party 1, undecided 3",
+  "notes": "LV n unstated (1,449 RV; LV MoE 6.6). First-choice question; Maine ranked-choice. Methodology: data balanced to L2 RV parameters by age, gender, income, race; education to CPS; LV weight by vote probability. No past-vote weighting.",
+  "retrieved_at": "2026-10-27T11:41:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "retrieved_at": "2026-10-27T11:41:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

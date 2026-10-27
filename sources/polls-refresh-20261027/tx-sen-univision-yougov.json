@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-univision-yougov.json",
+ "race": "2026-TX-SEN",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "N+ Univision News",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-TX-SEN-2026-10-21",
+ "poll": {
+  "field_start": "2026-10-13",
+  "field_end": "2026-10-21",
+  "release_date": "2026-10-27",
+  "n": 1000,
+  "pop": "RV",
+  "D": 50.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.univision.com/noticias/politica/encuesta-univision-texas-voto-latino",
+  "source_locator": "topline paragraph: Talarico aventaja a Paxton 50% a 45% (1,000 RV, Oct 13-21)",
+  "notes": "Online via YouGov; Latino oversample 980 weighted separately. Classed LEANERS to match the September N+ Univision release convention; this release does not separate leaners.",
+  "retrieved_at": "2026-10-27T11:41:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "La muestra estatal se ponder\u00f3 por g\u00e9nero, edad, raza y origen \u00e9tnico, educaci\u00f3n, regi\u00f3n del estado, voto presidencial de 2020, participaci\u00f3n en las elecciones generales de 2022 y voto presidencial aproximado de 2024",
+  "method_url": "https://www.univision.com/noticias/politica/encuesta-univision-texas-voto-latino",
+  "method_locator": "methodology paragraph",
+  "mode": "online panel (YouGov)",
+  "method_owner": "YouGov",
+  "retrieved_at": "2026-10-27T11:41:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

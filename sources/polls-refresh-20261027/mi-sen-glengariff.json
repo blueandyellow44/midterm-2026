@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-glengariff.json",
+ "race": "2026-MI-SEN",
+ "pid": "glengariff",
+ "name": "Glengariff Group",
+ "sponsor": "The Detroit News / WDIV-TV",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "glengariff-s-2026-MI-SEN-2026-10-22",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-22",
+  "release_date": "2026-10-27",
+  "n": 600,
+  "pop": "LV",
+  "D": 51.4,
+  "R": 45.1,
+  "other": null,
+  "undecided": 3.6,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.clickondetroit.com/news/local/2026/10/27/democratic-candidate-el-sayed-leads-michigan-us-senate-race-new-poll-finds/",
+  "source_locator": "WDIV (co-sponsor) article: El-Sayed 51.4, Rogers 45.1, undecided 3.6; 600 LV live-operator phone, Oct 19-22",
+  "notes": "Classed LEANERS to match the September Glengariff release convention. Detroit News article paywalled (402); WDIV co-sponsor page used as primary. Weighting not disclosed.",
+  "retrieved_at": "2026-10-27T11:41:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.clickondetroit.com/news/local/2026/10/27/democratic-candidate-el-sayed-leads-michigan-us-senate-race-new-poll-finds/",
+  "method_locator": "methodology paragraph",
+  "mode": "live-operator telephone",
+  "method_owner": "Glengariff Group",
+  "retrieved_at": "2026-10-27T11:41:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}
