@@ -231,3 +231,25 @@ class EarlyVoteContext(unittest.TestCase):
         self.assertAlmostEqual(b["shift_vs_2022_toward_d"], 3.1)
         self.assertIsNone(weight.early_vote_block(rows, "IA"))
         self.assertIsNone(weight.early_vote_block(None, "TX"))
+
+
+class PollingAverageV2(unittest.TestCase):
+    def est(self, race, pid, D, R, fe, n=800, pop="LV", den="FULL"):
+        return {"race": race, "pollster_id": pid, "D": D, "R": R, "field_start": fe, "field_end": fe, "n": n, "pop": pop,
+                "denominator_class": den, "round": "NA", "window": "BOTH", "flags": {"principal": True}, "quarantined": False,
+                "primary_verified": "YES", "sample_id": f"{pid}-{fe}-{race}", "margin": D - R, "factors": {"f_track": 1.0}}
+
+    def test_uses_every_poll_and_removes_house_lean(self):
+        from datetime import date
+        ests = [self.est("X", "a", 50, 45, "2026-10-25"), self.est("X", "b", 48, 47, "2026-10-20"), self.est("X", "c", 47, 47, "2026-10-10"),
+                self.est("Y", "a", 52, 44, "2026-10-25"), self.est("Y", "b", 49, 47, "2026-10-25")]
+        v = weight.polling_average_v2(ests, date(2026, 10, 27))
+        self.assertEqual(v["per_race"]["X"]["polls"], 3)
+        self.assertIn("a", v["per_race"]["X"]["house_adjustments"])   # a runs D-ward in Y, so it is adjusted in X
+        self.assertLess(v["per_race"]["X"]["two_party_margin"], 100 * (50 - 45) / 95)
+
+    def test_unverified_and_quarantined_excluded(self):
+        from datetime import date
+        a = self.est("X", "a", 50, 45, "2026-10-25"); b = dict(self.est("X", "b", 40, 55, "2026-10-25"), primary_verified="UNVERIFIED")
+        c = dict(self.est("X", "c", 40, 55, "2026-10-25"), quarantined=True)
+        self.assertEqual(weight.polling_average_v2([a, b, c], date(2026, 10, 27))["per_race"]["X"]["polls"], 1)

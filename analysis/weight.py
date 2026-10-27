@@ -516,6 +516,65 @@ def poll_error_model(history: list[dict], target_year: int) -> dict | None:
                          "years_helped": sum(1 for v in by_year.values() if v["mae_with_lean"] < v["mae_polls"]), "years": len(by_year)}}
 
 
+# Polling average v2 (Max, 2026-10-27: "i know nate silver and cohen arent goin off 2 polls"). Every verified principal poll
+# in the window counts; nothing is cut. Chosen on 538's raw-polls archive, 259 Senate/governor races 2010-2024 with 3+ polls
+# 7-45 days out, scored 7 days before the election: two newest polls 4.50 average miss, every poll (7-day half-life, sqrt n)
+# 4.16, plus pollster house effects (same-cycle, leave-one-race-out, shrunk k=5) 4.06. Half-lives 5-21 days all scored 4.29-4.34.
+V2_HALF_LIFE_DAYS = 7.0
+V2_SAMPLE_CAP = 1500
+V2_HOUSE_SHRINK_K = 5.0
+V2_POP_WEIGHT = {"LV": 1.0, "RV": 0.7, "A": 0.4}
+
+
+def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
+    """Per race: weighted mean of two-party margins over every verified principal poll in the BOTH window, after removing
+    each pollster's shrunk house effect and shifting RV/A polls by the measured LV-minus-RV gap; rescaled to the race's
+    typical full-ballot share so it is comparable with the published polling read."""
+    use = [e for e in estimates if e.get("window") == "BOTH" and (e.get("flags") or {}).get("principal") and not e.get("quarantined")
+           and e.get("primary_verified") == "YES" and isinstance(e.get("D"), (int, float)) and isinstance(e.get("R"), (int, float)) and (e["D"] + e["R"]) > 0]
+    pairs = defaultdict(dict)
+    for e in estimates:
+        if isinstance(e.get("margin"), (int, float)):
+            pairs[(e["sample_id"], e["race"], e["denominator_class"], e["round"])][e["pop"]] = e["margin"]
+    gaps = [v["LV"] - v["RV"] for v in pairs.values() if "LV" in v and "RV" in v]
+    lv_shift = sum(gaps) / len(gaps) if gaps else 0.0
+
+    def two_party(e):
+        m = 100.0 * (e["D"] - e["R"]) / (e["D"] + e["R"])
+        return m + (lv_shift if e["pop"] in ("RV", "A") else 0.0)
+
+    def weight(e):
+        fe = parse_date(e.get("field_end")); fs = parse_date(e.get("field_start")) or fe
+        age = max(0.0, (as_of_date - (fs + (fe - fs) / 2)).days) if fe else 30.0
+        n = e.get("n") if isinstance(e.get("n"), (int, float)) and e["n"] > 0 else 600
+        return (math.exp(-math.log(2) * age / V2_HALF_LIFE_DAYS) * math.sqrt(min(n, V2_SAMPLE_CAP) / V2_SAMPLE_CAP)
+                * V2_POP_WEIGHT.get(e["pop"], 0.4) * ((e.get("factors") or {}).get("f_track") or 1.0))
+
+    by_race = defaultdict(list)
+    for e in use:
+        by_race[e["race"]].append(e)
+    raw = {r: sum(weight(e) * two_party(e) for e in es) / sum(weight(e) for e in es) for r, es in by_race.items() if sum(weight(e) for e in es) > 0}
+    out = {}
+    for race, es in by_race.items():
+        dev = defaultdict(list)
+        for e in use:
+            if e["race"] != race and e["race"] in raw:
+                dev[e["pollster_id"]].append(two_party(e) - raw[e["race"]])
+        house = {p: (sum(v) / len(v)) * len(v) / (len(v) + V2_HOUSE_SHRINK_K) for p, v in dev.items()}
+        ws = [weight(e) for e in es]
+        if not sum(ws):
+            continue
+        tp = sum(w * (two_party(e) - house.get(e["pollster_id"], 0.0)) for w, e in zip(ws, es)) / sum(ws)
+        full = [(e["D"] + e["R"]) / 100.0 for e in es if e["denominator_class"] == "FULL"]
+        scale = sorted(full)[len(full) // 2] if full else 0.95
+        out[race] = {"margin": r4(tp * scale), "two_party_margin": r4(tp), "full_ballot_scale": r4(scale), "polls": len(es),
+                     "pollsters": len({e["pollster_id"] for e in es}),
+                     "house_adjustments": {e["pollster_id"]: r4(house.get(e["pollster_id"], 0.0)) for e in es if abs(house.get(e["pollster_id"], 0.0)) >= 0.05}}
+    return {"method": "v2: every verified principal poll in window; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
+            "lv_minus_rv_gap": r4(lv_shift), "lv_rv_pairs": len(gaps), "backtest": {"races": 259, "two_newest_polls": 4.50, "every_poll": 4.16, "every_poll_house_adjusted": 4.06, "source": "538 raw polls archive 2010-2024, scored 7 days out"},
+            "per_race": out}
+
+
 def early_vote_block(rows: list[dict] | None, state: str) -> dict | None:
     """Early-vote enthusiasm for one state: shown, frozen and graded, never counted in the reading (2026-10-26 NC test:
     early vote matched the polling miss's direction in 2 of 6 cycles; Max 2026-10-27 "do it" to show it as context)."""
@@ -1659,6 +1718,8 @@ class Bundle:
             "counts": self.counts(ests),
         }
         derived["signals"] = self.signals_block(blocks)
+        if derived["signals"] is not None:
+            derived["signals"]["polling_v2"] = polling_average_v2(derived["estimates"], self.as_of_date)
         return derived
 
     def counts(self, ests: list[dict]) -> dict:
