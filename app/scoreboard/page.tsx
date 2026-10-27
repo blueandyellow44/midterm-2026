@@ -3,6 +3,7 @@ import { races, derived } from '@/lib/data';
 import { loadLive, settled, SETTLED_REPORTING } from '@/lib/live';
 import { PageTitle } from '@/components/UI';
 import { Signup } from '@/components/Signup';
+import { MarginTrack } from '@/components/Console';
 
 export const metadata: Metadata = { title: 'Scoreboard', description: 'Election night: the polls against Undertow, race by race, as the votes are counted.' };
 
@@ -30,9 +31,10 @@ export default function Scoreboard() {
       {started ? <><p className="tally-line"><strong>Undertow closer in {ours}</strong> · polls closer in {theirs} · {done.length} of {rows.length} races settled</p><p className="muted text-sm">Last updated {live.updated_at ? new Date(live.updated_at).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' Pacific' : 'NA'}.</p></>
         : <p className="tally-line">Counting starts the evening of November 3. Until then, this page shows the numbers the night will test.</p>}
     </section>
-    <div className="scoreboard-table method-table"><table><thead><tr><th>Race</th><th>Polls</th><th>Undertow</th><th>The count</th><th>Closer</th></tr></thead><tbody>
+    <div className="c-panel scoreboard-table method-table"><p className="c-sub scoreboard-key">Bar: the count once it starts, Undertow until then · <i className="c-key-tick"/> polls</p><table><thead><tr><th>Race</th><th>Board</th><th>Polls</th><th>Undertow</th><th>The count</th><th>Closer</th></tr></thead><tbody>
       {rows.map(x => <tr key={x.r.id}>
         <th scope="row"><a href={`/race/${x.r.slug}/`}>{x.r.name}</a></th>
+        <td data-label="Board" className="scoreboard-board"><MarginTrack v={Number.isFinite(x.count) ? x.count : x.s.adjusted_margin} tick={x.s.polling_margin}/></td>
         <td className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep)}</td>
         <td className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep)}</td>
         <td className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>

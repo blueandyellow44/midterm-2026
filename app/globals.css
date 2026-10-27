@@ -304,3 +304,6 @@ html[data-view=mobile] .race-figures {gap:6px;} html[data-view=mobile] .race-fig
 html[data-view=mobile] .c-factors {grid-template-columns:1fr;}
 html[data-view=mobile] .recall-groups {gap:12px;} html[data-view=mobile] .recall-group+.recall-group {padding-left:12px;}
 .wall-presets {grid-template-columns:repeat(2,1fr);} .wall-presets button:last-child {grid-column:1 / -1;}
+.scoreboard-table table {table-layout:auto;}
+.scoreboard-board {width:28%;vertical-align:middle;}
+.scoreboard-key {margin-bottom:6px;}
