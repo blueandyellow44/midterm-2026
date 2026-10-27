@@ -385,3 +385,13 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 
 .wordmark {display:block;height:34px;width:auto;color:var(--ink);}
 .signal-midpoint {font-family:var(--font-mono);font-size:12px;color:var(--muted);margin:2px 0 6px;}
+.pull-block {margin-top:14px;display:grid;gap:6px;}
+.pull-row {display:grid;grid-template-columns:1fr;gap:2px;}
+.pull-row + .pull-row {border-top:1px solid var(--line);padding-top:8px;margin-top:4px;}
+.pull-row dt {font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.pull-row dd {margin:0;}
+.pull-polls dd {font-size:15px;color:var(--muted);}
+.pull-undertow strong {font:500 24px/1.2 var(--font-mono);letter-spacing:-.03em;}
+.pull-pm {font-size:15px;color:var(--muted);}
+.pull-pull strong {font:600 20px/1.2 var(--font-mono);letter-spacing:-.02em;}
+@media(max-width:767px){.pull-undertow strong {font-size:23px;}}

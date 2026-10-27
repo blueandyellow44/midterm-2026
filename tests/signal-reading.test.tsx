@@ -32,7 +32,7 @@ it('shows the adjusted lead, the shift and each contribution toward the right ca
  const html=render(base());
  expect(html).toContain('Experimental');
  expect(html).toContain('3.0');
- expect(html).toContain('2.0 points toward Dee compared with the polls');
+ expect(html).toContain('The pull');expect(html).toContain('2.0 toward Dee');
  expect(html).toContain('1.2 toward Dee');
  expect(html).toContain('Arr’s ads and debate answers run hotter');
  expect(html).toContain('both count in full');
@@ -41,12 +41,12 @@ it('shows the adjusted lead, the shift and each contribution toward the right ca
 it('names the leader correctly when the adjustment moves toward the Republican',()=>{
  const html=render(base({alignment:'SPENDING_ONLY',weight_rhetoric:0,delta_spending:-1.5,delta_rhetoric:0,delta_total:-1.5,adjusted_margin:-0.5,spending:{coverage:'FEC_SCHEDULE_E',d_fav_recent:1e6,r_fav_recent:1e6,excess_z:-1.3}}));
  expect(html).toContain('Arr');
- expect(html).toContain('1.5 points toward Arr');
+ expect(html).toContain('1.5 toward Arr');
  expect(html).toContain('lead being safer than the polls show');
 });
 
 it('renders the sealed release for every race without NaN or undefined',()=>{
  for(const r of races){const html=render(r);expect(html).not.toMatch(/NaN|undefined|\[object/);}
- const oh=races.find(r=>r.id==='2026-OH-SEN-SPECIAL');expect(render(oh)).toContain('both count in full');
+ const oh=races.find(r=>r.id==='2026-OH-SEN-SPECIAL');expect(render(oh)).toContain('Spending counts at half weight');expect(render(oh)).toContain('tested, not counted');
  const tx=races.find(r=>r.id==='2026-TX-SEN');expect(render(tx)).toContain('toward James Talarico');
 });
