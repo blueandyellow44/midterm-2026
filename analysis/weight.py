@@ -1433,7 +1433,7 @@ class Bundle:
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,
-            "framing": "Experimental. Outside spending and campaign rhetoric are read as signs of campaigns' internal polls. History shows only a weak, unproven link; this reading may be less accurate than the polling read.",
+            "framing": "Experimental. Outside spending and campaign rhetoric are read as signs of campaigns' internal polls. It is a bet, frozen on November 2 and graded against certified results beside the polls.",
         }
 
     def compute(self, calc_version: str, release_id: str | None) -> dict:
@@ -1537,6 +1537,15 @@ class Bundle:
                 rows.append({"race": race, "vector": vector, "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
                              "stratum_round": strat["round"], "stratum_denominator": strat["denominator_class"], "stratum_pop": strat["pop"],
                              "n_retained": len(pool), "heat_race_set": heat_set, "frozen_at": frozen_at})
+        # Our reading (signal-adjusted, method v1.3) is frozen beside the polling vectors so both are graded (Max, 2026-10-26).
+        for race, sig in sorted(((derived.get("signals") or {}).get("per_race") or {}).items()):
+            m = sig.get("adjusted_margin")
+            if m is None or not math.isfinite(m):
+                continue
+            strat = derived["races"].get(race, {}).get("averaging_stratum") or {}
+            rows.append({"race": race, "vector": "SIGNAL_ADJUSTED", "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
+                         "stratum_round": strat.get("round", "NA"), "stratum_denominator": strat.get("denominator_class", "NA"), "stratum_pop": strat.get("pop", "NA"),
+                         "n_retained": derived["races"].get(race, {}).get("retained_count", 0), "heat_race_set": heat_set, "frozen_at": frozen_at})
         return rows
 
     # ----- release

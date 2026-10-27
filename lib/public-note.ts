@@ -17,6 +17,7 @@ export function toPublicNote(note:string):string{
  out=out.replace(/read from a release bundle under `Resources\/methods\/midterm-2026\/releases\/`/g,'read from the sealed release bundle');
  out=out.replace(/`~\/midterm-2026\/([^`]+)`/g,'`$1`');
  out=out.replace(/`~\/litmus-meter`/g,'The LITMUS meter');
+ out=out.replace(/\| undefined (?=\|)/g,'| NA ');
  out=out.replace(/\[\[[^\]|]*\|([^\]]+)\]\]/g,'$1');
  out=out.replace(/\[\[([^\]]+)\]\]/g,(_m,p:string)=>p.split('/').pop()??p);
  for(const [re,label] of LEAK_PATTERNS){const m=re.exec(out);if(m){const at=out.lastIndexOf('\n',m.index)+1;throw new Error(`Public method note still carries a ${label}: ${out.slice(at,at+160)}`);}}

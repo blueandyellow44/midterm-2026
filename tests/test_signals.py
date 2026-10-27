@@ -140,3 +140,15 @@ class Arithmetic(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class FreezeRecordsOurReading(unittest.TestCase):
+    def test_signal_adjusted_row_frozen_beside_polls(self):
+        b = weight.Bundle.__new__(weight.Bundle)
+        derived = {"section9_heat": {"races_with_defined_debate_gap": []}, "estimates": [],
+                   "races": {"2026-TX-SEN": {"weighted_margin": None, "averaging_stratum": None, "retained_count": 3}},
+                   "signals": {"per_race": {"2026-TX-SEN": {"adjusted_margin": 7.2}, "2026-IA-SEN": {"adjusted_margin": None}}}}
+        rows = weight.Bundle.predictions(b, derived, "2026-11-02T00:00:00-07:00")
+        self.assertEqual([r["vector"] for r in rows], ["SIGNAL_ADJUSTED"])
+        self.assertEqual(rows[0]["weighted_margin"], "7.20")
+        self.assertEqual(rows[0]["n_retained"], 3)

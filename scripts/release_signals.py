@@ -59,7 +59,7 @@ def main() -> int:
     subprocess.run([sys.executable, str(root / "analysis/weight.py"), "--self-test"], cwd=root, check=True, stdout=subprocess.DEVNULL)
     cutoff = weight.parse_as_of(rs["analytical_as_of"])
     proposed = json.loads(json.dumps(rs))
-    reason = a.reason if a.refresh else REASON
+    reason = a.reason or REASON
     proposed["supersedes"], proposed["supersedes_reason"] = current_id, reason
     b = weight.Bundle(str(bundle), cutoff, proposed)
     if not b.validate():
