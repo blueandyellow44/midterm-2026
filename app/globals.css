@@ -332,3 +332,5 @@ html[data-view=mobile] .recall-groups {gap:12px;} html[data-view=mobile] .recall
 .race-recall-grid {display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;align-items:start;}
 html[data-view=mobile] .race-recall-grid {grid-template-columns:1fr;}
 .recall-chart g.is-context {opacity:.28;}
+.dotplot.is-compact text {font-size:12px;}
+html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
