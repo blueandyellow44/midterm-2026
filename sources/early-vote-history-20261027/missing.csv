@@ -1,0 +1,72 @@
+year,state,reason
+2014,AK,"McDonald 2014 sheet reports a total (49,976) but no party-registration breakdown"
+2014,AZ,"McDonald 2014 sheet reports a total (850,646) but no party-registration breakdown"
+2014,CT,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,DE,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,ID,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,KY,"McDonald 2014 sheet reports a total (64,650) but no party-registration breakdown"
+2014,MA,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,NH,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,NJ,"McDonald 2014 sheet reports a total (95,387) but no party-registration breakdown"
+2014,NM,"McDonald 2014 sheet reports a total (264,948) but no party-registration breakdown (New Mexico reported by method only)"
+2014,NY,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,OK,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,PA,"McDonald 2014 sheet reports a total (76,440) but no party-registration breakdown"
+2014,RI,Not reported in McDonald 2014 early vote sheet; no archived state-office party breakdown retrieved
+2014,SD,"McDonald 2014 sheet reports a total (55,292) but no party-registration breakdown"
+2014,UT,"McDonald 2014 sheet reports a total (218,446) but no party-registration breakdown"
+2014,WV,"McDonald 2014 sheet reports a total (102,151) but no party-registration breakdown"
+2014,WY,"McDonald 2014 sheet reports a total (12,743) but no party-registration breakdown"
+2016,AK,"McDonald 2016 sheet has no party-registration breakdown for AK (total advance 51,803)"
+2016,CT,McDonald 2016 sheet has no party-registration breakdown for CT (total advance 0)
+2016,DE,"McDonald 2016 sheet has no party-registration breakdown for DE (total advance 22,387)"
+2016,ID,"McDonald 2016 sheet has no party-registration breakdown for ID (total advance 193,421)"
+2016,KS,"McDonald 2016 sheet has no party-registration breakdown for KS (total advance 468,032)"
+2016,KY,"McDonald 2016 sheet has no party-registration breakdown for KY (total advance 111,585)"
+2016,MA,"McDonald 2016 sheet has no party-registration breakdown for MA (total advance 1,000,000)"
+2016,NH,"McDonald 2016 sheet has no party-registration breakdown for NH (total advance 25,809)"
+2016,NJ,"McDonald 2016 sheet has no party-registration breakdown for NJ (total advance 251,981)"
+2016,NM,"McDonald 2016 sheet has no party-registration breakdown for NM (total advance 522,041)"
+2016,NY,"McDonald 2016 sheet has no party-registration breakdown for NY (total advance 235,142)"
+2016,OK,"McDonald 2016 sheet has no party-registration breakdown for OK (total advance 247,470)"
+2016,PA,McDonald 2016 sheet has no party-registration breakdown for PA (total advance 0)
+2016,RI,"McDonald 2016 sheet has no party-registration breakdown for RI (total advance 20,293)"
+2016,SD,"McDonald 2016 sheet has no party-registration breakdown for SD (total advance 100,367)"
+2016,UT,"McDonald 2016 sheet has no party-registration breakdown for UT (total advance 480,356)"
+2016,WY,"McDonald 2016 sheet has no party-registration breakdown for WY (total advance 74,751)"
+2018,AK,"McDonald 2018 sheet has no party-registration breakdown for AK (total advance 62,581)"
+2018,CT,McDonald 2018 sheet has no party-registration breakdown for CT
+2018,DE,"McDonald 2018 sheet has no party-registration breakdown for DE (total advance 16,796)"
+2018,KY,"McDonald 2018 sheet has no party-registration breakdown for KY (total advance 53,211)"
+2018,MA,"McDonald 2018 sheet has no party-registration breakdown for MA (total advance 500,000)"
+2018,NH,McDonald 2018 sheet has no party-registration breakdown for NH
+2018,NJ,"McDonald 2018 sheet has no party-registration breakdown for NJ (total advance 355,009)"
+2018,NY,"McDonald 2018 sheet has no party-registration breakdown for NY (total advance 95,535)"
+2018,PA,"McDonald 2018 sheet has no party-registration breakdown for PA (total advance 84,906)"
+2018,RI,"McDonald 2018 sheet has no party-registration breakdown for RI (total advance 12,478)"
+2018,SD,McDonald 2018 sheet has no party-registration breakdown for SD (total advance 167)
+2018,UT,"McDonald 2018 sheet has no party-registration breakdown for UT (total advance 700,444)"
+2018,WY,"McDonald 2018 sheet has no party-registration breakdown for WY (total advance 29,901)"
+2020,AK,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,DE,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,ID,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,MA,McDonald 2020 tracker has no party-registration breakdown for this state
+2020,NH,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,NY,McDonald 2020 tracker has no party-registration breakdown for this state
+2020,RI,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,UT,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,WV,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2020,WY,McDonald 2020 tracker has no party-registration breakdown for this state (page exists with totals only)
+2022,AK,McDonald 2022 tracker has no party-registration breakdown for this state (page exists with totals only)
+2022,AR,"Arkansas has no party registration; McDonald page shows a modeled/primary-history party split (86% none/minor), excluded"
+2022,DE,McDonald 2022 tracker has no party-registration breakdown for this state
+2022,MA,McDonald 2022 tracker has no party-registration breakdown for this state
+2022,NH,McDonald 2022 tracker has no party-registration breakdown for this state
+2022,NY,McDonald 2022 tracker has no party-registration breakdown for this state (page exists with totals only)
+2022,RI,McDonald 2022 tracker has no party-registration breakdown for this state (page exists with totals only)
+2022,WY,McDonald 2022 tracker has no party-registration breakdown for this state
+2024,AK,UF Election Lab 2024 tracker has no party-registration breakdown for this state
+2024,AR,"Arkansas has no party registration; tracker party fields appear modeled (85% none), excluded"
+2024,MA,UF Election Lab 2024 tracker has no party-registration breakdown for this state
+2024,NH,UF Election Lab 2024 tracker has no party-registration breakdown for this state
+2024,NY,UF Election Lab 2024 tracker has no party-registration breakdown for this state

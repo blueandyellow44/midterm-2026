@@ -2,7 +2,7 @@
 import { useMemo, useState } from 'react';
 
 // Exploration only: the frozen call is Undertow's number. The dial sets a national polling miss m, in either direction.
-// Each race = polls + m + its own state adjustment + its spending term. At m = the national lean this reproduces
+// Each race = polls + m + its own state adjustment + its spending and early-vote terms (the `spending` field carries both). At m = the national lean this reproduces
 // Undertow's number exactly; at m = 0 it is the polls plus each state's record and the spending signal; a negative m
 // means polls are undercounting Republicans (Max, 2026-10-27: "poll slider needs to go both ways").
 export type DialRace = { id: string; name: string; d: string; r: string; polls: number; stateAdj: number; spending: number };
@@ -19,7 +19,7 @@ export function PollMissDial({ races, national, lastFall }: { races: DialRace[];
   const dir = m >= EVEN ? 'understate Democrats' : m <= -EVEN ? 'understate Republicans' : 'miss neither way';
   return <section className="dial" aria-label="How wrong are the polls?">
     <h2>How wrong are the polls?</h2>
-    <p className="dial-intro">Slide either way to set how far polls miss this year: right for polls that understate Democrats, left for polls that understate Republicans, as in 2016, 2020 and 2024. My bet sits at {national.toFixed(1)} points toward Democrats. Each race keeps its own state record and spending. This is for exploring; the call I am graded on stays my number.</p>
+    <p className="dial-intro">Slide either way to set how far polls miss this year: right for polls that understate Democrats, left for polls that understate Republicans, as in 2016, 2020 and 2024. My bet sits at {national.toFixed(1)} points toward Democrats. Each race keeps its own state record, spending and early vote. This is for exploring; the call I am graded on stays my number.</p>
     <div className="dial-control">
       <input type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
       <div className="dial-scale"><span>Understate Republicans</span><span>Understate Democrats</span></div>

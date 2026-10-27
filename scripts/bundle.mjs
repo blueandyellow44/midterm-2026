@@ -3,8 +3,8 @@ import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { parse } from 'csv-parse/sync';
 
-export const allowedFiles = new Set(['polls.csv','pollsters.csv','exclusions.csv','heat.csv','coverage.csv','backtest-2025.csv','midterm-2026-poll-weighting.md','derived.json','predictions.csv','results.csv','spending.csv','fundamentals.csv','spend-history.csv','state-poll-error.csv','poll-error-history.csv','early-vote.csv','recent-misses.csv']);
-export const supportedSchemas = { polls:['1.2'], pollsters:['1.0'], exclusions:['1.0'], heat:['1.0'], coverage:['1.0'], backtest:['1.2'], predictions:['1.0'], results:['1.0'], spending:['1.0'], fundamentals:['1.0'], spend_history:['1.0'], state_poll_error:['1.0'], poll_error_history:['1.0'], early_vote:['1.0'], recent_misses:['1.0'] };
+export const allowedFiles = new Set(['polls.csv','pollsters.csv','exclusions.csv','heat.csv','coverage.csv','backtest-2025.csv','midterm-2026-poll-weighting.md','derived.json','predictions.csv','results.csv','spending.csv','fundamentals.csv','spend-history.csv','state-poll-error.csv','poll-error-history.csv','early-vote.csv','recent-misses.csv','early-vote-history.csv']);
+export const supportedSchemas = { polls:['1.2'], pollsters:['1.0'], exclusions:['1.0'], heat:['1.0'], coverage:['1.0'], backtest:['1.2'], predictions:['1.0'], results:['1.0'], spending:['1.0'], fundamentals:['1.0'], spend_history:['1.0'], state_poll_error:['1.0'], poll_error_history:['1.0'], early_vote:['1.0'], recent_misses:['1.0'], early_vote_history:['1.0'] };
 export const sha256 = value => createHash('sha256').update(value).digest('hex');
 /** @returns {Record<string,string>[]} */
 export function readCsv(text, required = []) {
@@ -70,9 +70,9 @@ export function validateBundle(directory) {
       if (!read) throw new Error(`Signal reading for an unknown race: ${race}`);
       if (s.polling_margin!==read.margin) throw new Error(`Signal reading starts from a different polling number: ${race}`);
       if (s.adjusted_margin===null) { if (read.margin!==null) throw new Error(`Signal reading missing: ${race}`); continue; }
-      if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric+(s.delta_polling_error??0)))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
+      if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric+(s.delta_polling_error??0)+(s.delta_early_vote??0)))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
       if (!['ALIGNED','OPPOSED','SPENDING_ONLY','RHETORIC_ONLY','NO_SIGNAL'].includes(s.alignment)) throw new Error(`Unknown signal alignment: ${race}`);
-      if (s.alignment==='NO_SIGNAL' && Math.abs(s.delta_total-(s.delta_polling_error??0))>0.001) throw new Error(`No-signal race was adjusted: ${race}`);
+      if (s.alignment==='NO_SIGNAL' && Math.abs(s.delta_total-(s.delta_polling_error??0)-(s.delta_early_vote??0))>0.001) throw new Error(`No-signal race was adjusted: ${race}`);
     }
   }
   return { manifest:m, derived:d, manifestHash:sha256(manifestBytes) };

@@ -43,7 +43,7 @@ BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
     "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
-    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0",
+    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0", "early_vote_history": "1.0",
 }
 
 POLLS_HEADER = (
@@ -75,6 +75,7 @@ FUNDAMENTALS_HEADER = "race,state,pres_year,pres_d_minus_r,source_file,source_sh
 SPEND_HISTORY_HEADER = "year,state,poll_margin,result_margin,log_recent_spend_m,pres_year,pres_d_minus_r,source_sha256".split(",")
 STATE_POLL_ERROR_HEADER = "year,state,state_bias,n_races,source_sha256".split(",")
 RECENT_MISSES_HEADER = "race,election_date,kind,electorate,poll_label,result_label,miss_toward_d,total_votes,midterm_2022_house_votes,note".split(",")
+EARLY_VOTE_HISTORY_HEADER = "year,state,dem_share,rep_share,total_ballots,as_of,source_sha256".split(",")
 EARLY_VOTE_HEADER = "state,d_margin_2022_same_day,d_margin_2024_same_day,d_margin_2026,shift_vs_2022,as_of,source_url,party_basis".split(",")
 POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
@@ -297,7 +298,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "2.0"  # 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "2.1"  # 2.1: early vote counted where party registration is reported and a 2022 baseline exists; rhetoric off the cards (Max, 2026-10-27); 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -660,16 +661,81 @@ def apply_polling_v2(blocks: dict, v2: dict, as_of_date: date) -> None:
                              "age_days": (as_of_date - parse_date(fe)).days, "stratum": None, "latest_poll": None}
 
 
-def early_vote_block(rows: list[dict] | None, state: str) -> dict | None:
-    """Early-vote enthusiasm for one state: shown, frozen and graded, never counted in the reading (2026-10-26 NC test:
-    early vote matched the polling miss's direction in 2 of 6 cycles; Max 2026-10-27 "do it" to show it as context)."""
+EV_MIDTERM_PAIRS = {2018: 2014, 2022: 2018}   # midterm against the previous midterm; presidential years showed no relationship
+EV_COUNTED_BASIS = "registration"              # the history is registration-based; modeled party is untested, so not counted
+EV_MIN_PAIRS = 15
+
+
+def early_vote_model(ev_history: list[dict] | None, poll_history: list[dict] | None) -> dict | None:
+    """Slope of a state's polling miss (toward D, demeaned by year) on the change in its early-vote party margin against
+    the previous midterm (demeaned by year), fit through the origin on 2018 and 2022, with a leave-one-year-out check.
+    Max, 2026-10-27: counted, because its held-out record clears the same bar spending does."""
+    ev = {(int(r["year"]), r["state"]): num(r["dem_share"]) - num(r["rep_share"]) for r in ev_history or [] if num(r.get("dem_share")) is not None and num(r.get("rep_share")) is not None}
+    misses = defaultdict(list)
+    for r in poll_history or []:
+        a, p = num(r.get("actual_margin")), num(r.get("poll_margin"))
+        if a is not None and p is not None:
+            misses[(int(r["year"]), r["state"])].append(a - p)
+    pts = [(y, s, v - ev[(prior, s)], sum(misses[(y, s)]) / len(misses[(y, s)]))
+           for y, prior in EV_MIDTERM_PAIRS.items() for (yy, s), v in ev.items() if yy == y and (prior, s) in ev and (y, s) in misses]
+    if len(pts) < EV_MIN_PAIRS:
+        return None
+    years = sorted({p[0] for p in pts})
+    mc = {y: sum(p[2] for p in pts if p[0] == y) / sum(1 for p in pts if p[0] == y) for y in years}
+    mm = {y: sum(p[3] for p in pts if p[0] == y) / sum(1 for p in pts if p[0] == y) for y in years}
+    X = [p[2] - mc[p[0]] for p in pts]; Y = [p[3] - mm[p[0]] for p in pts]
+    sxx = sum(x * x for x in X)
+    slope = sum(x * y for x, y in zip(X, Y)) / sxx
+    resid = [y - slope * x for x, y in zip(X, Y)]
+    se = math.sqrt(sum(e * e for e in resid) / (len(X) - 1) / sxx)
+    e0 = e1 = 0.0
+    for hy in years:
+        tr = [(x, y) for x, y, p in zip(X, Y, pts) if p[0] != hy]
+        b = sum(x * y for x, y in tr) / sum(x * x for x, _ in tr)
+        for x, y, p in zip(X, Y, pts):
+            if p[0] == hy:
+                e0 += abs(y); e1 += abs(y - b * x)
+    n = len(X)
+    return {"slope": r4(slope), "se": r4(se), "n": n, "years": years, "pairs": {str(k): v for k, v in EV_MIDTERM_PAIRS.items()},
+            "direction_matched": sum(1 for x, y in zip(X, Y) if x * y > 0),
+            "holdout_mae_without": r4(e0 / n), "holdout_mae_with": r4(e1 / n), "counted_basis": EV_COUNTED_BASIS,
+            "method": "state miss and early-vote change each demeaned by year; slope through the origin; leave-one-year-out check"}
+
+
+def early_vote_block(rows: list[dict] | None, state: str, model: dict | None = None) -> dict | None:
+    """Early-vote reading for one state. Counted (delta toward D) where the party basis is registration, a 2022 baseline
+    exists and the fitted model exists: delta = slope x (state shift - mean shift across states with a 2022 baseline)."""
+    shifts = [num(r.get("shift_vs_2022")) for r in rows or [] if num(r.get("shift_vs_2022")) is not None]
+    mean_shift = sum(shifts) / len(shifts) if shifts else None
     for r in rows or []:
         if r.get("state") == state:
             shift = num(r.get("shift_vs_2022"))
-            return {"in_reading": False, "shift_vs_2022_toward_d": shift, "d_margin_2026": num(r.get("d_margin_2026")),
-                    "d_margin_2022_same_day": num(r.get("d_margin_2022_same_day")), "as_of": r.get("as_of"),
+            counted = bool(model) and shift is not None and r.get("party_basis") == EV_COUNTED_BASIS and mean_shift is not None
+            rel = shift - mean_shift if counted else None
+            return {"in_reading": counted, "shift_vs_2022_toward_d": shift, "mean_shift_vs_2022": r4(mean_shift) if mean_shift is not None else None,
+                    "relative_shift": r4(rel) if rel is not None else None,
+                    "delta_toward_d": r4(model["slope"] * rel) if counted else 0.0, "delta_sd": r4(abs(model["se"] * rel)) if counted else 0.0,
+                    "why_not_counted": None if counted else ("no 2022 baseline" if shift is None else "modeled party, not registration" if r.get("party_basis") != EV_COUNTED_BASIS else "no fitted model"),
+                    "d_margin_2026": num(r.get("d_margin_2026")), "d_margin_2022_same_day": num(r.get("d_margin_2022_same_day")), "as_of": r.get("as_of"),
                     "party_basis": r.get("party_basis"), "source_url": r.get("source_url")}
     return None
+
+
+def offyear_record(poll_history: list[dict] | None) -> dict | None:
+    """The latest odd-year statewide polling miss toward D against every earlier odd year in the archive."""
+    by = defaultdict(list)
+    for r in poll_history or []:
+        y, a, p = int(r["year"]), num(r.get("actual_margin")), num(r.get("poll_margin"))
+        if y % 2 and a is not None and p is not None:
+            by[y].append(a - p)
+    if len(by) < 3:
+        return None
+    ym = {y: sum(v) / len(v) for y, v in by.items()}
+    latest = max(ym)
+    earlier = {y: m for y, m in ym.items() if y < latest}
+    top = max(earlier, key=earlier.get)
+    return {"year": latest, "miss_toward_d": r4(ym[latest]), "races": len(by[latest]), "since": min(ym), "earlier_years": len(earlier),
+            "earlier_max": r4(earlier[top]), "earlier_max_year": top, "largest_on_record": ym[latest] > earlier[top]}
 
 
 def spending_backtest(history: list[dict]) -> dict | None:
@@ -737,19 +803,20 @@ def state_poll_error_leans(rows: list[dict], national: float) -> dict:
 
 
 def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap: float | None,
-                    beta: tuple[float, float], gamma: tuple[float, float], poll_error: float = 0.0, poll_error_sd: float = 0.0) -> dict:
-    """A = P + poll_error + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap). All in D-minus-R points."""
+                    beta: tuple[float, float], gamma: tuple[float, float], poll_error: float = 0.0, poll_error_sd: float = 0.0,
+                    early_vote: float = 0.0, early_vote_sd: float = 0.0) -> dict:
+    """A = P + poll_error + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap) + early_vote. All in D-minus-R points."""
     ws, wr, alignment = alignment_weights(spend_signal, heat_gap)
     if polling is None:
-        return {"status": "NO_POLLING_READ", "alignment": alignment, "adjusted_margin": None, "delta_spending": None, "delta_rhetoric": None, "delta_polling_error": None, "delta_sd": None}
+        return {"status": "NO_POLLING_READ", "alignment": alignment, "adjusted_margin": None, "delta_spending": None, "delta_rhetoric": None, "delta_polling_error": None, "delta_early_vote": None, "delta_sd": None}
     d_s = ws * beta[0] * spend_signal if ws else 0.0
     raw_r = gamma[0] * heat_gap if wr else 0.0
     d_r = wr * max(-SIGNAL_RHETORIC_CAP, min(SIGNAL_RHETORIC_CAP, raw_r))
-    sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2 + poll_error_sd ** 2)
-    delta = d_s + d_r + poll_error
-    return {"status": "ADJUSTED" if (alignment != "NO_SIGNAL" or poll_error) else "NO_SIGNAL", "alignment": alignment,
+    sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2 + poll_error_sd ** 2 + early_vote_sd ** 2)
+    delta = d_s + d_r + poll_error + early_vote
+    return {"status": "ADJUSTED" if (alignment != "NO_SIGNAL" or poll_error or early_vote) else "NO_SIGNAL", "alignment": alignment,
             "weight_spending": ws, "weight_rhetoric": wr,
-            "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "delta_polling_error": r4(poll_error), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
+            "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "delta_polling_error": r4(poll_error), "delta_early_vote": r4(early_vote), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
             "delta_total": r4(delta), "delta_sd": r4(sd), "adjusted_margin": r4(polling + delta),
             "range_sd": r4(math.sqrt(sd ** 2 + SIGNAL_RACE_POLL_SD ** 2)),
             "range": [r4(polling + delta - SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + SIGNAL_RACE_POLL_SD ** 2)), r4(polling + delta + SIGNAL_RANGE_Z * math.sqrt(sd ** 2 + SIGNAL_RACE_POLL_SD ** 2))],
@@ -1003,6 +1070,7 @@ class Bundle:
         self.state_poll_error = read_csv(os.path.join(bundle_dir, "state-poll-error.csv"), STATE_POLL_ERROR_HEADER, required=False)
         self.recent_misses = read_csv(os.path.join(bundle_dir, "recent-misses.csv"), RECENT_MISSES_HEADER, required=False)
         self.early_vote = read_csv(os.path.join(bundle_dir, "early-vote.csv"), EARLY_VOTE_HEADER, required=False)
+        self.early_vote_history = read_csv(os.path.join(bundle_dir, "early-vote-history.csv"), EARLY_VOTE_HISTORY_HEADER, required=False)
         self.poll_error_history = read_csv(os.path.join(bundle_dir, "poll-error-history.csv"), POLL_ERROR_HISTORY_HEADER, required=False)
         self.quarantined_pollsters = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "POLLSTER"}
         self.quarantined_estimates = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "ESTIMATE"}
@@ -1725,6 +1793,7 @@ class Bundle:
             if z:
                 zmap.update({c[0]: z[i] for i, c in enumerate(rows)})
                 covered += rows
+        ev_model = early_vote_model(getattr(self, "early_vote_history", None), getattr(self, "poll_error_history", None))
         per_race = {}
         for race in races:
             sp = spend.get(race) or {}
@@ -1735,7 +1804,9 @@ class Bundle:
             heat = rhetoric_gap(self.heat, race)
             st_lean = (leans or {}).get("per_state", {}).get(race.split("-")[1]) if leans else None
             lean = st_lean["lean"] if st_lean else national
-            out = signal_adjusted(polling[race], spend_signal, heat["gap"] if SIGNAL_RHETORIC_IN_READING else None, beta, gamma, lean, national_sd)
+            evb = early_vote_block(getattr(self, "early_vote", None), race.split("-")[1], ev_model)
+            out = signal_adjusted(polling[race], spend_signal, heat["gap"] if SIGNAL_RHETORIC_IN_READING else None, beta, gamma, lean, national_sd,
+                                  (evb or {}).get("delta_toward_d") or 0.0, (evb or {}).get("delta_sd") or 0.0)
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
             d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
             out.update({
@@ -1749,7 +1820,7 @@ class Bundle:
                              "measure": {"FEC_SCHEDULE_E": "FEC outside spending, 14 days", "DIGITAL_CANDIDATE": "campaign digital ad spending in state (Google + Meta), about 4 weeks"}.get(sp.get("fec_coverage")),
                              "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
                 "rhetoric": {**heat, "in_reading": SIGNAL_RHETORIC_IN_READING},
-                "early_vote": early_vote_block(getattr(self, "early_vote", None), race.split("-")[1]),
+                "early_vote": evb,
                 "polling_error": {"national": national, "state": race.split("-")[1], **(st_lean or {"prior_residual": None, "cycles": 0, "state_adjustment": 0.0, "lean": national})},
             })
             per_race[race] = out
@@ -1764,11 +1835,13 @@ class Bundle:
             "state_lean": {k: v for k, v in (leans or {}).items() if k != "per_state"} or None,
             "poll_error_model": {k: v for k, v in model.items() if k != "state_leans"} if model else None,
             "spending_backtest": spending_backtest(self.spend_history),
+            "early_vote_model": ev_model,
+            "offyear_record": offyear_record(getattr(self, "poll_error_history", None)),
             "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": national, "poll_error_sd": national_sd, "poll_error_carryover": [model["carryover_share"], model["carryover_se"]] if model else list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": model["offyear_miss_toward_d"] if model else SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "abandon_min_lead": SIGNAL_ABANDON_MIN_LEAD, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,
-            "framing": "Experimental. Recent polling error and outside spending are read as signs of where campaigns' internal polls stand. It is a bet, frozen on November 2 and graded against certified results beside the polls. Rhetoric is scored and graded separately, not counted.",
+            "framing": "Polls missed Democrats last fall by more than in any off-year on record, and kept missing them this spring. The undertow bets part of that carries into November, and reads outside spending and early voting as signs of where campaigns' internal polls stand. Frozen on November 2 and graded against certified results beside the polls.",
         }
 
     def compute(self, calc_version: str, release_id: str | None) -> dict:
@@ -1912,7 +1985,7 @@ class Bundle:
         copy_names = ["polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv"]
         if ss.get("stage2a") == "PASSED" and os.path.exists(os.path.join(self.dir, "backtest-2025.csv")):
             copy_names.append("backtest-2025.csv")
-        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv") if os.path.exists(os.path.join(self.dir, n))]
+        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv") if os.path.exists(os.path.join(self.dir, n))]
         for name in copy_names:
             src = os.path.join(self.dir, name)
             if os.path.exists(src):
