@@ -293,14 +293,19 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.4"  # 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "1.5"  # 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
-# Recent polling error component (Max: "polling error is just one component"; "i want my bold vision"). Carryover model,
-# 538 archive 2001-2022: about 45% of an off-year statewide polling miss repeats in the next year's general (no-intercept fit,
-# ten off-year/next-year pairs). 2025 off-year mean miss 7.42 toward D -> 3.3. The with-intercept fit gives 1.0; SE about 2.
-SIGNAL_POLL_ERROR_TOWARD_D = 3.3
+# Recent polling error component (Max: "polling error is just one component"; "i want my bold vision"; refit on every case,
+# Max 2026-10-27 "Do it"). Carryover model, 538 raw polls archive, all 13 off-year/next-year pairs 1999-2024: share of an
+# off-year mean miss that repeats next year = 0.3345 (no-intercept, SE 0.2457; scripts/build_state_poll_error.py --carryover).
+# 2025 off-year mean miss 7.42 toward D -> 2.48, SE 1.82. Superseded: 3.3 from a ten-pair fit that does not reproduce.
+SIGNAL_POLL_ERROR_CARRYOVER = (0.3345, 0.2457)
+SIGNAL_POLL_ERROR_2025_MISS = 7.42
+SIGNAL_POLL_ERROR_TOWARD_D = round(SIGNAL_POLL_ERROR_CARRYOVER[0] * SIGNAL_POLL_ERROR_2025_MISS, 2)
+SIGNAL_POLL_ERROR_SD = round(SIGNAL_POLL_ERROR_CARRYOVER[1] * SIGNAL_POLL_ERROR_2025_MISS, 2)
+SIGNAL_RANGE_Z = 1.0  # displayed range = adjusted +/- one combined standard deviation
 # State-specific lean (Max, 2026-10-26: "State specific lean"). Each state's polling miss relative to that year's national
 # mean miss persists: 2010-2024, 346 state-cycles, prior-12-year mean residual vs next residual, no-intercept slope 0.69
 # (leave-one-year-out 0.60-0.79; mean absolute residual 3.63 unadjusted, 3.23 adjusted). The lean is the national
@@ -461,7 +466,7 @@ def state_poll_error_leans(rows: list[dict], national: float) -> dict:
 
 
 def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap: float | None,
-                    beta: tuple[float, float], gamma: tuple[float, float], poll_error: float = 0.0) -> dict:
+                    beta: tuple[float, float], gamma: tuple[float, float], poll_error: float = 0.0, poll_error_sd: float = 0.0) -> dict:
     """A = P + poll_error + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap). All in D-minus-R points."""
     ws, wr, alignment = alignment_weights(spend_signal, heat_gap)
     if polling is None:
@@ -469,12 +474,13 @@ def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap:
     d_s = ws * beta[0] * spend_signal if ws else 0.0
     raw_r = gamma[0] * heat_gap if wr else 0.0
     d_r = wr * max(-SIGNAL_RHETORIC_CAP, min(SIGNAL_RHETORIC_CAP, raw_r))
-    sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2)
+    sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2 + poll_error_sd ** 2)
     delta = d_s + d_r + poll_error
     return {"status": "ADJUSTED" if (alignment != "NO_SIGNAL" or poll_error) else "NO_SIGNAL", "alignment": alignment,
             "weight_spending": ws, "weight_rhetoric": wr,
             "delta_spending": r4(d_s), "delta_rhetoric": r4(d_r), "delta_polling_error": r4(poll_error), "rhetoric_capped": abs(raw_r) > SIGNAL_RHETORIC_CAP if wr else False,
             "delta_total": r4(delta), "delta_sd": r4(sd), "adjusted_margin": r4(polling + delta),
+            "range": [r4(polling + delta - SIGNAL_RANGE_Z * sd), r4(polling + delta + SIGNAL_RANGE_Z * sd)],
             "lagging_side": None if delta == 0 else ("R" if delta > 0 else "D")}
 
 
@@ -1449,7 +1455,7 @@ class Bundle:
             heat = rhetoric_gap(self.heat, race)
             st_lean = (leans or {}).get("per_state", {}).get(race.split("-")[1]) if leans else None
             lean = st_lean["lean"] if st_lean else SIGNAL_POLL_ERROR_TOWARD_D
-            out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma, lean)
+            out = signal_adjusted(polling[race], spend_signal, heat["gap"], beta, gamma, lean, SIGNAL_POLL_ERROR_SD)
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
             d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
             out.update({
@@ -1475,7 +1481,7 @@ class Bundle:
             "history": hist,
             "posterior": {"beta": [r4(beta[0]), r4(beta[1])], "gamma": [gamma[0], gamma[1]], "gamma_note": "no history: prior only"},
             "state_lean": {k: v for k, v in (leans or {}).items() if k != "per_state"} or None,
-            "rules": {"poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+            "rules": {"poll_error_toward_d": SIGNAL_POLL_ERROR_TOWARD_D, "poll_error_sd": SIGNAL_POLL_ERROR_SD, "poll_error_carryover": list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,

@@ -38,13 +38,33 @@ def build(source: str) -> list[dict]:
              "source_sha256": sha} for _, r in sc.sort_values(["year", "location"]).iterrows()]
 
 
+def carryover(source: str) -> dict:
+    """National carryover: share of an off-year mean miss that repeats in the next even year (no-intercept fit)."""
+    import pandas as pd
+    import math
+    df = pd.read_excel(source)
+    df = df[df.type_simple.isin(RACE_TYPES)].copy()
+    df["days"] = (pd.to_datetime(df.electiondate) - pd.to_datetime(df.polldate)).dt.days
+    df = df[(df.days >= 0) & (df.days <= FINAL_DAYS)].dropna(subset=["bias"])
+    yr = df.groupby(["year", "race"]).bias.mean().groupby("year").mean()
+    pairs = [(-yr[y], -yr[y + 1]) for y in range(1999, 2025, 2) if y in yr.index and y + 1 in yr.index]
+    sxx = sum(a * a for a, _ in pairs)
+    k = sum(a * b for a, b in pairs) / sxx
+    s = math.sqrt(sum((b - k * a) ** 2 for a, b in pairs) / (len(pairs) - 1))
+    return {"pairs": [(round(a, 3), round(b, 3)) for a, b in pairs], "n": len(pairs), "share": k, "se": s / math.sqrt(sxx)}
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--source", required=True)
     ap.add_argument("--bundle-dir", default=weight.DEFAULT_BUNDLE_DIR)
+    ap.add_argument("--carryover", action="store_true", help="print the national off-year carryover fit and exit")
     a = ap.parse_args(argv)
     if not os.path.isfile(a.source):
         raise SystemExit(f"missing source: {a.source}")
+    if a.carryover:
+        print(carryover(a.source))
+        return 0
     rows = build(a.source)
     if len({r["year"] for r in rows}) < 8:
         raise SystemExit(f"state polling history too thin: {len(rows)} rows")
