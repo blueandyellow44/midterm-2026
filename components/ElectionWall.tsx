@@ -2,6 +2,10 @@
 import { useMemo, useState } from 'react';
 import { FactorBars, MarginTrack, pct } from './Console';
 
+// Short ruler labels for the mobile dial (Max, 2026-10-27: horizontal scrolling of the steps confuses people).
+const short = (label: string) => label.startsWith('My bet') ? 'Bet' : label.startsWith('Last fall') ? '’25' : label === 'No miss' ? '0' : `’${label.slice(2, 4)}`;
+const SNAP = 0.2;
+
 // The election-night wall (Max, 2026-10-27: "almost a console. Multi panel, don't need to scroll to slider"; "that American
 // political news red and blue look"). One dial state drives every panel. Each race at dial value m = polls + m + its state
 // adjustment + spending + early vote, so at m = the national lean it reproduces Undertow's frozen number exactly.
@@ -118,8 +122,8 @@ function DialBar({ m, setM, national, lastFall, history }: { m: number; setM: (v
   const presets = presetList(history, national, lastFall);
   return <section className="wall-dialbar" aria-label="How wrong are the polls?">
     <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{Math.abs(m).toFixed(1)}</span><span className="wall-dialbar-dir">{dir}<small>How wrong are the polls? Drag to change every race.</small></span></div>
-    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
-    <div className="wall-dialbar-presets">{presets.map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}>{label}</button>)}</div>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => { const v = Number(e.target.value); const hit = presets.find(([, p]) => Math.abs(p - v) <= SNAP); setM(hit ? hit[1] : v); }} aria-label="National polling miss in points; negative means polls understate Republicans"/>
+    <div className="wall-ruler" role="group" aria-label="Past polling misses">{presets.map(([label, v]) => <button key={label} type="button" className={`wall-ruler-mark ga-${pct(100 * (v + span) / (2 * span))}${near(v) ? ' is-on' : ''}`} aria-pressed={near(v)} aria-label={`${label}: ${Math.abs(v) < EVEN ? 'no miss' : `${Math.abs(v).toFixed(1)} points toward ${v > 0 ? 'Democrats' : 'Republicans'}`}`} onClick={() => setM(v)}><i aria-hidden="true"/><span>{short(label)}</span></button>)}</div>
   </section>;
 }
 
