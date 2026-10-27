@@ -1870,6 +1870,7 @@ class Bundle:
         beta = normal_posterior(SIGNAL_PRIOR_BETA, hist.get("slope"), hist.get("se"))
         gamma = SIGNAL_PRIOR_GAMMA
         fund = {r["race"]: num(r["pres_d_minus_r"]) for r in self.fundamentals}
+        fund.update({r["race"]: num(r["pres2024_d_minus_r"]) for r in getattr(self, "house_races", None) or []})   # district margin, current lines
         spend = {r["race"]: r for r in self.spending}
         races = ALL_RACES
         polling = {race: ((blocks.get(race) or {}).get("polling_read") or {}).get("margin") for race in races}
@@ -2020,6 +2021,13 @@ class Bundle:
                 if x and e.get("denominator_class") == "TWO_WAY" and isinstance(d, (int, float)) and isinstance(rr, (int, float)) and d + rr > 0:
                     sc, tp = x["full_ballot_scale"], 100.0 * (d - rr) / (d + rr)
                     e["chart_d"], e["chart_r"] = r4(50 * sc + tp * sc / 2), r4(50 * sc - tp * sc / 2)
+        # One candidate map for every race: Senate and governor from the heat roster, House from house-races.csv.
+        cands = {race: {k: {"candidate": v["candidate"], "party": k} for k, v in (heat.get("per_race", {}).get(race, {}).get("candidates") or {}).items()} for race in SENATE_RACES + GOVERNOR_RACES}
+        for r in getattr(self, "house_races", None) or []:
+            cands[r["race"]] = {"D": {"candidate": r["d_candidate"], "party": r["d_party"]}, "R": {"candidate": r["r_candidate"], "party": r["r_party"]},
+                                "rating": r["cook_rating"], "rating_date": r["cook_rating_date"], "incumbent": r["incumbent"], "incumbent_party": r["incumbent_party"],
+                                "pres2024_d_minus_r": num(r["pres2024_d_minus_r"]), "lines_note": None if r["lines_note"] == "NA" else r["lines_note"]}
+        derived["candidates"] = cands
         derived["signals"] = self.signals_block(blocks)
         if derived["signals"] is not None and v2:
             derived["signals"]["polling_v2"] = v2
