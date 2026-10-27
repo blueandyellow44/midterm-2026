@@ -1,0 +1,38 @@
+{
+ "file": "wi-gov-z-to-a-research.json",
+ "race": "2026-WI-GOV",
+ "pid": "z-to-a-research",
+ "name": "Z to A Research",
+ "sponsor": "Rust Belt Rising",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "z-to-a-research-s-2026-WI-GOV-2026-10-01",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-10-01",
+  "release_date": "2026-10-08",
+  "n": 662,
+  "pop": "LV",
+  "D": 49,
+  "R": 44,
+  "other": null,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://x.com/rbrtraining/status/2108302511514022331",
+  "source_locator": "Sponsor's own release thread on X (@rbrtraining, Oct 8, 2026; thread head https://x.com/rbrtraining/status/2108302504446337272 '1,430-voter poll from 9/28-10/1'); WI post: 'Wisconsin sample of 662 voters: David Crowley: 49% / Tom Tiffany: 44% / Undecided: 5%'",
+  "notes": "Primary verified 2026-10-27 in a logged-in browser (prior run could not reach it). POPULATION NOT STATED ON PRIMARY: the sponsor says only 'voters'; 'LV' is taken from 270toWin and Wikipedia, so treat pop as unverified. State samples (MI 483 + PA 630 + WI 662 = 1,775) do not sum to the headline '1,430-voter poll'; unexplained on the primary. Full toplines/method gated behind a sign-up ('For the full Rust Belt Rising poll ... sign up'). Sponsor describes itself as helping 'Democrats be the party of working people'; Z to A founder described on firm site as a Democratic pollster.",
+  "retrieved_at": "2026-10-27T13:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://www.ztoaresearch.com/",
+  "method_locator": "Firm homepage only: 'We reach voters the way they want to be reached ... via text and online.' No poll-specific methodology published.",
+  "mode": "text-to-web / online (firm's general description; not poll-specific)",
+  "method_owner": "Z to A Research",
+  "method_date": "2026-10-08",
+  "retrieved_at": "2026-10-27T13:00:00-07:00"
+ }
+}

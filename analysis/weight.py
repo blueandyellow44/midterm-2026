@@ -555,7 +555,7 @@ def poll_error_model(history: list[dict], target_year: int, recent: list[dict] |
 
 # Polling average v2 (Max, 2026-10-27: "i know nate silver and cohen arent goin off 2 polls"). Every verified principal poll
 # in the window counts; nothing is cut. Chosen on 538's raw-polls archive, 259 Senate/governor races 2010-2024 with 3+ polls
-# 7-45 days out, scored 7 days before the election: two newest polls 4.50 average miss, every poll (7-day half-life, sqrt n)
+# 7-45 days out, scored 7 days before the election (September polls count, decayed by age): two newest polls 4.50 average miss, every poll (7-day half-life, sqrt n)
 # 4.16, plus pollster house effects (same-cycle, leave-one-race-out, shrunk k=5) 4.06. Half-lives 5-21 days all scored 4.29-4.34.
 V2_HALF_LIFE_DAYS = 7.0
 V2_SAMPLE_CAP = 1500
@@ -567,7 +567,7 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
     """Per race: weighted mean of two-party margins over every verified principal poll in the BOTH window, after removing
     each pollster's shrunk house effect and shifting RV/A polls by the measured LV-minus-RV gap; rescaled to the race's
     typical full-ballot share so it is comparable with the published polling read."""
-    use = [e for e in estimates if e.get("window") == "BOTH" and (e.get("flags") or {}).get("principal") and not e.get("quarantined")
+    use = [e for e in estimates if e.get("window") in ("BOTH", "HOUSE_ONLY") and (e.get("flags") or {}).get("principal") and not e.get("quarantined")
            and e.get("primary_verified") == "YES" and isinstance(e.get("D"), (int, float)) and isinstance(e.get("R"), (int, float)) and (e["D"] + e["R"]) > 0]
     pairs = defaultdict(dict)
     for e in estimates:
@@ -608,7 +608,7 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
                      "estimate_ids": sorted(e["estimate_id"] for e in es), "newest_field_end": max(e["field_end"] for e in es),
                      "pollsters": len({e["pollster_id"] for e in es}),
                      "house_adjustments": {e["pollster_id"]: r4(house.get(e["pollster_id"], 0.0)) for e in es if abs(house.get(e["pollster_id"], 0.0)) >= 0.05}}
-    return {"method": "v2: every verified principal poll in window; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
+    return {"method": "v2: every verified principal poll since September 1; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
             "lv_minus_rv_gap": r4(lv_shift), "lv_rv_pairs": len(gaps), "backtest": {"races": 259, "two_newest_polls": 4.50, "every_poll": 4.16, "every_poll_house_adjusted": 4.06, "source": "538 raw polls archive 2010-2024, scored 7 days out"},
             "per_race": out}
 

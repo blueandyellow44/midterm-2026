@@ -1,0 +1,38 @@
+{
+ "file": "wi-gov-marquette-lv.json",
+ "race": "2026-WI-GOV",
+ "pid": "marquette",
+ "name": "Marquette Law School Poll",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "marquette-s-2026-WI-GOV-2026-09-23",
+ "poll": {
+  "field_start": "2026-09-16",
+  "field_end": "2026-09-23",
+  "release_date": "2026-09-30",
+  "n": 692,
+  "pop": "LV",
+  "D": 49,
+  "R": 46,
+  "other": null,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://law.marquette.edu/poll/2026/09/30/mlsp91-press-release/",
+  "source_locator": "Press release Table 1 'Vote for governor, by party identification', row 'September 2026 — Likely voters / Among all likely voters: Tiffany 46, Crowley 49, Haven't decided 5'; confirmed in MLSP91ToplinesLV.html 'Tiffany vs. Crowley' (306 / 327 / 34 weighted freq). 'For likely voters, the sample size is 692'",
+  "notes": "Recall weighting left UNVERIFIED: the primary (headline) weight's calibration list has no presidential-vote margin, recalled 2024 vote appears only in a SECOND weight, and the methodology summary (p.1) separately says the sample is weighted to the '2020 presidential election result and partisanship'. Which weight produced the headline toplines is not stated. Leaner follow-up exists (subset only), not combined into a published pushed ballot; headline used. MLSP91 wave. Next Marquette WI wave (final pre-election) is scheduled for release 2026-10-28, not yet public on 2026-10-27.",
+  "retrieved_at": "2026-10-27T13:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Calibration: \"The sample was calibrated to registered voter benchmarks by age ...; education ...; sex ... by marital status ...; leaned self-reported Party ID ...; WI region ... by L2-modeled Party ID ...; and 2024 vote mode (did not vote, voted early, voter on Election Day) by L2-modeled Party ID.\" Then: \"A second weight was computed by following all previous steps, plus an additional calibration margin for recalled 2024 presidential vote.\"",
+  "method_url": "https://law.marquette.edu/assets/community/poll/MLSP91/MLSP91Methodology.pdf",
+  "method_locator": "MLSP91Methodology.pdf, 'WEIGHTING' section, 'Calibration' subsection; summary paragraph on p.1 ('The sample is weighted to reflect demographic benchmarks of Wisconsin registered voters, the 2020 presidential election result and partisanship.')",
+  "mode": "hybrid: online (749) + live-interviewer telephone (94); L2 voter-list RBS (627) + SSRS Opinion Panel (216)",
+  "method_owner": "Marquette Law School Poll / SSRS",
+  "method_date": "2026-09-30",
+  "retrieved_at": "2026-10-27T13:00:00-07:00"
+ }
+}

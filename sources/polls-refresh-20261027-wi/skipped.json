@@ -1,0 +1,17 @@
+{
+ "skipped": [
+  {
+   "poll": "Marquette Law School Poll, final Wisconsin wave (October 2026)",
+   "reason": "not yet released; WisPolitics notice says release is Wednesday Oct 28, 2026. Re-run after release."
+  },
+  {
+   "poll": "Emerson, AARP/Fabrizio-Impact, Fox News/Beacon-Shaw, Marist, CNN/SSRS, NYT/Siena, Quinnipiac (WI governor)",
+   "reason": "no Wisconsin governor poll with Sept 1-Oct 27 field dates found on Wikipedia, 270toWin, RealClearPolling (read in browser) or DecisionDeskHQ (latest listed poll is YouGov/CFC ending Oct 9), or by web search"
+  },
+  {
+   "poll": "Platform Communications/Badger Battleground (Aug 12-13), TIPP/League of American Workers (Aug 14-18), Marquette (Aug 12-20), GBAO (Jul 30-Aug 3), RMG (Jul 20-24)",
+   "reason": "field dates before 2026-09-01; out of window"
+  }
+ ],
+ "searched_at": "2026-10-27T13:00:00-07:00"
+}
