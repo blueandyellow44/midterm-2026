@@ -420,3 +420,5 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 .scoreboard-tally {margin:8px 0 18px;}
 .tally-line {font-size:20px;line-height:1.4;}
 .accent-text {color:var(--accent);}
+.input-flag {font-size:12px;line-height:1.5;margin-top:6px;padding:6px 10px;border-left:3px solid var(--no);background:var(--soft);}
+.party-tag {display:inline-block;margin-left:6px;font-size:10px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--soft);color:var(--no);vertical-align:middle;}

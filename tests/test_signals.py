@@ -221,3 +221,13 @@ class AbandonmentDeadZone(unittest.TestCase):
 
     def test_extra_money_unaffected(self):
         self.assertEqual(weight.spend_direction(1.3, -1, 0.2), -1)
+
+
+class EarlyVoteContext(unittest.TestCase):
+    def test_block_found_and_never_counted(self):
+        rows = [{"state": "TX", "shift_vs_2022": "3.1", "d_margin_2026": "-8.0", "d_margin_2022_same_day": "-11.1", "as_of": "2026-10-26", "party_basis": "modeled", "source_url": "https://x"}]
+        b = weight.early_vote_block(rows, "TX")
+        self.assertFalse(b["in_reading"])
+        self.assertAlmostEqual(b["shift_vs_2022_toward_d"], 3.1)
+        self.assertIsNone(weight.early_vote_block(rows, "IA"))
+        self.assertIsNone(weight.early_vote_block(None, "TX"))
