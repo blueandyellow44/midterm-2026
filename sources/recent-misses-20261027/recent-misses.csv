@@ -1,7 +1,7 @@
-race,election_date,kind,poll_label,result_label,miss_toward_d,note
-New Jersey governor,2025-11-04,regular,D +4.6,D +14.4,9.8,final polling average vs certified result
-Virginia governor,2025-11-04,regular,D +10.1,D +15.4,5.3,final polling average vs certified result
-Virginia lieutenant governor,2025-11-04,same ballot,D +4.6,D +11.6,7.0,final polling average vs certified result
-Virginia attorney general,2025-11-04,same ballot,R +1.5,D +6.7,8.2,final polling average vs certified result
-California Prop 50,2025-11-04,special,Yes +22,Yes +28.8,6.8,ballot measure; final polling average vs certified result
-Wisconsin Supreme Court,2026-04-07,spring,Taylor +8,Taylor +20.3,4.9,undecideds split like decided voters (raw miss 12.3)
+race,election_date,kind,electorate,poll_label,result_label,miss_toward_d,total_votes,midterm_2022_house_votes,note
+New Jersey governor,2025-11-04,regular,NJ-2025-11-04,D +4.6,D +14.4,9.8,3314315,2576682,final polling average vs result; votes Sherrill+Ciattarelli (Wikipedia results table); 2022 House statewide total
+Virginia governor,2025-11-04,regular,VA-2025-11-04,D +10.1,D +15.4,5.3,3426443,3034345,final polling average vs result; votes Spanberger+Earle-Sears; 2022 House statewide total
+Virginia lieutenant governor,2025-11-04,same ballot,VA-2025-11-04,D +4.6,D +11.6,7.0,3426443,3034345,same voters as the governor race; counted once with it
+Virginia attorney general,2025-11-04,same ballot,VA-2025-11-04,R +1.5,D +6.7,8.2,3426443,3034345,same voters as the governor race; counted once with it
+California Prop 50,2025-11-04,special,CA-2025-11-04,Yes +22,Yes +28.8,6.8,11570337,10656368,ballot measure; valid Yes+No votes; 2022 House statewide total
+Wisconsin Supreme Court,2026-04-07,spring,WI-2026-04-07,Taylor +8,Taylor +20.3,4.9,1505746,2415035,undecideds split like decided voters (raw miss 12.3); votes Taylor+Lazar; 2022 House statewide total

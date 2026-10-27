@@ -74,7 +74,7 @@ SPENDING_HEADER = "race,state,fec_coverage,window_end,d_fav_recent,r_fav_recent,
 FUNDAMENTALS_HEADER = "race,state,pres_year,pres_d_minus_r,source_file,source_sha256".split(",")
 SPEND_HISTORY_HEADER = "year,state,poll_margin,result_margin,log_recent_spend_m,pres_year,pres_d_minus_r,source_sha256".split(",")
 STATE_POLL_ERROR_HEADER = "year,state,state_bias,n_races,source_sha256".split(",")
-RECENT_MISSES_HEADER = "race,election_date,kind,poll_label,result_label,miss_toward_d,note".split(",")
+RECENT_MISSES_HEADER = "race,election_date,kind,electorate,poll_label,result_label,miss_toward_d,total_votes,midterm_2022_house_votes,note".split(",")
 EARLY_VOTE_HEADER = "state,d_margin_2022_same_day,d_margin_2024_same_day,d_margin_2026,shift_vs_2022,as_of,source_url,party_basis".split(",")
 POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
@@ -452,6 +452,23 @@ BACKTEST_FROM = 2010
 BACKTEST_MIN_POLLS = 3
 
 
+def recent_electorates(recent: list[dict] | None) -> list[dict]:
+    """Collapse races that shared one ballot into one electorate and weight each by how closely its turnout matches a
+    midterm: min(1, total votes / the state's 2022 House votes) (Max, 2026-10-27: "yes" to turnout weighting)."""
+    acc = {}
+    for r in recent or []:
+        m, tv, mv = num(r.get("miss_toward_d")), num(r.get("total_votes")), num(r.get("midterm_2022_house_votes"))
+        if m is None:
+            continue
+        g = acc.setdefault(r.get("electorate") or r.get("race"), {"misses": [], "votes": tv, "midterm": mv})
+        g["misses"].append(m)
+    out = []
+    for key, g in acc.items():
+        w = min(1.0, g["votes"] / g["midterm"]) if g["votes"] and g["midterm"] else 1.0
+        out.append({"electorate": key, "races": len(g["misses"]), "miss": r4(sum(g["misses"]) / len(g["misses"])), "turnout_ratio": r4(g["votes"] / g["midterm"]) if g["votes"] and g["midterm"] else None, "weight": r4(w)})
+    return sorted(out, key=lambda x: x["electorate"])
+
+
 def regular_general(race: str) -> bool:
     """Odd-year races in the carryover fit are regular generals only (538 race codes "_Gov-G_"/"_Sen-G_"). Specials (GS),
     Louisiana open primaries (O) and runoffs (GR) are excluded (Max, 2026-10-27: "special elections are even more niche and
@@ -501,11 +518,12 @@ def poll_error_model(history: list[dict], target_year: int, recent: list[dict] |
         return None
     # The input is every statewide election since last November (Max, 2026-10-27: "needs to facator all elections this
     # year and the last"), not only the archive's two governor races. Falls back to the archive mean when absent.
-    misses = [num(r.get("miss_toward_d")) for r in recent or []]
-    misses = [m for m in misses if m is not None]
-    if misses:
-        now["offyear_miss_toward_d"] = sum(misses) / len(misses)
-        now["input"] = {"source": "recent-misses.csv", "races": len(misses), "kinds": sorted({r.get("kind") for r in recent})}
+    groups = recent_electorates(recent)
+    if groups:
+        tw = sum(g["weight"] for g in groups)
+        now["offyear_miss_toward_d"] = sum(g["weight"] * g["miss"] for g in groups) / tw
+        now["input"] = {"source": "recent-misses.csv", "races": sum(g["races"] for g in groups), "electorates": groups,
+                        "rule": "races on one ballot averaged into one electorate; each electorate weighted by its turnout over the state's 2022 House turnout, capped at 1"}
     else:
         now["input"] = {"source": "archive off-year mean", "races": None}
     if now["offyear_miss_toward_d"] is None:
