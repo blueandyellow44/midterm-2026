@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useMemo, useState, type CSSProperties } from 'react';
+import { useMemo, useState } from 'react';
+import { FactorBars, MarginTrack, pct } from './Console';
 
 // The election-night wall (Max, 2026-10-27: "almost a console. Multi panel, don't need to scroll to slider"; "that American
 // political news red and blue look"). One dial state drives every panel. Each race at dial value m = polls + m + its state
@@ -23,10 +24,7 @@ const TILES: Record<string, [number, number]> = {
   HI: [0, 7], TX: [4, 7], FL: [9, 7],
 };
 const BOARD_SPAN = 20;
-// The CSP forbids inline style attributes in served HTML, so widths render only after mount (set through the CSSOM).
-function useMounted() { const [m, setM] = useState(false); useEffect(() => setM(true), []); return m; }
-let mountedFlag = false;
-const st = (o: CSSProperties) => (mountedFlag ? o : undefined);
+
 
 export function marginAt(r: WallRace, m: number) { return r.polls + m + r.stateAdj + r.spending + r.earlyVote; }
 export function marginLabel(v: number, r: WallRace) { return Math.abs(v) < EVEN ? 'Even' : `${last(v > 0 ? r.d : r.r)} +${Math.abs(v).toFixed(1)}`; }
@@ -47,6 +45,7 @@ function Dial({ m, setM, national, lastFall, compact }: { m: number; setM: (v: n
     <div className="wall-scale"><span className="is-r">◀ Republicans</span><span className="is-d">Democrats ▶</span></div>
     <div className="wall-presets">
       <button type="button" aria-pressed={near(-5)} onClick={() => setM(-5)}>Miss R by 5</button>
+      <button type="button" aria-pressed={near(-2.5)} onClick={() => setM(-2.5)}>Miss R by 2.5</button>
       <button type="button" aria-pressed={near(0)} onClick={() => setM(0)}>No miss</button>
       <button type="button" aria-pressed={near(national)} onClick={() => setM(national)}>My bet {national.toFixed(1)}</button>
       <button type="button" aria-pressed={near(lastFall)} onClick={() => setM(lastFall)}>Last fall {lastFall.toFixed(1)}</button>
@@ -57,7 +56,7 @@ function Dial({ m, setM, national, lastFall, compact }: { m: number; setM: (v: n
 
 function Tally({ races, m }: { races: WallRace[]; m: number }) {
   const count = (o: Office) => { const rs = races.filter(r => r.office === o).map(r => marginAt(r, m)); return { d: rs.filter(v => v >= EVEN).length, r: rs.filter(v => v <= -EVEN).length, n: rs.length }; };
-  return <div className="wall-tally" aria-live="polite">{(['SEN', 'GOV'] as Office[]).map(o => { const c = count(o); return <div key={o} className="wall-tally-row"><span className="wall-tally-label">{o === 'SEN' ? 'Senate' : 'Governor'}</span><span className="wall-tally-bar" aria-hidden="true"><i className="is-d" style={st({ width: `${100 * c.d / c.n}%` })}/><i className="is-r" style={st({ width: `${100 * c.r / c.n}%` })}/></span><span className="wall-tally-num"><b className="is-d">D {c.d}</b> <b className="is-r">R {c.r}</b></span></div>; })}</div>;
+  return <div className="wall-tally" aria-live="polite">{(['SEN', 'GOV'] as Office[]).map(o => { const c = count(o); return <div key={o} className="wall-tally-row"><span className="wall-tally-label">{o === 'SEN' ? 'Senate' : 'Governor'}</span><span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${pct(100 * c.d / c.n)}`}/><i className={`is-r gw-${pct(100 * c.r / c.n)}`}/></span><span className="wall-tally-num"><b className="is-d">D {c.d}</b> <b className="is-r">R {c.r}</b></span></div>; })}</div>;
 }
 
 function TileMap({ races, m, office, setOffice, selected, select }: { races: WallRace[]; m: number; office: Office; setOffice: (o: Office) => void; selected: string; select: (id: string) => void }) {
@@ -76,7 +75,6 @@ function TileMap({ races, m, office, setOffice, selected, select }: { races: Wal
 function Detail({ r, m, national }: { r: WallRace; m: number; national: number }) {
   const at = marginAt(r, m); const pull = r.undertow - r.polls; const moved = Math.abs(m - national) >= 0.05;
   const parts: [string, number][] = [['Last fall’s polling miss', national], ['This state’s polling record', r.stateAdj], [r.spendLabel, r.spending], ['Early vote', r.earlyVote]];
-  const max = Math.max(1, ...parts.map(p => Math.abs(p[1])));
   return <section className="wall-panel wall-detail" aria-label={`${r.name} breakdown`}>
     <div className="wall-panel-head"><p className="wall-kicker">{r.name}</p><a className="wall-link" href={`/race/${r.slug}/`}>Full race and every poll →</a></div>
     <p className="wall-matchup"><span className="is-d">{r.d} ({r.dLetter})</span> vs <span className="is-r">{r.r} (R)</span></p>
@@ -85,24 +83,22 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
       <div><p className="wall-label">Undertow</p><p className={`wall-big ${side(r.undertow)}`}>{marginLabel(r.undertow, r)}</p><p className="wall-sub">± {r.sd.toFixed(1)} · my call, frozen Nov 2</p></div>
       <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? 'D' : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>
     </div>
-    <ul className="wall-parts">{parts.map(([label, v]) => <li key={label}><span className="wall-part-label">{label}</span><span className="wall-part-bar" aria-hidden="true"><i className={side(v)} style={st({ width: `${50 * Math.abs(v) / max}%`, [v >= 0 ? 'left' : 'right']: '50%' })}/></span><span className={`wall-part-v ${side(v)}`}>{Math.abs(v) < EVEN ? '0.0' : `${v > 0 ? 'D' : 'R'} +${Math.abs(v).toFixed(1)}`}</span></li>)}</ul>
+    <FactorBars parts={parts.map(([label, v]) => ({ label, v }))}/>
   </section>;
 }
 
 function Board({ races, m, selected, select }: { races: WallRace[]; m: number; selected: string; select: (id: string) => void }) {
   const rows = useMemo(() => races.map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m]);
-  const pos = (v: number) => `${50 + 50 * Math.max(-BOARD_SPAN, Math.min(BOARD_SPAN, v)) / BOARD_SPAN}%`;
   return <section className="wall-panel wall-board" aria-label="Every race, from most Democratic to most Republican">
     <div className="wall-panel-head"><p className="wall-kicker">All {races.length} races</p><p className="wall-key"><i className="wall-key-tick"/> polls</p></div>
     <ol>{rows.map(({ r, v }) => <li key={r.id}><button type="button" className={`wall-row${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} onClick={() => select(r.id)}>
       <span className="wall-row-name">{r.state} <small>{r.office === 'SEN' ? 'Sen' : 'Gov'}</small></span>
-      <span className="wall-row-track" aria-hidden="true"><i className={`wall-row-bar ${side(v)}`} style={st(v >= 0 ? { left: '50%', width: `calc(${pos(v)} - 50%)` } : { left: pos(v), width: `calc(50% - ${pos(v)})` })}/><i className="wall-row-tick" style={st({ left: pos(r.polls) })}/></span>
+      <MarginTrack v={v} tick={r.polls} span={BOARD_SPAN}/>
       <span className={`wall-row-v ${side(v)}`}>{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button></li>)}</ol>
   </section>;
 }
 
 export function ElectionWall({ races, national, lastFall, initial }: { races: WallRace[]; national: number; lastFall: number; initial: string }) {
-  const mounted = useMounted(); mountedFlag = mounted;
   const [m, setM] = useState(national);
   const [office, setOffice] = useState<Office>('SEN');
   const [selected, setSelected] = useState(initial);
@@ -119,7 +115,7 @@ function DialBar({ m, setM, national, lastFall }: { m: number; setM: (v: number)
   const span = Math.max(8, Math.ceil(lastFall));
   const near = (x: number) => Math.abs(m - x) < 0.05;
   const dir = m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way';
-  const presets: [string, number][] = [['Miss R 5', -5], ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
+  const presets: [string, number][] = [['Miss R 5', -5], ['Miss R 2.5', -2.5], ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
   return <section className="wall-dialbar" aria-label="How wrong are the polls?">
     <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{Math.abs(m).toFixed(1)}</span><span className="wall-dialbar-dir">{dir}<small>How wrong are the polls? Drag to change every race.</small></span></div>
     <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
@@ -128,7 +124,6 @@ function DialBar({ m, setM, national, lastFall }: { m: number; setM: (v: number)
 }
 
 export function MobileWall({ races, national, lastFall }: { races: WallRace[]; national: number; lastFall: number }) {
-  const mounted = useMounted(); mountedFlag = mounted;
   const [m, setM] = useState(national);
   const [open, setOpen] = useState<string | null>(null);
   const [office, setOffice] = useState<Office>('SEN');
