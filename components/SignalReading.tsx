@@ -44,12 +44,12 @@ export function SignalReading({r,meta}:{r:any;meta?:any}) {
  }
  const a=s.adjusted_margin;const even=Math.abs(a)<EVEN;const shift=s.delta_total;const lines=signalLines(s,names);
  return <section className="signal-reading" aria-label={`${r.name||'This race'}: reading adjusted for campaign spending and rhetoric`}>
-  <div className="signal-heading"><h4>Reading the campaigns</h4><span className="signal-chip">Experimental</span></div>
-  <p className="signal-intro">Polls plus what the campaigns are doing: where outside money goes and how hot the rhetoric runs.</p>
+  <div className="signal-heading"><h4>Our reading</h4><span className="signal-chip">Experimental</span></div>
+  <p className="signal-intro">Where we think this race really stands: the polls, adjusted for where outside money goes and how hot each side’s rhetoric runs.</p>
   <p className="signal-lead">{even?'Even at displayed precision':<>{toward(a,names)}<span className="reading-lead-verb"> leads by </span><strong className={a>0?'lead-number-d':'lead-number-r'}>{number(Math.abs(a))}<small> points</small></strong></>}</p>
   <p className="signal-shift">{Math.abs(shift)<EVEN?'About the same as the polls.':<>{number(Math.abs(shift))} points toward {toward(shift,names)} compared with the polls.</>}</p>
   <ul className="signal-lines">{lines.map(l=><li key={l.key}><span className="signal-line-label">{l.label}</span><span className={`signal-line-value ${Number(l.value)>0?'lead-number-d':Number(l.value)<0?'lead-number-r':''}`}>{Math.abs(Number(l.value))<EVEN?'0.0':`${number(Math.abs(Number(l.value)))} toward ${toward(Number(l.value),names)}`}</span><span className="signal-line-text">{l.text}</span></li>)}</ul>
-  <p className="signal-limit">{agreement[s.alignment]} History shows only a weak link between these signals and polling misses, so this reading may miss by more than the polls. Both are graded against the results.</p>
+  <p className="signal-limit">{agreement[s.alignment]} Graded against the results alongside the polls.</p>
   <details className="signal-details"><summary>How this is calculated<span aria-hidden="true">+</span></summary>
    <p>The adjustment starts from the polling read above and adds two terms. Spending: outside money in the two weeks to {s.window_end||meta?.window_end||'the snapshot'}, compared with what a race this close usually draws, read against the state’s 2024 presidential result. Rhetoric: the average LITMUS heat score of each side’s scored ads and debate answers.</p>
    {meta&&<p>Spending counts {number(meta.posterior?.beta?.[0],2)} points per standard deviation of extra money, a starting assumption of {number(meta.priors?.beta?.[0],1)} updated with {meta.history?.n} Senate races from {meta.history?.years?.join(' and ')}. Rhetoric counts {number(meta.posterior?.gamma?.[0],1)} points per point of heat gap, a starting assumption with no history behind it, capped at {number(meta.rules?.rhetoric_cap,0)} points.</p>}
