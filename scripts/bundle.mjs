@@ -3,8 +3,8 @@ import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { parse } from 'csv-parse/sync';
 
-export const allowedFiles = new Set(['polls.csv','pollsters.csv','exclusions.csv','heat.csv','coverage.csv','backtest-2025.csv','midterm-2026-poll-weighting.md','derived.json','predictions.csv','results.csv','spending.csv','fundamentals.csv','spend-history.csv','state-poll-error.csv','poll-error-history.csv','early-vote.csv']);
-export const supportedSchemas = { polls:['1.2'], pollsters:['1.0'], exclusions:['1.0'], heat:['1.0'], coverage:['1.0'], backtest:['1.2'], predictions:['1.0'], results:['1.0'], spending:['1.0'], fundamentals:['1.0'], spend_history:['1.0'], state_poll_error:['1.0'], poll_error_history:['1.0'], early_vote:['1.0'] };
+export const allowedFiles = new Set(['polls.csv','pollsters.csv','exclusions.csv','heat.csv','coverage.csv','backtest-2025.csv','midterm-2026-poll-weighting.md','derived.json','predictions.csv','results.csv','spending.csv','fundamentals.csv','spend-history.csv','state-poll-error.csv','poll-error-history.csv','early-vote.csv','recent-misses.csv']);
+export const supportedSchemas = { polls:['1.2'], pollsters:['1.0'], exclusions:['1.0'], heat:['1.0'], coverage:['1.0'], backtest:['1.2'], predictions:['1.0'], results:['1.0'], spending:['1.0'], fundamentals:['1.0'], spend_history:['1.0'], state_poll_error:['1.0'], poll_error_history:['1.0'], early_vote:['1.0'], recent_misses:['1.0'] };
 export const sha256 = value => createHash('sha256').update(value).digest('hex');
 /** @returns {Record<string,string>[]} */
 export function readCsv(text, required = []) {

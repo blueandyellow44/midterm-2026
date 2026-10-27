@@ -1,0 +1,7 @@
+race,election_date,kind,poll_label,result_label,miss_toward_d,note
+New Jersey governor,2025-11-04,regular,D +4.6,D +14.4,9.8,final polling average vs certified result
+Virginia governor,2025-11-04,regular,D +10.1,D +15.4,5.3,final polling average vs certified result
+Virginia lieutenant governor,2025-11-04,same ballot,D +4.6,D +11.6,7.0,final polling average vs certified result
+Virginia attorney general,2025-11-04,same ballot,R +1.5,D +6.7,8.2,final polling average vs certified result
+California Prop 50,2025-11-04,special,Yes +22,Yes +28.8,6.8,ballot measure; final polling average vs certified result
+Wisconsin Supreme Court,2026-04-07,spring,Taylor +8,Taylor +20.3,4.9,undecideds split like decided voters (raw miss 12.3)

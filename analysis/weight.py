@@ -43,7 +43,7 @@ BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
     "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
-    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0",
+    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0",
 }
 
 POLLS_HEADER = (
@@ -74,6 +74,7 @@ SPENDING_HEADER = "race,state,fec_coverage,window_end,d_fav_recent,r_fav_recent,
 FUNDAMENTALS_HEADER = "race,state,pres_year,pres_d_minus_r,source_file,source_sha256".split(",")
 SPEND_HISTORY_HEADER = "year,state,poll_margin,result_margin,log_recent_spend_m,pres_year,pres_d_minus_r,source_sha256".split(",")
 STATE_POLL_ERROR_HEADER = "year,state,state_bias,n_races,source_sha256".split(",")
+RECENT_MISSES_HEADER = "race,election_date,kind,poll_label,result_label,miss_toward_d,note".split(",")
 EARLY_VOTE_HEADER = "state,d_margin_2022_same_day,d_margin_2024_same_day,d_margin_2026,shift_vs_2022,as_of,source_url,party_basis".split(",")
 POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
@@ -458,7 +459,7 @@ def regular_general(race: str) -> bool:
     return "_Gov-G_" in race or "_Sen-G_" in race
 
 
-def poll_error_model(history: list[dict], target_year: int) -> dict | None:
+def poll_error_model(history: list[dict], target_year: int, recent: list[dict] | None = None) -> dict | None:
     """Everything the polling-error lean needs, computed from race-level archive rows that precede target_year:
     the national carryover share and its SE (no-intercept fit over every off-year/next-year pair), the latest off-year
     miss, the state rows for state_poll_error_leans, and a backtest of the whole lean on earlier cycles.
@@ -496,7 +497,18 @@ def poll_error_model(history: list[dict], target_year: int) -> dict | None:
         return [{"year": str(y), "state": s, "state_bias": str(sum(v) / len(v))} for (y, s), v in acc.items()]
 
     now = carryover(target_year)
-    if not now or now["offyear_miss_toward_d"] is None:
+    if not now:
+        return None
+    # The input is every statewide election since last November (Max, 2026-10-27: "needs to facator all elections this
+    # year and the last"), not only the archive's two governor races. Falls back to the archive mean when absent.
+    misses = [num(r.get("miss_toward_d")) for r in recent or []]
+    misses = [m for m in misses if m is not None]
+    if misses:
+        now["offyear_miss_toward_d"] = sum(misses) / len(misses)
+        now["input"] = {"source": "recent-misses.csv", "races": len(misses), "kinds": sorted({r.get("kind") for r in recent})}
+    else:
+        now["input"] = {"source": "archive off-year mean", "races": None}
+    if now["offyear_miss_toward_d"] is None:
         return None
     lean = now["share"] * now["offyear_miss_toward_d"]
     leans = state_poll_error_leans(state_rows(target_year), lean)
@@ -515,7 +527,7 @@ def poll_error_model(history: list[dict], target_year: int) -> dict | None:
         by_year[y] = {"races": len(tgt), "lean_toward_d": r4(nat), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_lean": r4(sum(e1) / len(e1))}
     n = sum(v["races"] for v in by_year.values())
     return {"target_year": target_year, "carryover_share": r4(now["share"]), "carryover_se": r4(now["se"]), "pairs": now["pairs"],
-            "offyear_miss_toward_d": r4(now["offyear_miss_toward_d"]), "lean_toward_d": r4(lean), "lean_sd": r4(now["se"] * now["offyear_miss_toward_d"]),
+            "offyear_miss_toward_d": r4(now["offyear_miss_toward_d"]), "input": now["input"], "lean_toward_d": r4(lean), "lean_sd": r4(now["se"] * now["offyear_miss_toward_d"]),
             "state_leans": leans,
             "backtest": {"from": BACKTEST_FROM, "min_polls": BACKTEST_MIN_POLLS, "races": n, "by_year": by_year,
                          "mae_polls": r4(sum(v["mae_polls"] * v["races"] for v in by_year.values()) / n) if n else None,
@@ -932,6 +944,7 @@ class Bundle:
         self.fundamentals = read_csv(os.path.join(bundle_dir, "fundamentals.csv"), FUNDAMENTALS_HEADER, required=False)
         self.spend_history = read_csv(os.path.join(bundle_dir, "spend-history.csv"), SPEND_HISTORY_HEADER, required=False)
         self.state_poll_error = read_csv(os.path.join(bundle_dir, "state-poll-error.csv"), STATE_POLL_ERROR_HEADER, required=False)
+        self.recent_misses = read_csv(os.path.join(bundle_dir, "recent-misses.csv"), RECENT_MISSES_HEADER, required=False)
         self.early_vote = read_csv(os.path.join(bundle_dir, "early-vote.csv"), EARLY_VOTE_HEADER, required=False)
         self.poll_error_history = read_csv(os.path.join(bundle_dir, "poll-error-history.csv"), POLL_ERROR_HISTORY_HEADER, required=False)
         self.quarantined_pollsters = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "POLLSTER"}
@@ -1631,7 +1644,7 @@ class Bundle:
         spend = {r["race"]: r for r in self.spending}
         races = SENATE_RACES + GOVERNOR_RACES
         polling = {race: ((blocks.get(race) or {}).get("polling_read") or {}).get("margin") for race in races}
-        model = poll_error_model(getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR)
+        model = poll_error_model(getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR, getattr(self, "recent_misses", None))
         if model:
             national, national_sd, leans = model["lean_toward_d"], model["lean_sd"], model["state_leans"]
         else:
@@ -1840,7 +1853,7 @@ class Bundle:
         copy_names = ["polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv"]
         if ss.get("stage2a") == "PASSED" and os.path.exists(os.path.join(self.dir, "backtest-2025.csv")):
             copy_names.append("backtest-2025.csv")
-        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv") if os.path.exists(os.path.join(self.dir, n))]
+        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv") if os.path.exists(os.path.join(self.dir, n))]
         for name in copy_names:
             src = os.path.join(self.dir, name)
             if os.path.exists(src):
