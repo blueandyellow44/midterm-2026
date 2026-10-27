@@ -31,7 +31,7 @@ SPENDING_HEADER = ["race", "state", "fec_coverage", "window_end", "d_fav_recent"
                    "rows_recent", "rows_dated_by_dissemination", "source_file", "source_sha256"]
 FUNDAMENTALS_HEADER = ["race", "state", "pres_year", "pres_d_minus_r", "source_file", "source_sha256"]
 HISTORY_HEADER = ["year", "state", "poll_margin", "result_margin", "log_recent_spend_m", "pres_year", "pres_d_minus_r", "source_sha256"]
-SOURCES = {"ie": "ie2026.csv", "pres2024": "2024presgeresults.xlsx", "pres2020": "federalelections2020.xlsx", "history": "history-races-v5.csv"}
+SOURCES = {"ie": "ie2026.csv", "pres2024": "2024presgeresults.xlsx", "pres2020": "federalelections2020.xlsx", "pres2016": "federalelections2016.xlsx", "history": "history-races-v5.csv"}
 
 
 def fec_date(s: str) -> date | None:
@@ -126,6 +126,19 @@ def pres2020_margins(path: Path) -> dict[str, float]:
     return out
 
 
+def pres2016_margins(path: Path) -> dict[str, float]:
+    """FEC 2016 Table 2: columns are Trump (R) then Clinton (D), the reverse of the 2020 table."""
+    import pandas as pd
+    df = pd.read_excel(path, sheet_name="Table 2. Electoral &  Pop Vote", header=None).iloc[4:]
+    out = {}
+    for _, r in df.iterrows():
+        st = str(r[0]).strip()
+        total = num(r[6])
+        if len(st) == 2 and total and num(r[4]) is not None:
+            out[st] = round(100 * (num(r[4]) - (num(r[3]) or 0)) / total, 4)
+    return out
+
+
 def num(v):
     try:
         x = float(v)
@@ -134,17 +147,22 @@ def num(v):
         return None
 
 
-def history_rows(path: Path, pres2020: dict[str, float], sha: str) -> list[dict]:
+def history_rows(path: Path, pres_by_year: dict, sha: str) -> list[dict]:
+    """Each historical race uses the presidential result available BEFORE it (Codex audit 2026-10-27): 2016 for 2020 races,
+    2020 for 2022 races. The 2020 rows previously used the same-year 2020 result, which a forecast could not have known."""
     rows = []
     with open(path, newline="", encoding="utf-8") as f:
         for r in csv.DictReader(f):
-            if r.get("exclusion") or r.get("year") not in ("2020", "2022") or r.get("state") not in pres2020:
+            if r.get("exclusion") or r.get("year") not in pres_by_year:
+                continue
+            pres_year, pres = pres_by_year[r["year"]]
+            if r.get("state") not in pres:
                 continue
             p, y, s = num(r.get("baseline")), num(r.get("margin_actual")), num(r.get("log_recent_spend_m"))
             if None in (p, y, s):
                 continue
             rows.append({"year": r["year"], "state": r["state"], "poll_margin": f"{p:.4f}", "result_margin": f"{y:.4f}", "log_recent_spend_m": f"{s:.6f}",
-                         "pres_year": "2020", "pres_d_minus_r": f"{pres2020[r['state']]:.4f}", "source_sha256": sha})
+                         "pres_year": pres_year, "pres_d_minus_r": f"{pres[r['state']]:.4f}", "source_sha256": sha})
     return sorted(rows, key=lambda r: (r["year"], r["state"]))
 
 
@@ -156,6 +174,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sources", required=True)
     ap.add_argument("--bundle-dir", default=weight.DEFAULT_BUNDLE_DIR)
+    ap.add_argument("--history-only", action="store_true", help="rebuild spend-history.csv only (spending.csv and fundamentals.csv untouched)")
     ap.add_argument("--gov-digital", help="governor campaign digital spend CSV (Google + Meta, in-state), sources/gov-digital-*/governor-digital-spend.csv")
     a = ap.parse_args(argv)
     gov = {}
@@ -202,11 +221,13 @@ def main(argv=None) -> int:
         spending.append({"race": race, "state": st, "fec_coverage": "FEC_SCHEDULE_E", "window_end": cutoff.isoformat(),
                          **{k: (f"{v:.2f}" if isinstance(v, float) else str(v)) for k, v in agg.items()},
                          "source_file": SOURCES["ie"], "source_sha256": sha["ie"]})
-    history = history_rows(paths["history"], pres20, sha["history"])
+    history = history_rows(paths["history"], {"2020": ("2016", pres2016_margins(paths["pres2016"])), "2022": ("2020", pres20)}, sha["history"])
     if len(history) < 30:
         raise SystemExit(f"spending history too thin: {len(history)} races")
-    for name, header, rows in (("spending.csv", SPENDING_HEADER, spending), ("fundamentals.csv", FUNDAMENTALS_HEADER, fundamentals),
-                               ("spend-history.csv", HISTORY_HEADER, history)):
+    outputs = (("spending.csv", SPENDING_HEADER, spending), ("fundamentals.csv", FUNDAMENTALS_HEADER, fundamentals), ("spend-history.csv", HISTORY_HEADER, history))
+    if a.history_only:
+        outputs = outputs[2:]
+    for name, header, rows in outputs:
         path = os.path.join(a.bundle_dir, name)
         snap = weight.snapshot(path, a.bundle_dir)
         weight.write_csv(path, header, rows)

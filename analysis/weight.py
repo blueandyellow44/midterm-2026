@@ -504,7 +504,7 @@ def poll_error_model(history: list[dict], target_year: int, recent: list[dict] |
             return None
         k = sum(a * b for a, b in pairs) / sxx
         s = math.sqrt(sum((b - k * a) ** 2 for a, b in pairs) / (len(pairs) - 1))
-        return {"share": k, "se": s / math.sqrt(sxx), "pairs": len(pairs), "offyear_miss_toward_d": -ym[before - 1] if (before - 1) in ym else None}
+        return {"share": k, "se": s / math.sqrt(sxx), "resid_sd": s, "pairs": len(pairs), "offyear_miss_toward_d": -ym[before - 1] if (before - 1) in ym else None}
 
     def state_rows(before: int) -> list[dict]:
         acc = defaultdict(list)
@@ -529,6 +529,10 @@ def poll_error_model(history: list[dict], target_year: int, recent: list[dict] |
     if now["offyear_miss_toward_d"] is None:
         return None
     lean = now["share"] * now["offyear_miss_toward_d"]
+    # Prediction uncertainty of the national lean = coefficient uncertainty (se x input) plus the unexplained year-to-year
+    # residual around the carryover fit (Codex audit 2026-10-27: the residual had been left out).
+    coef_sd = now["se"] * now["offyear_miss_toward_d"]
+    pred_sd = math.sqrt(coef_sd ** 2 + now["resid_sd"] ** 2)
     leans = state_poll_error_leans(state_rows(target_year), lean)
     by_year = {}
     for y in range(BACKTEST_FROM, target_year, 2):
@@ -542,15 +546,21 @@ def poll_error_model(history: list[dict], target_year: int, recent: list[dict] |
             continue
         e0 = [abs(x["poll"] - x["actual"]) for x in tgt]
         e1 = [abs(x["poll"] + sl.get(x["state"], {}).get("lean", nat) - x["actual"]) for x in tgt]
-        by_year[y] = {"races": len(tgt), "lean_toward_d": r4(nat), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_lean": r4(sum(e1) / len(e1))}
+        band = math.sqrt((c["se"] * c["offyear_miss_toward_d"]) ** 2 + c["resid_sd"] ** 2 + SIGNAL_RACE_POLL_SD ** 2)
+        inside = sum(1 for v in e1 if v <= band)
+        by_year[y] = {"races": len(tgt), "lean_toward_d": r4(nat), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_lean": r4(sum(e1) / len(e1)),
+                      "band": r4(band), "inside_band": inside}
     n = sum(v["races"] for v in by_year.values())
     return {"target_year": target_year, "carryover_share": r4(now["share"]), "carryover_se": r4(now["se"]), "pairs": now["pairs"],
-            "offyear_miss_toward_d": r4(now["offyear_miss_toward_d"]), "input": now["input"], "lean_toward_d": r4(lean), "lean_sd": r4(now["se"] * now["offyear_miss_toward_d"]),
+            "offyear_miss_toward_d": r4(now["offyear_miss_toward_d"]), "input": now["input"], "lean_toward_d": r4(lean), "lean_sd": r4(pred_sd),
+            "lean_coefficient_sd": r4(coef_sd), "lean_residual_sd": r4(now["resid_sd"]),
             "state_leans": leans,
             "backtest": {"from": BACKTEST_FROM, "min_polls": BACKTEST_MIN_POLLS, "races": n, "by_year": by_year,
                          "mae_polls": r4(sum(v["mae_polls"] * v["races"] for v in by_year.values()) / n) if n else None,
                          "mae_with_lean": r4(sum(v["mae_with_lean"] * v["races"] for v in by_year.values()) / n) if n else None,
-                         "years_helped": sum(1 for v in by_year.values() if v["mae_with_lean"] < v["mae_polls"]), "years": len(by_year)}}
+                         "years_helped": sum(1 for v in by_year.values() if v["mae_with_lean"] < v["mae_polls"]), "years": len(by_year),
+                         "coverage": r4(sum(v["inside_band"] for v in by_year.values()) / n) if n else None,
+                         "coverage_note": "lean component only: polls average from the archive plus the lean, band = coefficient SD, residual SD and race SD at that year's cutoff; the race SD (4.06) was itself measured on 2010-2024 races, so this is a diagnostic, not a calibration of the full model"}}
 
 
 # Polling average v2 (Max, 2026-10-27: "i know nate silver and cohen arent goin off 2 polls"). Every verified principal poll
@@ -562,6 +572,10 @@ V2_SAMPLE_CAP = 1500
 V2_HOUSE_SHRINK_K = 5.0
 V2_POP_WEIGHT = {"LV": 1.0, "RV": 0.7, "A": 0.4}
 V2_ROUND_RANK = {"FINAL": 0, "NA": 1, "FIRST": 2}   # UNVERIFIED rounds are excluded
+# Ranked-choice races (Maine, Alaska) average first-round estimates only, the same basis as the scoreboard's first-round
+# count; final-round polls stay in the ledger as context. Mixing rounds averaged two different outcomes (Codex audit
+# 2026-10-27: Alaska blended five first-round and five final-round contributors).
+V2_RCV_ROUND = "FIRST"
 V2_POP_RANK = {"LV": 0, "RV": 1, "A": 2}
 V2_DEN_RANK = {"FULL": 0, "LEANERS": 1, "TWO_WAY": 2}
 
@@ -571,7 +585,7 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
     each pollster's shrunk house effect and shifting RV/A polls by the measured LV-minus-RV gap; rescaled to the race's
     typical full-ballot share so it is comparable with the published polling read."""
     cand = [e for e in estimates if e.get("window") in ("BOTH", "HOUSE_ONLY") and (e.get("flags") or {}).get("principal") and not e.get("quarantined")
-            and e.get("primary_verified") == "YES" and e.get("round") in V2_ROUND_RANK
+            and e.get("primary_verified") == "YES" and e.get("round") == (V2_RCV_ROUND if e.get("race") in RCV_RACES else "NA")
             and isinstance(e.get("D"), (int, float)) and isinstance(e.get("R"), (int, float)) and (e["D"] + e["R"]) > 0]
     # One estimate per survey per race (Codex audit 2026-10-27: Alaska's 18 contributors were 11 samples). Precedence: the
     # decisive ranked-choice round, then likely voters, then the full ballot.
@@ -658,26 +672,36 @@ def early_vote_block(rows: list[dict] | None, state: str) -> dict | None:
 
 
 def spending_backtest(history: list[dict]) -> dict | None:
-    """Leave-one-out test of the spending term on the history races: fit beta without each race, predict it at half weight."""
-    rows = [(num(r.get("poll_margin")), num(r.get("result_margin")), num(r.get("log_recent_spend_m")), num(r.get("pres_d_minus_r"))) for r in history or []]
-    rows = [x for x in rows if None not in x]
-    if len(rows) < 10:
+    """Replay the production spending procedure on the history races, one election year at a time, using only earlier
+    years (Codex audit 2026-10-27). For each held-out year: spending_history_estimate on earlier years, combined with
+    the prior by normal_posterior; excess_spend_z within that year's races; spend_direction (with the dead zone); then
+    signal_adjusted, the production predictor (half weight, the spending threshold). A year with no earlier data uses
+    the prior alone, as production would have."""
+    rows = [r for r in history or [] if None not in (num(r.get("poll_margin")), num(r.get("result_margin")), num(r.get("log_recent_spend_m")), num(r.get("pres_d_minus_r")))]
+    years = sorted({r["year"] for r in rows})
+    if len(rows) < 10 or not years:
         return None
-    z = excess_spend_z([x[2] for x in rows], [abs(x[0]) for x in rows])
-    if not z:
-        return None
-    sig = []
-    for i, x in enumerate(rows):
-        d = spend_direction(z[i], underdog_sign(x[3]), x[0])
-        sig.append(abs(z[i]) * d if d else 0.0)
-    e0, e1 = [], []
-    for i, x in enumerate(rows):
-        tr = [(sig[j], rows[j][1] - rows[j][0]) for j in range(len(rows)) if j != i and sig[j]]
-        sxx = sum(a * a for a, _ in tr)
-        b = sum(a * c for a, c in tr) / sxx if sxx else 0.0
-        e0.append(abs(x[1] - x[0]))
-        e1.append(abs(x[1] - x[0] - SIGNAL_WEIGHT_SINGLE * b * sig[i]))
-    return {"races": len(rows), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_spending": r4(sum(e1) / len(e1)), "method": "leave-one-out, half weight"}
+    e0, e1, per_year = [], [], {}
+    for y in years:
+        train = [r for r in rows if r["year"] < y]
+        est = spending_history_estimate(train) if train else {"slope": None, "se": None}
+        beta = normal_posterior(SIGNAL_PRIOR_BETA, est.get("slope"), est.get("se"))
+        test = [r for r in rows if r["year"] == y]
+        polls = [num(r["poll_margin"]) for r in test]
+        z = excess_spend_z([num(r["log_recent_spend_m"]) for r in test], [abs(p) for p in polls])
+        ye0, ye1 = [], []
+        for i, r in enumerate(test):
+            p, res = polls[i], num(r["result_margin"])
+            sig = None
+            if z:
+                d = spend_direction(z[i], underdog_sign(num(r["pres_d_minus_r"])), p)
+                sig = abs(z[i]) * d if d else None
+            out = signal_adjusted(p, sig, None, beta, SIGNAL_PRIOR_GAMMA)
+            ye0.append(abs(res - p)); ye1.append(abs(res - (p + (out.get("delta_spending") or 0.0))))
+        per_year[y] = {"races": len(test), "beta": r4(beta[0]), "trained_on": sorted({r["year"] for r in train}), "mae_polls": r4(sum(ye0) / len(ye0)), "mae_with_spending": r4(sum(ye1) / len(ye1))}
+        e0 += ye0; e1 += ye1
+    return {"races": len(e0), "mae_polls": r4(sum(e0) / len(e0)), "mae_with_spending": r4(sum(e1) / len(e1)), "by_year": per_year,
+            "method": "production fitter and predictor, election-year holdout using earlier years only; presidential favorite from the preceding election"}
 
 
 def state_poll_error_leans(rows: list[dict], national: float) -> dict:

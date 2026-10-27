@@ -269,12 +269,13 @@ class AuditFixes(unittest.TestCase):
                 "pop": pop, "denominator_class": den, "round": rnd, "window": "BOTH", "flags": {"principal": True}, "quarantined": False,
                 "primary_verified": verified, "sample_id": sample, "estimate_id": f"{sample}-{rnd}-{pop}-{den}", "margin": D - R, "factors": {"f_track": 1.0}}
 
-    def test_one_estimate_per_survey_final_round_first(self):
+    def test_rcv_race_uses_first_round_only_one_per_survey(self):
         from datetime import date
-        v = weight.polling_average_v2([self.est("s1", "FIRST", 45, 44), self.est("s1", "FINAL", 51, 49)], date(2026, 10, 27))
+        v = weight.polling_average_v2([self.est("s1", "FIRST", 45, 44), self.est("s1", "FINAL", 51, 49), self.est("s2", "FINAL", 52, 48),
+                                       self.est("s1", "FIRST", 46, 44, pop="RV")], date(2026, 10, 27))
         x = v["per_race"]["2026-AK-SEN"]
         self.assertEqual(x["polls"], 1)
-        self.assertEqual(x["rounds"], "FINAL")
+        self.assertEqual(x["rounds"], "FIRST")
 
     def test_unverified_round_excluded(self):
         from datetime import date
@@ -286,3 +287,22 @@ class AuditFixes(unittest.TestCase):
         ests = [self.est("a", "NA", 50, 45, pop="LV"), self.est("a", "NA", 52, 44, pop="RV"),
                 self.est("b", "NA", 40, 55, pop="LV", verified="UNVERIFIED"), self.est("b", "NA", 60, 30, pop="RV", verified="UNVERIFIED")]
         self.assertEqual(weight.polling_average_v2(ests, date(2026, 10, 27))["lv_rv_pairs"], 1)
+
+
+class UncertaintyAndSpendingReplay(unittest.TestCase):
+    def test_lean_sd_includes_residual(self):
+        rows = []
+        for y in range(1999, 2026):
+            miss = (2.0 if y % 2 else 1.0) + (0.5 if y % 4 == 1 else 0.0)
+            rows.append({"year": str(y), "state": "AA", "race": f"{y}_Sen-G_AA", "type": "Sen-G", "n_polls": "5", "poll_margin": str(miss), "actual_margin": "0", "bias": str(miss)})
+        m = weight.poll_error_model(rows, 2026)
+        self.assertGreater(m["lean_residual_sd"], 0)
+        self.assertAlmostEqual(m["lean_sd"] ** 2, m["lean_coefficient_sd"] ** 2 + m["lean_residual_sd"] ** 2, places=3)
+
+    def test_spending_replay_uses_only_earlier_years(self):
+        rows = [{"year": y, "state": s, "poll_margin": str(p), "result_margin": str(p - 1), "log_recent_spend_m": str(ls), "pres_d_minus_r": str(pr)}
+                for y in ("2020", "2022") for s, p, ls, pr in (("A", 2, 1.0, -5), ("B", 5, 3.0, -8), ("C", -3, 0.5, 4), ("D", 8, 2.0, 10), ("E", 1, 2.5, -2), ("F", -6, 1.5, -9))]
+        b = weight.spending_backtest(rows)
+        self.assertEqual(b["by_year"]["2020"]["trained_on"], [])
+        self.assertEqual(b["by_year"]["2022"]["trained_on"], ["2020"])
+        self.assertEqual(b["by_year"]["2020"]["beta"], weight.SIGNAL_PRIOR_BETA[0])
