@@ -397,3 +397,26 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 @media(max-width:767px){.pull-undertow strong {font-size:23px;}}
 .signal-record {font-size:12px;line-height:1.65;margin-top:10px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--soft);}
 .freeze-countdown {font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+.dial {margin:40px 0 28px;padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--soft);}
+.dial h2 {font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0;}
+.dial-intro {font-size:14px;line-height:1.6;color:var(--muted);margin:8px 0 18px;max-width:62ch;}
+.dial-control input[type=range] {width:100%;accent-color:var(--accent);}
+.dial-readout {font-family:var(--font-mono);font-size:13px;margin-top:6px;}
+.dial-readout strong {font-size:22px;}
+.dial-presets {display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.dial-presets button {font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);cursor:pointer;}
+.dial-presets button:active {transform:translateY(1px);}
+.dial-tally {font-weight:600;margin:16px 0 8px;}
+.dial-list {list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:4px 24px;}
+.dial-list li {display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:5px 0;border-bottom:1px solid var(--line);}
+.signup {margin:28px 0;padding:22px 24px;border-left:3px solid var(--accent);background:var(--soft);border-radius:4px;}
+.signup-title {font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0;}
+.signup-pitch {font-size:14px;line-height:1.6;margin:6px 0 12px;max-width:62ch;}
+.signup-form {display:flex;gap:8px;flex-wrap:wrap;}
+.signup-form input[type=email] {flex:1;min-width:200px;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);}
+.signup-form button {font-size:14px;font-weight:600;padding:10px 16px;border:0;border-radius:8px;background:var(--accent);color:var(--paper);cursor:pointer;}
+.signup-note {font-size:12px;color:var(--muted);margin:8px 0 0;}
+.sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+.scoreboard-tally {margin:8px 0 18px;}
+.tally-line {font-size:20px;line-height:1.4;}
+.accent-text {color:var(--accent);}
