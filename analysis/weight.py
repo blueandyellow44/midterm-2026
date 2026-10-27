@@ -294,7 +294,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "1.7"  # 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "1.8"  # 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -327,7 +327,10 @@ SIGNAL_WEIGHT_ALIGNED = 1.0
 SIGNAL_WEIGHT_OPPOSED = 0.25
 SIGNAL_WEIGHT_SINGLE = 0.5
 SIGNAL_SPEND_MEASURES = ("FEC_SCHEDULE_E", "DIGITAL_CANDIDATE")
-SIGNAL_SPEND_MIN_Z = 0.25        # |excess z| below this carries no direction
+SIGNAL_SPEND_MIN_Z = 0.25
+# Missing money carries no direction when the poll leader is not clear (Max, 2026-10-27, agreeing: "give low spending no
+# direction when the polls are within about 2 points"). Stops a near-tie from flipping the spending term's sign.
+SIGNAL_ABANDON_MIN_LEAD = 2.0        # |excess z| below this carries no direction
 # Heat gaps below TIE_THRESHOLD (the existing heat tie rule) carry no direction.
 
 
@@ -374,8 +377,8 @@ def spend_direction(z: float, underdog: int, poll_margin: float) -> int:
     race being settled for the current poll leader: parties pull out of races they think are decided (Max, 2026-10-26)."""
     if z > 0:
         return underdog
-    if poll_margin == 0:
-        return 0
+    if abs(poll_margin) < SIGNAL_ABANDON_MIN_LEAD:
+        return 0   # no real leader, so nothing is "settled" (Max, 2026-10-27)
     return 1 if poll_margin > 0 else -1
 
 
@@ -1591,7 +1594,7 @@ class Bundle:
             "state_lean": {k: v for k, v in (leans or {}).items() if k != "per_state"} or None,
             "poll_error_model": {k: v for k, v in model.items() if k != "state_leans"} if model else None,
             "spending_backtest": spending_backtest(self.spend_history),
-            "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": national, "poll_error_sd": national_sd, "poll_error_carryover": [model["carryover_share"], model["carryover_se"]] if model else list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": model["offyear_miss_toward_d"] if model else SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "heat_tie_threshold": TIE_THRESHOLD,
+            "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": national, "poll_error_sd": national_sd, "poll_error_carryover": [model["carryover_share"], model["carryover_se"]] if model else list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": model["offyear_miss_toward_d"] if model else SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "abandon_min_lead": SIGNAL_ABANDON_MIN_LEAD, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,

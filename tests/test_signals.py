@@ -211,3 +211,13 @@ class PollErrorModel(unittest.TestCase):
 
     def test_no_history(self):
         self.assertIsNone(weight.poll_error_model([], 2026))
+
+
+class AbandonmentDeadZone(unittest.TestCase):
+    def test_near_tie_gives_no_direction(self):
+        self.assertEqual(weight.spend_direction(-1.3, 1, 0.2), 0)
+        self.assertEqual(weight.spend_direction(-1.3, 1, -1.99), 0)
+        self.assertEqual(weight.spend_direction(-1.3, 1, 2.0), 1)
+
+    def test_extra_money_unaffected(self):
+        self.assertEqual(weight.spend_direction(1.3, -1, 0.2), -1)
