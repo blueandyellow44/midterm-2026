@@ -423,3 +423,135 @@ main p>a,main .empty a,footer a {display:inline-flex;align-items:center;}
 .input-flag {font-size:12px;line-height:1.5;margin-top:6px;padding:6px 10px;border-left:3px solid var(--no);background:var(--soft);}
 .party-tag {display:inline-block;margin-left:6px;font-size:10px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--soft);color:var(--no);vertical-align:middle;}
 .dial-scale {display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* Election wall (Max, 2026-10-27: "almost a console"; "that American political news red and blue look"). Broadcast
+   structure only: navy field, saturated D blue and R red, condensed numerals. No network marks, fonts or graphics. */
+.wall,.wall-mobile,.wall-strip {--w-bg:#ffffff;--w-panel:#ffffff;--w-panel2:#f4f6fa;--w-line:#dde3ee;--w-ink:#0b1a3a;--w-muted:#4b5b7c;--w-d:#1b4fc4;--w-r:#c3262b;--w-sel:#0b1a3a;
+ --w-d-safe:#1f5fd6;--w-d-likely:#4a84ef;--w-d-lean:#a9c4f7;--w-toss:#d3d8e3;--w-r-lean:#f5b1b3;--w-r-likely:#e5585c;--w-r-safe:#c3262b;--w-off:#e3e8f2;}
+:root.dark .wall,:root.dark .wall-mobile,:root.dark .wall-strip {--w-bg:#071531;--w-panel:#0d2047;--w-panel2:#12295a;--w-line:#24407a;--w-ink:#f3f6ff;--w-muted:#a3b4d8;--w-d:#6b9dff;--w-r:#ff6f72;--w-sel:#ffffff;
+ --w-d-safe:#1f5fd6;--w-d-likely:#3b78ea;--w-d-lean:#8fb0ee;--w-toss:#8c96ad;--w-r-lean:#ee9a9d;--w-r-likely:#e04c51;--w-r-safe:#b8222a;--w-off:#10264f;}
+.wall-num,.wall-big,.wall-tile-v,.wall-row-v,.wall-mrow-v,.wall-tally-num,.wall-strip-head {font-family:'Barlow Condensed',var(--font-sans);font-variant-numeric:tabular-nums;letter-spacing:.01em;}
+.wall .is-d,.wall-mobile .is-d,.wall-strip .is-d {color:var(--w-d);}
+.wall .is-r,.wall-mobile .is-r,.wall-strip .is-r {color:var(--w-r);}
+.wall-strip {display:flex;align-items:center;gap:20px;justify-content:space-between;background:var(--w-panel);color:var(--w-ink);border:1px solid var(--w-line);border-radius:10px;padding:10px 18px;margin-bottom:12px;}
+.wall-strip-head {font-size:26px;font-weight:700;line-height:1.05;text-transform:uppercase;margin:0;}
+.wall-strip-head span {color:var(--w-muted);}
+.wall-strip-meta {font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--w-muted);display:flex;gap:14px;white-space:nowrap;}
+.wall {display:grid;grid-template-columns:290px minmax(0,1fr) 330px;gap:12px;background:var(--w-bg);color:var(--w-ink);border-radius:14px;padding:12px;height:min(820px,calc(100dvh - 150px));min-height:700px;}
+.wall-left,.wall-right,.wall-center {display:flex;flex-direction:column;gap:12px;min-height:0;}
+.wall-panel {background:var(--w-panel);border:1px solid var(--w-line);border-radius:10px;padding:14px 16px;min-height:0;}
+.wall-panel-head {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+.wall-kicker {font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--w-muted);margin:0;}
+.wall-dial {display:flex;flex-direction:column;gap:8px;}
+.wall-dial-readout {margin:4px 0 0;display:flex;align-items:baseline;gap:6px;}
+.wall-dial-readout .wall-num {font-size:84px;font-weight:800;line-height:.9;}
+.wall-dial-readout.is-even {color:var(--w-ink);}
+.wall-dial-unit {font-family:var(--font-mono);font-size:13px;color:var(--w-muted);}
+.wall-dial-dir {font-size:14px;margin:0;}
+.wall-range {width:100%;accent-color:var(--w-sel);height:32px;}
+.wall-scale {display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;}
+.wall-presets {display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px;}
+.wall-presets button,.wall-toggle button {min-height:38px;border:1px solid var(--w-line);background:var(--w-panel2);color:var(--w-ink);border-radius:6px;font-size:12px;font-weight:600;transition:background .2s,transform .1s;}
+.wall-presets button:hover,.wall-toggle button:hover {border-color:var(--w-sel);}
+.wall-presets button:active,.wall-toggle button:active {transform:translateY(1px);}
+.wall-presets button[aria-pressed=true],.wall-toggle button[aria-pressed=true] {background:var(--w-ink);color:var(--w-panel);border-color:var(--w-ink);}
+.wall-note {font-size:12px;line-height:1.5;color:var(--w-muted);margin:6px 0 0;}
+.wall-tally {background:var(--w-panel);border:1px solid var(--w-line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;}
+.wall-tally-row {display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:10px;}
+.wall-tally-label {font-size:13px;font-weight:600;}
+.wall-tally-bar {display:flex;height:12px;border-radius:3px;overflow:hidden;background:var(--w-toss);}
+.wall-tally-bar i.is-d {background:var(--w-d-safe);} .wall-tally-bar i.is-r {background:var(--w-r-safe);margin-left:auto;}
+.wall-tally-bar i {transition:width .25s ease;}
+.wall-tally-num {font-size:22px;font-weight:700;white-space:nowrap;}
+.wall-map {flex:0 0 auto;}
+.wall-toggle {display:flex;gap:6px;} .wall-toggle button {min-height:32px;padding:0 12px;}
+.wall-tiles {display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;max-width:620px;margin-inline:auto;}
+.wall-tile {aspect-ratio:1.15;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid transparent;color:#fff;padding:0;min-height:0;line-height:1;transition:background .25s,transform .1s;}
+.wall-tile.is-off {background:var(--w-off);color:var(--w-muted);opacity:.7;}
+.wall-tile-st {font-family:var(--font-mono);font-size:11px;font-weight:600;}
+.wall-tile-v {font-size:15px;font-weight:700;margin-top:2px;}
+button.wall-tile:hover {transform:translateY(-1px);}
+.wall-tile.is-selected {border-color:var(--w-sel);box-shadow:0 0 0 2px var(--w-bg),0 0 0 4px var(--w-sel);}
+.d-safe {background:var(--w-d-safe);} .d-likely {background:var(--w-d-likely);} .d-lean {background:var(--w-d-lean);color:#0b1a3a;}
+.toss {background:var(--w-toss);color:#0b1a3a;} .r-lean {background:var(--w-r-lean);color:#0b1a3a;} .r-likely {background:var(--w-r-likely);} .r-safe {background:var(--w-r-safe);}
+.wall-legend {display:flex;justify-content:center;gap:3px;margin-top:10px;font-size:10px;font-family:var(--font-mono);}
+.wall-legend span {padding:3px 7px;border-radius:3px;color:#fff;}
+.wall-legend .d-lean,.wall-legend .toss,.wall-legend .r-lean {color:#0b1a3a;}
+.wall-detail {flex:1 1 auto;overflow:auto;}
+.wall-link {font-size:13px;font-weight:600;color:var(--w-ink);white-space:nowrap;}
+.wall-matchup {margin:0 0 10px;font-size:15px;font-weight:600;}
+.wall-figures {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-bottom:12px;border-bottom:1px solid var(--w-line);}
+.wall-label {font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--w-muted);margin:0;}
+.wall-big {font-size:38px;font-weight:800;line-height:1;margin:4px 0;}
+.wall-sub {font-size:12px;color:var(--w-muted);margin:0;}
+.wall-parts {list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px;}
+.wall-parts li {display:grid;grid-template-columns:200px 1fr 64px;gap:10px;align-items:center;font-size:13px;}
+.wall-part-bar {position:relative;height:10px;background:var(--w-panel2);border-radius:3px;}
+.wall-part-bar::after {content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--w-muted);}
+.wall-part-bar i {position:absolute;top:0;bottom:0;border-radius:3px;transition:width .25s;}
+.wall-part-bar i.is-d {background:var(--w-d-safe);} .wall-part-bar i.is-r {background:var(--w-r-safe);}
+.wall-part-v {font-family:var(--font-mono);font-size:12px;text-align:right;}
+.wall-board {flex:1 1 auto;display:flex;flex-direction:column;}
+.wall-board ol {list-style:none;margin:0;padding:0;overflow:auto;flex:1 1 auto;}
+.wall-key {font-family:var(--font-mono);font-size:11px;color:var(--w-muted);margin:0;display:flex;align-items:center;gap:6px;}
+.wall-key-tick {display:inline-block;width:2px;height:12px;background:var(--w-ink);}
+.wall-row {display:grid;grid-template-columns:62px 1fr 62px;align-items:center;gap:8px;width:100%;min-height:34px;padding:2px 6px;border-radius:6px;border:1px solid transparent;background:none;color:var(--w-ink);text-align:left;}
+.wall-row:hover {background:var(--w-panel2);}
+.wall-row.is-selected {border-color:var(--w-sel);background:var(--w-panel2);}
+.wall-row-name {font-size:13px;font-weight:700;} .wall-row-name small {font-weight:400;color:var(--w-muted);}
+.wall-row-track {position:relative;height:14px;background:linear-gradient(90deg,color-mix(in srgb,var(--w-r-safe) 12%,transparent),transparent 50%,color-mix(in srgb,var(--w-d-safe) 12%,transparent));border-radius:3px;}
+.wall-row-track::after {content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--w-muted);}
+.wall-row-bar {position:absolute;top:2px;bottom:2px;border-radius:2px;transition:left .25s,width .25s;}
+.wall-row-bar.is-d {background:var(--w-d-safe);} .wall-row-bar.is-r {background:var(--w-r-safe);}
+.wall-row-tick {position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--w-ink);}
+.wall-row-v {font-size:19px;font-weight:700;text-align:right;}
+/* Mobile: the dial stays pinned, races scroll under it. */
+.wall-mobile {background:var(--w-bg);color:var(--w-ink);border-radius:12px;padding:8px;margin-bottom:24px;}
+.wall-mobile-pin {position:sticky;top:0;z-index:5;background:var(--w-bg);padding-bottom:8px;display:grid;gap:8px;}
+.wall-dial.is-compact {padding:10px 12px;gap:4px;}
+.wall-dial.is-compact .wall-num {font-size:44px;}
+.wall-dial.is-compact .wall-presets {grid-template-columns:repeat(4,1fr);} .wall-dial.is-compact .wall-presets button {font-size:11px;padding:0 4px;}
+.wall-mobile .wall-tally {padding:10px 12px;gap:8px;} .wall-mobile .wall-tally-num {font-size:18px;}
+.wall-mobile-list {list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.wall-mrow {width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;border:none;color:#fff;text-align:left;min-height:56px;}
+.wall-mrow-name {display:flex;flex-direction:column;font-weight:700;font-size:15px;} .wall-mrow-name small {font-weight:500;font-size:12px;opacity:.85;}
+.wall-mrow-v {font-size:26px;font-weight:800;}
+.wall-mobile .wall-detail {margin-top:6px;}
+.wall-mobile .wall-figures {grid-template-columns:1fr 1fr 1fr;} .wall-mobile .wall-big {font-size:26px;}
+.wall-mobile .wall-parts li {grid-template-columns:1fr 70px 56px;font-size:12px;}
+.wall-mobile .wall-panel-head {flex-wrap:wrap;}
+/* Wall fit pass: the whole console inside a laptop-height window. */
+.wall {height:clamp(600px,calc(100dvh - 140px),820px);min-height:0;}
+.wall-strip {padding:8px 16px;margin-bottom:10px;} .wall-strip-head {font-size:22px;}
+.wall-tile {aspect-ratio:1.4;} .wall-tile-v {font-size:14px;} .wall-tile-st {font-size:10px;}
+.wall-tiles {max-width:560px;gap:3px;}
+.wall-legend {margin-top:8px;}
+.wall-map {padding:10px 14px;} .wall-map .wall-panel-head {margin-bottom:6px;}
+.wall-figures {gap:8px;padding-bottom:10px;}
+.wall-big {font-size:30px;white-space:nowrap;}
+.wall-matchup {margin-bottom:8px;}
+.wall-parts {margin-top:10px;gap:6px;}
+.wall-dial-readout .wall-num {font-size:72px;}
+
+/* Tile map grid positions (classes, not inline styles: the CSP forbids style attributes). */
+.tc-0{grid-column:1;}.tc-1{grid-column:2;}.tc-2{grid-column:3;}.tc-3{grid-column:4;}.tc-4{grid-column:5;}.tc-5{grid-column:6;}.tc-6{grid-column:7;}.tc-7{grid-column:8;}.tc-8{grid-column:9;}.tc-9{grid-column:10;}.tc-10{grid-column:11;}.tc-11{grid-column:12;}
+.tr-0{grid-row:1;}.tr-1{grid-row:2;}.tr-2{grid-row:3;}.tr-3{grid-row:4;}.tr-4{grid-row:5;}.tr-5{grid-row:6;}.tr-6{grid-row:7;}.tr-7{grid-row:8;}
+
+/* White page in light mode (Max, 2026-10-27: "Let me see white background. Might look cleaner and less partisan"). */
+:root:not(.dark) body {background:#ffffff;}
+:root:not(.dark) .wall {padding:0;gap:14px;}
+:root:not(.dark) .wall-panel,:root:not(.dark) .wall-tally,:root:not(.dark) .wall-strip {box-shadow:0 1px 2px rgba(11,26,58,.06);}
+/* Breakdown factors in two columns so all four fit without scrolling the panel. */
+.wall-parts {grid-template-columns:1fr 1fr;column-gap:18px;}
+.wall-parts li {grid-template-columns:1fr 64px;row-gap:3px;}
+.wall-parts .wall-part-label {grid-column:1 / -1;font-size:12px;color:var(--w-muted);}
+.wall-mobile .wall-parts {grid-template-columns:1fr;}
+.wall-mobile .wall-parts li {grid-template-columns:1fr 60px;}
+/* Mobile wall: nothing may run past a 375px screen. */
+.wall-mobile,.wall-mobile-list,.wall-mobile-list li,.wall-mobile .wall-detail {min-width:0;max-width:100%;}
+.wall-mobile .wall-figures {grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+.wall-mobile .wall-big {white-space:normal;font-size:22px;overflow-wrap:anywhere;}
+.wall-mobile .wall-sub {font-size:11px;}
+.wall-mobile .wall-panel-head {align-items:flex-start;}
+.wall-mobile .wall-link {white-space:normal;font-size:12px;}
+.wall-mrow-name {min-width:0;} .wall-mrow-v {flex-shrink:0;}
