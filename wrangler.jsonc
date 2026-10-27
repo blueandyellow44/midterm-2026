@@ -4,7 +4,7 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-10-25",
   "compatibility_flags": ["nodejs_compat"],
-  "workers_dev": true,
+  "workers_dev": false,
   "routes": [
     { "pattern": "midtermundertow.com", "custom_domain": true },
     { "pattern": "www.midtermundertow.com", "custom_domain": true }

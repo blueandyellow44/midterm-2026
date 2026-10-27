@@ -1,0 +1,10 @@
+{
+  "accepted": [
+    {
+      "id": "auth.access-jwt",
+      "reason": "Undertow is a public, static site by design: no accounts, no data routes, no admin pages, so no Cloudflare Access sits in front of it (Max, 2026-10-27: \"fix all\").",
+      "ruled": "2026-10-27",
+      "evidence": "wrangler.jsonc declares a custom domain or route; no Cf-Access-Jwt-Assertion reference in the tree"
+    }
+  ]
+}
