@@ -298,7 +298,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "2.1"  # 2.1: early vote counted where party registration is reported and a 2022 baseline exists; rhetoric off the cards (Max, 2026-10-27); 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "2.2"  # 2.2: witness model, spending and the state record weighed against each other for the race-specific miss, national lean untouched (Max, 2026-10-27: "We are switching from stacking"; "historically different outlier"); 2.1: early vote counted where party registration is reported and a 2022 baseline exists; rhetoric off the cards (Max, 2026-10-27); 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -666,6 +666,67 @@ EV_COUNTED_BASIS = "registration"              # the history is registration-bas
 EV_MIN_PAIRS = 15
 
 
+WITNESS_RACE_POLL_SD = SIGNAL_RACE_POLL_SD   # race-level noise neither witness can see, removed from each witness's error
+
+
+def witness_model(spe_rows: list[dict] | None, spend_history: list[dict] | None, state_slope: float | None) -> dict | None:
+    """Spending and the state's polling record as two witnesses to the race-specific polling miss (Max, 2026-10-27:
+    "We are switching from stacking"). The national lean is the declared outlier bet and is not judged by history; spending
+    is measured against other races in the same cycle, so it can say where the miss lands, not how big it is nationally.
+    Each witness's units and error come from 2020 and 2022 Senate races (year-demeaned miss); the two are combined by
+    precision weights. A held-out check (one year predicts the other) is reported for polls+national, the old stack and this."""
+    if not spe_rows or not spend_history or state_slope is None:
+        return None
+    sc = defaultdict(dict)
+    for r in spe_rows:
+        b = num(r.get("state_bias"))
+        if b is not None:
+            sc[int(r["year"])][r["state"]] = b
+    res = {y: {st: b - sum(v.values()) / len(v) for st, b in v.items()} for y, v in sc.items() if v}
+
+    def adj(state: str, year: int) -> float:
+        vals = [res[y][state] for y in res if year - STATE_LEAN_WINDOW_YEARS <= y < year and state in res[y]]
+        return -state_slope * sum(vals) / len(vals) if len(vals) >= STATE_LEAN_MIN_CYCLES else 0.0
+    pts = []
+    for yr in sorted({r["year"] for r in spend_history}):
+        rows = [r for r in spend_history if r["year"] == yr and None not in (num(r.get("poll_margin")), num(r.get("result_margin")), num(r.get("log_recent_spend_m")), num(r.get("pres_d_minus_r")))]
+        if len(rows) < 3:
+            continue
+        polls = [num(r["poll_margin"]) for r in rows]
+        z = excess_spend_z([num(r["log_recent_spend_m"]) for r in rows], [abs(p) for p in polls])
+        if not z:
+            continue
+        miss = [num(r["result_margin"]) - p for r, p in zip(rows, polls)]
+        mm = sum(miss) / len(miss)
+        for i, r in enumerate(rows):
+            d = spend_direction(z[i], underdog_sign(num(r["pres_d_minus_r"])), polls[i])
+            pts.append((yr, adj(r["state"], int(yr)), abs(z[i]) * d if abs(z[i]) >= SIGNAL_SPEND_MIN_Z else 0.0, miss[i] - mm))   # near-typical money is no signal (Max, 2026-10-27: "Cut 3")
+    years = sorted({p[0] for p in pts})
+    if len(pts) < 20 or len(years) < 2:
+        return None
+
+    def calib(ps):
+        sxx = sum(p[2] ** 2 for p in ps)
+        k = sum(p[2] * p[3] for p in ps) / sxx if sxx else 0.0
+        var = lambda xs: sum((x - sum(xs) / len(xs)) ** 2 for x in xs) / len(xs)
+        ea = max(var([p[3] - p[1] for p in ps]) - WITNESS_RACE_POLL_SD ** 2, 0.25)
+        es = max(var([p[3] - k * p[2] for p in ps if p[2]]) - WITNESS_RACE_POLL_SD ** 2, 0.25)
+        return k, ea, es, (1 / ea) / (1 / ea + 1 / es)
+    k, ea, es, wa = calib(pts)
+    e = {"polls_and_national": [], "stack": [], "witness": []}
+    for hy in years:
+        kk, _, _, ww = calib([p for p in pts if p[0] != hy])
+        for p in pts:
+            if p[0] == hy:
+                e["polls_and_national"].append(abs(p[3]))
+                e["stack"].append(abs(p[3] - p[1] - SIGNAL_WEIGHT_SINGLE * SIGNAL_PRIOR_BETA[0] * p[2]))
+                e["witness"].append(abs(p[3] - (ww * p[1] + (1 - ww) * kk * p[2] if p[2] else p[1])))
+    return {"spend_points_per_z": r4(k), "state_error_sd": r4(math.sqrt(ea)), "spend_error_sd": r4(math.sqrt(es)),
+            "weight_state": r4(wa), "weight_spending": r4(1 - wa), "n": len(pts), "years": years,
+            "holdout_mae": {kk: r4(sum(v) / len(v)) for kk, v in e.items()},
+            "method": "race-specific miss = w_state x state adjustment + w_spend x (points per z x spending signal); weights are precision weights from each witness's error after removing race-level noise; national lean added unchanged"}
+
+
 def early_vote_model(ev_history: list[dict] | None, poll_history: list[dict] | None) -> dict | None:
     """Slope of a state's polling miss (toward D, demeaned by year) on the change in its early-vote party margin against
     the previous midterm (demeaned by year), fit through the origin on 2018 and 2022, with a leave-one-year-out check.
@@ -804,15 +865,17 @@ def state_poll_error_leans(rows: list[dict], national: float) -> dict:
 
 def signal_adjusted(polling: float | None, spend_signal: float | None, heat_gap: float | None,
                     beta: tuple[float, float], gamma: tuple[float, float], poll_error: float = 0.0, poll_error_sd: float = 0.0,
-                    early_vote: float = 0.0, early_vote_sd: float = 0.0) -> dict:
+                    early_vote: float = 0.0, early_vote_sd: float = 0.0, spend_override: float | None = None) -> dict:
     """A = P + poll_error + w_s * beta * spend_signal + w_r * clamp(gamma * heat_gap) + early_vote. All in D-minus-R points."""
     ws, wr, alignment = alignment_weights(spend_signal, heat_gap)
+    if spend_override is not None:   # witness model: spending's share is already weighed against the state record
+        ws, alignment = (1.0, "WITNESS") if spend_override else (0.0, "NO_SIGNAL")
     if polling is None:
         return {"status": "NO_POLLING_READ", "alignment": alignment, "adjusted_margin": None, "delta_spending": None, "delta_rhetoric": None, "delta_polling_error": None, "delta_early_vote": None, "delta_sd": None}
-    d_s = ws * beta[0] * spend_signal if ws else 0.0
+    d_s = (spend_override if spend_override is not None else ws * beta[0] * spend_signal) if ws else 0.0
     raw_r = gamma[0] * heat_gap if wr else 0.0
     d_r = wr * max(-SIGNAL_RHETORIC_CAP, min(SIGNAL_RHETORIC_CAP, raw_r))
-    sd = math.sqrt((ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2 + poll_error_sd ** 2 + early_vote_sd ** 2)
+    sd = math.sqrt((0.0 if spend_override is not None else ws * (spend_signal or 0) * beta[1]) ** 2 + (wr * (heat_gap or 0) * gamma[1]) ** 2 + poll_error_sd ** 2 + early_vote_sd ** 2)
     delta = d_s + d_r + poll_error + early_vote
     return {"status": "ADJUSTED" if (alignment != "NO_SIGNAL" or poll_error or early_vote) else "NO_SIGNAL", "alignment": alignment,
             "weight_spending": ws, "weight_rhetoric": wr,
@@ -1794,6 +1857,7 @@ class Bundle:
                 zmap.update({c[0]: z[i] for i, c in enumerate(rows)})
                 covered += rows
         ev_model = early_vote_model(getattr(self, "early_vote_history", None), getattr(self, "poll_error_history", None))
+        wit = witness_model(getattr(self, "state_poll_error", None), self.spend_history, (leans or {}).get("slope"))
         per_race = {}
         for race in races:
             sp = spend.get(race) or {}
@@ -1805,8 +1869,19 @@ class Bundle:
             st_lean = (leans or {}).get("per_state", {}).get(race.split("-")[1]) if leans else None
             lean = st_lean["lean"] if st_lean else national
             evb = early_vote_block(getattr(self, "early_vote", None), race.split("-")[1], ev_model)
+            state_adj = (st_lean or {}).get("state_adjustment") or 0.0
+            witness = None
+            if wit:
+                both = spend_signal is not None and abs(spend_signal) >= SIGNAL_SPEND_MIN_Z and polling[race] is not None
+                w_state = wit["weight_state"] if both else 1.0
+                spend_part = (1 - w_state) * wit["spend_points_per_z"] * spend_signal if both else 0.0
+                lean = national + w_state * state_adj
+                witness = {"weight_state": r4(w_state), "weight_spending": r4(1 - w_state), "state_adjustment_raw": r4(state_adj),
+                           "spending_alone": r4(wit["spend_points_per_z"] * spend_signal) if both else None,
+                           "agree": (state_adj * spend_signal > 0) if both and abs(state_adj) >= 0.05 else None}
             out = signal_adjusted(polling[race], spend_signal, heat["gap"] if SIGNAL_RHETORIC_IN_READING else None, beta, gamma, lean, national_sd,
-                                  (evb or {}).get("delta_toward_d") or 0.0, (evb or {}).get("delta_sd") or 0.0)
+                                  (evb or {}).get("delta_toward_d") or 0.0, (evb or {}).get("delta_sd") or 0.0,
+                                  spend_override=(spend_part if wit else None))
             d_rec, r_rec = num(sp.get("d_fav_recent")), num(sp.get("r_fav_recent"))
             d_pri, r_pri = num(sp.get("d_fav_prior")), num(sp.get("r_fav_prior"))
             out.update({
@@ -1821,7 +1896,9 @@ class Bundle:
                              "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
                 "rhetoric": {**heat, "in_reading": SIGNAL_RHETORIC_IN_READING},
                 "early_vote": evb,
-                "polling_error": {"national": national, "state": race.split("-")[1], **(st_lean or {"prior_residual": None, "cycles": 0, "state_adjustment": 0.0, "lean": national})},
+                "polling_error": {"national": national, "state": race.split("-")[1], **(st_lean or {"prior_residual": None, "cycles": 0, "state_adjustment": 0.0, "lean": national}),
+                                  **({"state_adjustment": r4(lean - national), "lean": r4(lean)} if wit else {})},
+                "witness": witness,
             })
             per_race[race] = out
         return {
@@ -1836,12 +1913,13 @@ class Bundle:
             "poll_error_model": {k: v for k, v in model.items() if k != "state_leans"} if model else None,
             "spending_backtest": spending_backtest(self.spend_history),
             "early_vote_model": ev_model,
+            "witness_model": wit,
             "offyear_record": offyear_record(getattr(self, "poll_error_history", None)),
             "rules": {"rhetoric_in_reading": SIGNAL_RHETORIC_IN_READING, "poll_error_toward_d": national, "poll_error_sd": national_sd, "poll_error_carryover": [model["carryover_share"], model["carryover_se"]] if model else list(SIGNAL_POLL_ERROR_CARRYOVER), "poll_error_2025_miss": model["offyear_miss_toward_d"] if model else SIGNAL_POLL_ERROR_2025_MISS, "range_z": SIGNAL_RANGE_Z, "race_poll_sd": SIGNAL_RACE_POLL_SD, "rhetoric_cap": SIGNAL_RHETORIC_CAP, "min_heat_units": SIGNAL_MIN_HEAT_UNITS, "spend_min_z": SIGNAL_SPEND_MIN_Z, "abandon_min_lead": SIGNAL_ABANDON_MIN_LEAD, "heat_tie_threshold": TIE_THRESHOLD,
                       "weights": {"aligned": SIGNAL_WEIGHT_ALIGNED, "opposed": SIGNAL_WEIGHT_OPPOSED, "single": SIGNAL_WEIGHT_SINGLE},
                       "excess_fit_races": [c[0] for c in covered]},
             "per_race": per_race,
-            "framing": "Polls missed Democrats last fall by more than in any off-year on record, and kept missing them this spring. The undertow bets part of that carries into November, and reads outside spending and early voting as signs of where campaigns' internal polls stand. Frozen on November 2 and graded against certified results beside the polls.",
+            "framing": "Polls missed Democrats last fall by more than in any off-year on record, and kept missing them this spring. The undertow bets part of that carries into November. Outside spending, read as a sign of where campaigns' internal polls stand, is weighed against each state's own polling record to place the miss race by race, and early voting adds where it can be measured like for like. Frozen on November 2 and graded against certified results beside the polls.",
         }
 
     def compute(self, calc_version: str, release_id: str | None) -> dict:
