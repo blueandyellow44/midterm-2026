@@ -43,7 +43,7 @@ BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
     "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
-    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0", "early_vote_history": "1.0",
+    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0", "early_vote_history": "1.0", "house_races": "1.0",
 }
 
 POLLS_HEADER = (
@@ -75,6 +75,7 @@ FUNDAMENTALS_HEADER = "race,state,pres_year,pres_d_minus_r,source_file,source_sh
 SPEND_HISTORY_HEADER = "year,state,poll_margin,result_margin,log_recent_spend_m,pres_year,pres_d_minus_r,source_sha256".split(",")
 STATE_POLL_ERROR_HEADER = "year,state,state_bias,n_races,source_sha256".split(",")
 RECENT_MISSES_HEADER = "race,election_date,kind,electorate,poll_label,result_label,miss_toward_d,total_votes,midterm_2022_house_votes,note".split(",")
+HOUSE_RACES_HEADER = "race,state,district,cook_rating,cook_rating_date,incumbent,incumbent_party,d_candidate,d_party,r_candidate,r_party,pres2024_d_minus_r,lines_note,source_sha256".split(",")
 EARLY_VOTE_HISTORY_HEADER = "year,state,dem_share,rep_share,total_ballots,as_of,source_sha256".split(",")
 EARLY_VOTE_HEADER = "state,d_margin_2022_same_day,d_margin_2024_same_day,d_margin_2026,shift_vs_2022,as_of,source_url,party_basis".split(",")
 POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
@@ -84,10 +85,13 @@ RESULTS_HEADER = "race,resolution_status,winner_slot,certified_margin,denominato
 SENATE_RACES = ["2026-TX-SEN", "2026-IA-SEN", "2026-ME-SEN", "2026-AK-SEN", "2026-OH-SEN-SPECIAL", "2026-MI-SEN", "2026-NC-SEN", "2026-GA-SEN",
                 "2026-KS-SEN", "2026-NE-SEN", "2026-SC-SEN", "2026-MS-SEN", "2026-NH-SEN", "2026-FL-SEN-SPECIAL"]  # last six added 2026-10-27 (Max: "add all senate races please"; the six deferred)
 GOVERNOR_RACES = ["2026-OH-GOV", "2026-IA-GOV", "2026-MI-GOV", "2026-GA-GOV", "2026-WI-GOV"]
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "house_races.json"), encoding="utf-8") as _f:
+    HOUSE_RACES = json.load(_f)["races"]   # competitive House seats; no-poll districts are listed without a number (Max, 2026-10-27)
 DEFERRED_RACES = ["2026-AZ-GOV", "2026-NV-GOV", "2026-FL-GOV", "2026-KS-GOV"]
 BACKTEST_RACES = ["2025-VA-GOV", "2025-NJ-GOV"]
-RCV_RACES = {"2026-ME-SEN", "2026-AK-SEN"}
-IN_SCOPE_RACES = set(SENATE_RACES) | set(GOVERNOR_RACES)
+RCV_RACES = {"2026-ME-SEN", "2026-AK-SEN", "2026-AK-AL-HOUSE"}
+IN_SCOPE_RACES = set(SENATE_RACES) | set(GOVERNOR_RACES) | set(HOUSE_RACES)
+ALL_RACES = SENATE_RACES + GOVERNOR_RACES + HOUSE_RACES
 PER_RACE_CONTRAST_RACES = ["2026-TX-SEN", "2026-IA-SEN", "2026-ME-SEN", "2026-AK-SEN", "2026-OH-SEN-SPECIAL", "2026-MI-SEN"]
 GOV_SEN_GAP_STATES = {"IA": ("2026-IA-GOV", "2026-IA-SEN"), "OH": ("2026-OH-GOV", "2026-OH-SEN-SPECIAL"), "MI": ("2026-MI-GOV", "2026-MI-SEN"), "GA": ("2026-GA-GOV", "2026-GA-SEN")}
 
@@ -330,7 +334,7 @@ SIGNAL_MIN_HEAT_UNITS = 2         # scored units required per candidate
 SIGNAL_WEIGHT_ALIGNED = 1.0
 SIGNAL_WEIGHT_OPPOSED = 0.25
 SIGNAL_WEIGHT_SINGLE = 0.5
-SIGNAL_SPEND_MEASURES = ("FEC_SCHEDULE_E", "DIGITAL_CANDIDATE")
+SIGNAL_SPEND_MEASURES = ("FEC_SCHEDULE_E", "DIGITAL_CANDIDATE", "FEC_SCHEDULE_E_HOUSE")   # each measure is fit within its own group
 SIGNAL_SPEND_MIN_Z = 0.25
 # Missing money carries no direction when the poll leader is not clear (Max, 2026-10-27, agreeing: "give low spending no
 # direction when the polls are within about 2 points"). Stops a near-tie from flipping the spending term's sign.
@@ -641,6 +645,28 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
     return {"method": "v2: every verified principal poll since September 1; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
             "lv_minus_rv_gap": r4(lv_shift), "lv_rv_pairs": len(gaps), "backtest": {"races": 259, "two_newest_polls": 4.50, "every_poll": 4.16, "every_poll_house_adjusted": 4.06, "source": "538 raw polls archive 2010-2024, scored 7 days out"},
             "per_race": out}
+
+
+TREND_START = date(2026, 9, 8)
+TREND_STEP_DAYS = 7
+
+
+def polling_trend(estimates: list[dict], as_of_date: date) -> dict:
+    """Candidate lines for the race charts (Max, 2026-10-27: "Where are the lines that show the candidates in the graph?"):
+    the v2 average recomputed weekly with only the polls finished by each date, ending at the analytical cutoff so the
+    last point is the published number. Each candidate's line sits around half the typical full-ballot share:
+    D = 50 x scale + margin / 2, R = 50 x scale - margin / 2, so D - R is exactly the v2 margin at every point."""
+    dates, t = [], TREND_START
+    while t < as_of_date:
+        dates.append(t); t += timedelta(days=TREND_STEP_DAYS)
+    dates.append(as_of_date)
+    out = defaultdict(list)
+    for t in dates:
+        sub = [e for e in estimates if (parse_date(e.get("field_end")) or as_of_date) <= t]
+        for race, x in (polling_average_v2(sub, t).get("per_race") or {}).items():
+            mid = 50.0 * x["full_ballot_scale"]
+            out[race].append({"date": t.isoformat(), "margin": x["margin"], "d": r4(mid + x["margin"] / 2), "r": r4(mid - x["margin"] / 2), "polls": x["polls"]})
+    return dict(out)
 
 
 def apply_polling_v2(blocks: dict, v2: dict, as_of_date: date) -> None:
@@ -1147,6 +1173,7 @@ class Bundle:
         self.state_poll_error = read_csv(os.path.join(bundle_dir, "state-poll-error.csv"), STATE_POLL_ERROR_HEADER, required=False)
         self.recent_misses = read_csv(os.path.join(bundle_dir, "recent-misses.csv"), RECENT_MISSES_HEADER, required=False)
         self.early_vote = read_csv(os.path.join(bundle_dir, "early-vote.csv"), EARLY_VOTE_HEADER, required=False)
+        self.house_races = read_csv(os.path.join(bundle_dir, "house-races.csv"), HOUSE_RACES_HEADER, required=False)
         self.early_vote_history = read_csv(os.path.join(bundle_dir, "early-vote-history.csv"), EARLY_VOTE_HISTORY_HEADER, required=False)
         self.poll_error_history = read_csv(os.path.join(bundle_dir, "poll-error-history.csv"), POLL_ERROR_HISTORY_HEADER, required=False)
         self.quarantined_pollsters = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "POLLSTER"}
@@ -1844,7 +1871,7 @@ class Bundle:
         gamma = SIGNAL_PRIOR_GAMMA
         fund = {r["race"]: num(r["pres_d_minus_r"]) for r in self.fundamentals}
         spend = {r["race"]: r for r in self.spending}
-        races = SENATE_RACES + GOVERNOR_RACES
+        races = ALL_RACES
         polling = {race: ((blocks.get(race) or {}).get("polling_read") or {}).get("margin") for race in races}
         model = poll_error_model(getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR, getattr(self, "recent_misses", None))
         if model:
@@ -1882,7 +1909,7 @@ class Bundle:
             heat = rhetoric_gap(self.heat, race)
             st_lean = (leans or {}).get("per_state", {}).get(race.split("-")[1]) if leans else None
             lean = st_lean["lean"] if st_lean else national
-            evb = early_vote_block(getattr(self, "early_vote", None), race.split("-")[1], ev_model)
+            evb = None if race in HOUSE_RACES else early_vote_block(getattr(self, "early_vote", None), race.split("-")[1], ev_model)   # state-level early vote does not measure a district
             state_adj = (st_lean or {}).get("state_adjustment") or 0.0
             witness = None
             if wit:
@@ -1906,7 +1933,7 @@ class Bundle:
                              "r_share_recent": r4(r_rec / (d_rec + r_rec)) if d_rec is not None and r_rec is not None and (d_rec + r_rec) > 0 else None,
                              "r_share_prior": r4(r_pri / (d_pri + r_pri)) if d_pri is not None and r_pri is not None and (d_pri + r_pri) > 0 else None,
                              "excess_z": r4(zr) if zr is not None else None, "signal_toward_d": spend_signal,
-                             "measure": {"FEC_SCHEDULE_E": "FEC outside spending, 14 days", "DIGITAL_CANDIDATE": "campaign digital ad spending in state (Google + Meta), about 4 weeks"}.get(sp.get("fec_coverage")),
+                             "measure": {"FEC_SCHEDULE_E": "FEC outside spending, 14 days", "FEC_SCHEDULE_E_HOUSE": "FEC outside spending in the district, 14 days", "DIGITAL_CANDIDATE": "campaign digital ad spending in state (Google + Meta), about 4 weeks"}.get(sp.get("fec_coverage")),
                              "status": "defined" if spend_signal is not None else ("not federal: no FEC coverage" if sp.get("fec_coverage") == "NOT_FEDERAL" else "undefined")},
                 "rhetoric": {**heat, "in_reading": SIGNAL_RHETORIC_IN_READING},
                 "early_vote": evb,
@@ -1942,7 +1969,7 @@ class Bundle:
         stage2c = ss.get("stage2c") == "PASSED"
         stage2a = ss.get("stage2a") == "PASSED"
         ests = self.estimates()
-        blocks = {race: self.race_block(race, ests, stage2c) for race in SENATE_RACES + GOVERNOR_RACES}
+        blocks = {race: self.race_block(race, ests, stage2c) for race in ALL_RACES}
         heat = self.heat_block()
         derived = {
             "derived_schema": "1.0",
@@ -1952,7 +1979,7 @@ class Bundle:
             "stage2c_passed": stage2c,
             "stage_status": ss,
             "rating_source": self.run_state.get("rating_source"),
-            "scope": {"senate_races": SENATE_RACES, "governor_races": GOVERNOR_RACES, "deferred": DEFERRED_RACES, "rcv_races": sorted(RCV_RACES)},
+            "scope": {"senate_races": SENATE_RACES, "governor_races": GOVERNOR_RACES, "house_races": HOUSE_RACES, "deferred": DEFERRED_RACES, "rcv_races": sorted(RCV_RACES)},
             "weighting_spec": {
                 "formula": "weight = f_track * f_recency * f_sample * f_pop * f_sponsor * f_disclosure (heuristic, not an inverse variance)",
                 "recency_half_life_days": RECENCY_HALF_LIFE_DAYS, "sample_cap_n": SAMPLE_CAP_N, "f_pop": F_POP, "f_sponsor": F_SPONSOR,
@@ -1982,6 +2009,9 @@ class Bundle:
         v2 = polling_average_v2(derived["estimates"], self.as_of_date) if stage2c else None
         if v2:
             apply_polling_v2(blocks, v2, self.as_of_date)
+            for race, series in polling_trend(derived["estimates"], self.as_of_date).items():
+                if race in blocks:
+                    blocks[race]["trend"] = series
         derived["signals"] = self.signals_block(blocks)
         if derived["signals"] is not None and v2:
             derived["signals"]["polling_v2"] = v2
@@ -2078,7 +2108,7 @@ class Bundle:
         copy_names = ["polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv"]
         if ss.get("stage2a") == "PASSED" and os.path.exists(os.path.join(self.dir, "backtest-2025.csv")):
             copy_names.append("backtest-2025.csv")
-        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv") if os.path.exists(os.path.join(self.dir, n))]
+        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv", "house-races.csv") if os.path.exists(os.path.join(self.dir, n))]
         for name in copy_names:
             src = os.path.join(self.dir, name)
             if os.path.exists(src):
@@ -2120,7 +2150,7 @@ class Bundle:
             "csv_schemas": CSV_SCHEMAS,
             "stage_status": {k: ss.get(k, "NOT_STARTED") for k in ("stage1", "stage1b", "stageW", "stage2a", "stage2b", "stage2c", "stage3")},
             "files": files,
-            "scope": {"senate_races": SENATE_RACES, "governor_races": GOVERNOR_RACES, "deferred": DEFERRED_RACES},
+            "scope": {"senate_races": SENATE_RACES, "governor_races": GOVERNOR_RACES, "house_races": HOUSE_RACES, "deferred": DEFERRED_RACES},
             "rating_source": rating,
             "scorer": scorer,
             "supersedes": (self.run_state or {}).get("supersedes"),

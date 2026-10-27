@@ -5,7 +5,7 @@ import { MethodNotes, signalLines } from '@/components/SignalReading';
 import { Both,RecallLegend,Empty } from '@/components/UI';
 import { Conditions } from '@/components/RaceLedger';
 import { RecallComparison } from '@/components/RecallComparison';
-import { DotPlot } from '@/components/Charts';
+import { DotPlot, CandidateChart } from '@/components/Charts';
 import { Panel, Figure, FactorBars, MarginTrack, tone, EVEN } from '@/components/Console';
 import { margin,number,shortDate } from '@/lib/format';
 export function generateStaticParams(){return races.map(r=>({slug:r.slug}));}
@@ -65,10 +65,11 @@ export default async function Race({params}:{params:Promise<{slug:string}>}) {co
  </>;
  return <div className="race-console">
   <RaceHead r={r}/>
-  <Panel className="race-recall" kicker="Every poll, by whether it weights on recalled 2024 vote">
+  <Panel className="race-recall" kicker="The polls">
    <div className="race-recall-grid">
-    <Both desktop={<DotPlot estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>} mobile={<DotPlot compact estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>}/>
-    <div>{r.recallComparison?<RecallComparison r={r} pollsterNames={pollsterNames}/>:<p className="c-sub">Not enough polls on both sides to compare the two groups in this race.</p>}</div>
+    {r.trend?.length?<Both desktop={<CandidateChart estimates={publicEstimates(r.id)} trend={r.trend} name={r.name} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>} mobile={<CandidateChart compact estimates={publicEstimates(r.id)} trend={r.trend} name={r.name} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>}/>
+    :<Both desktop={<DotPlot estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>} mobile={<DotPlot compact estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>}/>}
+    <div>{r.recallComparison?<RecallComparison r={r} pollsterNames={pollsterNames}/>:<p className="c-sub">Not enough polls on both sides to compare polls that weight on recalled 2024 vote with polls that do not.</p>}</div>
    </div>
   </Panel>
   <Both desktop={<div className="race-grid"><WhyPull r={r}/><ThePolls r={r}/></div>} mobile={<div className="race-stack"><WhyPull r={r}/><ThePolls r={r}/></div>}/>

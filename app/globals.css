@@ -334,3 +334,10 @@ html[data-view=mobile] .race-recall-grid {grid-template-columns:1fr;}
 .recall-chart g.is-context {opacity:.28;}
 .dotplot.is-compact text {font-size:12px;}
 html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
+/* Candidate chart: party colors are right here, the lines ARE the candidates. */
+.cand-chart svg text {font-size:15px;} .cand-chart .is-compact text {font-size:12px;}
+.cand-d {fill:var(--d);color:var(--d);} .cand-r {fill:var(--r);color:var(--r);}
+.cand-chart path.cand-d,.cand-chart circle.cand-d,.cand-chart rect.cand-d,.cand-chart path.cand-r,.cand-chart circle.cand-r,.cand-chart rect.cand-r {fill-opacity:.55;stroke:var(--panel);stroke-width:1;}
+.cand-chart .is-hollow {fill-opacity:0!important;stroke-width:2!important;} .cand-chart .cand-d.is-hollow {stroke:var(--d)!important;} .cand-chart .cand-r.is-hollow {stroke:var(--r)!important;}
+.cand-line {fill:none;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round;} .cand-line-d {stroke:var(--d);} .cand-line-r {stroke:var(--r);}
+.cand-label {font-family:var(--font-sans);font-size:15px!important;font-weight:700;} .cand-value {font-family:var(--font-num);font-size:26px!important;font-weight:800;}
