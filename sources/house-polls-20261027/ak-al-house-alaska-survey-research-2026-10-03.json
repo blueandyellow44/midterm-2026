@@ -13,15 +13,15 @@
   "release_date": "2026-10-09",
   "n": 1512,
   "pop": "LV",
-  "D": 6.9,
+  "D": 39.9,
   "R": 49.8,
-  "other": 43.3,
+  "other": 10.3,
   "undecided": null,
   "denominator_class": "FULL",
   "round": "FIRST",
   "source_url": "https://api.fxtwitter.com/2/conversation/2108662812415549529",
   "source_locator": "ASR thread https://x.com/The_Real_ASR/status/2108662812415549529 (1/11: Oct 1-3, N=1,512 likely voters, MOE +/-3.0); 4/11 https://x.com/The_Real_ASR/status/2108662817016705490 'ROUND 1 Begich (R) 49.8%, Hill (I) 39.9%, Hafner (D) 6.9%, McDermott (Lib) 3.4%'",
-  "notes": "other = Hill 39.9 + McDermott 3.4. Round 1 shares sum to 100 (no undecided reported). Round 3: Begich 52.7, Hill 47.3.",
+  "notes": "other = Hill 39.9 + McDermott 3.4. Round 1 shares sum to 100 (no undecided reported). Round 3: Begich 52.7, Hill 47.3. D slot = Bill Hill (nonpartisan independent), the leading non-Republican, as with Nebraska's Osborn; other = Hafner (D) + McDermott (L).",
   "retrieved_at": "2026-10-27T16:55:00-07:00"
  },
  "pollster": {

@@ -45,8 +45,16 @@ def fec_date(s: str) -> date | None:
     return None
 
 
-def favored_side(party: str, sup_opp: str) -> str | None:
+# Senate races whose D slot holds an independent (the site's rule, set for Nebraska's Osborn): money for or against that
+# candidate counts on the D side, not dropped as a third party (bug found 2026-10-27: $9.3M of Nebraska money was dropped).
+INDEPENDENT_D_SLOT = {"NE": "OSBORN"}
+
+
+def favored_side(party: str, sup_opp: str, cand_name: str = "", state: str = "") -> str | None:
     p, so = (party or "").strip().upper()[:3], (sup_opp or "").strip().upper()[:1]
+    ind = INDEPENDENT_D_SLOT.get(state)
+    if ind and ind in (cand_name or "").upper().replace(",", " ").split():
+        p = "DEM"
     if so not in ("S", "O"):
         return None
     if p == "DEM":
@@ -78,14 +86,21 @@ def aggregate_spending(rows: list[dict], state: str, window_end: date, office: s
     for r in rows:
         if r.get("can_office") != office or r.get("can_office_state") != state:
             continue
+        side_from_name = None
         if names:   # House: match the district's nominees by surname; FEC district codes can be stale or "00" (Montana)
-            if not any(fec_name_matches(r.get("cand_name") or "", last, initial) for last, initial in names):
+            hit = [i for i, (last, initial) in enumerate(names) if fec_name_matches(r.get("cand_name") or "", last, initial)]
+            if not hit:
                 continue
+            so = (r.get("sup_opp") or "").strip().upper()[:1]
+            if so not in ("S", "O"):
+                continue
+            nominee = "D" if hit[0] == 0 else "R"   # names = (D-slot nominee, R nominee); the D slot can hold an independent
+            side_from_name = nominee if so == "S" else ("R" if nominee == "D" else "D")
         elif district is not None and (r.get("can_office_dis") or "").strip().zfill(2) != district:
             continue
         if (r.get("ele_type") or "G")[:1] not in ("G", "S"):
             continue
-        side = favored_side(r.get("cand_pty_aff", ""), r.get("sup_opp", ""))
+        side = side_from_name or favored_side(r.get("cand_pty_aff", ""), r.get("sup_opp", ""), r.get("cand_name", ""), state)
         if side is None:
             continue
         d = fec_date(r.get("exp_date", ""))

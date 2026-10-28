@@ -13,15 +13,15 @@
   "release_date": "2026-10-15",
   "n": 578,
   "pop": "RV",
-  "D": 5.0,
+  "D": 44.0,
   "R": 45.0,
-  "other": 46.0,
+  "other": 7.0,
   "undecided": null,
   "denominator_class": "FULL",
   "round": "FIRST",
   "source_url": "https://api.fxtwitter.com/AndrewSolender/status/2110867168892014803",
   "source_locator": "https://x.com/AndrewSolender/status/2110867168892014803 (Axios reporter): 'Dem-aligned PPP poll of Alaska ... #AKAL (1st choice) Begich 45%, Hill 44%, Hafner 5%, McDermott 2% ... 578RV, Oct. 14-15'",
-  "notes": "other = Hill 44 + McDermott 2. Undecided not stated (remaining 4 implied). Reporter-relayed toplines; sponsor not named.",
+  "notes": "other = Hill 44 + McDermott 2. Undecided not stated (remaining 4 implied). Reporter-relayed toplines; sponsor not named. D slot = Bill Hill (nonpartisan independent), the leading non-Republican, as with Nebraska's Osborn; other = Hafner (D) + McDermott (L).",
   "retrieved_at": "2026-10-27T16:55:00-07:00"
  },
  "pollster": {

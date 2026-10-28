@@ -1,1360 +1,1365 @@
 [
-  {
-    "race": "2026-AL-02-HOUSE",
-    "state": "AL",
-    "district": 2,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Shomari Figures",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Shomari Figures",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Rhett Marques",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -14.34,
-    "lines_note": "Lines redrawn after 2024: Alabama enacted a new map in 2026 after Louisiana v. Callais (court block stayed by SCOTUS June 2, 2026). Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Alabama%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
+ {
+  "race": "2026-AL-02-HOUSE",
+  "state": "AL",
+  "district": 2,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Shomari Figures",
+   "party": "D"
   },
-  {
-    "race": "2026-AK-AL-HOUSE",
-    "state": "AK",
-    "district": "AL",
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Nick Begich III",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Eric Hafner",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Nick Begich III",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": "Alaska top-four primary with ranked-choice general: four finalists, Begich (R), Hafner (D), Jim McDermott (Libertarian), Bill Hill (nonpartisan/independent). Only the D and R are treated as major.",
-    "pres2024_d_minus_r": -13.14,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/United_States_House_of_Representatives_election_in_Alaska,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
+  "D": {
+   "candidate": "Shomari Figures",
+   "party": "D"
   },
-  {
-    "race": "2026-AZ-01-HOUSE",
-    "state": "AZ",
-    "district": 1,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Amish Shah",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Jay Feely",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -3.11,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Arizona%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
+  "R": {
+   "candidate": "Rhett Marques",
+   "party": "R"
   },
-  {
-    "race": "2026-AZ-02-HOUSE",
-    "state": "AZ",
-    "district": 2,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Eli Crane",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Jonathan Nez",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Eli Crane",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -14.97,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Arizona%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-AZ-06-HOUSE",
-    "state": "AZ",
-    "district": 6,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Juan Ciscomani",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "JoAnna Mendoza",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Juan Ciscomani",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -0.75,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Arizona%27s_6th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-CA-22-HOUSE",
-    "state": "CA",
-    "district": 22,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "David Valadao",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Randy Villegas",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "David Valadao",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": "California top-two primary: the two finalists are one Democrat and one Republican (listed).",
-    "pres2024_d_minus_r": -1.85,
-    "lines_note": "Lines redrawn after 2024: Prop 50 (2025) voter-approved map. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/California%27s_22nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-CA-48-HOUSE",
-    "state": "CA",
-    "district": 48,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Marni von Wilpert",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Jim Desmond",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": "California top-two primary: the two finalists are one Democrat and one Republican (listed).",
-    "pres2024_d_minus_r": 3.39,
-    "lines_note": "Lines redrawn after 2024: Prop 50 (2025) voter-approved map. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/California%27s_48th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-CO-04-HOUSE",
-    "state": "CO",
-    "district": 4,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Lauren Boebert",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Eileen Laubacher",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Lauren Boebert",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -18.25,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Colorado%27s_4th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-CO-05-HOUSE",
-    "state": "CO",
-    "district": 5,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Jeff Crank",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Jessica Killin",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Jeff Crank",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -9.08,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Colorado%27s_5th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-CO-08-HOUSE",
-    "state": "CO",
-    "district": 8,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Gabe Evans",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Manny Rutinel",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Gabe Evans",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -1.83,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Colorado%27s_8th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-FL-13-HOUSE",
-    "state": "FL",
-    "district": 13,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Anna Paulina Luna",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Leela Gray",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Anna Paulina Luna",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -13.32,
-    "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Florida%27s_13th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-FL-14-HOUSE",
-    "state": "FL",
-    "district": 14,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Kathy Castor",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Kathy Castor",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Mike Beltran",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -10.51,
-    "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Florida%27s_14th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-FL-22-HOUSE",
-    "state": "FL",
-    "district": 22,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Pia Dandiya",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Casey Askar",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -10.28,
-    "lines_note": "New seat under the 2026 Florida map; Cook labels it OPEN (Frankel), Lois Frankel (D) is running in FL-23. Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Florida%27s_22nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-FL-25-HOUSE",
-    "state": "FL",
-    "district": 25,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Jared Moskowitz",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Jared Moskowitz",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Scott Singer",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -9.14,
-    "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Florida%27s_25th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-FL-27-HOUSE",
-    "state": "FL",
-    "district": 27,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "María Elvira Salazar",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Eliott Rodriguez",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "María Elvira Salazar",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -14.58,
-    "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Florida%27s_27th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-IA-01-HOUSE",
-    "state": "IA",
-    "district": 1,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Mariannette Miller-Meeks",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Christina Bohannan",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Mariannette Miller-Meeks",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -8.47,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Iowa%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-IA-02-HOUSE",
-    "state": "IA",
-    "district": 2,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Lindsay James",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Joe Mitchell",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -9.99,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Iowa%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-IA-03-HOUSE",
-    "state": "IA",
-    "district": 3,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Zach Nunn",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Sarah Trone Garriott",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Zach Nunn",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -4.41,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Iowa%27s_3rd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-KY-06-HOUSE",
-    "state": "KY",
-    "district": 6,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Zach Dembo",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Ralph Alvarado",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -15.03,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Kentucky%27s_6th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-ME-02-HOUSE",
-    "state": "ME",
-    "district": 2,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Matthew Dunlap",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Paul LePage",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -9.05,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Maine%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-MI-04-HOUSE",
-    "state": "MI",
-    "district": 4,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Bill Huizenga",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Sean McCann",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Bill Huizenga",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -5.54,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Michigan%27s_4th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-MI-07-HOUSE",
-    "state": "MI",
-    "district": 7,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Tom Barrett",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "William Lawrence",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Tom Barrett",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -1.28,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Michigan%27s_7th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-MI-10-HOUSE",
-    "state": "MI",
-    "district": 10,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Christina Hines",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Mike Bouchard Jr.",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -6.55,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Michigan%27s_10th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-MN-01-HOUSE",
-    "state": "MN",
-    "district": 1,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Brad Finstad",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Jake Johnson",
-      "party": "D (DFL)"
-    },
-    "R": {
-      "candidate": "Brad Finstad",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -12.0,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Minnesota%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-MT-01-HOUSE",
-    "state": "MT",
-    "district": 1,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Sam Forstag",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Aaron Flint",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -11.55,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Montana%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NV-02-HOUSE",
-    "state": "NV",
-    "district": 2,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Teresa Benitez-Thompson",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "David Flippo",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -13.94,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Nevada%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NJ-07-HOUSE",
-    "state": "NJ",
-    "district": 7,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Thomas Kean Jr.",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Rebecca Bennett",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Thomas Kean Jr.",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -1.17,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/New_Jersey%27s_7th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NM-02-HOUSE",
-    "state": "NM",
-    "district": 2,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Gabe Vasquez",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Gabe Vasquez",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Greg Cunningham",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -1.81,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/New_Mexico%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NY-17-HOUSE",
-    "state": "NY",
-    "district": 17,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Mike Lawler",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Cait Conley",
-      "party": "D (also Working Families line)"
-    },
-    "R": {
-      "candidate": "Mike Lawler",
-      "party": "R (also Conservative line)"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": 0.56,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/New_York%27s_17th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NY-21-HOUSE",
-    "state": "NY",
-    "district": 21,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Blake Gendebien",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Anthony Constantino",
-      "party": "R (also Taxpayer Rights line)"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -20.65,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/New_York%27s_21st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NC-01-HOUSE",
-    "state": "NC",
-    "district": 1,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Don Davis",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Don Davis",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Laurie Buckhout",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -11.55,
-    "lines_note": "Lines redrawn after 2024: new map passed October 2025 (aimed at NC-1). The Downballot recalculated every NC district on the new map; margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/North_Carolina%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-NC-11-HOUSE",
-    "state": "NC",
-    "district": 11,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Jamie Ager",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Jennifer Balkcom",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -9.5,
-    "lines_note": "Lines redrawn after 2024: new map passed October 2025 (aimed at NC-1). The Downballot recalculated every NC district on the new map; margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/North_Carolina%27s_11th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-OH-07-HOUSE",
-    "state": "OH",
-    "district": 7,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Max Miller",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Brian Poindexter",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Max Miller",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -11.06,
-    "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Ohio%27s_7th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-OH-09-HOUSE",
-    "state": "OH",
-    "district": 9,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Marcy Kaptur",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Marcy Kaptur",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Derek Merrin",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -10.58,
-    "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Ohio%27s_9th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-OH-10-HOUSE",
-    "state": "OH",
-    "district": 10,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Mike Turner",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Kristina Knickerbocker",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Mike Turner",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -7.79,
-    "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Ohio%27s_10th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-OH-15-HOUSE",
-    "state": "OH",
-    "district": 15,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Mike Carey",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Don Leonard",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Mike Carey",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -10.02,
-    "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Ohio%27s_15th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-PA-01-HOUSE",
-    "state": "PA",
-    "district": 1,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Brian Fitzpatrick",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Bob Harvie",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Brian Fitzpatrick",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": 0.32,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Pennsylvania%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-PA-07-HOUSE",
-    "state": "PA",
-    "district": 7,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Ryan Mackenzie",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Bob Brooks",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Ryan Mackenzie",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -3.2,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Pennsylvania%27s_7th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-PA-08-HOUSE",
-    "state": "PA",
-    "district": 8,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Rob Bresnahan",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Paige Cognetti",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Rob Bresnahan",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -8.5,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Pennsylvania%27s_8th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-PA-10-HOUSE",
-    "state": "PA",
-    "district": 10,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Scott Perry",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Janelle Stelson",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Scott Perry",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -5.23,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Pennsylvania%27s_10th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-SC-01-HOUSE",
-    "state": "SC",
-    "district": 1,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Nancy Lacore",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Jenny Costa Honeycutt",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -13.01,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/South_Carolina%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-TX-15-HOUSE",
-    "state": "TX",
-    "district": 15,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Monica De La Cruz",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Bobby Pulido",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Monica De La Cruz",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -17.87,
-    "lines_note": "Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Texas%27_15th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-TX-23-HOUSE",
-    "state": "TX",
-    "district": 23,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Katy Padilla Stout",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Brandon Herrera",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -14.83,
-    "lines_note": "Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Texas%27_23rd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-TX-34-HOUSE",
-    "state": "TX",
-    "district": 34,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Vicente Gonzalez",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Vicente Gonzalez",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Eric Flores",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -10.14,
-    "lines_note": "Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Texas%27_34th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-TX-35-HOUSE",
-    "state": "TX",
-    "district": 35,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": "OPEN",
-    "D": {
-      "candidate": "Johnny Garcia",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Carlos De La Cruz",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -10.46,
-    "lines_note": "New seat under the 2025 Texas map; Cook labels it OPEN (Casar), Greg Casar (D) is running in TX-37. Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Texas%27_35th_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-VA-01-HOUSE",
-    "state": "VA",
-    "district": 1,
-    "cook_rating": "Toss-up",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Rob Wittman",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Shannon Taylor",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Rob Wittman",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -4.94,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Virginia%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-VA-02-HOUSE",
-    "state": "VA",
-    "district": 2,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Jen Kiggans",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Elaine Luria",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Jen Kiggans",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -0.25,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Virginia%27s_2nd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-WA-03-HOUSE",
-    "state": "WA",
-    "district": 3,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Marie Gluesenkamp Perez",
-      "party": "D"
-    },
-    "D": {
-      "candidate": "Marie Gluesenkamp Perez",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "John Braun",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": "Washington top-two primary: the two finalists are one Democrat and one Republican (listed).",
-    "pres2024_d_minus_r": -3.3,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Washington%27s_3rd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-WI-01-HOUSE",
-    "state": "WI",
-    "district": 1,
-    "cook_rating": "Lean R",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Bryan Steil",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Mitchell Berman",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Bryan Steil",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -4.51,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Wisconsin%27s_1st_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
-  },
-  {
-    "race": "2026-WI-03-HOUSE",
-    "state": "WI",
-    "district": 3,
-    "cook_rating": "Lean D",
-    "cook_rating_date": "2026-10-23",
-    "incumbent": {
-      "name": "Derrick Van Orden",
-      "party": "R"
-    },
-    "D": {
-      "candidate": "Rebecca Cooke",
-      "party": "D"
-    },
-    "R": {
-      "candidate": "Derrick Van Orden",
-      "party": "R"
-    },
-    "other_major": [],
-    "top_two_note": null,
-    "pres2024_d_minus_r": -7.4,
-    "lines_note": null,
-    "sources": {
-      "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
-      "nominees": "https://ballotpedia.org/Wisconsin%27s_3rd_Congressional_District_election,_2026",
-      "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
-    }
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -14.34,
+  "lines_note": "Lines redrawn after 2024: Alabama enacted a new map in 2026 after Louisiana v. Callais (court block stayed by SCOTUS June 2, 2026). Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Alabama%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
   }
+ },
+ {
+  "race": "2026-AK-AL-HOUSE",
+  "state": "AK",
+  "district": "AL",
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Nick Begich III",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Bill Hill",
+   "party": "Independent (nonpartisan); in the D slot as the leading non-Republican, as with Nebraska's Osborn"
+  },
+  "R": {
+   "candidate": "Nick Begich III",
+   "party": "R"
+  },
+  "other_major": [
+   {
+    "candidate": "Eric Hafner",
+    "party": "D"
+   }
+  ],
+  "top_two_note": "Alaska top-four primary with ranked-choice general: four finalists, Begich (R), Hafner (D), Jim McDermott (Libertarian), Bill Hill (nonpartisan/independent). Only the D and R are treated as major.",
+  "pres2024_d_minus_r": -13.14,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/United_States_House_of_Representatives_election_in_Alaska,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-AZ-01-HOUSE",
+  "state": "AZ",
+  "district": 1,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Amish Shah",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Jay Feely",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -3.11,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Arizona%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-AZ-02-HOUSE",
+  "state": "AZ",
+  "district": 2,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Eli Crane",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Jonathan Nez",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Eli Crane",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -14.97,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Arizona%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-AZ-06-HOUSE",
+  "state": "AZ",
+  "district": 6,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Juan Ciscomani",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "JoAnna Mendoza",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Juan Ciscomani",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -0.75,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Arizona%27s_6th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-CA-22-HOUSE",
+  "state": "CA",
+  "district": 22,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "David Valadao",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Randy Villegas",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "David Valadao",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": "California top-two primary: the two finalists are one Democrat and one Republican (listed).",
+  "pres2024_d_minus_r": -1.85,
+  "lines_note": "Lines redrawn after 2024: Prop 50 (2025) voter-approved map. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/California%27s_22nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-CA-48-HOUSE",
+  "state": "CA",
+  "district": 48,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Marni von Wilpert",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Jim Desmond",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": "California top-two primary: the two finalists are one Democrat and one Republican (listed).",
+  "pres2024_d_minus_r": 3.39,
+  "lines_note": "Lines redrawn after 2024: Prop 50 (2025) voter-approved map. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/California%27s_48th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-CO-04-HOUSE",
+  "state": "CO",
+  "district": 4,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Lauren Boebert",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Eileen Laubacher",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Lauren Boebert",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -18.25,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Colorado%27s_4th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-CO-05-HOUSE",
+  "state": "CO",
+  "district": 5,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Jeff Crank",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Jessica Killin",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Jeff Crank",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -9.08,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Colorado%27s_5th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-CO-08-HOUSE",
+  "state": "CO",
+  "district": 8,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Gabe Evans",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Manny Rutinel",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Gabe Evans",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -1.83,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Colorado%27s_8th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-FL-13-HOUSE",
+  "state": "FL",
+  "district": 13,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Anna Paulina Luna",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Leela Gray",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Anna Paulina Luna",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -13.32,
+  "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Florida%27s_13th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-FL-14-HOUSE",
+  "state": "FL",
+  "district": 14,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Kathy Castor",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Kathy Castor",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Mike Beltran",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -10.51,
+  "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Florida%27s_14th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-FL-22-HOUSE",
+  "state": "FL",
+  "district": 22,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Pia Dandiya",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Casey Askar",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -10.28,
+  "lines_note": "New seat under the 2026 Florida map; Cook labels it OPEN (Frankel), Lois Frankel (D) is running in FL-23. Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Florida%27s_22nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-FL-25-HOUSE",
+  "state": "FL",
+  "district": 25,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Jared Moskowitz",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Jared Moskowitz",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Scott Singer",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -9.14,
+  "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Florida%27s_25th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-FL-27-HOUSE",
+  "state": "FL",
+  "district": 27,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Mar\u00eda Elvira Salazar",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Eliott Rodriguez",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Mar\u00eda Elvira Salazar",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -14.58,
+  "lines_note": "Lines redrawn after 2024: new map signed May 4, 2026. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Florida%27s_27th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-IA-01-HOUSE",
+  "state": "IA",
+  "district": 1,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Mariannette Miller-Meeks",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Christina Bohannan",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Mariannette Miller-Meeks",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -8.47,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Iowa%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-IA-02-HOUSE",
+  "state": "IA",
+  "district": 2,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Lindsay James",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Joe Mitchell",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -9.99,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Iowa%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-IA-03-HOUSE",
+  "state": "IA",
+  "district": 3,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Zach Nunn",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Sarah Trone Garriott",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Zach Nunn",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -4.41,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Iowa%27s_3rd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-KY-06-HOUSE",
+  "state": "KY",
+  "district": 6,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Zach Dembo",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Ralph Alvarado",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -15.03,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Kentucky%27s_6th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-ME-02-HOUSE",
+  "state": "ME",
+  "district": 2,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Matthew Dunlap",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Paul LePage",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -9.05,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Maine%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-MI-04-HOUSE",
+  "state": "MI",
+  "district": 4,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Bill Huizenga",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Sean McCann",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Bill Huizenga",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -5.54,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Michigan%27s_4th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-MI-07-HOUSE",
+  "state": "MI",
+  "district": 7,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Tom Barrett",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "William Lawrence",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Tom Barrett",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -1.28,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Michigan%27s_7th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-MI-10-HOUSE",
+  "state": "MI",
+  "district": 10,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Christina Hines",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Mike Bouchard Jr.",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -6.55,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Michigan%27s_10th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-MN-01-HOUSE",
+  "state": "MN",
+  "district": 1,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Brad Finstad",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Jake Johnson",
+   "party": "D (DFL)"
+  },
+  "R": {
+   "candidate": "Brad Finstad",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -12.0,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Minnesota%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-MT-01-HOUSE",
+  "state": "MT",
+  "district": 1,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Sam Forstag",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Aaron Flint",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -11.55,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Montana%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NV-02-HOUSE",
+  "state": "NV",
+  "district": 2,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Teresa Benitez-Thompson",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "David Flippo",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -13.94,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Nevada%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NJ-07-HOUSE",
+  "state": "NJ",
+  "district": 7,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Thomas Kean Jr.",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Rebecca Bennett",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Thomas Kean Jr.",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -1.17,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/New_Jersey%27s_7th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NM-02-HOUSE",
+  "state": "NM",
+  "district": 2,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Gabe Vasquez",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Gabe Vasquez",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Greg Cunningham",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -1.81,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/New_Mexico%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NY-17-HOUSE",
+  "state": "NY",
+  "district": 17,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Mike Lawler",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Cait Conley",
+   "party": "D (also Working Families line)"
+  },
+  "R": {
+   "candidate": "Mike Lawler",
+   "party": "R (also Conservative line)"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": 0.56,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/New_York%27s_17th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NY-21-HOUSE",
+  "state": "NY",
+  "district": 21,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Blake Gendebien",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Anthony Constantino",
+   "party": "R (also Taxpayer Rights line)"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -20.65,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/New_York%27s_21st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NC-01-HOUSE",
+  "state": "NC",
+  "district": 1,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Don Davis",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Don Davis",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Laurie Buckhout",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -11.55,
+  "lines_note": "Lines redrawn after 2024: new map passed October 2025 (aimed at NC-1). The Downballot recalculated every NC district on the new map; margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/North_Carolina%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-NC-11-HOUSE",
+  "state": "NC",
+  "district": 11,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Jamie Ager",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Jennifer Balkcom",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -9.5,
+  "lines_note": "Lines redrawn after 2024: new map passed October 2025 (aimed at NC-1). The Downballot recalculated every NC district on the new map; margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/North_Carolina%27s_11th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-OH-07-HOUSE",
+  "state": "OH",
+  "district": 7,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Max Miller",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Brian Poindexter",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Max Miller",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -11.06,
+  "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Ohio%27s_7th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-OH-09-HOUSE",
+  "state": "OH",
+  "district": 9,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Marcy Kaptur",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Marcy Kaptur",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Derek Merrin",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -10.58,
+  "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Ohio%27s_9th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-OH-10-HOUSE",
+  "state": "OH",
+  "district": 10,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Mike Turner",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Kristina Knickerbocker",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Mike Turner",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -7.79,
+  "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Ohio%27s_10th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-OH-15-HOUSE",
+  "state": "OH",
+  "district": 15,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Mike Carey",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Don Leonard",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Mike Carey",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -10.02,
+  "lines_note": "Lines redrawn after 2024: Ohio Redistricting Commission map, October 2025. Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Ohio%27s_15th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-PA-01-HOUSE",
+  "state": "PA",
+  "district": 1,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Brian Fitzpatrick",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Bob Harvie",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Brian Fitzpatrick",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": 0.32,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Pennsylvania%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-PA-07-HOUSE",
+  "state": "PA",
+  "district": 7,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Ryan Mackenzie",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Bob Brooks",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Ryan Mackenzie",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -3.2,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Pennsylvania%27s_7th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-PA-08-HOUSE",
+  "state": "PA",
+  "district": 8,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Rob Bresnahan",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Paige Cognetti",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Rob Bresnahan",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -8.5,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Pennsylvania%27s_8th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-PA-10-HOUSE",
+  "state": "PA",
+  "district": 10,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Scott Perry",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Janelle Stelson",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Scott Perry",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -5.23,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Pennsylvania%27s_10th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-SC-01-HOUSE",
+  "state": "SC",
+  "district": 1,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Nancy Lacore",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Jenny Costa Honeycutt",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -13.01,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/South_Carolina%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-TX-15-HOUSE",
+  "state": "TX",
+  "district": 15,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Monica De La Cruz",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Bobby Pulido",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Monica De La Cruz",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -17.87,
+  "lines_note": "Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Texas%27_15th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-TX-23-HOUSE",
+  "state": "TX",
+  "district": 23,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Katy Padilla Stout",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Brandon Herrera",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -14.83,
+  "lines_note": "Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Texas%27_23rd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-TX-34-HOUSE",
+  "state": "TX",
+  "district": 34,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Vicente Gonzalez",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Vicente Gonzalez",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Eric Flores",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -10.14,
+  "lines_note": "Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Texas%27_34th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-TX-35-HOUSE",
+  "state": "TX",
+  "district": 35,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": "OPEN",
+  "D": {
+   "candidate": "Johnny Garcia",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Carlos De La Cruz",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -10.46,
+  "lines_note": "New seat under the 2025 Texas map; Cook labels it OPEN (Casar), Greg Casar (D) is running in TX-37. Lines redrawn after 2024: 2025 Texas mid-decade map (SCOTUS stayed the injunction). Margin is on the new lines.",
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Texas%27_35th_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-VA-01-HOUSE",
+  "state": "VA",
+  "district": 1,
+  "cook_rating": "Toss-up",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Rob Wittman",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Shannon Taylor",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Rob Wittman",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -4.94,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Virginia%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-VA-02-HOUSE",
+  "state": "VA",
+  "district": 2,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Jen Kiggans",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Elaine Luria",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Jen Kiggans",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -0.25,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Virginia%27s_2nd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-WA-03-HOUSE",
+  "state": "WA",
+  "district": 3,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Marie Gluesenkamp Perez",
+   "party": "D"
+  },
+  "D": {
+   "candidate": "Marie Gluesenkamp Perez",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "John Braun",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": "Washington top-two primary: the two finalists are one Democrat and one Republican (listed).",
+  "pres2024_d_minus_r": -3.3,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Washington%27s_3rd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-WI-01-HOUSE",
+  "state": "WI",
+  "district": 1,
+  "cook_rating": "Lean R",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Bryan Steil",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Mitchell Berman",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Bryan Steil",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -4.51,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Wisconsin%27s_1st_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ },
+ {
+  "race": "2026-WI-03-HOUSE",
+  "state": "WI",
+  "district": 3,
+  "cook_rating": "Lean D",
+  "cook_rating_date": "2026-10-23",
+  "incumbent": {
+   "name": "Derrick Van Orden",
+   "party": "R"
+  },
+  "D": {
+   "candidate": "Rebecca Cooke",
+   "party": "D"
+  },
+  "R": {
+   "candidate": "Derrick Van Orden",
+   "party": "R"
+  },
+  "other_major": [],
+  "top_two_note": null,
+  "pres2024_d_minus_r": -7.4,
+  "lines_note": null,
+  "sources": {
+   "rating": "https://www.cookpolitical.com/ratings/house-race-ratings",
+   "nominees": "https://ballotpedia.org/Wisconsin%27s_3rd_Congressional_District_election,_2026",
+   "pres2024": "https://docs.google.com/spreadsheets/d/1eZfaFI-c-PFOoKx1-zZA2MP0_dxRq_LVK0re3BOQqy0/edit?gid=1491069057 (via https://www.the-downballot.com/p/the-downballots-calculations-of-presidential)"
+  }
+ }
 ]

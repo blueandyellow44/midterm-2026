@@ -13,15 +13,15 @@
   "release_date": "2026-10-20",
   "n": 694,
   "pop": "LV",
-  "D": 5.0,
+  "D": 42.0,
   "R": 48.0,
-  "other": 43.0,
+  "other": 6.0,
   "undecided": 4.0,
   "denominator_class": "FULL",
   "round": "FIRST",
   "source_url": "https://www.filesforprogress.org/datasets/2026/10/dfp_alaska_oct_2026.pdf",
   "source_locator": "Q[20] first choice, topline: Begich (R) 48, Hill (NP) 42, Hafner (D) 5, McDermott (L) 1, Not sure 4; 694 likely voters, Oct 8-16, MOE +/-4",
-  "notes": "other = Hill 42 + McDermott 1. Blog post: https://www.dataforprogress.org/blog/2026/10/20/every-statewide-race-in-alaska-is-close-as-7-in-10-voters-worry-about-affording-gas-and-food (RCV final Begich 51, Hill 49).",
+  "notes": "other = Hill 42 + McDermott 1. Blog post: https://www.dataforprogress.org/blog/2026/10/20/every-statewide-race-in-alaska-is-close-as-7-in-10-voters-worry-about-affording-gas-and-food (RCV final Begich 51, Hill 49). D slot = Bill Hill (nonpartisan independent), the leading non-Republican, as with Nebraska's Osborn; other = Hafner (D) + McDermott (L).",
   "retrieved_at": "2026-10-27T16:55:00-07:00"
  },
  "pollster": {
