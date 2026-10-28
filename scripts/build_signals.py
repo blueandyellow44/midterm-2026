@@ -14,6 +14,7 @@ Every bundle file is snapshotted to .backups/ before it is replaced (ROE 14). A 
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 import csv
 import json
 import math
@@ -78,8 +79,7 @@ def aggregate_spending(rows: list[dict], state: str, window_end: date, office: s
         if r.get("can_office") != office or r.get("can_office_state") != state:
             continue
         if names:   # House: match the district's nominees by surname; FEC district codes can be stale or "00" (Montana)
-            cn = (r.get("cand_name") or "").upper()
-            if not any(last in cn and first in cn for last, first in names):
+            if not any(fec_name_matches(r.get("cand_name") or "", last, initial) for last, initial in names):
                 continue
         elif district is not None and (r.get("can_office_dis") or "").strip().zfill(2) != district:
             continue
@@ -178,6 +178,19 @@ def surname_key(name: str) -> str:
     return parts[-1].upper()
 
 
+def fec_name_matches(cand_name: str, surname: str, initial: str | None) -> bool:
+    """Surname anywhere in the FEC name (filings reverse or scramble names: 'Anna Paulina, Luna'; legal names differ:
+    Gabe Evans files as 'Timothy Gabriel Evans'). The first initial is required only when two nominees in the same state
+    share the surname (initial is then given), e.g. Monica De La Cruz (TX-15) and Carlos De La Cruz (TX-35)."""
+    toks = cand_name.upper().replace(",", " ").replace(".", " ").split()
+    if surname not in toks:
+        return False
+    if initial is None:
+        return True
+    given = cand_name.upper().split(",", 1)[1].strip() if "," in cand_name else " ".join(t for t in toks if t != surname)
+    return given[:1] == initial
+
+
 def state_of(race: str) -> str:
     return race.split("-")[1]
 
@@ -237,12 +250,17 @@ def main(argv=None) -> int:
     # races (measure FEC_SCHEDULE_E_HOUSE). The district's 2024 margin comes from house-races.csv inside weight.py.
     with open(Path(a.bundle_dir) / "house-races.csv", newline="", encoding="utf-8") as f:
         house = {r["race"]: (r["d_candidate"], r["r_candidate"]) for r in csv.DictReader(f)}
+    seen_names: dict = defaultdict(set)
+    for race, nom in house.items():
+        for n in nom:
+            seen_names[(race.split("-")[1], surname_key(n))].add(race)
+    shared = {k for k, v in seen_names.items() if len(v) > 1}   # same surname in two districts of one state
     for race in weight.HOUSE_RACES:
         st, dist = race.split("-")[1], race.split("-")[2]
         nom = house.get(race)
         if not nom:
             raise SystemExit(f"house-races.csv has no nominees for {race}")
-        agg = aggregate_spending(ie, st, cutoff, office="H", names=tuple((surname_key(n), n.split()[0].upper()) for n in nom))   # surname + first name
+        agg = aggregate_spending(ie, st, cutoff, office="H", names=tuple((surname_key(n), n.split()[0][0].upper() if (st, surname_key(n)) in shared else None) for n in nom))
         spending.append({"race": race, "state": st, "fec_coverage": "FEC_SCHEDULE_E_HOUSE", "window_end": cutoff.isoformat(),
                          **{k: (f"{v:.2f}" if isinstance(v, float) else str(v)) for k, v in agg.items()},
                          "source_file": SOURCES["ie"], "source_sha256": sha["ie"]})
