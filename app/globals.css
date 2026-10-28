@@ -417,3 +417,4 @@ html[data-view=mobile] .wall-hide-phone {display:none;}
 .wall-dialbar .wall-range {height:24px;}
 .wall-mobile-moved {padding:0 2px;} .wall-mobile-moved .wall-strip-moved {margin:0 0 8px;}
 .wall-mobile-by {display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;} .wall-mobile-by > * {white-space:nowrap;}
+.wall-strip.is-slim {padding:8px 16px;min-height:0;} .wall-strip.is-slim .wall-strip-meta {flex-direction:row;gap:16px;} .wall-mobile-hero {padding:0 2px;} .wall-mobile-by {margin:0;}

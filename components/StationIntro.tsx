@@ -18,13 +18,13 @@ function NightLine({ live, locked }: { live: LiveLine; locked: boolean }) {
   if (locked) return <p className="wall-strip-night"><b>Locked {snapshotDate}.</b> Nothing on this page changes until the votes are counted. <a href="/grading/">How it is graded →</a></p>;
   return null;
 }
-export function WallStrip({ live = null, locked = false }: { live?: LiveLine; locked?: boolean }){return <div className="wall-strip"><p className="wall-strip-head">Since last fall, polls have understated Democrats by {missText} points. <span>I think they still are.</span></p><div className="wall-strip-meta"><span>By Max Sheahan</span><span>Updated {snapshotDate}</span>{!locked && <FreezeCountdown builtAt={builtAt}/>}</div><NightLine live={live} locked={locked}/><Moved/></div>}
+export function WallStrip({ live = null, locked = false }: { live?: LiveLine; locked?: boolean }){return <div className="wall-strip is-slim"><div className="wall-strip-meta"><span>By Max Sheahan</span><span>Updated {snapshotDate}</span>{!locked && <FreezeCountdown builtAt={builtAt}/>}</div><NightLine live={live} locked={locked}/><Moved/></div>}
 // What moved since the last release (Max, 2026-10-28), from derived.changes, which the release step computes in weight.py.
 const ch=(derived as any).changes;
 const raceShort=(id:string)=>{const [,st,a,b]=id.split('-');return id.endsWith('HOUSE')?`${st}-${a}`:`${states[st]||st} ${id.includes('GOV')?'Gov':'Sen'}${b==='SPECIAL'?' special':''}`;};
 const signed=(v:number)=>`${v>=0?'D':'R'} +${Math.abs(v).toFixed(1)}`;
 function Moved(){if(!ch)return null;const top=(ch.moved||[]).slice(0,4);const parts=[ch.polls_added>0?`${ch.polls_added} new ${ch.polls_added===1?'poll':'polls'}`:null,...top.map((x:any)=>`${raceShort(x.race)} ${signed(x.from)} → ${signed(x.to)}`),(ch.new_readings||[]).length?`${ch.new_readings.length} new ${ch.new_readings.length===1?'reading':'readings'}`:null].filter(Boolean);if(!parts.length)return null;return <p className="wall-strip-moved"><b>Since {shortDate(String(ch.since_as_of).slice(0,10))}:</b> {parts.join(' · ')}{(ch.moved||[]).length>top.length?` · ${ch.moved.length-top.length} more`:''}</p>;}
 export const biggestPullId=top?.id||'';
-// Phone landing (Max, 2026-10-28: "This sucks as a landing page look"): the claim first, then who and when, then the numbers.
-export function WallMeta({ live = null, locked = false }: { live?: LiveLine; locked?: boolean }){return <div className="wall-mobile-hero"><h1 className="wall-mobile-claim">Since last fall, polls have understated Democrats by {missText} points. <span>I think they still are.</span></h1><p className="wall-mobile-by"><span>By Max Sheahan · {snapshotDate}</span>{!locked && <FreezeCountdown builtAt={builtAt}/>}</p><NightLine live={live} locked={locked}/></div>}
+// Landing (Max, 2026-10-28: "Cut hero sentence from the landing. Straight to numbers and map"): byline and countdown only, then the numbers.
+export function WallMeta({ live = null, locked = false }: { live?: LiveLine; locked?: boolean }){return <div className="wall-mobile-hero"><p className="wall-mobile-by"><span>By Max Sheahan · {snapshotDate}</span>{!locked && <FreezeCountdown builtAt={builtAt}/>}</p><NightLine live={live} locked={locked}/></div>}
 export function MovedLine(){return <Moved/>}
