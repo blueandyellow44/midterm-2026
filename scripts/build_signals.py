@@ -70,7 +70,7 @@ def latest_amendments(rows: list[dict]) -> list[dict]:
     return list(keep.values())
 
 
-def aggregate_spending(rows: list[dict], state: str, window_end: date, office: str = "S", district: str | None = None, names: tuple[str, ...] = ()) -> dict:
+def aggregate_spending(rows: list[dict], state: str, window_end: date, office: str = "S", district: str | None = None, names: tuple[tuple[str, str], ...] = ()) -> dict:
     recent_start = window_end - timedelta(days=WINDOW_DAYS)
     prior_start = recent_start - timedelta(days=WINDOW_DAYS)
     out = {"d_fav_recent": 0.0, "r_fav_recent": 0.0, "d_fav_prior": 0.0, "r_fav_prior": 0.0, "rows_recent": 0, "rows_dated_by_dissemination": 0}
@@ -79,7 +79,7 @@ def aggregate_spending(rows: list[dict], state: str, window_end: date, office: s
             continue
         if names:   # House: match the district's nominees by surname; FEC district codes can be stale or "00" (Montana)
             cn = (r.get("cand_name") or "").upper()
-            if not any(n in cn for n in names):
+            if not any(last in cn and first in cn for last, first in names):
                 continue
         elif district is not None and (r.get("can_office_dis") or "").strip().zfill(2) != district:
             continue
@@ -242,7 +242,7 @@ def main(argv=None) -> int:
         nom = house.get(race)
         if not nom:
             raise SystemExit(f"house-races.csv has no nominees for {race}")
-        agg = aggregate_spending(ie, st, cutoff, office="H", names=tuple(surname_key(n) for n in nom))
+        agg = aggregate_spending(ie, st, cutoff, office="H", names=tuple((surname_key(n), n.split()[0].upper()) for n in nom))   # surname + first name
         spending.append({"race": race, "state": st, "fec_coverage": "FEC_SCHEDULE_E_HOUSE", "window_end": cutoff.isoformat(),
                          **{k: (f"{v:.2f}" if isinstance(v, float) else str(v)) for k, v in agg.items()},
                          "source_file": SOURCES["ie"], "source_sha256": sha["ie"]})
