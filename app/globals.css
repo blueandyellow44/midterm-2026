@@ -436,3 +436,30 @@ html[data-view=mobile] .wall-mobile .wall-tally-bar {height:10px;}
 html[data-view=mobile] .wall-mobile .wall-tally-play .is-extra {display:none;}
 .wall-dialbar::before {top:-16px;height:16px;}
 html[data-view=mobile] .site-header nav {column-gap:12px;}
+
+/* Phone header: a menu button instead of two rows of links. */
+.site-menu {display:none;}
+html[data-view=mobile] .site-header .site-nav {display:none;}
+html[data-view=mobile] .site-menu {display:block;position:relative;}
+html[data-view=mobile] .site-menu summary {list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;background:var(--panel);}
+html[data-view=mobile] .site-menu summary::-webkit-details-marker {display:none;}
+html[data-view=mobile] .site-menu nav {position:absolute;right:0;top:46px;z-index:40;display:flex;flex-direction:column;min-width:180px;padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);}
+html[data-view=mobile] .site-menu nav a {min-height:44px;padding:0 12px;display:flex;align-items:center;font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-radius:6px;}
+html[data-view=mobile] .site-menu nav a:hover {background:var(--panel2);}
+/* Phone chambers: chips switch the numbers and the map together. */
+.phone-chips {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+.phone-chips button {display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--ink);min-height:48px;text-align:left;}
+.phone-chips button span {font-size:11px;font-weight:600;color:var(--muted);}
+.phone-chips button b {font-family:var(--font-num);font-size:16px;font-weight:800;white-space:nowrap;} .phone-chips button b i {font-style:normal;}
+.phone-chips button.is-on {border-color:var(--ink);background:var(--panel);box-shadow:inset 0 -3px 0 var(--ink);}
+.phone-chambers .wall-tally-play {font-size:11px;}
+/* Phone header on one row: logo, a compact theme toggle, Menu. */
+html[data-view=mobile] .site-header .header-island {display:flex;flex-wrap:nowrap;align-items:center;gap:8px;}
+html[data-view=mobile] .site-header .brand {margin-right:auto;}
+html[data-view=mobile] .theme-button {font-size:0;width:40px;height:40px;min-height:40px;padding:0;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;}
+html[data-view=mobile] .theme-button::before {content:"◐";font-size:18px;line-height:1;}
+/* Narrower laptop windows (1024-1350px): side panels give the map room, and a map too narrow for two-line tiles shows the
+   state only (the color carries the lean; the board beside it has every number). */
+.wall {grid-template-columns:minmax(270px,320px) minmax(0,1fr) minmax(270px,330px);}
+.wall-tiles {container-type:inline-size;}
+@container (max-width: 500px) { .wall-tile-v {display:none;} .wall-tile-st {font-size:10px;} }

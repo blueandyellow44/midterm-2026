@@ -129,12 +129,12 @@ function houseSeats(races: WallRace[], noRead: NoReadRace[], seats: WallSeat[], 
   return out;
 }
 
-function TileMap({ races, m, office, setOffice, selected, select, noRead = [], seats = [], full = false }: { races: WallRace[]; m: number; office: Office; setOffice: (o: Office) => void; selected: string; select: (id: string) => void; noRead?: NoReadRace[]; seats?: WallSeat[]; full?: boolean }) {
+function TileMap({ races, m, office, setOffice, selected, select, noRead = [], seats = [], full = false, hideToggle = false }: { races: WallRace[]; m: number; office: Office; setOffice: (o: Office) => void; selected: string; select: (id: string) => void; noRead?: NoReadRace[]; seats?: WallSeat[]; full?: boolean; hideToggle?: boolean }) {
   const byState = new Map(races.filter(r => r.office === office).map(r => [r.state, r]));
   const seatByState = new Map(full ? seats.filter(x => x.office === office && x.kind !== 'not_up').map(x => [x.state, x]) : []);
   return <section className="wall-panel wall-map" aria-label={full ? 'Map of every seat' : 'Map of tracked races'}>
     <div className="wall-panel-head"><p className="wall-kicker">{office === 'HOUSE' ? (full ? 'The House · all 435 seats' : 'The House · tracked seats colored, the rest as held') : `The map · ${officeName(office)}${full ? ' · every seat up' : ''}`}</p>
-      <div className="wall-toggle" role="group" aria-label="Office">{OFFICES.map(o => <button key={o} type="button" aria-pressed={office === o} onClick={() => setOffice(o)}>{officeName(o)}</button>)}</div></div>
+      {!hideToggle && <div className="wall-toggle" role="group" aria-label="Office">{OFFICES.map(o => <button key={o} type="button" aria-pressed={office === o} onClick={() => setOffice(o)}>{officeName(o)}</button>)}</div>}</div>
     {office === 'HOUSE' ? (() => { const hs = houseSeats(races, noRead, seats, full, m); const d = hs.filter(x => x.shade !== 'is-noread' && (x.v ?? 0) >= EVEN).length; const r = hs.filter(x => x.shade !== 'is-noread' && (x.v ?? 0) <= -EVEN).length;
       return <Hemicycle seats={hs} majority={218} selected={selected} select={select} dCount={d} rCount={r} count={full} title={full ? 'All 435 House seats, most Democratic to most Republican' : 'The House: tracked seats colored, others as held'}/>; })() : <div className="wall-tiles">{Object.entries(TILES).map(([st, [c, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m) : 0;
       const pos = `tc-${c} tr-${rw}`; const sx = r ? undefined : seatByState.get(st);
@@ -231,6 +231,21 @@ function DialBar({ m, setM, national, lastFall, history, live = null }: { m: num
   </section>;
 }
 
+// Phone first screen (Max, 2026-10-28: "How do other sites get it all to fit on the landing screen?" -> "Build it"): three chamber
+// chips that switch both the numbers and the map, and one full bar for the selected chamber.
+function PhoneChambers({ races, m, seats, totals, office, setOffice }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals; office: Office; setOffice: (o: Office) => void }) {
+  const c = chamberSplit(office, races, seats, totals, m); const d = c.dSafe + c.dPlay, r = c.rSafe + c.rPlay; const w = (k: number) => pct(100 * k / c.n);
+  return <section className="wall-tally phone-chambers" aria-live="polite">
+    <div className="phone-chips" role="tablist" aria-label="Chamber">{OFFICES.map(o => { const x = chamberSplit(o, races, seats, totals, m); return <button key={o} type="button" role="tab" aria-selected={office === o} className={office === o ? 'is-on' : ''} onClick={() => setOffice(o)}><span>{o === 'GOV' ? 'Governors' : officeName(o)}</span><b><i className="is-d">D {x.dSafe + x.dPlay}</i> <i className="is-r">R {x.rSafe + x.rPlay}</i></b></button>; })}</div>
+    <div className="wall-tally-row">
+      <span className="wall-tally-label">{office === 'GOV' ? 'Governors' : officeName(office)}<small>of {c.n}</small></span>
+      <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
+      <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
+      <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control` : ''}</span>
+    </div>
+  </section>;
+}
+
 export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial }) {
   const [m, setM] = useState(live ? live.m : national);
   const [open, setOpen] = useState<string | null>(null);
@@ -240,8 +255,8 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m, office]);
   const pick = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
-    <Tally races={races} m={m} seats={seats} totals={totals}/>
-    <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick} noRead={noRead} seats={seats} full={full}/>
+    {totals ? <PhoneChambers races={races} m={m} seats={seats} totals={totals} office={office} setOffice={setOffice}/> : <Tally races={races} m={m} seats={seats} totals={totals}/>}
+    <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick} noRead={noRead} seats={seats} full={full} hideToggle={!!totals}/>
     {openSeat && <SeatDetail s={openSeat} m={m} national={national} full={full}/>}
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>
       <button type="button" className={`wall-mrow ${shade(v)}`} aria-expanded={open === r.id} onClick={() => setOpen(open === r.id ? null : r.id)}>
