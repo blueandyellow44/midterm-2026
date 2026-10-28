@@ -12,10 +12,10 @@ if (process.argv[1]===new URL(import.meta.url).pathname) {
   const route=routeFor(file),html=readFileSync(file,'utf8'),csp=policy(html);
   if (html.includes(' style=')) throw new Error(`Unexpected inline style in ${route}`);
   if (csp.length+27>2000) throw new Error(`CSP exceeds Cloudflare line limit: ${route}`);
-  for (const path of route==='/'?['/']: [route,route.slice(0,-1)]) headers+=`${path}\n  Content-Security-Policy: ${csp}\n`;
   map.push({file,route,csp});
  }
- writeFileSync('public/_headers',headers);
+ writeFileSync('public/_headers',headers);   // global rules only: per-route CSP lives in the worker (Cloudflare caps _headers at 100 rules)
+ writeFileSync('.next/csp-routes.map.json',JSON.stringify(Object.fromEntries(map.map(m=>[m.route,m.csp]))));
  writeFileSync('.next/csp-routes.json',JSON.stringify(map,null,2));
  console.log(`Hashed final Next HTML for ${map.length} routes; no inline styles required.`);
 }

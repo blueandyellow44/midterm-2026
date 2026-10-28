@@ -7,4 +7,5 @@ for(const {file,route} of routes){const target=join('.open-next/assets',route===
 copyFileSync('public/_headers','.open-next/assets/_headers');
 // No server routes: replace the unused OpenNext fallback with a static 404.
 copyFileSync('worker-static.mjs','.open-next/worker.js');
+copyFileSync('.next/csp-routes.map.json','.open-next/csp-routes.json');
 await import('./verify-static.mjs');
