@@ -1,0 +1,38 @@
+{
+ "file": "ca-48-house-surveyusa-2026-09-01.json",
+ "race": "2026-CA-48-HOUSE",
+ "pid": "surveyusa",
+ "name": "SurveyUSA",
+ "sponsor": "KGTV 10 News and the San Diego Union-Tribune",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "surveyusa-h-2026-CA-48-HOUSE-2026-09-01",
+ "poll": {
+  "field_start": "2026-08-27",
+  "field_end": "2026-09-01",
+  "release_date": "2026-09-02",
+  "n": 522,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 42.0,
+  "other": null,
+  "undecided": 13.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://results.surveyusa.com/client/PollReport_main.aspx?g=0877c725-6e44-47fe-9856-dcf799865671",
+  "source_locator": "Von Wilpert (D) 45%, Desmond (R) 42%, Undecided 13%; 625 adults, 568 RV, 522 LV, Aug 27-Sept 1, 2026",
+  "notes": "Release date from Wikipedia citation (Sept 2).",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "weighted to US Census-derived targets for gender, age, ethnicity, and home ownership, and to California's CA-48 partisan registration data",
+  "method_url": "https://results.surveyusa.com/client/PollReport_main.aspx?g=0877c725-6e44-47fe-9856-dcf799865671",
+  "method_locator": "Methodology statement",
+  "mode": "mixed mode: 48% internet panel, 52% probability telephone",
+  "method_owner": "SurveyUSA",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": "2026-09-02"
+ }
+}

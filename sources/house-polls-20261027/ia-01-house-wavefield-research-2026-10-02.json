@@ -1,0 +1,38 @@
+{
+ "file": "ia-01-house-wavefield-research-2026-10-02.json",
+ "race": "2026-IA-01-HOUSE",
+ "pid": "wavefield-research",
+ "name": "Wavefield Research",
+ "sponsor": "Not stated; released via Michael Bridgford (I) campaign news release",
+ "scls": "INTERNAL",
+ "align": "NONE",
+ "method_id": "wavefield-research-s-2026-IA-01-HOUSE-2026-10-02",
+ "poll": {
+  "field_start": "2026-09-29",
+  "field_end": "2026-10-02",
+  "release_date": "2026-10-05",
+  "n": 297,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 29.0,
+  "other": 18.0,
+  "undecided": 9.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.rcreader.com/news-releases/new-poll-independent-michael-bridgford-surges-18-three-way-iowa-01-race-posts-highest",
+  "source_locator": "Chart 'If the Election Were Held Today': Bridgford 18%, Miller-Meeks 29%, Bohannan 45%, Undecided 9%; 'conducted by Wavefield Research among 297 likely general-election voters ... from September 29 to October 2, 2026, via online panel. The margin of error is ±5.7'",
+  "notes": "Three-way ballot including independent Michael Bridgford (other = Bridgford 18%). Release promotes Bridgford; sponsor not named, treated as an independent-campaign internal (align NONE). Toplines read from the release's chart image.",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://www.rcreader.com/news-releases/new-poll-independent-michael-bridgford-surges-18-three-way-iowa-01-race-posts-highest",
+  "method_locator": "Methodology",
+  "mode": "online panel",
+  "method_owner": "Wavefield Research",
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": "2026-10-05"
+ }
+}

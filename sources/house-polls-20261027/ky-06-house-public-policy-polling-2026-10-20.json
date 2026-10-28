@@ -1,0 +1,38 @@
+{
+ "file": "ky-06-house-public-policy-polling-2026-10-20.json",
+ "race": "2026-KY-06-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-s-2026-KY-06-HOUSE-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-20",
+  "release_date": "2026-10-21",
+  "n": 572,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 41.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "HMP memo table (Oct 21 2026): 'KY-06 Trump +15.4 47% 41% PPP 10/19/26- 10/20/26'; n from Newsweek (https://newsweek.com/the-kentucky-canary-in-the-coal-mine-for-republicans-12612629): 'A survey of 572 likely voters by Public Policy Polling released on Wednesday put the Democrat six points ahead of Alvarado, 47 percent to 41 percent.'",
+  "notes": "Sponsor memo gives dates and shares; sample size from Newsweek. Undecided/other not stated (12% residual).",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": null
+ }
+}

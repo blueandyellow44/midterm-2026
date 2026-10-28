@@ -1,0 +1,38 @@
+{
+ "file": "nv-02-house-gbao-2026-09-03.json",
+ "race": "2026-NV-02-HOUSE",
+ "pid": "gbao",
+ "name": "GBAO",
+ "sponsor": "Nevada Alliance (Democratic-aligned group backing Benitez-Thompson)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "gbao-h-2026-NV-02-HOUSE-2026-09-03",
+ "poll": {
+  "field_start": "2026-08-31",
+  "field_end": "2026-09-03",
+  "release_date": "2026-09-13",
+  "n": 500,
+  "pop": "LV",
+  "D": 38.0,
+  "R": 37.0,
+  "other": 14.0,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://thenevadaindependent.com/article/does-teresa-benitez-thompson-stand-a-chance-in-deep-red-northern-nevada",
+  "source_locator": "Nevada Independent: GBAO for Nevada Alliance, Benitez-Thompson 38, Flippo 37, Chapman (IAP) 14; 500 likely voters, Aug 31-Sept 3",
+  "notes": "other = Chapman (IAP). Article notes the ballot offered a 'none of the above' option and the sample was 48 Trump / 40 Harris vs a ~14-pt Trump district; undecided not stated in article (Wikipedia lists 11).",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": null
+ }
+}

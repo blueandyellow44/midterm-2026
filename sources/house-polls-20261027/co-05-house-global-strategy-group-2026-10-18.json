@@ -1,0 +1,38 @@
+{
+ "file": "co-05-house-global-strategy-group-2026-10-18.json",
+ "race": "2026-CO-05-HOUSE",
+ "pid": "global-strategy-group",
+ "name": "Global Strategy Group",
+ "sponsor": "Not named in memo (GSG is the Killin campaign's pollster per earlier releases)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "global-strategy-group-h-2026-CO-05-HOUSE-2026-10-18",
+ "poll": {
+  "field_start": "2026-10-14",
+  "field_end": "2026-10-18",
+  "release_date": "2026-10-20",
+  "n": 500,
+  "pop": "LV",
+  "D": 43.0,
+  "R": 38.0,
+  "other": 7.0,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://drive.google.com/file/d/1iF5NKlbiwGQmlEOEd8AaZz_Pe2vu8-De/view",
+  "source_locator": "GSG memo Oct 20: multi-candidate ballot '43% Killin/38% Crank/4% Mitchell/3% Elworth'; two-way 'Killin 46, Crank 44, Und. 10'; 500 likely 2026 voters, Oct 14-18, MOE +/-4.4",
+  "notes": "Record uses the full ballot with third-party candidates (as on the ballot); undecided not stated for it. Two-way: Killin 46, Crank 44, undecided 10. other = Mitchell (ACP) 4 + Elworth (L) 3.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "Care has been taken to ensure the geographic, political, and demographic divisions of the population of likely voters are properly represented.",
+  "method_url": "https://drive.google.com/file/d/1iF5NKlbiwGQmlEOEd8AaZz_Pe2vu8-De/view",
+  "method_locator": "About this poll",
+  "mode": null,
+  "method_owner": "Global Strategy Group",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": "2026-10-20"
+ }
+}

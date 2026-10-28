@@ -1,0 +1,38 @@
+{
+ "file": "tx-15-house-normington-petts-2026-09-28.json",
+ "race": "2026-TX-15-HOUSE",
+ "pid": "normington-petts",
+ "name": "Normington Petts",
+ "sponsor": "House Majority PAC (Democratic super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "normington-petts-h-2026-TX-15-HOUSE-2026-09-28",
+ "poll": {
+  "field_start": "2026-09-24",
+  "field_end": "2026-09-28",
+  "release_date": "2026-10-01",
+  "n": 400,
+  "pop": "LV",
+  "D": 54.0,
+  "R": 41.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/PatrickSvitek/status/2105651406627561762",
+  "source_locator": "Reporter Patrick Svitek, https://x.com/PatrickSvitek/status/2105651406627561762, Oct 1 2026: 'House Majority PAC (D) has Bobby Pulido leading ... (Normington Petts; Sept. 24-28; 400 LVs: +/-4.9%)', quoting HMP comms director post https://x.com/cjwarnke/status/2105646969775403226: 'Bobby Pulido: 54% Monica De La Cruz: 41% 2024 Recall: Trump+16'",
+  "notes": "Undecided not reported (5% remainder). Sample recalled 2024 vote Trump+16.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,216 @@
+{
+ "batch": 3,
+ "generated_at": "2026-10-27T17:05:00-07:00",
+ "rules": "No paywall bypass (no archive.ph, no Wayback of paywalled pages, no free-post claim on Substack); no browser.",
+ "polls": [
+  {
+   "race": "2026-MI-04-HOUSE",
+   "poll": "GBAO (McCann campaign), Sept 13-16",
+   "status": "recovered",
+   "file": "mi-04-house-gbao-2026-09-16.json",
+   "urls_tried": [
+    "https://api.fxtwitter.com/zachblackburn23/status/2103156697699430856 (404)",
+    "https://api.vxtwitter.com/zachblackburn23/status/2103156697699430856",
+    "https://wtvbam.com/2026/09/25/973614/"
+   ]
+  },
+  {
+   "race": "2026-MI-07-HOUSE",
+   "poll": "Emerson College (RCP Poll Vault), Oct 12-14, n=314 LV, Lawrence 53 Barrett 45",
+   "status": "still_unverified",
+   "reason": "Only source is the paywalled Poll Vault post (not bypassed). No Emerson release on emersoncollegepolling.com (feed and search checked); no Poll Vault or Emerson Bluesky posts; no free news coverage found. Web search budget for the session was exhausted, so Emerson/Poll Vault X post IDs could not be located.",
+   "urls_tried": [
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/feed/",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=Michigan",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=pollvault.bsky.social&limit=100",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=the-downballot.com&limit=100 (Sept 4 - Oct 27, 6 pages)",
+    "https://uspollingdata.com/races/house/mi-07/",
+    "https://www.270towin.com/2026-house-polls/michigan/district-7 (404)"
+   ]
+  },
+  {
+   "race": "2026-MN-01-HOUSE",
+   "poll": "Public Policy Polling (House Majority PAC), Oct 13-14, 43-43",
+   "status": "still_unverified",
+   "reason": "Toplines and field dates now confirmed by the sponsor's own memo (https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory: D 43, R 43, PPP, 2026-10-13 to 2026-10-14) and the reporter's thread; sample size appears in no free source (memo, Washington Sun article and thread all omit n; Wikipedia's n has no traceable source). Record not written because n is required.",
+   "confirmed": {
+    "pollster": "Public Policy Polling",
+    "sponsor": "House Majority PAC",
+    "field_dates": "2026-10-13 to 2026-10-14",
+    "D": 43,
+    "R": 43,
+    "n": null
+   },
+   "urls_tried": [
+    "https://api.vxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/2/conversation/2112877284684341727",
+    "https://pbs.twimg.com/media/HVJvSK2XkAAu-Tt.jpg",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://www.washingtonsun.com/campaigns/hmp-donors-memo-democrats-growing-map",
+    "https://www.publicpolicypolling.com/",
+    "https://www.thehousemajoritypac.com/news",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=the-downballot.com&limit=100 (Sept 4 - Oct 27, 6 pages)"
+   ]
+  },
+  {
+   "race": "2026-MN-01-HOUSE",
+   "poll": "GBAO (House Majority PAC), Sept 18-21",
+   "status": "recovered",
+   "file": "mn-01-house-gbao-2026-09-21.json",
+   "urls_tried": [
+    "https://api.fxtwitter.com/cjwarnke/status/2102878578849484963 (404)",
+    "https://api.vxtwitter.com/cjwarnke/status/2102878578849484963",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=at://the-downballot.com/app.bsky.feed.post/3mwbqbuzrn22f",
+    "https://www.thehousemajoritypac.com/news"
+   ]
+  },
+  {
+   "race": "2026-MT-01-HOUSE",
+   "poll": "Emerson College (RCP Poll Vault), Oct 12-14, n=329 LV, Forstag 50 Flint 46",
+   "status": "still_unverified",
+   "reason": "Same as MI-07: paywalled Poll Vault post only; no free Emerson release or post found.",
+   "urls_tried": [
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/feed/",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=Montana",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=pollvault.bsky.social&limit=100",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=the-downballot.com&limit=100 (Sept 4 - Oct 27, 6 pages)",
+    "https://uspollingdata.com/races/house/mt-01/",
+    "https://www.270towin.com/2026-house-polls/montana/district-1"
+   ]
+  },
+  {
+   "race": "2026-MT-01-HOUSE",
+   "poll": "Public Policy Polling (House Majority PAC), Oct 12-14, Forstag 48 Flint 45",
+   "status": "still_unverified",
+   "reason": "Toplines and field dates now confirmed by the sponsor's own memo (https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory: D 48, R 45, PPP, 2026-10-12 to 2026-10-14) and the reporter's thread; sample size appears in no free source (memo, Washington Sun article and thread all omit n; Wikipedia's n has no traceable source). Record not written because n is required.",
+   "confirmed": {
+    "pollster": "Public Policy Polling",
+    "sponsor": "House Majority PAC",
+    "field_dates": "2026-10-12 to 2026-10-14",
+    "D": 48,
+    "R": 45,
+    "n": null
+   },
+   "urls_tried": [
+    "https://api.vxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/2/conversation/2112877284684341727",
+    "https://pbs.twimg.com/media/HVJvSK2XkAAu-Tt.jpg",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://www.washingtonsun.com/campaigns/hmp-donors-memo-democrats-growing-map",
+    "https://www.publicpolicypolling.com/",
+    "https://www.thehousemajoritypac.com/news",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=the-downballot.com&limit=100 (Sept 4 - Oct 27, 6 pages)"
+   ]
+  },
+  {
+   "race": "2026-MT-01-HOUSE",
+   "poll": "American Pulse (NonStop Local), Sept 19-24, Flint 45.9 Forstag 45.4",
+   "status": "still_unverified",
+   "reason": "Sponsor articles (Montana Right Now and the KULR8 copy) give toplines and dates but only 'Over 300 Montanans were surveyed'; American Pulse site has no public report. Exact n (314) appears only on aggregators.",
+   "urls_tried": [
+    "https://www.montanarightnow.com/elections/aaron-flint-sam-forstag-nearly-tied-for-montana-congressional-district-1/article_96a2f7e1-334a-46c7-9a92-84ccc4c44171.html",
+    "https://www.kulr8.com/elections/aaron-flint-sam-forstag-nearly-tied-for-montana-congressional-district-1/article_d38c1c38-42f2-5375-b7fe-9bd8655bb9f1.html",
+    "https://www.kulr8.com/elections/polling-gives-outlooks-for-upcoming-general-election-in-montana/article_e73de873-0981-54e3-bb4b-634e86040ad4.html",
+    "https://www.americanpulse.us/"
+   ]
+  },
+  {
+   "race": "2026-MT-01-HOUSE",
+   "poll": "Public Policy Polling (The Bench), Sept 9-10",
+   "status": "recovered",
+   "file": "mt-01-house-public-policy-polling-2026-09-10.json",
+   "urls_tried": [
+    "https://api.fxtwitter.com/zachblackburn23/status/2100002534383358350 (404)",
+    "https://api.vxtwitter.com/zachblackburn23/status/2100002534383358350",
+    "https://pbs.twimg.com/media/HSS1JmHWgAAwsUg.jpg",
+    "https://pbs.twimg.com/media/HSS1JmHWIAAiVNu.jpg",
+    "https://www.the-downballot.com/api/v1/posts/morning-digest-why-the-indiana-gop"
+   ]
+  },
+  {
+   "race": "2026-NV-02-HOUSE",
+   "poll": "Public Policy Polling (House Majority PAC), Oct 12-13, Flippo 46 Benitez-Thompson 44",
+   "status": "still_unverified",
+   "reason": "Toplines and field dates now confirmed by the sponsor's own memo (https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory: D 44, R 46, PPP, 2026-10-12 to 2026-10-13) and the reporter's thread; sample size appears in no free source (memo, Washington Sun article and thread all omit n; Wikipedia's n has no traceable source). Record not written because n is required.",
+   "confirmed": {
+    "pollster": "Public Policy Polling",
+    "sponsor": "House Majority PAC",
+    "field_dates": "2026-10-12 to 2026-10-13",
+    "D": 44,
+    "R": 46,
+    "n": null
+   },
+   "urls_tried": [
+    "https://api.vxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/2/conversation/2112877284684341727",
+    "https://pbs.twimg.com/media/HVJvSK2XkAAu-Tt.jpg",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://www.washingtonsun.com/campaigns/hmp-donors-memo-democrats-growing-map",
+    "https://www.publicpolicypolling.com/",
+    "https://www.thehousemajoritypac.com/news",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=the-downballot.com&limit=100 (Sept 4 - Oct 27, 6 pages)"
+   ]
+  },
+  {
+   "race": "2026-NY-17-HOUSE",
+   "poll": "McLaughlin & Associates (Lawler campaign), Sept 28-30",
+   "status": "recovered",
+   "file": "ny-17-house-mclaughlin-and-associates-2026-09-30.json",
+   "urls_tried": [
+    "https://nypost.com/2026/10/02/us-news/gop-rep-mike-lawler-leads-dem-cait-conley-in-battleground-ny-house-district-new-internal-poll/ (free article, fetched directly)"
+   ]
+  },
+  {
+   "race": "2026-NY-21-HOUSE",
+   "poll": "Public Policy Polling (House Majority PAC), Oct 12-13, Constantino 46 Gendebien 44",
+   "status": "still_unverified",
+   "reason": "Toplines and field dates now confirmed by the sponsor's own memo (https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory: D 44, R 46, PPP, 2026-10-12 to 2026-10-13) and the reporter's thread; sample size appears in no free source (memo, Washington Sun article and thread all omit n; Wikipedia's n has no traceable source). Record not written because n is required.",
+   "confirmed": {
+    "pollster": "Public Policy Polling",
+    "sponsor": "House Majority PAC",
+    "field_dates": "2026-10-12 to 2026-10-13",
+    "D": 44,
+    "R": 46,
+    "n": null
+   },
+   "urls_tried": [
+    "https://api.vxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.fxtwitter.com/2/conversation/2112877284684341727",
+    "https://pbs.twimg.com/media/HVJvSK2XkAAu-Tt.jpg",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://www.washingtonsun.com/campaigns/hmp-donors-memo-democrats-growing-map",
+    "https://www.publicpolicypolling.com/",
+    "https://www.thehousemajoritypac.com/news",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=the-downballot.com&limit=100 (Sept 4 - Oct 27, 6 pages)"
+   ]
+  },
+  {
+   "race": "2026-NY-21-HOUSE",
+   "poll": "Public Policy Polling (The Bench), Sept 9-10",
+   "status": "recovered",
+   "file": "ny-21-house-public-policy-polling-2026-09-10.json",
+   "urls_tried": [
+    "https://api.vxtwitter.com/zachblackburn23/status/2100002534383358350",
+    "https://pbs.twimg.com/media/HSS1JmFXEAEebrp.jpg",
+    "https://pbs.twimg.com/media/HSS1JmHWIAAiVNu.jpg",
+    "https://www.the-downballot.com/api/v1/posts/morning-digest-why-the-indiana-gop"
+   ]
+  }
+ ],
+ "rechecks": [
+  {
+   "race": "2026-NJ-07-HOUSE",
+   "poll": "StimSight Research (InsiderNJ), Sept 8-12",
+   "status": "confirmed_primary",
+   "detail": "Sponsor's own release confirms Bennett 47, Kean 42, 498 likely voters, Sept 8-12, MOE 4.7. No archive copy used (archive routes withdrawn by Max). Discrepancies in the existing record, NOT edited per instructions: release is dated 2026-09-14 (record says 2026-09-19), and source_url could be upgraded from the CentralJersey.com article to this primary release; release links a toplines file 'StimSight_NJ07_toplines'.",
+   "url": "https://www.insidernj.com/insider-nj-stimsight-poll-finds-bennett-leads-kean-in-new-jerseys-7th-district-affordability-of-household-goods-is-a-crucial-factor-for-persuadable-voters/",
+   "existing_file": "nj-07-house-stimsight-research-2026-09-12.json"
+  }
+ ]
+}

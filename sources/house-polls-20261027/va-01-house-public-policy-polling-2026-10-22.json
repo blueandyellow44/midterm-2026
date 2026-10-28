@@ -1,0 +1,38 @@
+{
+ "file": "va-01-house-public-policy-polling-2026-10-22.json",
+ "race": "2026-VA-01-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC (Democratic super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-VA-01-HOUSE-2026-10-22",
+ "poll": {
+  "field_start": "2026-10-21",
+  "field_end": "2026-10-22",
+  "release_date": "2026-10-23",
+  "n": 570,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/cjwarnke/status/2113633843999605102",
+  "source_locator": "Post by CJ Warnke (HMP comms director), https://x.com/cjwarnke/status/2113633843999605102, Oct 23 2026: 'NEW @HouseMajPAC poll in #VA01 ... Shannon Taylor: 47% Rob Wittman: 46% 2024 Recall: Trump+4 PPP, 10/21-/10/22, 570 Likely Voters'",
+  "notes": "Sponsor's own post. Undecided not reported (7% remainder).",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,159 @@
+{
+ "batch": 5,
+ "districts": {
+  "2026-SC-01-HOUSE": {
+   "polls_written": 4,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_South_Carolina",
+    "https://coefficient.org/our-work/south-carolina-1st-congressional-district-oct-2026/",
+    "https://api.fxtwitter.com/cjwarnke/status/2113636550357528714",
+    "https://api.fxtwitter.com/AndrewSolender/status/2108617190245306670",
+    "https://api.fxtwitter.com/zachblackburn23/status/2100002534383358350",
+    "https://api.fxtwitter.com/coefficientpoll/status/2106116052870402454",
+    "https://www.wtoc.com/2026/10/16/jenny-costa-honeycutt-nancy-lacore-square-off-sc-01-debate-days-before-early-voting/"
+   ],
+   "unverified": []
+  },
+  "2026-TX-15-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Texas",
+    "https://www.tpr.org/government-politics/2026-10-21/new-poll-shows-in-battle-for-border-voters-tejano-star-poised-to-flip-tx-15",
+    "https://puentenews.org/",
+    "https://api.fxtwitter.com/PatrickSvitek/status/2105651406627561762",
+    "https://www.sacurrent.com/news/politics-and-elections/tejano-singer-and-south-texas-congressional-hopeful-bobby-pulido-surges-past-gop-rival-in-poll/",
+    "https://hoodline.com/2026/10/edinburg-s-bobby-pulido-trades-final-concert-for-shot-at-congress/",
+    "https://static1.squarespace.com/static/67aa7aa3e284b002cd6a420e/t/6a8debe648e3721adb0534b6/1787685864204/SouthTexasCDs2026.pdf"
+   ],
+   "unverified": [
+    {
+     "pollster": "Texas Southern University (Barbara Jordan Center) for San Antonio Express-News / El Pais / Puente News Collaborative, Oct 13-16, LV, Pulido 51 De La Cruz 44, undecided 5, MoE 3.8",
+     "reason": "Sample size not confirmed: Express-News article (https://www.expressnews.com/politics/article/bobby-pulido-monica-de-la-cruz-poll-donald-trump-22483930.php) is paywalled; free TPR coverage gives dates, toplines and MoE but no n; no TSU release found"
+    }
+   ]
+  },
+  "2026-TX-23-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Texas",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://uspollingdata.com/races/house/tx-23/"
+   ],
+   "unverified": [
+    {
+     "pollster": "Normington Petts for House Majority PAC, Oct 5-7, Herrera 46 Padilla Stout 46",
+     "reason": "HMP memo (https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory) gives toplines and dates but no sample size; n=400 LV appears only on Wikipedia and uspollingdata.com"
+    }
+   ]
+  },
+  "2026-TX-34-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Texas",
+    "https://www.washingtonpost.com/politics/2026/10/23/two-texas-districts-gop-had-counted-now-feature-tight-house-races/",
+    "https://www.washingtonpost.com/documents/19f3ce42-e995-4c11-bdab-7a900b8cdb4d.pdf",
+    "https://schar.gmu.edu/news-and-events/latest-news",
+    "https://www.fox26houston.com/news/south-texas-congressional-poll-gives-democrats-edge-three-key-districts"
+   ],
+   "unverified": [
+    {
+     "pollster": "Washington Post-Schar School, Oct 14-19, 626 LV, Gonzalez 50 Flores 43, MoE 5.4",
+     "reason": "Washington Post article and topline PDF are paywalled/403; no free Schar School release for this poll found. Full text was seen only on an unauthorized mirror of the paywalled article (dnyuz.com), not used under the no-paywall-bypass rule"
+    }
+   ]
+  },
+  "2026-TX-35-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Texas",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/category/congressional/",
+    "https://www.washingtonpost.com/politics/2026/10/23/two-texas-districts-gop-had-counted-now-feature-tight-house-races/",
+    "https://uspollingdata.com/races/house/tx-35/"
+   ],
+   "unverified": [
+    {
+     "pollster": "Washington Post-Schar School, Oct 14-19, 605 LV, MoE 6.2 (Wikipedia: De La Cruz 48 Garcia 47)",
+     "reason": "Paywalled; toplines not in any free text found (the article text shows them only in a graphic); no free Schar School release"
+    },
+    {
+     "pollster": "Emerson College for RCP Poll Vault, Oct 12-14, 417 LV, Garcia 51 De La Cruz 49",
+     "reason": "Poll Vault post (https://pollvault.substack.com/p/levee-math) is paywalled; no Emerson release on emersoncollegepolling.com; numbers seen only on Wikipedia/uspollingdata.com"
+    },
+    {
+     "pollster": "Normington Petts for House Majority PAC, Oct 12-14, Garcia 47 De La Cruz 45",
+     "reason": "HMP memo gives toplines and dates but no sample size; n=400 LV only on Wikipedia/uspollingdata.com"
+    }
+   ]
+  },
+  "2026-VA-01-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Virginia",
+    "https://api.fxtwitter.com/cjwarnke/status/2113633843999605102",
+    "https://www.virginiascope.com/internal-poll-shows-a-tight-race-between-wittman-and-taylor/",
+    "https://schar.gmu.edu/news/2026-10/washington-post-schar-school-poll-shows-democrats-leading-bellwether-districts",
+    "https://politicalwire.com/2026/10/01/two-virginia-districts-shift-left/",
+    "https://wjla.com/news/local/virginia-midterm-elections-red-blue-politics-house-government-1st-5th-districts-republican-rob-wittman-donald-trump-president-voting-national-political-economy-democrat-republican-polling",
+    "https://www.wtvr.com/news/virginia-politics/virginia-1st-congressional-district-wittman-faces-toughest-reelection-battle-oct-4-2026"
+   ],
+   "unverified": [
+    {
+     "pollster": "Washington Post-Schar School, Sept 23-28, LV, Taylor 50 Wittman 46, MoE 4.5",
+     "reason": "Sample size not in any free source: Schar School release gives toplines and dates, Political Wire gives MoE; the WaPo article and trend PDF are paywalled/403 (n=609 seen only on Wikipedia and an unauthorized mirror, not used)"
+    }
+   ]
+  },
+  "2026-VA-02-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Virginia",
+    "https://cnu.edu/wason/surveys/archive/2026-10-14.html",
+    "https://www.whro.org/elections/2026-10-15/new-poll-in-virginias-2nd-district-luria-leads-kiggans-by-3-points"
+   ],
+   "unverified": []
+  },
+  "2026-WA-03-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Washington",
+    "https://www.nwprogressive.org/weblog/2026/10/theyre-tied-again-in-wa-03-npis-autumn-civic-heartbeat-polling-finds-marie-gluesenkamp-perez-at-45-john-braun-at-44.html",
+    "https://www.opb.org/article/2026/10/01/gluesenkamp-perez-braun-southwest-washington-3rd-district/"
+   ],
+   "unverified": []
+  },
+  "2026-WI-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Wisconsin",
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=at://the-downballot.com/app.bsky.feed.post/3mwyouhbwg22k",
+    "https://hub.nationaljournal.com/dems-choosin-texas"
+   ],
+   "unverified": [
+    {
+     "pollster": "DCCC Analytics, Sept 21-23, 495 LV, Steil 48 Berman 48",
+     "reason": "Only source is National Journal (https://hub.nationaljournal.com/dems-choosin-texas), paywalled; no free DCCC release or post found"
+    }
+   ]
+  },
+  "2026-WI-03-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Wisconsin"
+   ],
+   "unverified": []
+  }
+ }
+}

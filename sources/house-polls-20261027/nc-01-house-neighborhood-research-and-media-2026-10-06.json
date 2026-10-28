@@ -1,0 +1,38 @@
+{
+ "file": "nc-01-house-neighborhood-research-and-media-2026-10-06.json",
+ "race": "2026-NC-01-HOUSE",
+ "pid": "neighborhood-research-and-media",
+ "name": "Neighborhood Research and Media",
+ "sponsor": "Rick Shaftan / Neighborhood Research (memo to North Carolina Republicans; Shaftan supports Buckhout)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "neighborhood-research-and-media-s-2026-NC-01-HOUSE-2026-10-06",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-06",
+  "release_date": "2026-10-07",
+  "n": 303,
+  "pop": "LV",
+  "D": 51.0,
+  "R": 41.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/Shaftan/status/2107772933322277266",
+  "source_locator": "Pollster's own post https://x.com/Shaftan/status/2107772933322277266 and memo image: 'RE: 303 Live Operator Interviews NC-1: October 1-2 and 5-6'; 'Don Davis leads Laurie Buckhout 51-41.'",
+  "notes": "Fieldwork Oct 1-2 and 5-6. Undecided/other not stated (remainder 8).",
+  "retrieved_at": "2026-10-27T15:30:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": null,
+  "method_date": null
+ }
+}

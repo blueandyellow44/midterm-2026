@@ -1,0 +1,38 @@
+{
+ "file": "ak-al-house-fabrizio-ward-impact-research-2026-09-11.json",
+ "race": "2026-AK-AL-HOUSE",
+ "pid": "fabrizio-ward-impact-research",
+ "name": "Fabrizio Ward / Impact Research",
+ "sponsor": "AARP",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "fabrizio-ward-impact-research-h-2026-AK-AL-HOUSE-2026-09-11",
+ "poll": {
+  "field_start": "2026-09-08",
+  "field_end": "2026-09-11",
+  "release_date": "2026-09-17",
+  "n": 800,
+  "pop": "LV",
+  "D": 9.0,
+  "R": 45.0,
+  "other": 34.0,
+  "undecided": 11.0,
+  "denominator_class": "FULL",
+  "round": "FIRST",
+  "source_url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska-annotated-questionnaire.doi.10.26419-2fres.01065.017.pdf",
+  "source_locator": "Q29 first choice, Total: Begich 45, Hill 31, Hafner 9, McDermott 3, Undecided 11; 800 likely voters, Sept 8-11 (methodology report)",
+  "notes": "Bipartisan team (R+D) for AARP. other = Hill 31 + McDermott 3. RCV final Begich 57, Hill 43. Release page: https://www.aarp.org/pri/topics/voter-research/politics/2026-midterm-election-poll-alaska/",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "2024 election result weights were applied based on statewide results, recent National Election Pool exit polls, and AP VoteCast data.",
+  "method_url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska-methodology.doi.10.26419-2fres.01065.018.pdf",
+  "method_locator": "Weighting",
+  "mode": "live phone (cell 40%, landline 15%) + SMS-to-web 45%",
+  "method_owner": "Fabrizio Ward / Impact Research (AARP methodology report)",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": "2026-09-17"
+ }
+}

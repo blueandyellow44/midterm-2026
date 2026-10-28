@@ -1,0 +1,38 @@
+{
+ "file": "oh-09-house-dccc-2026-09-23.json",
+ "race": "2026-OH-09-HOUSE",
+ "pid": "dccc",
+ "name": "DCCC Analytics Department",
+ "sponsor": "DCCC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "dccc-s-2026-OH-09-HOUSE-2026-09-23",
+ "poll": {
+  "field_start": "2026-09-22",
+  "field_end": "2026-09-23",
+  "release_date": "2026-09-29",
+  "n": 481,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 48.0,
+  "other": null,
+  "undecided": 4.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://dccc.org/dccc-polling-memo-oh-09-is-a-dead-heat/",
+  "source_locator": "'Democrat Marcy Kaptur and Republican Derek Merrin both receiving 48% of the vote, with 4% of voters undecided'; '481 likely general election voters ... September 22-23, 2026, via phone and text-to-web'",
+  "notes": null,
+  "retrieved_at": "2026-10-27T15:30:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": "phone and text-to-web",
+  "method_owner": "DCCC",
+  "retrieved_at": "2026-10-27T15:30:00-07:00",
+  "method_date": "2026-09-29"
+ }
+}

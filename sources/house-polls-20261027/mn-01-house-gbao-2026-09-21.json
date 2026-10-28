@@ -1,0 +1,38 @@
+{
+ "file": "mn-01-house-gbao-2026-09-21.json",
+ "race": "2026-MN-01-HOUSE",
+ "pid": "gbao",
+ "name": "GBAO",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "gbao-h-2026-MN-01-HOUSE-2026-09-21",
+ "poll": {
+  "field_start": "2026-09-18",
+  "field_end": "2026-09-21",
+  "release_date": "2026-09-23",
+  "n": 500,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/cjwarnke/status/2102878578849484963",
+  "source_locator": "x.com/cjwarnke/status/2102878578849484963 (Sept 23): 'New @HouseMajPAC poll in #MN01 ... Jake Johnson: 47% Brad Finstad: 46%'; pollster, n and dates from The Downballot on Bluesky, https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=at://the-downballot.com/app.bsky.feed.post/3mwbqbuzrn22f ('Pollster: GBAO / Sample: 500 LVs / Field dates: Sept. 18-21, 2026')",
+  "notes": "Toplines from a reporter's post; GBAO, n and field dates from The Downballot's follow-up post quoting the same poll. Undecided not stated (Wikipedia lists 7, not used). Post also reports 2024 recall Trump+9 vs a ~Trump+12 district.",
+  "retrieved_at": "2026-10-27T17:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T17:05:00-07:00",
+  "method_date": null
+ }
+}

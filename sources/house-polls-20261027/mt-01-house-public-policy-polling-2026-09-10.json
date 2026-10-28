@@ -1,0 +1,38 @@
+{
+ "file": "mt-01-house-public-policy-polling-2026-09-10.json",
+ "race": "2026-MT-01-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "The Bench (supports Forstag)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-MT-01-HOUSE-2026-09-10",
+ "poll": {
+  "field_start": "2026-09-09",
+  "field_end": "2026-09-10",
+  "release_date": "2026-09-15",
+  "n": 536,
+  "pop": "RV",
+  "D": 45.0,
+  "R": 43.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/zachblackburn23/status/2100002534383358350",
+  "source_locator": "Memo images attached to x.com/zachblackburn23/status/2100002534383358350 (Sept 15): Montana CD 1 head-to-head 'Forstag 45-43'; methodology 'PPP interviewed 536 registered voters in Montana's 1st Congressional district on September 9-10, 2026 ... +/- 4.2%'; images https://pbs.twimg.com/media/HSS1JmHWgAAwsUg.jpg and https://pbs.twimg.com/media/HSS1JmHWIAAiVNu.jpg",
+  "notes": "Sponsor memo (The Bench | Public Policy Polling | September 15, 2026) read from images posted by a reporter. Toplines corroborated by The Downballot Morning Digest Sept 16 (free): 'PPP for The Bench (pro-Forstag): Forstag (D): 45, Flint (R): 43'. Generic ballot R 48-44. Other/undecided not given.",
+  "retrieved_at": "2026-10-27T17:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://pbs.twimg.com/media/HSS1JmHWIAAiVNu.jpg",
+  "method_locator": "METHODOLOGY (The Bench | Public Policy Polling | September 15, 2026)",
+  "mode": "25% landline, 75% text message",
+  "method_owner": "Public Policy Polling",
+  "retrieved_at": "2026-10-27T17:05:00-07:00",
+  "method_date": "2026-09-15"
+ }
+}

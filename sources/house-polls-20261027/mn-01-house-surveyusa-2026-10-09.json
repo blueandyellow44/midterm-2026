@@ -1,0 +1,38 @@
+{
+ "file": "mn-01-house-surveyusa-2026-10-09.json",
+ "race": "2026-MN-01-HOUSE",
+ "pid": "surveyusa",
+ "name": "SurveyUSA",
+ "sponsor": "KAAL ABC 6 News (Rochester)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "surveyusa-h-2026-MN-01-HOUSE-2026-10-09",
+ "poll": {
+  "field_start": "2026-10-04",
+  "field_end": "2026-10-09",
+  "release_date": "2026-10-12",
+  "n": 565,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": 10.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://results.surveyusa.com/client/PollReport.aspx?g=3605b38b-d541-4db4-9d70-f6d4875faeb8",
+  "source_locator": "SurveyUSA #28043: Johnson (DFL) 46, Finstad (R) 44, Undecided 10; 565 likely voters of 725 adults, Oct 4-9",
+  "notes": "Mixed mode: 49% Cint online panel, 51% Aristotle telephone (landline + SMS-to-web).",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The full pool of respondents was weighted to US Census-derived targets for gender, age, ethnicity, and home ownership.",
+  "method_url": "https://results.surveyusa.com/client/PollReport_main.aspx?g=3605b38b-d541-4db4-9d70-f6d4875faeb8",
+  "method_locator": "Statement of methodology",
+  "mode": "mixed mode: online panel + telephone/SMS-to-web",
+  "method_owner": "SurveyUSA",
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": "2026-10-12"
+ }
+}

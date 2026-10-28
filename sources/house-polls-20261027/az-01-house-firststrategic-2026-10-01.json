@@ -1,0 +1,38 @@
+{
+ "file": "az-01-house-firststrategic-2026-10-01.json",
+ "race": "2026-AZ-01-HOUSE",
+ "pid": "firststrategic",
+ "name": "FirstStrategic",
+ "sponsor": "FirstStrategic (self; no sponsor named)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "firststrategic-h-2026-AZ-01-HOUSE-2026-10-01",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-01",
+  "release_date": "2026-10-05",
+  "n": 400,
+  "pop": "LV",
+  "D": 44.4,
+  "R": 41.6,
+  "other": null,
+  "undecided": 14.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/Garrett_Archer/status/2107166943052808575",
+  "source_locator": "https://x.com/Garrett_Archer/status/2107166943052808575 (ABC15 analyst, Oct 5) with release image 'Q1: CD1 General Election Ballot ... 10/1/26 n=400 MOE +/-5.4': Shah 44.4%, Unsure 14.0%, Feely 41.6%",
+  "notes": "Release PDF (https://s3.documentcloud.org/documents/28722214/shahfeeley-poll-release.pdf) returned 403; toplines read from release image attached to the post. LV population per Wikipedia and 270toWin; the visible release page does not state the universe.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

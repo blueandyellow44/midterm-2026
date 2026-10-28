@@ -1,0 +1,33 @@
+{
+ "file": "pa-01-house-nyt-siena-2026-10-22.json",
+ "race": "2026-PA-01-HOUSE",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times and The Philadelphia Inquirer",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-c26",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-22",
+  "release_date": "2026-10-25",
+  "n": 400,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://sri.siena.edu/2026/10/25/nytimes-philadelphia-inquirer-siena-poll-of-likely-pennsylvania-congressional-district-voters/",
+  "source_locator": "Siena release, headline toplines: PA-01: Bob Harvie (D) 48% \u2013 Brian Fitzpatrick (R) 46%. Field dates Oct 16-22 and 'about 400 likely voters' per The Philadelphia Inquirer; NYT toplines: https://www.nytimes.com/interactive/2026/10/25/polls/times-siena-pa1-poll-toplines.html",
+  "notes": "n recorded as 400: the free sources give 'about 400 likely voters' (aggregators list 400 to 404). Max, 2026-10-27: \"Yes\u2026that's a respected polling outlet\".",
+  "retrieved_at": "2026-10-27T17:10:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The survey was weighted to balance the joint distribution of the following characteristics: ... Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls ... adjusted to match precinct-level election results) / Modeled probability of presidential vote choice in the 2024 election",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/03/polls/times-siena-alaska-poll-toplines.html"
+ }
+}

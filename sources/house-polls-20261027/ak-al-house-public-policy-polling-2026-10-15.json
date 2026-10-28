@@ -1,0 +1,38 @@
+{
+ "file": "ak-al-house-public-policy-polling-2026-10-15.json",
+ "race": "2026-AK-AL-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "Unnamed Democratic-aligned client (poll 'circulating among groups')",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-AK-AL-HOUSE-2026-10-15",
+ "poll": {
+  "field_start": "2026-10-14",
+  "field_end": "2026-10-15",
+  "release_date": "2026-10-15",
+  "n": 578,
+  "pop": "RV",
+  "D": 5.0,
+  "R": 45.0,
+  "other": 46.0,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "FIRST",
+  "source_url": "https://api.fxtwitter.com/AndrewSolender/status/2110867168892014803",
+  "source_locator": "https://x.com/AndrewSolender/status/2110867168892014803 (Axios reporter): 'Dem-aligned PPP poll of Alaska ... #AKAL (1st choice) Begich 45%, Hill 44%, Hafner 5%, McDermott 2% ... 578RV, Oct. 14-15'",
+  "notes": "other = Hill 44 + McDermott 2. Undecided not stated (remaining 4 implied). Reporter-relayed toplines; sponsor not named.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

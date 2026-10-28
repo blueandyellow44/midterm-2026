@@ -1,0 +1,38 @@
+{
+ "file": "pa-10-house-susquehanna-polling-and-research-2026-10-11.json",
+ "race": "2026-PA-10-HOUSE",
+ "pid": "susquehanna-polling-and-research",
+ "name": "Susquehanna Polling & Research",
+ "sponsor": "Susquehanna Polling & Research (self; sponsor not stated)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "susquehanna-polling-and-research-s-2026-PA-10-HOUSE-2026-10-11",
+ "poll": {
+  "field_start": "2026-10-05",
+  "field_end": "2026-10-11",
+  "release_date": "2026-10-17",
+  "n": 300,
+  "pop": "LV",
+  "D": 49.0,
+  "R": 46.0,
+  "other": 1.0,
+  "undecided": 4.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/SusquehannaPR/status/2111471509856309679",
+  "source_locator": "Pollster's own post https://x.com/SusquehannaPR/status/2111471509856309679: 'Field Dates: 10/5-10/11 Sample: 300 LV MoE: +/-5.6%'; image 'COMBINED BALLOT SCORE W/ LEANERS': Perry 137 46%, Stelson 147 49%, Other 4 01%, Not Sure/Undecided 11 04%",
+  "notes": "Wikipedia tags Susquehanna (R); no sponsor named in post, classed NONPARTISAN pending sponsor info.",
+  "retrieved_at": "2026-10-27T15:30:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": null,
+  "method_date": null
+ }
+}

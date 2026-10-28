@@ -1,0 +1,38 @@
+{
+ "file": "sc-01-house-gqr-2026-10-04.json",
+ "race": "2026-SC-01-HOUSE",
+ "pid": "gqr",
+ "name": "GQR",
+ "sponsor": "Unnamed Democratic-aligned groups (privately circulated)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "gqr-h-2026-SC-01-HOUSE-2026-10-04",
+ "poll": {
+  "field_start": "2026-09-30",
+  "field_end": "2026-10-04",
+  "release_date": "2026-10-09",
+  "n": 400,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/AndrewSolender/status/2108617190245306670",
+  "source_locator": "Reporter Andrew Solender, https://x.com/AndrewSolender/status/2108617190245306670, Oct 9 2026: 'Dem-aligned GQR poll of #SC01 circulating among groups and viewed by me: House Nancy Lacore (D) - 48% Jenny Costa Honeycutt (R) - 45% ... 400 LV, Sept. 30-Oct. 4'",
+  "notes": "Sponsor not named; reported by a journalist who viewed the poll. Undecided/other not reported.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

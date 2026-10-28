@@ -1,0 +1,134 @@
+{
+ "batch": 1,
+ "districts": {
+  "2026-AL-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Alabama",
+    "https://www.270towin.com/2026-house-polls/alabama/district-2",
+    "https://www.alreporter.com/2026/08/17/first-poll-released-after-special-primary-suggests-cd-2-is-a-tied-race/",
+    "https://www.predictionhunt.com/news/figures-tied-at-46-in-redrawn-al-02-yet-markets-sep-09-2026",
+    "https://www.thehousemajoritypac.com/news"
+   ],
+   "unverified": [],
+   "note": "Latest polls end before the window: Tulchin (HMP) Aug 24-31 47-47; DCCC Jul 29-30 46-46; Impact Jun 22-25."
+  },
+  "2026-AK-AL-HOUSE": {
+   "polls_written": 5,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_election_in_Alaska",
+    "https://www.dataforprogress.org/blog/2026/10/20/every-statewide-race-in-alaska-is-close-as-7-in-10-voters-worry-about-affording-gas-and-food",
+    "https://www.filesforprogress.org/datasets/2026/10/dfp_alaska_oct_2026.pdf",
+    "https://api.fxtwitter.com/2/conversation/2108662812415549529",
+    "https://api.fxtwitter.com/AndrewSolender/status/2110867168892014803",
+    "https://www.aarp.org/pri/topics/voter-research/politics/2026-midterm-election-poll-alaska/",
+    "https://cdn.prod.website-files.com/68d1c32ec01e1d1f6a86e801/6abd40f2f3810a4e535a8aa6_Alaska_Topline-Independent_Leadership_Council.pdf",
+    "https://sri.siena.edu/2026/10/03/nytimes-siena-poll-of-likely-voters-senate-races/",
+    "https://uspollingdata.com/races/house/ak-01/"
+   ],
+   "unverified": [
+    {
+     "pollster": "New York Times/Siena, Sept 24-Oct 1, 504 LV (Wikipedia: Begich 47, Hill 35, Hafner 8, McDermott 5, Undecided 5)",
+     "reason": "Toplines only on nytimes.com (https://www.nytimes.com/interactive/2026/10/03/polls/times-siena-alaska-poll-toplines.html, fetch blocked); Siena release page gives only the Senate result; no free source with House toplines found."
+    }
+   ]
+  },
+  "2026-AZ-01-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Arizona",
+    "https://afightworthhaving.com/polling/2026/az-01",
+    "https://www.270towin.com/2026-house-polls/arizona/district-1",
+    "https://api.fxtwitter.com/Garrett_Archer/status/2107166943052808575",
+    "https://s3.documentcloud.org/documents/28722214/shahfeeley-poll-release.pdf"
+   ],
+   "unverified": []
+  },
+  "2026-AZ-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Arizona",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/",
+    "https://uspollingdata.com/races/house/az-02/",
+    "https://navajotimes.com/reznews/pac-poll-gives-nez-slight-edge-over-crane-in-arizona-congressional-rematch/"
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College (for RealClearPolitics Poll Vault), Oct 12-14, 345 LV, Nez 50 Crane 48, undecided 2 (Wikipedia)",
+     "reason": "Only source is the paid-only Poll Vault post https://pollvault.substack.com/p/levee-math (not bypassed); no Emerson release on emersoncollegepolling.com; uspollingdata lists it via VoteHub without other/undecided."
+    }
+   ],
+   "note": "GBAO (Aug 21-24) and Peak Insights (Aug 17-20) end before the window."
+  },
+  "2026-AZ-06-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Arizona",
+    "https://afightworthhaving.com/polling/2026/az-06",
+    "https://afightworthhaving.com/polling/2026/az-06/methodology"
+   ],
+   "unverified": []
+  },
+  "2026-CA-22-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_California_(districts_1\u201326)",
+    "https://uspollingdata.com/races/house/ca-22/",
+    "https://www.villegasforcongress.com/news/randy-villegas-leads-republican-david-valadao-in-ca-22-in-new-poll",
+    "https://www.270towin.com/2026-house-polls/california/district-22"
+   ],
+   "unverified": [],
+   "note": "Only general poll is Tulchin (HMP) June 15-21, before the window."
+  },
+  "2026-CA-48-HOUSE": {
+   "polls_written": 3,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_California_(districts_27\u201352)",
+    "https://www.270towin.com/2026-house-polls/california/district-48",
+    "https://uspollingdata.com/races/house/ca-48/",
+    "https://results.surveyusa.com/client/PollReport_main.aspx?g=01471c0a-ab87-499e-8974-8526fea475d2",
+    "https://results.surveyusa.com/client/PollReport_main.aspx?g=0877c725-6e44-47fe-9856-dcf799865671",
+    "https://cdn.sanity.io/files/ifn0l6bs/production/378c5b63a7c295e975b77be00ddab8f97bddcf8b.pdf"
+   ],
+   "unverified": []
+  },
+  "2026-CO-04-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Colorado",
+    "https://drive.google.com/file/d/12RT0LvE5BSSi6z_bud_At7MFBAH7p2FL/view",
+    "https://uspollingdata.com/races/house/co-04/"
+   ],
+   "unverified": []
+  },
+  "2026-CO-05-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Colorado",
+    "https://api.fxtwitter.com/cjwarnke/status/2113764039218397211",
+    "https://drive.google.com/file/d/1iF5NKlbiwGQmlEOEd8AaZz_Pe2vu8-De/view"
+   ],
+   "unverified": []
+  },
+  "2026-CO-08-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Colorado",
+    "https://www.kunc.org/politics/2026-09-27/8th-congressional-district-race-is-essentially-tied-poll-shows-with-warning-signs-for-both-gabe-evans-and-manny-rutinel",
+    "https://cdn.prod.website-files.com/6943653ee8791a8a352e27f7/6aadecdc9101b1b52f7aeec1_CO-08%20Toplines%20(9%3A17).pdf"
+   ],
+   "unverified": []
+  }
+ }
+}

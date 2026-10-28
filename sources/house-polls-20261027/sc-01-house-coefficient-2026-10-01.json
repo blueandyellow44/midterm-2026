@@ -1,0 +1,38 @@
+{
+ "file": "sc-01-house-coefficient-2026-10-01.json",
+ "race": "2026-SC-01-HOUSE",
+ "pid": "coefficient",
+ "name": "co/efficient",
+ "sponsor": "Thank You For Your Attention To This Matter PAC (supports Honeycutt)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "coefficient-h-2026-SC-01-HOUSE-2026-10-01",
+ "poll": {
+  "field_start": "2026-09-30",
+  "field_end": "2026-10-01",
+  "release_date": "2026-10-01",
+  "n": 837,
+  "pop": "LV",
+  "D": 40.0,
+  "R": 46.0,
+  "other": 4.0,
+  "undecided": 9.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://coefficient.org/our-work/south-carolina-1st-congressional-district-oct-2026/",
+  "source_locator": "Congressional Ballot: Honeycutt, R 46%; Lacore, D 40%; Reeside, L 4%; Undecided 9%. Methodology: Fielded On September 30-October 1, 2026; 837 Likely General Election Voters; MoE +/-3.37%. Sponsor per co/efficient post https://x.com/coefficientpoll/status/2106116052870402454",
+  "notes": "other = Bill Reeside (L) 4. Sponsor named in pollster's own X post; its pro-Honeycutt alignment is from Wikipedia's note.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighting: Age, Gender, Race, Education, and Geography",
+  "method_url": "https://coefficient.org/our-work/south-carolina-1st-congressional-district-oct-2026/",
+  "method_locator": "Methodology & Demographics",
+  "mode": "Mobile Text Responses and Landline Interviews",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": "2026-10-01"
+ }
+}

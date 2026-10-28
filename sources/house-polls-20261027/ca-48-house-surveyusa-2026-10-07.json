@@ -1,0 +1,38 @@
+{
+ "file": "ca-48-house-surveyusa-2026-10-07.json",
+ "race": "2026-CA-48-HOUSE",
+ "pid": "surveyusa",
+ "name": "SurveyUSA",
+ "sponsor": "KGTV 10 News and the San Diego Union-Tribune",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "surveyusa-h-2026-CA-48-HOUSE-2026-10-07",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-07",
+  "release_date": "2026-10-09",
+  "n": 518,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 38.0,
+  "other": null,
+  "undecided": 15.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://results.surveyusa.com/client/PollReport_main.aspx?g=01471c0a-ab87-499e-8974-8526fea475d2",
+  "source_locator": "SurveyUSA Election Poll #28040: Von Wilpert (D) 47%, Desmond (R) 38%, Undecided 15%; 685 adults, 589 RV, 518 LV, 10/01/26-10/07/26",
+  "notes": "News coverage: https://www.10news.com/news/local-news/america-votes/marni-von-wilpert-leads-race-for-californias-redrawn-48th-congressional-district",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "weighted to US Census-derived targets for gender, age, ethnicity, and home ownership, and to California's CA-48 partisan registration data",
+  "method_url": "https://results.surveyusa.com/client/PollReport_main.aspx?g=01471c0a-ab87-499e-8974-8526fea475d2",
+  "method_locator": "Methodology statement",
+  "mode": "mixed mode: 47% internet panel (Cint), 53% probability telephone (Aristotle)",
+  "method_owner": "SurveyUSA",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": "2026-10-09"
+ }
+}

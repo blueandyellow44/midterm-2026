@@ -1,0 +1,38 @@
+{
+ "file": "ny-21-house-siena-research-institute-2026-10-06.json",
+ "race": "2026-NY-21-HOUSE",
+ "pid": "siena-research-institute",
+ "name": "Siena Research Institute",
+ "sponsor": "Times Union / WPTZ-NBC5 / WAMC",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "siena-research-institute-h-2026-NY-21-HOUSE-2026-10-06",
+ "poll": {
+  "field_start": "2026-09-30",
+  "field_end": "2026-10-06",
+  "release_date": "2026-10-09",
+  "n": 496,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 42.0,
+  "other": 5.0,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://sri.siena.edu/2026/10/09/times-union-wptz-nbc5-wamc-siena-poll-of-likely-ny-21-voters/",
+  "source_locator": "Gendebien (D) 46, Constantino (R) 42, Schmidt (I) 5, Someone else 0, Don't know/Refused 8; 496 likely voters, Sept 30-Oct 6, MOE +/-4.6",
+  "notes": "other = Schmidt (I). Crosstabs: https://sri.siena.edu/wp-content/uploads/2026/10/CD21Crosstabs1026-Crosstabs-Final.pdf",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "weighted to balance sample demographics to match estimates for New York's population using data from the state voter file, on age, region, education, party registration, a combined measure of stated and derived vote likelihood, and gender",
+  "method_url": "https://sri.siena.edu/2026/10/09/times-union-wptz-nbc5-wamc-siena-poll-of-likely-ny-21-voters/",
+  "method_locator": "Methodology paragraph",
+  "mode": "dual-frame landline/cell phone plus text-to-web",
+  "method_owner": "Siena Research Institute",
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": "2026-10-09"
+ }
+}

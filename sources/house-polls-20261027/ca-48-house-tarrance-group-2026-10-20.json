@@ -1,0 +1,38 @@
+{
+ "file": "ca-48-house-tarrance-group-2026-10-20.json",
+ "race": "2026-CA-48-HOUSE",
+ "pid": "tarrance-group",
+ "name": "The Tarrance Group",
+ "sponsor": "Jim Desmond campaign (per Wikipedia; memo names no client)",
+ "scls": "INTERNAL",
+ "align": "R",
+ "method_id": "tarrance-group-h-2026-CA-48-HOUSE-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-17",
+  "field_end": "2026-10-20",
+  "release_date": "2026-10-22",
+  "n": 410,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://cdn.sanity.io/files/ifn0l6bs/production/378c5b63a7c295e975b77be00ddab8f97bddcf8b.pdf",
+  "source_locator": "Memo Oct 22: 'Desmond trails von Wilpert 44% - 47%'; N=410 CA-48 likely voters, Oct 17-20, MOE +/-4.9",
+  "notes": "Undecided not stated in memo (Wikipedia lists 9). Mixed mode live calls and text-to-web.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

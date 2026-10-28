@@ -1,0 +1,38 @@
+{
+ "file": "wi-01-house-impact-research-2026-10-01.json",
+ "race": "2026-WI-01-HOUSE",
+ "pid": "impact-research",
+ "name": "Impact Research",
+ "sponsor": "House Majority PAC (Democratic super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "impact-research-h-2026-WI-01-HOUSE-2026-10-01",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-10-01",
+  "release_date": "2026-10-03",
+  "n": 500,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 47.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=at://the-downballot.com/app.bsky.feed.post/3mwyouhbwg22k",
+  "source_locator": "The Downballot, https://bsky.app/profile/the-downballot.com/post/3mwyouhbwg22k, Oct 3 2026: 'Pollster: Impact Research Field dates: Sept. 28 - Oct. 1 Sample size: 500 LVs', embedding HMP comms director CJ Warnke's post: 'NEW @HouseMajPAC poll in #WI01 Mitchell Berman: 48% Bryan Steil: 47% ... 2024 recall is Trump+2'",
+  "notes": "Screenshot saved at scratchpad/poll-images/wi01_downballot.png. Undecided not reported (5% remainder).",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

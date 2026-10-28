@@ -1,0 +1,38 @@
+{
+ "file": "ny-21-house-public-policy-polling-2026-09-10.json",
+ "race": "2026-NY-21-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "The Bench (supports Gendebien)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-NY-21-HOUSE-2026-09-10",
+ "poll": {
+  "field_start": "2026-09-09",
+  "field_end": "2026-09-10",
+  "release_date": "2026-09-15",
+  "n": 557,
+  "pop": "RV",
+  "D": 43.0,
+  "R": 48.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/zachblackburn23/status/2100002534383358350",
+  "source_locator": "Memo images attached to x.com/zachblackburn23/status/2100002534383358350 (Sept 15): New York CD 21 head-to-head 'Constantino 48-43'; methodology 'PPP interviewed 557 registered voters in New York's 21st Congressional district on September 9-10, 2026 ... +/- 4.2%'; images https://pbs.twimg.com/media/HSS1JmFXEAEebrp.jpg and https://pbs.twimg.com/media/HSS1JmHWIAAiVNu.jpg",
+  "notes": "Sponsor memo (The Bench | Public Policy Polling | September 15, 2026) read from images posted by a reporter. Toplines corroborated by The Downballot Morning Digest Sept 16 (free): 'PPP for The Bench (pro-Blake Gendebien): Anthony Constantino (R): 48, Gendebien (D): 43'. Generic ballot R 53-40. Other/undecided not given.",
+  "retrieved_at": "2026-10-27T17:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://pbs.twimg.com/media/HSS1JmHWIAAiVNu.jpg",
+  "method_locator": "METHODOLOGY (The Bench | Public Policy Polling | September 15, 2026)",
+  "mode": "55% landline, 45% text message",
+  "method_owner": "Public Policy Polling",
+  "retrieved_at": "2026-10-27T17:05:00-07:00",
+  "method_date": "2026-09-15"
+ }
+}

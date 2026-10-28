@@ -1,0 +1,38 @@
+{
+ "file": "co-08-house-mclaughlin-and-associates-2026-09-17.json",
+ "race": "2026-CO-08-HOUSE",
+ "pid": "mclaughlin-and-associates",
+ "name": "McLaughlin & Associates",
+ "sponsor": "Enhancing American Competitiveness (conservative nonprofit supporting Evans)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "mclaughlin-and-associates-h-2026-CO-08-HOUSE-2026-09-17",
+ "poll": {
+  "field_start": "2026-09-16",
+  "field_end": "2026-09-17",
+  "release_date": "2026-09-23",
+  "n": 400,
+  "pop": "LV",
+  "D": 46.3,
+  "R": 48.0,
+  "other": null,
+  "undecided": 5.7,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://cdn.prod.website-files.com/6943653ee8791a8a352e27f7/6aadecdc9101b1b52f7aeec1_CO-08%20Toplines%20(9%3A17).pdf",
+  "source_locator": "Q8 Evans vs Rutinel: Gabe Evans 48.0 (incl. lean 0.4), Manny Rutinel 46.3 (incl. lean 1.8), Undecided 5.7; Likely General Election Voters, Sept 16-17, 2026, n=400, MOE +/-4.9",
+  "notes": "Totals include leaners. Coverage: https://coloradosun.com/2026/09/23/gabe-evans-manny-rutinel-poll/ (text and cell/landline calls).",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

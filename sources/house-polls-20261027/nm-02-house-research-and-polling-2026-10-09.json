@@ -1,0 +1,38 @@
+{
+ "file": "nm-02-house-research-and-polling-2026-10-09.json",
+ "race": "2026-NM-02-HOUSE",
+ "pid": "research-and-polling",
+ "name": "Research & Polling Inc.",
+ "sponsor": "Albuquerque Journal",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "research-and-polling-h-2026-NM-02-HOUSE-2026-10-09",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-09",
+  "release_date": "2026-10-12",
+  "n": 383,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.abqjournal.com/news/journal-poll-gabe-vasquez-leads-greg-cunningham-in-competitive-house-election/3139738",
+  "source_locator": "Journal poll: Vasquez 48, Cunningham 44, Undecided 8; 383 likely voters, Oct 1-9, MOE +/-5.0",
+  "notes": "Live interviews, 97% cell. Article methodology box: stratified by county, weighted by race/ethnicity and party affiliation; not taken from pollster's own page.",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": null
+ }
+}

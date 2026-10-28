@@ -1,0 +1,38 @@
+{
+ "file": "me-02-house-tulchin-research-2026-09-30.json",
+ "race": "2026-ME-02-HOUSE",
+ "pid": "tulchin-research",
+ "name": "Tulchin Research",
+ "sponsor": "Matt Dunlap campaign (per Wikipedia; memo does not name a sponsor)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "tulchin-research-s-2026-ME-02-HOUSE-2026-09-30",
+ "poll": {
+  "field_start": "2026-09-27",
+  "field_end": "2026-09-30",
+  "release_date": "2026-10-01",
+  "n": 500,
+  "pop": "LV",
+  "D": 50.0,
+  "R": 48.0,
+  "other": null,
+  "undecided": 2.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://static01.nyt.com/newsgraphics/documenttools/becbcf38fb98ac79/b81aab79-full.pdf",
+  "source_locator": "Tulchin memo 'ME-2 Poll Results: Dunlap Holds Edge Over LePage': 'Dunlap outpaces LePage 50% to 48%, with just 2% of voters still undecided'; 'From September 27-30, 2026, Tulchin Research conducted a survey among 500 likely November 2026 general election voters'",
+  "notes": "Head-to-head; first-choice vs RCV not stated. Wikipedia lists MoE ±4.4%.",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://static01.nyt.com/newsgraphics/documenttools/becbcf38fb98ac79/b81aab79-full.pdf",
+  "method_locator": "Survey Methodology (no weighting described)",
+  "mode": null,
+  "method_owner": "Tulchin Research",
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": "2026-10-01"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "wa-03-house-change-research-2026-10-21.json",
+ "race": "2026-WA-03-HOUSE",
+ "pid": "change-research",
+ "name": "Change Research",
+ "sponsor": "Northwest Progressive Institute (progressive nonprofit)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "change-research-h-2026-WA-03-HOUSE-2026-10-21",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-21",
+  "release_date": "2026-10-22",
+  "n": 551,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.nwprogressive.org/weblog/2026/10/theyre-tied-again-in-wa-03-npis-autumn-civic-heartbeat-polling-finds-marie-gluesenkamp-perez-at-45-john-braun-at-44.html",
+  "source_locator": "'45% of 551 likely general election voters surveyed by Change Research for the Northwest Progressive Institute ... Gluesenkamp Perez ... 44% ... Braun. Another 8% said they were not sure. 3% said they would not vote.' Field Monday, October 19th to Wednesday, October 21st; modeled MoE 4.3%",
+  "notes": "3% 'would not vote' excluded from other/undecided. Online survey (sponsor's description).",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

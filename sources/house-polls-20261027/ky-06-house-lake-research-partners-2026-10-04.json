@@ -1,0 +1,38 @@
+{
+ "file": "ky-06-house-lake-research-partners-2026-10-04.json",
+ "race": "2026-KY-06-HOUSE",
+ "pid": "lake-research-partners",
+ "name": "Lake Research Partners",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "lake-research-partners-s-2026-KY-06-HOUSE-2026-10-04",
+ "poll": {
+  "field_start": "2026-09-30",
+  "field_end": "2026-10-04",
+  "release_date": "2026-10-08",
+  "n": 400,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://newsweek.com/the-kentucky-canary-in-the-coal-mine-for-republicans-12612629",
+  "source_locator": "'A Lake Research Partners survey of 400 likely voters, conducted from September 30 through October 4, put Dembo at 48 percent and Alvarado at 45 percent.' HMP release post https://x.com/cjwarnke/status/2108282466733818029 (via api.fxtwitter.com): head-to-head Dembo 48% Alvarado 45%; multi-candidate Dembo 46%, Alvarado 40%, Bowman 3%, Lynch 1%; '2024 recall is Trump +12'",
+  "notes": "Head-to-head recorded. Multi-candidate ballot: D 46, R 40, Bowman (I) 3, Lynch (KP) 1. Undecided not stated (7% residual).",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": null
+ }
+}

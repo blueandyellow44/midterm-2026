@@ -1,0 +1,38 @@
+{
+ "file": "fl-27-house-tulchin-research-2026-09-13.json",
+ "race": "2026-FL-27-HOUSE",
+ "pid": "tulchin-research",
+ "name": "Tulchin Research",
+ "sponsor": "House Majority PAC (per Newsweek; a separate Newsweek article says Rodriguez's campaign)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "tulchin-research-s-2026-FL-27-HOUSE-2026-09-13",
+ "poll": {
+  "field_start": "2026-09-08",
+  "field_end": "2026-09-13",
+  "release_date": "2026-09-17",
+  "n": 600,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 47.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.newsweek.com/jeffries-rodriguez-salazar-florida-27th-district-democrats-12576471",
+  "source_locator": "'A Tulchin Research poll of 600 likely voters, commissioned by the Democratic-aligned House Majority PAC and conducted September 8 to 13, gave Salazar a 47 percent to 46 percent lead.' Also https://x.com/cjwarnke/status/2100648029678170342 (Sep 17): Rodriguez 46%, Salazar 47%",
+  "notes": "Sponsor conflict: Newsweek (12576471) says House Majority PAC; Newsweek (12508673) says Rodriguez's campaign. Either way D-aligned. Undecided not stated (7% residual).",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": null
+ }
+}

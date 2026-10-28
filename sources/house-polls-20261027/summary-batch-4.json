@@ -1,0 +1,181 @@
+{
+ "batch": 4,
+ "districts": {
+  "2026-NC-01-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/nc-01/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_North_Carolina",
+    "https://api.vxtwitter.com/Shaftan/status/2107772933322277266",
+    "https://drive.google.com/file/d/1Yt-bOVqBFd9cPU3A2R1_MuOpnluJwmJM/view",
+    "https://api.vxtwitter.com/cjwarnke/status/2099621466887041405"
+   ],
+   "unverified": [
+    {
+     "pollster": "co/efficient (Buckhout campaign), Oct 6-8, 623 LV, Davis 42 Buckhout 43 Bailey 2 und 13 per Wikipedia",
+     "reason": "Primary PDF https://www.politico.com/f/?id=000001a1-2120-d058-adf3-2b6891500000 blocked to fetch; no other free copy found"
+    },
+    {
+     "pollster": "GBAO (House Majority PAC), Sep 8-11, 500 LV, Davis 50 Buckhout 43 per Wikipedia",
+     "reason": "HMP post https://x.com/cjwarnke/status/2099621466887041405 gives toplines but no n or field dates; no HMP release found"
+    },
+    {
+     "pollster": "GQR (Davis) September 2026 wave, 42-40-9",
+     "reason": "Shown only as trend line in Oct 5 GQR memo; no n or dates"
+    }
+   ]
+  },
+  "2026-NC-11-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/nc-11/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_North_Carolina",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/",
+    "https://api.vxtwitter.com/zachblackburn23/status/2100002534383358350"
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College (Poll Vault), Oct 12-14, 388 LV, Ager 56 Balkcom 43",
+     "reason": "Only source is paywalled Poll Vault post https://pollvault.substack.com/p/levee-math; no release on emersoncollegepolling.com; no free primary found"
+    },
+    {
+     "pollster": "Public Policy Polling (The Bench), Sep 10-11, 531 RV, Ager 47-44",
+     "reason": "Memo image (via https://x.com/zachblackburn23/status/2100002534383358350) names opponent only as 'Republican opponent', not Balkcom, so not confirmed to name the nominee"
+    }
+   ]
+  },
+  "2026-OH-07-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://uspollingdata.com/races/house/oh-07/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Ohio"
+   ],
+   "unverified": []
+  },
+  "2026-OH-09-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/oh-09/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Ohio",
+    "https://dccc.org/dccc-polling-memo-oh-09-is-a-dead-heat/"
+   ],
+   "unverified": []
+  },
+  "2026-OH-10-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/oh-10/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Ohio",
+    "https://dccc.org/dccc-polling-memo-knickerbocker-leads-turner-by-3-in-oh-10/"
+   ],
+   "unverified": []
+  },
+  "2026-OH-15-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/oh-15/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Ohio",
+    "https://api.vxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://api.vxtwitter.com/cjwarnke/status/2104619061556457603",
+    "https://www.thehousemajoritypac.com/news"
+   ],
+   "unverified": [
+    {
+     "pollster": "Hart Research (House Majority PAC), Oct 9-12, 503 LV, Leonard 48 Carey 45",
+     "reason": "Post https://x.com/cjwarnke/status/2112877284684341727 shows only a Washington Sun headline image; no toplines, n or dates in any free source; HMP news page has no release"
+    },
+    {
+     "pollster": "Hart Research (House Majority PAC), Sep 22-24, 500 LV, Leonard 46 Carey 45",
+     "reason": "Post https://x.com/cjwarnke/status/2104619061556457603 gives toplines but no n or field dates; no HMP release found"
+    }
+   ]
+  },
+  "2026-PA-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/pa-01/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Pennsylvania",
+    "https://sri.siena.edu/2026/10/25/nytimes-philadelphia-inquirer-siena-poll-of-likely-pennsylvania-congressional-district-voters/",
+    "https://www.pollsmax.com/2026-us-house/pennsylvania-1/",
+    "https://globalstrategygroup.app.box.com/s/9kxpr0no8m2etapbmxedm9p9q9m61t6e",
+    "https://api.vxtwitter.com/lisakashinsky/status/2100574733318193390"
+   ],
+   "unverified": [
+    {
+     "pollster": "NYT/Philadelphia Inquirer/Siena, Oct 16-22, Harvie 48 Fitzpatrick 46",
+     "reason": "Siena n not confirmed: sri.siena.edu release gives toplines only; Inquirer says 'about 400 likely voters' (Oct 16-22); aggregators disagree (Wikipedia/Pollsmax 400, 270toWin 401 PA-7 / 404 PA-10); NYT toplines https://www.nytimes.com/interactive/2026/10/25/polls/times-siena-pa-poll-toplines.html not fetchable"
+    },
+    {
+     "pollster": "Global Strategy Group (Harvie campaign), Oct 1-8, 1,032 LV, 46-46",
+     "reason": "Box link https://globalstrategygroup.app.box.com/s/9kxpr0no8m2etapbmxedm9p9q9m61t6e renders no content to fetch; no other free source found"
+    }
+   ]
+  },
+  "2026-PA-07-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/pa-07/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Pennsylvania",
+    "https://www.fandmpoll.org/franklin-marshall-college-poll-release-pa-7th-and-10th-congressional-districts-september-2026/",
+    "https://www.270towin.com/2026-house-polls/pennsylvania/district-7",
+    "https://sri.siena.edu/2026/10/25/nytimes-philadelphia-inquirer-siena-poll-of-likely-pennsylvania-congressional-district-voters/",
+    "https://www.inquirer.com/politics/pennsylvania/brooks-cognetti-mackenzie-bresnahan-pennsylvania-swing-seats-midterms-20261025.html"
+   ],
+   "unverified": [
+    {
+     "pollster": "NYT/Philadelphia Inquirer/Siena, Oct 16-22, Brooks 49 Mackenzie 44",
+     "reason": "Siena n not confirmed: sri.siena.edu release gives toplines only; Inquirer says 'about 400 likely voters' (Oct 16-22); aggregators disagree (Wikipedia/Pollsmax 400, 270toWin 401 PA-7 / 404 PA-10); NYT toplines https://www.nytimes.com/interactive/2026/10/25/polls/times-siena-pa-poll-toplines.html not fetchable"
+    }
+   ]
+  },
+  "2026-PA-08-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/pa-08/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Pennsylvania",
+    "https://www.pollsmax.com/2026-us-house/pennsylvania-8/",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://sri.siena.edu/2026/10/25/nytimes-philadelphia-inquirer-siena-poll-of-likely-pennsylvania-congressional-district-voters/",
+    "https://www.inquirer.com/politics/pennsylvania/brooks-cognetti-mackenzie-bresnahan-pennsylvania-swing-seats-midterms-20261025.html"
+   ],
+   "unverified": [
+    {
+     "pollster": "NYT/Philadelphia Inquirer/Siena, Oct 16-22, Cognetti 51 Bresnahan 46",
+     "reason": "Siena n not confirmed: sri.siena.edu release gives toplines only; Inquirer says 'about 400 likely voters' (Oct 16-22); aggregators disagree (Wikipedia/Pollsmax 400, 270toWin 401 PA-7 / 404 PA-10); NYT toplines https://www.nytimes.com/interactive/2026/10/25/polls/times-siena-pa-poll-toplines.html not fetchable"
+    },
+    {
+     "pollster": "Emerson College (Poll Vault), Oct 12-14, 396 LV, Cognetti 52 Bresnahan 48",
+     "reason": "Only source is paywalled Poll Vault post https://pollvault.substack.com/p/levee-math; no release on emersoncollegepolling.com; no free primary found"
+    }
+   ]
+  },
+  "2026-PA-10-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/pa-10/",
+    "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections_in_Pennsylvania",
+    "https://www.270towin.com/2026-house-polls/pennsylvania/district-10",
+    "https://www.fandmpoll.org/franklin-marshall-college-poll-release-pa-7th-and-10th-congressional-districts-september-2026/",
+    "https://api.vxtwitter.com/SusquehannaPR/status/2111471509856309679",
+    "https://sri.siena.edu/2026/10/25/nytimes-philadelphia-inquirer-siena-poll-of-likely-pennsylvania-congressional-district-voters/"
+   ],
+   "unverified": [
+    {
+     "pollster": "NYT/Philadelphia Inquirer/Siena, Oct 16-22, Stelson 48 Perry 48",
+     "reason": "Siena n not confirmed: sri.siena.edu release gives toplines only; Inquirer says 'about 400 likely voters' (Oct 16-22); aggregators disagree (Wikipedia/Pollsmax 400, 270toWin 401 PA-7 / 404 PA-10); NYT toplines https://www.nytimes.com/interactive/2026/10/25/polls/times-siena-pa-poll-toplines.html not fetchable"
+    }
+   ]
+  }
+ }
+}

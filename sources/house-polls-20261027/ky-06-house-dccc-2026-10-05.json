@@ -1,0 +1,38 @@
+{
+ "file": "ky-06-house-dccc-2026-10-05.json",
+ "race": "2026-KY-06-HOUSE",
+ "pid": "dccc",
+ "name": "DCCC",
+ "sponsor": "DCCC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "dccc-s-2026-KY-06-HOUSE-2026-10-05",
+ "poll": {
+  "field_start": "2026-10-02",
+  "field_end": "2026-10-05",
+  "release_date": "2026-10-14",
+  "n": 606,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 40.0,
+  "other": 6.0,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://dccc.org/dccc-polling-memo-zach-dembo-continues-to-lead-in-ky-06/",
+  "source_locator": "Dembo 46%, Alvarado 40%, third-party candidates 6%, undecided 8%; 'a survey of 606 likely general election voters in KY-06 conducted from October 2-5, 2026, via phone and text-to-web interviews. The margin of error is +/- 4.0%'",
+  "notes": "Party committee internal. Other = Bowman (I) 5% + Lynch (KP) 1% per Wikipedia.",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://dccc.org/dccc-polling-memo-zach-dembo-continues-to-lead-in-ky-06/",
+  "method_locator": "methodology sentence at end of memo (no weighting described)",
+  "mode": "phone and text-to-web",
+  "method_owner": "DCCC",
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": "2026-10-14"
+ }
+}

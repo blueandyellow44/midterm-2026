@@ -1,0 +1,38 @@
+{
+ "file": "co-04-house-impact-research-2026-09-24.json",
+ "race": "2026-CO-04-HOUSE",
+ "pid": "impact-research",
+ "name": "Impact Research",
+ "sponsor": "Not named ('Battleground Congressional Survey Sept 2026'; Democratic pollster)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "impact-research-h-2026-CO-04-HOUSE-2026-09-24",
+ "poll": {
+  "field_start": "2026-09-21",
+  "field_end": "2026-09-24",
+  "release_date": null,
+  "n": 403,
+  "pop": "LV",
+  "D": 40.0,
+  "R": 45.0,
+  "other": 9.0,
+  "undecided": 6.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://drive.google.com/file/d/12RT0LvE5BSSi6z_bud_At7MFBAH7p2FL/view",
+  "source_locator": "Q17/18 U.S. Congress: Total Laubacher 40 (38 + lean 2), Total Boebert 45 (43 + lean 2), Total Mangeris (I) 9, Undecided 6; N=403 Likely Voters (TTW), Sept 21-24 2026",
+  "notes": "Totals include pushed leaners. Sponsor not named in topline; Wikipedia accessed Oct 9. Informed ballot after negative messaging (Q24/25) not used.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

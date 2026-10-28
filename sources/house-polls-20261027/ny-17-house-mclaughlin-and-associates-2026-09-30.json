@@ -1,0 +1,38 @@
+{
+ "file": "ny-17-house-mclaughlin-and-associates-2026-09-30.json",
+ "race": "2026-NY-17-HOUSE",
+ "pid": "mclaughlin-and-associates",
+ "name": "McLaughlin & Associates",
+ "sponsor": "Mike Lawler campaign",
+ "scls": "INTERNAL",
+ "align": "R",
+ "method_id": "mclaughlin-and-associates-h-2026-NY-17-HOUSE-2026-09-30",
+ "poll": {
+  "field_start": "2026-09-28",
+  "field_end": "2026-09-30",
+  "release_date": "2026-10-02",
+  "n": 400,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 50.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://nypost.com/2026/10/02/us-news/gop-rep-mike-lawler-leads-dem-cait-conley-in-battleground-ny-house-district-new-internal-poll/",
+  "source_locator": "NY Post, Oct 2: 'leads with 50% of the vote compared with Conley's 47% ... the Lawler campaign's internal poll of 400 likely voters, conducted Sept. 28 to 30 ... administered by McLaughlin & Associates, has a margin of error of 4.9%'",
+  "notes": "Free article (no paywall) read directly with a standard browser user agent; no archive used. Other/undecided not reported.",
+  "retrieved_at": "2026-10-27T17:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T17:05:00-07:00",
+  "method_date": null
+ }
+}

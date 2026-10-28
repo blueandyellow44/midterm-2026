@@ -1,0 +1,38 @@
+{
+ "file": "nm-02-house-surveyusa-2026-09-02.json",
+ "race": "2026-NM-02-HOUSE",
+ "pid": "surveyusa",
+ "name": "SurveyUSA",
+ "sponsor": "KOB-TV (Albuquerque)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "surveyusa-h-2026-NM-02-HOUSE-2026-09-02",
+ "poll": {
+  "field_start": "2026-08-28",
+  "field_end": "2026-09-02",
+  "release_date": "2026-09-03",
+  "n": 554,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 43.0,
+  "other": null,
+  "undecided": 11.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://results.surveyusa.com/client/PollReport.aspx?g=28ed3f59-8986-4e1f-a5d1-a2e7fc8fff01",
+  "source_locator": "SurveyUSA #27975: Vasquez 46, Cunningham 43, Undecided 11; 554 likely voters of 700 adults, Aug 28-Sept 2",
+  "notes": "Mixed mode: 36% online panel, 64% telephone (landline + SMS-to-web).",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The full pool of respondents was weighted to US Census-derived targets for gender, age, and ethnicity.",
+  "method_url": "https://results.surveyusa.com/client/PollReport_main.aspx?g=28ed3f59-8986-4e1f-a5d1-a2e7fc8fff01",
+  "method_locator": "Statement of methodology",
+  "mode": "mixed mode: online panel + telephone/SMS-to-web",
+  "method_owner": "SurveyUSA",
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": "2026-09-03"
+ }
+}

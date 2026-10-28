@@ -1,0 +1,38 @@
+{
+ "file": "ny-17-house-emerson-college-2026-09-29.json",
+ "race": "2026-NY-17-HOUSE",
+ "pid": "emerson-college",
+ "name": "Emerson College Polling",
+ "sponsor": "PIX11 News",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "emerson-college-h-2026-NY-17-HOUSE-2026-09-29",
+ "poll": {
+  "field_start": "2026-09-27",
+  "field_end": "2026-09-29",
+  "release_date": "2026-10-01",
+  "n": 400,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": 7.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://emersoncollegepolling.com/ny-17-2026-poll/",
+  "source_locator": "Conley 48, Lawler 46, undecided 7; n=400 NY-17 likely voters, Sept 27-29, +/-4.9",
+  "notes": "Shares without leaners.",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data sets were weighted by gender, education, party registration, and region based on U.S. Census parameters and voter file data.",
+  "method_url": "https://emersoncollegepolling.com/ny-17-2026-poll/",
+  "method_locator": "Methodology",
+  "mode": "MMS text-to-web (Aristotle voter file) + PureSpectrum panel",
+  "method_owner": "Emerson College Polling",
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": "2026-10-01"
+ }
+}

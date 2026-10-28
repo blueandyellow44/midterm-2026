@@ -1,0 +1,38 @@
+{
+ "file": "pa-10-house-franklin-marshall-2026-09-20.json",
+ "race": "2026-PA-10-HOUSE",
+ "pid": "franklin-marshall",
+ "name": "Franklin & Marshall College Poll",
+ "sponsor": "Franklin & Marshall College (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "franklin-marshall-s-2026-PA-10-HOUSE-2026-09-20",
+ "poll": {
+  "field_start": "2026-09-09",
+  "field_end": "2026-09-20",
+  "release_date": "2026-09-24",
+  "n": 390,
+  "pop": "RV",
+  "D": 47.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": 9.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://storage.ghost.io/c/6f/65/6f6547c9-4c4e-45a8-b12e-56fdcab002c9/content/files/2026/09/KEYSEPCD26_Topline.pdf",
+  "source_locator": "Topline 'CD2610 with leaners' (n=378): Janelle Stelson 47%, Scott Perry 44%, Undecided 9%; header '10th N=390', 'September 9 \u2013 20, 2026'",
+  "notes": "Leaner-pushed headline (table base n=378). Initial ballot 46-42-12. recall_weighted UNVERIFIED as for PA-07.",
+  "retrieved_at": "2026-10-27T15:30:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Survey results were weighted (age, gender, education, geography, vote history, and party registration) using an iterative weighting algorithm to reflect the known distribution of those characteristics.",
+  "method_url": "https://www.fandmpoll.org/franklin-marshall-college-poll-release-pa-7th-and-10th-congressional-districts-september-2026/",
+  "method_locator": "Methodology section",
+  "mode": "phone and online depending on each respondent's preference",
+  "method_owner": "Franklin & Marshall College Poll",
+  "retrieved_at": "2026-10-27T15:30:00-07:00",
+  "method_date": "2026-09-24"
+ }
+}

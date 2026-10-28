@@ -1,0 +1,38 @@
+{
+ "file": "ky-06-house-change-research-2026-10-05.json",
+ "race": "2026-KY-06-HOUSE",
+ "pid": "change-research",
+ "name": "Change Research",
+ "sponsor": "Kentuckians Not Corruption (pro-Dembo PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "change-research-s-2026-KY-06-HOUSE-2026-10-05",
+ "poll": {
+  "field_start": "2026-09-29",
+  "field_end": "2026-10-05",
+  "release_date": "2026-10-08",
+  "n": 524,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 38.0,
+  "other": null,
+  "undecided": 7.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://data.ddhq.io/polls/2026/10/08/Change-Research/Kentuckians-Not-Corruption-Kentucky--6-2026-09-29-2026-10-05",
+  "source_locator": "Change Research memo (Oct 8 2026): 'On behalf of Kentuckians Not Corruption, Change Research surveyed N=524 likely voters ... from September 29-October 5, 2026. The margin of error is +/-4.4%' ; 'Dembo leads Alvarado 47-38, with 7% undecided.'",
+  "notes": "Third-party share not given as a single number in the memo (residual 8%).",
+  "retrieved_at": "2026-10-27T16:52:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Post-stratification was performed on age, gender, race/ethnicity, education, and 2024 presidential vote.",
+  "method_url": "https://data.ddhq.io/polls/2026/10/08/Change-Research/Kentuckians-Not-Corruption-Kentucky--6-2026-09-29-2026-10-05",
+  "method_locator": "methodology footnote of the memo",
+  "mode": "online (Dynamic Online Sampling)",
+  "method_owner": "Change Research",
+  "retrieved_at": "2026-10-27T16:52:00-07:00",
+  "method_date": "2026-10-08"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "oh-10-house-dccc-2026-10-13.json",
+ "race": "2026-OH-10-HOUSE",
+ "pid": "dccc",
+ "name": "DCCC Analytics Department",
+ "sponsor": "DCCC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "dccc-s-2026-OH-10-HOUSE-2026-10-13",
+ "poll": {
+  "field_start": "2026-10-12",
+  "field_end": "2026-10-13",
+  "release_date": "2026-10-20",
+  "n": 535,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://dccc.org/dccc-polling-memo-knickerbocker-leads-turner-by-3-in-oh-10/",
+  "source_locator": "'Kristina Knickerbocker running 3 points ahead of Turner (47% to 44%)'; '535 likely general election voters in OH-10 conducted from October 12-13, 2026, via phone and text-to-web interviews'",
+  "notes": "Memo reports only the two candidates; Wikipedia lists McMasters (L) 4, undecided 5, not in memo.",
+  "retrieved_at": "2026-10-27T15:30:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": "phone and text-to-web",
+  "method_owner": "DCCC",
+  "retrieved_at": "2026-10-27T15:30:00-07:00",
+  "method_date": "2026-10-20"
+ }
+}

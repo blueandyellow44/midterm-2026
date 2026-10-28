@@ -1,0 +1,38 @@
+{
+ "file": "ak-al-house-bullfinch-group-2026-09-06.json",
+ "race": "2026-AK-AL-HOUSE",
+ "pid": "bullfinch-group",
+ "name": "The Bullfinch Group",
+ "sponsor": "Independent Leadership Council (pro-independent advocacy group)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "NONE",
+ "method_id": "bullfinch-group-h-2026-AK-AL-HOUSE-2026-09-06",
+ "poll": {
+  "field_start": "2026-09-01",
+  "field_end": "2026-09-06",
+  "release_date": null,
+  "n": 820,
+  "pop": "LV",
+  "D": 7.4,
+  "R": 44.2,
+  "other": 38.5,
+  "undecided": 9.9,
+  "denominator_class": "FULL",
+  "round": "FIRST",
+  "source_url": "https://cdn.prod.website-files.com/68d1c32ec01e1d1f6a86e801/6abd40f2f3810a4e535a8aa6_Alaska_Topline-Independent_Leadership_Council.pdf",
+  "source_locator": "AKAL_1 FIRST CHOICE: Begich 44.2, Hill 36.6, Hafner 7.4, McDermott 1.9, Don't Know/Refused 9.9; n=820 registered voters likely to vote, Sept 1-6, MOE +/-3.4",
+  "notes": "Sponsor advocates for independent candidates (Hill is nonpartisan); not D or R aligned. other = Hill 36.6 + McDermott 1.9. Derived RCV final Begich 50.3, Hill 46.5. Pollster attribution from Wikipedia; topline PDF names only the sponsor.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted to reflect the expected composition of the likely electorate.",
+  "method_url": "https://cdn.prod.website-files.com/68d1c32ec01e1d1f6a86e801/6abd40f2f3810a4e535a8aa6_Alaska_Topline-Independent_Leadership_Council.pdf",
+  "method_locator": "Survey Methodology table, page 2",
+  "mode": "Mixed mode (28% live phone, 66% SMS-to-web, 6% web panel)",
+  "method_owner": "Independent Leadership Council",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

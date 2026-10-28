@@ -1,0 +1,38 @@
+{
+ "file": "va-02-house-christopher-newport-university-2026-10-10.json",
+ "race": "2026-VA-02-HOUSE",
+ "pid": "christopher-newport-university",
+ "name": "Christopher Newport University (Wason Center)",
+ "sponsor": "Christopher Newport University Wason Center (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "christopher-newport-university-h-2026-VA-02-HOUSE-2026-10-10",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-10",
+  "release_date": "2026-10-14",
+  "n": 702,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 43.0,
+  "other": 2.0,
+  "undecided": 10.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://cnu.edu/wason/surveys/archive/2026-10-14.html",
+  "source_locator": "Luria 46%, Kiggans 43%, Someone else 2%, Undecided 10%; 702 interviews of registered 2nd district voters who are likely general election voters, Oct 1-10, 2026; MoE +/-4.0%",
+  "notes": "other = 'Someone else' 2.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "iterative weighting process on city/county, age, race, sex, and education to reflect as closely as possible the population of the second congressional district's November 3, 2026 electorate",
+  "method_url": "https://cnu.edu/wason/surveys/archive/2026-10-14.html",
+  "method_locator": "Methodology",
+  "mode": "live telephone interviews (164 landline, 538 cell), Dynata interviewers",
+  "method_owner": "Christopher Newport University Wason Center",
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": "2026-10-14"
+ }
+}

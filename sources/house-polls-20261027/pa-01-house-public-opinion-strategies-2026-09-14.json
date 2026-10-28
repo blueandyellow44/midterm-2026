@@ -1,0 +1,38 @@
+{
+ "file": "pa-01-house-public-opinion-strategies-2026-09-14.json",
+ "race": "2026-PA-01-HOUSE",
+ "pid": "public-opinion-strategies",
+ "name": "Public Opinion Strategies",
+ "sponsor": "NRCC and Fitzpatrick for Congress",
+ "scls": "INTERNAL",
+ "align": "R",
+ "method_id": "public-opinion-strategies-s-2026-PA-01-HOUSE-2026-09-14",
+ "poll": {
+  "field_start": "2026-09-11",
+  "field_end": "2026-09-14",
+  "release_date": "2026-09-15",
+  "n": 400,
+  "pop": "RV",
+  "D": 40.0,
+  "R": 49.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/lisakashinsky/status/2100574733318193390",
+  "source_locator": "POS memo image (posted https://x.com/lisakashinsky/status/2100574733318193390): 'telephone survey of 400 registered voters ... conducted September 11-14, 2026'; 'Brian leads with 49%-40% (51%-42% including \"leaners\")'",
+  "notes": "Initial ballot; with leaners Fitzpatrick 51, Harvie 42. Memo image posted by Politico reporter, not pollster account.",
+  "retrieved_at": "2026-10-27T15:30:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": "telephone",
+  "method_owner": "Public Opinion Strategies",
+  "retrieved_at": "2026-10-27T15:30:00-07:00",
+  "method_date": "2026-09-15"
+ }
+}

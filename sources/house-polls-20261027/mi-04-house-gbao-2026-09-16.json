@@ -1,0 +1,38 @@
+{
+ "file": "mi-04-house-gbao-2026-09-16.json",
+ "race": "2026-MI-04-HOUSE",
+ "pid": "gbao",
+ "name": "GBAO",
+ "sponsor": "Sean McCann campaign",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "gbao-h-2026-MI-04-HOUSE-2026-09-16",
+ "poll": {
+  "field_start": "2026-09-13",
+  "field_end": "2026-09-16",
+  "release_date": "2026-09-24",
+  "n": 500,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.vxtwitter.com/zachblackburn23/status/2103156697699430856",
+  "source_locator": "x.com/zachblackburn23/status/2103156697699430856 (Sept 24, citing National Journal Hotline): 'An internal poll (Sept. 13-16; 500 LVs; +/-4.4%) for state Sen. Sean McCann (D) showed him leading Rep. Bill Huizenga (R-MI 04) ... 47%-46%'; pollster named as GBAO in https://wtvbam.com/2026/09/25/973614/ ('Pollsters with GBAO ... McCann leading Congressman Bill Huizenga 47%-to-46%')",
+  "notes": "n, field dates, MOE 4.4 and toplines from the reporter's free X post (read via vxtwitter; fxtwitter returned 404); pollster identity from WTVB/WKZO. Other/undecided not stated in either source (Wikipedia lists undecided 7, not used). Hotline item itself is paywalled and was not opened.",
+  "retrieved_at": "2026-10-27T17:05:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T17:05:00-07:00",
+  "method_date": null
+ }
+}

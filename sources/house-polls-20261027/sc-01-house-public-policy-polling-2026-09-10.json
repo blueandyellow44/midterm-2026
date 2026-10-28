@@ -1,0 +1,38 @@
+{
+ "file": "sc-01-house-public-policy-polling-2026-09-10.json",
+ "race": "2026-SC-01-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "The Bench (supports Lacore)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-SC-01-HOUSE-2026-09-10",
+ "poll": {
+  "field_start": "2026-09-09",
+  "field_end": "2026-09-10",
+  "release_date": "2026-09-15",
+  "n": 536,
+  "pop": "RV",
+  "D": 40.0,
+  "R": 41.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/zachblackburn23/status/2100002534383358350",
+  "source_locator": "The Bench / PPP memo images (Sept 15 2026) in https://x.com/zachblackburn23/status/2100002534383358350: South Carolina CD 1 'HEAD-TO-HEAD Honeycutt 41-40'; Methodology: 'PPP interviewed 536 registered voters in South Carolina's 1st Congressional district on September 9-10, 2026. The margin of error for the survey is +/- 4.2%.'",
+  "notes": "Memo images saved at scratchpad/img_HSS1JmFXEAEebrp.jpg and img_HSS1JmHWIAAiVNu.jpg. Undecided not reported. Mode per memo: 34% landline, 66% text message; no weighting text.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}

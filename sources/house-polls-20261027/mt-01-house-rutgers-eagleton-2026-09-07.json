@@ -1,0 +1,38 @@
+{
+ "file": "mt-01-house-rutgers-eagleton-2026-09-07.json",
+ "race": "2026-MT-01-HOUSE",
+ "pid": "rutgers-eagleton",
+ "name": "Rutgers Eagleton",
+ "sponsor": "Montana Free Press",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "rutgers-eagleton-h-2026-MT-01-HOUSE-2026-09-07",
+ "poll": {
+  "field_start": "2026-08-27",
+  "field_end": "2026-09-07",
+  "release_date": "2026-09-14",
+  "n": 375,
+  "pop": "RV",
+  "D": 41.0,
+  "R": 42.0,
+  "other": 14.0,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://montanafreepress.org/2026/09/14/flint-forstag-in-dead-heat-for-house-seat/",
+  "source_locator": "MTFP-Rutgers Eagleton poll: Flint 42, Forstag 41, Sheedy (L) 5, None/Someone else 9, Won't vote 2; 375 registered voters, Aug 27-Sept 7, MOE 6",
+  "notes": "other = Sheedy 5 + none/someone else 9; won't vote 2 excluded. Methodology quoted only in MTFP article (probability sample from RV file, weighted to RV demographics), not from pollster text.",
+  "retrieved_at": "2026-10-27T15:00:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T15:00:00-07:00",
+  "method_date": null
+ }
+}

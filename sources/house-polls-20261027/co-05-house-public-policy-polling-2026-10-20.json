@@ -1,0 +1,38 @@
+{
+ "file": "co-05-house-public-policy-polling-2026-10-20.json",
+ "race": "2026-CO-05-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-CO-05-HOUSE-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-20",
+  "release_date": "2026-10-23",
+  "n": 577,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 47.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/cjwarnke/status/2113764039218397211",
+  "source_locator": "https://x.com/cjwarnke/status/2113764039218397211 (HMP communications director): 'NEW @HouseMajPAC poll in #CO05 Jessica Killin: 47% Jeff Crank: 47% 2024 Recall: Trump+7 PPP, October 19-20, 577 Likely Voters'",
+  "notes": "Undecided not stated (remaining 6 implied). Sample's 2024 recall Trump+7 per sponsor post; pollster weighting not disclosed.",
+  "retrieved_at": "2026-10-27T16:55:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-10-27T16:55:00-07:00",
+  "method_date": null
+ }
+}
