@@ -66,23 +66,6 @@ export function validateBundle(directory) {
       }
     }
   }
-  // The full-chamber projection is optional (older releases lack it); when present every seat has a side or is marked undecided,
-  // projections equal their stated parts, readings equal the signal reading, and the counts add up to the chamber.
-  if (d.chambers) {
-    const nat=Number(d.signals?.rules?.poll_error_toward_d);
-    for (const [ch,c] of Object.entries(d.chambers.chambers)) {
-      if (c.items.length!==c.seats || !{SEN:100,GOV:50,HOUSE:435}[ch] || c.seats!=={SEN:100,GOV:50,HOUSE:435}[ch]) throw new Error(`Chamber ${ch} seat count wrong`);
-      let dd=0, rr=0, un=0;
-      for (const i of c.items) {
-        if (!['not_up','reading','projection','rated'].includes(i.kind)) throw new Error(`Unknown seat kind: ${i.seat}`);
-        if (i.kind==='reading') { const s=d.signals?.per_race?.[i.race]; if (!s || s.adjusted_margin!==i.undertow || !i.graded) throw new Error(`Seat reading disagrees with the signal reading: ${i.seat}`); }
-        if (i.kind==='projection') { const p=i.parts; if (i.graded || Math.abs(i.undertow-(i.base+p.national_lean+p.state_adjustment+p.spending+p.early_vote))>0.001 || Math.abs(p.national_lean-nat)>0.001) throw new Error(`Projection arithmetic inconsistent: ${i.seat}`); }
-        if (i.kind==='rated' && (i.undertow!==null || i.graded)) throw new Error(`Rated seat carries a number: ${i.seat}`);
-        if (i.side==='D') dd++; else if (i.side==='R') rr++; else if (i.side===null) un++; else throw new Error(`Bad side: ${i.seat}`);
-      }
-      if (dd!==c.at_bet.D || rr!==c.at_bet.R || un!==c.at_bet.undecided || dd+rr+un!==c.seats) throw new Error(`Chamber ${ch} tally does not add up`);
-    }
-  }
   // The signal-adjusted reading is optional (older releases lack it) but must be internally consistent when present.
   if (d.signals) {
     for (const [race,s] of Object.entries(d.signals.per_race ?? {})) {
@@ -93,6 +76,23 @@ export function validateBundle(directory) {
       if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric+(s.delta_polling_error??0)+(s.delta_early_vote??0)))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
       if (!['ALIGNED','OPPOSED','SPENDING_ONLY','RHETORIC_ONLY','NO_SIGNAL','WITNESS'].includes(s.alignment)) throw new Error(`Unknown signal alignment: ${race}`);
       if (s.alignment==='NO_SIGNAL' && Math.abs(s.delta_total-(s.delta_polling_error??0)-(s.delta_early_vote??0))>0.001) throw new Error(`No-signal race was adjusted: ${race}`);
+    }
+  }
+  // The full-chamber projection is optional (older releases lack it); when present every seat has a side or is marked undecided,
+  // projections equal their stated parts, readings equal the signal reading, and the counts add up to the chamber.
+  if (d.chambers) {
+    const nat=Number(d.signals?.rules?.poll_error_toward_d);
+    for (const [ch,c] of Object.entries(d.chambers.chambers)) {
+      if (c.items.length!==c.seats || !{SEN:100,GOV:50,HOUSE:435}[ch] || c.seats!=={SEN:100,GOV:50,HOUSE:435}[ch]) throw new Error(`Chamber ${ch} seat count wrong`);
+      let dd=0, rr=0, un=0;
+      for (const i of c.items) {
+        if (!['not_up','reading','projection','rated'].includes(i.kind)) throw new Error(`Unknown seat kind: ${i.seat}`);
+        if (i.kind==='reading') { if (!i.graded) throw new Error(`Seat reading not graded: ${i.seat}`); const s=d.signals?.per_race?.[i.race]; if (d.signals && (!s || s.adjusted_margin!==i.undertow)) throw new Error(`Seat reading disagrees with the signal reading: ${i.seat}`); }
+        if (i.kind==='projection') { const p=i.parts; if (i.graded || Math.abs(i.undertow-(i.base+p.national_lean+p.state_adjustment+p.spending+p.early_vote))>0.001 || (d.signals && Math.abs(p.national_lean-nat)>0.001)) throw new Error(`Projection arithmetic inconsistent: ${i.seat}`); }
+        if (i.kind==='rated' && (i.undertow!==null || i.graded)) throw new Error(`Rated seat carries a number: ${i.seat}`);
+        if (i.side==='D') dd++; else if (i.side==='R') rr++; else if (i.side===null) un++; else throw new Error(`Bad side: ${i.seat}`);
+      }
+      if (dd!==c.at_bet.D || rr!==c.at_bet.R || un!==c.at_bet.undecided || dd+rr+un!==c.seats) throw new Error(`Chamber ${ch} tally does not add up`);
     }
   }
   return { manifest:m, derived:d, manifestHash:sha256(manifestBytes) };

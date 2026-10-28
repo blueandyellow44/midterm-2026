@@ -753,8 +753,11 @@ def generic_ballot_average(rows: list[dict] | None, as_of_date: date) -> dict | 
             "method": "every national generic-ballot poll since September 1; 7-day half-life; sqrt(n) capped 1500; LV 1.0, RV 0.7, A 0.4; shrunk house effects (k = 5) against the leave-one-pollster-out mean"}
 
 
+SEAT_EVEN = 0.05   # the console's "Even" band (components/Console.tsx EVEN): a seat inside it counts for neither side
+
+
 def seat_side(margin: float | None) -> str | None:
-    if margin is None or abs(margin) < TIE_THRESHOLD:
+    if margin is None or abs(margin) < SEAT_EVEN:
         return None
     return "D" if margin > 0 else "R"
 
