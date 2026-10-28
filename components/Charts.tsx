@@ -1,8 +1,8 @@
 import { Empty, RecallLegend } from './UI';
-import { number, margin, shortDate } from '@/lib/format';
+import { number, margin, shortDate, surname } from '@/lib/format';
 type Estimate={estimate_id:string; margin:number; D?:number; R?:number; chart_d?:number; chart_r?:number; field_start:string;field_end:string;field_midpoint:number;recall_weighted:string;pollster_id:string;round:string;pop:string;denominator_class:string;primary_verified:string;flags:{principal:boolean}};
 type Groups={YES?:{mean:number};NO?:{mean:number}};
-const lead=(v:number,names?:{D:string;R:string})=>Math.abs(v)<0.05?'Even':names?`${(v>0?names.D:names.R).trim().split(/\s+/).pop()} +${Math.abs(v).toFixed(1)}`:margin(v);
+const lead=(v:number,names?:{D:string;R:string})=>Math.abs(v)<0.05?'Even':names?`${surname(v>0?names.D:names.R)} +${Math.abs(v).toFixed(1)}`:margin(v);
 // Poll margins by field midpoint, marked by whether each poll weights on recalled 2024 vote, with each group's average as a
 // labeled line (Max, 2026-10-27: "Anyway to make the recall graph easier to read? Maybe more prominent"). Group averages
 // are calculator outputs (section5 contrast groups); this component only draws them.
@@ -20,7 +20,7 @@ export function DotPlot({estimates,name,groups,names,included,compact}:{estimate
  const ticks=Array.from({length:Math.round((hi-lo)/5)+1},(_,i)=>lo+5*i).filter(t=>(hi-lo)<=30||t%10===0);
  const lines=(['YES','NO'] as const).filter(k=>Number.isFinite(groups?.[k]?.mean)).map(k=>{const own=points.filter(p=>inc.has(p.estimate_id)&&p.recall_weighted===k).map(p=>p.field_midpoint);return {k,v:groups![k]!.mean,x1:own.length?x(Math.min(...own))-10:L,x2:own.length?x(Math.max(...own))+10:R};});
  // keep the two line labels from colliding
- const ly=lines.map(l=>y(l.v));if(ly.length===2&&Math.abs(ly[0]-ly[1])<34){const mid=(ly[0]+ly[1])/2;const up=ly[0]<=ly[1]?0:1;ly[up]=mid-17;ly[1-up]=mid+17;}
+ const ly=lines.map(l=>y(l.v));if(ly.length===2&&Math.abs(ly[0]-ly[1])<44){const mid=(ly[0]+ly[1])/2;const up=ly[0]<=ly[1]?0:1;ly[up]=mid-22;ly[1-up]=mid+22;}
  return <figure className="recall-chart">
 <svg className={`dotplot w-full${compact?' is-compact':''}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${name}: verified principal poll margins by field midpoint, marked by recalled 2024 vote weighting. D minus R in percentage points. Exact values are listed in the source ledger.`}>
 <title>{`${name} poll margins`}</title>
@@ -51,8 +51,8 @@ export function CandidateChart({estimates,trend,name,names,compact}:{estimates:E
  const x=(v:number)=>L+(Math.max(start,Math.min(end,v))-start)/(end-start)*(R-L);const y=(v:number)=>T+(hi-v)/(hi-lo)*(B-T);
  const ticks=Array.from({length:Math.round((hi-lo)/5)+1},(_,i)=>lo+5*i).filter(t=>(hi-lo)<=30||t%10===0);
  const path=(k:'d'|'r')=>trend.map((t,i)=>`${i?'L':'M'} ${x(doy(t.date)).toFixed(1)} ${y(t[k]).toFixed(1)}`).join(' ');
- const last=trend[trend.length-1];const sur=(n:string)=>n.trim().split(/\s+/).pop();
- let yd=y(last.d), yr=y(last.r); if(Math.abs(yd-yr)<34){const mid=(yd+yr)/2;if(yd<=yr){yd=mid-17;yr=mid+17;}else{yd=mid+17;yr=mid-17;}}
+ const last=trend[trend.length-1];const sur=surname;
+ let yd=y(last.d), yr=y(last.r); if(Math.abs(yd-yr)<48){const mid=(yd+yr)/2;if(yd<=yr){yd=mid-24;yr=mid+24;}else{yd=mid+24;yr=mid-24;}}   // each name+number block is about 40px tall
  const mark=(p:Estimate,v:number,cls:string)=>{const cx=x(p.field_midpoint),cy=y(v),o=p.denominator_class==='TWO_WAY'?' is-hollow':'';
   return p.recall_weighted==='YES'?<path className={cls+o} d={`M ${cx} ${cy-7} l 7 12 h -14 Z`}/>:p.recall_weighted==='NO'?<circle className={cls+o} cx={cx} cy={cy} r="6"/>:<rect className={cls+o} x={cx-5} y={cy-5} width="10" height="10"/>;};
  return <figure className="cand-chart">

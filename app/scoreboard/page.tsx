@@ -1,3 +1,4 @@
+import { surname } from '@/lib/format';
 import type { Metadata } from 'next';
 import { races, derived } from '@/lib/data';
 import { loadLive, settled, SETTLED_REPORTING } from '@/lib/live';
@@ -8,7 +9,7 @@ import { MarginTrack } from '@/components/Console';
 export const metadata: Metadata = { title: 'Scoreboard', description: 'Election night: the polls against Undertow, race by race, as the votes are counted.' };
 
 const EVEN = 0.05;
-const last = (n: string) => String(n).trim().split(/\s+/).pop();
+const last = surname;
 const fmt = (m: number, d: string, r: string) => !Number.isFinite(m) ? 'NA' : Math.abs(m) < EVEN ? 'Even' : `${last(m > 0 ? d : r)} +${Math.abs(m).toFixed(1)}`;
 const cls = (m: number) => m >= EVEN ? 'lead-number-d' : m <= -EVEN ? 'lead-number-r' : '';
 
@@ -26,7 +27,7 @@ export default function Scoreboard() {
   const ours = done.filter(x => x.winner === 'undertow').length, theirs = done.filter(x => x.winner === 'polls').length;
   const started = Object.keys(live.races).length > 0;
   return <>
-    <PageTitle kicker="Election night · November 3" title="The polls against Undertow."><p>Each race compares the polling average and my number with the count as it comes in. A race joins the tally once it is called or {SETTLED_REPORTING}% counted. Counts are unofficial, entered by hand from each state's official results page as shares of all votes cast, and linked on every row. Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages. My numbers are from {derived.analytical_as_of.slice(0, 10)}.</p></PageTitle>
+    <PageTitle kicker="Election night · November 3" title="The polls against Undertow."><p>Each race compares the polling average and my number with the count as it comes in. A race joins the tally once it is called or {SETTLED_REPORTING}% counted. Counts are unofficial, entered by hand from each state's official results page as shares of all votes cast, and linked on every row. Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages. My numbers are from {new Date(derived.analytical_as_of).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric' })}.</p></PageTitle>
     <section className="scoreboard-tally" aria-live="polite">
       {started ? <><p className="tally-line"><strong>Undertow closer in {ours}</strong> · polls closer in {theirs} · {done.length} of {rows.length} races settled</p><p className="muted text-sm">Last updated {live.updated_at ? new Date(live.updated_at).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' Pacific' : 'NA'}.</p></>
         : <p className="tally-line">Counting starts the evening of November 3. Until then, this page shows the numbers the night will test.</p>}

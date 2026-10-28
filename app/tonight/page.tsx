@@ -1,3 +1,4 @@
+import { surname } from '@/lib/format';
 import type { Metadata } from 'next';
 import { races, derived } from '@/lib/data';
 import { closeFor, CLOSING_SOURCE } from '@/lib/closing';
@@ -8,7 +9,7 @@ export const metadata: Metadata = { title: 'Tonight', description: 'Every race U
 
 // Election night in poll-closing order (Max, 2026-10-28, "Do it" to the election-night plan): the first hours test the bet.
 const EVEN = 0.05;
-const last = (n: string) => String(n).trim().split(/\s+/).pop();
+const last = surname;
 const fmt = (m: number, d: string, r: string, dl: string) => Math.abs(m) < EVEN ? 'Even' : `${last(m > 0 ? d : r)} (${m > 0 ? dl : 'R'}) +${Math.abs(m).toFixed(1)}`;
 const cls = (m: number) => (m >= EVEN ? 'lead-number-d' : m <= -EVEN ? 'lead-number-r' : '');
 

@@ -1,4 +1,5 @@
 'use client';
+import { surname } from '@/lib/format';
 import { useMemo, useState } from 'react';
 import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
@@ -35,7 +36,7 @@ function presetList(history: HistoryPreset[], national: number, lastFall: number
   return [...(live ? [[`Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, Math.round(live.m * 10) / 10] as [string, number]] : []), ...history.map(h => [`${h.year} again`, Math.round(h.miss_toward_d * 10) / 10] as [string, number]), ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
 }
 const EVEN = 0.05;
-const last = (n: string) => n.trim().split(/\s+/).pop() || n;
+const last = surname;
 // Square tile map, one tile per state, laid out roughly by geography (12 x 8).
 const TILES: Record<string, [number, number]> = {
   AK: [0, 0], ME: [11, 0], VT: [10, 1], NH: [11, 1],

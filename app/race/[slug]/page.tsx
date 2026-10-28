@@ -7,19 +7,21 @@ import { Conditions } from '@/components/RaceLedger';
 import { RecallComparison } from '@/components/RecallComparison';
 import { DotPlot, CandidateChart } from '@/components/Charts';
 import { Panel, Figure, FactorBars, MarginTrack, tone, EVEN } from '@/components/Console';
-import { margin,number,shortDate } from '@/lib/format';
+import { margin,number,shortDate, surname } from '@/lib/format';
 export function generateStaticParams(){return races.map(r=>({slug:r.slug}));}
 export const dynamicParams=false;
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const r=races.find(r=>r.slug===slug);return {title:r?.name||'Race not found',openGraph:r?{title:`${r.name} · Undertow`,description:'The polls, my number, and the pull between them. By Max Sheahan.',images:[{url:`/og/${r.slug}.png`,width:1200,height:630,alt:`${r.name}: polls, Undertow and the pull`}]}:undefined,twitter:r?{card:'summary_large_image',images:[`/og/${r.slug}.png`]}:undefined,description:r?`${r.name}: the polls, my number and the pull between them, with every poll and source behind it.`:'Race not found'};}
 
 // Races whose D slot holds an independent (Nebraska: Dan Osborn).
 const INDEPENDENT_D_SLOT=new Set(['2026-NE-SEN','2026-AK-AL-HOUSE']);
-const lastName=(n:string)=>n.trim().split(/\s+/).pop()||n;
+const lastName=surname;
 function label(v:number,names:{D:string;R:string}){return Math.abs(v)<EVEN?'Even':`${lastName(v>0?names.D:names.R)} +${Math.abs(v).toFixed(1)}`;}
 
 // The single-race console (Max, 2026-10-27: "We need to rethink site ui"; one design system across every page).
 function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate};const dl=INDEPENDENT_D_SLOT.has(r.id)||/^independent/i.test(String((derived as any).candidates?.[r.id]?.D?.party||''))?'I':'D';
- const polls=Number(s?.polling_margin??r.polling_read?.margin);const und=Number(s?.adjusted_margin);const pull=und-polls;const ok=Number.isFinite(polls)&&Number.isFinite(und);
+ const n=(v:unknown)=>v===null||v===undefined||v===''?NaN:Number(v);   // Number(null) is 0, which read a no-poll race as a tie
+ const polls=n(s?.polling_margin??r.polling_read?.margin);const und=n(s?.adjusted_margin);const pull=und-polls;const ok=Number.isFinite(polls)&&Number.isFinite(und);
+ const proj=((derived as any).chambers?.chambers?.HOUSE?.items||[]).find((i:any)=>i.race===r.id&&i.kind==='projection');
  return <Panel className="race-head" kicker={<>2026 · {r.id.split('-')[1]} · {r.id.endsWith('HOUSE')?`House · ${r.id.split('-')[2]==='AL'?'at-large':`district ${Number(r.id.split('-')[2])}`}`:r.id.includes('GOV')?'Governor':'Senate'}{r.id.includes('SPECIAL')?' · special':''}</>} action={<a className="c-link" href="/">← All races</a>}>
   <h1 className="race-title">{r.name}</h1>
   <p className="race-matchup"><span className="is-d">{names.D} ({dl})</span> vs <span className="is-r">{names.R} (R)</span></p>
@@ -30,7 +32,8 @@ function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates
   </div>
   <div className="race-trackrow"><span className="is-r">◀ {lastName(names.R)}</span><MarginTrack v={und} tick={polls} large/><span className="is-d">{lastName(names.D)} ▶</span></div>
   <p className="c-sub race-trackkey"><i className="c-key-tick"/> polls · bar: Undertow</p></>
-  :<p className="c-sub race-noread">{r.id.endsWith('HOUSE')?'No public polls of this race since September 1, so Undertow makes no call here. The district facts below are what there is.':'No verified polling read in this snapshot.'}</p>}
+  :<><p className="c-sub race-noread">{r.id.endsWith('HOUSE')?'No public poll of this race since September 1 could be verified at its source, so Undertow makes no call here and nothing on this page is graded.':'No verified polling read in this snapshot.'}</p>
+   {proj&&<p className="race-proj">For the chamber count it is projected from its 2024 vote and the national swing: <strong className={tone(proj.undertow)}>{label(proj.undertow,names)}</strong>. A projection, not a reading.</p>}</>}
  </Panel>;}
 
 function HouseFacts({r}:{r:any}){const c=(derived as any).candidates?.[r.id];if(!c?.rating)return null;const sp=r.signal?.spending;const total=(Number(sp?.d_fav_recent)||0)+(Number(sp?.r_fav_recent)||0);const p=Number(c.pres2024_d_minus_r);
@@ -54,7 +57,8 @@ function WhyPull({r}:{r:any}){const s=r.signal;if(!s||!Number.isFinite(s.adjuste
   <MethodNotes s={s} meta={signalsMeta}/>
  </Panel>;}
 
-function ThePolls({r}:{r:any}){const read=r.polling_read;const latest=read?.kind==='LATEST_POLL'?read.latest_poll:null;
+const WINDOW_LABEL:Record<string,string>={BOTH:'October',HOUSE_ONLY:'September',OUT_OF_WINDOW:'before September 1, context only',BACKTEST:'2025 backtest'};
+function ThePolls({r}:{r:any}){const read=r.polling_read?.kind==='UNAVAILABLE'?null:r.polling_read;const latest=read?.kind==='LATEST_POLL'?read.latest_poll:null;if(!read&&!/-ME-|-AK-/.test(r.id))return null;
  return <Panel className="race-polls" kicker="The polls">
   <ul className="race-facts">
    {read&&<li>{latest?'One published poll':`${read.poll_count} comparable polls`} · newest finished {shortDate(read.field_end)} ({read.age_days} {read.age_days===1?'day':'days'} old)</li>}
@@ -66,7 +70,7 @@ function ThePolls({r}:{r:any}){const read=r.polling_read;const latest=read?.kind
 function Ledger({r}:{r:any}){const estimates=publicEstimates(r.id);
  return <Panel className="race-ledger-panel" kicker="Every poll" action={<RecallLegend/>}>
   <p className="c-sub">All non-quarantined stored variants. Principal selection and primary verification are separate from recall classification; a displayed estimate need not enter an average. Quarantined rows appear only on <a href="/excluded/">Excluded</a>.</p>
-  {!estimates.length?<Empty title="No poll estimates">No eligible source records in this release.</Empty>:<table className="source-table w-full"><thead><tr><th>Pollster / field dates</th><th>D / R share</th><th>Margin</th><th>Recall</th><th>Stratum</th><th>Selection / source</th></tr></thead><tbody>{estimates.map((e:any)=><tr key={e.estimate_id}><th scope="row">{pollsterNames[e.pollster_id]||e.pollster_id}{(e.pollster_alignment==="D"||e.pollster_alignment==="R")?<span className="party-tag">{e.pollster_alignment==="D"?"Democratic-aligned":"Republican-aligned"}</span>:String(e.sponsor_class||"").startsWith("PARTISAN")?<span className="party-tag">Partisan sponsor</span>:null}<span className="muted block text-xs font-normal">{shortDate(e.field_start)}–{shortDate(e.field_end)}</span></th><td data-label="D / R share" className="mono">{number(e.D)} / {number(e.R)}</td><td data-label="Margin" className="mono">{margin(e.margin)}</td><td data-label="Recall" className={`recall-${e.recall_weighted.toLowerCase()}`}>{e.recall_weighted==='YES'?'▲':e.recall_weighted==='NO'?'●':'■'} {e.recall_weighted}</td><td data-label="Stratum" className="text-xs">{e.round} / {e.pop} / {e.denominator_class}<span className="muted block">{e.window}</span></td><td data-label="Selection / source" className="text-xs"><span>{e.selected==='1'?'Principal':'Alternate'} · primary {e.primary_verified}</span><a href={e.source_url} target="_blank" rel="noopener noreferrer" className="block">{pollsterNames[e.pollster_id]||e.pollster_id} release</a></td></tr>)}</tbody></table>}
+  {!estimates.length?<Empty title="No poll estimates">No eligible source records in this release.</Empty>:<table className="source-table w-full"><thead><tr><th>Pollster / field dates</th><th>D / R share</th><th>Margin</th><th>Recall</th><th>Stratum</th><th>Selection / source</th></tr></thead><tbody>{estimates.map((e:any)=><tr key={e.estimate_id}><th scope="row">{pollsterNames[e.pollster_id]||e.pollster_id}{(e.pollster_alignment==="D"||e.pollster_alignment==="R")?<span className="party-tag">{e.pollster_alignment==="D"?"Democratic-aligned":"Republican-aligned"}</span>:String(e.sponsor_class||"").startsWith("PARTISAN")?<span className="party-tag">Partisan sponsor</span>:null}<span className="muted block text-xs font-normal">{shortDate(e.field_start)}–{shortDate(e.field_end)}</span></th><td data-label="D / R share" className="mono">{number(e.D)} / {number(e.R)}</td><td data-label="Margin" className="mono">{margin(e.margin)}</td><td data-label="Recall" className={`recall-${e.recall_weighted.toLowerCase()}`}>{e.recall_weighted==='YES'?'▲':e.recall_weighted==='NO'?'●':'■'} {e.recall_weighted}</td><td data-label="Stratum" className="text-xs">{e.round} / {e.pop} / {e.denominator_class}<span className="muted block">{WINDOW_LABEL[e.window]||e.window}</span></td><td data-label="Selection / source" className="text-xs"><span>{e.selected==='1'?'Principal':'Alternate'} · primary {e.primary_verified}</span><a href={e.source_url} target="_blank" rel="noopener noreferrer" className="block">{pollsterNames[e.pollster_id]||e.pollster_id} release</a></td></tr>)}</tbody></table>}
  </Panel>;}
 
 export default async function Race({params}:{params:Promise<{slug:string}>}) {const {slug}=await params;const r=races.find(r=>r.slug===slug);if(!r)notFound();
@@ -77,14 +81,14 @@ export default async function Race({params}:{params:Promise<{slug:string}>}) {co
  return <div className="race-console">
   <RaceHead r={r}/>
   {r.id.endsWith('HOUSE')&&<HouseFacts r={r}/>}
-  <Panel className="race-recall" kicker="The polls">
+  {publicEstimates(r.id).some((e:any)=>e.window==='BOTH'||e.window==='HOUSE_ONLY')?<Panel className="race-recall" kicker="The polls">
    <div className="race-recall-grid">
     {r.trend?.length?<Both desktop={<CandidateChart estimates={publicEstimates(r.id)} trend={r.trend} name={r.name} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>} mobile={<CandidateChart compact estimates={publicEstimates(r.id)} trend={r.trend} name={r.name} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>}/>
     :<Both desktop={<DotPlot estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>} mobile={<DotPlot compact estimates={publicEstimates(r.id)} name={r.name} groups={r.recallComparison?.groups} included={r.recallComparison?.included_estimate_ids} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>}/>}
     <div>{r.recallComparison?<RecallComparison r={r} pollsterNames={pollsterNames}/>:<p className="c-sub">Not enough polls on both sides to compare polls that weight on recalled 2024 vote with polls that do not.</p>}</div>
    </div>
-  </Panel>
-  <Both desktop={<div className="race-grid"><WhyPull r={r}/><ThePolls r={r}/></div>} mobile={<div className="race-stack"><WhyPull r={r}/><ThePolls r={r}/></div>}/>
+  </Panel>:<Panel className="race-recall" kicker="The polls"><p className="c-sub">No public poll since September 1. {publicEstimates(r.id).length?'Older polls are listed below as context; they enter no number.':'None found earlier this year either.'}</p></Panel>}
+  <div className="race-stack"><ThePolls r={r}/><WhyPull r={r}/></div>
 
   <Ledger r={r}/>
   {drawers}

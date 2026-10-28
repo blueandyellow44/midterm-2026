@@ -54,7 +54,11 @@ def text(face: Face, s: str, size: float, x: float, y: float, fill: str, track: 
 
 
 def surname(n: str) -> str:
-    return n.strip().split()[-1]
+    """Surname for labels, skipping generational suffixes (Nick Begich III -> Begich)."""
+    w = n.strip().split()
+    while len(w) > 1 and w[-1].rstrip('.').lower() in ('jr', 'sr', 'ii', 'iii', 'iv', 'v'):
+        w.pop()
+    return w[-1]
 
 
 def side(m: float, names: dict) -> tuple[str, str]:
@@ -131,9 +135,9 @@ def card(rid: str, s: dict, names: dict, word: str, portrait: bool) -> str:
             parts.append(text(NUM, val, fit(NUM, val, 120, w - 2 * pad), pad, y + 118, color)[0])
             parts.append(text(MED, sub, 26, pad, y + 156, C["muted"])[0])
         parts.append(track(pad, 1130, w - 2 * pad, 30, s["adjusted_margin"], s["polling_margin"]))
-        parts.append(text(MONO, names['R'].split()[-1], 22, pad, 1200, C["r"])[0])
-        rt, rtw = MONO.path(names['D'].split()[-1], 22, 0, 0)
-        parts.append(text(MONO, names['D'].split()[-1], 22, w - pad - rtw, 1200, C["d"])[0])
+        parts.append(text(MONO, surname(names['R']), 22, pad, 1200, C["r"])[0])
+        rt, rtw = MONO.path(surname(names['D']), 22, 0, 0)
+        parts.append(text(MONO, surname(names['D']), 22, w - pad - rtw, 1200, C["d"])[0])
         fy = h - 60
     else:
         parts.append(brand(pad, 34, 0.4, word))
@@ -151,9 +155,9 @@ def card(rid: str, s: dict, names: dict, word: str, portrait: bool) -> str:
             parts.append(text(NUM, val, fit(NUM, val, 74, colw - 24), x, 388, color)[0])
             parts.append(text(MED, sub, 18, x, 420, C["muted"])[0])
         parts.append(track(pad, 466, w - 2 * pad, 22, s["adjusted_margin"], s["polling_margin"]))
-        parts.append(text(MONO, names['R'].split()[-1], 16, pad, 516, C["r"])[0])
-        rtw = MONO.path(names['D'].split()[-1], 16, 0, 0)[1]
-        parts.append(text(MONO, names['D'].split()[-1], 16, w - pad - rtw, 516, C["d"])[0])
+        parts.append(text(MONO, surname(names['R']), 16, pad, 516, C["r"])[0])
+        rtw = MONO.path(surname(names['D']), 16, 0, 0)[1]
+        parts.append(text(MONO, surname(names['D']), 16, w - pad - rtw, 516, C["d"])[0])
         fy = h - 34
     parts.append(f'<rect x="{pad}" y="{fy - (44 if portrait else 32)}" width="{w - 2 * pad}" height="2" fill="{C["line"]}"/>')
     parts.append(text(MONO, "midtermundertow.com · by Max Sheahan · bar: Undertow · tick: polls", 22 if portrait else 17, pad, fy, C["muted"])[0])

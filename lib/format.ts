@@ -14,3 +14,11 @@ export function shortDate(value: string): string {
   if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0,10)!==value) return 'UNVERIFIED';
   return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'}).format(date);
 }
+
+// A candidate's surname for short labels: the last word, skipping generational suffixes ("Nick Begich III" -> "Begich").
+const SUFFIX = /^(jr|sr|ii|iii|iv|v)\.?$/i;
+export function surname(name: string): string {
+  const w = String(name ?? '').trim().split(/\s+/).filter(Boolean);
+  while (w.length > 1 && SUFFIX.test(w[w.length - 1])) w.pop();
+  return w[w.length - 1] || String(name ?? '');
+}
