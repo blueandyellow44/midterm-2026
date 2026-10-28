@@ -105,13 +105,14 @@ function Tally({ races, m, seats, totals }: { races: WallRace[]; m: number; seat
         <span className="wall-tally-label">{officeName(o)}<small>{totals ? `of ${c.n}` : `${c.n} tracked`}</small></span>
         <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
-        {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control` : ''}</span>}
+        {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>}
       </div>; })}
-    {totals && <p className="wall-tally-note">The hatched band is the races I read; the dial moves them. The rest are projections from the 2024 vote, or Cook’s rating for governors I do not track. A 50-50 Senate is Republican: the Vice President breaks ties.</p>}
+    {totals && <p className="wall-tally-note">Hatched: the races I read, which the dial moves. The rest are projections. <a href="/method/#full-chamber">How</a></p>}
   </div>;
 }
 
 const seatLabel = (v: number) => (Math.abs(v) < EVEN ? 'EVEN' : `${v > 0 ? 'D' : 'R'}+${Math.abs(v).toFixed(1)}`);
+const tileNum = (v: number) => (Math.abs(v) >= 10 ? Math.round(Math.abs(v)).toString() : Math.abs(v).toFixed(1));   // tiles: whole numbers from 10 up so the label fits
 // Every House seat as a hemicycle dot. Tracked view: readings colored, no-poll districts hollow, untracked seats gray as
 // held. Full view: untracked seats and no-poll districts take their projection. Ordering happens inside the hemicycle.
 function houseSeats(races: WallRace[], noRead: NoReadRace[], seats: WallSeat[], full: boolean, m: number): HemiSeat[] {
@@ -136,8 +137,8 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
     {office === 'HOUSE' ? (() => { const hs = houseSeats(races, noRead, seats, full, m); const d = hs.filter(x => x.shade !== 'is-noread' && (x.v ?? 0) >= EVEN).length; const r = hs.filter(x => x.shade !== 'is-noread' && (x.v ?? 0) <= -EVEN).length;
       return <Hemicycle seats={hs} majority={218} selected={selected} select={select} dCount={d} rCount={r} count={full} title={full ? 'All 435 House seats, most Democratic to most Republican' : 'The House: tracked seats colored, others as held'}/>; })() : <div className="wall-tiles">{Object.entries(TILES).map(([st, [c, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m) : 0;
       const pos = `tc-${c} tr-${rw}`; const sx = r ? undefined : seatByState.get(st);
-      if (r) return <button key={st} type="button" className={`wall-tile ${pos} ${shade(v)}${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} aria-label={`${r.name}: ${marginLabel(v, r)}`} onClick={() => select(r.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>;
-      if (sx) { const sv = sx.kind === 'projection' ? seatMarginAt(sx, m) : (sx.side === 'D' ? 20 : sx.side === 'R' ? -20 : 0); const lab = sx.kind === 'projection' ? seatLabel(sv) : (sx.rating || 'rated');
+      if (r) return <button key={st} type="button" className={`wall-tile ${pos} ${shade(v)}${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} aria-label={`${r.name}: ${marginLabel(v, r)}`} onClick={() => select(r.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${tileNum(v)}`}</span></button>;
+      if (sx) { const sv = sx.kind === 'projection' ? seatMarginAt(sx, m) : (sx.side === 'D' ? 20 : sx.side === 'R' ? -20 : 0); const lab = sx.kind === 'projection' ? (Math.abs(sv) < EVEN ? 'EVEN' : `${sv > 0 ? 'D' : 'R'}+${tileNum(sv)}`) : (sx.rating || 'rated');
         return <button key={st} type="button" className={`wall-tile is-proj ${pos} ${shade(sv)}${selected === sx.id ? ' is-selected' : ''}`} aria-pressed={selected === sx.id} aria-label={`${sx.name}: ${sx.kind === 'projection' ? `projected ${seatLabel(sv)}` : `Cook ${sx.rating}, not tracked`}`} onClick={() => select(sx.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v wall-tile-rated">{lab}</span></button>; }
       return <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>}
     {full && <p className="wall-note">{office === 'HOUSE' ? 'Ringed dots are tracked races; plain dots are projections from the 2024 vote, not readings.' : 'Dashed tiles are projections or Cook ratings, not Undertow readings.'}</p>}
@@ -210,7 +211,8 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const shown = sel || (selSeat ? undefined : races[0]);
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
-    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live}/><Tally races={races} m={m} seats={seats} totals={totals}/></aside>
+    <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals}/></div>
+    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live}/></aside>
     <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full}/> : shown && <Detail r={shown} m={m} national={national}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office}/></aside>
   </div>;

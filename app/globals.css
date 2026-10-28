@@ -203,7 +203,7 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .wall-strip-head {font-size:22px;font-weight:700;line-height:1.05;text-transform:uppercase;margin:0;}
 .wall-strip-head span {color:var(--muted);}
 .wall-strip-meta {font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;white-space:nowrap;flex-wrap:wrap;}
-.wall {display:grid;grid-template-columns:290px minmax(0,1fr) 330px;gap:14px;height:clamp(600px,calc(100dvh - 140px),820px);}
+.wall {display:grid;grid-template-columns:320px minmax(0,1fr) 330px;gap:16px;align-items:start;}
 .wall-left,.wall-right,.wall-center {display:flex;flex-direction:column;gap:14px;min-height:0;}
 .wall-panel,.wall-tally {background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-height:0;box-shadow:var(--shadow);}
 .wall-panel-head {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;}
@@ -266,14 +266,14 @@ button.wall-tile:hover {transform:translateY(-1px);}
 .wall-legend {display:flex;justify-content:center;gap:3px;margin-top:8px;font-size:10px;font-family:var(--font-mono);}
 .wall-legend span {padding:3px 7px;border-radius:3px;color:#fff;}
 .wall-legend .d-lean,.wall-legend .toss,.wall-legend .r-lean {color:#0b1a3a;}
-.wall-detail {flex:1 1 auto;overflow:auto;}
+.wall-detail {flex:0 0 auto;}
 .wall-link {font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;}
 .wall-matchup {margin:0 0 8px;font-size:15px;font-weight:600;}
 .wall-figures {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line);}
 .wall-big {font-size:30px;font-weight:800;line-height:1;margin:4px 0;white-space:nowrap;}
 .wall-sub {font-size:12px;color:var(--muted);margin:0;}
-.wall-board {flex:1 1 auto;display:flex;flex-direction:column;}
-.wall-board ol {list-style:none;margin:0;padding:0;overflow:auto;flex:1 1 auto;}
+.wall-board {display:flex;flex-direction:column;}
+.wall-board ol {list-style:none;margin:0;padding:0;overflow:auto;max-height:clamp(520px,calc(100dvh - 220px),900px);}
 .wall-key {font-family:var(--font-mono);font-size:11px;color:var(--muted);margin:0;display:flex;align-items:center;gap:6px;}
 .wall-key-tick {display:inline-block;width:2px;height:12px;background:var(--ink);}
 .wall-row {display:grid;grid-template-columns:62px 1fr 62px;align-items:center;gap:8px;width:100%;min-height:34px;padding:2px 6px;border-radius:6px;border:1px solid transparent;background:none;color:var(--ink);text-align:left;}
@@ -374,3 +374,16 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .wall-strip-night {padding:6px 10px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);}
 .tonight-hour {margin:22px 0 8px;font-family:var(--font-num);font-size:22px;font-weight:700;}
 .tonight-hour small {font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--muted);margin-left:8px;letter-spacing:.04em;text-transform:uppercase;}
+
+/* 2026-10-28 (Max: "ui all fucked up. crammed. hidden. boxes too tight"): panels size to their content, nothing clips. */
+.wall-tally {gap:16px;padding:16px 18px;}
+.wall-tally-row {gap:6px 10px;}
+.wall-tally-play {margin-top:2px;}
+.wall-tally-note {margin-top:2px;}
+.wall-tile-v {font-size:12px;letter-spacing:-.01em;white-space:nowrap;}
+.wall-tile {padding:2px 1px;overflow:hidden;}
+
+.wall-top {grid-column:1 / -1;}
+.wall-top .wall-tally {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 28px;align-items:start;}
+.wall-top .wall-tally-note {grid-column:1 / -1;margin:0;}
+.wall-top .wall-tally-num {font-size:26px;}
