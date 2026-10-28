@@ -88,22 +88,32 @@ function Dial({ m, setM, national, lastFall, history, compact, live = null }: { 
 // the whole picture"; layout ruling: "One bar, tracked band inside"). Solid ends are seats not up plus projections and
 // rated seats; the hatched band in the middle is the races Undertow reads, the part the dial moves. Numbers are the chamber.
 export type ChamberSplit = { dSafe: number; dPlay: number; even: number; rPlay: number; rSafe: number; n: number; majority: number | null; play: number; noPolls: number; tossUp: number };
-export function chamberSplit(o: Office, races: WallRace[], seats: WallSeat[], totals: ChamberTotals, m: number): ChamberSplit {
-  const t = totals[o]; const x = { dSafe: t.notUp.D, dPlay: 0, even: 0, rPlay: 0, rSafe: t.notUp.R, n: t.seats, majority: t.majority, play: 0, noPolls: 0, tossUp: 0 };
-  for (const r of races) if (r.office === o) { const v = marginAt(r, m); x.play++; if (v >= EVEN) x.dPlay++; else if (v <= -EVEN) x.rPlay++; else x.even++; }
+// Scope (Max, 2026-10-28: "I want to be able to toggle between all seats and seats in this election"): 'all' is the whole
+// chamber, seats not up included; 'up' counts only the contests on this year's ballot, so there is no control line.
+export type Scope = 'all' | 'up';
+export function chamberSplit(o: Office, races: WallRace[], seats: WallSeat[], totals: ChamberTotals, m: number, scope: Scope = 'all'): ChamberSplit {
+  const t = totals[o]; const all = scope === 'all';
+  const x = { dSafe: all ? t.notUp.D : 0, dPlay: 0, even: 0, rPlay: 0, rSafe: all ? t.notUp.R : 0, n: t.seats, majority: all ? t.majority : null, play: 0, noPolls: 0, tossUp: 0 };
+  let up = 0;
+  for (const r of races) if (r.office === o) { const v = marginAt(r, m); x.play++; up++; if (v >= EVEN) x.dPlay++; else if (v <= -EVEN) x.rPlay++; else x.even++; }
   for (const s of seats) if (s.office === o && s.kind !== 'not_up') {
-    const side = seatSideAt(s, m);
+    const side = seatSideAt(s, m); up++;
     if (s.noPolls) { x.play++; x.noPolls++; if (side === 'D') x.dPlay++; else if (side === 'R') x.rPlay++; else x.even++; }
     else if (side === 'D') x.dSafe++; else if (side === 'R') x.rSafe++; else { x.even++; if (s.kind === 'rated') x.tossUp++; }
   }
+  if (!all) x.n = up;
   return x;
 }
-function Tally({ races, m, seats, totals }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals | null }) {
+function ScopeToggle({ scope, setScope }: { scope: Scope; setScope: (s: Scope) => void }) {
+  return <div className="scope-toggle" role="group" aria-label="Which seats to count">{(['all', 'up'] as const).map(k => <button key={k} type="button" aria-pressed={scope === k} className={scope === k ? 'is-on' : ''} onClick={() => setScope(k)}>{k === 'all' ? 'All seats' : 'Up this year'}</button>)}</div>;
+}
+function Tally({ races, m, seats, totals, scope = 'all', setScope }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals | null; scope?: Scope; setScope?: (s: Scope) => void }) {
   const tracked = (o: Office) => { const rs = races.filter(r => r.office === o).map(r => marginAt(r, m)); const n = rs.length; return { dSafe: 0, dPlay: rs.filter(v => v >= EVEN).length, even: rs.filter(v => Math.abs(v) < EVEN).length, rPlay: rs.filter(v => v <= -EVEN).length, rSafe: 0, n, majority: null, play: n, noPolls: 0, tossUp: 0 } as ChamberSplit; };
   return <div className="wall-tally" aria-live="polite">
-    {OFFICES.filter(o => races.some(r => r.office === o) || (totals && totals[o].seats > 0)).map(o => { const c = totals ? chamberSplit(o, races, seats, totals, m) : tracked(o); const d = c.dSafe + c.dPlay, r = c.rSafe + c.rPlay; const w = (k: number) => pct(100 * k / c.n);
+    {totals && setScope && <ScopeToggle scope={scope} setScope={setScope}/>}
+    {OFFICES.filter(o => races.some(r => r.office === o) || (totals && totals[o].seats > 0)).map(o => { const sc: Scope = o === 'HOUSE' ? 'all' : scope; const c = totals ? chamberSplit(o, races, seats, totals, m, sc) : tracked(o); const d = c.dSafe + c.dPlay, r = c.rSafe + c.rPlay; const w = (k: number) => pct(100 * k / c.n);
       return <div key={o} className="wall-tally-row">
-        <span className="wall-tally-label">{officeName(o)}<small>{totals ? `of ${c.n}` : `${c.n} tracked`}</small></span>
+        <span className="wall-tally-label">{officeName(o)}<small>{totals ? (sc === 'up' ? `${c.n} up` : `of ${c.n}`) : `${c.n} tracked`}</small></span>
         <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
         {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}<span className="is-extra">{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{c.majority ? ` · ${c.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
@@ -206,13 +216,14 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const [m, setM] = useState(live ? live.m : national);
   const [office, setOffice] = useState<Office>('SEN');
   const [selected, setSelected] = useState(initial);
+  const [scope, setScope] = useState<Scope>('all');
   const full = !!totals;
   const sel = races.find(r => r.id === selected);
   const selSeat = !sel ? seats.find(x => x.id === selected) : undefined;
   const shown = sel || (selSeat ? undefined : races[0]);
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
-    <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals}/></div>
+    <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope}/></div>
     <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live}/></aside>
     <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full}/> : shown && <Detail r={shown} m={m} national={national}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office}/></aside>
@@ -235,15 +246,17 @@ function DialBar({ m, setM, national, lastFall, history, live = null }: { m: num
 // Phone first screen (Max, 2026-10-28: "How do other sites get it all to fit on the landing screen?" -> "Build it"): three chamber
 // chips that switch both the numbers and the map, and one full bar for the selected chamber.
 function PhoneChambers({ races, m, seats, totals, office, setOffice }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals; office: Office; setOffice: (o: Office) => void }) {
-  const c = chamberSplit(office, races, seats, totals, m); const d = c.dSafe + c.dPlay, r = c.rSafe + c.rPlay; const w = (k: number) => pct(100 * k / c.n);
+  const [scope, setScope] = useState<Scope>('all'); const sc: Scope = office === 'HOUSE' ? 'all' : scope;
+  const c = chamberSplit(office, races, seats, totals, m, sc); const d = c.dSafe + c.dPlay, r = c.rSafe + c.rPlay; const w = (k: number) => pct(100 * k / c.n);
   return <section className="wall-tally phone-chambers" aria-live="polite">
-    <div className="phone-chips" role="tablist" aria-label="Chamber">{OFFICES.map(o => { const x = chamberSplit(o, races, seats, totals, m); return <button key={o} type="button" role="tab" aria-selected={office === o} className={office === o ? 'is-on' : ''} onClick={() => setOffice(o)}><span>{o === 'GOV' ? 'Governors' : officeName(o)}</span><b><i className="is-d">D {x.dSafe + x.dPlay}</i> <i className="is-r">R {x.rSafe + x.rPlay}</i></b></button>; })}</div>
+    <div className="phone-chips" role="tablist" aria-label="Chamber">{OFFICES.map(o => { const x = chamberSplit(o, races, seats, totals, m, o === 'HOUSE' ? 'all' : scope); return <button key={o} type="button" role="tab" aria-selected={office === o} className={office === o ? 'is-on' : ''} onClick={() => setOffice(o)}><span>{o === 'GOV' ? 'Governors' : officeName(o)}</span><b><i className="is-d">D {x.dSafe + x.dPlay}</i> <i className="is-r">R {x.rSafe + x.rPlay}</i></b></button>; })}</div>
     <div className="wall-tally-row">
-      <span className="wall-tally-label">{office === 'GOV' ? 'Governors' : officeName(office)}<small>of {c.n}</small></span>
+      <span className="wall-tally-label">{office === 'GOV' ? 'Governors' : officeName(office)}<small>{sc === 'up' ? `${c.n} up` : `of ${c.n}`}</small></span>
       <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
       <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
       <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control` : ''}</span>
     </div>
+    {office !== 'HOUSE' && <ScopeToggle scope={scope} setScope={setScope}/>}
   </section>;
 }
 

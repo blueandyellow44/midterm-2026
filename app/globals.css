@@ -472,3 +472,8 @@ html[data-view=mobile] .theme-button::before {content:"◐";font-size:18px;line-
 .phone-key-dash {display:inline-block;width:14px;height:10px;border-radius:2px;outline:1.5px dashed color-mix(in srgb,var(--ink) 45%,transparent);outline-offset:-2px;background:var(--d-likely);opacity:.85;}
 .wall-dialbar .phone-key {margin:4px 0 0;}
 html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(150px + env(safe-area-inset-bottom));}
+.scope-toggle {display:inline-flex;align-self:flex-start;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--panel2);gap:2px;}
+.scope-toggle button {min-height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--muted);background:transparent;border:0;cursor:pointer;}
+.scope-toggle button.is-on {background:var(--panel);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12);}
+.wall-top .scope-toggle {grid-column:1 / -1;justify-self:start;}
+.wall-mobile .scope-toggle button {min-height:32px;}
