@@ -74,8 +74,8 @@ html[data-view=mobile] .brand {grid-area:brand;gap:8px;}
 html[data-view=mobile] .station-mark {width:26px;height:26px;}
 html[data-view=mobile] .wordmark {height:20px;}
 html[data-view=mobile] .brand .eyebrow {display:none;}
-html[data-view=mobile] .site-header nav {grid-area:nav;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:16px;}
-html[data-view=mobile] .site-header nav a {min-height:34px;font-size:11px;white-space:nowrap;}
+html[data-view=mobile] .site-header nav {grid-area:nav;flex-wrap:nowrap;justify-content:space-between;gap:6px;}   /* all six fit at 360px; no hidden scroll */
+html[data-view=mobile] .site-header nav a {min-height:36px;font-size:10.5px;letter-spacing:.03em;white-space:nowrap;}
 html[data-view=mobile] .header-island>:last-child {grid-area:controls;justify-self:end;}
 html[data-view=mobile] .theme-button {min-height:30px;padding:4px 10px;font-size:11px;}
 
@@ -396,4 +396,5 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .race-stack {display:flex;flex-direction:column;gap:14px;}
 .race-stack:empty {display:none;}
 .race-explain dd,.race-explain dt {max-width:78ch;}
-.race-explain {display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px 28px;}
+.race-explain {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px 28px;}
+.method-table th small.block {font-size:11px;font-weight:400;}
