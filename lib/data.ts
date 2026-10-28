@@ -4,12 +4,14 @@ import { validateBundle, readCsv } from '../scripts/bundle.mjs';
 import { toPublicNote } from './public-note';
 export const bundle=validateBundle(join(process.cwd(),'data'));
 export const { manifest, derived, manifestHash }=bundle;
-export const raceIds: string[]=[...manifest.scope.senate_races,...manifest.scope.governor_races];
-export const states: Record<string,string>={TX:'Texas',IA:'Iowa',ME:'Maine',AK:'Alaska',OH:'Ohio',MI:'Michigan',NC:'North Carolina',GA:'Georgia',WI:'Wisconsin',KS:'Kansas',NE:'Nebraska',SC:'South Carolina',MS:'Mississippi',NH:'New Hampshire',FL:'Florida'};
+export const raceIds: string[]=[...manifest.scope.senate_races,...manifest.scope.governor_races,...(manifest.scope.house_races||[])];
+export const states: Record<string,string>={AL:'Alabama',AK:'Alaska',AZ:'Arizona',CA:'California',CO:'Colorado',FL:'Florida',GA:'Georgia',IA:'Iowa',KS:'Kansas',KY:'Kentucky',ME:'Maine',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MT:'Montana',NC:'North Carolina',NE:'Nebraska',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NV:'Nevada',NY:'New York',OH:'Ohio',PA:'Pennsylvania',SC:'South Carolina',TX:'Texas',VA:'Virginia',WA:'Washington',WI:'Wisconsin'};
 export const slug=(id:string)=>id.replace('2026-','').toLowerCase();
-export const raceName=(id:string)=>`${states[id.split('-')[1]]} ${id.includes('GOV')?'governor':'Senate'}${id.includes('SPECIAL')?' · special':''}`;
+const ordinal=(n:number)=>{const t=n%100;return `${n}${t>=11&&t<=13?'th':({1:'st',2:'nd',3:'rd'} as Record<number,string>)[n%10]||'th'}`;};
+export const isHouse=(id:string)=>id.endsWith('-HOUSE');
+export const raceName=(id:string)=>{const [,st,d]=id.split('-');if(isHouse(id))return `${states[st]} ${d==='AL'?'at-large':ordinal(Number(d))} District`;return `${states[st]} ${id.includes('GOV')?'governor':'Senate'}${id.includes('SPECIAL')?' · special':''}`;};
 export function raceData(id:string) {
- const r=derived.races[id];const heat=derived.section9_heat.per_race[id];
+ const r=derived.races[id];const heat=derived.section9_heat.per_race[id]??{candidates:(derived as any).candidates?.[id]};
  const recallComparison=derived.section5_contrasts.ii.per_race[id];
  const recallSources=derived.estimates.filter((e:{estimate_id:string})=>recallComparison?.included_estimate_ids?.includes(e.estimate_id)).sort((a:{field_end:string},b:{field_end:string})=>b.field_end.localeCompare(a.field_end));
  const contributing=derived.estimates.filter((e:{estimate_id:string})=>r.averaging_estimate_ids.includes(e.estimate_id));

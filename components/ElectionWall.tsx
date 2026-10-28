@@ -10,11 +10,14 @@ const SNAP = 0.2;
 // political news red and blue look"). One dial state drives every panel. Each race at dial value m = polls + m + its state
 // adjustment + spending + early vote, so at m = the national lean it reproduces Undertow's frozen number exactly.
 export type WallRace = {
-  id: string; slug: string; state: string; office: 'SEN' | 'GOV'; name: string; d: string; r: string;
+  id: string; slug: string; state: string; office: 'SEN' | 'GOV' | 'HOUSE'; name: string; district?: string; d: string; r: string;
   polls: number; stateAdj: number; spending: number; earlyVote: number; undertow: number; sd: number; pollCount: number | null;
   spendLabel: string; dLetter: string;
 };
-type Office = 'SEN' | 'GOV';
+type Office = 'SEN' | 'GOV' | 'HOUSE';
+export type NoReadRace = { id: string; slug: string; state: string; district: string; name: string; d: string; r: string; rating: string };
+const OFFICES: Office[] = ['SEN', 'GOV', 'HOUSE'];
+const officeName = (o: Office) => (o === 'SEN' ? 'Senate' : o === 'GOV' ? 'Governor' : 'House');
 export type HistoryPreset = { year: number; miss_toward_d: number };
 // Dial presets are real past national misses from the archive, then no miss, my bet and last fall (Max, 2026-10-27).
 function presetList(history: HistoryPreset[], national: number, lastFall: number): [string, number][] {
@@ -60,18 +63,27 @@ function Dial({ m, setM, national, lastFall, history, compact }: { m: number; se
 
 function Tally({ races, m }: { races: WallRace[]; m: number }) {
   const count = (o: Office) => { const rs = races.filter(r => r.office === o).map(r => marginAt(r, m)); return { d: rs.filter(v => v >= EVEN).length, r: rs.filter(v => v <= -EVEN).length, n: rs.length }; };
-  return <div className="wall-tally" aria-live="polite">{(['SEN', 'GOV'] as Office[]).map(o => { const c = count(o); return <div key={o} className="wall-tally-row"><span className="wall-tally-label">{o === 'SEN' ? 'Senate' : 'Governor'}</span><span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${pct(100 * c.d / c.n)}`}/><i className={`is-r gw-${pct(100 * c.r / c.n)}`}/></span><span className="wall-tally-num"><b className="is-d">D {c.d}</b> <b className="is-r">R {c.r}</b></span></div>; })}</div>;
+  return <div className="wall-tally" aria-live="polite">{OFFICES.filter(o => races.some(r => r.office === o)).map(o => { const c = count(o); return <div key={o} className="wall-tally-row"><span className="wall-tally-label">{officeName(o)}</span><span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${pct(100 * c.d / c.n)}`}/><i className={`is-r gw-${pct(100 * c.r / c.n)}`}/></span><span className="wall-tally-num"><b className="is-d">D {c.d}</b> <b className="is-r">R {c.r}</b></span></div>; })}</div>;
 }
 
-function TileMap({ races, m, office, setOffice, selected, select }: { races: WallRace[]; m: number; office: Office; setOffice: (o: Office) => void; selected: string; select: (id: string) => void }) {
+// The House has no geography a tile map can hold at this size: districts sit in a grid grouped by state, in the same shades.
+function HouseGrid({ races, noRead, m, selected, select }: { races: WallRace[]; noRead: NoReadRace[]; m: number; selected: string; select: (id: string) => void }) {
+  const all = [...races.map(r => ({ id: r.id, state: r.state, district: r.district || '', r })), ...noRead.map(n => ({ id: n.id, state: n.state, district: n.district, r: null as WallRace | null, n }))]
+    .sort((a, b) => a.state.localeCompare(b.state) || a.district.localeCompare(b.district));
+  return <div className="wall-housegrid">{all.map(x => { if (!x.r) { const n = (x as any).n as NoReadRace; return <a key={x.id} href={`/race/${n.slug}/`} className="wall-dtile is-noread" aria-label={`${n.name}: no public polls`}><span className="wall-tile-st">{x.state}-{x.district}</span><span className="wall-tile-v">no polls</span></a>; }
+    const v = marginAt(x.r, m);
+    return <button key={x.id} type="button" className={`wall-dtile ${shade(v)}${selected === x.id ? ' is-selected' : ''}`} aria-pressed={selected === x.id} aria-label={`${x.r.name}: ${marginLabel(v, x.r)}`} onClick={() => select(x.id)}><span className="wall-tile-st">{x.state}-{x.district}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, x.r)}+${Math.abs(v).toFixed(1)}`}</span></button>; })}</div>;
+}
+
+function TileMap({ races, m, office, setOffice, selected, select, noRead = [] }: { races: WallRace[]; m: number; office: Office; setOffice: (o: Office) => void; selected: string; select: (id: string) => void; noRead?: NoReadRace[] }) {
   const byState = new Map(races.filter(r => r.office === office).map(r => [r.state, r]));
   return <section className="wall-panel wall-map" aria-label="Map of tracked races">
-    <div className="wall-panel-head"><p className="wall-kicker">The map · {office === 'SEN' ? 'Senate' : 'Governor'}</p>
-      <div className="wall-toggle" role="group" aria-label="Office">{(['SEN', 'GOV'] as Office[]).map(o => <button key={o} type="button" aria-pressed={office === o} onClick={() => setOffice(o)}>{o === 'SEN' ? 'Senate' : 'Governor'}</button>)}</div></div>
-    <div className="wall-tiles">{Object.entries(TILES).map(([st, [c, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m) : 0;
+    <div className="wall-panel-head"><p className="wall-kicker">{office === 'HOUSE' ? 'Competitive House seats' : `The map · ${officeName(office)}`}</p>
+      <div className="wall-toggle" role="group" aria-label="Office">{OFFICES.map(o => <button key={o} type="button" aria-pressed={office === o} onClick={() => setOffice(o)}>{officeName(o)}</button>)}</div></div>
+    {office === 'HOUSE' ? <HouseGrid races={races.filter(r => r.office === 'HOUSE')} noRead={noRead} m={m} selected={selected} select={select}/> : <div className="wall-tiles">{Object.entries(TILES).map(([st, [c, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m) : 0;
       const pos = `tc-${c} tr-${rw}`;
       return r ? <button key={st} type="button" className={`wall-tile ${pos} ${shade(v)}${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} aria-label={`${r.name}: ${marginLabel(v, r)}`} onClick={() => select(r.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
-        : <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>
+        : <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>}
     <div className="wall-legend" aria-hidden="true"><span className="r-safe">Safe R</span><span className="r-likely">Likely</span><span className="r-lean">Lean</span><span className="toss">Toss-up</span><span className="d-lean">Lean</span><span className="d-likely">Likely</span><span className="d-safe">Safe D</span></div>
   </section>;
 }
@@ -91,18 +103,18 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
   </section>;
 }
 
-function Board({ races, m, selected, select }: { races: WallRace[]; m: number; selected: string; select: (id: string) => void }) {
-  const rows = useMemo(() => races.map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m]);
+function Board({ races, m, selected, select, office }: { races: WallRace[]; m: number; selected: string; select: (id: string) => void; office: Office }) {
+  const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m, office]);
   return <section className="wall-panel wall-board" aria-label="Every race, from most Democratic to most Republican">
-    <div className="wall-panel-head"><p className="wall-kicker">All {races.length} races</p><p className="wall-key"><i className="wall-key-tick"/> polls</p></div>
+    <div className="wall-panel-head"><p className="wall-kicker">{officeName(office)} · {rows.length} {rows.length === 1 ? 'race' : 'races'}</p><p className="wall-key"><i className="wall-key-tick"/> polls</p></div>
     <ol>{rows.map(({ r, v }) => <li key={r.id}><button type="button" className={`wall-row${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} onClick={() => select(r.id)}>
-      <span className="wall-row-name">{r.state} <small>{r.office === 'SEN' ? 'Sen' : 'Gov'}</small></span>
+      <span className="wall-row-name">{r.office === 'HOUSE' ? `${r.state}-${r.district}` : r.state} <small>{r.office === 'SEN' ? 'Sen' : r.office === 'GOV' ? 'Gov' : ''}</small></span>
       <MarginTrack v={v} tick={r.polls} span={BOARD_SPAN}/>
       <span className={`wall-row-v ${side(v)}`}>{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button></li>)}</ol>
   </section>;
 }
 
-export function ElectionWall({ races, national, lastFall, initial, history }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[] }) {
+export function ElectionWall({ races, national, lastFall, initial, history, noRead = [] }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[]; noRead?: NoReadRace[] }) {
   const [m, setM] = useState(national);
   const [office, setOffice] = useState<Office>('SEN');
   const [selected, setSelected] = useState(initial);
@@ -110,8 +122,8 @@ export function ElectionWall({ races, national, lastFall, initial, history }: { 
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
     <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history}/><Tally races={races} m={m}/></aside>
-    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={sel.id} select={select}/>{sel && <Detail r={sel} m={m} national={national}/>}</div>
-    <aside className="wall-right"><Board races={races} m={m} selected={sel.id} select={select}/></aside>
+    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={sel.id} select={select} noRead={noRead}/>{sel && <Detail r={sel} m={m} national={national}/>}</div>
+    <aside className="wall-right"><Board races={races} m={m} selected={sel.id} select={select} office={office}/></aside>
   </div>;
 }
 
@@ -127,21 +139,22 @@ function DialBar({ m, setM, national, lastFall, history }: { m: number; setM: (v
   </section>;
 }
 
-export function MobileWall({ races, national, lastFall, history }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[] }) {
+export function MobileWall({ races, national, lastFall, history, noRead = [] }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[] }) {
   const [m, setM] = useState(national);
   const [open, setOpen] = useState<string | null>(null);
   const [office, setOffice] = useState<Office>('SEN');
-  const rows = useMemo(() => races.map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m]);
+  const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m, office]);
   const pick = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
     <Tally races={races} m={m}/>
-    <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick}/>
+    <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick} noRead={noRead}/>
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>
       <button type="button" className={`wall-mrow ${shade(v)}`} aria-expanded={open === r.id} onClick={() => setOpen(open === r.id ? null : r.id)}>
         <span className="wall-mrow-name">{r.name}<small>{last(r.d)} ({r.dLetter}) vs {last(r.r)} (R)</small></span>
         <span className="wall-mrow-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
       {open === r.id && <Detail r={r} m={m} national={national}/>}
-    </li>)}</ol>
+    </li>)}
+    {office === 'HOUSE' && noRead.map(n => <li key={n.id}><a className="wall-mrow is-noread" href={`/race/${n.slug}/`}><span className="wall-mrow-name">{n.name}<small>{last(n.d)} (D) vs {last(n.r)} (R) · {n.rating}</small></span><span className="wall-mrow-v">no polls</span></a></li>)}</ol>
     <DialBar m={m} setM={setM} national={national} lastFall={lastFall} history={history}/>
   </div>;
 }

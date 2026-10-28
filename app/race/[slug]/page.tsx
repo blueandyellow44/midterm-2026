@@ -20,7 +20,7 @@ function label(v:number,names:{D:string;R:string}){return Math.abs(v)<EVEN?'Even
 // The single-race console (Max, 2026-10-27: "We need to rethink site ui"; one design system across every page).
 function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate};const dl=INDEPENDENT_D_SLOT.has(r.id)?'I':'D';
  const polls=Number(s?.polling_margin??r.polling_read?.margin);const und=Number(s?.adjusted_margin);const pull=und-polls;const ok=Number.isFinite(polls)&&Number.isFinite(und);
- return <Panel className="race-head" kicker={<>2026 · {r.id.split('-')[1]} · {r.id.includes('GOV')?'Governor':'Senate'}{r.id.includes('SPECIAL')?' · special':''}</>} action={<a className="c-link" href="/">← All races</a>}>
+ return <Panel className="race-head" kicker={<>2026 · {r.id.split('-')[1]} · {r.id.endsWith('HOUSE')?`House · ${r.id.split('-')[2]==='AL'?'at-large':`district ${Number(r.id.split('-')[2])}`}`:r.id.includes('GOV')?'Governor':'Senate'}{r.id.includes('SPECIAL')?' · special':''}</>} action={<a className="c-link" href="/">← All races</a>}>
   <h1 className="race-title">{r.name}</h1>
   <p className="race-matchup"><span className="is-d">{names.D} ({dl})</span> vs <span className="is-r">{names.R} (R)</span></p>
   {ok?<><div className="race-figures">
@@ -30,7 +30,18 @@ function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates
   </div>
   <div className="race-trackrow"><span className="is-r">◀ {lastName(names.R)}</span><MarginTrack v={und} tick={polls} large/><span className="is-d">{lastName(names.D)} ▶</span></div>
   <p className="c-sub race-trackkey"><i className="c-key-tick"/> polls · bar: Undertow</p></>
-  :<p className="c-sub">No verified polling read in this snapshot.</p>}
+  :<p className="c-sub race-noread">{r.id.endsWith('HOUSE')?'No public polls of this race since September 1, so Undertow makes no call here. The district facts below are what there is.':'No verified polling read in this snapshot.'}</p>}
+ </Panel>;}
+
+function HouseFacts({r}:{r:any}){const c=(derived as any).candidates?.[r.id];if(!c?.rating)return null;const sp=r.signal?.spending;const total=(Number(sp?.d_fav_recent)||0)+(Number(sp?.r_fav_recent)||0);const p=Number(c.pres2024_d_minus_r);
+ return <Panel className="race-house" kicker="The district">
+  <dl className="conditions grid gap-4 sm:grid-cols-4">
+   <div><dt>Cook rating</dt><dd>{c.rating} <span className="c-sub">({shortDate(c.rating_date)})</span></dd></div>
+   <div><dt>Incumbent</dt><dd>{c.incumbent==='OPEN'?'Open seat':`${c.incumbent} (${c.incumbent_party})`}</dd></div>
+   <div><dt>2024 president, this district</dt><dd className={`mono ${tone(p)}`}>{Math.abs(p)<EVEN?'Even':`${p>0?'Harris':'Trump'} +${Math.abs(p).toFixed(1)}`}</dd></div>
+   <div><dt>Outside money, two weeks</dt><dd className="mono">{Number.isFinite(total)?`$${(total/1e6).toFixed(1)}M`:'NA'}</dd></div>
+  </dl>
+  {c.lines_note&&<p className="c-sub mt-3">{c.lines_note}</p>}
  </Panel>;}
 
 function WhyPull({r}:{r:any}){const s=r.signal;if(!s||!Number.isFinite(s.adjusted_margin))return null;const names={D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate};
@@ -65,6 +76,7 @@ export default async function Race({params}:{params:Promise<{slug:string}>}) {co
  </>;
  return <div className="race-console">
   <RaceHead r={r}/>
+  {r.id.endsWith('HOUSE')&&<HouseFacts r={r}/>}
   <Panel className="race-recall" kicker="The polls">
    <div className="race-recall-grid">
     {r.trend?.length?<Both desktop={<CandidateChart estimates={publicEstimates(r.id)} trend={r.trend} name={r.name} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>} mobile={<CandidateChart compact estimates={publicEstimates(r.id)} trend={r.trend} name={r.name} names={{D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate}}/>}/>

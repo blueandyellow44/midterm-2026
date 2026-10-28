@@ -342,3 +342,11 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .cand-line {fill:none;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round;} .cand-line-d {stroke:var(--d);} .cand-line-r {stroke:var(--r);}
 .cand-label {font-family:var(--font-sans);font-size:15px!important;font-weight:700;} .cand-value {font-family:var(--font-num);font-size:26px!important;font-weight:800;}
 .cand-hollow-key {display:inline-flex;align-items:center;gap:5px;} .cand-hollow-key circle {fill:none;stroke:var(--ink);stroke-width:1.6;}
+/* House district grid: grouped by state, same shades as the map; no-poll districts in gray. */
+.wall-housegrid {display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:4px;max-height:330px;overflow:auto;}
+.wall-dtile {display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:46px;border-radius:5px;border:2px solid transparent;color:#fff;padding:2px;text-decoration:none;line-height:1.05;}
+.wall-dtile .wall-tile-v {font-size:14px;}
+.wall-dtile.is-noread {background:var(--off);color:var(--muted);border:1px dashed var(--line);} .wall-dtile.is-noread .wall-tile-v {font-family:var(--font-mono);font-size:9px;font-weight:500;}
+.wall-dtile.is-selected {border-color:var(--sel);box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--sel);}
+.wall-mobile .wall-housegrid {grid-template-columns:repeat(auto-fill,minmax(52px,1fr));max-height:none;}
+.wall-mrow.is-noread {background:var(--off);color:var(--muted);text-decoration:none;} .wall-mrow.is-noread .wall-mrow-v {font-size:13px;font-family:var(--font-mono);font-weight:500;}

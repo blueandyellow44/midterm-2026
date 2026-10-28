@@ -21,7 +21,7 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parents[2]
 FONTS = Path(__file__).resolve().parent / "fonts"
 C = {"paper": "#ffffff", "ink": "#0b1a3a", "muted": "#4b5b7c", "red": "#c3262b", "d": "#1b4fc4", "r": "#c3262b", "d_bar": "#1f5fd6", "r_bar": "#c3262b", "line": "#dde3ee", "soft": "#f4f6fa"}
-STATES = {"TX": "Texas", "IA": "Iowa", "ME": "Maine", "AK": "Alaska", "OH": "Ohio", "MI": "Michigan", "NC": "North Carolina", "GA": "Georgia", "WI": "Wisconsin", "KS": "Kansas", "NE": "Nebraska", "SC": "South Carolina", "MS": "Mississippi", "NH": "New Hampshire", "FL": "Florida"}
+STATES = {"AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "CA": "California", "CO": "Colorado", "FL": "Florida", "GA": "Georgia", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "ME": "Maine", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi", "MT": "Montana", "NC": "North Carolina", "NE": "Nebraska", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NV": "Nevada", "NY": "New York", "OH": "Ohio", "PA": "Pennsylvania", "SC": "South Carolina", "TX": "Texas", "VA": "Virginia", "WA": "Washington", "WI": "Wisconsin"}
 EVEN = 0.05
 
 
@@ -63,8 +63,20 @@ def side(m: float, names: dict) -> tuple[str, str]:
     return (f"{surname(names['D'])} +{abs(m):.1f}", C["d"]) if m > 0 else (f"{surname(names['R'])} +{abs(m):.1f}", C["r"])
 
 
+def ordinal(n: int) -> str:
+    return f"{n}{'th' if 11 <= n % 100 <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
+
+
 def race_name(rid: str) -> str:
-    return f"{STATES[rid.split('-')[1]]} {'governor' if 'GOV' in rid else 'Senate'}{' special' if 'SPECIAL' in rid else ''}"
+    st = rid.split("-")[1]
+    if rid.endswith("-HOUSE"):
+        d = rid.split("-")[2]
+        return f"{STATES[st]} {'at-large' if d == 'AL' else ordinal(int(d))} District"
+    return f"{STATES[st]} {'governor' if 'GOV' in rid else 'Senate'}{' special' if 'SPECIAL' in rid else ''}"
+
+
+def office_word(rid: str) -> str:
+    return "HOUSE" if rid.endswith("-HOUSE") else "GOVERNOR" if "GOV" in rid else "SENATE"
 
 
 def mark(x: float, y: float, s: float, ink: str, swirl: str) -> str:
@@ -102,7 +114,7 @@ def card(rid: str, s: dict, names: dict, word: str, portrait: bool) -> str:
     dt = s["delta_total"]
     pull, pullc = ("None", C["ink"]) if abs(dt) < EVEN else (f"{abs(dt):.1f} toward {('I' if rid == '2026-NE-SEN' else 'D') if dt > 0 else 'R'}", C["d"] if dt > 0 else C["r"])
     st = rid.split("-")[1]
-    kicker = f"2026 · {st} · {'GOVERNOR' if 'GOV' in rid else 'SENATE'}{' · SPECIAL' if 'SPECIAL' in rid else ''}"
+    kicker = f"2026 · {st} · {office_word(rid)}{' · SPECIAL' if 'SPECIAL' in rid else ''}"
     parts = [f'<rect width="{w}" height="{h}" fill="{C["paper"]}"/>', rule(w)]
     if portrait:
         parts.append(brand(pad, 70, 0.6, word))
@@ -161,11 +173,11 @@ def home_card(per: dict, derived: dict, word: str) -> str:
     top = sorted(per.items(), key=lambda kv: -abs(kv[1]["delta_total"]))[:6]
     for i, (rid, s) in enumerate(top):
         y = 268 + i * 50
-        c = derived["section9_heat"]["per_race"][rid]["candidates"]
+        c = (derived.get("candidates") or {}).get(rid) or derived["section9_heat"]["per_race"][rid]["candidates"]
         names = {"D": c["D"]["candidate"], "R": c["R"]["candidate"]}
         val, color = side(s["adjusted_margin"], names)
         st = rid.split("-")[1]
-        parts.append(text(BOLD, f"{st} {'GOV' if 'GOV' in rid else 'SEN'}", 22, pad, y + 26, C["ink"])[0])
+        parts.append(text(BOLD, f"{st}-{rid.split('-')[2]}" if rid.endswith("-HOUSE") else f"{st} {'GOV' if 'GOV' in rid else 'SEN'}", 22, pad, y + 26, C["ink"])[0])
         parts.append(track(pad + 110, y + 8, 760, 20, s["adjusted_margin"], s["polling_margin"]))
         vw = NUM.path(val, 34, 0, 0)[1]
         parts.append(text(NUM, val, 34, w - pad - vw, y + 30, color)[0])
@@ -187,8 +199,8 @@ def main() -> int:
     if not per:
         raise SystemExit("no signals block in data/derived.json: sync a signals release first")
     # Only races with a reading get a card: districts with no public polls are listed on the site without a number.
-    heat = derived["section9_heat"]["per_race"]
-    per = {rid: s for rid, s in per.items() if isinstance(s.get("adjusted_margin"), (int, float)) and rid in heat}
+    cands = derived.get("candidates") or {rid: v["candidates"] for rid, v in derived["section9_heat"]["per_race"].items()}
+    per = {rid: s for rid, s in per.items() if isinstance(s.get("adjusted_margin"), (int, float)) and rid in cands}
     word = json.loads((ROOT / "lib/brand/wordmark-paths.json").read_text())["lower"]["d"]
     jobs = []
     with tempfile.TemporaryDirectory() as tmp:
@@ -196,7 +208,7 @@ def main() -> int:
             for k in ("polling_margin", "adjusted_margin", "delta_total", "range_sd"):
                 if not isinstance(s.get(k), (int, float)):
                     raise SystemExit(f"incomplete reading for {rid}: {k}")
-            c = derived["section9_heat"]["per_race"][rid]["candidates"]
+            c = cands[rid]
             names = {"D": c["D"]["candidate"], "R": c["R"]["candidate"]}
             slug = rid.replace("2026-", "").lower()
             for portrait, out in ((False, ROOT / "public/og" / f"{slug}.png"), (True, ROOT / "public/share" / f"{slug}.png")):
