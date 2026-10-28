@@ -282,7 +282,7 @@ button.wall-tile:hover {transform:translateY(-1px);}
 .wall-row-name {font-size:13px;font-weight:700;} .wall-row-name small {font-weight:400;color:var(--muted);}
 .wall-row-v {font-size:19px;font-weight:700;text-align:right;}
 /* mobile wall: nothing pinned at the top; the dial is a slim bar fixed at the bottom, within thumb reach */
-.wall-mobile {display:grid;gap:10px;padding-bottom:calc(150px + env(safe-area-inset-bottom));min-width:0;}
+.wall-mobile {display:grid;gap:10px;padding-bottom:calc(112px + env(safe-area-inset-bottom));min-width:0;}
 .wall-mobile .wall-tally {padding:10px 12px;gap:8px;} .wall-mobile .wall-tally-num {font-size:18px;}
 .wall-mobile .wall-map {padding:10px;} .wall-mobile .wall-tiles {gap:2px;}
 .wall-mobile .wall-tile {aspect-ratio:1;border-width:1px;border-radius:3px;} .wall-mobile .wall-tile-v {display:none;} .wall-mobile .wall-tile-st {font-size:9px;}
@@ -398,3 +398,22 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .race-explain dd,.race-explain dt {max-width:78ch;}
 .race-explain {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px 28px;}
 .method-table th small.block {font-size:11px;font-weight:400;}
+
+/* Phone landing 2026-10-28: claim, byline, three chamber numbers, then the map; a slim dial bar. */
+.wall-mobile-hero {padding:6px 2px 2px;}
+.wall-mobile-claim {margin:0;font-family:var(--font-num);font-size:30px;line-height:1.05;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);}
+.wall-mobile-claim span {color:var(--d-safe);}
+.wall-mobile-by {margin:8px 0 0;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.wall-mobile-by .freeze-countdown,.wall-mobile-by [class*=countdown] {color:var(--r-safe);}
+.wall-mobile .wall-tally-play {font-size:11px;}
+html[data-view=mobile] .wall-hide-phone {display:none;}
+.wall-mobile .wall-tally-row {gap:4px 10px;}
+.wall-mobile .wall-tally-num {font-size:22px;}
+.wall-dialbar {padding:6px 14px calc(6px + env(safe-area-inset-bottom));gap:2px;}
+.wall-dialbar-top {gap:10px;}
+.wall-dialbar-num {font-size:28px;min-width:48px;}
+.wall-dialbar-dir {font-size:13px;}
+.wall-dialbar-dir small {display:none;}
+.wall-dialbar .wall-range {height:24px;}
+.wall-mobile-moved {padding:0 2px;} .wall-mobile-moved .wall-strip-moved {margin:0 0 8px;}
+.wall-mobile-by {display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;} .wall-mobile-by > * {white-space:nowrap;}
