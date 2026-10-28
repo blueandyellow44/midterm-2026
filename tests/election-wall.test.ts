@@ -16,7 +16,7 @@ describe('election wall', () => {
 
 // Full-chamber seats (Max, 2026-10-27): a projection reproduces weight.py's number at the national lean, rated seats never
 // move, and the chamber count at the lean equals the sealed at_bet tally. Skipped on releases sealed before the chambers block.
-import { seatMarginAt, chamberCount, type WallSeat, type ChamberTotals } from '@/components/ElectionWall';
+import { seatMarginAt, chamberCount, chamberSplit, type WallSeat, type ChamberTotals } from '@/components/ElectionWall';
 describe('full chamber', () => {
  const ch = (derived as any).chambers;
  const it2 = ch ? it : it.skip;
@@ -31,6 +31,16 @@ describe('full chamber', () => {
   for (const o of ['SEN', 'GOV', 'HOUSE'] as const) {
    const c = chamberCount(o, wall, seats, totals, national);
    expect([c.d, c.r, c.u, c.n]).toEqual([ch.chambers[o].at_bet.D, ch.chambers[o].at_bet.R, ch.chambers[o].at_bet.undecided, ch.chambers[o].seats]);
+  }
+ });
+ it2('the one-bar split adds up to the chamber and agrees with the count at every notch', () => {
+  const wall = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0 })) as WallRace[];
+  const totals: ChamberTotals = { SEN: { notUp: ch.chambers.SEN.not_up, majority: 51, seats: 100 }, GOV: { notUp: ch.chambers.GOV.not_up, majority: null, seats: 50 }, HOUSE: { notUp: { D: 0, R: 0 }, majority: 218, seats: 435 } };
+  for (const o of ['SEN', 'GOV', 'HOUSE'] as const) for (const m of [-8, -5.5, 0, national, 7.3, 8]) {
+   const x = chamberSplit(o, wall, seats, totals, m); const c = chamberCount(o, wall, seats, totals, m);
+   expect(x.dSafe + x.dPlay + x.even + x.rPlay + x.rSafe).toBe(x.n);
+   expect([x.dSafe + x.dPlay, x.rSafe + x.rPlay, x.even]).toEqual([c.d, c.r, c.u]);
+   expect(x.play).toBe(wall.filter(r => r.office === o).length + seats.filter(s => s.office === o && s.noPolls).length);
   }
  });
  it2('a rated seat does not move with the dial', () => {

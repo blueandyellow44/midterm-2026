@@ -223,15 +223,18 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .wall-presets button[aria-pressed=true],.wall-toggle button[aria-pressed=true],.wall-dialbar-presets button[aria-pressed=true] {background:var(--ink);color:var(--panel);border-color:var(--ink);}
 .wall-note {font-size:12px;line-height:1.5;color:var(--muted);margin:6px 0 0;}
 .wall-tally {display:flex;flex-direction:column;gap:12px;}
-.wall-tally-row {display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:10px;}
+.wall-tally-row {display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 10px;}
 .wall-tally-label {font-size:13px;font-weight:600;}
 .wall-tally-bar {display:flex;height:12px;border-radius:3px;overflow:hidden;background:var(--toss);}
-.wall-tally-bar i {transition:width .25s ease;} .wall-tally-bar i.is-d {background:var(--d-safe);} .wall-tally-bar i.is-r {background:var(--r-safe);margin-left:auto;}
+.wall-tally-bar i {transition:width .25s ease;flex:none;} .wall-tally-bar i.is-d {background:var(--d-safe);} .wall-tally-bar i.is-r {background:var(--r-safe);margin-left:auto;}
+.wall-tally-bar i.is-even {background:var(--toss);}
+.wall-tally-bar i.is-d-play {background:repeating-linear-gradient(135deg,var(--d-safe) 0 3px,var(--d-lean) 3px 6px);} .wall-tally-bar i.is-r-play {background:repeating-linear-gradient(135deg,var(--r-safe) 0 3px,var(--r-lean) 3px 6px);}
+.wall-tally-row {grid-template-areas:"label num" "bar bar" "play play";} .wall-tally-label {grid-area:label;} .wall-tally-bar {grid-area:bar;height:14px;} .wall-tally-num {grid-area:num;}
+.wall-tally-play {grid-area:play;font-size:11px;line-height:1.35;color:var(--muted);} .wall-tally-play b {font-weight:600;}
 .wall-tally-num {font-size:22px;font-weight:700;white-space:nowrap;}
 .wall-map {flex:0 0 auto;padding:10px 14px;}
 .wall-toggle {display:flex;gap:6px;} .wall-toggle button {min-height:32px;padding:0 12px;}
-.wall-scope {margin-bottom:2px;} .wall-scope button {flex:1;}
-.wall-tally-label small {display:block;font-size:10px;font-weight:500;color:var(--muted);}
+.wall-tally-label small {display:inline;margin-left:5px;font-size:10px;font-weight:500;color:var(--muted);}
 .wall-tally-bar {position:relative;} .wall-tally-maj {position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);transform:translateX(-1px);}
 .wall-tally-num small {font-size:11px;font-weight:500;color:var(--muted);}
 .wall-tally-note {font-size:11px;line-height:1.4;color:var(--muted);margin:0;}
