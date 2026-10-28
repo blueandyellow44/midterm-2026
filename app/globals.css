@@ -74,8 +74,8 @@ html[data-view=mobile] .brand {grid-area:brand;gap:8px;}
 html[data-view=mobile] .station-mark {width:26px;height:26px;}
 html[data-view=mobile] .wordmark {height:20px;}
 html[data-view=mobile] .brand .eyebrow {display:none;}
-html[data-view=mobile] .site-header nav {grid-area:nav;flex-wrap:nowrap;justify-content:space-between;gap:6px;}   /* all six fit at 360px; no hidden scroll */
-html[data-view=mobile] .site-header nav a {min-height:36px;font-size:10.5px;letter-spacing:.03em;white-space:nowrap;}
+html[data-view=mobile] .site-header nav {grid-area:nav;flex-wrap:wrap;justify-content:flex-start;gap:0 14px;}   /* wraps to a second row before anything runs off the edge (Safari page zoom narrows the viewport) */
+html[data-view=mobile] .site-header nav a {min-height:30px;font-size:10.5px;letter-spacing:.03em;white-space:nowrap;}
 html[data-view=mobile] .header-island>:last-child {grid-area:controls;justify-self:end;}
 html[data-view=mobile] .theme-button {min-height:30px;padding:4px 10px;font-size:11px;}
 
@@ -426,3 +426,13 @@ html[data-view=mobile] .wall-hide-phone {display:none;}
 html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(124px + env(safe-area-inset-bottom));}   /* the whole page, footer included, clears the bar */
 .wall-mrow.d-lean,.wall-mrow.r-lean,.wall-mrow.toss {color:#0b1a3a;} .wall-mrow.d-lean small,.wall-mrow.r-lean small,.wall-mrow.toss small {color:#0b1a3a;opacity:.75;}   /* dark text on the pale lean shades (contrast) */
 .wall-mrow.d-likely {background:#2b67d6;} .wall-mrow.r-likely {background:#c93a40;}   /* white text at 5:1 on the phone race rows */
+
+/* Phone first screen (Max, 2026-10-28 screenshot, "Wtf?"): at Safari's larger page zoom the viewport is ~320-340px. Keep the
+   numbers compact so the map starts above the dial. */
+html[data-view=mobile] .wall-mobile-by {font-size:10.5px;letter-spacing:.03em;}
+html[data-view=mobile] .wall-mobile .wall-tally {padding:10px 12px;gap:10px;}
+html[data-view=mobile] .wall-mobile .wall-tally-num {font-size:20px;}
+html[data-view=mobile] .wall-mobile .wall-tally-bar {height:10px;}
+html[data-view=mobile] .wall-mobile .wall-tally-play .is-extra {display:none;}
+.wall-dialbar::before {top:-16px;height:16px;}
+html[data-view=mobile] .site-header nav {column-gap:12px;}
