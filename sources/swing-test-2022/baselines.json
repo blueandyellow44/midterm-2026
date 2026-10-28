@@ -1,0 +1,17 @@
+{
+  "pres2020_national_d_minus_r": 4.456,
+  "generic_ballot_2022_final_d_minus_r": -1.232,
+  "house2022_national_d_minus_r": -2.643,
+  "collected": "2026-10-27",
+  "details": {
+    "presidential_2020": "Biden 81,283,501 (51.31%) minus Trump 74,223,975 (46.85%) of 158,429,631 total votes. FEC, Federal Elections 2020, Presidential Popular Vote Summary: https://www.fec.gov/resources/cms-content/documents/federalelections2020.pdf",
+    "generic_ballot_2022": "FiveThirtyEight generic-ballot average for 2022-11-08 (Election Day): Democrats 45.703, Republicans 46.935. Taken from the Wayback Machine capture of 2023-04-27 of generic_ballot_averages.csv (538's live URL now serves an HTML page): https://web.archive.org/web/20230427025737id_/https://projects.fivethirtyeight.com/polls/data/generic_ballot_averages.csv . Caveat: the capture postdates the election, so polls added after Election Day may be included; no capture exists between 2022-11-08 and 2022-12-31.",
+    "congressional_2022": "50 states only: D 51,410,295 (47.645%), R 54,262,607 (50.288%), other 2,230,181, total 107,903,083. Derived from the FEC general-election table by removing the DC, Guam, American Samoa, Northern Mariana Islands and US Virgin Islands delegate races (column positions read from the PDF). The FEC published total including delegates (D 51,628,838, R 54,298,205, other 2,246,001) gives -2.468. FEC, Federal Elections 2022, table '2022 Votes Cast for the U.S. House of Representatives by Party': https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
+  },
+  "district_sources": {
+    "presidential_margins_on_2022_lines": "The Downballot (Daily Kos Elections data), '2020 results according to the district lines used in 2022', linked from https://www.the-downballot.com/p/the-downballots-calculations-of-presidential ; CSV export https://docs.google.com/spreadsheets/d/1CKngqOp8fzU22JOlypoxNsxL6KSAH920Whc-rd7ebuM/export?format=csv&gid=1871835782 (vote shares rounded to 0.1). Saved as raw/downballot-pres2020-on-2022-lines.csv",
+    "congressional_results": "MIT Election Data and Science Lab, U.S. House 1976-2024 (doi:10.7910/DVN/IG0UN2, file version 20250910, CC0). The Dataverse download is gated behind a guestbook form, so the identical CC0 file was taken from the GitHub mirror https://raw.githubusercontent.com/aydon14/CRProject/HEAD/public/data/jsoncsv/mit-1976-2024-house.csv . Saved as raw/mit-1976-2024-house.csv",
+    "incumbency_and_crosscheck": "Wikipedia, 2022 United States House of Representatives elections (wikitext via the MediaWiki API), per-district incumbent status and candidate percentages: https://en.wikipedia.org/wiki/2022_United_States_House_of_Representatives_elections . Saved as raw/wikipedia-2022-house-elections.wikitext"
+  },
+  "method_notes": "See README.md."
+}

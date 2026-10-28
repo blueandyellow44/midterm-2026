@@ -230,6 +230,14 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .wall-tally-num {font-size:22px;font-weight:700;white-space:nowrap;}
 .wall-map {flex:0 0 auto;padding:10px 14px;}
 .wall-toggle {display:flex;gap:6px;} .wall-toggle button {min-height:32px;padding:0 12px;}
+.wall-scope {margin-bottom:2px;} .wall-scope button {flex:1;}
+.wall-tally-label small {display:block;font-size:10px;font-weight:500;color:var(--muted);}
+.wall-tally-bar {position:relative;} .wall-tally-maj {position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);transform:translateX(-1px);}
+.wall-tally-num small {font-size:11px;font-weight:500;color:var(--muted);}
+.wall-tally-note {font-size:11px;line-height:1.4;color:var(--muted);margin:0;}
+.wall-tile.is-proj,.wall-dtile.is-proj {border:2px dashed color-mix(in srgb,var(--ink) 35%,transparent);opacity:.82;} .wall-dtile.is-proj {border-width:1px;}
+.wall-tile-rated {font-size:9px;font-weight:600;letter-spacing:.02em;}
+.wall-badge {font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 8px;}
 .wall-tiles {display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;max-width:560px;margin-inline:auto;}
 .wall-tile {aspect-ratio:1.4;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid transparent;color:#fff;padding:0;min-height:0;line-height:1;transition:background .25s,transform .1s;}
 .wall-tile.is-off {background:var(--off);color:var(--muted);opacity:.75;}

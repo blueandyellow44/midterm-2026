@@ -126,12 +126,15 @@ def pres2024_margins(path: Path) -> dict[str, float]:
     import pandas as pd
     df = pd.read_excel(path, sheet_name=0, header=0)
     out = {}
+    h = t = tot = 0.0
     for _, r in df.iterrows():
         st = str(r["STATE"]).strip()
         total = num(r.get("TOTAL VOTES"))
         if len(st) != 2 or not total:
             continue
         out[st] = round(100 * ((num(r.get("HARRIS")) or 0) - (num(r.get("TRUMP")) or 0)) / total, 4)
+        h += num(r.get("HARRIS")) or 0; t += num(r.get("TRUMP")) or 0; tot += total
+    out["US"] = round(100 * (h - t) / tot, 4)   # national popular vote, the base of the generic-ballot shift
     return out
 
 
@@ -242,6 +245,8 @@ def main(argv=None) -> int:
     pres24 = pres2024_margins(paths["pres2024"])
     pres20 = pres2020_margins(paths["pres2020"])
     spending, fundamentals = [], []
+    fundamentals.append({"race": weight.NATIONAL_FUNDAMENTALS_RACE, "state": "US", "pres_year": "2024", "pres_d_minus_r": f"{pres24['US']:.4f}",
+                         "source_file": SOURCES["pres2024"], "source_sha256": sha["pres2024"]})
     for race in weight.SENATE_RACES + weight.GOVERNOR_RACES:
         st = state_of(race)
         if st not in pres24:

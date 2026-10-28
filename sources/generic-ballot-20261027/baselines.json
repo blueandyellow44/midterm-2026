@@ -1,0 +1,26 @@
+{
+ "retrieved_at": "2026-10-27T17:30:00-07:00",
+ "president_2024": {
+  "metric": "Harris minus Trump, share of total national popular vote",
+  "harris_votes": 75017613,
+  "trump_votes": 77302580,
+  "total_votes": 155238302,
+  "harris_pct": 48.32,
+  "trump_pct": 49.8,
+  "margin_D_minus_R": -1.47,
+  "source_url": "https://www.fec.gov/resources/cms-content/documents/2024presgeresults.pdf",
+  "source_locator": "FEC 2024 Presidential Election Results (Jan 16, 2025), Total row: HARRIS 75,017,613; TRUMP 77,302,580; TOTAL VOTES 155,238,302"
+ },
+ "house_2024": {
+  "metric": "Democratic minus Republican, share of total national House popular vote",
+  "dem_votes": 70571330,
+  "rep_votes": 74390864,
+  "total_votes": 149543421,
+  "dem_pct": 47.19,
+  "rep_pct": 49.75,
+  "margin_D_minus_R": -2.55,
+  "source_url": "https://clerk.house.gov/member_info/electionInfo/2024/statistics2024.pdf",
+  "source_locator": "Clerk of the House, Statistics of the Congressional Election of Nov 5, 2024, Recapitulation of Votes Cast for United States Representatives, Total row",
+  "notes": "Raw national sum; includes uncontested seats (some with no Republican or no Democrat on the ballot), so it is not an adjusted two-party measure."
+ }
+}

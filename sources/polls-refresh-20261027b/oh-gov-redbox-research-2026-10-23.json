@@ -1,0 +1,38 @@
+{
+ "file": "oh-gov-redbox-research-2026-10-23.json",
+ "race": "2026-OH-GOV",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (super PAC, FEC C00933085)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-s-2026-OH-GOV-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 2998,
+  "pop": "LV",
+  "D": 48.2,
+  "R": 43.8,
+  "other": 5.0,
+  "undecided": 3.1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/ohio",
+  "source_locator": "Ohio statewide page, Governor: Acton 48.2, Ramaswamy 43.8, Undecided 3.1, Kissick (L) 2.3, Someone else 1.5, Prefer not to answer 1.1, Did not vote in this race 0.1",
+  "notes": "other = Kissick 2.3 + someone else 1.5 + prefer not 1.1 + did not vote 0.1. Same sample as the Senate item (n=2,998, effective n 463, MoE +/-4.6). Released 2026-10-25. Wikipedia rounds to Acton 48, Ramaswamy 44.",
+  "retrieved_at": "2026-10-27T17:35:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighted to party registration, gender, age, congressional district, education, voting history, and race and ethnicity, and to the certified 2024 result through recalled 2024 vote (two recipe families anchored to the 2024 presidential vote: one to the certified result, one to file-validated 2024 voters' recalled vote), combined as a weighted average of raking recipes.",
+  "mode": "text-to-web (text message invitation to a self-administered web survey, English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-10-27T17:35:00-07:00",
+  "method_date": "2026-10-25",
+  "method_url": "https://afightworthhaving.com/polling/2026/ohio/methodology",
+  "method_locator": "https://afightworthhaving.com/polling/2026/ohio/methodology, weighting paragraph (paraphrased by fetch summary; verbatim house statement on /polling/how-we-poll)"
+ }
+}

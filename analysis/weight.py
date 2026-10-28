@@ -43,7 +43,7 @@ BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
     "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
-    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0", "early_vote_history": "1.0", "house_races": "1.0",
+    "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0", "early_vote_history": "1.0", "house_races": "1.0", "seats": "1.0", "generic_ballot": "1.0",
 }
 
 POLLS_HEADER = (
@@ -78,6 +78,8 @@ RECENT_MISSES_HEADER = "race,election_date,kind,electorate,poll_label,result_lab
 HOUSE_RACES_HEADER = "race,state,district,cook_rating,cook_rating_date,incumbent,incumbent_party,d_candidate,d_party,r_candidate,r_party,pres2024_d_minus_r,lines_note,source_sha256".split(",")
 EARLY_VOTE_HISTORY_HEADER = "year,state,dem_share,rep_share,total_ballots,as_of,source_sha256".split(",")
 EARLY_VOTE_HEADER = "state,d_margin_2022_same_day,d_margin_2024_same_day,d_margin_2026,shift_vs_2022,as_of,source_url,party_basis".split(",")
+SEATS_HEADER = "chamber,seat,state,district,up_2026,special,holder_party,incumbent_on_ballot,cook_rating,cook_rating_date,pres2024_d_minus_r,tracked_race,source_sha256".split(",")
+GENERIC_BALLOT_HEADER = "poll_id,pollster,sponsor,field_start,field_end,release_date,n,pop,D,R,other,undecided,source_url,confirmed_at_source,notes".split(",")
 POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
 PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
 RESULTS_HEADER = "race,resolution_status,winner_slot,certified_margin,denominator_note,result_url,resolved_at".split(",")
@@ -695,6 +697,68 @@ EV_MIN_PAIRS = 15
 WITNESS_RACE_POLL_SD = SIGNAL_RACE_POLL_SD   # race-level noise neither witness can see, removed from each witness's error
 
 
+# ----------------------------------------------------------------------------- full-chamber projection
+# Max, 2026-10-27: "Should the senate, house, and governor numbers at the top be actual final projected numbers for all
+# races? 100 senate seats, 50 governors, and a bunch of house districts" -> "Yes"; same criteria for every race: the race's
+# polls where they exist, else the 2024 result plus the generic-ballot shift, then the lean, the state record, spending
+# (off for Solid seats, never refit), early vote where measured. Tested on 2022 before shipping (scripts/swing_test_2022.py).
+GENERIC_RACE = "2026-US-GENERIC"
+NATIONAL_FUNDAMENTALS_RACE = "2024-US-PRES"      # fundamentals.csv row carrying the 2024 national presidential margin
+CHAMBER_MAJORITY = {"SEN": 51, "HOUSE": 218}      # governors have no majority line
+CHAMBER_TIE_BREAKER = "R"                         # Vice President Vance presides over a 50-50 Senate
+CHAMBER_INCUMBENCY_BONUS = 2.6                    # points toward the incumbent's party where the incumbent is on the ballot
+CHAMBER_SWING_TEST_2022 = {"script": "scripts/swing_test_2022.py", "districts": 400, "mae_no_bonus": 4.64, "winner_right": 0.948,
+                           "winner_right_within_15": 0.812, "incumbency_fit": 2.59, "incumbency_se": 0.30, "incumbency_folds": "2.2 to 2.9",
+                           "holdout_mae_without": "4.5 to 4.8", "holdout_mae_with": "4.1 to 4.4",
+                           "senate_2022": {"races": 28, "mae": 5.45, "polls_mae": 5.05}, "governors_2022": {"races": 30, "mae": 10.49, "polls_mae": 4.24}}
+CHAMBER_GOV_BASE = "COOK"   # governors: the swing base failed 2022 (MAE 10.5 vs polls 4.2; KS and VT wrong by 20-77), so untracked governors carry Cook's rating, fixed under the dial
+RATING_SIDE = {"Solid D": "D", "Likely D": "D", "Lean D": "D", "Toss-up": None, "Lean R": "R", "Likely R": "R", "Solid R": "R"}
+
+
+def generic_ballot_average(rows: list[dict] | None, as_of_date: date) -> dict | None:
+    """National generic-ballot average, D minus R on the full ballot, with the v2 weights (7-day half-life, sqrt(n) capped
+    at 1500, LV 1.0 / RV 0.7 / A 0.4) and each pollster's house effect measured against the leave-that-pollster-out mean
+    and shrunk by k = 5. No LV-RV shift: national polls rarely publish both populations for one sample."""
+    use = [r for r in rows or [] if parse_date(r.get("field_end")) and num(r.get("D")) is not None and num(r.get("R")) is not None and r.get("pop") in V2_POP_WEIGHT]
+    if len(use) < 5:
+        return None
+
+    def weight(r):
+        fe = parse_date(r["field_end"]); fs = parse_date(r.get("field_start")) or fe
+        age = max(0.0, (as_of_date - (fs + (fe - fs) / 2)).days)
+        n = intnum(r.get("n")) or 600
+        return math.exp(-math.log(2) * age / V2_HALF_LIFE_DAYS) * math.sqrt(min(n, V2_SAMPLE_CAP) / V2_SAMPLE_CAP) * V2_POP_WEIGHT[r["pop"]]
+
+    margin = {r["poll_id"]: num(r["D"]) - num(r["R"]) for r in use}
+    w = {r["poll_id"]: weight(r) for r in use}
+    by_pollster = defaultdict(list)
+    for r in use:
+        by_pollster[r["pollster"]].append(r)
+    house = {}
+    for p, rs in by_pollster.items():
+        others = [r for r in use if r["pollster"] != p]
+        if not others:
+            house[p] = 0.0
+            continue
+        mo = sum(w[r["poll_id"]] * margin[r["poll_id"]] for r in others) / sum(w[r["poll_id"]] for r in others)
+        dev = [margin[r["poll_id"]] - mo for r in rs]
+        house[p] = (sum(dev) / len(dev)) * len(dev) / (len(dev) + V2_HOUSE_SHRINK_K)
+    tw = sum(w.values())
+    raw = sum(w[k] * margin[k] for k in w) / tw
+    adj = sum(w[r["poll_id"]] * (margin[r["poll_id"]] - house[r["pollster"]]) for r in use) / tw
+    return {"race": GENERIC_RACE, "margin": r4(adj), "unadjusted_margin": r4(raw), "simple_mean": r4(mean(list(margin.values()))),
+            "polls": len(use), "pollsters": len(by_pollster), "newest_field_end": max(r["field_end"] for r in use),
+            "confirmed_at_source": sum(1 for r in use if r.get("confirmed_at_source") == "YES"),
+            "house_adjustments": {p: r4(v) for p, v in sorted(house.items()) if abs(v) >= 0.05},
+            "method": "every national generic-ballot poll since September 1; 7-day half-life; sqrt(n) capped 1500; LV 1.0, RV 0.7, A 0.4; shrunk house effects (k = 5) against the leave-one-pollster-out mean"}
+
+
+def seat_side(margin: float | None) -> str | None:
+    if margin is None or abs(margin) < TIE_THRESHOLD:
+        return None
+    return "D" if margin > 0 else "R"
+
+
 def witness_model(spe_rows: list[dict] | None, spend_history: list[dict] | None, state_slope: float | None) -> dict | None:
     """Spending and the state's polling record as two witnesses to the race-specific polling miss (Max, 2026-10-27:
     "We are switching from stacking"). The national lean is the declared outlier bet and is not judged by history; spending
@@ -1176,6 +1240,8 @@ class Bundle:
         self.house_races = read_csv(os.path.join(bundle_dir, "house-races.csv"), HOUSE_RACES_HEADER, required=False)
         self.early_vote_history = read_csv(os.path.join(bundle_dir, "early-vote-history.csv"), EARLY_VOTE_HISTORY_HEADER, required=False)
         self.poll_error_history = read_csv(os.path.join(bundle_dir, "poll-error-history.csv"), POLL_ERROR_HISTORY_HEADER, required=False)
+        self.seats = read_csv(os.path.join(bundle_dir, "seats.csv"), SEATS_HEADER, required=False)
+        self.generic_ballot = read_csv(os.path.join(bundle_dir, "generic-ballot.csv"), GENERIC_BALLOT_HEADER, required=False)
         self.quarantined_pollsters = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "POLLSTER"}
         self.quarantined_estimates = {e["entity_id"] for e in self.exclusions if e["entity_type"] == "ESTIMATE"}
         self.method_by_id = {p["method_id"]: p for p in self.pollsters}
@@ -1900,6 +1966,7 @@ class Bundle:
                 covered += rows
         ev_model = early_vote_model(getattr(self, "early_vote_history", None), getattr(self, "poll_error_history", None))
         wit = witness_model(getattr(self, "state_poll_error", None), self.spend_history, (leans or {}).get("slope"))
+        self._signal_ctx = {"national": national, "national_sd": national_sd, "leans": leans, "ev_model": ev_model, "witness": wit, "fund": fund, "spend": spend}
         per_race = {}
         for race in races:
             sp = spend.get(race) or {}
@@ -1964,6 +2031,79 @@ class Bundle:
             "per_race": per_race,
             "framing": "Polls missed Democrats last fall by more than in any off-year on record, and kept missing them this spring. The undertow bets part of that carries into November. Outside spending, read as a sign of where campaigns' internal polls stand, is weighed against each state's own polling record to place the miss race by race, and early voting adds where it can be measured like for like. Frozen on November 2 and graded against certified results beside the polls.",
         }
+
+    def chambers_block(self, blocks: dict, signals: dict | None) -> dict | None:
+        """Full-chamber projection (Max, 2026-10-27). Every seat gets a side at the bet: tracked races carry their reading;
+        incumbent_on_ballot in seats.csv is the PARTY of the incumbent running for the seat (D/R/I), or NONE/VACANT/UNKNOWN;
+        untracked Senate and House seats carry 2024 result + generic shift + incumbency, then the same lean, state record,
+        spending (none collected, and off for Solid seats) and early vote terms as a tracked race, so they move with the dial;
+        untracked governors carry Cook's rating, fixed (CHAMBER_GOV_BASE). None when seats or the generic ballot are absent."""
+        seats = getattr(self, "seats", None)
+        ctx = getattr(self, "_signal_ctx", None)
+        generic = generic_ballot_average(getattr(self, "generic_ballot", None), self.as_of_date)
+        national_2024 = (ctx or {}).get("fund", {}).get(NATIONAL_FUNDAMENTALS_RACE)
+        if not seats or not signals or not ctx or not generic or national_2024 is None:
+            return None
+        shift = generic["margin"] - national_2024
+        national, leans, ev_model = ctx["national"], ctx["leans"], ctx["ev_model"]
+        per_race = signals.get("per_race") or {}
+        out = {"method_version": SIGNAL_METHOD_VERSION, "generic": generic, "national_2024_d_minus_r": national_2024, "shift_toward_d": r4(shift),
+               "incumbency_bonus": CHAMBER_INCUMBENCY_BONUS, "governor_base": CHAMBER_GOV_BASE, "swing_test_2022": CHAMBER_SWING_TEST_2022,
+               "tie_breaker": CHAMBER_TIE_BREAKER, "majority": CHAMBER_MAJORITY,
+               "ruling": "Max, 2026-10-27: full projected numbers for all races, same criteria for every race, tested on 2022 first; governors untracked use Cook after the 2022 replay failed them",
+               "chambers": {}}
+        for chamber in ("SEN", "GOV", "HOUSE"):
+            rows = [r for r in seats if r["chamber"] == chamber]
+            not_up = Counter(r["holder_party"] for r in rows if r["up_2026"] != "1")
+            items = []
+            for r in rows:
+                if r["up_2026"] != "1":
+                    items.append({"seat": r["seat"], "state": r["state"], "district": None if is_na(r["district"]) else r["district"], "kind": "not_up",
+                                  "holder": r["holder_party"], "side": r["holder_party"], "rating": None, "race": None, "graded": False})
+                    continue
+                race = None if is_na(r["tracked_race"]) else r["tracked_race"]
+                sig = per_race.get(race) if race else None
+                rating = r["cook_rating"]
+                base = {"seat": r["seat"], "state": r["state"], "district": None if is_na(r["district"]) else r["district"], "holder": r["holder_party"],
+                        "rating": rating, "rating_date": r["cook_rating_date"], "race": race, "pres2024_d_minus_r": num(r["pres2024_d_minus_r"]),
+                        "incumbent_on_ballot": r.get("incumbent_on_ballot", "UNKNOWN")}
+                if sig and sig.get("adjusted_margin") is not None:
+                    items.append({**base, "kind": "reading", "polls": sig["polling_margin"], "undertow": sig["adjusted_margin"], "side": seat_side(sig["adjusted_margin"]),
+                                  "parts": {"national_lean": r4(national), "state_adjustment": r4((sig.get("polling_error") or {}).get("state_adjustment") or 0.0),
+                                            "spending": sig.get("delta_spending") or 0.0, "early_vote": sig.get("delta_early_vote") or 0.0, "incumbency": 0.0},
+                                  "graded": True})
+                    continue
+                if chamber == "GOV" and CHAMBER_GOV_BASE == "COOK":
+                    items.append({**base, "kind": "rated", "polls": None, "undertow": None, "side": RATING_SIDE[rating], "parts": None, "graded": False,
+                                  "note": "untracked governor: Cook's rating, fixed under the dial (2022 replay: swing MAE 10.5 vs polls 4.2)"})
+                    continue
+                st_lean = ((leans or {}).get("per_state") or {}).get(r["state"]) if leans else None
+                state_adj = (st_lean or {}).get("state_adjustment") or 0.0
+                bonus = CHAMBER_INCUMBENCY_BONUS * {"D": 1, "R": -1}.get(r.get("incumbent_on_ballot"), 0)   # party of the incumbent on this ballot; NONE/VACANT/UNKNOWN/I carry none
+                evb = early_vote_block(getattr(self, "early_vote", None), r["state"], ev_model) if chamber != "HOUSE" else None
+                ev = (evb or {}).get("delta_toward_d") or 0.0
+                spending = 0.0   # no outside-money series is collected for untracked seats; Solid seats carry none by rule
+                swing_base = num(r["pres2024_d_minus_r"]) + shift + bonus
+                undertow = swing_base + national + state_adj + spending + ev
+                items.append({**base, "kind": "projection", "polls": None, "base": r4(swing_base), "undertow": r4(undertow), "side": seat_side(undertow),
+                              "parts": {"shift": r4(shift), "incumbency": r4(bonus), "national_lean": r4(national), "state_adjustment": r4(state_adj), "spending": spending, "early_vote": r4(ev)},
+                              "no_polls": bool(race), "graded": False})
+            at_bet = Counter(i["side"] for i in items if i["side"])
+            undecided = sum(1 for i in items if not i["side"])
+            kinds = Counter(i["kind"] for i in items)
+            maj = CHAMBER_MAJORITY.get(chamber)
+            control = None
+            if maj:
+                if at_bet["D"] >= maj:
+                    control = "D"
+                elif at_bet["R"] >= maj or (chamber == "SEN" and at_bet["R"] == at_bet["D"] == maj - 1):
+                    control = "R"
+            rated = Counter(RATING_SIDE[r["cook_rating"]] or "toss_up" for r in rows if r["up_2026"] == "1")
+            rated.update({k: v for k, v in not_up.items()})
+            out["chambers"][chamber] = {"seats": len(rows), "not_up": dict(not_up), "up": sum(1 for r in rows if r["up_2026"] == "1"), "kinds": dict(kinds),
+                                       "at_bet": {"D": at_bet["D"], "R": at_bet["R"], "undecided": undecided}, "control_at_bet": control, "majority": maj,
+                                       "cook_rated": {"D": rated["D"], "R": rated["R"], "toss_up": rated["toss_up"]}, "items": items}
+        return out
 
     def compute(self, calc_version: str, release_id: str | None) -> dict:
         ss = (self.run_state or {}).get("stage_outcomes", {})
@@ -2031,6 +2171,7 @@ class Bundle:
         derived["signals"] = self.signals_block(blocks)
         if derived["signals"] is not None and v2:
             derived["signals"]["polling_v2"] = v2
+        derived["chambers"] = self.chambers_block(blocks, derived["signals"])
         return derived
 
     def counts(self, ests: list[dict]) -> dict:
@@ -2124,7 +2265,7 @@ class Bundle:
         copy_names = ["polls.csv", "pollsters.csv", "exclusions.csv", "heat.csv", "coverage.csv"]
         if ss.get("stage2a") == "PASSED" and os.path.exists(os.path.join(self.dir, "backtest-2025.csv")):
             copy_names.append("backtest-2025.csv")
-        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv", "house-races.csv") if os.path.exists(os.path.join(self.dir, n))]
+        copy_names += [n for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv", "house-races.csv", "seats.csv", "generic-ballot.csv") if os.path.exists(os.path.join(self.dir, n))]
         for name in copy_names:
             src = os.path.join(self.dir, name)
             if os.path.exists(src):

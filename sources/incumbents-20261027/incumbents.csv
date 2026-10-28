@@ -1,0 +1,507 @@
+chamber,seat,state,district,incumbent,incumbent_party,on_ballot,reason,source_url
+SEN,2026-AL-SEN,AL,,Tommy Tuberville,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-AK-SEN,AK,,Dan Sullivan,R,YES,running for re-election (advanced to general),https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-AR-SEN,AR,,Tom Cotton,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-CO-SEN,CO,,John Hickenlooper,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-DE-SEN,DE,,Chris Coons,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-FL-SEN-SPECIAL,FL,,Ashley Moody,R,YES,appointed 2025; running (nominated),https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-GA-SEN,GA,,Jon Ossoff,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-ID-SEN,ID,,Jim Risch,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-IL-SEN,IL,,Dick Durbin,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-IA-SEN,IA,,Joni Ernst,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-KS-SEN,KS,,Roger Marshall,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-KY-SEN,KY,,Mitch McConnell,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-LA-SEN,LA,,Bill Cassidy,R,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-ME-SEN,ME,,Susan Collins,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-MA-SEN,MA,,Ed Markey,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-MI-SEN,MI,,Gary Peters,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-MN-SEN,MN,,Tina Smith,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-MS-SEN,MS,,Cindy Hyde-Smith,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-MT-SEN,MT,,Steve Daines,R,NO,retiring (withdrew at filing deadline),https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-NE-SEN,NE,,Pete Ricketts,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-NH-SEN,NH,,Jeanne Shaheen,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-NJ-SEN,NJ,,Cory Booker,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-NM-SEN,NM,,Ben Ray Luján,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-NC-SEN,NC,,Thom Tillis,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-OH-SEN-SPECIAL,OH,,Jon Husted,R,YES,appointed 2025; running (nominated),https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-OK-SEN,OK,,Alan Armstrong,R,NO,appointed 2026; ineligible to run under Oklahoma law,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-OR-SEN,OR,,Jeff Merkley,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-RI-SEN,RI,,Jack Reed,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-SC-SEN,SC,,Darline Graham,R,YES,appointed 2026 after death of Lindsey Graham; running (nominated in runoff),https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-SD-SEN,SD,,Mike Rounds,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-TN-SEN,TN,,Bill Hagerty,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-TX-SEN,TX,,John Cornyn,R,NO,lost primary runoff,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-VA-SEN,VA,,Mark Warner,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-WV-SEN,WV,,Shelley Moore Capito,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+SEN,2026-WY-SEN,WY,,Cynthia Lummis,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_Senate_elections
+GOV,2026-AL-GOV,AL,,Kay Ivey,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-AK-GOV,AK,,Mike Dunleavy,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-AZ-GOV,AZ,,Katie Hobbs,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-AR-GOV,AR,,Sarah Huckabee Sanders,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-CA-GOV,CA,,Gavin Newsom,D,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-CO-GOV,CO,,Jared Polis,D,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-CT-GOV,CT,,Ned Lamont,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-FL-GOV,FL,,Ron DeSantis,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-GA-GOV,GA,,Brian Kemp,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-HI-GOV,HI,,Josh Green,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-ID-GOV,ID,,Brad Little,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-IL-GOV,IL,,JB Pritzker,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-IA-GOV,IA,,Kim Reynolds,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-KS-GOV,KS,,Laura Kelly,D,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-ME-GOV,ME,,Janet Mills,D,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-MD-GOV,MD,,Wes Moore,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-MA-GOV,MA,,Maura Healey,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-MI-GOV,MI,,Gretchen Whitmer,D,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-MN-GOV,MN,,Tim Walz,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-NE-GOV,NE,,Jim Pillen,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-NV-GOV,NV,,Joe Lombardo,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-NH-GOV,NH,,Kelly Ayotte,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-NM-GOV,NM,,Michelle Lujan Grisham,D,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-NY-GOV,NY,,Kathy Hochul,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-OH-GOV,OH,,Mike DeWine,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-OK-GOV,OK,,Kevin Stitt,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-OR-GOV,OR,,Tina Kotek,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-PA-GOV,PA,,Josh Shapiro,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-RI-GOV,RI,,Dan McKee,D,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-SC-GOV,SC,,Henry McMaster,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-SD-GOV,SD,,Larry Rhoden,R,YES,succeeded Noem 2025; running (nominated to full term),https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-TN-GOV,TN,,Bill Lee,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-TX-GOV,TX,,Greg Abbott,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-VT-GOV,VT,,Phil Scott,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-WI-GOV,WI,,Tony Evers,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+GOV,2026-WY-GOV,WY,,Mark Gordon,R,NO,term-limited,https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections
+HOUSE,2026-AK-AL-HOUSE,AK,AL,Nick Begich,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-01-HOUSE,AL,01,Barry Moore,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-02-HOUSE,AL,02,Shomari Figures,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-03-HOUSE,AL,03,Mike Rogers,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-04-HOUSE,AL,04,Robert Aderholt,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-05-HOUSE,AL,05,Dale Strong,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-06-HOUSE,AL,06,Gary Palmer,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AL-07-HOUSE,AL,07,Terri Sewell,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AR-01-HOUSE,AR,01,Rick Crawford,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AR-02-HOUSE,AR,02,French Hill,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AR-03-HOUSE,AR,03,Steve Womack,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AR-04-HOUSE,AR,04,Bruce Westerman,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-01-HOUSE,AZ,01,David Schweikert,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-02-HOUSE,AZ,02,Eli Crane,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-03-HOUSE,AZ,03,Yassamin Ansari,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-04-HOUSE,AZ,04,Greg Stanton,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-05-HOUSE,AZ,05,Andy Biggs,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-06-HOUSE,AZ,06,Juan Ciscomani,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-07-HOUSE,AZ,07,Adelita Grijalva,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-08-HOUSE,AZ,08,Abe Hamadeh,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-AZ-09-HOUSE,AZ,09,Paul Gosar,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-01-HOUSE,CA,01,James Gallagher,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-02-HOUSE,CA,02,Jared Huffman,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-03-HOUSE,CA,03,Kevin Kiley,I,NO,redistricted; running in CA-06,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-04-HOUSE,CA,04,Mike Thompson,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-05-HOUSE,CA,05,Tom McClintock,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-06-HOUSE,CA,06,Ami Bera,D,NO,redistricted; running in CA-03,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-07-HOUSE,CA,07,Doris Matsui,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-08-HOUSE,CA,08,John Garamendi,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-09-HOUSE,CA,09,Josh Harder,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-10-HOUSE,CA,10,Mark DeSaulnier,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-11-HOUSE,CA,11,Nancy Pelosi,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-12-HOUSE,CA,12,Lateefah Simon,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-13-HOUSE,CA,13,Adam Gray,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-14-HOUSE,CA,14,Aisha Wahab,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-15-HOUSE,CA,15,Kevin Mullin,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-16-HOUSE,CA,16,Sam Liccardo,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-17-HOUSE,CA,17,Ro Khanna,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-18-HOUSE,CA,18,Zoe Lofgren,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-19-HOUSE,CA,19,Jimmy Panetta,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-20-HOUSE,CA,20,Vince Fong,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-21-HOUSE,CA,21,Jim Costa,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-22-HOUSE,CA,22,David Valadao,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-23-HOUSE,CA,23,Jay Obernolte,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-24-HOUSE,CA,24,Salud Carbajal,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-25-HOUSE,CA,25,Raul Ruiz,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-26-HOUSE,CA,26,Julia Brownley,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-27-HOUSE,CA,27,George Whitesides,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-28-HOUSE,CA,28,Judy Chu,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-29-HOUSE,CA,29,Luz Rivas,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-30-HOUSE,CA,30,Laura Friedman,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-31-HOUSE,CA,31,Gil Cisneros,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-32-HOUSE,CA,32,Brad Sherman,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-33-HOUSE,CA,33,Pete Aguilar,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-34-HOUSE,CA,34,Jimmy Gomez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-35-HOUSE,CA,35,Norma Torres,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-36-HOUSE,CA,36,Ted Lieu,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-37-HOUSE,CA,37,Sydney Kamlager-Dove,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-38-HOUSE,CA,38,Linda Sanchez,D,NO,redistricted; running in CA-41,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-39-HOUSE,CA,39,Mark Takano,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-40-HOUSE,CA,40,Young Kim,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-41-HOUSE,CA,41,Ken Calvert,R,NO,redistricted; running in CA-40,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-42-HOUSE,CA,42,Robert Garcia,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-43-HOUSE,CA,43,Maxine Waters,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-44-HOUSE,CA,44,Nanette Barragan,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-45-HOUSE,CA,45,Derek Tran,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-46-HOUSE,CA,46,Lou Correa,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-47-HOUSE,CA,47,Dave Min,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-48-HOUSE,CA,48,Darrell Issa,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-49-HOUSE,CA,49,Mike Levin,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-50-HOUSE,CA,50,Scott Peters,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-51-HOUSE,CA,51,Sara Jacobs,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CA-52-HOUSE,CA,52,Juan Vargas,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-01-HOUSE,CO,01,Diana DeGette,D,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-02-HOUSE,CO,02,Joe Neguse,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-03-HOUSE,CO,03,Jeff Hurd,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-04-HOUSE,CO,04,Lauren Boebert,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-05-HOUSE,CO,05,Jeff Crank,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-06-HOUSE,CO,06,Jason Crow,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-07-HOUSE,CO,07,Brittany Pettersen,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CO-08-HOUSE,CO,08,Gabe Evans,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CT-01-HOUSE,CT,01,John Larson,D,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CT-02-HOUSE,CT,02,Joe Courtney,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CT-03-HOUSE,CT,03,Rosa DeLauro,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CT-04-HOUSE,CT,04,Jim Himes,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-CT-05-HOUSE,CT,05,Jahana Hayes,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-DE-AL-HOUSE,DE,AL,Sarah McBride,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-01-HOUSE,FL,01,Jimmy Patronis,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-02-HOUSE,FL,02,Neal Dunn,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-03-HOUSE,FL,03,Kat Cammack,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-04-HOUSE,FL,04,Aaron Bean,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-05-HOUSE,FL,05,John Rutherford,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-06-HOUSE,FL,06,Randy Fine,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-07-HOUSE,FL,07,Cory Mills,R,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-08-HOUSE,FL,08,Mike Haridopolos,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-09-HOUSE,FL,09,Darren Soto,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-10-HOUSE,FL,10,Maxwell Frost,D,YES,"unopposed; deemed elected, name not printed on general ballot per Fla. Stat. 101.151(7)",https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-11-HOUSE,FL,11,Daniel Webster,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-12-HOUSE,FL,12,Gus Bilirakis,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-13-HOUSE,FL,13,Anna Paulina Luna,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-14-HOUSE,FL,14,Kathy Castor,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-15-HOUSE,FL,15,Laurel Lee,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-16-HOUSE,FL,16,Vern Buchanan,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-17-HOUSE,FL,17,Greg Steube,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-18-HOUSE,FL,18,Scott Franklin,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-19-HOUSE,FL,19,Byron Donalds,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-20-HOUSE,FL,20,VACANT,,VACANT,"vacant; Cherfilus-McCormick (D) resigned April 21, 2026",https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-21-HOUSE,FL,21,Brian Mast,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-22-HOUSE,FL,22,Lois Frankel,D,NO,redistricted; running in FL-23,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-23-HOUSE,FL,23,Jared Moskowitz,D,NO,redistricted; running in FL-25,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-24-HOUSE,FL,24,Frederica Wilson,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-25-HOUSE,FL,25,Debbie Wasserman Schultz,D,NO,redistricted; running in FL-20,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-26-HOUSE,FL,26,Mario Diaz-Balart,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-27-HOUSE,FL,27,Maria Elvira Salazar,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-FL-28-HOUSE,FL,28,Carlos Gimenez,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-01-HOUSE,GA,01,Buddy Carter,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-02-HOUSE,GA,02,Sanford Bishop,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-03-HOUSE,GA,03,Brian Jack,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-04-HOUSE,GA,04,Hank Johnson,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-05-HOUSE,GA,05,Nikema Williams,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-06-HOUSE,GA,06,Lucy McBath,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-07-HOUSE,GA,07,Rich McCormick,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-08-HOUSE,GA,08,Austin Scott,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-09-HOUSE,GA,09,Andrew Clyde,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-10-HOUSE,GA,10,Mike Collins,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-11-HOUSE,GA,11,Barry Loudermilk,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-12-HOUSE,GA,12,Rick Allen,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-13-HOUSE,GA,13,Everton Blair,D,NO,lost primary for full term (elected only to complete David Scott unexpired term); listed as retiring in Wikipedia retirements,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-GA-14-HOUSE,GA,14,Clay Fuller,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-HI-01-HOUSE,HI,01,Ed Case,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-HI-02-HOUSE,HI,02,Jill Tokuda,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IA-01-HOUSE,IA,01,Mariannette Miller-Meeks,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IA-02-HOUSE,IA,02,Ashley Hinson,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IA-03-HOUSE,IA,03,Zach Nunn,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IA-04-HOUSE,IA,04,Randy Feenstra,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-ID-01-HOUSE,ID,01,Russ Fulcher,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-ID-02-HOUSE,ID,02,Mike Simpson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-01-HOUSE,IL,01,Jonathan Jackson,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-02-HOUSE,IL,02,Robin Kelly,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-03-HOUSE,IL,03,Delia Ramirez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-04-HOUSE,IL,04,Chuy Garcia,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-05-HOUSE,IL,05,Mike Quigley,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-06-HOUSE,IL,06,Sean Casten,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-07-HOUSE,IL,07,Danny Davis,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-08-HOUSE,IL,08,Raja Krishnamoorthi,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-09-HOUSE,IL,09,Jan Schakowsky,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-10-HOUSE,IL,10,Brad Schneider,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-11-HOUSE,IL,11,Bill Foster,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-12-HOUSE,IL,12,Mike Bost,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-13-HOUSE,IL,13,Nikki Budzinski,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-14-HOUSE,IL,14,Lauren Underwood,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-15-HOUSE,IL,15,Mary Miller,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-16-HOUSE,IL,16,Darin LaHood,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IL-17-HOUSE,IL,17,Eric Sorensen,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-01-HOUSE,IN,01,Frank Mrvan,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-02-HOUSE,IN,02,Rudy Yakym,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-03-HOUSE,IN,03,Marlin Stutzman,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-04-HOUSE,IN,04,Jim Baird,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-05-HOUSE,IN,05,Victoria Spartz,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-06-HOUSE,IN,06,Jefferson Shreve,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-07-HOUSE,IN,07,Andre Carson,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-08-HOUSE,IN,08,Mark Messmer,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-IN-09-HOUSE,IN,09,Erin Houchin,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KS-01-HOUSE,KS,01,Tracey Mann,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KS-02-HOUSE,KS,02,Derek Schmidt,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KS-03-HOUSE,KS,03,Sharice Davids,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KS-04-HOUSE,KS,04,Ron Estes,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KY-01-HOUSE,KY,01,James Comer,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KY-02-HOUSE,KY,02,Brett Guthrie,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KY-03-HOUSE,KY,03,Morgan McGarvey,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KY-04-HOUSE,KY,04,Thomas Massie,R,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KY-05-HOUSE,KY,05,Hal Rogers,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-KY-06-HOUSE,KY,06,Andy Barr,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-LA-01-HOUSE,LA,01,Steve Scalise,R,YES,running for re-election (Louisiana jungle primary held on Nov 3; runoff Dec 12 if no majority),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-LA-02-HOUSE,LA,02,Troy Carter,D,YES,running for re-election (Louisiana jungle primary held on Nov 3; runoff Dec 12 if no majority),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-LA-03-HOUSE,LA,03,Clay Higgins,R,YES,running for re-election (Louisiana jungle primary held on Nov 3; runoff Dec 12 if no majority),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-LA-04-HOUSE,LA,04,Mike Johnson,R,YES,running for re-election (Louisiana jungle primary held on Nov 3; runoff Dec 12 if no majority),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-LA-05-HOUSE,LA,05,Julia Letlow,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-LA-06-HOUSE,LA,06,Cleo Fields,D,NO,running for Louisiana State Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-01-HOUSE,MA,01,Richard Neal,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-02-HOUSE,MA,02,Jim McGovern,D,YES,unopposed; sole candidate listed (Wikipedia status: Incumbent re-elected),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-03-HOUSE,MA,03,Lori Trahan,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-04-HOUSE,MA,04,Jake Auchincloss,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-05-HOUSE,MA,05,Katherine Clark,D,YES,unopposed; sole candidate listed (Wikipedia status: Incumbent re-elected),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-06-HOUSE,MA,06,Seth Moulton,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-07-HOUSE,MA,07,Ayanna Pressley,D,YES,unopposed; sole candidate listed (Wikipedia status: Incumbent re-elected),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-08-HOUSE,MA,08,Stephen Lynch,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MA-09-HOUSE,MA,09,Bill Keating,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-01-HOUSE,MD,01,Andy Harris,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-02-HOUSE,MD,02,Johnny Olszewski,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-03-HOUSE,MD,03,Sarah Elfreth,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-04-HOUSE,MD,04,Glenn Ivey,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-05-HOUSE,MD,05,Steny Hoyer,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-06-HOUSE,MD,06,April McClain Delaney,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-07-HOUSE,MD,07,Kweisi Mfume,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MD-08-HOUSE,MD,08,Jamie Raskin,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-ME-01-HOUSE,ME,01,Chellie Pingree,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-ME-02-HOUSE,ME,02,Jared Golden,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-01-HOUSE,MI,01,Jack Bergman,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-02-HOUSE,MI,02,John Moolenaar,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-03-HOUSE,MI,03,Hillary Scholten,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-04-HOUSE,MI,04,Bill Huizenga,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-05-HOUSE,MI,05,Tim Walberg,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-06-HOUSE,MI,06,Debbie Dingell,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-07-HOUSE,MI,07,Tom Barrett,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-08-HOUSE,MI,08,Kristen McDonald Rivet,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-09-HOUSE,MI,09,Lisa McClain,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-10-HOUSE,MI,10,John James,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-11-HOUSE,MI,11,Haley Stevens,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-12-HOUSE,MI,12,Rashida Tlaib,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MI-13-HOUSE,MI,13,Shri Thanedar,D,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-01-HOUSE,MN,01,Brad Finstad,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-02-HOUSE,MN,02,Angie Craig,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-03-HOUSE,MN,03,Kelly Morrison,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-04-HOUSE,MN,04,Betty McCollum,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-05-HOUSE,MN,05,Ilhan Omar,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-06-HOUSE,MN,06,Tom Emmer,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-07-HOUSE,MN,07,Michelle Fischbach,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MN-08-HOUSE,MN,08,Pete Stauber,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-01-HOUSE,MO,01,Wesley Bell,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-02-HOUSE,MO,02,Ann Wagner,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-03-HOUSE,MO,03,Bob Onder,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-04-HOUSE,MO,04,Mark Alford,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-05-HOUSE,MO,05,Emanuel Cleaver,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-06-HOUSE,MO,06,Sam Graves,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-07-HOUSE,MO,07,Eric Burlison,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MO-08-HOUSE,MO,08,Jason Smith,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MS-01-HOUSE,MS,01,Trent Kelly,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MS-02-HOUSE,MS,02,Bennie Thompson,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MS-03-HOUSE,MS,03,Michael Guest,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MS-04-HOUSE,MS,04,Mike Ezell,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MT-01-HOUSE,MT,01,Ryan Zinke,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-MT-02-HOUSE,MT,02,Troy Downing,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-01-HOUSE,NC,01,Don Davis,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-02-HOUSE,NC,02,Deborah Ross,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-03-HOUSE,NC,03,Greg Murphy,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-04-HOUSE,NC,04,Valerie Foushee,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-05-HOUSE,NC,05,Virginia Foxx,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-06-HOUSE,NC,06,Addison McDowell,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-07-HOUSE,NC,07,David Rouzer,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-08-HOUSE,NC,08,Mark Harris,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-09-HOUSE,NC,09,Richard Hudson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-10-HOUSE,NC,10,Pat Harrigan,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-11-HOUSE,NC,11,Chuck Edwards,R,NO,withdrew after primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-12-HOUSE,NC,12,Alma Adams,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-13-HOUSE,NC,13,Brad Knott,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NC-14-HOUSE,NC,14,Tim Moore,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-ND-AL-HOUSE,ND,AL,Julie Fedorchak,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NE-01-HOUSE,NE,01,Mike Flood,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NE-02-HOUSE,NE,02,Don Bacon,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NE-03-HOUSE,NE,03,Adrian Smith,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NH-01-HOUSE,NH,01,Chris Pappas,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NH-02-HOUSE,NH,02,Maggie Goodlander,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-01-HOUSE,NJ,01,Donald Norcross,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-02-HOUSE,NJ,02,Jeff Van Drew,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-03-HOUSE,NJ,03,Herb Conaway,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-04-HOUSE,NJ,04,Chris Smith,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-05-HOUSE,NJ,05,Josh Gottheimer,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-06-HOUSE,NJ,06,Frank Pallone,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-07-HOUSE,NJ,07,Tom Kean,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-08-HOUSE,NJ,08,Rob Menendez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-09-HOUSE,NJ,09,Nellie Pou,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-10-HOUSE,NJ,10,LaMonica McIver,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-11-HOUSE,NJ,11,Analilia Mejia,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NJ-12-HOUSE,NJ,12,Bonnie Watson Coleman,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NM-01-HOUSE,NM,01,Melanie Stansbury,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NM-02-HOUSE,NM,02,Gabe Vasquez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NM-03-HOUSE,NM,03,Teresa Leger Fernandez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NV-01-HOUSE,NV,01,Dina Titus,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NV-02-HOUSE,NV,02,Mark Amodei,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NV-03-HOUSE,NV,03,Susie Lee,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NV-04-HOUSE,NV,04,Steven Horsford,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-01-HOUSE,NY,01,Nick LaLota,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-02-HOUSE,NY,02,Andrew Garbarino,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-03-HOUSE,NY,03,Tom Suozzi,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-04-HOUSE,NY,04,Laura Gillen,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-05-HOUSE,NY,05,Gregory Meeks,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-06-HOUSE,NY,06,Grace Meng,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-07-HOUSE,NY,07,Nydia Velazquez,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-08-HOUSE,NY,08,Hakeem Jeffries,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-09-HOUSE,NY,09,Yvette Clarke,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-10-HOUSE,NY,10,Dan Goldman,D,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-11-HOUSE,NY,11,Nicole Malliotakis,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-12-HOUSE,NY,12,Jerry Nadler,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-13-HOUSE,NY,13,Adriano Espaillat,D,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-14-HOUSE,NY,14,Alexandria Ocasio-Cortez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-15-HOUSE,NY,15,Ritchie Torres,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-16-HOUSE,NY,16,George Latimer,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-17-HOUSE,NY,17,Mike Lawler,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-18-HOUSE,NY,18,Pat Ryan,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-19-HOUSE,NY,19,Josh Riley,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-20-HOUSE,NY,20,Paul Tonko,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-21-HOUSE,NY,21,Elise Stefanik,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-22-HOUSE,NY,22,John Mannion,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-23-HOUSE,NY,23,Nick Langworthy,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-24-HOUSE,NY,24,Claudia Tenney,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-25-HOUSE,NY,25,Joe Morelle,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-NY-26-HOUSE,NY,26,Tim Kennedy,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-01-HOUSE,OH,01,Greg Landsman,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-02-HOUSE,OH,02,David Taylor,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-03-HOUSE,OH,03,Joyce Beatty,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-04-HOUSE,OH,04,Jim Jordan,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-05-HOUSE,OH,05,Bob Latta,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-06-HOUSE,OH,06,Michael Rulli,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-07-HOUSE,OH,07,Max Miller,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-08-HOUSE,OH,08,Warren Davidson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-09-HOUSE,OH,09,Marcy Kaptur,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-10-HOUSE,OH,10,Mike Turner,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-11-HOUSE,OH,11,Shontel Brown,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-12-HOUSE,OH,12,Troy Balderson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-13-HOUSE,OH,13,Emilia Sykes,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-14-HOUSE,OH,14,Dave Joyce,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OH-15-HOUSE,OH,15,Mike Carey,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OK-01-HOUSE,OK,01,Kevin Hern,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OK-02-HOUSE,OK,02,Josh Brecheen,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OK-03-HOUSE,OK,03,Frank Lucas,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OK-04-HOUSE,OK,04,Tom Cole,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OK-05-HOUSE,OK,05,Stephanie Bice,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OR-01-HOUSE,OR,01,Suzanne Bonamici,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OR-02-HOUSE,OR,02,Cliff Bentz,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OR-03-HOUSE,OR,03,Maxine Dexter,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OR-04-HOUSE,OR,04,Val Hoyle,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OR-05-HOUSE,OR,05,Janelle Bynum,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-OR-06-HOUSE,OR,06,Andrea Salinas,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-01-HOUSE,PA,01,Brian Fitzpatrick,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-02-HOUSE,PA,02,Brendan Boyle,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-03-HOUSE,PA,03,Dwight Evans,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-04-HOUSE,PA,04,Madeleine Dean,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-05-HOUSE,PA,05,Mary Gay Scanlon,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-06-HOUSE,PA,06,Chrissy Houlahan,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-07-HOUSE,PA,07,Ryan Mackenzie,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-08-HOUSE,PA,08,Rob Bresnahan,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-09-HOUSE,PA,09,Dan Meuser,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-10-HOUSE,PA,10,Scott Perry,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-11-HOUSE,PA,11,Lloyd Smucker,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-12-HOUSE,PA,12,Summer Lee,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-13-HOUSE,PA,13,John Joyce,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-14-HOUSE,PA,14,Guy Reschenthaler,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-15-HOUSE,PA,15,Glenn Thompson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-16-HOUSE,PA,16,Mike Kelly,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-PA-17-HOUSE,PA,17,Chris Deluzio,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-RI-01-HOUSE,RI,01,Gabe Amo,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-RI-02-HOUSE,RI,02,Seth Magaziner,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-01-HOUSE,SC,01,Nancy Mace,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-02-HOUSE,SC,02,Joe Wilson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-03-HOUSE,SC,03,Sheri Biggs,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-04-HOUSE,SC,04,William Timmons,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-05-HOUSE,SC,05,Ralph Norman,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-06-HOUSE,SC,06,Jim Clyburn,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SC-07-HOUSE,SC,07,Russell Fry,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-SD-AL-HOUSE,SD,AL,Dusty Johnson,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-01-HOUSE,TN,01,Diana Harshbarger,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-02-HOUSE,TN,02,Tim Burchett,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-03-HOUSE,TN,03,Chuck Fleischmann,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-04-HOUSE,TN,04,Scott DesJarlais,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-05-HOUSE,TN,05,Andy Ogles,R,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-06-HOUSE,TN,06,John Rose,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-07-HOUSE,TN,07,Matt Van Epps,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-08-HOUSE,TN,08,David Kustoff,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TN-09-HOUSE,TN,09,Steve Cohen,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-01-HOUSE,TX,01,Nathaniel Moran,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-02-HOUSE,TX,02,Dan Crenshaw,R,NO,lost primary,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-03-HOUSE,TX,03,Keith Self,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-04-HOUSE,TX,04,Pat Fallon,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-05-HOUSE,TX,05,Lance Gooden,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-06-HOUSE,TX,06,Jake Ellzey,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-07-HOUSE,TX,07,Lizzie Fletcher,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-08-HOUSE,TX,08,Morgan Luttrell,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-09-HOUSE,TX,09,Al Green,D,NO,"lost primary (ran in TX-18, redistricted)",https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-10-HOUSE,TX,10,Michael McCaul,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-11-HOUSE,TX,11,August Pfluger,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-12-HOUSE,TX,12,Craig Goldman,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-13-HOUSE,TX,13,Ronny Jackson,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-14-HOUSE,TX,14,Randy Weber,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-15-HOUSE,TX,15,Monica De La Cruz,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-16-HOUSE,TX,16,Veronica Escobar,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-17-HOUSE,TX,17,Pete Sessions,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-18-HOUSE,TX,18,Christian Menefee,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-19-HOUSE,TX,19,Jodey Arrington,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-20-HOUSE,TX,20,Joaquin Castro,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-21-HOUSE,TX,21,Chip Roy,R,NO,running for Texas attorney general,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-22-HOUSE,TX,22,Troy Nehls,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-23-HOUSE,TX,23,VACANT,,VACANT,"vacant; Gonzales (R) resigned April 14, 2026",https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-24-HOUSE,TX,24,Beth Van Duyne,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-25-HOUSE,TX,25,Roger Williams,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-26-HOUSE,TX,26,Brandon Gill,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-27-HOUSE,TX,27,Michael Cloud,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-28-HOUSE,TX,28,Henry Cuellar,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-29-HOUSE,TX,29,Sylvia Garcia,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-30-HOUSE,TX,30,Jasmine Crockett,D,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-31-HOUSE,TX,31,John Carter,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-32-HOUSE,TX,32,Julie Johnson,D,NO,"lost primary (ran in TX-33, redistricted)",https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-33-HOUSE,TX,33,Marc Veasey,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-34-HOUSE,TX,34,Vicente Gonzalez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-35-HOUSE,TX,35,Greg Casar,D,NO,redistricted; running in TX-37,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-36-HOUSE,TX,36,Brian Babin,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-37-HOUSE,TX,37,Lloyd Doggett,D,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-TX-38-HOUSE,TX,38,Wesley Hunt,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-UT-01-HOUSE,UT,01,Blake Moore,R,NO,redistricted; running in UT-02,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-UT-02-HOUSE,UT,02,Celeste Maloy,R,NO,redistricted; running in UT-03,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-UT-03-HOUSE,UT,03,Mike Kennedy,R,NO,redistricted; running in UT-04,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-UT-04-HOUSE,UT,04,Burgess Owens,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-01-HOUSE,VA,01,Rob Wittman,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-02-HOUSE,VA,02,Jen Kiggans,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-03-HOUSE,VA,03,Bobby Scott,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-04-HOUSE,VA,04,Jennifer McClellan,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-05-HOUSE,VA,05,John McGuire,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-06-HOUSE,VA,06,Ben Cline,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-07-HOUSE,VA,07,Eugene Vindman,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-08-HOUSE,VA,08,Don Beyer,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-09-HOUSE,VA,09,Morgan Griffith,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-10-HOUSE,VA,10,Suhas Subramanyam,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VA-11-HOUSE,VA,11,James Walkinshaw,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-VT-AL-HOUSE,VT,AL,Becca Balint,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-01-HOUSE,WA,01,Suzan DelBene,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-02-HOUSE,WA,02,Rick Larsen,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-03-HOUSE,WA,03,Marie Gluesenkamp Perez,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-04-HOUSE,WA,04,Dan Newhouse,R,NO,retiring,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-05-HOUSE,WA,05,Michael Baumgartner,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-06-HOUSE,WA,06,Emily Randall,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-07-HOUSE,WA,07,Pramila Jayapal,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-08-HOUSE,WA,08,Kim Schrier,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-09-HOUSE,WA,09,Adam Smith,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WA-10-HOUSE,WA,10,Marilyn Strickland,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-01-HOUSE,WI,01,Bryan Steil,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-02-HOUSE,WI,02,Mark Pocan,D,YES,unopposed; sole candidate listed (Wikipedia status: Incumbent re-elected),https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-03-HOUSE,WI,03,Derrick Van Orden,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-04-HOUSE,WI,04,Gwen Moore,D,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-05-HOUSE,WI,05,Scott Fitzgerald,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-06-HOUSE,WI,06,Glenn Grothman,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-07-HOUSE,WI,07,Tom Tiffany,R,NO,running for governor,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WI-08-HOUSE,WI,08,Tony Wied,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WV-01-HOUSE,WV,01,Carol Miller,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WV-02-HOUSE,WV,02,Riley Moore,R,YES,running for re-election,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections
+HOUSE,2026-WY-AL-HOUSE,WY,AL,Harriet Hageman,R,NO,running for U.S. Senate,https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections

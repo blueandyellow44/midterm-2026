@@ -1,0 +1,38 @@
+{
+ "file": "ga-sen-echelon-insights-2026-10-23.json",
+ "race": "2026-GA-SEN",
+ "pid": "echelon-insights",
+ "name": "Echelon Insights",
+ "sponsor": "NetChoice",
+ "scls": "UNKNOWN",
+ "align": "R",
+ "method_id": "echelon-insights-s-2026-GA-SEN-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-27",
+  "n": 508,
+  "pop": "LV",
+  "D": 55,
+  "R": 40,
+  "other": 3,
+  "undecided": 2,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://netchoice.org/wp-content/uploads/2026/10/NetChoice-October-2026-Antitrust-Tech-Survey-Topline.pdf",
+  "source_locator": "Q12 QGASenateBallot (GA column, n=508): Collins 40, Ossoff 55, Buckley (L) 3, Someone else *, Unsure 2",
+  "notes": "other = Buckley 3 (+ someone else <0.5). MoE +/-5.2. State oversample within a 3,644-voter multistate NetChoice (tech trade association) survey; already-voted respondents' choices merged with full-ballot and leaner responses. Release page: https://netchoice.org/netchoice-echelon-insights-poll-voters-rank-ai-regulation-far-behind-cost-of-living-want-one-national-ai-standard/",
+  "retrieved_at": "2026-10-27T17:35:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to reflect modeled turnout and demographic characteristics of the population of voters in the 2026 likely electorate based on a probabilistic model that incorporates data from the US Census Bureau's American Community Survey and Current Population Survey Voting and Registration Supplement, as well as L2 voter file data. Weighting dimensions included gender, age, race/ethnicity, education, designated market area (DMA), turnout probability, party by ideology, as well as gender by age.",
+  "method_url": "https://netchoice.org/wp-content/uploads/2026/10/NetChoice-October-2026-Antitrust-Tech-Survey-Topline.pdf",
+  "method_locator": "METHODOLOGY section, p.28 of topline PDF",
+  "mode": "online (L2 text-to-web invitations, n=1,072 overall) + matched online sample exchanges (Cint/Lucid, PureSpectrum, RepData; n=2,572 overall)",
+  "method_owner": "Echelon Insights",
+  "retrieved_at": "2026-10-27T17:35:00-07:00",
+  "method_date": "2026-10-27"
+ }
+}

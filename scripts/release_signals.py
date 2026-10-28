@@ -77,7 +77,7 @@ def main() -> int:
         raise weight.ValidationError(f"existing derived fields changed: {changed}")
     if not new.get("signals"):
         raise weight.ValidationError("signals block missing from compute")
-    digest = weight.sha256_bytes(b"".join((bundle / n).read_bytes() for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv", "house-races.csv", "heat.csv")))[:10]
+    digest = weight.sha256_bytes(b"".join((bundle / n).read_bytes() for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv", "house-races.csv", "heat.csv", "seats.csv", "generic-ballot.csv") if (bundle / n).is_file()))[:10]
     release_id = f"{cutoff.strftime('%Y%m%dT%H%M%S%z')}-{'stage2-refresh' if a.refresh else 'stage2-signals'}-{commit[:7]}-{digest}"
     b.run_state = proposed
     sealed = Path(b.release(release_id, commit, weight.DEFAULT_NOTE))

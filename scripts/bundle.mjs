@@ -3,8 +3,8 @@ import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { parse } from 'csv-parse/sync';
 
-export const allowedFiles = new Set(['polls.csv','pollsters.csv','exclusions.csv','heat.csv','coverage.csv','backtest-2025.csv','midterm-2026-poll-weighting.md','derived.json','predictions.csv','results.csv','spending.csv','fundamentals.csv','spend-history.csv','state-poll-error.csv','poll-error-history.csv','early-vote.csv','recent-misses.csv','early-vote-history.csv','house-races.csv']);
-export const supportedSchemas = { polls:['1.2'], pollsters:['1.0'], exclusions:['1.0'], heat:['1.0'], coverage:['1.0'], backtest:['1.2'], predictions:['1.0'], results:['1.0'], spending:['1.0'], fundamentals:['1.0'], spend_history:['1.0'], state_poll_error:['1.0'], poll_error_history:['1.0'], early_vote:['1.0'], recent_misses:['1.0'], early_vote_history:['1.0'], house_races:['1.0'] };
+export const allowedFiles = new Set(['polls.csv','pollsters.csv','exclusions.csv','heat.csv','coverage.csv','backtest-2025.csv','midterm-2026-poll-weighting.md','derived.json','predictions.csv','results.csv','spending.csv','fundamentals.csv','spend-history.csv','state-poll-error.csv','poll-error-history.csv','early-vote.csv','recent-misses.csv','early-vote-history.csv','house-races.csv','seats.csv','generic-ballot.csv']);
+export const supportedSchemas = { polls:['1.2'], pollsters:['1.0'], exclusions:['1.0'], heat:['1.0'], coverage:['1.0'], backtest:['1.2'], predictions:['1.0'], results:['1.0'], spending:['1.0'], fundamentals:['1.0'], spend_history:['1.0'], state_poll_error:['1.0'], poll_error_history:['1.0'], early_vote:['1.0'], recent_misses:['1.0'], early_vote_history:['1.0'], house_races:['1.0'], seats:['1.0'], generic_ballot:['1.0'] };
 export const sha256 = value => createHash('sha256').update(value).digest('hex');
 /** @returns {Record<string,string>[]} */
 export function readCsv(text, required = []) {
@@ -21,7 +21,7 @@ export function validateBundle(directory) {
   const m = JSON.parse(manifestBytes);
   if (m.bundle_schema !== '1.0' || !m.release_id || !m.analytical_as_of) throw new Error('Unsupported or missing manifest identity');
   // Schemas added after a release was sealed are optional, so earlier immutable releases stay valid.
-  const optional = new Set(['house_races']);
+  const optional = new Set(['house_races','seats','generic_ballot']);
   for (const [key, versions] of Object.entries(supportedSchemas)) {
     if (optional.has(key) && m.csv_schemas?.[key] === undefined) continue;
     if (!versions.includes(m.csv_schemas?.[key])) throw new Error(`Unsupported CSV schema: ${key}`);
@@ -64,6 +64,23 @@ export function validateBundle(directory) {
         const e=estimates.get(read.latest_poll?.estimate_id);
         if (r.weighted_margin!==null || read.poll_count!==1 || !e || !e.flags.principal || e.quarantined || e.primary_verified!=='YES' || e.window!=='BOTH' || !['NA','FIRST','FINAL'].includes(e.round) || e.race!==r.race || e.margin!==read.margin || e.source_url!==read.latest_poll.source_url || e.pop!==read.stratum?.pop || e.round!==read.stratum?.round || e.denominator_class!==read.stratum?.denominator_class || e.field_end!==read.field_end) throw new Error('Unverified or inconsistent latest-poll read');
       }
+    }
+  }
+  // The full-chamber projection is optional (older releases lack it); when present every seat has a side or is marked undecided,
+  // projections equal their stated parts, readings equal the signal reading, and the counts add up to the chamber.
+  if (d.chambers) {
+    const nat=Number(d.signals?.rules?.poll_error_toward_d);
+    for (const [ch,c] of Object.entries(d.chambers.chambers)) {
+      if (c.items.length!==c.seats || !{SEN:100,GOV:50,HOUSE:435}[ch] || c.seats!=={SEN:100,GOV:50,HOUSE:435}[ch]) throw new Error(`Chamber ${ch} seat count wrong`);
+      let dd=0, rr=0, un=0;
+      for (const i of c.items) {
+        if (!['not_up','reading','projection','rated'].includes(i.kind)) throw new Error(`Unknown seat kind: ${i.seat}`);
+        if (i.kind==='reading') { const s=d.signals?.per_race?.[i.race]; if (!s || s.adjusted_margin!==i.undertow || !i.graded) throw new Error(`Seat reading disagrees with the signal reading: ${i.seat}`); }
+        if (i.kind==='projection') { const p=i.parts; if (i.graded || Math.abs(i.undertow-(i.base+p.national_lean+p.state_adjustment+p.spending+p.early_vote))>0.001 || Math.abs(p.national_lean-nat)>0.001) throw new Error(`Projection arithmetic inconsistent: ${i.seat}`); }
+        if (i.kind==='rated' && (i.undertow!==null || i.graded)) throw new Error(`Rated seat carries a number: ${i.seat}`);
+        if (i.side==='D') dd++; else if (i.side==='R') rr++; else if (i.side===null) un++; else throw new Error(`Bad side: ${i.seat}`);
+      }
+      if (dd!==c.at_bet.D || rr!==c.at_bet.R || un!==c.at_bet.undecided || dd+rr+un!==c.seats) throw new Error(`Chamber ${ch} tally does not add up`);
     }
   }
   // The signal-adjusted reading is optional (older releases lack it) but must be internally consistent when present.

@@ -1,0 +1,436 @@
+district,pres2020_d_minus_r,house2022_d_minus_r,contested,incumbent_party_running,source_note
+AK-AL,-10.1,-0.31,true,D,RCV: first-round party sums (Peltola D vs Palin+Begich R); 1 D / 2 R on general ballot (party votes summed); incumbent: Mary Peltola (D) Incumbent re-elected
+AL-01,-28.3,-83.61,false,R,no D on ballot; incumbent: Jerry Carl (R) Incumbent re-elected
+AL-02,-29.4,-39.93,true,R,incumbent: Barry Moore (R) Incumbent re-elected
+AL-03,-34.1,-46.08,true,R,incumbent: Mike Rogers (R) Incumbent re-elected
+AL-04,-61.8,-70.48,true,R,incumbent: Robert Aderholt (R) Incumbent re-elected
+AL-05,-27.1,-37.54,true,OPEN,incumbent: Mo Brooks (R) Incumbent retired to run for U.S. Senate
+AL-06,-29.9,-83.73,false,R,no D on ballot; incumbent: Gary Palmer (R) Incumbent re-elected
+AL-07,32.0,28.78,true,D,incumbent: Terri Sewell (D) Incumbent re-elected
+AR-01,-40.9,-47.60,true,R,incumbent: Rick Crawford (R) Incumbent re-elected
+AR-02,-13.1,-24.79,true,R,incumbent: French Hill (R) Incumbent re-elected
+AR-03,-23.4,-30.80,true,R,incumbent: Steve Womack (R) Incumbent re-elected
+AR-04,-35.2,-44.81,true,R,incumbent: Bruce Westerman (R) Incumbent re-elected
+AZ-01,1.5,-0.88,true,R,incumbent: David Schweikert (R) Incumbent re-elected
+AZ-02,-7.9,-7.74,true,D,incumbent: Tom O'Halleran (D) Incumbent lost re-election
+AZ-03,50.6,53.96,true,D,incumbent: Ruben Gallego (D) Incumbent re-elected
+AZ-04,10.3,12.21,true,D,incumbent: Greg Stanton (D) Incumbent re-elected
+AZ-05,-16.4,-19.35,true,R,incumbent: Andy Biggs (R) Incumbent re-elected
+AZ-06,0.1,-1.50,true,OPEN,incumbent: Ann Kirkpatrick (D) Incumbent retired
+AZ-07,32.8,29.09,true,D,incumbent: Raúl Grijalva (D) Incumbent re-elected
+AZ-08,-13.5,-96.50,false,R,no D on ballot; incumbent: Debbie Lesko (R) Incumbent re-elected
+AZ-09,-25.8,-97.77,false,R,no D on ballot; incumbent: Paul Gosar (R) Incumbent re-elected
+CA-01,-19.1,-24.15,true,R,top-two general; incumbent: Doug LaMalfa (R) Incumbent re-elected
+CA-02,49.5,48.81,true,D,top-two general; incumbent: Jared Huffman (D) Incumbent re-elected
+CA-03,-1.8,-7.30,true,OPEN,top-two general; incumbent: none (new seat)
+CA-04,36.6,35.60,true,D,top-two general; incumbent: Mike Thompson (D) Incumbent re-elected
+CA-05,-12.3,-22.62,true,R,top-two general; incumbent: Tom McClintock (R) Incumbent re-elected
+CA-06,18.4,11.89,true,D,top-two general; incumbent: Ami Bera (D) Incumbent re-elected
+CA-07,37.2,36.52,true,D,top-two general; incumbent: Doris Matsui (D) Incumbent re-elected
+CA-08,54.0,51.46,true,D,top-two general; incumbent: John Garamendi (D) Incumbent re-elected
+CA-09,12.6,9.63,true,D,top-two general; incumbent: Jerry McNerney (D) Incumbent retired; Josh Harder (D) Incumbent re-elected
+CA-10,39.4,78.93,false,D,no R on ballot; top-two general; incumbent: Mark DeSaulnier (D) Incumbent re-elected
+CA-11,74.5,67.90,true,D,top-two general; incumbent: Nancy Pelosi (D) Incumbent re-elected
+CA-12,80.7,80.95,true,D,top-two general; incumbent: Barbara Lee (D) Incumbent re-elected
+CA-13,10.9,-0.42,true,OPEN,top-two general; incumbent: none (new seat)
+CA-14,45.5,38.68,true,D,top-two general; incumbent: Eric Swalwell (D) Incumbent re-elected
+CA-15,57.3,100.00,false,OPEN,2 D / 0 R on general ballot (party votes summed); same-party general; top-two general; incumbent: Jackie Speier (D) Incumbent retired
+CA-16,53.0,100.00,false,D,2 D / 0 R on general ballot (party votes summed); same-party general; top-two general; incumbent: Anna Eshoo (D) Incumbent re-elected
+CA-17,47.4,41.86,true,D,top-two general; incumbent: Ro Khanna (D) Incumbent re-elected
+CA-18,44.1,31.71,true,D,top-two general; incumbent: Zoe Lofgren (D) Incumbent re-elected
+CA-19,39.6,37.30,true,D,top-two general; incumbent: Jimmy Panetta (D) Incumbent re-elected
+CA-20,-24.9,-34.49,true,R,top-two general; incumbent: Connie Conway (R) Incumbent retired; Kevin McCarthy (R) Incumbent re-elected
+CA-21,20.3,8.36,true,D,top-two general; incumbent: Jim Costa (D) Incumbent re-elected
+CA-22,12.9,-3.05,true,R,top-two general; incumbent: David Valadao (R) Incumbent re-elected
+CA-23,-9.8,-22.05,true,R,top-two general; incumbent: Jay Obernolte (R) Incumbent re-elected
+CA-24,29.1,21.13,true,D,top-two general; incumbent: Salud Carbajal (D) Incumbent re-elected
+CA-25,15.3,14.76,true,D,top-two general; incumbent: Raul Ruiz (D) Incumbent re-elected
+CA-26,20.0,9.06,true,D,top-two general; incumbent: Julia Brownley (D) Incumbent re-elected
+CA-27,12.4,-6.48,true,R,top-two general; incumbent: Mike Garcia (R) Incumbent re-elected
+CA-28,34.2,32.47,true,D,top-two general; incumbent: Judy Chu (D) Incumbent re-elected
+CA-29,51.3,100.00,false,D,2 D / 0 R on general ballot (party votes summed); same-party general; top-two general; incumbent: Tony Cárdenas (D) Incumbent re-elected
+CA-30,46.2,100.00,false,D,2 D / 0 R on general ballot (party votes summed); same-party general; top-two general; incumbent: Adam Schiff (D) Incumbent re-elected
+CA-31,31.1,19.08,true,D,top-two general; incumbent: Grace Napolitano (D) Incumbent re-elected
+CA-32,40.8,38.34,true,D,top-two general; incumbent: Brad Sherman (D) Incumbent re-elected
+CA-33,25.3,15.42,true,D,top-two general; incumbent: Pete Aguilar (D) Incumbent re-elected
+CA-34,64.2,100.00,false,D,2 D / 0 R on general ballot (party votes summed); same-party general; top-two general; incumbent: Jimmy Gomez (D) Incumbent re-elected
+CA-35,27.6,14.73,true,D,top-two general; incumbent: Norma Torres (D) Incumbent re-elected
+CA-36,44.1,39.50,true,D,top-two general; incumbent: Ted Lieu (D) Incumbent re-elected
+CA-37,73.3,100.00,false,OPEN,2 D / 0 R on general ballot (party votes summed); same-party general; top-two general; incumbent: Karen Bass (D) Incumbent retired to run for mayor of Los Angeles
+CA-38,30.2,16.18,true,D,top-two general; incumbent: Linda Sánchez (D) Incumbent re-elected
+CA-39,26.1,15.35,true,D,top-two general; incumbent: Mark Takano (D) Incumbent re-elected
+CA-40,1.9,-13.67,true,R,top-two general; incumbent: Young Kim (R) Incumbent re-elected
+CA-41,-1.1,-4.69,true,R,top-two general; incumbent: Ken Calvert (R) Incumbent re-elected
+CA-42,45.8,36.74,true,OPEN,top-two general; incumbent: Lucille Roybal-Allard (D) Incumbent retired; Alan Lowenthal (D) Incumbent retired
+CA-43,63.8,54.66,true,D,top-two general; incumbent: Maxine Waters (D) Incumbent re-elected
+CA-44,48.2,44.41,true,D,top-two general; incumbent: Nanette Barragán (D) Incumbent re-elected
+CA-45,6.2,-4.83,true,R,top-two general; incumbent: Michelle Steel (R) Incumbent re-elected
+CA-46,30.4,23.58,true,D,top-two general; incumbent: Lou Correa (D) Incumbent re-elected
+CA-47,11.1,3.43,true,D,top-two general; incumbent: Katie Porter (D) Incumbent re-elected
+CA-48,-12.3,-20.72,true,R,top-two general; incumbent: Darrell Issa (R) Incumbent re-elected
+CA-49,11.4,5.26,true,D,top-two general; incumbent: Mike Levin (D) Incumbent re-elected
+CA-50,33.1,25.68,true,D,top-two general; incumbent: Scott Peters (D) Incumbent re-elected
+CA-51,27.3,23.73,true,D,top-two general; incumbent: Sara Jacobs (D) Incumbent re-elected
+CA-52,36.9,33.34,true,D,top-two general; incumbent: Juan Vargas (D) Incumbent re-elected
+CO-01,61.3,62.77,true,D,incumbent: Diana DeGette (D) Incumbent re-elected
+CO-02,39.9,41.97,true,D,incumbent: Joe Neguse (D) Incumbent re-elected
+CO-03,-8.3,-0.17,true,R,incumbent: Lauren Boebert (R) Incumbent re-elected
+CO-04,-18.6,-24.37,true,R,incumbent: Ken Buck (R) Incumbent re-elected
+CO-05,-10.1,-15.67,true,R,incumbent: Doug Lamborn (R) Incumbent re-elected
+CO-06,23.8,23.17,true,D,incumbent: Jason Crow (D) Incumbent re-elected
+CO-07,14.2,14.98,true,OPEN,incumbent: Ed Perlmutter (D) Incumbent retired
+CO-08,4.6,0.69,true,OPEN,incumbent: none (new seat)
+CT-01,28.1,23.80,true,D,Working Families fusion line (4683) attributed to D per Wikipedia totals; incumbent: John B. Larson (D) Incumbent re-elected
+CT-02,11.4,18.05,true,D,incumbent: Joe Courtney (D) Incumbent re-elected
+CT-03,19.7,16.16,true,D,incumbent: Rosa DeLauro (D) Incumbent re-elected
+CT-04,31.0,18.82,true,D,Independent fusion line (2493) attributed to R per Wikipedia totals; incumbent: Jim Himes (D) Incumbent re-elected
+CT-05,10.7,0.79,true,D,Independent fusion line (2492) attributed to R per Wikipedia totals; Working Families fusion line (4020) attributed to D per Wikipedia totals; incumbent: Jahana Hayes (D) Incumbent re-elected
+DE-AL,19.0,12.50,true,D,incumbent: Lisa Blunt Rochester (D) Incumbent re-elected
+FL-01,-32.3,-35.72,true,R,incumbent: Matt Gaetz (R) Incumbent re-elected
+FL-02,-11.0,-19.60,true,BOTH,incumbent: Neal Dunn (R) Incumbent re-elected; Al Lawson (D) Incumbent lost re-election; two incumbents of opposite parties on the ballot
+FL-03,-14.1,-26.23,true,R,incumbent: Kat Cammack (R) Incumbent re-elected
+FL-04,-6.7,-20.90,true,OPEN,incumbent: none (new seat)
+FL-05,-15.8,,false,R,unopposed; no votes tabulated (MEDSL placeholder 1 vote); no D on ballot; incumbent: John Rutherford (R) Incumbent re-elected
+FL-06,-23.7,-75.33,false,R,no D on ballot; incumbent: Mike Waltz (R) Incumbent re-elected
+FL-07,-5.5,-17.07,true,OPEN,incumbent: Stephanie Murphy (D) Incumbent retired
+FL-08,-17.6,-29.82,true,R,incumbent: Bill Posey (R) Incumbent re-elected
+FL-09,17.4,7.27,true,D,incumbent: Darren Soto (D) Incumbent re-elected
+FL-10,31.8,19.56,true,OPEN,incumbent: Val Demings (D) Incumbent retired to run for U.S. Senate
+FL-11,-10.9,-27.66,true,R,incumbent: Daniel Webster (R) Incumbent re-elected
+FL-12,-28.7,-40.75,true,R,incumbent: Gus Bilirakis (R) Incumbent re-elected
+FL-13,-6.8,-8.08,true,OPEN,incumbent: none (vacant)
+FL-14,19.1,13.80,true,D,incumbent: Kathy Castor (D) Incumbent re-elected
+FL-15,-3.2,-17.09,true,OPEN,incumbent: none (new seat)
+FL-16,-8.9,-24.30,true,R,incumbent: Vern Buchanan (R) Incumbent re-elected
+FL-17,-16.0,-28.32,true,R,incumbent: Greg Steube (R) Incumbent re-elected
+FL-18,-22.8,-74.67,false,R,no D on ballot; incumbent: Scott Franklin (R) Incumbent re-elected
+FL-19,-21.0,-36.01,true,R,incumbent: Byron Donalds (R) Incumbent re-elected
+FL-20,52.4,44.63,true,D,incumbent: Sheila Cherfilus-McCormick (D) Incumbent re-elected
+FL-21,-9.4,-27.01,true,R,incumbent: Brian Mast (R) Incumbent re-elected
+FL-22,17.6,10.22,true,D,incumbent: Lois Frankel (D) Incumbent re-elected
+FL-23,13.2,4.76,true,OPEN,incumbent: none (vacant)
+FL-24,49.1,43.57,true,D,incumbent: Frederica Wilson (D) Incumbent re-elected
+FL-25,19.9,10.19,true,D,incumbent: Debbie Wasserman Schultz (D) Incumbent re-elected
+FL-26,-18.3,-41.75,true,R,incumbent: Mario Díaz-Balart (R) Incumbent re-elected
+FL-27,-0.3,-14.59,true,R,incumbent: María Elvira Salazar (R) Incumbent re-elected
+FL-28,-6.3,-27.37,true,R,incumbent: Carlos A. Giménez (R) Incumbent re-elected
+GA-01,-13.4,-18.29,true,R,incumbent: Buddy Carter (R) Incumbent re-elected
+GA-02,10.3,9.95,true,D,incumbent: Sanford Bishop (D) Incumbent re-elected
+GA-03,-30.1,-37.50,true,R,incumbent: Drew Ferguson (R) Incumbent re-elected
+GA-04,57.7,56.97,true,D,incumbent: Hank Johnson (D) Incumbent re-elected
+GA-05,66.5,64.96,true,D,incumbent: Nikema Williams (D) Incumbent re-elected
+GA-06,-14.9,-24.44,true,OPEN,incumbent: none (new seat)
+GA-07,25.8,21.74,true,D,incumbent: Carolyn Bourdeaux (D) Incumbent lost renomination; Lucy McBath (D) Incumbent re-elected
+GA-08,-27.6,-37.15,true,R,incumbent: Austin Scott (R) Incumbent re-elected
+GA-09,-37.9,-44.71,true,R,incumbent: Andrew Clyde (R) Incumbent re-elected
+GA-10,-23.4,-29.07,true,OPEN,incumbent: Jody Hice (R) Incumbent retired to run for Georgia Secretary of State
+GA-11,-15.3,-25.20,true,R,incumbent: Barry Loudermilk (R) Incumbent re-elected
+GA-12,-10.1,-19.19,true,R,incumbent: Rick Allen (R) Incumbent re-elected
+GA-13,60.4,63.55,true,D,incumbent: David Scott (D) Incumbent re-elected
+GA-14,-37.4,-31.73,true,R,incumbent: Marjorie Taylor Greene (R) Incumbent re-elected
+HI-01,29.4,47.41,true,D,incumbent: Ed Case (D) Incumbent re-elected
+HI-02,29.5,26.90,true,OPEN,incumbent: Kai Kahele (D) Incumbent retired to run for governor of Hawaii
+IA-01,-2.9,-6.80,true,R,incumbent: Mariannette Miller-Meeks (R) Incumbent re-elected
+IA-02,-4.4,-8.24,true,R,incumbent: Ashley Hinson (R) Incumbent re-elected
+IA-03,-0.3,-0.69,true,D,incumbent: Cindy Axne (D) Incumbent lost re-election
+IA-04,-26.0,-36.91,true,R,incumbent: Randy Feenstra (R) Incumbent re-elected
+ID-01,-38.2,-45.01,true,R,incumbent: Russ Fulcher (R) Incumbent re-elected
+ID-02,-22.9,-27.18,true,R,incumbent: Mike Simpson (R) Incumbent re-elected
+IL-01,42.4,34.07,true,OPEN,incumbent: Bobby Rush (D) Incumbent retired
+IL-02,40.0,34.26,true,D,incumbent: Robin Kelly (D) Incumbent re-elected
+IL-03,41.4,37.00,true,OPEN,incumbent: none (new seat)
+IL-04,46.4,40.35,true,D,incumbent: Chuy García (D) Incumbent re-elected
+IL-05,39.6,40.75,true,D,incumbent: Mike Quigley (D) Incumbent re-elected
+IL-06,10.9,8.72,true,D,incumbent: Sean Casten (D) Incumbent re-elected; Marie Newman (D) Incumbent lost renomination
+IL-07,72.8,99.94,false,D,no R on ballot; incumbent: Danny Davis (D) Incumbent re-elected
+IL-08,15.4,13.78,true,D,incumbent: Raja Krishnamoorthi (D) Incumbent re-elected
+IL-09,41.6,43.39,true,D,incumbent: Jan Schakowsky (D) Incumbent re-elected
+IL-10,25.9,26.00,true,D,incumbent: Brad Schneider (D) Incumbent re-elected
+IL-11,15.3,12.91,true,D,incumbent: Bill Foster (D) Incumbent re-elected
+IL-12,-42.8,-50.00,true,R,incumbent: Mike Bost (R) Incumbent re-elected
+IL-13,11.2,13.23,true,OPEN,incumbent: none (new seat)
+IL-14,11.5,8.32,true,D,incumbent: Lauren Underwood (D) Incumbent re-elected
+IL-15,-38.7,-42.29,true,R,incumbent: Mary Miller (R) Incumbent re-elected; Rodney Davis (R) Incumbent lost renomination
+IL-16,-21.5,-32.66,true,R,incumbent: Adam Kinzinger (R) Incumbent retired; Darin LaHood (R) Incumbent re-elected
+IL-17,7.8,3.97,true,OPEN,incumbent: Cheri Bustos (D) Incumbent retired
+IN-01,8.4,5.68,true,D,incumbent: Frank J. Mrvan (D) Incumbent re-elected
+IN-02,-22.6,-32.16,true,OPEN,incumbent: none (vacant)
+IN-03,-29.9,-35.23,true,R,incumbent: Jim Banks (R) Incumbent re-elected
+IN-04,-29.1,-36.43,true,R,incumbent: Jim Baird (R) Incumbent re-elected
+IN-05,-15.9,-22.14,true,R,incumbent: Victoria Spartz (R) Incumbent re-elected
+IN-06,-31.9,-35.06,true,R,incumbent: Greg Pence (R) Incumbent re-elected
+IN-07,42.4,36.35,true,D,incumbent: André Carson (D) Incumbent re-elected
+IN-08,-32.8,-34.20,true,R,incumbent: Larry Bucshon (R) Incumbent re-elected
+IN-09,-27.3,-29.95,true,OPEN,incumbent: Trey Hollingsworth (R) Incumbent retired
+KS-01,-29.6,-35.33,true,R,incumbent: Tracey Mann (R) Incumbent re-elected
+KS-02,-16.3,-15.28,true,R,incumbent: Jake LaTurner (R) Incumbent re-elected
+KS-03,4.5,12.18,true,D,incumbent: Sharice Davids (D) Incumbent re-elected
+KS-04,-21.7,-26.68,true,R,incumbent: Ron Estes (R) Incumbent re-elected
+KY-01,-42.7,-49.81,true,R,incumbent: James Comer (R) Incumbent re-elected
+KY-02,-36.7,-43.72,true,R,incumbent: Brett Guthrie (R) Incumbent re-elected
+KY-03,22.3,23.99,true,OPEN,incumbent: John Yarmuth (D) Incumbent retired
+KY-04,-32.5,-33.99,true,R,incumbent: Thomas Massie (R) Incumbent re-elected
+KY-05,-59.4,-64.35,true,R,incumbent: Hal Rogers (R) Incumbent re-elected
+KY-06,-11.0,-29.07,true,R,Wikipedia pct gives -30.2; kept MEDSL; incumbent: Andy Barr (R) Incumbent re-elected
+LA-01,-39.0,-47.62,true,R,Louisiana November open primary; incumbent: Steve Scalise (R) Incumbent re-elected
+LA-02,52.5,54.23,true,D,Louisiana November open primary; incumbent: Troy Carter (D) Incumbent re-elected
+LA-03,-37.6,-57.92,true,R,2 D / 4 R on general ballot (party votes summed); Louisiana November open primary; incumbent: Clay Higgins (R) Incumbent re-elected
+LA-04,-24.1,,false,R,unopposed; no votes tabulated (MEDSL placeholder 1 vote); no D on ballot; Louisiana November open primary; incumbent: Mike Johnson (R) Incumbent re-elected
+LA-05,-29.7,-51.21,true,R,2 D / 3 R on general ballot (party votes summed); Louisiana November open primary; incumbent: Julia Letlow (R) Incumbent re-elected
+LA-06,-30.4,-86.98,false,R,0 D / 2 R on general ballot (party votes summed); same-party general; Louisiana November open primary; incumbent: Garret Graves (R) Incumbent re-elected
+MA-01,21.7,23.11,true,D,incumbent: Richard Neal (D) Incumbent re-elected
+MA-02,30.8,32.50,true,D,incumbent: Jim McGovern (D) Incumbent re-elected
+MA-03,27.4,27.09,true,D,incumbent: Lori Trahan (D) Incumbent re-elected
+MA-04,28.5,96.93,false,D,no R on ballot; incumbent: Jake Auchincloss (D) Incumbent re-elected
+MA-05,51.1,48.07,true,D,incumbent: Katherine Clark (D) Incumbent re-elected
+MA-06,27.6,27.72,true,D,incumbent: Seth Moulton (D) Incumbent re-elected
+MA-07,72.4,69.46,true,D,incumbent: Ayanna Pressley (D) Incumbent re-elected
+MA-08,35.5,39.57,true,D,incumbent: Stephen Lynch (D) Incumbent re-elected
+MA-09,18.2,18.39,true,D,incumbent: Bill Keating (D) Incumbent re-elected
+MD-01,-14.5,-11.30,true,R,incumbent: Andy Harris (R) Incumbent re-elected
+MD-02,20.8,18.60,true,D,incumbent: Dutch Ruppersberger (D) Incumbent re-elected
+MD-03,25.5,20.48,true,D,incumbent: John Sarbanes (D) Incumbent re-elected
+MD-04,81.0,80.45,true,OPEN,incumbent: Anthony Brown (D) Incumbent retired to run for Maryland Attorney General
+MD-05,36.5,31.95,true,D,incumbent: Steny Hoyer (D) Incumbent re-elected
+MD-06,9.8,9.56,true,D,incumbent: David Trone (D) Incumbent re-elected
+MD-07,63.5,64.34,true,D,incumbent: Kweisi Mfume (D) Incumbent re-elected
+MD-08,62.6,62.03,true,D,incumbent: Jamie Raskin (D) Incumbent re-elected
+ME-01,22.8,25.92,true,D,incumbent: Chellie Pingree (D) Incumbent re-elected
+ME-02,-6.1,3.8,true,D,MEDSL ME-02 rows mix RCV rounds (unusable); first-round shares Golden 48.4 Poliquin 44.6 from Wikipedia; incumbent: Jared Golden (D) Incumbent re-elected
+MI-01,-19.8,-22.57,true,R,incumbent: Jack Bergman (R) Incumbent re-elected
+MI-02,-28.2,-29.39,true,R,incumbent: John Moolenaar (R) Incumbent re-elected
+MI-03,8.5,12.91,true,OPEN,incumbent: Peter Meijer (R) Incumbent lost renomination
+MI-04,-3.9,-11.89,true,R,incumbent: Bill Huizenga (R) Incumbent re-elected; Fred Upton (R) Incumbent retired
+MI-05,-24.2,-27.45,true,R,incumbent: Tim Walberg (R) Incumbent re-elected
+MI-06,26.7,31.78,true,D,incumbent: Debbie Dingell (D) Incumbent re-elected
+MI-07,0.5,5.42,true,D,incumbent: Elissa Slotkin (D) Incumbent re-elected
+MI-08,2.0,10.26,true,D,incumbent: Dan Kildee (D) Incumbent re-elected
+MI-09,-29.5,-30.73,true,R,incumbent: Lisa McClain (R) Incumbent re-elected
+MI-10,-1.0,-0.49,true,OPEN,incumbent: none (new seat)
+MI-11,19.8,22.64,true,D,incumbent: Haley Stevens (D) Incumbent re-elected; Andy Levin (D) Incumbent lost renomination
+MI-12,48.5,44.58,true,D,incumbent: Rashida Tlaib (D) Incumbent re-elected; Brenda Lawrence (D) Incumbent retired
+MI-13,49.6,47.12,true,OPEN,incumbent: none (new seat)
+MN-01,-9.2,-11.52,true,R,incumbent: Brad Finstad (R) Incumbent re-elected
+MN-02,7.2,5.23,true,D,incumbent: Angie Craig (D) Incumbent re-elected
+MN-03,21.0,19.19,true,D,incumbent: Dean Phillips (D) Incumbent re-elected
+MN-04,37.6,35.33,true,D,incumbent: Betty McCollum (D) Incumbent re-elected
+MN-05,63.1,49.80,true,D,incumbent: Ilhan Omar (D) Incumbent re-elected
+MN-06,-17.6,-24.17,true,R,incumbent: Tom Emmer (R) Incumbent re-elected
+MN-07,-33.2,-39.33,true,R,incumbent: Michelle Fischbach (R) Incumbent re-elected
+MN-08,-11.3,-14.46,true,R,incumbent: Pete Stauber (R) Incumbent re-elected
+MO-01,58.4,48.53,true,D,incumbent: Cori Bush (D) Incumbent re-elected
+MO-02,-7.8,-11.84,true,R,incumbent: Ann Wagner (R) Incumbent re-elected
+MO-03,-26.3,-30.22,true,R,incumbent: Blaine Luetkemeyer (R) Incumbent re-elected
+MO-04,-39.3,-45.01,true,OPEN,incumbent: Vicky Hartzler (R) Incumbent retired to run for U.S. Senate
+MO-05,26.3,24.58,true,D,incumbent: Emanuel Cleaver (D) Incumbent re-elected
+MO-06,-37.1,-42.84,true,R,incumbent: Sam Graves (R) Incumbent re-elected
+MO-07,-41.4,-44.10,true,OPEN,incumbent: Billy Long (R) Incumbent retired to run for U.S. Senate
+MO-08,-51.3,-54.09,true,R,incumbent: Jason Smith (R) Incumbent re-elected
+MS-01,-31.7,-45.95,true,R,incumbent: Trent Kelly (R) Incumbent re-elected
+MS-02,26.1,20.20,true,D,incumbent: Bennie Thompson (D) Incumbent re-elected
+MS-03,-24.3,-41.48,true,R,incumbent: Michael Guest (R) Incumbent re-elected
+MS-04,-38.0,-48.74,true,OPEN,incumbent: Steven Palazzo (R) Incumbent lost renomination
+MT-01,-6.9,-3.16,true,OPEN,incumbent: none (new seat)
+MT-02,-26.8,-36.40,true,R,incumbent: 2020 (R) Incumbent re-elected
+NC-01,7.3,4.74,true,OPEN,incumbent: G. K. Butterfield (D) Incumbent retired
+NC-02,28.8,29.36,true,D,incumbent: Deborah Ross (D) Incumbent re-elected
+NC-03,-25.4,-33.81,true,R,incumbent: Greg Murphy (R) Incumbent re-elected
+NC-04,35.1,33.81,true,OPEN,incumbent: David Price (D) Incumbent retired
+NC-05,-21.3,-26.31,true,R,incumbent: Virginia Foxx (R) Incumbent re-elected
+NC-06,12.4,8.85,true,D,incumbent: Kathy Manning (D) Incumbent re-elected
+NC-07,-12.7,-15.42,true,R,incumbent: David Rouzer (R) Incumbent re-elected
+NC-08,-34.1,-39.82,true,R,incumbent: Dan Bishop (R) Incumbent re-elected
+NC-09,-8.0,-13.00,true,R,incumbent: Richard Hudson (R) Incumbent re-elected; Ted Budd (R) Incumbent retired to run for U.S. Senate
+NC-10,-39.5,-45.30,true,R,incumbent: Patrick McHenry (R) Incumbent re-elected
+NC-11,-10.2,-9.28,true,OPEN,incumbent: Madison Cawthorn (R) Incumbent lost renomination
+NC-12,30.2,25.49,true,D,incumbent: Alma Adams (D) Incumbent re-elected
+NC-13,1.7,3.19,true,OPEN,incumbent: none (new seat)
+NC-14,16.4,15.41,true,OPEN,incumbent: none (new seat)
+ND-AL,-33.5,-62.20,false,R,no D on ballot; incumbent: Kelly Armstrong (R) Incumbent re-elected
+NE-01,-11.1,-15.82,true,R,incumbent: Mike Flood (R) Incumbent re-elected
+NE-02,6.3,-2.67,true,R,incumbent: Don Bacon (R) Incumbent re-elected
+NE-03,-51.8,-62.51,true,R,incumbent: Adrian Smith (R) Incumbent re-elected
+NH-01,5.9,8.12,true,D,incumbent: Chris Pappas (D) Incumbent re-elected
+NH-02,8.8,11.72,true,D,incumbent: Annie Kuster (D) Incumbent re-elected
+NJ-01,24.4,27.14,true,D,incumbent: Donald Norcross (D) Incumbent re-elected
+NJ-02,-4.9,-18.90,true,R,incumbent: Jeff Van Drew (R) Incumbent re-elected
+NJ-03,14.0,11.82,true,D,incumbent: Andy Kim (D) Incumbent re-elected
+NJ-04,-22.4,-35.55,true,R,incumbent: Chris Smith (R) Incumbent re-elected
+NJ-05,12.4,10.41,true,D,incumbent: Josh Gottheimer (D) Incumbent re-elected
+NJ-06,19.2,16.44,true,D,incumbent: Frank Pallone (D) Incumbent re-elected
+NJ-07,3.9,-2.80,true,D,incumbent: Tom Malinowski (D) Incumbent lost re-election
+NJ-08,45.3,50.18,true,OPEN,Wikipedia pct gives 48.7; kept MEDSL; incumbent: Albio Sires (D) Incumbent retired
+NJ-09,18.9,11.40,true,D,incumbent: Bill Pascrell (D) Incumbent re-elected
+NJ-10,62.0,57.60,true,D,incumbent: Donald Payne Jr. (D) Incumbent re-elected
+NJ-11,16.9,18.81,true,D,incumbent: Mikie Sherrill (D) Incumbent re-elected
+NJ-12,34.4,27.22,true,D,incumbent: Bonnie Watson Coleman (D) Incumbent re-elected
+NM-01,14.4,11.51,true,D,incumbent: Melanie Stansbury (D) Incumbent re-elected
+NM-02,5.9,0.70,true,R,incumbent: Yvette Herrell (R) Incumbent lost re-election
+NM-03,10.8,16.31,true,D,incumbent: Teresa Leger Fernandez (D) Incumbent re-elected
+NV-01,8.5,5.61,true,D,incumbent: Dina Titus (D) Incumbent re-elected
+NV-02,-11.0,-21.93,true,R,incumbent: Mark Amodei (R) Incumbent re-elected
+NV-03,6.6,3.97,true,D,incumbent: Susie Lee (D) Incumbent re-elected
+NV-04,8.3,4.83,true,D,incumbent: Steven Horsford (D) Incumbent re-elected
+NY-01,0.2,-11.01,true,OPEN,incumbent: Lee Zeldin (R) Incumbent retired to run for governor of New York
+NY-02,-1.5,-21.44,true,R,incumbent: Andrew Garbarino (R) Incumbent re-elected
+NY-03,8.2,-7.53,true,OPEN,incumbent: Tom Suozzi (D) Incumbent retired to run for governor of New York
+NY-04,14.5,-3.59,true,OPEN,incumbent: Kathleen Rice (D) Incumbent retired
+NY-05,62.4,50.36,true,D,incumbent: Gregory Meeks (D) Incumbent re-elected
+NY-06,30.3,27.88,true,D,incumbent: Grace Meng (D) Incumbent re-elected
+NY-07,62.6,61.28,true,D,incumbent: Nydia Velázquez (D) Incumbent re-elected
+NY-08,53.2,43.39,true,D,incumbent: Hakeem Jeffries (D) Incumbent re-elected
+NY-09,51.6,81.31,false,D,no R on ballot; incumbent: Yvette Clarke (D) Incumbent re-elected
+NY-10,71.2,68.38,true,OPEN,incumbent: Mondaire Jones (D) Incumbent lost renomination
+NY-11,-7.6,-23.49,true,R,incumbent: Nicole Malliotakis (R) Incumbent re-elected
+NY-12,71.4,63.68,true,D,incumbent: Carolyn Maloney (D) Incumbent lost renomination; Jerry Nadler (D) Incumbent re-elected
+NY-13,77.0,98.93,false,D,no R on ballot; incumbent: Adriano Espaillat (D) Incumbent re-elected
+NY-14,56.6,43.26,true,D,incumbent: Alexandria Ocasio-Cortez (D) Incumbent re-elected
+NY-15,70.0,65.51,true,D,incumbent: Ritchie Torres (D) Incumbent re-elected
+NY-16,43.7,28.57,true,D,incumbent: Jamaal Bowman (D) Incumbent re-elected
+NY-17,10.1,-0.64,true,D,incumbent: Sean Patrick Maloney (D) Incumbent lost re-election
+NY-18,8.4,1.35,true,D,incumbent: Pat Ryan (D) Incumbent re-elected
+NY-19,4.6,-1.56,true,OPEN,incumbent: none (new seat)
+NY-20,19.2,10.14,true,D,incumbent: Paul Tonko (D) Incumbent re-elected
+NY-21,-12.4,-18.29,true,R,Moderate fusion line (3776) attributed to D per Wikipedia totals; incumbent: Elise Stefanik (R) Incumbent re-elected
+NY-22,7.5,-0.98,true,OPEN,incumbent: John Katko (R) Incumbent retired
+NY-23,-17.2,-29.82,true,OPEN,incumbent: Joe Sempolinski (R) Incumbent retired; Chris Jacobs (R) Incumbent retired
+NY-24,-17.2,-31.39,true,R,incumbent: Claudia Tenney (R) Incumbent re-elected
+NY-25,19.7,7.73,true,D,incumbent: Joseph Morelle (D) Incumbent re-elected
+NY-26,23.4,27.93,true,D,incumbent: Brian Higgins (D) Incumbent re-elected
+OH-01,8.5,5.52,true,R,incumbent: Steve Chabot (R) Incumbent lost re-election
+OH-02,-45.4,-49.01,true,R,incumbent: Brad Wenstrup (R) Incumbent re-elected
+OH-03,43.8,40.91,true,D,incumbent: Joyce Beatty (D) Incumbent re-elected
+OH-04,-35.7,-38.39,true,R,incumbent: Jim Jordan (R) Incumbent re-elected
+OH-05,-26.8,-33.82,true,R,incumbent: Bob Latta (R) Incumbent re-elected
+OH-06,-28.7,-35.45,true,R,incumbent: Bill Johnson (R) Incumbent re-elected
+OH-07,-9.2,-10.71,true,OPEN,incumbent: Bob Gibbs (R) Incumbent retired; Anthony Gonzalez (R) Incumbent retired
+OH-08,-22.0,-29.28,true,R,incumbent: Warren Davidson (R) Incumbent re-elected
+OH-09,-2.9,13.27,true,D,incumbent: Marcy Kaptur (D) Incumbent re-elected
+OH-10,-3.5,-23.33,true,R,incumbent: Mike Turner (R) Incumbent re-elected
+OH-11,57.6,55.51,true,D,incumbent: Shontel Brown (D) Incumbent re-elected
+OH-12,-30.9,-38.54,true,R,incumbent: Troy Balderson (R) Incumbent re-elected
+OH-13,2.8,5.35,true,OPEN,incumbent: Tim Ryan (D) Incumbent retired to run for U.S. Senate
+OH-14,-14.9,-23.48,true,R,incumbent: David Joyce (R) Incumbent re-elected
+OH-15,-6.8,-13.92,true,R,incumbent: Mike Carey (R) Incumbent re-elected
+OK-01,-21.4,-26.48,true,R,incumbent: Kevin Hern (R) Incumbent re-elected
+OK-02,-53.4,-49.06,true,OPEN,incumbent: Markwayne Mullin (R) Incumbent retired to run for U.S. Senate
+OK-03,-44.6,-49.08,true,R,incumbent: Frank Lucas (R) Incumbent re-elected
+OK-04,-31.6,-33.50,true,R,incumbent: Tom Cole (R) Incumbent re-elected
+OK-05,-16.9,-21.60,true,R,incumbent: Stephanie Bice (R) Incumbent re-elected
+OR-01,39.3,35.98,true,D,incumbent: Suzanne Bonamici (D) Incumbent re-elected
+OR-02,-24.4,-35.15,true,R,incumbent: Cliff Bentz (R) Incumbent re-elected
+OR-03,47.3,43.63,true,D,incumbent: Earl Blumenauer (D) Incumbent re-elected
+OR-04,12.7,7.47,true,OPEN,incumbent: Peter DeFazio (D) Incumbent retired
+OR-05,8.9,-2.08,true,OPEN,incumbent: Kurt Schrader (D) Incumbent lost renomination
+OR-06,13.2,2.45,true,OPEN,incumbent: none (new seat)
+PA-01,4.6,-9.73,true,R,incumbent: Brian Fitzpatrick (R) Incumbent re-elected
+PA-02,42.7,51.30,true,D,incumbent: Brendan Boyle (D) Incumbent re-elected
+PA-03,80.9,95.14,false,D,no R on ballot; incumbent: Dwight Evans (D) Incumbent re-elected
+PA-04,18.9,22.58,true,D,incumbent: Madeleine Dean (D) Incumbent re-elected
+PA-05,32.3,30.16,true,D,incumbent: Mary Gay Scanlon (D) Incumbent re-elected
+PA-06,14.7,16.63,true,D,incumbent: Chrissy Houlahan (D) Incumbent re-elected
+PA-07,0.6,1.97,true,D,incumbent: Susan Wild (D) Incumbent re-elected
+PA-08,-2.9,2.45,true,D,incumbent: Matt Cartwright (D) Incumbent re-elected
+PA-09,-36.5,-38.62,true,R,incumbent: Dan Meuser (R) Incumbent re-elected; Fred Keller (R) Incumbent retired
+PA-10,-4.1,-7.67,true,R,incumbent: Scott Perry (R) Incumbent re-elected
+PA-11,-21.3,-23.09,true,R,incumbent: Lloyd Smucker (R) Incumbent re-elected
+PA-12,19.9,12.39,true,OPEN,incumbent: Mike Doyle (D) Incumbent retired
+PA-13,-45.2,-100.00,false,R,no D on ballot; incumbent: John Joyce (R) Incumbent re-elected
+PA-14,-31.5,-100.00,false,R,no D on ballot; incumbent: Guy Reschenthaler (R) Incumbent re-elected
+PA-15,-37.0,-39.88,true,R,incumbent: Glenn Thompson (R) Incumbent re-elected
+PA-16,-20.6,-18.72,true,R,incumbent: Mike Kelly (R) Incumbent re-elected
+PA-17,5.8,6.78,true,OPEN,incumbent: Conor Lamb (D) Incumbent retired to run for U.S. Senate
+RI-01,29.1,28.24,true,D,incumbent: David Cicilline (D) Incumbent re-elected
+RI-02,13.7,3.71,true,OPEN,incumbent: James Langevin (D) Incumbent retired
+SC-01,-8.6,-13.92,true,R,incumbent: Nancy Mace (R) Incumbent re-elected
+SC-02,-10.6,-20.16,true,R,incumbent: Joe Wilson (R) Incumbent re-elected
+SC-03,-37.5,-97.64,false,R,no D on ballot; incumbent: Jeff Duncan (R) Incumbent re-elected
+SC-04,-18.5,-90.81,false,R,no D on ballot; incumbent: William Timmons (R) Incumbent re-elected
+SC-05,-18.2,-29.55,true,R,incumbent: Ralph Norman (R) Incumbent re-elected
+SC-06,32.1,24.19,true,D,incumbent: Jim Clyburn (D) Incumbent re-elected
+SC-07,-18.7,-29.70,true,OPEN,incumbent: Tom Rice (R) Incumbent lost renomination
+SD-AL,-26.2,-77.42,false,R,no D on ballot; incumbent: Dusty Johnson (R) Incumbent re-elected
+TN-01,-54.2,-58.61,true,R,incumbent: Diana Harshbarger (R) Incumbent re-elected
+TN-02,-29.2,-35.82,true,R,incumbent: Tim Burchett (R) Incumbent re-elected
+TN-03,-31.9,-38.18,true,R,incumbent: Chuck Fleischmann (R) Incumbent re-elected
+TN-04,-37.7,-44.83,true,R,incumbent: Scott DesJarlais (R) Incumbent re-elected
+TN-05,-11.3,-13.52,true,OPEN,incumbent: Jim Cooper (D) Incumbent retired
+TN-06,-29.1,-32.66,true,R,incumbent: John Rose (R) Incumbent re-elected
+TN-07,-15.1,-21.82,true,R,incumbent: Mark Green (R) Incumbent re-elected
+TN-08,-37.3,-49.69,true,R,incumbent: David Kustoff (R) Incumbent re-elected
+TN-09,48.1,43.82,true,D,incumbent: Steve Cohen (D) Incumbent re-elected
+TX-01,-45.9,-56.16,true,OPEN,incumbent: Louie Gohmert (R) Incumbent retired to run for Texas Attorney General
+TX-02,-22.8,-31.83,true,R,incumbent: Dan Crenshaw (R) Incumbent re-elected
+TX-03,-14.4,-23.64,true,OPEN,incumbent: Van Taylor (R) Incumbent withdrew from renomination
+TX-04,-26.0,-35.78,true,R,incumbent: Pat Fallon (R) Incumbent re-elected
+TX-05,-22.4,-30.04,true,R,incumbent: Lance Gooden (R) Incumbent re-elected
+TX-06,-24.0,-100.00,false,R,no D on ballot; incumbent: Jake Ellzey (R) Incumbent re-elected
+TX-07,29.7,27.59,true,D,incumbent: Lizzie Fletcher (D) Incumbent re-elected
+TX-08,-27.2,-37.52,true,OPEN,incumbent: Kevin Brady (R) Incumbent retired
+TX-09,53.4,53.35,true,D,incumbent: Al Green (D) Incumbent re-elected
+TX-10,-18.8,-29.00,true,R,incumbent: Michael McCaul (R) Incumbent re-elected
+TX-11,-40.4,-100.00,false,R,no D on ballot; incumbent: August Pfluger (R) Incumbent re-elected
+TX-12,-18.1,-28.54,true,R,incumbent: Kay Granger (R) Incumbent re-elected
+TX-13,-45.5,-50.71,true,R,incumbent: Ronny Jackson (R) Incumbent re-elected
+TX-14,-28.5,-40.32,true,R,incumbent: Randy Weber (R) Incumbent re-elected
+TX-15,-2.9,-8.48,true,OPEN,incumbent: none (new seat)
+TX-16,35.4,26.93,true,D,incumbent: Veronica Escobar (D) Incumbent re-elected
+TX-17,-22.5,-32.97,true,R,incumbent: Pete Sessions (R) Incumbent re-elected
+TX-18,48.6,44.52,true,D,incumbent: Sheila Jackson Lee (D) Incumbent re-elected
+TX-19,-46.2,-80.30,false,R,no D on ballot; incumbent: Jodey Arrington (R) Incumbent re-elected
+TX-20,33.1,36.85,true,D,incumbent: Joaquin Castro (D) Incumbent re-elected
+TX-21,-19.7,-25.68,true,R,incumbent: Chip Roy (R) Incumbent re-elected
+TX-22,-16.0,-26.68,true,R,incumbent: Troy Nehls (R) Incumbent re-elected
+TX-23,-7.2,-17.10,true,R,incumbent: Tony Gonzales (R) Incumbent re-elected
+TX-24,-12.3,-19.50,true,R,incumbent: Beth Van Duyne (R) Incumbent re-elected
+TX-25,-31.2,-100.00,false,R,no D on ballot; incumbent: Roger Williams (R) Incumbent re-elected
+TX-26,-18.5,-69.29,false,R,no D on ballot; incumbent: Michael C. Burgess (R) Incumbent re-elected
+TX-27,-22.4,-28.89,true,R,incumbent: Michael Cloud (R) Incumbent re-elected
+TX-28,7.0,13.30,true,D,incumbent: Henry Cuellar (D) Incumbent re-elected
+TX-29,36.7,42.81,true,D,incumbent: Sylvia Garcia (D) Incumbent re-elected
+TX-30,56.7,53.00,true,OPEN,incumbent: Eddie Bernice Johnson (D) Incumbent retired
+TX-31,-20.3,-100.00,false,R,no D on ballot; incumbent: John Carter (R) Incumbent re-elected
+TX-32,33.0,30.71,true,D,incumbent: Colin Allred (D) Incumbent re-elected
+TX-33,49.9,46.37,true,D,incumbent: Marc Veasey (D) Incumbent re-elected
+TX-34,15.5,8.50,true,BOTH,incumbent: Mayra Flores (R) Incumbent lost re-election; Vicente Gonzalez (D) Incumbent re-elected; two incumbents of opposite parties on the ballot
+TX-35,45.2,45.15,true,OPEN,incumbent: none (new seat)
+TX-36,-31.6,-38.92,true,R,incumbent: Brian Babin (R) Incumbent re-elected
+TX-37,52.8,55.79,true,D,incumbent: Lloyd Doggett (D) Incumbent re-elected
+TX-38,-18.1,-27.43,true,OPEN,incumbent: none (new seat)
+UT-01,-19.9,-33.95,true,R,incumbent: Blake Moore (R) Incumbent re-elected
+UT-02,-17.1,-25.70,true,R,incumbent: Chris Stewart (R) Incumbent re-elected
+UT-03,-19.2,-34.87,true,R,incumbent: John Curtis (R) Incumbent re-elected
+UT-04,-25.9,-28.71,true,R,incumbent: Burgess Owens (R) Incumbent re-elected
+VA-01,-6.2,-13.01,true,R,incumbent: Rob Wittman (R) Incumbent re-elected
+VA-02,1.9,-3.40,true,D,incumbent: Elaine Luria (D) Incumbent lost re-election
+VA-03,38.4,34.64,true,D,incumbent: Bobby Scott (D) Incumbent re-elected
+VA-04,35.7,30.02,true,D,"Wikipedia pct gives 28.8; kept MEDSL; incumbent: Donald McEachin (D) Incumbent re-elected but died on November 28, 2022"
+VA-05,-8.3,-15.33,true,R,incumbent: Bob Good (R) Incumbent re-elected
+VA-06,-21.5,-28.95,true,R,incumbent: Ben Cline (R) Incumbent re-elected
+VA-07,6.8,4.65,true,D,incumbent: Abigail Spanberger (D) Incumbent re-elected
+VA-08,56.0,48.77,true,D,incumbent: Don Beyer (D) Incumbent re-elected
+VA-09,-41.9,-46.70,true,R,incumbent: Morgan Griffith (R) Incumbent re-elected
+VA-10,18.1,6.50,true,D,incumbent: Jennifer Wexton (D) Incumbent re-elected
+VA-11,41.3,33.68,true,D,incumbent: Gerry Connolly (D) Incumbent re-elected
+VT-AL,35.6,34.78,true,OPEN,incumbent: Peter Welch (D) Incumbent retired to run for U.S. Senate
+WA-01,30.6,27.09,true,D,top-two general; incumbent: Suzan DelBene (D) Incumbent re-elected
+WA-02,22.9,20.31,true,D,top-two general; incumbent: Rick Larsen (D) Incumbent re-elected
+WA-03,-4.2,0.82,true,OPEN,top-two general; incumbent: Jaime Herrera Beutler (R) Incumbent did not advance to the general election
+WA-04,-17.0,-35.26,true,R,top-two general; incumbent: Dan Newhouse (R) Incumbent re-elected
+WA-05,-10.0,-19.26,true,R,top-two general; incumbent: Cathy McMorris Rodgers (R) Incumbent re-elected
+WA-06,17.2,20.11,true,D,top-two general; incumbent: Derek Kilmer (D) Incumbent re-elected
+WA-07,75.5,71.19,true,D,top-two general; incumbent: Pramila Jayapal (D) Incumbent re-elected
+WA-08,6.7,6.85,true,D,top-two general; incumbent: Kim Schrier (D) Incumbent re-elected
+WA-09,45.2,43.41,true,D,top-two general; incumbent: Adam Smith (D) Incumbent re-elected
+WA-10,17.7,14.11,true,D,top-two general; incumbent: Marilyn Strickland (D) Incumbent re-elected
+WI-01,-2.0,-8.90,true,R,incumbent: Bryan Steil (R) Incumbent re-elected
+WI-02,41.8,44.08,true,D,incumbent: Mark Pocan (D) Incumbent re-elected
+WI-03,-4.7,-3.70,true,OPEN,incumbent: Ron Kind (D) Incumbent retired
+WI-04,53.1,52.66,true,D,incumbent: Gwen Moore (D) Incumbent re-elected
+WI-05,-22.9,-28.84,true,R,incumbent: Scott Fitzgerald (R) Incumbent re-elected
+WI-06,-15.7,-94.93,false,R,no D on ballot; incumbent: Glenn Grothman (R) Incumbent re-elected
+WI-07,-20.0,-23.75,true,R,incumbent: Tom Tiffany (R) Incumbent re-elected
+WI-08,-15.5,-72.21,false,R,no D on ballot; incumbent: Mike Gallagher (R) Incumbent re-elected
+WV-01,-40.9,-37.89,true,R,incumbent: Carol Miller (R) Incumbent re-elected
+WV-02,-37.0,-31.12,true,R,incumbent: Alex Mooney (R) Incumbent re-elected; David McKinley (R) Incumbent lost renomination
+WY-AL,-43.7,-43.81,true,OPEN,Wikipedia pct gives -44.9; kept MEDSL; incumbent: Liz Cheney (R) Incumbent lost renomination
