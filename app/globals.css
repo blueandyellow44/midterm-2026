@@ -418,3 +418,11 @@ html[data-view=mobile] .wall-hide-phone {display:none;}
 .wall-mobile-moved {padding:0 2px;} .wall-mobile-moved .wall-strip-moved {margin:0 0 8px;}
 .wall-mobile-by {display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;} .wall-mobile-by > * {white-space:nowrap;}
 .wall-strip.is-slim {padding:8px 16px;min-height:0;} .wall-strip.is-slim .wall-strip-meta {flex-direction:row;gap:16px;} .wall-mobile-hero {padding:0 2px;} .wall-mobile-by {margin:0;}
+
+/* Phone dial stays at the bottom (Max, 2026-10-28: "I liked dial at the bottom of the screen"). Content fades into its top edge
+   so the map reads as scrolling behind it, and the page ends with room to clear it. */
+.wall-dialbar::before {content:"";position:absolute;left:0;right:0;top:-28px;height:28px;background:linear-gradient(to bottom,transparent,var(--panel));pointer-events:none;}
+.wall-mobile {padding-bottom:0;}
+html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(124px + env(safe-area-inset-bottom));}   /* the whole page, footer included, clears the bar */
+.wall-mrow.d-lean,.wall-mrow.r-lean,.wall-mrow.toss {color:#0b1a3a;} .wall-mrow.d-lean small,.wall-mrow.r-lean small,.wall-mrow.toss small {color:#0b1a3a;opacity:.75;}   /* dark text on the pale lean shades (contrast) */
+.wall-mrow.d-likely {background:#2b67d6;} .wall-mrow.r-likely {background:#c93a40;}   /* white text at 5:1 on the phone race rows */
