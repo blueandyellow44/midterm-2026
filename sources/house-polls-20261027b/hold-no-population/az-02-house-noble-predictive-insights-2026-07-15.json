@@ -1,0 +1,38 @@
+{
+ "file": "az-02-house-noble-predictive-insights-2026-07-15.json",
+ "race": "2026-AZ-02-HOUSE",
+ "pid": "noble-predictive-insights",
+ "name": "Noble Predictive Insights",
+ "sponsor": "Arizona Eagle PAC (Democratic-aligned)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "noble-predictive-insights-s-2026-AZ-02-HOUSE-2026-07-15",
+ "poll": {
+  "field_start": "2026-07-13",
+  "field_end": "2026-07-15",
+  "release_date": "2026-07-30",
+  "n": null,
+  "pop": null,
+  "D": 38.0,
+  "R": 37.0,
+  "other": 7.0,
+  "undecided": 19.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://navajotimes.com/reznews/pac-poll-gives-nez-slight-edge-over-crane-in-arizona-congressional-rematch/",
+  "source_locator": "Navajo Times, Jul 30, 2026: Noble Predictive Insights for Arizona Eagle PAC, July 13-15; initial ballot Nez 38, Crane 37, Goodwin (L) 7, undecided 19; after PAC-selected messaging Nez 48, Crane 32",
+  "notes": "out_of_window (field end Jul 15); written because no AZ-02 poll with fieldwork on/after Sep 1 is verifiable from a free source. Article gives no n, MoE, population or mode. other = Goodwin (L) 7. Later AZ-02 polls (GBAO Aug 21-24 Crane 46 Nez 44; Peak Insights Aug 17-20 Crane 53 Nez 42; Emerson/Poll Vault Oct 12-14 Nez 50 Crane 48) are listed in README as seen, unverifiable.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Noble Predictive Insights",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-07-30"
+ }
+}

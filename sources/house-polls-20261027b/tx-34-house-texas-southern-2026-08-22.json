@@ -1,0 +1,38 @@
+{
+ "file": "tx-34-house-texas-southern-2026-08-22.json",
+ "race": "2026-TX-34-HOUSE",
+ "pid": "texas-southern",
+ "name": "Texas Southern University (Barbara Jordan Public Policy Research and Survey Center)",
+ "sponsor": "Texas Southern University",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "texas-southern-h-2026-TX-34-HOUSE-2026-08-22",
+ "poll": {
+  "field_start": "2026-08-18",
+  "field_end": "2026-08-22",
+  "release_date": "2026-08-28",
+  "n": 700,
+  "pop": "LV",
+  "D": 45.0,
+  "R": 42.0,
+  "other": 5.0,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.fox26houston.com/news/south-texas-congressional-poll-gives-democrats-edge-three-key-districts",
+  "source_locator": "FOX 26 Houston, Aug 28, 2026: Barbara Jordan Public Research and Survey Center at Texas Southern University; TX-34: 700 likely November voters, MoE +/-3.7; Vicente Gonzalez (D) 45, Eric Flores (R) 42, Eddie Espinoza (Green) 3, Chris Royal (Libertarian) 2, undecided 8",
+  "notes": "out_of_window (field end Aug 22); written because no TX-34 poll with fieldwork on/after Sep 1 is verifiable from a free source (Washington Post-Schar School Oct 14-19 Gonzalez 50 Flores 43 is paywalled; see README). FIELD DATES (Aug 18-22) ARE FROM WIKIPEDIA'S TX-34 table; the FOX 26 article gives no field dates and no TSU release page was found (tsu.edu news listing stops at 2025). other = Espinoza 3 + Royal 2. 2025 Texas map.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Texas Southern University",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-08-28"
+ }
+}

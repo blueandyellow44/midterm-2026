@@ -1,0 +1,38 @@
+{
+ "file": "mi-07-house-global-strategy-group-2026-08-13.json",
+ "race": "2026-MI-07-HOUSE",
+ "pid": "global-strategy-group",
+ "name": "Global Strategy Group",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "global-strategy-group-s-2026-MI-07-HOUSE-2026-08-13",
+ "poll": {
+  "field_start": "2026-08-11",
+  "field_end": "2026-08-13",
+  "release_date": "2026-08-20",
+  "n": null,
+  "pop": null,
+  "D": 49.0,
+  "R": 47.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-poll-william-lawrence-leads-tom-barrett-in-mi-07",
+  "source_locator": "HMP release Aug 20, 2026: Global Strategy Group, August 11-13; 'Lawrence leads Barrett 49% to 47%'",
+  "notes": "out_of_window (field end Aug 13); written because no MI-07 poll with fieldwork on/after Sep 1 is verifiable from a free source (Emerson/Poll Vault Oct 12-14 Lawrence 53 Barrett 45 is paywalled; see README). Release gives no n, population, MoE or mode (Wikipedia lists n=500 LV, undecided 4; not used).",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Global Strategy Group",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-08-20"
+ }
+}

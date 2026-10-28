@@ -1,0 +1,38 @@
+{
+ "file": "fl-22-house-tavern-research-2026-08-12.json",
+ "race": "2026-FL-22-HOUSE",
+ "pid": "tavern-research",
+ "name": "Tavern Research",
+ "sponsor": "Tavern Research (self-released)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "tavern-research-h-2026-FL-22-HOUSE-2026-08-12",
+ "poll": {
+  "field_start": "2026-08-10",
+  "field_end": "2026-08-12",
+  "release_date": "2026-08-19",
+  "n": 551,
+  "pop": "LV",
+  "D": 50.0,
+  "R": 50.0,
+  "other": null,
+  "undecided": 0.0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://242750075.fs1.hubspotusercontent-na2.net/hubfs/242750075/FL-22%20General%20Toplines%20%E2%80%94%20Aug%2019_NEW.pdf",
+  "source_locator": "'FL-22 General Toplines - Aug 2026. Online sample of 551 voters fielded over web panels and via text-to-web from August 10, 2026 to August 12, 2026 ... The margin of error is 4.9%.' Q13 (with leaners): Republican Casey Askar 50%, Democrat Pia Dandiya 50%, Not sure 0%",
+  "notes": "out_of_window (field end Aug 12). Topline PDF does not print the firm name; attribution to Tavern Research is from uspollingdata.com and Wikipedia, and the same HubSpot account (242750075) hosts the OH-07 toplines Wikipedia attributes to Tavern Research. Release date Aug 19 from the file name. 'Voters' with a vote-likelihood screen (Q12); treated as LV. Ballot asked with leaners.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "weighted by gender, race, 2024 Presidential Vote, education, age, and survey mode",
+  "method_url": "https://242750075.fs1.hubspotusercontent-na2.net/hubfs/242750075/FL-22%20General%20Toplines%20%E2%80%94%20Aug%2019_NEW.pdf",
+  "method_locator": "Header, p.1",
+  "mode": "web panels and text-to-web",
+  "method_owner": "Tavern Research",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-08-19"
+ }
+}

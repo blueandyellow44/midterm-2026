@@ -1,0 +1,38 @@
+{
+ "file": "ca-22-house-tulchin-research-2026-06-21.json",
+ "race": "2026-CA-22-HOUSE",
+ "pid": "tulchin-research",
+ "name": "Tulchin Research",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "tulchin-research-s-2026-CA-22-HOUSE-2026-06-21",
+ "poll": {
+  "field_start": "2026-06-15",
+  "field_end": "2026-06-21",
+  "release_date": "2026-07-22",
+  "n": null,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.villegasforcongress.com/news/randy-villegas-leads-republican-david-valadao-in-ca-22-in-new-poll",
+  "source_locator": "Villegas campaign release, Jul 22, 2026: Villegas 48, Valadao 44 initial; 49-45 after biographies; links memo at politico.com/f/?id=0000019f-81aa-da70-abdf-f3fe17980000",
+  "notes": "out_of_window (field end Jun 21); written because no CA-22 general-election poll since then was found anywhere. The campaign page gives toplines and release date but does not name the pollster, dates or n. POLLSTER (Tulchin Research), SPONSOR (HMP), FIELD DATES (Jun 15-21) AND LV POPULATION ARE FROM WIKIPEDIA'S CA-22 table and uspollingdata.com, both citing the Politico memo PDF, which WebFetch cannot reach (politico.com blocked). Wikipedia/uspollingdata list n=800 LV, undecided 8; not used. Prop 50 (2025) map.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Tulchin Research",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-07-22"
+ }
+}

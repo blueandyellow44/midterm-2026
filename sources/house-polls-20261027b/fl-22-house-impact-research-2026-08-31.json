@@ -1,0 +1,38 @@
+{
+ "file": "fl-22-house-impact-research-2026-08-31.json",
+ "race": "2026-FL-22-HOUSE",
+ "pid": "impact-research",
+ "name": "Impact Research",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "impact-research-s-2026-FL-22-HOUSE-2026-08-31",
+ "poll": {
+  "field_start": "2026-08-24",
+  "field_end": "2026-08-31",
+  "release_date": "2026-09-09",
+  "n": null,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-poll-pia-dandiya-leads-casey-askar-in-fl-22",
+  "source_locator": "HMP release Sep 9, 2026: Impact Research, August 24-31; 'Dandiya leads Askar 46% to 44%'; informed ballot 49-44; generic ballot tied 46-46",
+  "notes": "out_of_window: field end Aug 31, one day before the window; written because no FL-22 poll with fieldwork on/after Sep 1 was found. No n, MoE, undecided or mode in the release (Wikipedia lists undecided 10 and attributes the poll to Tulchin Research; the HMP release says Impact Research and is followed here). American Bazaar (Sep 27) also reported it as Impact Research. New seat under the May 2026 Florida map; nominees Dandiya (D) and Askar (R).",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Impact Research",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-09-09"
+ }
+}

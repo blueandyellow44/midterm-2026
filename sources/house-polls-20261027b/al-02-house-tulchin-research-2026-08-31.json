@@ -1,0 +1,38 @@
+{
+ "file": "al-02-house-tulchin-research-2026-08-31.json",
+ "race": "2026-AL-02-HOUSE",
+ "pid": "tulchin-research",
+ "name": "Tulchin Research",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "tulchin-research-s-2026-AL-02-HOUSE-2026-08-31",
+ "poll": {
+  "field_start": "2026-08-24",
+  "field_end": "2026-08-31",
+  "release_date": "2026-09-09",
+  "n": null,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 47.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-poll-shomari-figures-tied-with-rhett-marques-in-al-02",
+  "source_locator": "HMP release Sep 9, 2026: Tulchin Research, August 24-31; initial ballot 'Figures and Marques both receive 47% support'; informed ballot Figures 50, Marques 47",
+  "notes": "out_of_window: field end Aug 31, one day before the window; written because no AL-02 poll with fieldwork on/after Sep 1 was found. Release gives no n, MoE, undecided or mode (Wikipedia lists undecided 6; not used). New 2026 Alabama map; nominees Figures (D) and Marques (R).",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Tulchin Research",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-09-09"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "fl-14-house-st-pete-polls-2026-07-15.json",
+ "race": "2026-FL-14-HOUSE",
+ "pid": "st-pete-polls",
+ "name": "St. Pete Polls",
+ "sponsor": "FloridaPolitics.com",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "st-pete-polls-h-2026-FL-14-HOUSE-2026-07-15",
+ "poll": {
+  "field_start": "2026-07-14",
+  "field_end": "2026-07-15",
+  "release_date": "2026-07-15",
+  "n": 469,
+  "pop": "LV",
+  "D": 46.2,
+  "R": 37.5,
+  "other": null,
+  "undecided": 16.4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "http://stpetepolls.org/files/StPetePolls_2026_CD14_July15_R6B43DK.pdf",
+  "source_locator": "'This poll of 469 Florida U.S. Congressional District 14 likely voters was conducted on July 14-15, 2026 ... boundaries ... as adopted in May of 2026'; ballot: Mike Beltran 37.5%, Kathy Castor 46.2%, Undecided 16.4%; MoE 4.5%",
+  "notes": "out_of_window (field end Jul 15); written because no FL-14 poll with fieldwork on/after Sep 1 is verifiable from a free source (Emerson/Poll Vault Oct 12-14 Castor 48 Beltran 43 is paywalled; see README). Sample drawn on the May 2026 district lines. Respondents saying they would not vote were excluded.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "weighted to account for proportional differences between the respondents' demographics and the demographics of the active voter population ... The weighting demographics used were: political party, race, age and gender.",
+  "method_url": "http://stpetepolls.org/files/StPetePolls_2026_CD14_July15_R6B43DK.pdf",
+  "method_locator": "Methodology, p.1",
+  "mode": "automated phone call polling system and a manual P2P SMS polling system (phone 37%, SMS 63%)",
+  "method_owner": "St. Pete Polls",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-07-15"
+ }
+}

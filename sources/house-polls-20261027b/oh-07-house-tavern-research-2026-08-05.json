@@ -1,0 +1,38 @@
+{
+ "file": "oh-07-house-tavern-research-2026-08-05.json",
+ "race": "2026-OH-07-HOUSE",
+ "pid": "tavern-research",
+ "name": "Tavern Research",
+ "sponsor": "Tavern Research (self-released)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "tavern-research-h-2026-OH-07-HOUSE-2026-08-05",
+ "poll": {
+  "field_start": "2026-08-04",
+  "field_end": "2026-08-05",
+  "release_date": "2026-08-05",
+  "n": 635,
+  "pop": "LV",
+  "D": 54.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://242750075.fs1.hubspotusercontent-na2.net/hubfs/242750075/Toplines%20-%20OH-07%20General%2008_03%20Cint.pdf",
+  "source_locator": "'OH-07 General Toplines. Online sample of 635 likely voters fielded over web panels and via text-to-web from August 04, 2026 to August 05, 2026 ... The margin of error is 4.8%.' Q11 (with leaners): Democrat Brian Poindexter 54%, Republican Max Miller 46%",
+  "notes": "out_of_window (field end Aug 5); written because no OH-07 poll with fieldwork on/after Sep 1 was found anywhere. Topline PDF does not print the firm name; attribution to Tavern Research from Wikipedia's OH-07 table, which cites this PDF for the Tavern row (Aug 4-5, 635 LV, 46/54). Release date set to field end; not stated in the PDF. Two-way with leaners pushed, no undecided reported. Later OH-07 polls (co/efficient Aug 5-6; Bedrock Aug 7-10) are seen, unverifiable; see README. New 2026 Ohio map.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "weighted by gender, race, 2024 Presidential Vote, education, age, and survey mode",
+  "method_url": "https://242750075.fs1.hubspotusercontent-na2.net/hubfs/242750075/Toplines%20-%20OH-07%20General%2008_03%20Cint.pdf",
+  "method_locator": "Header, p.1",
+  "mode": "web panels and text-to-web",
+  "method_owner": "Tavern Research",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-08-05"
+ }
+}

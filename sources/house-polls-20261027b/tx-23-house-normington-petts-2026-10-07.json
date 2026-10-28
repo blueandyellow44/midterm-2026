@@ -1,0 +1,38 @@
+{
+ "file": "tx-23-house-normington-petts-2026-10-07.json",
+ "race": "2026-TX-23-HOUSE",
+ "pid": "normington-petts",
+ "name": "Normington Petts",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "normington-petts-s-2026-TX-23-HOUSE-2026-10-07",
+ "poll": {
+  "field_start": "2026-10-05",
+  "field_end": "2026-10-07",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "Table row: TX-23 | Trump +15.0 | 46% | 46% | Normington Petts | 10/5/26-10/7/26 (Dem % then GOP %)",
+  "notes": "Toplines and field dates from the HMP memo table only; no n, MoE, undecided or mode in the memo. Wikipedia lists n=400 LV, undecided 8 citing this memo; not used. 2025 Texas map; open seat, nominees Padilla Stout (D) and Herrera (R) per house-races.csv (memo lists only the district).",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Normington Petts",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-10-21"
+ }
+}

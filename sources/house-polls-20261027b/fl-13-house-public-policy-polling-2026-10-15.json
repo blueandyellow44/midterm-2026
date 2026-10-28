@@ -1,0 +1,38 @@
+{
+ "file": "fl-13-house-public-policy-polling-2026-10-15.json",
+ "race": "2026-FL-13-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "public-policy-polling-s-2026-FL-13-HOUSE-2026-10-15",
+ "poll": {
+  "field_start": "2026-10-14",
+  "field_end": "2026-10-15",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "Table row: FL-13 | Trump +13.5 | 47% | 46% | PPP | 10/14/26-10/15/26 (Dem % then GOP %); memo dated October 21, 2026",
+  "notes": "Toplines and field dates from the HMP memo table only; the memo gives no n, MoE, undecided or mode. Wikipedia lists n=603 LV and undecided 7 citing floridapolitics.com/archives/826223, which returned HTTP 402 and was not opened; not used. New 2026 FL map (May 4, 2026), nominees Gray (D) and Luna (R) named in the memo.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Public Policy Polling",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-10-21"
+ }
+}

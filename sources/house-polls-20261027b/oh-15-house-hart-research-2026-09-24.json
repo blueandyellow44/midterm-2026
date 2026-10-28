@@ -1,0 +1,38 @@
+{
+ "file": "oh-15-house-hart-research-2026-09-24.json",
+ "race": "2026-OH-15-HOUSE",
+ "pid": "hart-research",
+ "name": "Hart Research Associates",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "hart-research-s-2026-OH-15-HOUSE-2026-09-24",
+ "poll": {
+  "field_start": "2026-09-22",
+  "field_end": "2026-09-24",
+  "release_date": "2026-09-28",
+  "n": null,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/cjwarnke/status/2104619061556457603",
+  "source_locator": "Post by CJ Warnke (HMP), Sep 28, 2026: 'NEW @HouseMajPAC poll in #OH15 Don Leonard: 46% Mike Carey: 45% Generic D: 48% Generic R: 47% ... 2024 recall: Trump+7'",
+  "notes": "Toplines from the HMP communications director's X post read via fxtwitter (x.com/cjwarnke/status/2104619061556457603). FIELD DATES (Sep 22-24) AND POLLSTER (Hart Research) ARE FROM WIKIPEDIA'S OH-15 polling table, which cites this same post; the post itself names neither. Wikipedia lists n=500 LV; not used. Post reports sample 2024 recall Trump+7 in a Trump+10 district; whether recall was a weighting target is not stated.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Hart Research Associates",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-09-28"
+ }
+}

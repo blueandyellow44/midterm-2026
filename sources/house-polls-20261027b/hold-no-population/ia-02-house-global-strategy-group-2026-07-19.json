@@ -1,0 +1,38 @@
+{
+ "file": "ia-02-house-global-strategy-group-2026-07-19.json",
+ "race": "2026-IA-02-HOUSE",
+ "pid": "global-strategy-group",
+ "name": "Global Strategy Group",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "global-strategy-group-s-2026-IA-02-HOUSE-2026-07-19",
+ "poll": {
+  "field_start": "2026-07-14",
+  "field_end": "2026-07-19",
+  "release_date": "2026-08-05",
+  "n": null,
+  "pop": null,
+  "D": 46.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://static.notus.org/27/58/c93f2d1946c0814f583fa25c7a31/hmp-ia-02-poll.pdf",
+  "source_locator": "HMP release 'For Immediate Release Thursday, August 5, 2026 ... conducted by Global Strategy Group from July 14-19 ... James leads Mitchell 46% to 45%'; generic ballot tied 45-45",
+  "notes": "out_of_window (field end Jul 19); written because no IA-02 poll with fieldwork on/after Sep 1 is verifiable from a free source (Emerson/Poll Vault Oct 12-14 James 50 Mitchell 47 is paywalled; see README). Release gives no n, population, MoE or mode (Wikipedia lists undecided 9; not used). Open seat; nominees Lindsay James (D) and Joe Mitchell (R).",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Global Strategy Group",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-08-05"
+ }
+}

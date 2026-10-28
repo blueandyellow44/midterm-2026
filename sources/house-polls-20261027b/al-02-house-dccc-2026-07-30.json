@@ -1,0 +1,38 @@
+{
+ "file": "al-02-house-dccc-2026-07-30.json",
+ "race": "2026-AL-02-HOUSE",
+ "pid": "dccc",
+ "name": "DCCC Analytics Department",
+ "sponsor": "DCCC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "dccc-s-2026-AL-02-HOUSE-2026-07-30",
+ "poll": {
+  "field_start": "2026-07-29",
+  "field_end": "2026-07-30",
+  "release_date": "2026-08-12",
+  "n": 421,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": 8.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://dccc.org/wp-content/uploads/2026/08/DCCC-Polling-Memo-Rep.-Shomari-Figures-in-Toss-Up-Race-in-AL-02.pdf",
+  "source_locator": "'An internal DCCC poll conducted July 29 - 30 among 421 likely general election voters in AL-02 ... Figures and Republican nominee Rhett Marques are tied with 46% of the vote, as 8% of voters are undecided.' Methodology: 'via phone and text-to-web interviews. The margin of error is +/- 4.8%'",
+  "notes": "out_of_window (field end Jul 30); written as the only AL-02 poll since Jun 1 with full n/MoE/mode disclosure. Memo notes an R+9 party-ID edge in the sample and that 56% of residents of the new lines are Figures' existing constituents.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://dccc.org/wp-content/uploads/2026/08/DCCC-Polling-Memo-Rep.-Shomari-Figures-in-Toss-Up-Race-in-AL-02.pdf",
+  "method_locator": "Methodology paragraph, p.2",
+  "mode": "phone and text-to-web",
+  "method_owner": "DCCC",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-08-12"
+ }
+}

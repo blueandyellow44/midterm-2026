@@ -1,0 +1,38 @@
+{
+ "file": "nc-11-house-public-policy-polling-2026-09-11.json",
+ "race": "2026-NC-11-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "The Bench (Democratic-aligned)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "public-policy-polling-s-2026-NC-11-HOUSE-2026-09-11",
+ "poll": {
+  "field_start": "2026-09-10",
+  "field_end": "2026-09-11",
+  "release_date": "2026-09-16",
+  "n": null,
+  "pop": "RV",
+  "D": 47.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.publicpolicypolling.com/polls/democrats-running-close-in-red-territory/",
+  "source_locator": "'Democrats Running Close in Red Territory' (Sep 16, 2026): North Carolina's 11th District, Trump +10: Democrat Jamie Ager 47% vs Republican opponent 44%",
+  "notes": "PPP's own release names Ager and 'Republican opponent' without naming Balkcom; Chuck Edwards withdrew after the primary and Jennifer Balkcom was selected as replacement nominee Aug 11, 2026 (Wikipedia, WLOS/Fox News refs), so a Sep 10-11 ballot test is of the November matchup. FIELD DATES AND RV POPULATION FROM WIKIPEDIA'S NC-11 table (which cites the Bench memo image at x.com/zachblackburn23/status/2100002534383358350, posted Sep 15; image text not machine-readable); Wikipedia also lists n=531 RV, MoE 4.3, undecided 9; not used. New 2025 NC map.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Public Policy Polling",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-09-16"
+ }
+}

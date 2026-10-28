@@ -1,0 +1,38 @@
+{
+ "file": "tx-35-house-normington-petts-2026-10-14.json",
+ "race": "2026-TX-35-HOUSE",
+ "pid": "normington-petts",
+ "name": "Normington Petts",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "normington-petts-s-2026-TX-35-HOUSE-2026-10-14",
+ "poll": {
+  "field_start": "2026-10-12",
+  "field_end": "2026-10-14",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "Table row: TX-35 | Trump +10.6 | 47% | 45% | Normington Petts | 10/12/26-10/14/26 (Dem % then GOP %)",
+  "notes": "Toplines and field dates from the HMP memo table only; no n, MoE, undecided or mode in the memo. Wikipedia lists n=400 LV, undecided 8; not used. 2025 Texas map; open seat, nominees Johnny Garcia (D) and Carlos De La Cruz (R) per house-races.csv.",
+  "retrieved_at": "2026-10-27T20:45:00-07:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Normington Petts",
+  "retrieved_at": "2026-10-27T20:45:00-07:00",
+  "method_date": "2026-10-21"
+ }
+}
