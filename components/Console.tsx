@@ -20,9 +20,9 @@ export function SignedBar({ v, max }: { v: number; max: number }) {
   return <span className="c-sbar" aria-hidden="true"><i className={`${tone(v)} ${v >= 0 ? 'from-mid-l' : 'from-mid-r'} gw-${w}`}/></span>;
 }
 
-export function FactorBars({ parts }: { parts: { label: string; v: number }[] }) {
+export function FactorBars({ parts, dLetter = 'D' }: { parts: { label: string; v: number }[]; dLetter?: string }) {
   const max = Math.max(1, ...parts.map(p => Math.abs(p.v)));
-  return <ul className="c-factors">{parts.map(p => <li key={p.label}><span className="c-factor-label">{p.label}</span><SignedBar v={p.v} max={max}/><span className={`c-factor-v ${tone(p.v)}`}>{Math.abs(p.v) < EVEN ? '0.0' : `${p.v > 0 ? 'D' : 'R'} +${Math.abs(p.v).toFixed(1)}`}</span></li>)}</ul>;
+  return <ul className="c-factors">{parts.map(p => <li key={p.label}><span className="c-factor-label">{p.label}</span><SignedBar v={p.v} max={max}/><span className={`c-factor-v ${tone(p.v)}`}>{Math.abs(p.v) < EVEN ? '0.0' : `${p.v > 0 ? dLetter : 'R'} +${Math.abs(p.v).toFixed(1)}`}</span></li>)}</ul>;
 }
 
 // Margin track from R +span (left) to D +span (right): a bar from center to the value, a tick for a reference value.

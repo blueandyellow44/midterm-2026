@@ -18,7 +18,7 @@ const lastName=(n:string)=>n.trim().split(/\s+/).pop()||n;
 function label(v:number,names:{D:string;R:string}){return Math.abs(v)<EVEN?'Even':`${lastName(v>0?names.D:names.R)} +${Math.abs(v).toFixed(1)}`;}
 
 // The single-race console (Max, 2026-10-27: "We need to rethink site ui"; one design system across every page).
-function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate};const dl=INDEPENDENT_D_SLOT.has(r.id)?'I':'D';
+function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate};const dl=INDEPENDENT_D_SLOT.has(r.id)||/^independent/i.test(String((derived as any).candidates?.[r.id]?.D?.party||''))?'I':'D';
  const polls=Number(s?.polling_margin??r.polling_read?.margin);const und=Number(s?.adjusted_margin);const pull=und-polls;const ok=Number.isFinite(polls)&&Number.isFinite(und);
  return <Panel className="race-head" kicker={<>2026 · {r.id.split('-')[1]} · {r.id.endsWith('HOUSE')?`House · ${r.id.split('-')[2]==='AL'?'at-large':`district ${Number(r.id.split('-')[2])}`}`:r.id.includes('GOV')?'Governor':'Senate'}{r.id.includes('SPECIAL')?' · special':''}</>} action={<a className="c-link" href="/">← All races</a>}>
   <h1 className="race-title">{r.name}</h1>

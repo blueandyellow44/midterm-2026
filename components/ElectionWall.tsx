@@ -23,10 +23,10 @@ type Scope = 'competitive' | 'full';
 export type WallSeat = {
   id: string; state: string; office: Office; district?: string; name: string; kind: 'projection' | 'rated' | 'not_up';
   side: 'D' | 'R' | null; base: number; stateAdj: number; spending: number; earlyVote: number; incumbency: number; shift: number; undertow: number | null;
-  rating: string | null; holder: string; noPolls: boolean; slug?: string; d?: string; r?: string;
+  rating: string | null; holder: string; noPolls: boolean; slug?: string; d?: string; r?: string; dLetter?: string;
 };
 export type ChamberTotals = Record<Office, { notUp: { D: number; R: number }; majority: number | null; seats: number }>;
-export type NoReadRace = { id: string; slug: string; state: string; district: string; name: string; d: string; r: string; rating: string };
+export type NoReadRace = { id: string; slug: string; state: string; district: string; name: string; d: string; r: string; rating: string; dLetter: string };
 const OFFICES: Office[] = ['SEN', 'GOV', 'HOUSE'];
 const officeName = (o: Office) => (o === 'SEN' ? 'Senate' : o === 'GOV' ? 'Governor' : 'House');
 export type HistoryPreset = { year: number; miss_toward_d: number };
@@ -135,9 +135,9 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
     <div className="wall-figures">
       <div><p className="wall-label">Polls</p><p className={`wall-big ${side(r.polls)}`}>{marginLabel(r.polls, r)}</p><p className="wall-sub">{r.pollCount ? `${r.pollCount} polls, weighted` : 'weighted average'}</p></div>
       <div><p className="wall-label">Undertow</p><p className={`wall-big ${side(r.undertow)}`}>{marginLabel(r.undertow, r)}</p><p className="wall-sub">± {r.sd.toFixed(1)} · my call, frozen Nov 2</p></div>
-      <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? 'D' : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>
+      <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? r.dLetter : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>
     </div>
-    <FactorBars parts={parts.map(([label, v]) => ({ label, v }))}/>
+    <FactorBars parts={parts.map(([label, v]) => ({ label, v }))} dLetter={r.dLetter}/>
   </section>;
 }
 
@@ -145,7 +145,7 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
 function SeatDetail({ s, m, national, full }: { s: WallSeat; m: number; national: number; full: boolean }) {
   if (!full && s.noPolls) return <section className="wall-panel wall-detail" aria-label={`${s.name}, no public polls`}>
     <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p>{s.slug && <a className="wall-link" href={`/race/${s.slug}/`}>Race page and spending →</a>}</div>
-    {s.d && s.r && <p className="wall-matchup"><span className="is-d">{s.d} ({s.holder === 'I' ? 'I' : 'D'})</span> vs <span className="is-r">{s.r} (R)</span></p>}
+    {s.d && s.r && <p className="wall-matchup"><span className="is-d">{s.d} ({s.dLetter || 'D'})</span> vs <span className="is-r">{s.r} (R)</span></p>}
     <p className="wall-matchup">No public poll since September 1 could be verified at its source.{s.rating ? <> Cook rates it <strong>{s.rating}</strong>{s.holder === 'D' || s.holder === 'R' ? <>, held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}</> : null}.</> : null}</p>
     <p className="wall-note">Listed without a number (no reading, not graded). The Full chamber view projects it from its 2024 vote.</p>
   </section>;
@@ -158,14 +158,14 @@ function SeatDetail({ s, m, national, full }: { s: WallSeat; m: number; national
   const parts: [string, number][] = [['Generic-ballot swing since 2024', s.shift], ['Incumbent on the ballot', s.incumbency], ['Last fall’s polling miss', national], ['This state’s polling record', s.stateAdj], ['Early vote', s.earlyVote]];
   return <section className="wall-panel wall-detail" aria-label={`${s.name} projection`}>
     <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p>{s.slug ? <a className="wall-link" href={`/race/${s.slug}/`}>Race page →</a> : <span className="wall-badge">Projection</span>}</div>
-    {s.d && s.r && <p className="wall-matchup"><span className="is-d">{s.d} (D)</span> vs <span className="is-r">{s.r} (R)</span></p>}
+    {s.d && s.r && <p className="wall-matchup"><span className="is-d">{s.d} ({s.dLetter || 'D'})</span> vs <span className="is-r">{s.r} (R)</span></p>}
     <p className="wall-matchup">{s.noPolls ? 'No public polls, so the seat is projected from its 2024 vote.' : 'Not tracked: projected from its 2024 vote, not polled.'}{s.holder === 'D' || s.holder === 'R' ? <> Held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}{s.rating ? <>, Cook: {s.rating}</> : null}.</> : null}</p>
     <div className="wall-figures">
       <div><p className="wall-label">2024 vote</p><p className={`wall-big ${side(s.base - s.shift - s.incumbency)}`}>{seatLabel(s.base - s.shift - s.incumbency)}</p><p className="wall-sub">presidential margin, these lines</p></div>
       <div><p className="wall-label">Projection</p><p className={`wall-big ${side(s.undertow ?? 0)}`}>{seatLabel(s.undertow ?? 0)}</p><p className="wall-sub">at my bet · not graded</p></div>
       <div><p className="wall-label">At your dial</p><p className={`wall-big ${side(at)}`}>{seatLabel(at)}</p><p className="wall-sub">{moved ? 'with your polling miss' : 'same as the bet'}</p></div>
     </div>
-    <FactorBars parts={parts.map(([label, v]) => ({ label, v }))}/>
+    <FactorBars parts={parts.map(([label, v]) => ({ label, v }))} dLetter={s.dLetter}/>
   </section>;
 }
 
@@ -229,7 +229,7 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
         <span className="wall-mrow-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
       {open === r.id && <Detail r={r} m={m} national={national}/>}
     </li>)}
-    {office === 'HOUSE' && noRead.map(n => <li key={n.id}><a className="wall-mrow is-noread" href={`/race/${n.slug}/`}><span className="wall-mrow-name">{n.name}<small>{last(n.d)} (D) vs {last(n.r)} (R) · {n.rating}</small></span><span className="wall-mrow-v">no polls</span></a></li>)}</ol>
+    {office === 'HOUSE' && noRead.map(n => <li key={n.id}><a className="wall-mrow is-noread" href={`/race/${n.slug}/`}><span className="wall-mrow-name">{n.name}<small>{last(n.d)} ({n.dLetter}) vs {last(n.r)} (R) · {n.rating}</small></span><span className="wall-mrow-v">no polls</span></a></li>)}</ol>
     <DialBar m={m} setM={setM} national={national} lastFall={lastFall} history={history}/>
   </div>;
 }
