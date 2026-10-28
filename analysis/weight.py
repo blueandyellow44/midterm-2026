@@ -706,7 +706,15 @@ GENERIC_RACE = "2026-US-GENERIC"
 NATIONAL_FUNDAMENTALS_RACE = "2024-US-PRES"      # fundamentals.csv row carrying the 2024 national presidential margin
 CHAMBER_MAJORITY = {"SEN": 51, "HOUSE": 218}      # governors have no majority line
 CHAMBER_TIE_BREAKER = "R"                         # Vice President Vance presides over a 50-50 Senate
-CHAMBER_INCUMBENCY_BONUS = 2.6                    # points toward the incumbent's party where the incumbent is on the ballot
+# Incumbency (Max, 2026-10-28: "This feels like an anti incumbent year"; "Smaller for Republicans"). Size: the symmetric fit
+# on the two most recent midterms (2018 2.01, 2022 2.59; mean 2.3). The president's party gets less: in the three midterms
+# under a Democratic president its incumbents' edge over open seats was 0.58, 0.72 and 0.79 of the out party's (2010, 2014,
+# 2022; mean 0.70). 2018, the one Republican-president midterm, ran the other way; the tilt is Max's judgment on four
+# midterms that cannot separate "the president's party loses its edge" from "Republican incumbents run further ahead".
+CHAMBER_INCUMBENCY_BASE = 2.3
+CHAMBER_PRESIDENT_PARTY = "R"
+CHAMBER_PRESIDENT_PARTY_RATIO = 0.70
+CHAMBER_INCUMBENCY_BONUS = {"D": CHAMBER_INCUMBENCY_BASE, "R": round(CHAMBER_INCUMBENCY_BASE * CHAMBER_PRESIDENT_PARTY_RATIO, 2)}   # points toward an incumbent on the ballot
 CHAMBER_SWING_TEST_2022 = {"script": "scripts/swing_test_2022.py", "districts": 400, "mae_no_bonus": 4.64, "winner_right": 0.948,
                            "winner_right_within_15": 0.812, "incumbency_fit": 2.59, "incumbency_se": 0.30, "incumbency_folds": "2.2 to 2.9",
                            "holdout_mae_without": "4.5 to 4.8", "holdout_mae_with": "4.1 to 4.4",
@@ -2116,7 +2124,7 @@ class Bundle:
         national, leans, ev_model = ctx["national"], ctx["leans"], ctx["ev_model"]
         per_race = signals.get("per_race") or {}
         out = {"method_version": SIGNAL_METHOD_VERSION, "generic": generic, "national_2024_d_minus_r": national_2024, "shift_toward_d": r4(shift),
-               "incumbency_bonus": CHAMBER_INCUMBENCY_BONUS, "governor_base": CHAMBER_GOV_BASE, "swing_test_2022": CHAMBER_SWING_TEST_2022,
+               "incumbency_bonus": CHAMBER_INCUMBENCY_BONUS, "incumbency_basis": {"base": CHAMBER_INCUMBENCY_BASE, "president_party": CHAMBER_PRESIDENT_PARTY, "president_party_ratio": CHAMBER_PRESIDENT_PARTY_RATIO, "test": "scripts/incumbency_test.py on 2010, 2014, 2018, 2022"}, "governor_base": CHAMBER_GOV_BASE, "swing_test_2022": CHAMBER_SWING_TEST_2022,
                "tie_breaker": CHAMBER_TIE_BREAKER, "majority": CHAMBER_MAJORITY,
                "ruling": "Max, 2026-10-27: full projected numbers for all races, same criteria for every race, tested on 2022 first; governors untracked use Cook after the 2022 replay failed them",
                "chambers": {}}
@@ -2147,7 +2155,8 @@ class Bundle:
                     continue
                 st_lean = ((leans or {}).get("per_state") or {}).get(r["state"]) if leans else None
                 state_adj = (st_lean or {}).get("state_adjustment") or 0.0
-                bonus = CHAMBER_INCUMBENCY_BONUS * {"D": 1, "R": -1}.get(r.get("incumbent_on_ballot"), 0)   # party of the incumbent on this ballot; NONE/VACANT/UNKNOWN/I carry none
+                ib = r.get("incumbent_on_ballot")   # party of the incumbent on this ballot; NONE/VACANT/UNKNOWN/I carry none
+                bonus = CHAMBER_INCUMBENCY_BONUS["D"] if ib == "D" else -CHAMBER_INCUMBENCY_BONUS["R"] if ib == "R" else 0.0
                 evb = early_vote_block(getattr(self, "early_vote", None), r["state"], ev_model) if chamber != "HOUSE" else None
                 ev = (evb or {}).get("delta_toward_d") or 0.0
                 spending = 0.0   # no outside-money series is collected for untracked seats; Solid seats carry none by rule

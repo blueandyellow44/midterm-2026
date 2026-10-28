@@ -60,7 +60,7 @@ class Arithmetic(unittest.TestCase):
         item = out['chambers']['SEN']['items'][0]
         shift = out['generic']['margin'] - (-1.5)
         self.assertEqual(item['kind'], 'projection')
-        self.assertAlmostEqual(item['base'], -13.7 + shift - 2.6, places=3)   # incumbent R on the ballot
+        self.assertAlmostEqual(item['base'], -13.7 + shift - weight.CHAMBER_INCUMBENCY_BONUS['R'], places=3)   # incumbent R on the ballot
         self.assertAlmostEqual(item['undertow'], item['base'] + 2.0 - 0.5, places=3)
         self.assertFalse(item['graded'])
 
@@ -73,7 +73,13 @@ class Arithmetic(unittest.TestCase):
     def test_bonus_follows_the_incumbent_on_the_ballot_not_the_holder(self):
         seats = [seat('HOUSE', '2026-CA-06-HOUSE', 'CA', True, 'D', 'Solid D', '20.0', district='06', on_ballot='R')]   # a redistricted Republican runs here
         item = stub(seats, GENERIC, CTX).chambers_block({}, {'per_race': {}})['chambers']['HOUSE']['items'][0]
-        self.assertEqual(item['parts']['incumbency'], -2.6)
+        self.assertEqual(item['parts']['incumbency'], -weight.CHAMBER_INCUMBENCY_BONUS['R'])
+
+    def test_president_party_incumbents_get_the_smaller_bonus(self):
+        self.assertEqual(weight.CHAMBER_INCUMBENCY_BONUS, {'D': 2.3, 'R': 1.61})
+        seats = [seat('HOUSE', '2026-AA-01-HOUSE', 'AA', True, 'D', 'Solid D', '0.0', district='01'), seat('HOUSE', '2026-AA-02-HOUSE', 'AA', True, 'R', 'Solid R', '0.0', district='02')]
+        items = stub(seats, GENERIC, CTX).chambers_block({}, {'per_race': {}})['chambers']['HOUSE']['items']
+        self.assertEqual([i['parts']['incumbency'] for i in items], [2.3, -1.61])
 
     def test_tracked_reading_wins_over_the_swing(self):
         seats = [seat('SEN', '2026-TX-SEN', 'TX', True, 'R', 'Toss-up', '-13.7', tracked='2026-TX-SEN')]
