@@ -1,6 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
 import { FactorBars, MarginTrack, pct } from './Console';
+import { Hemicycle, type HemiSeat } from './Hemicycle';
 
 // Short ruler labels for the mobile dial (Max, 2026-10-27: horizontal scrolling of the steps confuses people).
 const short = (label: string) => label.startsWith('My bet') ? 'Bet' : label.startsWith('Last fall') ? '’25' : label === 'No miss' ? '0' : `’${label.slice(2, 4)}`;
@@ -22,7 +23,7 @@ type Scope = 'competitive' | 'full';
 export type WallSeat = {
   id: string; state: string; office: Office; district?: string; name: string; kind: 'projection' | 'rated' | 'not_up';
   side: 'D' | 'R' | null; base: number; stateAdj: number; spending: number; earlyVote: number; incumbency: number; shift: number; undertow: number | null;
-  rating: string | null; holder: string; noPolls: boolean; slug?: string;
+  rating: string | null; holder: string; noPolls: boolean; slug?: string; d?: string; r?: string;
 };
 export type ChamberTotals = Record<Office, { notUp: { D: number; R: number }; majority: number | null; seats: number }>;
 export type NoReadRace = { id: string; slug: string; state: string; district: string; name: string; d: string; r: string; rating: string };
@@ -91,33 +92,36 @@ function Tally({ races, m, seats, totals, scope, setScope }: { races: WallRace[]
   </div>;
 }
 
-// The House has no geography a tile map can hold at this size: districts sit in a grid grouped by state, in the same shades.
-function HouseGrid({ races, noRead, seats, full, m, selected, select }: { races: WallRace[]; noRead: NoReadRace[]; seats: WallSeat[]; full: boolean; m: number; selected: string; select: (id: string) => void }) {
-  const tracked = new Set([...races.map(r => r.id), ...noRead.map(n => n.id)]);
-  const all = [...races.map(r => ({ id: r.id, state: r.state, district: r.district || '', r, s: null as WallSeat | null, n: null as NoReadRace | null })),
-    ...noRead.map(n => ({ id: n.id, state: n.state, district: n.district, r: null as WallRace | null, s: full ? seats.find(x => x.id === n.id) || null : null, n })),
-    ...(full ? seats.filter(x => x.office === 'HOUSE' && !tracked.has(x.id)).map(x => ({ id: x.id, state: x.state, district: x.district || '', r: null as WallRace | null, s: x, n: null as NoReadRace | null })) : [])]
-    .sort((a, b) => a.state.localeCompare(b.state) || a.district.localeCompare(b.district));
-  return <div className="wall-housegrid">{all.map(x => {
-    if (x.r) { const v = marginAt(x.r, m); return <button key={x.id} type="button" className={`wall-dtile ${shade(v)}${selected === x.id ? ' is-selected' : ''}`} aria-pressed={selected === x.id} aria-label={`${x.r.name}: ${marginLabel(v, x.r)}`} onClick={() => select(x.id)}><span className="wall-tile-st">{x.state}-{x.district}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, x.r)}+${Math.abs(v).toFixed(1)}`}</span></button>; }
-    if (x.s) { const v = seatMarginAt(x.s, m); return <button key={x.id} type="button" className={`wall-dtile is-proj ${shade(v)}${selected === x.id ? ' is-selected' : ''}`} aria-pressed={selected === x.id} aria-label={`${x.s.name}: projected ${seatLabel(v)}`} onClick={() => select(x.id)}><span className="wall-tile-st">{x.state}-{x.district}</span><span className="wall-tile-v">{seatLabel(v)}</span></button>; }
-    const n = x.n!; return <a key={x.id} href={`/race/${n.slug}/`} className="wall-dtile is-noread" aria-label={`${n.name}: no public polls`}><span className="wall-tile-st">{x.state}-{x.district}</span><span className="wall-tile-v">no polls</span></a>; })}</div>;
-}
 const seatLabel = (v: number) => (Math.abs(v) < EVEN ? 'EVEN' : `${v > 0 ? 'D' : 'R'}+${Math.abs(v).toFixed(1)}`);
+// Every House seat as a hemicycle dot. Tracked view: readings colored, no-poll districts hollow, untracked seats gray as
+// held. Full view: untracked seats and no-poll districts take their projection. Ordering happens inside the hemicycle.
+function houseSeats(races: WallRace[], noRead: NoReadRace[], seats: WallSeat[], full: boolean, m: number): HemiSeat[] {
+  const tracked = new Set(races.map(r => r.id));
+  const out: HemiSeat[] = races.filter(r => r.office === 'HOUSE').map(r => { const v = marginAt(r, m); return { id: r.id, label: `${r.name}: ${marginLabel(v, r)}`, v, shade: shade(v), ring: true, proj: false }; });
+  for (const s of seats) {
+    if (s.office !== 'HOUSE' || tracked.has(s.id)) continue;
+    const n = noRead.find(x => x.id === s.id);
+    if (full) { const v = seatMarginAt(s, m); out.push({ id: s.id, label: `${s.name}: projected ${seatLabel(v)}`, v, shade: shade(v), ring: !!n, proj: true }); }
+    else if (n) out.push({ id: s.id, label: `${n.name}: no public polls`, v: 0, shade: 'is-noread', ring: true, proj: false });
+    else out.push({ id: s.id, label: `${s.name}: not tracked (${s.holder === 'D' ? 'Democratic' : s.holder === 'R' ? 'Republican' : 'other'} seat)`, v: s.holder === 'D' ? 100 : s.holder === 'R' ? -100 : 0, shade: 'is-off', ring: false, proj: false, off: true });
+  }
+  return out;
+}
 
 function TileMap({ races, m, office, setOffice, selected, select, noRead = [], seats = [], full = false }: { races: WallRace[]; m: number; office: Office; setOffice: (o: Office) => void; selected: string; select: (id: string) => void; noRead?: NoReadRace[]; seats?: WallSeat[]; full?: boolean }) {
   const byState = new Map(races.filter(r => r.office === office).map(r => [r.state, r]));
   const seatByState = new Map(full ? seats.filter(x => x.office === office && x.kind !== 'not_up').map(x => [x.state, x]) : []);
   return <section className="wall-panel wall-map" aria-label={full ? 'Map of every seat' : 'Map of tracked races'}>
-    <div className="wall-panel-head"><p className="wall-kicker">{office === 'HOUSE' ? (full ? 'All 435 House seats' : 'Competitive House seats') : `The map · ${officeName(office)}${full ? ' · every seat up' : ''}`}</p>
+    <div className="wall-panel-head"><p className="wall-kicker">{office === 'HOUSE' ? (full ? 'The House · all 435 seats' : 'The House · tracked seats colored, the rest as held') : `The map · ${officeName(office)}${full ? ' · every seat up' : ''}`}</p>
       <div className="wall-toggle" role="group" aria-label="Office">{OFFICES.map(o => <button key={o} type="button" aria-pressed={office === o} onClick={() => setOffice(o)}>{officeName(o)}</button>)}</div></div>
-    {office === 'HOUSE' ? <HouseGrid races={races.filter(r => r.office === 'HOUSE')} noRead={noRead} seats={seats} full={full} m={m} selected={selected} select={select}/> : <div className="wall-tiles">{Object.entries(TILES).map(([st, [c, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m) : 0;
+    {office === 'HOUSE' ? (() => { const hs = houseSeats(races, noRead, seats, full, m); const d = hs.filter(x => x.shade !== 'is-noread' && (x.v ?? 0) >= EVEN).length; const r = hs.filter(x => x.shade !== 'is-noread' && (x.v ?? 0) <= -EVEN).length;
+      return <Hemicycle seats={hs} majority={218} selected={selected} select={select} dCount={d} rCount={r} count={full} title={full ? 'All 435 House seats, most Democratic to most Republican' : 'The House: tracked seats colored, others as held'}/>; })() : <div className="wall-tiles">{Object.entries(TILES).map(([st, [c, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m) : 0;
       const pos = `tc-${c} tr-${rw}`; const sx = r ? undefined : seatByState.get(st);
       if (r) return <button key={st} type="button" className={`wall-tile ${pos} ${shade(v)}${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} aria-label={`${r.name}: ${marginLabel(v, r)}`} onClick={() => select(r.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>;
       if (sx) { const sv = sx.kind === 'projection' ? seatMarginAt(sx, m) : (sx.side === 'D' ? 20 : sx.side === 'R' ? -20 : 0); const lab = sx.kind === 'projection' ? seatLabel(sv) : (sx.rating || 'rated');
         return <button key={st} type="button" className={`wall-tile is-proj ${pos} ${shade(sv)}${selected === sx.id ? ' is-selected' : ''}`} aria-pressed={selected === sx.id} aria-label={`${sx.name}: ${sx.kind === 'projection' ? `projected ${seatLabel(sv)}` : `Cook ${sx.rating}, not tracked`}`} onClick={() => select(sx.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v wall-tile-rated">{lab}</span></button>; }
       return <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>}
-    {full && <p className="wall-note">Dashed tiles are projections or Cook ratings, not Undertow readings.</p>}
+    {full && <p className="wall-note">{office === 'HOUSE' ? 'Ringed dots are tracked races; plain dots are projections from the 2024 vote, not readings.' : 'Dashed tiles are projections or Cook ratings, not Undertow readings.'}</p>}
     <div className="wall-legend" aria-hidden="true"><span className="r-safe">Safe R</span><span className="r-likely">Likely</span><span className="r-lean">Lean</span><span className="toss">Toss-up</span><span className="d-lean">Lean</span><span className="d-likely">Likely</span><span className="d-safe">Safe D</span></div>
   </section>;
 }
@@ -138,7 +142,13 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
 }
 
 // Breakdown for a seat Undertow does not track: the projection's parts, or the rating it carries.
-function SeatDetail({ s, m, national }: { s: WallSeat; m: number; national: number }) {
+function SeatDetail({ s, m, national, full }: { s: WallSeat; m: number; national: number; full: boolean }) {
+  if (!full && s.noPolls) return <section className="wall-panel wall-detail" aria-label={`${s.name}, no public polls`}>
+    <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p>{s.slug && <a className="wall-link" href={`/race/${s.slug}/`}>Race page and spending →</a>}</div>
+    {s.d && s.r && <p className="wall-matchup"><span className="is-d">{s.d} ({s.holder === 'I' ? 'I' : 'D'})</span> vs <span className="is-r">{s.r} (R)</span></p>}
+    <p className="wall-matchup">No public poll since September 1 could be verified at its source.{s.rating ? <> Cook rates it <strong>{s.rating}</strong>{s.holder === 'D' || s.holder === 'R' ? <>, held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}</> : null}.</> : null}</p>
+    <p className="wall-note">Listed without a number (no reading, not graded). The Full chamber view projects it from its 2024 vote.</p>
+  </section>;
   if (s.kind !== 'projection') return <section className="wall-panel wall-detail" aria-label={`${s.name} rating`}>
     <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p><span className="wall-badge">Not tracked</span></div>
     <p className="wall-matchup">Cook Political Report rating: <strong>{s.rating}</strong>{s.holder === 'D' || s.holder === 'R' ? <> · seat held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}</> : null}</p>
@@ -148,6 +158,7 @@ function SeatDetail({ s, m, national }: { s: WallSeat; m: number; national: numb
   const parts: [string, number][] = [['Generic-ballot swing since 2024', s.shift], ['Incumbent on the ballot', s.incumbency], ['Last fall’s polling miss', national], ['This state’s polling record', s.stateAdj], ['Early vote', s.earlyVote]];
   return <section className="wall-panel wall-detail" aria-label={`${s.name} projection`}>
     <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p>{s.slug ? <a className="wall-link" href={`/race/${s.slug}/`}>Race page →</a> : <span className="wall-badge">Projection</span>}</div>
+    {s.d && s.r && <p className="wall-matchup"><span className="is-d">{s.d} (D)</span> vs <span className="is-r">{s.r} (R)</span></p>}
     <p className="wall-matchup">{s.noPolls ? 'No public polls, so the seat is projected from its 2024 vote.' : 'Not tracked: projected from its 2024 vote, not polled.'}{s.holder === 'D' || s.holder === 'R' ? <> Held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}{s.rating ? <>, Cook: {s.rating}</> : null}.</> : null}</p>
     <div className="wall-figures">
       <div><p className="wall-label">2024 vote</p><p className={`wall-big ${side(s.base - s.shift - s.incumbency)}`}>{seatLabel(s.base - s.shift - s.incumbency)}</p><p className="wall-sub">presidential margin, these lines</p></div>
@@ -176,13 +187,13 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const [selected, setSelected] = useState(initial);
   const full = scope === 'full' && !!totals;
   const sel = races.find(r => r.id === selected);
-  const selSeat = !sel && full ? seats.find(x => x.id === selected) : undefined;
+  const selSeat = !sel ? seats.find(x => x.id === selected) : undefined;
   const shown = sel || (selSeat ? undefined : races[0]);
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   const pick = (sc: Scope) => { setScope(sc); if (sc === 'competitive' && !sel) setSelected(initial); };
   return <div className="wall">
     <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history}/><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={pick}/></aside>
-    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national}/> : shown && <Detail r={shown} m={m} national={national}/>}</div>
+    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full}/> : shown && <Detail r={shown} m={m} national={national}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office}/></aside>
   </div>;
 }
@@ -205,13 +216,13 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const [office, setOffice] = useState<Office>('SEN');
   const [scope, setScope] = useState<Scope>('competitive');
   const full = scope === 'full' && !!totals;
-  const openSeat = open && full ? seats.find(x => x.id === open) : undefined;
+  const openSeat = open && !races.some(r => r.id === open) ? seats.find(x => x.id === open) : undefined;
   const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m, office]);
   const pick = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
     <Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope}/>
     <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick} noRead={noRead} seats={seats} full={full}/>
-    {openSeat && <SeatDetail s={openSeat} m={m} national={national}/>}
+    {openSeat && <SeatDetail s={openSeat} m={m} national={national} full={full}/>}
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>
       <button type="button" className={`wall-mrow ${shade(v)}`} aria-expanded={open === r.id} onClick={() => setOpen(open === r.id ? null : r.id)}>
         <span className="wall-mrow-name">{r.name}<small>{last(r.d)} ({r.dLetter}) vs {last(r.r)} (R)</small></span>

@@ -235,7 +235,20 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .wall-tally-bar {position:relative;} .wall-tally-maj {position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);transform:translateX(-1px);}
 .wall-tally-num small {font-size:11px;font-weight:500;color:var(--muted);}
 .wall-tally-note {font-size:11px;line-height:1.4;color:var(--muted);margin:0;}
-.wall-tile.is-proj,.wall-dtile.is-proj {border:2px dashed color-mix(in srgb,var(--ink) 35%,transparent);opacity:.82;} .wall-dtile.is-proj {border-width:1px;}
+.wall-tile.is-proj,.hemi {display:flex;flex-direction:column;align-items:center;gap:6px;max-width:600px;margin-inline:auto;}
+.hemi-svg {width:100%;height:auto;display:block;}
+.hemi-seat {stroke:var(--panel);stroke-width:1.5;transition:fill .25s;} .hemi-seat[role=button] {cursor:pointer;} .hemi-seat[role=button]:hover {stroke:var(--ink);}
+.hemi-seat.d-safe {fill:var(--d-safe);} .hemi-seat.d-likely {fill:var(--d-likely);} .hemi-seat.d-lean {fill:var(--d-lean);} .hemi-seat.toss {fill:var(--toss);} .hemi-seat.r-lean {fill:var(--r-lean);} .hemi-seat.r-likely {fill:var(--r-likely);} .hemi-seat.r-safe {fill:var(--r-safe);}
+.hemi-seat.is-off {fill:var(--off);stroke:var(--line);} .hemi-seat.is-noread {fill:var(--panel);stroke:var(--muted);stroke-dasharray:2 2;}
+.hemi-seat.is-ring {stroke:var(--ink);stroke-width:2;} .hemi-seat.is-proj {opacity:.8;}
+.hemi-seat.is-selected {stroke:var(--sel);stroke-width:3.5;}
+.hemi-maj {stroke:var(--ink);stroke-width:2;stroke-dasharray:4 3;}
+.hemi-count {display:flex;align-items:baseline;gap:14px;margin:0;font-family:var(--font-num);font-variant-numeric:tabular-nums;font-size:26px;font-weight:700;}
+.hemi-count-maj {font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
+.hemi-bar {display:flex;width:100%;max-width:420px;height:10px;border-radius:3px;overflow:hidden;background:var(--toss);} .hemi-bar i.is-d {background:var(--d-safe);} .hemi-bar i.is-r {background:var(--r-safe);margin-left:auto;}
+.wall-mobile .hemi-count {font-size:20px;}
+.hemi-key {display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;margin:2px 0 0;padding:0;list-style:none;font-size:11px;color:var(--muted);}
+.hemi-key li {display:flex;align-items:center;gap:5px;} .hemi-key svg {width:16px;height:16px;flex:none;}
 .wall-tile-rated {font-size:9px;font-weight:600;letter-spacing:.02em;}
 .wall-badge {font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 8px;}
 .wall-tiles {display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;max-width:560px;margin-inline:auto;}
@@ -351,10 +364,4 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .cand-label {font-family:var(--font-sans);font-size:15px!important;font-weight:700;} .cand-value {font-family:var(--font-num);font-size:26px!important;font-weight:800;}
 .cand-hollow-key {display:inline-flex;align-items:center;gap:5px;} .cand-hollow-key circle {fill:none;stroke:var(--ink);stroke-width:1.6;}
 /* House district grid: grouped by state, same shades as the map; no-poll districts in gray. */
-.wall-housegrid {display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:4px;max-height:330px;overflow:auto;}
-.wall-dtile {display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:46px;border-radius:5px;border:2px solid transparent;color:#fff;padding:2px;text-decoration:none;line-height:1.05;}
-.wall-dtile .wall-tile-v {font-size:14px;}
-.wall-dtile.is-noread {background:var(--off);color:var(--muted);border:1px dashed var(--line);} .wall-dtile.is-noread .wall-tile-v {font-family:var(--font-mono);font-size:9px;font-weight:500;}
-.wall-dtile.is-selected {border-color:var(--sel);box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--sel);}
-.wall-mobile .wall-housegrid {grid-template-columns:repeat(auto-fill,minmax(52px,1fr));max-height:none;}
-.wall-mrow.is-noread {background:var(--off);color:var(--muted);text-decoration:none;} .wall-mrow.is-noread .wall-mrow-v {font-size:13px;font-family:var(--font-mono);font-weight:500;}
+.wall-mobile .wall-mrow.is-noread {background:var(--off);color:var(--muted);text-decoration:none;} .wall-mrow.is-noread .wall-mrow-v {font-size:13px;font-family:var(--font-mono);font-weight:500;}
