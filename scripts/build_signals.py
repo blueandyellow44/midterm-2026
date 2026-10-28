@@ -70,12 +70,18 @@ def latest_amendments(rows: list[dict]) -> list[dict]:
     return list(keep.values())
 
 
-def aggregate_spending(rows: list[dict], state: str, window_end: date) -> dict:
+def aggregate_spending(rows: list[dict], state: str, window_end: date, office: str = "S", district: str | None = None, names: tuple[str, ...] = ()) -> dict:
     recent_start = window_end - timedelta(days=WINDOW_DAYS)
     prior_start = recent_start - timedelta(days=WINDOW_DAYS)
     out = {"d_fav_recent": 0.0, "r_fav_recent": 0.0, "d_fav_prior": 0.0, "r_fav_prior": 0.0, "rows_recent": 0, "rows_dated_by_dissemination": 0}
     for r in rows:
-        if r.get("can_office") != "S" or r.get("can_office_state") != state:
+        if r.get("can_office") != office or r.get("can_office_state") != state:
+            continue
+        if names:   # House: match the district's nominees by surname; FEC district codes can be stale or "00" (Montana)
+            cn = (r.get("cand_name") or "").upper()
+            if not any(n in cn for n in names):
+                continue
+        elif district is not None and (r.get("can_office_dis") or "").strip().zfill(2) != district:
             continue
         if (r.get("ele_type") or "G")[:1] not in ("G", "S"):
             continue
@@ -166,6 +172,12 @@ def history_rows(path: Path, pres_by_year: dict, sha: str) -> list[dict]:
     return sorted(rows, key=lambda r: (r["year"], r["state"]))
 
 
+def surname_key(name: str) -> str:
+    """FEC stores names as 'SURNAME, FIRST'; match on the surname, dropping suffixes like III or Jr."""
+    parts = [p for p in name.replace(",", " ").split() if p.upper().rstrip(".") not in ("JR", "SR", "II", "III", "IV")]
+    return parts[-1].upper()
+
+
 def state_of(race: str) -> str:
     return race.split("-")[1]
 
@@ -219,6 +231,19 @@ def main(argv=None) -> int:
             continue
         agg = aggregate_spending(ie, st, cutoff)
         spending.append({"race": race, "state": st, "fec_coverage": "FEC_SCHEDULE_E", "window_end": cutoff.isoformat(),
+                         **{k: (f"{v:.2f}" if isinstance(v, float) else str(v)) for k, v in agg.items()},
+                         "source_file": SOURCES["ie"], "source_sha256": sha["ie"]})
+    # House districts: FEC independent expenditures by state and district (at-large is "00"), fit only against other House
+    # races (measure FEC_SCHEDULE_E_HOUSE). The district's 2024 margin comes from house-races.csv inside weight.py.
+    with open(Path(a.bundle_dir) / "house-races.csv", newline="", encoding="utf-8") as f:
+        house = {r["race"]: (r["d_candidate"], r["r_candidate"]) for r in csv.DictReader(f)}
+    for race in weight.HOUSE_RACES:
+        st, dist = race.split("-")[1], race.split("-")[2]
+        nom = house.get(race)
+        if not nom:
+            raise SystemExit(f"house-races.csv has no nominees for {race}")
+        agg = aggregate_spending(ie, st, cutoff, office="H", names=tuple(surname_key(n) for n in nom))
+        spending.append({"race": race, "state": st, "fec_coverage": "FEC_SCHEDULE_E_HOUSE", "window_end": cutoff.isoformat(),
                          **{k: (f"{v:.2f}" if isinstance(v, float) else str(v)) for k, v in agg.items()},
                          "source_file": SOURCES["ie"], "source_sha256": sha["ie"]})
     history = history_rows(paths["history"], {"2020": ("2016", pres2016_margins(paths["pres2016"])), "2022": ("2020", pres20)}, sha["history"])
