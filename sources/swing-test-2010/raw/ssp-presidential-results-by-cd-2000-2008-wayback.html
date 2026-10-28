@@ -1,0 +1,6693 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+    <head>
+        
+        	
+        <meta name="verify-v1" content="qvzWFl1rSR4g6RfX2pkrfy7UGtfCByHSdnaOt4cssIg=" >
+<script src="http://www.swingstateproject.com/upload/sorttable.js"></script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/stylesheets/soapblox.css" type="text/css">
+<link rel="stylesheet" href="/stylesheets/comments.css" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Swing State Project"
+    href="http://www.swingstateproject.com/rss/rss2.xml" />
+<title>Swing State Project: Presidential Results by Congressional District, 2000-2008</title>
+
+
+
+
+
+
+
+
+
+<script src="/javascript/prototype.js" type="text/javascript"></script>
+
+
+<script>
+//-- SoapBlox JavaScript
+//-- 7/30/2007 (C)
+
+var baseUrl = '/';
+//-- SoapBlox JavaScript
+//-- 7/30/2007 (C)
+
+	var req;
+	var which;
+	var debug = false;
+	var commentId = "";
+	var diaryId = "";
+	var previewTitle = "";
+	var previewText = "";
+	var postingComment = false;
+	var canPost = false;
+	var previewingComment = false;
+	var hasError = false;
+	var buttonState;
+	
+	function hover(id, imageLoc) {
+		// alert(imageLoc);
+		document.images[id].src = imageLoc;
+	}
+
+	// makes a comment appear when someone clicks "post a comment" or "reply"
+	// id - the commentId (0 if "root"), dId - diaryId
+	function makeCommentAppear(id, dId) {
+
+		var tempTitle = "";
+		var tempText = "";
+	
+		// if this isn't empty, we were trying to perviously post a comment
+		// therefore, we need to clean out all the html in the previous spot
+		// so we don't create "nodeLists" for postCommentTextArea and Title
+		if (commentId != "") {
+			// get the current "postcommenter" element
+			var oldElem = document.getElementById('postcomment' + commentId);
+	
+			if (oldElem) {
+				// this will store whatever we might have had before
+				if (document.forms['rateForm'].elements['postCommentTitle']) {
+					tempTitle = document.forms['rateForm'].elements['postCommentTitle'].value;
+				}	
+				if (document.forms['rateForm'].elements['postCommentTextArea']) {
+					tempText = document.forms['rateForm'].elements['postCommentTextArea'].value;
+				}
+			
+				// clear out the old HTML, so we don't create nodeLists
+				oldElem.innerHTML = "";
+			}
+		}
+	
+		hideArea("post");
+
+		// store the values globally for what we're currently looking at
+	    commentId = id;
+	    diaryId = dId;
+	    
+	    var elementName = 'postcomment' + id;
+	    
+	    // make sure the element is hidden
+		Element.hide(elementName);
+
+		// set the data in it		
+	    document.getElementById(elementName).innerHTML = document.getElementById("contentHolder").innerHTML;
+		document.forms['rateForm'].elements['postCommentTitle'].value = tempTitle;
+		document.forms['rateForm'].elements['postCommentTextArea'].value = tempText;
+	
+		// make it slide down, take half a second, scaleFrom 3 to avoid "stutter" in IE
+		Effect.SlideDown(elementName, { duration: 0.5, scaleFrom: 3});
+		window.setTimeout("document.forms['rateForm'].elements['postCommentTitle'].focus()", 501);
+		
+	    postingComment = true;
+	    // since we're starting a new preview cycle, we're going to need
+	    // to use the slide down effect.  This ensures that
+	    previewingComment = false;
+
+	    var objDiv = document.getElementById(elementName);
+		objDiv.scrollTop = objDiv.scrollHeight;
+	}
+
+	// what we do when someone hits cancel
+	function cancelPost() {
+
+		var cTextElem = document.forms['rateForm'].elements['postCommentTextArea'];
+		var cTitleElem = document.forms['rateForm'].elements['postCommentTitle'];
+		
+		if ((cTextElem && cTextElem.value != "")
+				|| (cTitleElem && cTitleElem.value != ""))
+		{
+			// if the don't want to cancel--stop.
+			if (!confirm("Cancel this comment?")) {
+				return;
+			}
+		}
+
+		hideArea("cancel");
+		// we no longer clear this out so in makeCommentAppear we can see if we have to clean
+		// out some hidden HTML
+		//commentId = "";
+		diaryId = "";
+		previewText = "";
+		previewTitle = "";
+		cTextElem.value = "";
+		cTitleElem.value = "";
+		previewingComment = false;	
+		postingComment = false;
+	}
+	
+	// this is the safari default button hack, where we use onfocus to determine what mode we're in
+	function setButtonState(theValue) {
+		buttonState = theValue;
+	}
+
+	// it's how we post a comment!
+	function submitForm(theForm) {
+	
+		// alert(buttonState + " " + previewingComment);
+	
+		// stop the "enter in the subject" bug
+		if (buttonState == "post" && !previewingComment
+		 		|| buttonState == "post" && previewingComment && !canPost) {
+			previewComment(theForm);
+			return false;
+		}
+		
+
+		var theForm = document.forms['rateForm'];	
+		theForm.action = baseUrl + "postComment.do";
+		theForm.elements['replyParentCommentId'].value = commentId;
+
+		if (commentId == 0) {
+			theForm.elements['diaryId'].value = diaryId;	
+		}
+		else {
+			theForm.elements['commentId'].value = commentId;	
+
+		}
+		
+		theForm.elements['replyDiaryId'].value = diaryId;	
+		theForm.elements['submitType'].value = "post";	
+		
+		// alert("yo" + theForm.elements['submitType']);
+		theForm.method = "POST";
+		theForm.submit();
+	}
+
+	// trims a string
+	function trim(str) {     
+		if(!str || typeof str != 'string') {
+			return null;     
+		}
+			
+		return str.replace(/^[\s]+/,'').replace(/[\s]+$/,'').replace(/[\s]{2,}/,' '); 
+		
+	}
+
+	function previewComment(theForm) {
+	
+		// if (tinyMCE) {
+			// tinyMCE.triggerSave();
+		// }
+		
+		// alert(baseUrl);
+
+		var url = baseUrl + "ajaxPreviewComment.do";
+		var errorDiv = "errorcomment" + commentId;
+		
+		// hide any error we might have
+		if (hasError) {
+			Element.hide(errorDiv);
+		}
+			
+		var cTitleElem = document.forms['rateForm'].elements["postCommentTitle"];
+		var cTextElem =  document.forms['rateForm'].elements["postCommentTextArea"];
+	
+		
+		previewTitle = cTitleElem.value;
+		previewText = cTextElem.value;
+	
+	    // trim it so we remove the white sapces
+	    previewTitle = trim(previewTitle);
+
+	    // if we have nothing, set the error
+	    if (previewTitle == null || previewTitle == "") {
+			Effect.Appear(errorDiv, { duration: 0.5 });
+			disallowPost();
+			hasError = true;
+	    	return;
+	    }
+
+	    // if we get this far we don't have an error!
+	    hasError = false;
+	    
+	    // apparently using "escape" funcation messes with utf-8 so we just explicity
+	    // replace newlines with their url-encoding equavilent.
+	    previewText = escape(previewText); 
+	    
+	    previewText = previewText.replace(/\%u201C/ig, "%22");
+	    previewText = previewText.replace(/\%u201D/ig, "%22");
+  	    previewText = previewText.replace(/\%u2018/ig, "%27");
+  	    previewText = previewText.replace(/\%u2019/ig, "%27");  	    
+  	    previewText = previewText.replace(/\%u2013/ig, "-");  
+  	    previewText = previewText.replace(/\%u2014/ig, "-");    	      	    
+  	    previewText = previewText.replace(/\%u2026/ig, "...");    	
+  	    previewText = previewText.replace(/\+/g, "%2B");
+	    
+	    //previewText.replace(/\n/g, "%0a");
+//	    previewText = previewText.replace(/\+/g, "%2b");
+  // 	    previewText = previewText.replace(/\%/g, "%25");
+//   	    alert(previewText);
+	    
+		// add the previewText to the URL querystring    
+		// have to URL encode it for it to work correctly
+	    var params = "t=" + previewText;
+	
+		// do the fun ajax!    
+	    retrieveURL(url, "PREVIEW", commentId, params);
+	}
+
+	function hideArea(theType) {
+		var elementName = 'postcomment' + commentId;
+		var previewName = 'previewcomment' + commentId;
+	
+		// always hide the error div		
+		if (hasError) {
+			var errorDiv = "errorcomment" + commentId;
+			Element.hide(errorDiv);
+			hasError = false;
+		}
+		
+	    if (postingComment) {	
+	        // we must hide the current stored commentId
+	        // if we are canceling, we do it pretty
+	        if (theType == "cancel") {
+				Element.hide(previewName);        
+		        Effect.SlideUp(elementName, { duration: 0.5 });
+		    }
+		    else {
+		    	// otherwise we are posting another comment
+		    	// so do it REAL quick
+				Element.hide(previewName);	    	
+				document.getElementById(elementName).innerHTML = "";
+			}
+	    }
+	}
+
+	function figureOut(theForm) {
+// 		alert(buttonState);
+		
+		if (buttonState == 'preview') {
+			previewComment(theForm);
+		}
+		else if (buttonState == 'cancel') {
+			cancelPost();
+		}
+		else if (buttonState == 'post') {
+			submitForm(theForm);
+		}
+	}
+
+	// this checks the comments for when someone types, and if it's different than what's being preview we
+	// turn off the post button
+	function checkComment() {
+
+		var tTitle = "";
+		var tText = "";
+		
+		if (document.forms['rateForm'].elements['postCommentTitle']) {
+			tTitle = document.forms['rateForm'].elements['postCommentTitle'].value;
+		}
+		
+		if (document.forms['rateForm'].elements['postCommentTextArea']) {
+			tText = document.forms['rateForm'].elements['postCommentTextArea'].value;
+		}
+	    
+	   
+ //    		alert(tTitle + " " + previewTitle + " : " + tText + " " + previewText);
+	    if (canPost && (tText != previewText || tTitle != previewTitle)) {
+	    	disallowPost();
+	   	}
+	}
+
+	function disallowPost() {
+	    canPost = false;
+	    document.getElementById("postbutton" + commentId).disabled = true;
+	}
+
+	function allowPost() {
+	    canPost = true;
+	    var elem = document.getElementById("postbutton" + commentId);
+	    
+	    elem.disabled = false;
+	    
+	    // alert(previewingComment);
+	    
+	    if (!previewingComment) {
+			window.setTimeout("document.getElementById('postbutton' + commentId).focus()", 501);
+	    }
+	    else {
+		    try {
+		    	 document.getElementById('postbutton' + commentId).focus();
+		   	} catch (e) {
+		   		alert(e);
+		   	}
+	    }
+		
+//		alert(elem);
+//	    document.getElementById("postbutton" + commentId).focus();
+	//    alert(document.getElementById("postbutton" + commentId).focus);
+	}
+
+  function retrieveURL(url, type, id, params) {
+    which = id;
+    if (window.XMLHttpRequest) { // Non-IE browsers
+        req = new XMLHttpRequest();
+
+      
+        // pretty sure this adds a listener, which handles communication
+        // listeners apparently don't like parameters, either
+        if ("RATE" == type) {
+            req.onreadystatechange = processRateStateChange;          
+        }
+        else if ("RECOMMEND" == type) {
+            req.onreadystatechange = processRecommendStateChange;          
+        } 
+        else if ("PREVIEW" == type) {
+			req.onreadystatechange = processPreviewComment;                  
+        }      
+        else {
+            req.onreadystatechange = processStateChange;
+        }
+
+        try {
+            req.open("POST", url, true);
+	   		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+			req.setRequestHeader("Content-length", params.length);
+			req.setRequestHeader("Connection", "close");            	    	
+            req.send(params);
+        } catch (e) {
+            alert(e);
+        }
+    } 
+    else if (window.ActiveXObject) { // IE
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+		
+        if (req) {
+            if ("RATE" == type) {
+                req.onreadystatechange = processRateStateChange;          
+            }
+            else if ("RECOMMEND" == type) {
+                req.onreadystatechange = processRecommendStateChange;          
+            }       
+            else if ("PREVIEW" == type) {
+				req.onreadystatechange = processPreviewComment;                  
+	   		}   
+            else {
+                req.onreadystatechange = processStateChange;
+            }
+        
+            req.open("POST", url, true);
+	   		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			req.setRequestHeader("Content-length", params.length);
+			//req.setRequestHeader("Connection", "close");            	    	
+            req.send(params);
+        }
+    }
+  }
+  
+
+  // listener
+  function processStateChange() {
+    
+    if (req.readyState == 4) { // Complete
+      if (req.status == 200) { // OK response
+        document.getElementById("theTable").innerHTML = req.responseText;
+
+      } else {
+
+        alert("Problem: " + req.statusText);
+
+      }
+
+    }
+  }
+  
+  
+  
+	function processPreviewComment() {
+
+		if (req.readyState == 4) { // Complete
+			if (req.status == 200) { // OK response
+				var postCommentDiv = document.getElementById("postcomment" + commentId);
+				var previewCommentDiv = document.getElementById("previewcomment" + commentId);
+				
+			  	// make it visible
+			    // document.getElementById("previewComment").style.display = "block";
+			    
+				previewText = req.responseText;
+				
+				var commentError = false;
+				
+				if (previewText.indexOf("@@@ERROR@@@") != -1) {
+					previewText = "<div class='soapbloxError'>" + previewText.substring(11, previewText.length) + "</div>";						
+					commentError = true;
+				}
+    
+		        // set values in the preview area
+			    document.getElementById("previewTitle" + commentId).innerHTML = previewTitle;
+			    document.getElementById("previewCommentText" + commentId).innerHTML = previewText;
+			    
+			    // alert(previewingComment); 
+    
+    			// if we're not already previewing a comment we slide down
+    			if (!previewingComment) {
+					Effect.SlideDown("previewcomment" + commentId, { duration: 0.5, scaleFrom: 3});
+					//window.setTimeout("postButton.focus()", 501);
+				}
+				// otherwise, we just update the text
+				else {
+					Element.show("previewcomment" + commentId);
+				}
+			
+				if (commentError) {
+					disallowPost();
+				}					
+				else {
+					allowPost();
+				}
+				
+				previewingComment = true;
+			}
+			else {
+				alert("Problem: " + req.statusText);
+			}
+		}	
+	}
+  
+    function processRateStateChange() {
+        //alert(loadName);
+        //alert(document.getElementById(loadName));
+
+        if (req.readyState == 4) { // Complete
+        
+            var loadName = "rateLoad" + which; 
+            // alert("elem: " + document.getElementById(loadName));
+            var elem = document.getElementById(loadName);
+           
+
+            if (req.status == 200) { // OK response
+                elem.innerHTML = "<i>Complete!</i>";
+                if (debug) {
+                    alert(document.getElementById("rating" + which));
+                    alert(req.responseText);
+                }
+
+				// alert(req.responseText);
+
+        		var xmlDoc = req.responseXML;
+        		var theWholeThing = "";
+        		
+        		var rateType = xmlDoc.getElementsByTagName("rateType")[0].childNodes[0].nodeValue;
+        		var scoreType = xmlDoc.getElementsByTagName("scoreType")[0].childNodes[0].nodeValue;
+				var average = xmlDoc.getElementsByTagName("averageScore")[0].childNodes[0].nodeValue;
+				var viewRatingLink = xmlDoc.getElementsByTagName("viewRatingLink")[0].childNodes[0].nodeValue;
+        			        		
+        		//alert(rateType);
+        		
+        		if (rateType == "THUMBS" || rateType == "STARS") {
+				//	if (average == "false") {
+					// loop through the ratings   
+					
+						     		
+	        			for (i = 0; i < xmlDoc.getElementsByTagName("rating").length; i++) {
+	        			
+	        				var theString = "";
+	        			
+		        			var theRating = xmlDoc.getElementsByTagName("rating")[i];
+		        			var commentId = theRating.getElementsByTagName("commentId")[0].childNodes[0].nodeValue;
+							var ratingName = theRating.getElementsByTagName("ratingName")[0].childNodes[0].nodeValue;
+							// var viewRatingLink = theRating.getElementsByTagName("viewRatingLink")[0].childNodes[0].nodeValue;
+		        			var ratingValueId = theRating.getElementsByTagName("ratingValueId")[0].childNodes[0].nodeValue;
+		        			var loc = theRating.getElementsByTagName("image-src")[0].childNodes[0].nodeValue;
+		        			var mouseover = theRating.getElementsByTagName("image-mouseover")[0].childNodes[0].nodeValue;
+		        			var mouseout = theRating.getElementsByTagName("image-mouseout")[0].childNodes[0].nodeValue;
+		        			var count = theRating.getElementsByTagName("count")[0].childNodes[0].nodeValue;
+		        			var theId = "rv" + commentId + "-" + ratingValueId;
+		        			
+		        			if (rateType == "THUMBS") {
+		        			
+//		        				if (average == "false") {
+		        					theString = "<a href='javascript:void(0)' onclick='rateThumb(\"" + commentId + "\", \"" + ratingValueId + "\")'>";
+		        				
+		        					if ("RATING_NAME" == scoreType) {
+		    	    					theString += ratingName;
+			        				}
+			        				else {
+		 
+										theString += "<img border='0' name='" + theId + "' src='" + loc + "' onmouseover='hover(\"" +theId + "\", \"" + mouseover + "\")'  onmouseout='hover(\"" +theId + "\", \"" + mouseout + "\")'>";		        				
+		        					}
+		        					theString += "</a>";
+		        					
+		        					if (average == "false") {
+		        						 theString += " - " + count;
+									}
+		        			//	}
+		        			//	else {
+		        			//		theString = "(" + xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue + ")";
+		        			//	}
+		        			}
+		        			else { // STARS
+		        				theString = "<a href='javascript:void(0)' onclick='rateThumb(\"" + commentId + "\", \"" + ratingValueId + "\")'><img border='0' name='star" + commentId + "-" + i + "' src='" + loc + "' onmouseover='starHover(\"" + mouseover + "\", \"" + commentId + "\", \"" + i + "\")'  onmouseout='starHover(\"" + mouseout + "\", \"" + commentId + "\", \"" + i + "\")'></a> ";
+		        			}
+		        			
+		        			/*
+		        			var theImage = document.images[theId]; 
+		        			theImage.src = loc;
+		        			
+							theImage.onmouseout= (function (a, b) {
+		      					return function () {
+		      						document.images[a].src = b;
+								};
+		    				})(theId, mouseout);
+								// hover(theId, mouseout); 
+								//alert(e);
+		        				//alert("mout-src: " + loc + "\nId: " + theId + "\nmouseover: " + mouseover + "\n:mouseout: " + mouseout);
+		        				//document.images[theId].src = mouseout;
+		        			
+		        			
+							theImage.onmouseover= (function (a, b) {
+		      					return function () {
+		      						document.images[a].src = b;
+								};
+		    				})(theId, mouseover); */
+		    				
+		    				if (i < xmlDoc.getElementsByTagName("rating").length - 1) {
+		    					theString = theString + "&nbsp;";
+//		    					alert("Your mom");
+		    				}
+		    				
+		    				theWholeThing += theString;
+		        		}
+	        	//	}
+	        	//	else {
+	        	//		alert(xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue);
+	        	//		v
+	        	//		theWholeThing = xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue;
+	        	//	}
+	        	
+	        		if (average == "true") {
+	        			theWholeThing = "(<a href=\"" + viewRatingLink+ "\">" + xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue + "</a>) " + theWholeThing;
+	        		}
+	        		
+	        	} // End thumbs and stars
+	        	else if ("RADIO" == rateType || "DROP_DOWN" == rateType) {
+	        		var score = "";
+	        		
+	        	//	alert("bob!");
+
+					if (scoreType == "IMAGE") {
+						if (average == "false") {
+							var scoreNode = xmlDoc.getElementsByTagName("score")[0];
+							for (i = 0; i < scoreNode.getElementsByTagName("oneScore").length; i++) {
+								score += "<img border='0' src='" + scoreNode.getElementsByTagName("path")[i].childNodes[0].nodeValue + "'> - " +  scoreNode.getElementsByTagName("count")[i].childNodes[0].nodeValue + " ";
+							}
+						}
+						else {
+							score = "(<a href=\"" + viewRatingLink + "\">" + xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue + "</a>)";						
+	//						score = xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue;
+							//alert("score: " + score);						
+						}
+					}
+					else {
+						score = "(<a href=\"" + viewRatingLink + "\">" + xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue + "</a>)";
+						// alert("score: " + score);
+					} 
+					
+					theWholeThing = score;
+	        	}
+	        	/*
+	        	var score = "";
+
+				if (scoreType == "IMAGE") {
+					var scoreNode = xmlDoc.getElementsByTagName("score")[0];
+					for (i = 0; i < scoreNode.getElementsByTagName("oneScore").length; i++) {
+						score += "<img border='0' src='" + scoreNode.getElementsByTagName("path")[i].childNodes[0].nodeValue + "'> - " +  scoreNode.getElementsByTagName("count")[i].childNodes[0].nodeValue + " ";
+					}
+				}
+				else {
+					score = xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue;
+				} */
+        		        		
+        		document.getElementById("rating" + which).innerHTML = theWholeThing;
+            } 
+            else 
+            {
+                elem.innerHTML = "<b>Error!</b>";            
+            }
+            
+            Effect.Fade(loadName);
+        }
+    } 
+    
+    function starHover(fileLoc, commentId, theIndex) {
+    	for (var i = 0; i <= theIndex; i++) {
+    		var theStar = "star" + commentId + "-" + i;
+    		document.images[theStar].src = fileLoc;
+    	}
+    }
+    
+    function thumbHover(fileLoc, commentId, theIndex) {
+   		var theStar = "star" + commentId + "-" + theIndex;
+		document.images[theStar].src = fileLoc;
+
+    }    
+  
+    function processRecommendStateChange() {
+        // alert("elem: " + document.getElementById(loadName));
+        var elem = document.getElementById("recommendLoad");
+        var recommender = document.getElementById("recommender");
+    
+        if (req.readyState == 4) {
+            if (req.status == 200) {
+                elem.innerHTML = "<i>Complete!</i>";            
+                recommender.innerHTML = req.responseText;                
+            }
+            else {
+                elem.innerHTML = "<b>Error!</b>";  
+            }
+            
+            recommender.disabled = false;
+        }
+        
+        Effect.Fade("recommendLoad");        
+    }
+    
+	function rateThumb(theCommentId, ratingValueId) {
+
+        var url = baseUrl + "ajaxRate.do";
+        var params = "id=" + theCommentId + "&value=" + ratingValueId;
+        if (debug) {
+            alert("commentId" + commentId + ", value: " + ratingValueId  + "\nurl: " + url);
+        }
+        
+        var loadName = "rateLoad" + theCommentId;            
+        // alert("loadName: " + loadName);
+        var elem = document.getElementById(loadName);
+        // alert("elem: " + elem);
+        Element.show(elem);
+        elem.innerHTML = "<I>Processing...</i>";
+        
+        retrieveURL(url, "RATE", theCommentId, params);
+    }
+     
+
+    function rate(theCommentId) {
+        var selectName = "select" + theCommentId;
+        var selector = document.rateForm.elements[selectName];
+        var rateValue = selector.options[selector.selectedIndex].value;
+        var url = baseUrl + "ajaxRate.do";
+        var params = "id=" + theCommentId + "&value=" + rateValue;
+        if (debug) {
+            alert("commentId" + commentId + ", value: " + rateValue  + "\nurl: " + url);
+        }
+        
+        var loadName = "rateLoad" + theCommentId;            
+        // alert("loadName: " + loadName);
+        var elem = document.getElementById(loadName);
+        // alert("elem: " + elem);
+        Element.show(elem);
+        elem.innerHTML = "<I>Processing...</i>";
+        
+        retrieveURL(url, "RATE", theCommentId, params);
+    }
+    
+    function radioRate(theCommentId) {
+        var selectName = "select" + theCommentId;
+        var selector = document.rateForm.elements[selectName];
+        var rateValue = "";
+        
+        for (var i = 0; i < selector.length; i++) {
+        	if (selector[i].checked) {
+        		rateValue = selector[i].value;
+        		break;
+        	}
+        }
+        
+        var url = baseUrl + "ajaxRate.do";
+        var params = "id=" + theCommentId + "&value=" + rateValue + "&type=radio";
+        if (debug) {
+            alert("commentId" + commentId + ", value: " + rateValue  + "\nurl: " + url);
+        }
+        
+        var loadName = "rateLoad" + theCommentId;            
+        // alert("loadName: " + loadName);
+        var elem = document.getElementById(loadName);
+        // alert("elem: " + elem);
+        Element.show(elem);
+        elem.innerHTML = "<I>Processing...</i>";
+        
+        retrieveURL(url, "RATE", theCommentId, params);
+    }    
+    
+    function recommend(diaryId) {
+
+        var url = baseUrl + "ajaxRecommend.do";
+        var params = "id=" + diaryId;
+        
+        if (debug) {
+            alert("diaryId: " + diaryId);        
+            alert("url: " + url);        
+        }
+        
+        var recommender = document.getElementById("recommender");
+        recommender.disabled = true;
+        
+        var elem = document.getElementById("recommendLoad");
+        Element.show(elem);
+        elem.innerHTML = "<br /><i>Processing...</i>";
+        
+        retrieveURL(url, "RECOMMEND", diaryId, params);        
+    }
+    
+	function toggleEditor(id) {
+		var elm = document.getElementById(id);
+
+		if (tinyMCE.getInstanceById(id) == null)
+			tinyMCE.execCommand('mceAddControl', false, id);
+		else
+			tinyMCE.execCommand('mceRemoveControl', false, id);
+	} 
+	
+	function turnOnEditor(id) {
+		if (tinyMCE.getInstanceById(id) == null)
+			tinyMCE.execCommand('mceAddControl', false, id);	
+	}
+	
+	function turnOffEditor(id) {
+		if (id == "postCommentTextArea" && !tinyMCE.getInstanceById(id)) {
+			id = "commentText";		
+		}
+		
+		// alert(id);
+
+		if (tinyMCE.getInstanceById(id) != null)
+			tinyMCE.execCommand('mceRemoveControl', false, id);
+	}	
+	
+	function setDiaryButtons(id) {
+		var selectedValue = id.options[id.selectedIndex].value;	
+		
+		if (selectedValue == "WYSIWYG") { // which is WYSIWYG
+			disableDiaryButtons(true);
+		}
+		else {		
+			disableDiaryButtons(false);		
+		}
+	}
+	
+	
+	function disableDiaryButtons(theValue) {
+		document.getElementById("bold1").disabled = theValue;
+		document.getElementById("italic1").disabled = theValue;
+		document.getElementById("quote1").disabled = theValue;
+		document.getElementById("bold2").disabled = theValue;
+		document.getElementById("italic2").disabled = theValue;
+		document.getElementById("quote2").disabled = theValue;	
+	}	
+	
+	function setCommentButtons(id) {
+		var selectedValue = id.options[id.selectedIndex].value;	
+		
+		if (selectedValue == "WYSIWYG") { // which is WYSIWYG
+			disableCommentButtons(true);
+		}
+		else {		
+			disableCommentButtons(false);		
+		}
+	}	
+	
+	function disableCommentButtons(theValue) {
+		document.getElementById("bold1").disabled = theValue;
+		document.getElementById("italic1").disabled = theValue;
+		document.getElementById("quote1").disabled = theValue;
+	}	
+
+	
+	function toggleDiaryEditor(id) {
+		var selectedValue = id.options[id.selectedIndex].value;
+		// alert(selectedValue);		
+		
+		setDiaryButtons(id);
+		
+		if (selectedValue == "WYSIWYG") { // which is WYSIWYG
+			turnOnEditor("editMainText");
+			turnOnEditor("editExtendedText");	
+		}
+		else {
+			turnOffEditor("editMainText");
+			turnOffEditor("editExtendedText");			
+
+		}
+	}   
+	
+	function toggleCommentEditor(id) {
+		var selectedValue = id.options[id.selectedIndex].value;
+		
+		setCommentButtons(id);	
+		
+		// alert(selectedValue);
+		
+		if (selectedValue == "WYSIWYG") { // which is WYSIWYG
+			turnOnEditor("postCommentTextArea");
+		}
+		else {
+		    // alert("before turn off");
+			turnOffEditor("postCommentTextArea");
+		}
+	} 
+	
+	function toggleQuickHitEditor(id) {
+		var selectedValue = id.options[id.selectedIndex].value;
+		
+		if (selectedValue == "WYSIWYG") { // which is WYSIWYG
+			turnOnEditor("quickHitText");
+		}
+		else {
+			turnOffEditor("quickHitText");
+		}
+	} 		
+
+	function addTags(textAreaId, startTag, endTag, content) {
+		
+		var textArea;
+		
+		if (document.forms['rateForm']) {
+			textArea = document.forms['rateForm'].elements[textAreaId];
+		}
+		else {
+			textArea = document.getElementById(textAreaId);
+		}
+		
+		if (typeof textArea.selectionStart != "undefined") {
+			textArea.focus();
+			var selStart = textArea.selectionStart;
+			var selEnd = textArea.selectionEnd;
+			var selText = textArea.value.substring(selStart, selEnd);
+			var scrlTop = textArea.scrollTop;
+			var scrlDown = textArea.value.length <= selStart;
+			if (selText.indexOf(startTag) === 0 && endTag == selText.substring(selText.length - endTag.length, selText.length)) {
+				textArea.value = textArea.value.substring(0, selStart) + selText.substring(startTag.length, selText.length - endTag.length) 
+					+ textArea.value.substring(selEnd, textArea.value.length);
+				textArea.selectionStart = selStart;
+				textArea.selectionEnd = selEnd - (startTag.length + endTag.length);
+				textArea.scrollTop = scrlTop;
+			} else {		
+				textArea.value = textArea.value.substring(0, selStart) + startTag + (content ? content : selText)
+					+ endTag + textArea.value.substring(selEnd, textArea.value.length);
+				textArea.selectionStart = selStart;
+				textArea.selectionEnd = selStart + startTag.length + (content ? content.length : selText.length) + endTag.length;
+				textArea.scrollTop = (scrlDown ? 10000000 : scrlTop);
+			}
+		} else if (document.selection) {
+			var range = document.selection.createRange();
+			if (range.parentElement() != textArea) {
+				var textRange = textArea.createTextRange();
+				textRange.moveStart('character', textArea.value.length);
+				textRange.collapse();
+				textRange.select();
+				range = document.selection.createRange();
+			}
+			textArea.focus();
+			if (range.text.indexOf(startTag) === 0 && endTag == range.text.substring(range.text.length - endTag.length, range.text.length)) {
+				range.text = range.text.substring(startTag.length, range.text.length - endTag.length);
+			} else {
+				range.text = startTag + (content ? content : range.text) + endTag;
+			}
+		} else {
+			textArea.focus();
+			textArea.value = startTag + (content ? content : "") + endTag;
+			if (typeof textArea.scrollTop != "undefined") {
+				textArea.scrollTop = 10000000;
+			}
+		}
+	}
+	
+	
+	function addBoldTags(textAreaId) {
+		addTags(textAreaId, "<b>", "</b>");
+		return false;
+	}
+	
+	function addItalicTags(textAreaId) {
+		addTags(textAreaId, "<i>", "</i>");
+		return false;
+	}
+	
+	function addQuoteTags(textAreaId) {
+		addTags(textAreaId, "<blockquote>", "</blockquote>");
+		return false;
+	}
+		
+
+</script>
+
+   
+<script language="javascript" type="text/javascript" src="/javascript/effects.js"></script> 
+
+
+    </head>
+<body>
+<center>
+<div class="mainLayout">
+
+
+    <div id="banner">
+<h1><a href="http://www.swingstateproject.com" accesskey="1">Swing State Project</a></h1>
+
+<h2>Campaign and Election News - Covering Key Races Around the Country</h2>
+</div>
+ 
+
+
+<table class="mainTable">
+    <tr>
+        
+            
+
+                
+                
+                    <td valign="top" class="LEFT_SIDE">
+                        
+                            
+                                <!-- Google Ads -->
+<h2>Google Ads</h2>
+
+<p><div align=center><script type="text/javascript"><!--
+google_ad_client = "pub-9866220294038337";
+/* 160x600, created 8/29/10 */
+google_ad_slot = "4318522116";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<br /></p>
+                            
+                                <!-- Site Stats -->
+
+<h2>Site Stats</h2>
+
+<!-- Site Meter -->
+<center><p><script type="text/javascript" src="http://s10.sitemeter.com/js/counter.js?site=s10SwingStateProject">
+</script>
+<noscript>
+<a href="http://s10.sitemeter.com/stats.asp?site=s10SwingStateProject" target="_top">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10SwingStateProject" alt="Site Meter" border="0"/></a>
+</noscript></p></center>
+<!-- Copyright (c)2009 Site Meter -->
+
+                            
+                        
+                    </td>
+                
+
+                
+                
+            
+
+                
+                
+
+                
+                
+                    <td class="MAIN_BODY" valign="top">
+                        
+                        
+                        	
+                            	
+                                                    
+                        
+                         
+
+
+
+
+
+
+
+             
+
+    
+
+
+
+
+
+
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+
+<table width="100%">
+    <tr>
+        <td>
+        <h1 class="diaryTitle">
+
+        	Presidential Results by Congressional District, 2000-2008
+        
+         
+        </h1>
+        
+        <h2 class="author">by: 
+        	<a href='/user/DavidNYC'>
+        		DavidNYC
+        	</a>
+		</h2>
+        
+        <h3 class="diaryTimestamp">
+            <i>Mon Dec 15, 2008 at 4:01 PM EST</i>
+         </h3>
+         
+            
+         
+         
+        
+        <br />
+        </td>
+    </tr>
+    <tr>
+        <td> <div align=center><B>Click Column Headers to Sort</b><br />(all numbers use 2006 district lines)</div><p><div align=center><TABLE class=sortable BORDER=1 CELLPADDING=3 CELLSPACING=0>
+<TR>
+  <TH>State</TH>
+  <TH>CD</TH>
+  <TH>Member</TH>
+  <TH>Party</TH>
+  <TH>Obama</TH>
+  <TH>McCain</TH>
+  <TH>Kerry</TH>
+  <TH>Bush '04</TH>
+  <TH>Gore</TH>
+  <TH>Bush '00</TH>
+</TR>
+<TR>
+  <TD>AK</TD>
+  <TD>AL</TD>
+  <TD>Young, Don</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>59</TD>
+  <TD>36</TD>
+  <TD>61</TD>
+  <TD>28</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>1</TD>
+  <TD>Bonner</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>2</TD>
+  <TD>Roby</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>3</TD>
+  <TD>Rogers, Mike D.</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>47</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>4</TD>
+  <TD>Aderholt</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>23</TD>
+  <TD>76</TD>
+  <TD>28</TD>
+  <TD>71</TD>
+  <TD>37</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>5</TD>
+  <TD>Brooks</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>44</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>6</TD>
+  <TD>Bachus</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>23</TD>
+  <TD>76</TD>
+  <TD>22</TD>
+  <TD>78</TD>
+  <TD>25</TD>
+  <TD>74</TD>
+</TR>
+<TR>
+  <TD>AL</TD>
+  <TD>7</TD>
+  <TD>Sewell</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>72</TD>
+  <TD>27</TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>AR</TD>
+  <TD>1</TD>
+  <TD>Crawford</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>59</TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>50</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>AR</TD>
+  <TD>2</TD>
+  <TD>Griffin</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>AR</TD>
+  <TD>3</TD>
+  <TD>Womack</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>34</TD>
+  <TD>64</TD>
+  <TD>36</TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>AR</TD>
+  <TD>4</TD>
+  <TD>Ross, Mike</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>39</TD>
+  <TD>58</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>49</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>1</TD>
+  <TD>Gosar</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>2</TD>
+  <TD>Franks</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>41</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>3</TD>
+  <TD>Quayle</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>4</TD>
+  <TD>Pastor</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>62</TD>
+  <TD>38</TD>
+  <TD>63</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>5</TD>
+  <TD>Schweikert</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>6</TD>
+  <TD>Flake</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>37</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>7</TD>
+  <TD>Grijalva</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>43</TD>
+  <TD>58</TD>
+  <TD>38</TD>
+</TR>
+<TR>
+  <TD>AZ</TD>
+  <TD>8</TD>
+  <TD>Giffords</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>46</TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>50</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>1</TD>
+  <TD>Thompson, Mike</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>32</TD>
+  <TD>60</TD>
+  <TD>38</TD>
+  <TD>52</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>2</TD>
+  <TD>Herger</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>55</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>33</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>3</TD>
+  <TD>Lungren</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD><B><font color=blue>49</font></b></TD>
+  <TD>49</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>4</TD>
+  <TD>McClintock</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>37</TD>
+  <TD>61</TD>
+  <TD>36</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>5</TD>
+  <TD>Matsui</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>70</TD>
+  <TD>28</TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>6</TD>
+  <TD>Woolsey</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>76</TD>
+  <TD>22</TD>
+  <TD>70</TD>
+  <TD>28</TD>
+  <TD>62</TD>
+  <TD>30</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>7</TD>
+  <TD>Miller, George</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>72</TD>
+  <TD>27</TD>
+  <TD>67</TD>
+  <TD>32</TD>
+  <TD>66</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>8</TD>
+  <TD>Pelosi</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>85</TD>
+  <TD>12</TD>
+  <TD>85</TD>
+  <TD>14</TD>
+  <TD>77</TD>
+  <TD>15</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>9</TD>
+  <TD>Lee</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>88</TD>
+  <TD>10</TD>
+  <TD>86</TD>
+  <TD>13</TD>
+  <TD>79</TD>
+  <TD>13</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>10</TD>
+  <TD>Garamendi</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>55</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>11</TD>
+  <TD>McNerney</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>12</TD>
+  <TD>Speier</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>24</TD>
+  <TD>72</TD>
+  <TD>27</TD>
+  <TD>67</TD>
+  <TD>29</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>13</TD>
+  <TD>Stark</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>24</TD>
+  <TD>71</TD>
+  <TD>28</TD>
+  <TD>67</TD>
+  <TD>30</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>14</TD>
+  <TD>Eshoo</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>73</TD>
+  <TD>25</TD>
+  <TD>68</TD>
+  <TD>30</TD>
+  <TD>62</TD>
+  <TD>34</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>15</TD>
+  <TD>Honda</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>68</TD>
+  <TD>30</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>60</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>16</TD>
+  <TD>Lofgren</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>70</TD>
+  <TD>29</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>17</TD>
+  <TD>Farr</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>72</TD>
+  <TD>26</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>60</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>18</TD>
+  <TD>Cardoza</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>53</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>19</TD>
+  <TD>Denham</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>52</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>39</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>20</TD>
+  <TD>Costa</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>21</TD>
+  <TD>Nunes</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>56</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>37</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>22</TD>
+  <TD>McCarthy, Kevin</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>31</TD>
+  <TD>68</TD>
+  <TD>33</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>23</TD>
+  <TD>Capps</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>32</TD>
+  <TD>58</TD>
+  <TD>40</TD>
+  <TD>54</TD>
+  <TD>40</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>24</TD>
+  <TD>Gallegly</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>25</TD>
+  <TD>McKeon</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>48</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>26</TD>
+  <TD>Dreier</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>27</TD>
+  <TD>Sherman</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>32</TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>28</TD>
+  <TD>Berman</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>76</TD>
+  <TD>22</TD>
+  <TD>71</TD>
+  <TD>28</TD>
+  <TD>73</TD>
+  <TD>24</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>29</TD>
+  <TD>Schiff</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>68</TD>
+  <TD>30</TD>
+  <TD>61</TD>
+  <TD>37</TD>
+  <TD>58</TD>
+  <TD>38</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>30</TD>
+  <TD>Waxman</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>70</TD>
+  <TD>28</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>68</TD>
+  <TD>28</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>31</TD>
+  <TD>Becerra</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>80</TD>
+  <TD>18</TD>
+  <TD>77</TD>
+  <TD>22</TD>
+  <TD>77</TD>
+  <TD>19</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>32</TD>
+  <TD>Chu</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>68</TD>
+  <TD>30</TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>67</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>33</TD>
+  <TD>Bass, Karen</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>87</TD>
+  <TD>12</TD>
+  <TD>83</TD>
+  <TD>16</TD>
+  <TD>83</TD>
+  <TD>14</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>34</TD>
+  <TD>Roybal-Allard</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>75</TD>
+  <TD>23</TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>72</TD>
+  <TD>26</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>35</TD>
+  <TD>Waters</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>84</TD>
+  <TD>14</TD>
+  <TD>79</TD>
+  <TD>20</TD>
+  <TD>82</TD>
+  <TD>17</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>36</TD>
+  <TD>Hahn</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>37</TD>
+  <TD>Richardson</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>80</TD>
+  <TD>19</TD>
+  <TD>74</TD>
+  <TD>25</TD>
+  <TD>76</TD>
+  <TD>22</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>38</TD>
+  <TD>Napolitano</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>71</TD>
+  <TD>27</TD>
+  <TD>65</TD>
+  <TD>34</TD>
+  <TD>70</TD>
+  <TD>28</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>39</TD>
+  <TD>Sanchez, Linda</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>32</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>62</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>40</TD>
+  <TD>Royce</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>41</TD>
+  <TD>Lewis, Jerry</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>42</TD>
+  <TD>Miller, Gary</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>43</TD>
+  <TD>Baca</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>68</TD>
+  <TD>30</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>64</TD>
+  <TD>34</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>44</TD>
+  <TD>Calvert</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>45</TD>
+  <TD>Bono Mack</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>46</TD>
+  <TD>Rohrabacher</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>47</TD>
+  <TD>Sanchez, Loretta</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>38</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>48</TD>
+  <TD>Campbell</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD><B><font color=blue>49</font></b></TD>
+  <TD>49</TD>
+  <TD>40</TD>
+  <TD>58</TD>
+  <TD>40</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>49</TD>
+  <TD>Issa</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>50</TD>
+  <TD>Bilbray</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>51</TD>
+  <TD>Filner</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>35</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>52</TD>
+  <TD>Hunter</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>CA</TD>
+  <TD>53</TD>
+  <TD>Davis, Susan</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>68</TD>
+  <TD>30</TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>58</TD>
+  <TD>38</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>1</TD>
+  <TD>DeGette</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>24</TD>
+  <TD>68</TD>
+  <TD>31</TD>
+  <TD>61</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>2</TD>
+  <TD>Polis</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>3</TD>
+  <TD>Tipton</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>50</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>39</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>4</TD>
+  <TD>Gardner</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>37</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>5</TD>
+  <TD>Lamborn</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>31</TD>
+  <TD>63</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>6</TD>
+  <TD>Coffman</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>37</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>CO</TD>
+  <TD>7</TD>
+  <TD>Perlmutter</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>CT</TD>
+  <TD>1</TD>
+  <TD>Larson</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>62</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>CT</TD>
+  <TD>2</TD>
+  <TD>Courtney</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>40</TD>
+</TR>
+<TR>
+  <TD>CT</TD>
+  <TD>3</TD>
+  <TD>DeLauro</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD>60</TD>
+  <TD>34</TD>
+</TR>
+<TR>
+  <TD>CT</TD>
+  <TD>4</TD>
+  <TD>Himes</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>40</TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>CT</TD>
+  <TD>5</TD>
+  <TD>Murphy, Chris</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD><b><font color=blue>49</font></b></TD>
+  <TD>49</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>DE</TD>
+  <TD>AL</TD>
+  <TD>Carney</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>55</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>1</TD>
+  <TD>Miller, Jeff</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>32</TD>
+  <TD>67</TD>
+  <TD>28</TD>
+  <TD>72</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>2</TD>
+  <TD>Southerland</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>3</TD>
+  <TD>Brown</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>73</TD>
+  <TD>26</TD>
+  <TD>65</TD>
+  <TD>35</TD>
+  <TD>65</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>4</TD>
+  <TD>Crenshaw</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>5</TD>
+  <TD>Nugent</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>6</TD>
+  <TD>Stearns</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>7</TD>
+  <TD>Mica</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>8</TD>
+  <TD>Webster</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>9</TD>
+  <TD>Bilirakis</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>10</TD>
+  <TD>Young, Bill</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>51</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>11</TD>
+  <TD>Castor</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>61</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>12</TD>
+  <TD>Ross, Dennis</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>13</TD>
+  <TD>Buchanan</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>46</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>14</TD>
+  <TD>Mack</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>38</TD>
+  <TD>62</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>15</TD>
+  <TD>Posey</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>16</TD>
+  <TD>Rooney</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>17</TD>
+  <TD>Wilson, Frederica</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>87</TD>
+  <TD>12</TD>
+  <TD>83</TD>
+  <TD>17</TD>
+  <TD>85</TD>
+  <TD>15</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>18</TD>
+  <TD>Ros-Lehtinen</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>49</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>19</TD>
+  <TD>Deutch</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>34</TD>
+  <TD>73</TD>
+  <TD>27</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>20</TD>
+  <TD>Wasserman Schultz</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>36</TD>
+  <TD>69</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>21</TD>
+  <TD>Diaz-Balart</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>22</TD>
+  <TD>West</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>48</TD>
+  <TD>52</TD>
+  <TD>48</TD>
+  <TD>52</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>23</TD>
+  <TD>Hastings, Alcee</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>83</TD>
+  <TD>17</TD>
+  <TD>76</TD>
+  <TD>24</TD>
+  <TD>80</TD>
+  <TD>20</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>24</TD>
+  <TD>Adams</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>FL</TD>
+  <TD>25</TD>
+  <TD>Rivera</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>1</TD>
+  <TD>Kingston</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>38</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>2</TD>
+  <TD>Bishop, Sanford</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>50</TD>
+  <TD><B><font color=red>50</font></b></TD>
+  <TD>52</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>3</TD>
+  <TD>Westmoreland</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>29</TD>
+  <TD>70</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>4</TD>
+  <TD>Johnson, Hank</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>79</TD>
+  <TD>21</TD>
+  <TD>71</TD>
+  <TD>28</TD>
+  <TD>70</TD>
+  <TD>30</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>5</TD>
+  <TD>Lewis, John</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>79</TD>
+  <TD>20</TD>
+  <TD>74</TD>
+  <TD>26</TD>
+  <TD>73</TD>
+  <TD>27</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>6</TD>
+  <TD>Price, Tom</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>29</TD>
+  <TD>70</TD>
+  <TD>32</TD>
+  <TD>68</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>7</TD>
+  <TD>Woodall</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>30</TD>
+  <TD>70</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>8</TD>
+  <TD>Scott, Austin</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>9</TD>
+  <TD>Graves, Tom</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>24</TD>
+  <TD>75</TD>
+  <TD>23</TD>
+  <TD>77</TD>
+  <TD>29</TD>
+  <TD>71</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>10</TD>
+  <TD>Broun</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>35</TD>
+  <TD>65</TD>
+  <TD>37</TD>
+  <TD>63</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>11</TD>
+  <TD>Gringrey</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>29</TD>
+  <TD>71</TD>
+  <TD>35</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>12</TD>
+  <TD>Barrow</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>52</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>GA</TD>
+  <TD>13</TD>
+  <TD>Scott, David</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>71</TD>
+  <TD>28</TD>
+  <TD>60</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>HI</TD>
+  <TD>1</TD>
+  <TD>Hanabusa</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>70</TD>
+  <TD>28</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>55</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>HI</TD>
+  <TD>2</TD>
+  <TD>Hirono</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>73</TD>
+  <TD>25</TD>
+  <TD>56</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>IA</TD>
+  <TD>1</TD>
+  <TD>Braley</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>52</TD>
+  <TD>45</TD>
+</TR>
+<TR>
+  <TD>IA</TD>
+  <TD>2</TD>
+  <TD>Loebsack</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>38</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>IA</TD>
+  <TD>3</TD>
+  <TD>Boswell</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>50</TD>
+  <TD><B><font color=red>50</font></b></TD>
+  <TD>49</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>IA</TD>
+  <TD>4</TD>
+  <TD>Latham</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>IA</TD>
+  <TD>5</TD>
+  <TD>King, Steve</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>ID</TD>
+  <TD>1</TD>
+  <TD>Labrador</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>62</TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>28</TD>
+  <TD>68</TD>
+</TR>
+<TR>
+  <TD>ID</TD>
+  <TD>2</TD>
+  <TD>Simpson</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>61</TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>28</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>1</TD>
+  <TD>Rush</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>87</TD>
+  <TD>13</TD>
+  <TD>83</TD>
+  <TD>17</TD>
+  <TD>84</TD>
+  <TD>16</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>2</TD>
+  <TD>Jackson</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>90</TD>
+  <TD>10</TD>
+  <TD>84</TD>
+  <TD>16</TD>
+  <TD>83</TD>
+  <TD>17</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>3</TD>
+  <TD>Lipinski</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>59</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>40</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>4</TD>
+  <TD>Gutierrez</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>85</TD>
+  <TD>13</TD>
+  <TD>79</TD>
+  <TD>21</TD>
+  <TD>79</TD>
+  <TD>20</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>5</TD>
+  <TD>Quigley</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>73</TD>
+  <TD>26</TD>
+  <TD>67</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>34</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>6</TD>
+  <TD>Roskam</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>7</TD>
+  <TD>Davis, Danny</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>88</TD>
+  <TD>12</TD>
+  <TD>83</TD>
+  <TD>17</TD>
+  <TD>83</TD>
+  <TD>16</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>8</TD>
+  <TD>Walsh</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>9</TD>
+  <TD>Schakowsky</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>72</TD>
+  <TD>26</TD>
+  <TD>68</TD>
+  <TD>32</TD>
+  <TD>67</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>10</TD>
+  <TD>Dold</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>11</TD>
+  <TD>Kinginger</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>48</TD>
+  <TD>50</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>12</TD>
+  <TD>Costello</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>52</TD>
+  <TD>48</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>13</TD>
+  <TD>Biggert</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD>42</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>14</TD>
+  <TD>Hultgren</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>15</TD>
+  <TD>Johnson, Tim</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>41</TD>
+  <TD>59</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>16</TD>
+  <TD>Manzullo</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>17</TD>
+  <TD>Schilling</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>54</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>18</TD>
+  <TD>Schock</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>44</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>IL</TD>
+  <TD>19</TD>
+  <TD>Shimkus</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>1</TD>
+  <TD>Visclosky</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>2</TD>
+  <TD>Donnelly</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>45</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>3</TD>
+  <TD>Stutzman</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>31</TD>
+  <TD>68</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>4</TD>
+  <TD>Rokita</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>32</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>5</TD>
+  <TD>Burton</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>28</TD>
+  <TD>71</TD>
+  <TD>30</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>6</TD>
+  <TD>Pence</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>7</TD>
+  <TD>Carson</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>71</TD>
+  <TD>28</TD>
+  <TD>58</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>8</TD>
+  <TD>Bucshon</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>38</TD>
+  <TD>62</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>IN</TD>
+  <TD>9</TD>
+  <TD>Young, Todd</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>KS</TD>
+  <TD>1</TD>
+  <TD>Huelskamp</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>26</TD>
+  <TD>72</TD>
+  <TD>29</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>KS</TD>
+  <TD>2</TD>
+  <TD>Jenkins</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>55</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+  <TD>41</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>KS</TD>
+  <TD>3</TD>
+  <TD>Yoder</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>42</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>KS</TD>
+  <TD>4</TD>
+  <TD>Pompeo</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>58</TD>
+  <TD>34</TD>
+  <TD>64</TD>
+  <TD>37</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>KY</TD>
+  <TD>1</TD>
+  <TD>Whitfield</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>40</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>KY</TD>
+  <TD>2</TD>
+  <TD>Guthrie</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>KY</TD>
+  <TD>3</TD>
+  <TD>Yarmuth</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>51</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>KY</TD>
+  <TD>4</TD>
+  <TD>Davis, Geoff</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>37</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>KY</TD>
+  <TD>5</TD>
+  <TD>Rogers, Hal</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>31</TD>
+  <TD>67</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>KY</TD>
+  <TD>6</TD>
+  <TD>Chandler</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>43</TD>
+  <TD>55</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>1</TD>
+  <TD>Scalise</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>26</TD>
+  <TD>73</TD>
+  <TD>28</TD>
+  <TD>71</TD>
+  <TD>31</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>2</TD>
+  <TD>Richmond</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>25</TD>
+  <TD>75</TD>
+  <TD>24</TD>
+  <TD>76</TD>
+  <TD>22</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>3</TD>
+  <TD>Landry</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>37</TD>
+  <TD>61</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>4</TD>
+  <TD>Fleming</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>5</TD>
+  <TD>Alexander</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>6</TD>
+  <TD>Cassidy</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>57</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>LA</TD>
+  <TD>7</TD>
+  <TD>Boustany</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>35</TD>
+  <TD>63</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>42</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>1</TD>
+  <TD>Olver</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>63</TD>
+  <TD>35</TD>
+  <TD>56</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>2</TD>
+  <TD>Neal</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>58</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>3</TD>
+  <TD>McGovern</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>4</TD>
+  <TD>Frank</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>65</TD>
+  <TD>29</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>5</TD>
+  <TD>Tsongas</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+  <TD>57</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>6</TD>
+  <TD>Tierney</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>57</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>7</TD>
+  <TD>Markey</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>64</TD>
+  <TD>29</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>8</TD>
+  <TD>Capuano</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>86</TD>
+  <TD>14</TD>
+  <TD>79</TD>
+  <TD>19</TD>
+  <TD>73</TD>
+  <TD>15</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>9</TD>
+  <TD>Lynch</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>60</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>MA</TD>
+  <TD>10</TD>
+  <TD>Keating</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>1</TD>
+  <TD>Harris</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>58</TD>
+  <TD>36</TD>
+  <TD>62</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>2</TD>
+  <TD>Ruppersberger</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>38</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>3</TD>
+  <TD>Sarbanes</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>4</TD>
+  <TD>Edwards</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>85</TD>
+  <TD>14</TD>
+  <TD>78</TD>
+  <TD>21</TD>
+  <TD>77</TD>
+  <TD>21</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>5</TD>
+  <TD>Hoyer</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>6</TD>
+  <TD>Bartlett</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>58</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>36</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>7</TD>
+  <TD>Cummings</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>79</TD>
+  <TD>20</TD>
+  <TD>73</TD>
+  <TD>26</TD>
+  <TD>73</TD>
+  <TD>25</TD>
+</TR>
+<TR>
+  <TD>MD</TD>
+  <TD>8</TD>
+  <TD>Hollen</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>25</TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>66</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>ME</TD>
+  <TD>1</TD>
+  <TD>Pingree</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>50</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>ME</TD>
+  <TD>2</TD>
+  <TD>Michaud</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>48</TD>
+  <TD>45</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>1</TD>
+  <TD>Benishek</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>50</TD>
+  <TD>48</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>2</TD>
+  <TD>Huizenga</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>38</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>3</TD>
+  <TD>Amash</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD><B><font color=red>49</font></b></TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>4</TD>
+  <TD>Camp</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>50</TD>
+  <TD>48</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>5</TD>
+  <TD>Kildee</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>59</TD>
+  <TD>41</TD>
+  <TD>61</TD>
+  <TD>37</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>6</TD>
+  <TD>Upton</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>7</TD>
+  <TD>Walberg</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>8</TD>
+  <TD>Rogers, Mike J.</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>9</TD>
+  <TD>Peters</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>10</TD>
+  <TD>Miller, Candice</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>45</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>11</TD>
+  <TD>McCotter</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>12</TD>
+  <TD>Levin</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>61</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>37</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>13</TD>
+  <TD>Clarke, Hansen</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>85</TD>
+  <TD>15</TD>
+  <TD>81</TD>
+  <TD>19</TD>
+  <TD>80</TD>
+  <TD>19</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>14</TD>
+  <TD>Conyers</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>86</TD>
+  <TD>14</TD>
+  <TD>83</TD>
+  <TD>17</TD>
+  <TD>81</TD>
+  <TD>18</TD>
+</TR>
+<TR>
+  <TD>MI</TD>
+  <TD>15</TD>
+  <TD>Dingell</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>62</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>38</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>1</TD>
+  <TD>Walz</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>45</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>2</TD>
+  <TD>Kline</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>3</TD>
+  <TD>Paulson</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>46</TD>
+  <TD>50</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>4</TD>
+  <TD>McCollum</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>57</TD>
+  <TD>37</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>5</TD>
+  <TD>Ellison</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>24</TD>
+  <TD>71</TD>
+  <TD>28</TD>
+  <TD>63</TD>
+  <TD>29</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>6</TD>
+  <TD>Bachmann</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>7</TD>
+  <TD>Peterson</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>47</TD>
+  <TD>50</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+  <TD>40</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>MN</TD>
+  <TD>8</TD>
+  <TD>Cravaack</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>49</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>1</TD>
+  <TD>Clay</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>80</TD>
+  <TD>19</TD>
+  <TD>75</TD>
+  <TD>25</TD>
+  <TD>72</TD>
+  <TD>26</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>2</TD>
+  <TD>Akin</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>3</TD>
+  <TD>Carnahan</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>57</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>4</TD>
+  <TD>Hartzler</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>40</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>5</TD>
+  <TD>Cleaver</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>37</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>6</TD>
+  <TD>Graves, Sam</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>7</TD>
+  <TD>Long</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>35</TD>
+  <TD>63</TD>
+  <TD>32</TD>
+  <TD>67</TD>
+  <TD>36</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>8</TD>
+  <TD>Emerson</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>62</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>MO</TD>
+  <TD>9</TD>
+  <TD>Luetkemeyer</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>41</TD>
+  <TD>59</TD>
+  <TD>42</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>MS</TD>
+  <TD>1</TD>
+  <TD>Nunnelee</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>MS</TD>
+  <TD>2</TD>
+  <TD>Thompson, Bennie</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>34</TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>MS</TD>
+  <TD>3</TD>
+  <TD>Harper</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>62</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>MS</TD>
+  <TD>4</TD>
+  <TD>Palazzo</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>32</TD>
+  <TD>68</TD>
+  <TD>31</TD>
+  <TD>68</TD>
+  <TD>33</TD>
+  <TD>65</TD>
+</TR>
+<TR>
+  <TD>MT</TD>
+  <TD>AL</TD>
+  <TD>Rehberg</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>49</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+  <TD>33</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>1</TD>
+  <TD>Butterfield</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>2</TD>
+  <TD>Ellmers</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>3</TD>
+  <TD>Jones</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>32</TD>
+  <TD>68</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>4</TD>
+  <TD>Price, David</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>5</TD>
+  <TD>Foxx</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>6</TD>
+  <TD>Coble</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>32</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>7</TD>
+  <TD>McIntyre</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>48</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>8</TD>
+  <TD>Kissell</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>9</TD>
+  <TD>Myrick</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>10</TD>
+  <TD>McHenry</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>11</TD>
+  <TD>Shuler</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>40</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>12</TD>
+  <TD>Watt</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>70</TD>
+  <TD>29</TD>
+  <TD>63</TD>
+  <TD>37</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>NC</TD>
+  <TD>13</TD>
+  <TD>Miller, Brad</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+</TR>
+<TR>
+  <TD>ND</TD>
+  <TD>AL</TD>
+  <TD>Berg</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>33</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>NE</TD>
+  <TD>1</TD>
+  <TD>Fortenberry</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>54</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>NE</TD>
+  <TD>2</TD>
+  <TD>Terry</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>NE</TD>
+  <TD>3</TD>
+  <TD>Smith, Adrian</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>24</TD>
+  <TD>75</TD>
+  <TD>25</TD>
+  <TD>71</TD>
+</TR>
+<TR>
+  <TD>NH</TD>
+  <TD>1</TD>
+  <TD>Guinta</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>46</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>NH</TD>
+  <TD>2</TD>
+  <TD>Bass, Charlie</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>48</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>1</TD>
+  <TD>Andrews</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>34</TD>
+  <TD>61</TD>
+  <TD>39</TD>
+  <TD>63</TD>
+  <TD>34</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>2</TD>
+  <TD>LoBiondo</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>3</TD>
+  <TD>Runyan</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>4</TD>
+  <TD>Smith, Chris</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>50</TD>
+  <TD>46</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>5</TD>
+  <TD>Garrett</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>6</TD>
+  <TD>Pallone</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>57</TD>
+  <TD>43</TD>
+  <TD>61</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>7</TD>
+  <TD>Lance</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>48</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>8</TD>
+  <TD>Pascrell</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>59</TD>
+  <TD>41</TD>
+  <TD>60</TD>
+  <TD>37</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>9</TD>
+  <TD>Rothman</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>59</TD>
+  <TD>41</TD>
+  <TD>63</TD>
+  <TD>34</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>10</TD>
+  <TD>Payne</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>87</TD>
+  <TD>13</TD>
+  <TD>82</TD>
+  <TD>18</TD>
+  <TD>83</TD>
+  <TD>16</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>11</TD>
+  <TD>Frelinghuysen</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>12</TD>
+  <TD>Holt</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>56</TD>
+  <TD>40</TD>
+</TR>
+<TR>
+  <TD>NJ</TD>
+  <TD>13</TD>
+  <TD>Sires</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>75</TD>
+  <TD>24</TD>
+  <TD>69</TD>
+  <TD>31</TD>
+  <TD>72</TD>
+  <TD>25</TD>
+</TR>
+<TR>
+  <TD>NM</TD>
+  <TD>1</TD>
+  <TD>Heinrich</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>40</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>48</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>NM</TD>
+  <TD>2</TD>
+  <TD>Pearce</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>NM</TD>
+  <TD>3</TD>
+  <TD>Lujan</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>NV</TD>
+  <TD>1</TD>
+  <TD>Berkley</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>NV</TD>
+  <TD>2</TD>
+  <TD>Amodei</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD><B><font color=red>49</font></b></TD>
+  <TD>41</TD>
+  <TD>57</TD>
+  <TD>37</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>NV</TD>
+  <TD>3</TD>
+  <TD>Heck</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>1</TD>
+  <TD>Bishop, Tim</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>52</TD>
+  <TD>48</TD>
+  <TD>49</TD>
+  <TD><B><font color=red>49</font></b></TD>
+  <TD>52</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>2</TD>
+  <TD>Israel</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>57</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>3</TD>
+  <TD>King, Peter</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>52</TD>
+  <TD>52</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>4</TD>
+  <TD>McCarthy, Carolyn</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>59</TD>
+  <TD>38</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>5</TD>
+  <TD>Ackerman</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>67</TD>
+  <TD>30</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>6</TD>
+  <TD>Meeks</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>89</TD>
+  <TD>11</TD>
+  <TD>84</TD>
+  <TD>15</TD>
+  <TD>87</TD>
+  <TD>11</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>7</TD>
+  <TD>Crowley</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>79</TD>
+  <TD>20</TD>
+  <TD>74</TD>
+  <TD>25</TD>
+  <TD>75</TD>
+  <TD>21</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>8</TD>
+  <TD>Nadler</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>74</TD>
+  <TD>26</TD>
+  <TD>72</TD>
+  <TD>27</TD>
+  <TD>74</TD>
+  <TD>18</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>9</TD>
+  <TD>Turner</TD>
+  <TD><font color=blue>(R)</font></TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>56</TD>
+  <TD>44</TD>
+  <TD>67</TD>
+  <TD>30</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>10</TD>
+  <TD>Towns</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>91</TD>
+  <TD>9</TD>
+  <TD>86</TD>
+  <TD>13</TD>
+  <TD>88</TD>
+  <TD>8</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>11</TD>
+  <TD>Clarke, Yvette</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>91</TD>
+  <TD>9</TD>
+  <TD>86</TD>
+  <TD>13</TD>
+  <TD>83</TD>
+  <TD>9</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>12</TD>
+  <TD>Velazquez</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>86</TD>
+  <TD>13</TD>
+  <TD>80</TD>
+  <TD>19</TD>
+  <TD>77</TD>
+  <TD>15</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>13</TD>
+  <TD>Grimm</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD>52</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>14</TD>
+  <TD>Maloney</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>78</TD>
+  <TD>21</TD>
+  <TD>74</TD>
+  <TD>25</TD>
+  <TD>70</TD>
+  <TD>23</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>15</TD>
+  <TD>Rangel</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>93</TD>
+  <TD>6</TD>
+  <TD>90</TD>
+  <TD>9</TD>
+  <TD>87</TD>
+  <TD>7</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>16</TD>
+  <TD>Serrano</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>95</TD>
+  <TD>5</TD>
+  <TD>89</TD>
+  <TD>10</TD>
+  <TD>92</TD>
+  <TD>5</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>17</TD>
+  <TD>Engel</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>72</TD>
+  <TD>28</TD>
+  <TD>67</TD>
+  <TD>33</TD>
+  <TD>69</TD>
+  <TD>27</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>18</TD>
+  <TD>Lowey</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>38</TD>
+  <TD>58</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>19</TD>
+  <TD>Hayworth</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>47</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>20</TD>
+  <TD>Gibson</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>21</TD>
+  <TD>Tonko</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>58</TD>
+  <TD>40</TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>39</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>22</TD>
+  <TD>Hinchey</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>51</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>23</TD>
+  <TD>Owens</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>52</TD>
+  <TD>47</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>24</TD>
+  <TD>Hannah</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>25</TD>
+  <TD>Buerkle</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>50</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>45</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>26</TD>
+  <TD>Hochul</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>46</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>27</TD>
+  <TD>Higgins</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>28</TD>
+  <TD>Slaughter</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>60</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>NY</TD>
+  <TD>29</TD>
+  <TD>Reed</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>1</TD>
+  <TD>Chabot</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>46</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>2</TD>
+  <TD>Schmidt</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>63</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>3</TD>
+  <TD>Turner</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>4</TD>
+  <TD>Jordan</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>35</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>5</TD>
+  <TD>Latta</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>37</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>6</TD>
+  <TD>Johnson, Bill</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>7</TD>
+  <TD>Austria</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>8</TD>
+  <TD>Boehner</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>36</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>9</TD>
+  <TD>Kaptur</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>36</TD>
+  <TD>58</TD>
+  <TD>42</TD>
+  <TD>55</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>10</TD>
+  <TD>Kucinich</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>53</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>11</TD>
+  <TD>Fudge</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>85</TD>
+  <TD>14</TD>
+  <TD>81</TD>
+  <TD>18</TD>
+  <TD>79</TD>
+  <TD>18</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>12</TD>
+  <TD>Tiberi</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>46</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>13</TD>
+  <TD>Sutton</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>56</TD>
+  <TD>44</TD>
+  <TD>53</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>14</TD>
+  <TD>LaTourette</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD><B><font color=red>49</font></b></TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>44</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>15</TD>
+  <TD>Stivers</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>50</TD>
+  <TD><B><font color=red>50</font></b></TD>
+  <TD>44</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>16</TD>
+  <TD>Renacci</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>42</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>17</TD>
+  <TD>Ryan, Tim</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>37</TD>
+  <TD>60</TD>
+  <TD>35</TD>
+</TR>
+<TR>
+  <TD>OH</TD>
+  <TD>18</TD>
+  <TD>Gibbs</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>OK</TD>
+  <TD>1</TD>
+  <TD>Sullivan</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>65</TD>
+  <TD>37</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>OK</TD>
+  <TD>2</TD>
+  <TD>Boren</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>41</TD>
+  <TD>59</TD>
+  <TD>47</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>OK</TD>
+  <TD>3</TD>
+  <TD>Lucas</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>27</TD>
+  <TD>73</TD>
+  <TD>28</TD>
+  <TD>72</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+</TR>
+<TR>
+  <TD>OK</TD>
+  <TD>4</TD>
+  <TD>Cole</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>OK</TD>
+  <TD>5</TD>
+  <TD>Lankford</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>59</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>38</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>OR</TD>
+  <TD>1</TD>
+  <TD></TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>61</TD>
+  <TD>36</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+  <TD>50</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>OR</TD>
+  <TD>2</TD>
+  <TD>Walden</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>54</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>35</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>OR</TD>
+  <TD>3</TD>
+  <TD>Blumenauer</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>71</TD>
+  <TD>26</TD>
+  <TD>67</TD>
+  <TD>33</TD>
+  <TD>61</TD>
+  <TD>32</TD>
+</TR>
+<TR>
+  <TD>OR</TD>
+  <TD>4</TD>
+  <TD>DeFazio</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>43</TD>
+  <TD><b><font color=blue>49</font></b></TD>
+  <TD>49</TD>
+  <TD>44</TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>OR</TD>
+  <TD>5</TD>
+  <TD>Schrader</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>54</TD>
+  <TD>43</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>47</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>1</TD>
+  <TD>Brady, Bob</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>88</TD>
+  <TD>12</TD>
+  <TD>84</TD>
+  <TD>15</TD>
+  <TD>84</TD>
+  <TD>15</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>2</TD>
+  <TD>Fattah</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>90</TD>
+  <TD>10</TD>
+  <TD>87</TD>
+  <TD>12</TD>
+  <TD>87</TD>
+  <TD>12</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>3</TD>
+  <TD>Kelly</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>49</TD>
+  <TD><B><font color=red>49</font></b></TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>4</TD>
+  <TD>Altmire</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>5</TD>
+  <TD>Thompson, Glenn</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>6</TD>
+  <TD>Gerlach</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>52</TD>
+  <TD>48</TD>
+  <TD><B><font color=blue>49</font></b></TD>
+  <TD>49</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>7</TD>
+  <TD>Meehan</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>8</TD>
+  <TD>Fitzpatrick</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>46</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>9</TD>
+  <TD>Schuster</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>35</TD>
+  <TD>63</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>34</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>10</TD>
+  <TD>Marino</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>11</TD>
+  <TD>Barletta</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>53</TD>
+  <TD>47</TD>
+  <TD>54</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>12</TD>
+  <TD>Critz</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>51</TD>
+  <TD>49</TD>
+  <TD>55</TD>
+  <TD>44</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>13</TD>
+  <TD>Schwarz</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>14</TD>
+  <TD>Doyle</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>70</TD>
+  <TD>29</TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>70</TD>
+  <TD>28</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>15</TD>
+  <TD>Dent</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD><b><font color=blue>50</font></b></TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>16</TD>
+  <TD>Pitts</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>36</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>17</TD>
+  <TD>Holden</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>18</TD>
+  <TD>Murphy, Tim</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>47</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>PA</TD>
+  <TD>19</TD>
+  <TD>Platts</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>36</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>RI</TD>
+  <TD>1</TD>
+  <TD>Cicilline</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>62</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>RI</TD>
+  <TD>2</TD>
+  <TD>Langevin</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>61</TD>
+  <TD>37</TD>
+  <TD>57</TD>
+  <TD>41</TD>
+  <TD>60</TD>
+  <TD>33</TD>
+</TR>
+<TR>
+  <TD>SC</TD>
+  <TD>1</TD>
+  <TD>Scott, Tim</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>39</TD>
+  <TD>61</TD>
+  <TD>38</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>SC</TD>
+  <TD>2</TD>
+  <TD>Wilson, Joe</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>54</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>SC</TD>
+  <TD>3</TD>
+  <TD>Duncan, Jeff</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>35</TD>
+  <TD>63</TD>
+</TR>
+<TR>
+  <TD>SC</TD>
+  <TD>4</TD>
+  <TD>Gowdy</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>SC</TD>
+  <TD>5</TD>
+  <TD>Mulvaney</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>SC</TD>
+  <TD>6</TD>
+  <TD>Clyburn</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>61</TD>
+  <TD>39</TD>
+  <TD>58</TD>
+  <TD>40</TD>
+</TR>
+<TR>
+  <TD>SD</TD>
+  <TD>AL</TD>
+  <TD>Noem</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>45</TD>
+  <TD>53</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+  <TD>38</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>1</TD>
+  <TD>Roe</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>29</TD>
+  <TD>70</TD>
+  <TD>31</TD>
+  <TD>68</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>2</TD>
+  <TD>Duncan, John</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>34</TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>64</TD>
+  <TD>39</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>3</TD>
+  <TD>Fleischmann</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>41</TD>
+  <TD>57</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>4</TD>
+  <TD>DesJarlais</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>34</TD>
+  <TD>64</TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>5</TD>
+  <TD>Cooper</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>52</TD>
+  <TD>48</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>6</TD>
+  <TD>Black</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>37</TD>
+  <TD>62</TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>49</TD>
+  <TD><B><font color=red>49</font></b></TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>7</TD>
+  <TD>Blackburn</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>34</TD>
+  <TD>65</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>40</TD>
+  <TD>59</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>8</TD>
+  <TD>Fincher</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>TN</TD>
+  <TD>9</TD>
+  <TD>Cohen</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>77</TD>
+  <TD>22</TD>
+  <TD>70</TD>
+  <TD>30</TD>
+  <TD>63</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>1</TD>
+  <TD>Gohmert</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>31</TD>
+  <TD>69</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+  <TD>33</TD>
+  <TD>68</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>2</TD>
+  <TD>Poe</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>37</TD>
+  <TD>63</TD>
+  <TD>37</TD>
+  <TD>63</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>3</TD>
+  <TD>Johnson, Sam</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>30</TD>
+  <TD>70</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>4</TD>
+  <TD>Hall</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>70</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>5</TD>
+  <TD>Hensarling</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>6</TD>
+  <TD>Barton</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>7</TD>
+  <TD>Culberson</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>8</TD>
+  <TD>Brady, Kevin</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>26</TD>
+  <TD>74</TD>
+  <TD>28</TD>
+  <TD>72</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>9</TD>
+  <TD>Green, Al</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>77</TD>
+  <TD>23</TD>
+  <TD>70</TD>
+  <TD>30</TD>
+  <TD>69</TD>
+  <TD>31</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>10</TD>
+  <TD>McCaul</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>38</TD>
+  <TD>62</TD>
+  <TD>34</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>11</TD>
+  <TD>Conaway</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>24</TD>
+  <TD>76</TD>
+  <TD>22</TD>
+  <TD>78</TD>
+  <TD>25</TD>
+  <TD>75</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>12</TD>
+  <TD>Granger</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>13</TD>
+  <TD>Thornberry</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>23</TD>
+  <TD>77</TD>
+  <TD>22</TD>
+  <TD>78</TD>
+  <TD>26</TD>
+  <TD>74</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>14</TD>
+  <TD>Paul</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>15</TD>
+  <TD>Hinojosa</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>60</TD>
+  <TD>40</TD>
+  <TD>49</TD>
+  <TD>51</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>16</TD>
+  <TD>Reyes</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>66</TD>
+  <TD>34</TD>
+  <TD>57</TD>
+  <TD>44</TD>
+  <TD>59</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>17</TD>
+  <TD>Flores</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>32</TD>
+  <TD>67</TD>
+  <TD>30</TD>
+  <TD>70</TD>
+  <TD>32</TD>
+  <TD>68</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>18</TD>
+  <TD>Jackson-Lee</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>77</TD>
+  <TD>22</TD>
+  <TD>72</TD>
+  <TD>28</TD>
+  <TD>72</TD>
+  <TD>28</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>19</TD>
+  <TD>Neugebauer</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>27</TD>
+  <TD>72</TD>
+  <TD>23</TD>
+  <TD>77</TD>
+  <TD>25</TD>
+  <TD>75</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>20</TD>
+  <TD>Gonzalez</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>63</TD>
+  <TD>36</TD>
+  <TD>55</TD>
+  <TD>45</TD>
+  <TD>58</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>21</TD>
+  <TD>Smith, Lamar</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>34</TD>
+  <TD>66</TD>
+  <TD>31</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>22</TD>
+  <TD>Olson</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>23</TD>
+  <TD>Canseco</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>47</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>24</TD>
+  <TD>Marchant</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>35</TD>
+  <TD>65</TD>
+  <TD>32</TD>
+  <TD>68</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>25</TD>
+  <TD>Doggett</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>54</TD>
+  <TD>46</TD>
+  <TD>47</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>26</TD>
+  <TD>Burgess</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>35</TD>
+  <TD>65</TD>
+  <TD>38</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>27</TD>
+  <TD>Farenthold</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>45</TD>
+  <TD>55</TD>
+  <TD><B><font color=blue>50</font></b></TD>
+  <TD>50</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>28</TD>
+  <TD>Cuellar</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>44</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>50</TD>
+  <TD><B><font color=red>50</font></b></TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>29</TD>
+  <TD>Green, Gene</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>38</TD>
+  <TD>56</TD>
+  <TD>44</TD>
+  <TD>57</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>30</TD>
+  <TD>Johnson, E.B.</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>82</TD>
+  <TD>18</TD>
+  <TD>75</TD>
+  <TD>25</TD>
+  <TD>74</TD>
+  <TD>26</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>31</TD>
+  <TD>Carter</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>33</TD>
+  <TD>67</TD>
+  <TD>32</TD>
+  <TD>69</TD>
+</TR>
+<TR>
+  <TD>TX</TD>
+  <TD>32</TD>
+  <TD>Sessions</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>40</TD>
+  <TD>60</TD>
+  <TD>36</TD>
+  <TD>64</TD>
+</TR>
+<TR>
+  <TD>UT</TD>
+  <TD>1</TD>
+  <TD>Bishop, Rob</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>33</TD>
+  <TD>64</TD>
+  <TD>25</TD>
+  <TD>73</TD>
+  <TD>27</TD>
+  <TD>68</TD>
+</TR>
+<TR>
+  <TD>UT</TD>
+  <TD>2</TD>
+  <TD>Matheson</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>39</TD>
+  <TD>57</TD>
+  <TD>31</TD>
+  <TD>66</TD>
+  <TD>31</TD>
+  <TD>67</TD>
+</TR>
+<TR>
+  <TD>UT</TD>
+  <TD>3</TD>
+  <TD>Chaffetz</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>29</TD>
+  <TD>67</TD>
+  <TD>20</TD>
+  <TD>77</TD>
+  <TD>24</TD>
+  <TD>75</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>1</TD>
+  <TD>Wittman</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>39</TD>
+  <TD>58</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>2</TD>
+  <TD>Rigell</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>49</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>43</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>3</TD>
+  <TD>Scott, Bobby</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>76</TD>
+  <TD>24</TD>
+  <TD>66</TD>
+  <TD>33</TD>
+  <TD>66</TD>
+  <TD>32</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>4</TD>
+  <TD>Forbes</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>43</TD>
+  <TD>57</TD>
+  <TD>44</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>5</TD>
+  <TD>Hurt</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>48</TD>
+  <TD>51</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>41</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>6</TD>
+  <TD>Goodlatte</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>37</TD>
+  <TD>60</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>7</TD>
+  <TD>Cantor</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>38</TD>
+  <TD>61</TD>
+  <TD>37</TD>
+  <TD>61</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>8</TD>
+  <TD>Moran</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>64</TD>
+  <TD>35</TD>
+  <TD>57</TD>
+  <TD>38</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>9</TD>
+  <TD>Griffith</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>60</TD>
+  <TD>42</TD>
+  <TD>55</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>10</TD>
+  <TD>Wolf</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>41</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>VA</TD>
+  <TD>11</TD>
+  <TD>Connolly</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>49</TD>
+  <TD>50</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>VT</TD>
+  <TD>AL</TD>
+  <TD>Welch</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>68</TD>
+  <TD>31</TD>
+  <TD>59</TD>
+  <TD>39</TD>
+  <TD>51</TD>
+  <TD>41</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>1</TD>
+  <TD>Inslee</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>62</TD>
+  <TD>36</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD>53</TD>
+  <TD>42</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>2</TD>
+  <TD>Larsen</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+  <TD>48</TD>
+  <TD>46</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>3</TD>
+  <TD>Herrera Beutler</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>52</TD>
+  <TD>46</TD>
+  <TD>48</TD>
+  <TD>50</TD>
+  <TD>46</TD>
+  <TD>48</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>4</TD>
+  <TD>Hastings, Doc</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>40</TD>
+  <TD>58</TD>
+  <TD>35</TD>
+  <TD>63</TD>
+  <TD>34</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>5</TD>
+  <TD>McMorris Rodgers</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>46</TD>
+  <TD>52</TD>
+  <TD>41</TD>
+  <TD>57</TD>
+  <TD>40</TD>
+  <TD>56</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>6</TD>
+  <TD>Dicks</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>57</TD>
+  <TD>41</TD>
+  <TD>53</TD>
+  <TD>45</TD>
+  <TD>52</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>7</TD>
+  <TD>McDermott</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>84</TD>
+  <TD>15</TD>
+  <TD>79</TD>
+  <TD>19</TD>
+  <TD>72</TD>
+  <TD>21</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>8</TD>
+  <TD>Reichert</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>49</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>WA</TD>
+  <TD>9</TD>
+  <TD>Smith, Adam</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>59</TD>
+  <TD>40</TD>
+  <TD>53</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>43</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>1</TD>
+  <TD>Ryan, Paul</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>46</TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>51</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>2</TD>
+  <TD>Baldwin</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>69</TD>
+  <TD>30</TD>
+  <TD>62</TD>
+  <TD>37</TD>
+  <TD>58</TD>
+  <TD>36</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>3</TD>
+  <TD>Kind</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>58</TD>
+  <TD>41</TD>
+  <TD>51</TD>
+  <TD>48</TD>
+  <TD>49</TD>
+  <TD>46</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>4</TD>
+  <TD>Moore</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>75</TD>
+  <TD>24</TD>
+  <TD>70</TD>
+  <TD>30</TD>
+  <TD>66</TD>
+  <TD>30</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>5</TD>
+  <TD>Sensenbrenner</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>41</TD>
+  <TD>58</TD>
+  <TD>36</TD>
+  <TD>63</TD>
+  <TD>35</TD>
+  <TD>62</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>6</TD>
+  <TD>Petri</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>43</TD>
+  <TD>56</TD>
+  <TD>42</TD>
+  <TD>53</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>7</TD>
+  <TD>Duffy</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>56</TD>
+  <TD>43</TD>
+  <TD>50</TD>
+  <TD>49</TD>
+  <TD>48</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>WI</TD>
+  <TD>8</TD>
+  <TD>Ribble</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>54</TD>
+  <TD>45</TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>43</TD>
+  <TD>52</TD>
+</TR>
+<TR>
+  <TD>WV</TD>
+  <TD>1</TD>
+  <TD>McKinley</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>42</TD>
+  <TD>58</TD>
+  <TD>43</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>WV</TD>
+  <TD>2</TD>
+  <TD>Capito</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>44</TD>
+  <TD>55</TD>
+  <TD>42</TD>
+  <TD>57</TD>
+  <TD>44</TD>
+  <TD>54</TD>
+</TR>
+<TR>
+  <TD>WV</TD>
+  <TD>3</TD>
+  <TD>Rahall</TD>
+  <TD><font color=blue>(D)</font></TD>
+  <TD>42</TD>
+  <TD>56</TD>
+  <TD>46</TD>
+  <TD>53</TD>
+  <TD>51</TD>
+  <TD>47</TD>
+</TR>
+<TR>
+  <TD>WY</TD>
+  <TD>AL</TD>
+  <TD>Lummis</TD>
+  <TD><font color=red>(R)</font></TD>
+  <TD>33</TD>
+  <TD>65</TD>
+  <TD>29</TD>
+  <TD>69</TD>
+  <TD>28</TD>
+  <TD>69</TD>
+</TR>
+</TABLE></div></td>
+    </tr>
+    <tr>
+        <td class="theFlip"> <a href='/user/DavidNYC'>
+        		DavidNYC</a> :: <a href="/showDiary.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C?diaryId=4161">Presidential Results by Congressional District, 2000-2008</a></td>
+    </tr>
+    <tr>
+        <td><B>Data Sources (2008)</b>:<p><div align=center><TABLE BORDER=1 CELLPADDING=5 CELLSPACING=0>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3TI8GhTo6AffQ">Alabama</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g05ST5vq7eS7Hg">Hawaii</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3SOXP0R60XUXg">Massachusetts</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QgSqPH72WZAg">New Mexico</a></TD>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6ODI1MDc3YmUtODEzZi00MzNmLWEzODYtZWI2NDliMmMxZTY0&hl=en">South Dakota</a></TD>
+</TR>
+<TR>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6YzEyYTYwZTgtMmE0OC00MjdjLThlNDgtMzFiNTk1MTZhOTM2&hl=en">Alaska</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QhH57oQRzcBg">Idaho</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3Tw3Si4NV7ZeA">Michigan</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3Svkhr2nrqYCA">New York</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g06pwjo1HsUhTQ">Tennessee</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3SHAg2_FagCFg">Arizona</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3TRAunAV9CeJg">Illinois</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g05iuxg8zYv4Fg">Minnesota</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3R5n9TlVGs0EQ">North Carolina</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3SrCd7xjZXTCg">Texas</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g07o5fIKK3-ZZA">Arkansas</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QtHL0TnfDuAQ">Indiana</a></TD>
+  <TD><A HREF="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g05Tpe0G4PMwKw">Mississippi</a></TD>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6ZjllYjQxZmYtYmU2ZC00NjY1LTkyOTItZGNmZjIwYjVkN2Yz&hl=en">North Dakota</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QUk2-d9BX4Sw">Utah</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g043OQdQMqdZZQ">California</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3Tdp54ziT7JWA">Iowa</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3TGCxdjDLt-Cg">Missouri</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QLQHBxDisHbg">Ohio</a></TD>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6ZTY5OWQyZDgtYzhhYi00ZjgzLWI4N2UtMTBmZDExNDNhNmMz&hl=en">Vermont</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QB-evqKwvLRw">Colorado</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3SX5x1xHmlOag">Kansas</a></TD>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6ZjgzMmQ1NDgtNjM1Yy00MWMzLWI4NTAtYTRhMDIyMGM3NjM3&hl=en">Montana</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QBg3YUhwOwFw">Oklahoma</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g06Dhqyow1EDDw">Virginia</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g05RweFxRha_Mw">Connecticut</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g04PV593gRxZRA">Kentucky</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QTqjvgQzl1PQ">Nebraska</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3S0ngcom6gcWw">Oregon</a></TD>
+  <TD><a href="http://www.scribd.com/doc/12895317/2008-WA-Presidential-Results-by-Precinct">Washington</a></TD>
+</TR>
+<TR>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6NWE3OGU4ODgtODgyZC00MDc4LTg1NjItZmE4OGZhZDI3YjU2&hl=en">Delaware</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3RBjqnwx_WYFg">Louisiana</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g04AFfLzWJiFbQ">Nevada</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3TKlRZGzjsANw">Pennsylvania</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g07-4OfYlzQUWA">West Virginia</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3T7MXIW4nKFbQ">Florida</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g05OMCmlIKiTYw">Maine</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g05X2yTQvzbDRQ">New Hampshire</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3T-iZzp_t9FGQ">Rhode Island</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=pRel6Mvd0g04iVuozcAeXXw">Wisconsin</a></TD>
+</TR>
+<TR>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3T2O2HOPCiQEA">Georgia</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3SswDUwoT4GQQ">Maryland</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3SDu1ARWDz2WA">New Jersey</a></TD>
+  <TD><a href="http://spreadsheets.google.com/ccc?key=p7Hn_T5RBt3QtYBdypSBEdQ">South Carolina</a></TD>
+  <TD><a href="https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B99k6QrlThx6NzgwMGRhMjItNGIxNS00YTQ2LWFkZjMtZDI3ZWFlYTI1YWZj&hl=en">Wyoming</a></TD>
+</TR>
+</TABLE></div><br /></td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+
+    <table>
+        <tr>
+            <td>Tags: 
+                         
+                            <a href="/tag/PVI" rel="tag">PVI</a>,
+                          
+                            <a href="/tag/Presidential Results by CD" rel="tag">Presidential Results by CD</a>,
+                                          
+            (<a href="/allTags.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C">All Tags</a>)
+         </td>
+        </tr>
+    </table>
+
+
+<table>
+    <tr>
+        <td valign="bottom">
+                    <a target="_new" href='/showDiary.do?diaryId=4161&view=print'>Print Friendly View</a> 
+                    <a target="_new" href='showDiary.do?diaryId=4161&view=print'><img src="/images/printer-icon.GIF" border="0" /></a>       
+                    
+                    <a href="/sendAsEmail.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C?diaryId=4161">Send As Email</a>
+                    
+                    <a href="/sendAsEmail.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C?diaryId=4161"><img src="/images/email-icon.GIF" border="0" /></a>
+
+        </td>
+    </tr>
+</table>
+
+
+
+
+    
+
+
+
+
+		 
+<div class="titleBar">
+	<a href="/diary/4161/">
+        Presidential Results by Congressional District, 2000-2008
+	</a>
+
+	
+		
+		
+		 
+	 
+</div>
+
+    
+            
+    
+
+
+
+
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+    
+    
+
+
+                        
+                            <br /><CENTER>Copyright 2003-2010 Swing State Project LLC</center>
+                        
+                    </td>
+                
+            
+
+                
+                
+                    <td valign="top" class="RIGHT_SIDE">
+                        
+                            
+                                <!-- Primary Sponsor -->
+
+<h2>Primary Sponsor</h2>
+
+<div class="ads">
+<a href="http://www.mediamezcla.com/?=ssp" target="_blank"><img src="http://www.swingstateproject.com/upload/SSP-20100215.gif" width="150" height="300" border="0" alt="You're not running for second place. Is your website? See why Campaign Engine is ranked #1 in software and support among Progressive-only Internet firms. http://www.mediamezcla.com/" /></a>
+
+</div>
+
+<br />
+
+                            
+                                
+
+
+
+
+
+<table width="100%" class="objectTable">
+	<tr>
+		<td class="objectHeading">
+			Menu
+		</td>
+	</tr>
+	<tr>
+		<td class="objectContent">
+ 
+					
+			
+
+			
+			
+				<br />
+				<center><a href="/join.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C">Make a New Account</a></center>
+				<br />
+				<form name="logonForm" method="post" action="/logonSubmit.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C">	
+                    
+					Username: <br />
+					<input type="text" name="username" value=""><br />
+					Password: <br />
+					<input type="password" name="password" value=""><br />
+					<input type="submit" value="Submit"><br />
+				</form>
+				<br />
+				<center><a href="/emailPassword.do;jsessionid=D8988E85BE9C15DE8DF337C69EB1988C">Forget your username or password?</a></center>
+				<br />	
+			
+
+		</td>
+	</tr>
+</table>
+<br />
+
+                            
+                                
+
+
+
+
+
+
+
+                            
+                                <!-- About the Site -->
+
+<h2>About the Site</h2>
+
+<div class="menuLinks">
+
+<p>Publisher: <a href="mailto:DavidNYC&#64;swingstateproject&#46;com">DavidNYC</a></p>
+
+<p>Senior Editor: <a href="mailto:JamesL&#64;swingstateproject&#46;com">James L.</a></p>
+
+<p>Senior Editor: <a href="mailto:Crisitunity@swingstateproject.com">Crisitunity</a></p>
+
+<p>Contributing Editor: <a href="mailto:jeffmd@swingstateproject.com">Jeffmd</a></p>
+
+<form method="get" action="http://www.google.com/search">
+
+Search the SSP archives:<br />
+<input type="text" name="q" size="20" maxlength="100" value="" /><br />
+<input style="font-size: 11px" type="submit" name="btnG" value="Search" />
+<font size="-1">
+<input type="hidden" name="domains" value="swingstateproject.com" />
+<input type="hidden" name="sitesearch" value="swingstateproject.com" checked="checked" /></font>
+</form>
+
+<p></p>
+
+<form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+Sign up to receive a daily e-mail whenever the SSP is updated:<br />
+<input type="text" style="width:140px" name="email"/>
+<input type="hidden" value="http://feeds.feedburner.com/~e?ffid=145474" name="url"/><input type="hidden" value="Swing State Project" name="title"/><input style="font-size: 11px" type="submit" value="Subscribe" />
+</form>
+
+</div>
+
+                            
+                                <!-- Resources -->
+
+<h2>SSP Resources</h2>
+
+<div class="menuLinks">
+
+<p><a href="http://www.swingstateproject.com/diary/4161/presidential-results-by-congressional-district-20002008">Presidential Vote by CD</a></p>
+
+<p><a href="http://www.scribd.com/people/view/2152163">SSP Document Collection</a></p>
+
+<p><a href="http://www.opencongress.org/wiki/Project:RaceTracker">Race Tracker Wiki</a></p>
+
+<p><a href="http://gardow.com/davebradlee/redistricting/launchapp.html">Dave's Redistricting App</a></p>
+
+</div>
+
+                            
+                                
+
+
+
+
+
+<!-- recentCommentsList.jsp -->
+
+                            
+                                <h2>Blogroll</h2>
+<div class="menuLinks">
+<div class="commentLinks"><a href="http://elections.dailykos.com/">Daily Kos Elections</a></div>
+<div class="commentLinks"><a href="http://www.demconwatchblog.com/">DemConWatch</a></div>
+<div class="commentLinks"><a href="http://fivethirtyeight.blogs.nytimes.com/">Five Thirty Eight</a></div>
+<div class="commentLinks"><a href="http://www.governing.com/blogs/politics/">Governing</a></div>
+<div class="commentLinks"><a href="http://hotlineblog.nationaljournal.com/">Hotline On Call</a></div>
+<div class="commentLinks"><a href="http://www.politicalwire.com/">Political Wire</a></div>
+<div class="commentLinks"><a href="http://www.huffingtonpost.com/news/pollster/">Pollster.com</a></div>
+<div class="commentLinks"><a href="http://ncsl.typepad.com/prop50/">Prop*50</a></div>
+<div class="commentLinks"><a href="http://publicpolicypolling.blogspot.com/">Public Policy Polling</a></div>
+<div class="commentLinks"><a href="http://ncsl.typepad.com/the_thicket/">The Thicket</a></div>
+</div>
+
+                            
+                        
+                    </td>
+                
+
+                
+                
+            
+        
+    </tr>
+</table>
+
+
+    <div class="footer"><!-- Start of Google Analytics Code -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-50117-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- End of Google Analytics Code -->
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qacct="p-1crg3yURgolFg";quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-1crg3yURgolFg" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-1crg3yURgolFg.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+
+<img src="http://t.blogreaderproject.com/t.gif?671f8d106f77fb07327608333041813e"/>
+</div> 
+
+
+
+
+<table width="100%">
+<tr>
+    <td align="right">
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1767529; 
+var sc_invisible=1; 
+var sc_partition=16; 
+var sc_security="859e170d"; 
+</script>
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c17.statcounter.com/counter.php?sc_project=1767529&java=0&security=859e170d&invisible=1" alt="free hit counter javascript" border="0"></a> </noscript>
+<!-- End of StatCounter Code -->
+Powered by: <a href="http://www.soapblox.net">SoapBlox</a>
+    </td>
+</tr>
+</table>    
+</div>
+</center>
+</body>
+</html>
