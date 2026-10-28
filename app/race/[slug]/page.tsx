@@ -13,7 +13,7 @@ export const dynamicParams=false;
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const r=races.find(r=>r.slug===slug);return {title:r?.name||'Race not found',openGraph:r?{title:`${r.name} · Undertow`,description:'The polls, my number, and the pull between them. By Max Sheahan.',images:[{url:`/og/${r.slug}.png`,width:1200,height:630,alt:`${r.name}: polls, Undertow and the pull`}]}:undefined,twitter:r?{card:'summary_large_image',images:[`/og/${r.slug}.png`]}:undefined,description:r?`${r.name}: the polls, my number and the pull between them, with every poll and source behind it.`:'Race not found'};}
 
 // Races whose D slot holds an independent (Nebraska: Dan Osborn).
-const INDEPENDENT_D_SLOT=new Set(['2026-NE-SEN']);
+const INDEPENDENT_D_SLOT=new Set(['2026-NE-SEN','2026-AK-AL-HOUSE']);
 const lastName=(n:string)=>n.trim().split(/\s+/).pop()||n;
 function label(v:number,names:{D:string;R:string}){return Math.abs(v)<EVEN?'Even':`${lastName(v>0?names.D:names.R)} +${Math.abs(v).toFixed(1)}`;}
 

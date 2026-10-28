@@ -112,7 +112,7 @@ def card(rid: str, s: dict, names: dict, word: str, portrait: bool) -> str:
     polls, pc = side(s["polling_margin"], names)
     mine, mc = side(s["adjusted_margin"], names)
     dt = s["delta_total"]
-    pull, pullc = ("None", C["ink"]) if abs(dt) < EVEN else (f"{abs(dt):.1f} toward {('I' if rid == '2026-NE-SEN' else 'D') if dt > 0 else 'R'}", C["d"] if dt > 0 else C["r"])
+    pull, pullc = ("None", C["ink"]) if abs(dt) < EVEN else (f"{abs(dt):.1f} toward {('I' if rid in ('2026-NE-SEN', '2026-AK-AL-HOUSE') else 'D') if dt > 0 else 'R'}", C["d"] if dt > 0 else C["r"])
     st = rid.split("-")[1]
     kicker = f"2026 · {st} · {office_word(rid)}{' · SPECIAL' if 'SPECIAL' in rid else ''}"
     parts = [f'<rect width="{w}" height="{h}" fill="{C["paper"]}"/>', rule(w)]
@@ -120,7 +120,7 @@ def card(rid: str, s: dict, names: dict, word: str, portrait: bool) -> str:
         parts.append(brand(pad, 70, 0.6, word))
         parts.append(text(MONO, kicker, 24, pad, 250, C["muted"], 0.12)[0])
         parts.append(text(BOLD, race_name(rid), 76, pad, 340, C["ink"], -0.02)[0])
-        d, dw = text(MED, f"{names['D']} ({'I' if rid == '2026-NE-SEN' else 'D'})", 34, pad, 400, C["d"])
+        d, dw = text(MED, f"{names['D']} ({'I' if rid in ('2026-NE-SEN', '2026-AK-AL-HOUSE') else 'D'})", 34, pad, 400, C["d"])
         v_, vw = text(MED, " vs ", 34, pad + dw, 400, C["ink"])
         r, _ = text(MED, f"{names['R']} (R)", 34, pad + dw + vw, 400, C["r"])
         parts += [d, v_, r, f'<rect x="{pad}" y="450" width="{w - 2 * pad}" height="2" fill="{C["line"]}"/>']
@@ -140,7 +140,7 @@ def card(rid: str, s: dict, names: dict, word: str, portrait: bool) -> str:
         kw = MONO.path(kicker, 18, 0, 0, 0.12)[1]
         parts.append(text(MONO, kicker, 18, w - pad - kw, 78, C["muted"], 0.12)[0])
         parts.append(text(BOLD, race_name(rid), 54, pad, 190, C["ink"], -0.02)[0])
-        d, dw = text(MED, f"{names['D']} ({'I' if rid == '2026-NE-SEN' else 'D'})", 26, pad, 236, C["d"])
+        d, dw = text(MED, f"{names['D']} ({'I' if rid in ('2026-NE-SEN', '2026-AK-AL-HOUSE') else 'D'})", 26, pad, 236, C["d"])
         v_, vw = text(MED, " vs ", 26, pad + dw, 236, C["ink"])
         r, _ = text(MED, f"{names['R']} (R)", 26, pad + dw + vw, 236, C["r"])
         parts += [d, v_, r, f'<rect x="{pad}" y="268" width="{w - 2 * pad}" height="2" fill="{C["line"]}"/>']
