@@ -762,6 +762,71 @@ def seat_side(margin: float | None) -> str | None:
     return "D" if margin > 0 else "R"
 
 
+# ----------------------------------------------------------------------------- election night
+# Max, 2026-10-28 ("Do it" to the election-night plan): as races are counted, each settled race implies a national miss,
+# the dial value m at which the race's Undertow arithmetic (polls + m + state adjustment + spending + early vote) equals
+# the count. Their mean sets the dial for every race still counting and for the chamber projections. Settled = called or
+# at least LIVE_SETTLED_REPORTING percent counted, the scoreboard's own rule (lib/live.ts SETTLED_REPORTING).
+LIVE_SETTLED_REPORTING = 95.0
+LIVE_MIN_RACES = 3   # below this the dial stays at the bet: one or two races say little about a national miss
+
+
+def live_miss(per_race: dict, live_races: dict, slug_of) -> dict:
+    """Implied national miss from settled races, plus the running grade (average miss of the polls and of Undertow)."""
+    used = []
+    for race, sig in sorted((per_race or {}).items()):
+        c = (live_races or {}).get(slug_of(race))
+        if not c or sig.get("adjusted_margin") is None or sig.get("polling_margin") is None:
+            continue
+        if not (c.get("called") in ("D", "R") or (num(c.get("reporting_pct")) or 0) >= LIVE_SETTLED_REPORTING):
+            continue
+        count = num(c["d_pct"]) - num(c["r_pct"])
+        terms = (num((sig.get("polling_error") or {}).get("state_adjustment")) or 0.0) + (sig.get("delta_spending") or 0.0) + (sig.get("delta_early_vote") or 0.0)
+        used.append({"race": race, "count": r4(count), "polls": sig["polling_margin"], "undertow": sig["adjusted_margin"],
+                     "implied_miss": r4(count - sig["polling_margin"] - terms), "polls_miss_toward_d": r4(count - sig["polling_margin"]),
+                     "polls_error": r4(abs(count - sig["polling_margin"])), "undertow_error": r4(abs(count - sig["adjusted_margin"]))})
+    n = len(used)
+    out = {"settled": n, "min_races": LIVE_MIN_RACES, "settled_rule": f"called, or {LIVE_SETTLED_REPORTING:g}% counted", "races": used}
+    if not n:
+        return {**out, "implied_miss": None, "implied_miss_se": None, "dial_live": False, "polls_mae": None, "undertow_mae": None, "polls_miss_mean": None}
+    vals = [u["implied_miss"] for u in used]
+    m = sum(vals) / n
+    se = (math.sqrt(sum((v - m) ** 2 for v in vals) / (n - 1)) / math.sqrt(n)) if n > 1 else None
+    return {**out, "implied_miss": r4(m), "implied_miss_se": r4(se) if se is not None else None, "dial_live": n >= LIVE_MIN_RACES,
+            "polls_mae": r4(sum(u["polls_error"] for u in used) / n), "undertow_mae": r4(sum(u["undertow_error"] for u in used) / n),
+            "polls_miss_mean": r4(sum(u["polls_miss_toward_d"] for u in used) / n),
+            "undertow_closer": sum(1 for u in used if u["undertow_error"] < u["polls_error"] - 0.05),
+            "polls_closer": sum(1 for u in used if u["polls_error"] < u["undertow_error"] - 0.05)}
+
+
+def release_changes(old: dict | None, new: dict) -> dict | None:
+    """What moved since the superseded release (Max, 2026-10-28): polls added, races whose Undertow number moved by
+    CHANGE_MIN_POINTS or more, races new to this release, and the chamber counts at the bet."""
+    if not old:
+        return None
+    po, pn = (old.get("signals") or {}).get("per_race") or {}, (new.get("signals") or {}).get("per_race") or {}
+    moved, added = [], []
+    for race, s in sorted(pn.items()):
+        o = po.get(race) or {}
+        if s.get("adjusted_margin") is None:
+            continue
+        if o.get("adjusted_margin") is None:
+            added.append({"race": race, "undertow": s["adjusted_margin"], "polls": s["polling_margin"]})
+        elif abs(s["adjusted_margin"] - o["adjusted_margin"]) >= CHANGE_MIN_POINTS:
+            moved.append({"race": race, "from": o["adjusted_margin"], "to": s["adjusted_margin"], "polls_from": o.get("polling_margin"), "polls_to": s["polling_margin"]})
+    moved.sort(key=lambda x: -abs(x["to"] - x["from"]))
+    est = lambda d: sum(1 for e in d.get("estimates") or [] if e.get("flags", {}).get("principal") and not e.get("quarantined"))
+    ch = {}
+    for c in ("SEN", "GOV", "HOUSE"):
+        a = (((old.get("chambers") or {}).get("chambers") or {}).get(c) or {}).get("at_bet"); b = (((new.get("chambers") or {}).get("chambers") or {}).get(c) or {}).get("at_bet")
+        if a and b and (a.get("D"), a.get("R")) != (b.get("D"), b.get("R")):
+            ch[c] = {"from": {"D": a["D"], "R": a["R"]}, "to": {"D": b["D"], "R": b["R"]}}
+    return {"since_release": old.get("release_id"), "since_as_of": old.get("analytical_as_of"), "polls_added": est(new) - est(old),
+            "moved": moved, "new_readings": added, "chambers": ch, "min_points": CHANGE_MIN_POINTS}
+
+
+CHANGE_MIN_POINTS = 0.3
+
 def witness_model(spe_rows: list[dict] | None, spend_history: list[dict] | None, state_slope: float | None) -> dict | None:
     """Spending and the state's polling record as two witnesses to the race-specific polling miss (Max, 2026-10-27:
     "We are switching from stacking"). The national lean is the declared outlier bet and is not judged by history; spending
@@ -2175,6 +2240,8 @@ class Bundle:
         if derived["signals"] is not None and v2:
             derived["signals"]["polling_v2"] = v2
         derived["chambers"] = self.chambers_block(blocks, derived["signals"])
+        if (self.run_state or {}).get("changes_since") is not None:
+            derived["changes"] = self.run_state["changes_since"]
         return derived
 
     def counts(self, ests: list[dict]) -> dict:

@@ -98,5 +98,59 @@ class Arithmetic(unittest.TestCase):
         self.assertEqual((c['at_bet']['D'], c['control_at_bet']), (51, 'D'))
 
 
+
+class ElectionNight(unittest.TestCase):
+    SIG = {'2026-AA-SEN': {'polling_margin': 2.0, 'adjusted_margin': 4.0, 'delta_spending': 0.5, 'delta_early_vote': 0.0, 'polling_error': {'state_adjustment': -0.5}},
+           '2026-BB-SEN': {'polling_margin': -3.0, 'adjusted_margin': -1.0, 'delta_spending': 0.0, 'delta_early_vote': 0.0, 'polling_error': {'state_adjustment': 0.0}},
+           '2026-CC-SEN': {'polling_margin': 1.0, 'adjusted_margin': 3.0, 'delta_spending': 0.0, 'delta_early_vote': 0.0, 'polling_error': {'state_adjustment': 0.0}},
+           '2026-DD-HOUSE': {'polling_margin': None, 'adjusted_margin': None}}
+    slug = staticmethod(lambda r: r.replace('2026-', '').lower())
+
+    def c(self, d, r, rep=100, called=None):
+        return {'d_pct': d, 'r_pct': r, 'other_pct': 100 - d - r, 'reporting_pct': rep, 'called': called}
+
+    def test_nothing_counted_means_no_dial(self):
+        out = weight.live_miss(self.SIG, {}, self.slug)
+        self.assertEqual((out['settled'], out['implied_miss'], out['dial_live']), (0, None, False))
+
+    def test_unsettled_and_no_reading_races_do_not_count(self):
+        out = weight.live_miss(self.SIG, {'aa-sen': self.c(55, 45, rep=60), 'dd-house': self.c(50, 50)}, self.slug)
+        self.assertEqual(out['settled'], 0)
+
+    def test_implied_miss_inverts_the_dial_arithmetic(self):
+        # AA: count +10 = 2 + m - 0.5 + 0.5 -> m = 8; BB: count -1 = -3 + m -> m = 2; CC: called, count +4 = 1 + m -> m = 3
+        live = {'aa-sen': self.c(55, 45), 'bb-sen': self.c(49.5, 50.5), 'cc-sen': self.c(52, 48, rep=40, called='D')}
+        out = weight.live_miss(self.SIG, live, self.slug)
+        self.assertEqual(out['settled'], 3)
+        self.assertAlmostEqual(out['implied_miss'], (8 + 2 + 3) / 3, places=3)
+        self.assertTrue(out['dial_live'])
+        self.assertAlmostEqual(out['polls_mae'], (8 + 2 + 3) / 3, places=3)
+        self.assertAlmostEqual(out['undertow_mae'], (6 + 0 + 1) / 3, places=3)
+        self.assertEqual((out['undertow_closer'], out['polls_closer']), (3, 0))
+
+    def test_two_races_do_not_set_the_dial(self):
+        out = weight.live_miss(self.SIG, {'aa-sen': self.c(55, 45), 'bb-sen': self.c(49.5, 50.5)}, self.slug)
+        self.assertFalse(out['dial_live'])
+
+
+class WhatMoved(unittest.TestCase):
+    def d(self, rid, per, n_est, at=None):
+        return {'release_id': rid, 'analytical_as_of': '2026-10-30T12:00:00-07:00', 'signals': {'per_race': per},
+                'estimates': [{'flags': {'principal': True}, 'quarantined': False}] * n_est,
+                'chambers': {'chambers': {'SEN': {'at_bet': at or {'D': 55, 'R': 45}}}}}
+
+    def test_no_prior_release(self):
+        self.assertIsNone(weight.release_changes(None, self.d('b', {}, 0)))
+
+    def test_moves_new_readings_polls_and_chambers(self):
+        old = self.d('a', {'X': {'adjusted_margin': 1.0, 'polling_margin': 0.0}, 'Y': {'adjusted_margin': 2.0, 'polling_margin': 1.0}, 'Z': {'adjusted_margin': None}}, 10)
+        new = self.d('b', {'X': {'adjusted_margin': 2.5, 'polling_margin': 1.0}, 'Y': {'adjusted_margin': 2.2, 'polling_margin': 1.1}, 'Z': {'adjusted_margin': 3.0, 'polling_margin': 2.0}}, 14, {'D': 56, 'R': 44})
+        ch = weight.release_changes(old, new)
+        self.assertEqual(ch['polls_added'], 4)
+        self.assertEqual([m['race'] for m in ch['moved']], ['X'])       # Y moved 0.2, under the 0.3 floor
+        self.assertEqual([m['race'] for m in ch['new_readings']], ['Z'])
+        self.assertEqual(ch['chambers']['SEN']['to'], {'D': 56, 'R': 44})
+
+
 if __name__ == '__main__':
     unittest.main()

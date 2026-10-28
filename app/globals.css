@@ -368,3 +368,9 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .cand-hollow-key {display:inline-flex;align-items:center;gap:5px;} .cand-hollow-key circle {fill:none;stroke:var(--ink);stroke-width:1.6;}
 /* House district grid: grouped by state, same shades as the map; no-poll districts in gray. */
 .wall-mobile .wall-mrow.is-noread {background:var(--off);color:var(--muted);text-decoration:none;} .wall-mrow.is-noread .wall-mrow-v {font-size:13px;font-family:var(--font-mono);font-weight:500;}
+
+.wall-strip-night,.wall-strip-moved {flex-basis:100%;margin:6px 0 0;font-size:13px;line-height:1.4;color:var(--ink);}
+.wall-strip-moved {font-size:12px;color:var(--muted);} .wall-strip-night b,.wall-strip-moved b {font-weight:700;}
+.wall-strip-night {padding:6px 10px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);}
+.tonight-hour {margin:22px 0 8px;font-family:var(--font-num);font-size:22px;font-weight:700;}
+.tonight-hour small {font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--muted);margin-left:8px;letter-spacing:.04em;text-transform:uppercase;}

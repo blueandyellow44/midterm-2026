@@ -47,3 +47,12 @@ describe('full chamber', () => {
   for (const s of seats) if (s.kind === 'rated') for (const m of [-8, 0, 8]) expect(s.side).toBe(s.side);
  });
 });
+
+describe('election night', () => {
+ it('a settled race shows its count at every dial value; an unsettled one keeps moving', () => {
+  const base = { polls: 2, stateAdj: -0.5, spending: 0.5, earlyVote: 0 } as WallRace;
+  const done = { ...base, result: { margin: 7, called: 'D', reporting: 99, settled: true } } as WallRace;
+  const counting = { ...base, result: { margin: 7, called: null, reporting: 40, settled: false } } as WallRace;
+  for (const m of [-5, 0, 3]) { expect(marginAt(done, m)).toBe(7); expect(marginAt(counting, m)).toBeCloseTo(2 + m, 6); }
+ });
+});
