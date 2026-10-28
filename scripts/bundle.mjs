@@ -20,7 +20,10 @@ export function validateBundle(directory) {
   const manifestBytes = readFileSync(join(directory,'manifest.json'));
   const m = JSON.parse(manifestBytes);
   if (m.bundle_schema !== '1.0' || !m.release_id || !m.analytical_as_of) throw new Error('Unsupported or missing manifest identity');
+  // Schemas added after a release was sealed are optional, so earlier immutable releases stay valid.
+  const optional = new Set(['house_races']);
   for (const [key, versions] of Object.entries(supportedSchemas)) {
+    if (optional.has(key) && m.csv_schemas?.[key] === undefined) continue;
     if (!versions.includes(m.csv_schemas?.[key])) throw new Error(`Unsupported CSV schema: ${key}`);
   }
   if (Object.keys(m.csv_schemas).some(k=>!(k in supportedSchemas))) throw new Error('Unknown CSV schema');
