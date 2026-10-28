@@ -5,7 +5,7 @@ import { validateBundle,sha256 } from './bundle.mjs';
 const {manifest}=validateBundle('data');
 const headers=readFileSync('.open-next/assets/_headers','utf8');
 const routes=JSON.parse(readFileSync('.next/csp-routes.json','utf8'));
-if(routes.length!==manifest.scope.senate_races.length+manifest.scope.governor_races.length+6)throw new Error('Unexpected route count');
+if(routes.length!==manifest.scope.senate_races.length+manifest.scope.governor_races.length+(manifest.scope.house_races||[]).length+6)throw new Error('Unexpected route count');
 for(const {file,route,csp} of routes){const p=join('.open-next/assets',route==='/404/'?'404.html':`${route}/index.html`);if(!existsSync(p))throw new Error(`Missing static route: ${route}`);const html=readFileSync(p,'utf8');if(sha256(html)!==sha256(readFileSync(file)))throw new Error(`HTML changed after hashing: ${route}`);if(policy(html)!==csp||!headers.includes(`Content-Security-Policy: ${csp}`))throw new Error(`CSP mismatch: ${route}`);if(route!=='/404/'&&!html.includes(manifest.release_id))throw new Error('Missing release identity');if(/(?:sk-ant-|AIzaSy|-----BEGIN (?:RSA |EC )?PRIVATE KEY)/.test(html))throw new Error('Secret pattern in emitted HTML');if(/\[\[[A-Za-z][^\]\n]*\]\]|~\/[A-Za-z]|Resources\/methods|Prompt revision|Second Brain/.test(html))throw new Error(`Vault artifact in emitted HTML: ${route}`);}
 if(headers.includes("script-src 'self' 'unsafe-inline'")||headers.includes('nonce-'))throw new Error('Unsafe script policy');
 if(sha256(readFileSync('.open-next/worker.js'))!==sha256(readFileSync('worker-static.mjs')))throw new Error('Unexpected dynamic Worker fallback');
