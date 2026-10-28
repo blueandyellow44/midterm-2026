@@ -142,8 +142,8 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
       if (sx) { const sv = sx.kind === 'projection' ? seatMarginAt(sx, m) : (sx.side === 'D' ? 20 : sx.side === 'R' ? -20 : 0); const lab = sx.kind === 'projection' ? (Math.abs(sv) < EVEN ? 'EVEN' : `${sv > 0 ? 'D' : 'R'}+${tileNum(sv)}`) : (sx.rating || 'rated');
         return <button key={st} type="button" className={`wall-tile is-proj ${pos} ${shade(sv)}${selected === sx.id ? ' is-selected' : ''}`} aria-pressed={selected === sx.id} aria-label={`${sx.name}: ${sx.kind === 'projection' ? `projected ${seatLabel(sv)}` : `Cook ${sx.rating}, not tracked`}`} onClick={() => select(sx.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v wall-tile-rated">{lab}</span></button>; }
       return <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>}
-    {full && <p className="wall-note">{office === 'HOUSE' ? 'Ringed dots are tracked races; plain dots are projections from the 2024 vote, not readings.' : 'Dashed tiles are projections or Cook ratings, not Undertow readings.'}</p>}
-    <div className="wall-legend" aria-hidden="true"><span className="r-safe">Safe R</span><span className="r-likely">Likely</span><span className="r-lean">Lean</span><span className="toss">Toss-up</span><span className="d-lean">Lean</span><span className="d-likely">Likely</span><span className="d-safe">Safe D</span></div>
+    {full && !hideToggle && <p className="wall-note">{office === 'HOUSE' ? 'Ringed dots are tracked races; plain dots are projections from the 2024 vote, not readings.' : 'Dashed tiles are projections or Cook ratings, not Undertow readings.'}</p>}
+    {!hideToggle && <div className="wall-legend" aria-hidden="true"><span className="r-safe">Safe R</span><span className="r-likely">Likely</span><span className="r-lean">Lean</span><span className="toss">Toss-up</span><span className="d-lean">Lean</span><span className="d-likely">Likely</span><span className="d-safe">Safe D</span></div>}
   </section>;
 }
 
@@ -228,6 +228,7 @@ function DialBar({ m, setM, national, lastFall, history, live = null }: { m: num
     <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{Math.abs(m).toFixed(1)}</span><span className="wall-dialbar-dir">{dir}<small>How wrong are the polls? Drag to change every race.</small></span></div>
     <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => { const v = Number(e.target.value); const hit = presets.find(([, p]) => Math.abs(p - v) <= SNAP); setM(hit ? hit[1] : v); }} aria-label="National polling miss in points; negative means polls understate Republicans"/>
     <div className="wall-ruler" role="group" aria-label="Past polling misses">{presets.map(([label, v]) => <button key={label} type="button" className={`wall-ruler-mark ga-${pct(100 * (v + span) / (2 * span))}${near(v) ? ' is-on' : ''}`} aria-pressed={near(v)} aria-label={`${label}: ${Math.abs(v) < EVEN ? 'no miss' : `${Math.abs(v).toFixed(1)} points toward ${v > 0 ? 'Democrats' : 'Republicans'}`}`} onClick={() => setM(v)}><i aria-hidden="true"/><span>{short(label)}</span></button>)}</div>
+  <div className="phone-key" aria-hidden="true"><span className="phone-key-bar"><i className="r-safe"/><i className="r-likely"/><i className="r-lean"/><i className="toss"/><i className="d-lean"/><i className="d-likely"/><i className="d-safe"/></span><span className="phone-key-labels"><b>Safe R</b><b>Toss-up</b><b>Safe D</b></span></div>
   </section>;
 }
 

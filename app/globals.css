@@ -463,3 +463,11 @@ html[data-view=mobile] .theme-button::before {content:"◐";font-size:18px;line-
 .wall {grid-template-columns:minmax(270px,320px) minmax(0,1fr) minmax(270px,330px);}
 .wall-tiles {container-type:inline-size;}
 @container (max-width: 500px) { .wall-tile-v {display:none;} .wall-tile-st {font-size:10px;} }
+/* Phone map key above the tiles (Max, 2026-10-28: "Key below slider"): one strip, three labels, the dashed-tile note. */
+.phone-key {display:grid;gap:3px;margin:2px 0 8px;}
+.phone-key-bar {display:grid;grid-template-columns:repeat(7,1fr);height:8px;border-radius:3px;overflow:hidden;} .phone-key-bar i {display:block;}
+.phone-key-labels {display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:var(--muted);} .phone-key-labels b {font-weight:500;}
+.phone-key-note {display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.phone-key-dash {display:inline-block;width:14px;height:10px;border-radius:2px;outline:1.5px dashed color-mix(in srgb,var(--ink) 45%,transparent);outline-offset:-2px;background:var(--d-likely);opacity:.85;}
+.wall-dialbar .phone-key {margin:4px 0 0;}
+html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(150px + env(safe-area-inset-bottom));}
