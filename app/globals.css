@@ -244,6 +244,8 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .phone-scen-label {font-weight:600;line-height:1.15;} .phone-scen-label small {display:block;font-weight:500;font-family:var(--font-mono);font-size:10px;opacity:.7;}
 .phone-scen-num,.phone-scen-odds {font-family:var(--font-num);font-variant-numeric:tabular-nums;font-weight:700;font-size:12px;} .phone-scen-num i {font-style:normal;color:var(--muted);margin:0 2px;}
 .phone-scen-odds small {font-family:var(--font-mono);font-weight:500;font-size:9px;color:var(--muted);margin:0 4px 0 2px;}
+#field .field-note {display:block;font-size:11px;color:var(--muted);line-height:1.3;}
+#field td small:not(.field-note) {font-size:11px;color:var(--muted);}
 .phone-scen-note {margin:0;padding:6px 10px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);}
 .wall-tally {display:flex;flex-direction:column;gap:12px;}
 .wall-tally-row {display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 10px;}

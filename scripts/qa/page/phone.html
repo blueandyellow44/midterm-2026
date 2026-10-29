@@ -1,0 +1,5 @@
+<!doctype html><meta charset="utf-8"><title>Undertow phone harness</title>
+<!-- A 390px iframe of the built site for phone checks without resizing Chrome (Max: never resize his window). Serve with npm run qa:serve, open /__qa/phone.html?path=/ -->
+<style>body{margin:0;font:13px system-ui;background:#888}#bar{padding:6px 12px;background:#111;color:#fff}iframe{border:0;background:#fff;display:block;margin:8px auto;width:390px;height:844px}</style>
+<div id="bar">Phone harness · 390 × 844</div><iframe id="f"></iframe>
+<script>document.getElementById('f').src=new URLSearchParams(location.search).get('path')||'/';</script>
