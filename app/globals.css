@@ -136,6 +136,14 @@ html[data-view=mobile] .source-table tr,html[data-view=mobile] .method-table tr 
 html[data-view=mobile] .source-table th,html[data-view=mobile] .method-table th {display:block;width:100%;max-width:none;padding:4px 0;border:0;}
 html[data-view=mobile] .source-table td,html[data-view=mobile] .method-table td {display:block;padding:4px 0;border:0;overflow-wrap:anywhere;}
 html[data-view=mobile] .source-table td::before {content:attr(data-label) ' · ';color:var(--muted);font-size:12px;}
+/* Method tables on the phone (Max, 2026-10-29, live screenshot: "what do these boxes do? they look super basic"): the first cell is the card's title, every other cell carries its column header. The archived markdown tables have no labels, so they stay real tables and scroll sideways. */
+html[data-view=mobile] .method-table td:first-child {font-weight:600;padding-bottom:6px;}
+html[data-view=mobile] .method-table td[data-label]::before {content:attr(data-label) ' · ';color:var(--muted);font-size:12px;font-weight:400;}
+html[data-view=mobile] .method-archive .method-table {overflow-x:auto;}
+html[data-view=mobile] .method-archive .method-table thead {display:table-header-group;}
+html[data-view=mobile] .method-archive .method-table tbody {display:table-row-group;}
+html[data-view=mobile] .method-archive .method-table tr {display:table-row;border:0;border-radius:0;padding:0;margin:0;}
+html[data-view=mobile] .method-archive .method-table th,html[data-view=mobile] .method-archive .method-table td {display:table-cell;width:auto;padding:8px 6px;border-bottom:1px solid var(--line);}
 
 /* charts */
 svg text {fill:var(--ink);font-family:var(--font-mono);font-size:14px;}

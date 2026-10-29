@@ -172,8 +172,9 @@ def home_card(per: dict, derived: dict, word: str) -> str:
     parts = [f'<rect width="{w}" height="{h}" fill="{C["paper"]}"/>', rule(w), brand(pad, 34, 0.4, word)]
     kw = MONO.path(f"{len(per)} RACES · FROZEN NOV 2", 18, 0, 0, 0.12)[1]
     parts.append(text(MONO, f"{len(per)} RACES · FROZEN NOV 2", 18, w - pad - kw, 78, C["muted"], 0.12)[0])
-    parts.append(text(NUM, head, 50, pad, 170, C["ink"])[0])
-    parts.append(text(NUM, "I THINK THEY ARE MISSING IT AGAIN.", 50, pad, 222, C["muted"])[0])
+    parts.append(text(NUM, head, fit(NUM, head, 50, w - 2 * pad), pad, 170, C["ink"])[0])
+    bet = "MY BET: DEMOCRATS BEAT THEIR POLLS AGAIN IN NOVEMBER."  # direction only, so it cannot read as 7.3 again (Max, 2026-10-29)
+    parts.append(text(NUM, bet, fit(NUM, bet, 50, w - 2 * pad), pad, 222, C["muted"])[0])
     top = sorted(per.items(), key=lambda kv: -abs(kv[1]["delta_total"]))[:6]
     for i, (rid, s) in enumerate(top):
         y = 268 + i * 50
