@@ -407,7 +407,7 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 
 /* Phone landing 2026-10-28: claim, byline, three chamber numbers, then the map; a slim dial bar. */
 .wall-mobile-hero {padding:6px 2px 2px;}
-.wall-mobile-claim {margin:0;font-family:var(--font-num);font-size:30px;line-height:1.05;font-weight:800;letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);}
+.wall-mobile-claim {margin:0 0 6px;font-size:21px;line-height:1.08;letter-spacing:-.01em;color:var(--ink);}
 .wall-mobile-claim span {color:var(--d-safe);}
 .wall-mobile-by {margin:8px 0 0;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
 .wall-mobile-by .freeze-countdown,.wall-mobile-by [class*=countdown] {color:var(--r-safe);}
