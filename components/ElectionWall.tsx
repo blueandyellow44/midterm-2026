@@ -254,7 +254,7 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice }: { races: 
       <span className="wall-tally-label">{office === 'GOV' ? 'Governors' : officeName(office)}<small>{sc === 'up' ? `${c.n} up` : `of ${c.n}`}</small></span>
       <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
       <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
-      <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control` : ''}</span>
+      <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
     </div>
     {office !== 'HOUSE' && <ScopeToggle scope={scope} setScope={setScope}/>}
   </section>;
