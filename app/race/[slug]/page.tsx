@@ -66,7 +66,7 @@ function ThePolls({r}:{r:any}){const read=r.polling_read?.kind==='UNAVAILABLE'?n
  return <Panel className="race-polls" kicker="The polls">
   <ul className="race-facts">
    {read&&<li>{latest?'One published poll':`${read.poll_count} comparable polls`} · newest finished {shortDate(read.field_end)} ({read.age_days} {read.age_days===1?'day':'days'} old)</li>}
-   {read&&(latest||Number(read.poll_count)<=2)&&<li className="c-flag">Thin evidence: {latest?'one published poll':`only ${read.poll_count} polls`} behind this number.</li>}
+   {read&&(latest||Number(read.poll_count)<=2)&&<li className="c-flag">Thin evidence: {latest?'one published poll':Number(read.poll_count)===1?'only 1 poll':`only ${read.poll_count} polls`} behind this number.</li>}
    {/-ME-|-AK-/.test(r.id)&&<li className="c-flag">{r.id.includes('-ME-')?'Maine':'Alaska'} uses ranked-choice voting. These are first-choice numbers, and second choices can change the result.</li>}
   </ul>
  </Panel>;}
