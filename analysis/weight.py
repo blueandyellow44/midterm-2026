@@ -2212,6 +2212,16 @@ class Bundle:
                                        "cook_rated": {"D": rated["D"], "R": rated["R"], "toss_up": rated["toss_up"]}, "items": items}
         return out
 
+    def simulation_block(self, chambers: dict | None, signals: dict | None) -> dict | None:
+        """Model v3 (2026-10-29): correlated draws around every seat's reading (analysis/simulate.py). Adds the spread and
+        how races move together; changes no reading. Chamber odds, seat ranges and per-race odds that account for shared
+        misses. None when the chambers or the error history are absent."""
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import simulate
+        ctx = getattr(self, "_signal_ctx", None) or {}
+        counts = {k: v.get("polls") for k, v in (((signals or {}).get("polling_v2") or {}).get("per_race") or {}).items()}
+        return simulate.run(chambers, signals, counts, getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR, ctx.get("national_sd"))
+
     def compute(self, calc_version: str, release_id: str | None) -> dict:
         ss = (self.run_state or {}).get("stage_outcomes", {})
         stage2c = ss.get("stage2c") == "PASSED"
@@ -2279,6 +2289,7 @@ class Bundle:
         if derived["signals"] is not None and v2:
             derived["signals"]["polling_v2"] = v2
         derived["chambers"] = self.chambers_block(blocks, derived["signals"])
+        derived["simulation"] = self.simulation_block(derived["chambers"], derived["signals"])
         if (self.run_state or {}).get("changes_since") is not None:
             derived["changes"] = self.run_state["changes_since"]
         return derived
@@ -2659,6 +2670,33 @@ def self_test(bundle_dir_for_tmp: str) -> int:
     allowed, est = budget_check(spent=2.0, reserved=0.4, units=10, unit_rate=0.04, ceiling=3.0)
     check("budget: 2.0 + 0.4 + 0.6 = 3.0 allowed at equality", allowed)
     # Stage 3 mapping
+    # Model v3 simulation (analysis/simulate.py): synthetic archive and a 4-seat Senate.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import simulate as _sim
+    import random as _rnd
+    _g = _rnd.Random(7)
+    _hist, _ym = [], {}
+    for _y in range(1998, 2026, 2):
+        _ym[_y] = _g.gauss(0, 3.0)
+        for _st in ("TX", "GA", "MI", "OH", "IA", "NC", "ME", "AK", "WI", "AZ"):
+            _sh = _g.gauss(0, 3.0)
+            for _t in ("Sen-G", "Gov-G"):
+                _n = _g.choice((1, 3, 6, 12))
+                _hist.append({"year": str(_y), "state": _st, "type": _t, "n_polls": str(_n), "bias": str(_ym[_y] + _sh + _g.gauss(0, math.sqrt(40 / _n)))})
+    _fit = _sim.fit_error_structure(_hist, 2026)
+    check("simulate: fit recovers a shared year miss near 3 and a state miss near 3",
+          _fit is not None and 1.5 < _fit["shared_sd_measured"] < 4.5 and 1.5 < math.sqrt(_fit["location_cov"]) < 4.5, str(_fit and {k: _fit[k] for k in ("shared_sd_measured", "location_cov")}))
+    _items = [{"seat": "A", "state": "TX", "kind": "not_up", "side": "D"}, {"seat": "B", "state": "GA", "kind": "not_up", "side": "R"},
+              {"seat": "C", "state": "MI", "kind": "reading", "race": "C", "undertow": 40.0}, {"seat": "D", "state": "OH", "kind": "reading", "race": "D", "undertow": -40.0}]
+    _ch = {"tie_breaker": "R", "majority": {"SEN": 3}, "chambers": {"SEN": {"items": _items}}}
+    _out = _sim.run(_ch, {"per_race": {"C": {"delta_sd": 2.0}, "D": {"delta_sd": 2.0}}}, {"C": 10, "D": 10}, _hist, 2026, 2.0, n=4000)
+    check("simulate: lopsided seats are certain, a 2-2 split goes to the tie-breaker",
+          _out["per_seat"]["C"]["p_d"] == 1.0 and _out["per_seat"]["D"]["p_d"] == 0.0 and _out["chambers"]["SEN"]["p_control_d"] == 0.0)
+    _items[3]["undertow"] = 0.0
+    _out2 = _sim.run(_ch, {"per_race": {"C": {"delta_sd": 2.0}, "D": {"delta_sd": 2.0}}}, {"C": 10, "D": 10}, _hist, 2026, 2.0, n=4000)
+    check("simulate: an even seat is near 50-50 and decides control; same seed, same answer",
+          0.45 < _out2["per_seat"]["D"]["p_d"] < 0.55 and abs(_out2["chambers"]["SEN"]["p_control_d"] - _out2["per_seat"]["D"]["p_d"]) < 1e-9
+          and _sim.run(_ch, {"per_race": {"C": {"delta_sd": 2.0}, "D": {"delta_sd": 2.0}}}, {"C": 10, "D": 10}, _hist, 2026, 2.0, n=4000) == _out2)
     check("stage3: p(0)=0.5, p(5)=Phi(1), clamp at 0.97", abs(stage3_probability(0) - 0.5) < 1e-9 and abs(stage3_probability(5.0) - phi(1.0)) < 1e-9 and stage3_probability(40.0) == 0.97)
     # window derivation
     check("window: Sept HOUSE_ONLY, Oct BOTH, release after as_of OUT_OF_WINDOW", window_of(date(2026, 9, 15), date(2026, 9, 16), as_of) == "HOUSE_ONLY" and window_of(date(2026, 10, 15), date(2026, 10, 16), as_of) == "BOTH" and window_of(date(2026, 10, 24), date(2026, 10, 26), as_of) == "OUT_OF_WINDOW")

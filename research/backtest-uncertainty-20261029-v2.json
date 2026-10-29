@@ -1,0 +1,262 @@
+{
+ "method": "Backtest of the v3 uncertainty model against the flat 5-point rule (2026-10-29).",
+ "total_sd": 5.0,
+ "by_polls": false,
+ "years": [
+  {
+   "year": 2010,
+   "races": 65,
+   "d_wins": 25,
+   "shared_miss_toward_r": -0.94,
+   "old": {
+    "range90": [
+     19,
+     25
+    ],
+    "inside": true,
+    "pit": 0.936
+   },
+   "new": {
+    "range90": [
+     16,
+     28
+    ],
+    "inside": true,
+    "pit": 0.81
+   }
+  },
+  {
+   "year": 2012,
+   "races": 36,
+   "d_wins": 25,
+   "shared_miss_toward_r": -2.98,
+   "old": {
+    "range90": [
+     19,
+     25
+    ],
+    "inside": true,
+    "pit": 0.961
+   },
+   "new": {
+    "range90": [
+     17,
+     26
+    ],
+    "inside": true,
+    "pit": 0.871
+   }
+  },
+  {
+   "year": 2014,
+   "races": 70,
+   "d_wins": 24,
+   "shared_miss_toward_r": 3.41,
+   "old": {
+    "range90": [
+     25,
+     32
+    ],
+    "inside": false,
+    "pit": 0.02
+   },
+   "new": {
+    "range90": [
+     22,
+     35
+    ],
+    "inside": true,
+    "pit": 0.126
+   }
+  },
+  {
+   "year": 2016,
+   "races": 45,
+   "d_wins": 17,
+   "shared_miss_toward_r": 4.41,
+   "old": {
+    "range90": [
+     17,
+     23
+    ],
+    "inside": true,
+    "pit": 0.043
+   },
+   "new": {
+    "range90": [
+     15,
+     25
+    ],
+    "inside": true,
+    "pit": 0.162
+   }
+  },
+  {
+   "year": 2018,
+   "races": 59,
+   "d_wins": 31,
+   "shared_miss_toward_r": 0.08,
+   "old": {
+    "range90": [
+     30,
+     38
+    ],
+    "inside": true,
+    "pit": 0.103
+   },
+   "new": {
+    "range90": [
+     25,
+     42
+    ],
+    "inside": true,
+    "pit": 0.283
+   }
+  },
+  {
+   "year": 2020,
+   "races": 38,
+   "d_wins": 15,
+   "shared_miss_toward_r": 6.84,
+   "old": {
+    "range90": [
+     16,
+     21
+    ],
+    "inside": false,
+    "pit": 0.028
+   },
+   "new": {
+    "range90": [
+     13,
+     24
+    ],
+    "inside": true,
+    "pit": 0.152
+   }
+  },
+  {
+   "year": 2022,
+   "races": 59,
+   "d_wins": 31,
+   "shared_miss_toward_r": 1.32,
+   "old": {
+    "range90": [
+     24,
+     30
+    ],
+    "inside": false,
+    "pit": 0.971
+   },
+   "new": {
+    "range90": [
+     19,
+     35
+    ],
+    "inside": true,
+    "pit": 0.785
+   }
+  },
+  {
+   "year": 2024,
+   "races": 32,
+   "d_wins": 19,
+   "shared_miss_toward_r": 2.4,
+   "old": {
+    "range90": [
+     17,
+     22
+    ],
+    "inside": true,
+    "pit": 0.356
+   },
+   "new": {
+    "range90": [
+     15,
+     24
+    ],
+    "inside": true,
+    "pit": 0.397
+   }
+  }
+ ],
+ "old": {
+  "races": 404,
+  "brier": 0.0612,
+  "log_loss": 0.2052,
+  "calibration": [
+   {
+    "band": "0.03-0.20",
+    "races": 163,
+    "mean_p": 0.047,
+    "d_won": 0.012
+   },
+   {
+    "band": "0.20-0.40",
+    "races": 30,
+    "mean_p": 0.304,
+    "d_won": 0.133
+   },
+   {
+    "band": "0.40-0.60",
+    "races": 34,
+    "mean_p": 0.518,
+    "d_won": 0.529
+   },
+   {
+    "band": "0.60-0.80",
+    "races": 41,
+    "mean_p": 0.701,
+    "d_won": 0.683
+   },
+   {
+    "band": "0.80-0.97",
+    "races": 136,
+    "mean_p": 0.951,
+    "d_won": 0.993
+   }
+  ]
+ },
+ "new": {
+  "races": 404,
+  "brier": 0.0612,
+  "log_loss": 0.2052,
+  "calibration": [
+   {
+    "band": "0.03-0.20",
+    "races": 163,
+    "mean_p": 0.047,
+    "d_won": 0.012
+   },
+   {
+    "band": "0.20-0.40",
+    "races": 30,
+    "mean_p": 0.304,
+    "d_won": 0.133
+   },
+   {
+    "band": "0.40-0.60",
+    "races": 34,
+    "mean_p": 0.518,
+    "d_won": 0.529
+   },
+   {
+    "band": "0.60-0.80",
+    "races": 41,
+    "mean_p": 0.701,
+    "d_won": 0.683
+   },
+   {
+    "band": "0.80-0.97",
+    "races": 136,
+    "mean_p": 0.951,
+    "d_won": 0.993
+   }
+  ]
+ },
+ "seat_range_hits": {
+  "old": 5,
+  "new": 8
+ },
+ "seat_range_years": 8
+}
