@@ -29,9 +29,9 @@ export default function Tonight() {
         {rows.filter(x => x.c!.at === h).map(x => <tr key={x.r.id}>
           <th scope="row"><a href={`/race/${x.r.slug}/`}>{x.r.name}</a>{x.c!.note ? <small className="muted block">{x.c!.note}</small> : null}</th>
           <td data-label="Board"><MarginTrack v={x.s.adjusted_margin} tick={x.s.polling_margin}/></td>
-          <td className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep, x.dl)}</td>
-          <td className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep, x.dl)}</td>
-          <td className={`mono ${x.at2020 === null ? '' : cls(x.at2020)}`}>{x.at2020 === null ? 'NA' : fmt(x.at2020, x.d, x.rep, x.dl)}</td>
+          <td data-label="Polls" className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep, x.dl)}</td>
+          <td data-label="Undertow" className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep, x.dl)}</td>
+          <td data-label="If 2020 again" className={`mono ${x.at2020 === null ? '' : cls(x.at2020)}`}>{x.at2020 === null ? 'NA' : fmt(x.at2020, x.d, x.rep, x.dl)}</td>
         </tr>)}
       </tbody></table></div>
     </section>)}

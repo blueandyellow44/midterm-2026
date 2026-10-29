@@ -135,7 +135,7 @@ function Tally({ races, m, seats, totals, scope = 'all', setScope, odds }: { rac
         <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
         {c.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[o], m)}/> : null}
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
-        {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}<span className="is-extra">{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{c.majority ? ` · ${c.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
+        {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}<span className="is-extra">{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{o === 'HOUSE' && c.n > c.play ? ` · the other ${c.n - c.play} are projections or Cook ratings, not my reading` : ''}{c.majority ? ` · ${c.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
       </div>; })}
     {totals && <p className="wall-tally-note wall-hide-phone">Hatched: the races I read, which the dial moves. The rest are projections. <a href="/method/#full-chamber">How</a></p>}
   </div>;
@@ -176,12 +176,16 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
   </section>;
 }
 
-function WinChance({ r, p, moved }: { r: WallRace; p: number | null; moved: boolean }) {
+// The second line shows the same race with no national miss (the dial's "No miss · polls right" preset), so a reader sees
+// how much of the chance is the bet (fix 3 of six, Max, 2026-10-29: "please do the six fixes").
+function WinChance({ r, p, p0, moved }: { r: WallRace; p: number | null; p0?: number | null; moved: boolean }) {
   if (p === null || r.result?.settled) return null;
+  const showBase = typeof p0 === 'number' && chanceLabel(p0) !== chanceLabel(p);
   return <div className="wall-chance">
     <p className="wall-label">Chance to win{moved ? ' at your dial' : ''}</p>
     <p className="wall-chance-names"><span className="is-d">{last(r.d)} {chanceLabel(p)}</span><span className="is-r">{last(r.r)} {chanceLabel(1 - p)}</span></p>
     <span className="wall-chance-bar" aria-hidden="true"><i className={`is-d gw-${pct(100 * p)}`}/><i className={`is-r gw-${100 - pct(100 * p)}`}/></span>
+    {showBase && <p className="wall-chance-sub">If the polls are right: {last(r.d)} {chanceLabel(p0)}, {last(r.r)} {chanceLabel(1 - p0)}.</p>}
   </div>;
 }
 function Detail({ r, m, national, odds }: { r: WallRace; m: number; national: number; odds?: Odds | null }) {
@@ -196,7 +200,7 @@ function Detail({ r, m, national, odds }: { r: WallRace; m: number; national: nu
       {r.result ? <div><p className="wall-label">The count</p><p className={`wall-big ${side(r.result.margin)}`}><Big text={marginLabel(r.result.margin, r)}/></p><p className="wall-sub">{r.result.reporting.toFixed(0)}% counted{r.result.called ? ` · called for ${last(r.result.called === 'D' ? r.d : r.r)}` : ''}</p></div> : null}
       <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? r.dLetter : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>
     </div>
-    <WinChance r={r} p={oddsAt(odds, odds?.perRace[r.id], m)} moved={moved}/>
+    <WinChance r={r} p={oddsAt(odds, odds?.perRace[r.id], m)} p0={oddsAt(odds, odds?.perRace[r.id], 0)} moved={moved}/>
     <FactorBars parts={parts.map(([label, v]) => ({ label, v }))} dLetter={r.dLetter}/>
   </section>;
 }
@@ -283,7 +287,7 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice, odds }: { r
       <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
       {c.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[office], m)}/> : null}
       <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
-      <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
+      <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{office === 'HOUSE' && c.n > c.play ? ` · the other ${c.n - c.play} are projections or Cook ratings, not my reading` : ''}{c.majority ? ` · ${c.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
     </div>
     {office !== 'HOUSE' && <ScopeToggle scope={scope} setScope={setScope}/>}
   </section>;

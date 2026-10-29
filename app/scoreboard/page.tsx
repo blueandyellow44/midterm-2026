@@ -36,10 +36,10 @@ export default function Scoreboard() {
       {rows.map(x => <tr key={x.r.id}>
         <th scope="row"><a href={`/race/${x.r.slug}/`}>{x.r.name}</a></th>
         <td data-label="Board" className="scoreboard-board"><MarginTrack v={Number.isFinite(x.count) ? x.count : x.s.adjusted_margin} tick={x.s.polling_margin}/></td>
-        <td className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep)}</td>
-        <td className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep)}</td>
-        <td className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>
-        <td>{x.winner === 'undertow' ? <strong className="accent-text">Undertow, by {(x.pollErr - x.ourErr).toFixed(1)}</strong> : x.winner === 'polls' ? <strong>Polls, by {(x.ourErr - x.pollErr).toFixed(1)}</strong> : x.winner === 'tie' ? 'Even' : x.c ? <span className="muted">Still counting</span> : <span className="muted">Not yet</span>}</td>
+        <td data-label="Polls" className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep)}</td>
+        <td data-label="Undertow" className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep)}</td>
+        <td data-label="The count" className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>
+        <td data-label="Closer">{x.winner === 'undertow' ? <strong className="accent-text">Undertow, by {(x.pollErr - x.ourErr).toFixed(1)}</strong> : x.winner === 'polls' ? <strong>Polls, by {(x.ourErr - x.pollErr).toFixed(1)}</strong> : x.winner === 'tie' ? 'Even' : x.c ? <span className="muted">Still counting</span> : <span className="muted">Not yet</span>}</td>
       </tr>)}
     </tbody></table></div>
     <p className="muted mt-4 text-sm">Closer means nearer to the count's margin between the two candidates. Early counts swing as different kinds of ballots are added, so a race is only scored once it is called or nearly complete. The final grade uses certified results.</p>

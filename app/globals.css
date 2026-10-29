@@ -210,6 +210,8 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .wall-strip {display:flex;align-items:center;gap:20px;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 16px;margin-bottom:12px;box-shadow:var(--shadow);}
 .wall-strip-head {font-size:22px;font-weight:700;line-height:1.05;text-transform:uppercase;margin:0;}
 .wall-strip-head span {color:var(--muted);}
+.wall-strip-lead {min-width:0;} .wall-strip-sub {margin:6px 0 0;font-size:12px;line-height:1.4;color:var(--muted);max-width:620px;}
+.wall-chance-sub {margin:3px 0 0;font-size:11px;line-height:1.35;color:var(--muted);}
 .wall-strip-meta {font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;white-space:nowrap;flex-wrap:wrap;}
 .wall {display:grid;grid-template-columns:320px minmax(0,1fr) 330px;gap:16px;align-items:start;}
 .wall-left,.wall-right,.wall-center {display:flex;flex-direction:column;gap:14px;min-height:0;}
@@ -417,6 +419,7 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .wall-mobile-hero {padding:6px 2px 2px;}
 .wall-mobile-claim {margin:0 0 6px;font-size:21px;line-height:1.08;letter-spacing:-.01em;color:var(--ink);}
 .wall-mobile-claim span {color:var(--d-safe);}
+.wall-mobile-hero .wall-strip-sub {margin:4px 0 8px;}
 .wall-mobile-by {margin:8px 0 0;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
 .wall-mobile-by .freeze-countdown,.wall-mobile-by [class*=countdown] {color:var(--r-safe);}
 .wall-mobile .wall-tally-play {font-size:11px;}
