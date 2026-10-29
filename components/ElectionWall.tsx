@@ -62,6 +62,9 @@ export function chamberCount(o: Office, races: WallRace[], seats: WallSeat[], to
   for (const s of seats) if (s.office === o && s.kind !== 'not_up') { const side = seatSideAt(s, m); if (side === 'D') d++; else if (side === 'R') r++; else u++; }
   return { d, r, u, n: t.seats, majority: t.majority };
 }
+// Big figures wrap between the name and the number, never inside a name (Max, 2026-10-28 screenshot: "Hyde-Smith +5.2"
+// ran into the next column on desktop).
+function Big({ text }: { text: string }) { const i = text.lastIndexOf(' '); return i < 0 ? <>{text}</> : <><span>{text.slice(0, i)}</span> <span>{text.slice(i + 1)}</span></>; }
 export function marginLabel(v: number, r: WallRace) { return Math.abs(v) < EVEN ? 'Even' : `${last(v > 0 ? r.d : r.r)} +${Math.abs(v).toFixed(1)}`; }
 export function shade(v: number) { const a = Math.abs(v); const side = v > 0 ? 'd' : 'r'; return a < 1 ? 'toss' : a < 4 ? `${side}-lean` : a < 9 ? `${side}-likely` : `${side}-safe`; }
 const letter = (v: number, r: WallRace) => (v > 0 ? r.dLetter : 'R');
@@ -164,9 +167,9 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
     <div className="wall-panel-head"><p className="wall-kicker">{r.name}</p><a className="wall-link" href={`/race/${r.slug}/`}>Full race and every poll →</a></div>
     <p className="wall-matchup"><span className="is-d">{r.d} ({r.dLetter})</span> vs <span className="is-r">{r.r} (R)</span></p>
     <div className="wall-figures">
-      <div><p className="wall-label">Polls</p><p className={`wall-big ${side(r.polls)}`}>{marginLabel(r.polls, r)}</p><p className="wall-sub">{pollCountLabel(r.pollCount, r.sponsoredOnly)}</p></div>
-      <div><p className="wall-label">Undertow</p><p className={`wall-big ${side(r.undertow)}`}>{marginLabel(r.undertow, r)}</p><p className="wall-sub">± {r.sd.toFixed(1)} · my call, frozen Nov 2</p></div>
-      {r.result ? <div><p className="wall-label">The count</p><p className={`wall-big ${side(r.result.margin)}`}>{marginLabel(r.result.margin, r)}</p><p className="wall-sub">{r.result.reporting.toFixed(0)}% counted{r.result.called ? ` · called for ${last(r.result.called === 'D' ? r.d : r.r)}` : ''}</p></div> : null}
+      <div><p className="wall-label">Polls</p><p className={`wall-big ${side(r.polls)}`}><Big text={marginLabel(r.polls, r)}/></p><p className="wall-sub">{pollCountLabel(r.pollCount, r.sponsoredOnly)}</p></div>
+      <div><p className="wall-label">Undertow</p><p className={`wall-big ${side(r.undertow)}`}><Big text={marginLabel(r.undertow, r)}/></p><p className="wall-sub">± {r.sd.toFixed(1)} · my call, frozen Nov 2</p></div>
+      {r.result ? <div><p className="wall-label">The count</p><p className={`wall-big ${side(r.result.margin)}`}><Big text={marginLabel(r.result.margin, r)}/></p><p className="wall-sub">{r.result.reporting.toFixed(0)}% counted{r.result.called ? ` · called for ${last(r.result.called === 'D' ? r.d : r.r)}` : ''}</p></div> : null}
       <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? r.dLetter : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>
     </div>
     <FactorBars parts={parts.map(([label, v]) => ({ label, v }))} dLetter={r.dLetter}/>

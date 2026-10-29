@@ -271,7 +271,8 @@ button.wall-tile:hover {transform:translateY(-1px);}
 .wall-link {font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;}
 .wall-matchup {margin:0 0 8px;font-size:15px;font-weight:600;}
 .wall-figures {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line);}
-.wall-big {font-size:30px;font-weight:800;line-height:1;margin:4px 0;white-space:nowrap;}
+.wall-big {font-size:30px;font-weight:800;line-height:1;margin:4px 0;white-space:normal;}
+.wall-big > span {white-space:nowrap;}
 .wall-sub {font-size:12px;color:var(--muted);margin:0;}
 .wall-board {display:flex;flex-direction:column;}
 .wall-board ol {list-style:none;margin:0;padding:0;overflow:auto;max-height:clamp(520px,calc(100dvh - 220px),900px);}
@@ -293,7 +294,7 @@ button.wall-tile:hover {transform:translateY(-1px);}
 .wall-mrow-name {display:flex;flex-direction:column;font-weight:700;font-size:15px;min-width:0;} .wall-mrow-name small {font-weight:500;font-size:12px;opacity:.85;}
 .wall-mrow-v {font-size:26px;font-weight:800;flex-shrink:0;}
 .wall-mobile .wall-detail {margin-top:6px;}
-.wall-mobile .wall-figures {gap:6px;} .wall-mobile .wall-big {white-space:normal;font-size:22px;overflow-wrap:anywhere;}
+.wall-mobile .wall-figures {gap:6px;} .wall-mobile .wall-big {white-space:normal;font-size:22px;overflow-wrap:anywhere;} .wall-mobile .wall-big > span {white-space:normal;}
 .wall-mobile .wall-sub {font-size:11px;} .wall-mobile .wall-panel-head {flex-wrap:wrap;align-items:flex-start;}
 .wall-mobile .wall-link {white-space:normal;font-size:12px;}
 .wall-mobile .c-factors {grid-template-columns:1fr;}

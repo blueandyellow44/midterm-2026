@@ -24,11 +24,12 @@ export function surname(name: string): string {
 }
 
 // Poll count under a polls number (Max, 2026-10-28: internal polls flagged). sponsoredOnly comes from weight.py's
-// polling_v2 sponsored_only: every poll behind the number was paid for by a campaign, party, PAC or partisan group.
+// polling_v2 sponsored_only: no poll behind the number was paid for independently (each is a campaign or PAC internal,
+// paid by a partisan group, or has no stated sponsor).
 export function pollCountLabel(n: number | null | undefined, sponsoredOnly = false): string {
   if (!n) return 'weighted average';
   const base = n === 1 ? '1 poll' : `${n} polls, weighted`;
-  return sponsoredOnly ? `${base} · all paid for by campaigns or partisan groups` : base;
+  return sponsoredOnly ? `${base} · none independently paid for` : base;
 }
 
 // Who paid, per poll, from weight.py's sponsor_tier.
