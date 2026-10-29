@@ -35,7 +35,9 @@ function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates
    <Figure label="The pull" value={Math.abs(pull)<EVEN?'None':`${Math.abs(pull).toFixed(1)} → ${pull>0?dl:'R'}`} v={pull} sub="Undertow minus the polls"/>
   </div>
   <div className="race-trackrow"><span className="is-r">◀ {lastName(names.R)}</span><MarginTrack v={und} tick={polls} large/><span className="is-d">{lastName(names.D)} ▶</span></div>
-  <p className="c-sub race-trackkey"><i className="c-key-tick"/> polls · bar: Undertow</p></>
+  <p className="c-sub race-trackkey"><i className="c-key-tick"/> polls · bar: Undertow</p>
+  {(()=>{const p=Number((derived as any).simulation?.per_seat?.[r.id]?.p_d);if(!Number.isFinite(p))return null;const pc=Math.max(0,Math.min(100,Math.round(100*p)));const cl=(x:number)=>x<0.005?'<1%':x>0.995?'>99%':`${Math.round(100*x)}%`;
+   return <div className="wall-chance race-chance"><p className="c-label">Chance to win, at my bet</p><p className="wall-chance-names"><span className="is-d">{lastName(names.D)} {cl(p)}</span><span className="is-r">{lastName(names.R)} {cl(1-p)}</span></p><span className="wall-chance-bar" aria-hidden="true"><i className={`is-d gw-${pc}`}/><i className={`is-r gw-${100-pc}`}/></span><p className="c-sub">From 20,000 simulated elections in which polling misses move together across states. <a href="/method/#win-probability">How</a></p></div>;})()}</>
   :<><p className="c-sub race-noread">{r.id.endsWith('HOUSE')?'No public poll of this race since September 1 could be verified at its source, so Undertow makes no call here and nothing on this page is graded.':'No verified polling read in this snapshot.'}</p>
    {proj&&<p className="race-proj">For the chamber count it is projected from its 2024 vote and the national swing: <strong className={tone(proj.undertow)}>{label(proj.undertow,names)}</strong>. A projection, not a reading.</p>}</>}
  </Panel>;}

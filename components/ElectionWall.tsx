@@ -29,6 +29,16 @@ export type WallSeat = {
 export type ChamberTotals = Record<Office, { notUp: { D: number; R: number }; majority: number | null; seats: number }>;
 export type NoReadRace = { id: string; slug: string; state: string; district: string; name: string; d: string; r: string; rating: string; dLetter: string };
 const OFFICES: Office[] = ['SEN', 'GOV', 'HOUSE'];
+// Win probability (Max, 2026-10-29: "We can add win probability"). weight.py's correlated simulation (analysis/simulate.py)
+// gives the odds at every half point of the dial; the site only reads them off and interpolates between two points.
+export type Odds = { values: number[]; chambers: Partial<Record<Office, number[]>>; perRace: Record<string, number[]> };
+export function oddsAt(o: Odds | null | undefined, arr: number[] | undefined, m: number): number | null {
+  if (!o || !arr || arr.length !== o.values.length) return null;
+  const v = o.values; if (m <= v[0]) return arr[0]; if (m >= v[v.length - 1]) return arr[arr.length - 1];
+  const i = v.findIndex(x => x > m); const t = (m - v[i - 1]) / (v[i] - v[i - 1]);
+  return arr[i - 1] + t * (arr[i] - arr[i - 1]);
+}
+export const chanceLabel = (p: number) => (p < 0.005 ? '<1%' : p > 0.995 ? '>99%' : `${Math.round(100 * p)}%`);
 const officeName = (o: Office) => (o === 'SEN' ? 'Senate' : o === 'GOV' ? 'Governor' : 'House');
 export type HistoryPreset = { year: number; miss_toward_d: number };
 // Dial presets are real past national misses from the archive, then no miss, my bet and last fall (Max, 2026-10-27).
@@ -110,7 +120,12 @@ export function chamberSplit(o: Office, races: WallRace[], seats: WallSeat[], to
 function ScopeToggle({ scope, setScope }: { scope: Scope; setScope: (s: Scope) => void }) {
   return <div className="scope-toggle" role="group" aria-label="Which seats to count">{(['all', 'up'] as const).map(k => <button key={k} type="button" aria-pressed={scope === k} className={scope === k ? 'is-on' : ''} onClick={() => setScope(k)}>{k === 'all' ? 'All seats' : 'Up this year'}</button>)}</div>;
 }
-function Tally({ races, m, seats, totals, scope = 'all', setScope }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals | null; scope?: Scope; setScope?: (s: Scope) => void }) {
+function ControlOdds({ p }: { p: number | null }) {
+  if (p === null) return null;
+  const d = p >= 0.5;
+  return <span className="wall-tally-odds">Chance of control: <b className={d ? 'is-d' : 'is-r'}>{d ? 'D' : 'R'} {chanceLabel(d ? p : 1 - p)}</b></span>;
+}
+function Tally({ races, m, seats, totals, scope = 'all', setScope, odds }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals | null; scope?: Scope; setScope?: (s: Scope) => void; odds?: Odds | null }) {
   const tracked = (o: Office) => { const rs = races.filter(r => r.office === o).map(r => marginAt(r, m)); const n = rs.length; return { dSafe: 0, dPlay: rs.filter(v => v >= EVEN).length, even: rs.filter(v => Math.abs(v) < EVEN).length, rPlay: rs.filter(v => v <= -EVEN).length, rSafe: 0, n, majority: null, play: n, noPolls: 0, tossUp: 0 } as ChamberSplit; };
   return <div className="wall-tally" aria-live="polite">
     {totals && setScope && <ScopeToggle scope={scope} setScope={setScope}/>}
@@ -118,6 +133,7 @@ function Tally({ races, m, seats, totals, scope = 'all', setScope }: { races: Wa
       return <div key={o} className="wall-tally-row">
         <span className="wall-tally-label">{officeName(o)}<small>{totals ? (sc === 'up' ? `${c.n} up` : `of ${c.n}`) : `${c.n} tracked`}</small></span>
         <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
+        {c.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[o], m)}/> : null}
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
         {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}<span className="is-extra">{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{c.majority ? ` · ${c.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
       </div>; })}
@@ -160,7 +176,15 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
   </section>;
 }
 
-function Detail({ r, m, national }: { r: WallRace; m: number; national: number }) {
+function WinChance({ r, p, moved }: { r: WallRace; p: number | null; moved: boolean }) {
+  if (p === null || r.result?.settled) return null;
+  return <div className="wall-chance">
+    <p className="wall-label">Chance to win{moved ? ' at your dial' : ''}</p>
+    <p className="wall-chance-names"><span className="is-d">{last(r.d)} {chanceLabel(p)}</span><span className="is-r">{last(r.r)} {chanceLabel(1 - p)}</span></p>
+    <span className="wall-chance-bar" aria-hidden="true"><i className={`is-d gw-${pct(100 * p)}`}/><i className={`is-r gw-${100 - pct(100 * p)}`}/></span>
+  </div>;
+}
+function Detail({ r, m, national, odds }: { r: WallRace; m: number; national: number; odds?: Odds | null }) {
   const at = marginAt(r, m); const pull = r.undertow - r.polls; const moved = Math.abs(m - national) >= 0.05 && !r.result?.settled;
   const parts: [string, number][] = [['Last fall’s polling miss', national], ['This state’s polling record', r.stateAdj], [r.spendLabel, r.spending], ['Early vote', r.earlyVote]];
   return <section className="wall-panel wall-detail" aria-label={`${r.name} breakdown`}>
@@ -172,6 +196,7 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
       {r.result ? <div><p className="wall-label">The count</p><p className={`wall-big ${side(r.result.margin)}`}><Big text={marginLabel(r.result.margin, r)}/></p><p className="wall-sub">{r.result.reporting.toFixed(0)}% counted{r.result.called ? ` · called for ${last(r.result.called === 'D' ? r.d : r.r)}` : ''}</p></div> : null}
       <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? r.dLetter : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>
     </div>
+    <WinChance r={r} p={oddsAt(odds, odds?.perRace[r.id], m)} moved={moved}/>
     <FactorBars parts={parts.map(([label, v]) => ({ label, v }))} dLetter={r.dLetter}/>
   </section>;
 }
@@ -215,7 +240,7 @@ function Board({ races, m, selected, select, office }: { races: WallRace[]; m: n
   </section>;
 }
 
-export function ElectionWall({ races, national, lastFall, initial, history, noRead = [], seats = [], totals = null, live = null }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial }) {
+export function ElectionWall({ races, national, lastFall, initial, history, noRead = [], seats = [], totals = null, live = null, odds = null }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null }) {
   const [m, setM] = useState(live ? live.m : national);
   const [office, setOffice] = useState<Office>('SEN');
   const [selected, setSelected] = useState(initial);
@@ -226,9 +251,9 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const shown = sel || (selSeat ? undefined : races[0]);
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
-    <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope}/></div>
+    <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope} odds={live ? null : odds}/></div>
     <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live}/></aside>
-    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full}/> : shown && <Detail r={shown} m={m} national={national}/>}</div>
+    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full}/> : shown && <Detail r={shown} m={m} national={national} odds={live ? null : odds}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office}/></aside>
   </div>;
 }
@@ -248,7 +273,7 @@ function DialBar({ m, setM, national, lastFall, history, live = null }: { m: num
 
 // Phone first screen (Max, 2026-10-28: "How do other sites get it all to fit on the landing screen?" -> "Build it"): three chamber
 // chips that switch both the numbers and the map, and one full bar for the selected chamber.
-function PhoneChambers({ races, m, seats, totals, office, setOffice }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals; office: Office; setOffice: (o: Office) => void }) {
+function PhoneChambers({ races, m, seats, totals, office, setOffice, odds }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals; office: Office; setOffice: (o: Office) => void; odds?: Odds | null }) {
   const [scope, setScope] = useState<Scope>('all'); const sc: Scope = office === 'HOUSE' ? 'all' : scope;
   const c = chamberSplit(office, races, seats, totals, m, sc); const d = c.dSafe + c.dPlay, r = c.rSafe + c.rPlay; const w = (k: number) => pct(100 * k / c.n);
   return <section className="wall-tally phone-chambers" aria-live="polite">
@@ -256,6 +281,7 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice }: { races: 
     <div className="wall-tally-row">
       <span className="wall-tally-label">{office === 'GOV' ? 'Governors' : officeName(office)}<small>{sc === 'up' ? `${c.n} up` : `of ${c.n}`}</small></span>
       <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
+      {c.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[office], m)}/> : null}
       <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
       <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}{c.majority ? ` · ${c.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
     </div>
@@ -263,7 +289,7 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice }: { races: 
   </section>;
 }
 
-export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial }) {
+export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null, odds = null }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null }) {
   const [m, setM] = useState(live ? live.m : national);
   const [open, setOpen] = useState<string | null>(null);
   const [office, setOffice] = useState<Office>('SEN');
@@ -272,14 +298,14 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m) })).sort((a, b) => b.v - a.v), [races, m, office]);
   const pick = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
-    {totals ? <PhoneChambers races={races} m={m} seats={seats} totals={totals} office={office} setOffice={setOffice}/> : <Tally races={races} m={m} seats={seats} totals={totals}/>}
+    {totals ? <PhoneChambers races={races} m={m} seats={seats} totals={totals} office={office} setOffice={setOffice} odds={live ? null : odds}/> : <Tally races={races} m={m} seats={seats} totals={totals}/>}
     <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick} noRead={noRead} seats={seats} full={full} hideToggle={!!totals}/>
     {openSeat && <SeatDetail s={openSeat} m={m} national={national} full={full}/>}
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>
       <button type="button" className={`wall-mrow ${shade(v)}`} aria-expanded={open === r.id} onClick={() => setOpen(open === r.id ? null : r.id)}>
         <span className="wall-mrow-name">{r.name}<small>{last(r.d)} ({r.dLetter}) vs {last(r.r)} (R)</small></span>
         <span className="wall-mrow-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
-      {open === r.id && <Detail r={r} m={m} national={national}/>}
+      {open === r.id && <Detail r={r} m={m} national={national} odds={live ? null : odds}/>}
     </li>)}
     {office === 'HOUSE' && noRead.map(n => <li key={n.id}><a className="wall-mrow is-noread" href={`/race/${n.slug}/`}><span className="wall-mrow-name">{n.name}<small>{last(n.d)} ({n.dLetter}) vs {last(n.r)} (R) · {n.rating}</small></span><span className="wall-mrow-v">no polls</span></a></li>)}</ol>
     <DialBar m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live}/>

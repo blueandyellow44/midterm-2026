@@ -27,7 +27,7 @@ from collections import Counter, defaultdict
 
 import numpy as np
 
-SIM_VERSION = "1.1"   # 1.1: race spread held at RACE_TOTAL_SD (backtest); 1.0 scaled it by poll count
+SIM_VERSION = "1.2"   # 1.2: odds across the dial; 1.1: race spread held at RACE_TOTAL_SD (backtest); 1.0 scaled it by poll count
 SIM_N = 20000
 SIM_SEED = 20261102   # fixed so the same release always gives the same numbers
 SIM_QUANTILES = (0.05, 0.25, 0.5, 0.75, 0.95)
@@ -147,8 +147,9 @@ def _seat_specs(chambers: dict, per_race: dict, poll_counts: dict, fit: dict, na
     return specs
 
 
-def _draw(specs, fit, national_sd, n, seed, correlated=True):
-    """Returns an (n, seats) boolean array: True where the D slot wins. not_up seats are filled by their holder."""
+def _draw(specs, fit, national_sd, n, seed, correlated=True, values=False):
+    """Returns an (n, seats) boolean array: True where the D slot wins. not_up seats are filled by their holder.
+    With values=True also returns the (n, up seats) outcome margins and the up-seat column indexes."""
     rng = np.random.default_rng(seed)
     up = [i for i, s in enumerate(specs) if "fixed" not in s]
     center = np.array([specs[i]["center"] for i in up])
@@ -171,7 +172,34 @@ def _draw(specs, fit, national_sd, n, seed, correlated=True):
         total = np.sqrt(national_sd ** 2 + fit["division_sd"] ** 2 + fit["state_sd"] ** 2 + idio ** 2)
         val = center + rng.normal(0, 1, (n, len(up))) * total
     out[:, up] = val > 0
-    return out
+    return (out, val, up) if values else out
+
+
+# The dial (Max, 2026-10-27: one dial drives every panel). The odds follow it: at dial value m every reading and
+# projection moves by m minus the national lean, exactly as the site's marginAt and seatMarginAt do, and the spread
+# around it stays the same. At m = the lean this reproduces the odds above. Cook-rated governors and seats not up do not move.
+DIAL_STEP = 0.5
+DIAL_SPAN = 10.0
+
+
+def _dial_grid(specs, wins, val, up, national, chambers_meta, tracked):
+    tie, maj = chambers_meta.get("tie_breaker", "R"), chambers_meta.get("majority") or {}
+    values = [round(-DIAL_SPAN + k * DIAL_STEP, 2) for k in range(int(2 * DIAL_SPAN / DIAL_STEP) + 1)]
+    movable = np.array([specs[i]["kind"] in ("reading", "projection") for i in up])
+    col_of = {i: j for j, i in enumerate(up)}
+    grid = {"step": DIAL_STEP, "values": values, "chambers": {ch: [] for ch in maj}, "per_race": {r: [] for r in tracked},
+            "rule": "odds at each dial value; the dial moves every reading and projection by (dial - national lean) and keeps the spread"}
+    race_cols = {specs[i]["race"]: col_of[i] for i in up if specs[i]["kind"] == "reading" and specs[i]["race"] in tracked}
+    w = wins.copy()
+    for m in values:
+        shifted = val + np.where(movable, m - national, 0.0)
+        w[:, up] = shifted > 0
+        for ch in maj:
+            cols = [i for i, s in enumerate(specs) if s["chamber"] == ch]
+            grid["chambers"][ch].append(_summary(w[:, cols], maj[ch], ch, tie)["p_control_d"])
+        for r, j in race_cols.items():
+            grid["per_race"][r].append(round(float(np.mean(shifted[:, j] > 0)), 4))
+    return grid
 
 
 def _summary(wins: np.ndarray, majority: int | None, chamber: str, tie_breaker: str) -> dict:
@@ -199,7 +227,7 @@ def run(chambers: dict | None, signals: dict | None, poll_counts: dict, history:
     if not fit:
         return None
     specs = _seat_specs(chambers, signals.get("per_race") or {}, poll_counts, fit, national_sd)
-    wins = _draw(specs, fit, national_sd, n, seed, correlated=True)
+    wins, val, up = _draw(specs, fit, national_sd, n, seed, correlated=True, values=True)
     indep = _draw(specs, fit, national_sd, n, seed + 1, correlated=False)
     tie, maj = chambers.get("tie_breaker", "R"), chambers.get("majority") or {}
     out = {"version": SIM_VERSION, "sims": n, "seed": seed, "national_sd": round(national_sd, 4), "race_total_sd": RACE_TOTAL_SD, "error_structure": fit,
@@ -222,6 +250,8 @@ def run(chambers: dict | None, signals: dict | None, poll_counts: dict, history:
         summ = _summary(pw[:, cols], maj.get(ch), ch, tie)
         summ.pop("distribution", None)
         out["polls_no_lean"]["chambers"][ch] = summ
+    tracked = sorted({s["race"] for s in specs if s["kind"] == "reading" and s["race"]})
+    out["dial"] = _dial_grid(specs, wins, val, up, nat, chambers, tracked)
     p = wins.mean(axis=0)
     for i, s in enumerate(specs):
         if "fixed" in s:
