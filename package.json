@@ -8,9 +8,11 @@
     "build": "node scripts/validate-bundle.mjs && python3 scripts/share/build_share_cards.py && next build",
     "build:cloudflare": "npm run build && node scripts/csp-hashes.mjs && opennextjs-cloudflare build --skipNextBuild && node scripts/static-routes.mjs",
     "preview": "wrangler dev --port 8788",
-    "deploy": "node scripts/verify-static.mjs && wrangler deploy",
+    "deploy": "node scripts/deploy.mjs",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "qa:serve": "node scripts/qa/serve.mjs",
+    "ship:status": "node scripts/ship-status.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "5.3.0",
