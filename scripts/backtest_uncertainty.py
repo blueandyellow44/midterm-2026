@@ -42,6 +42,7 @@ def main() -> int:
     ap.add_argument("--json")
     ap.add_argument("--total", type=float, default=S.RACE_TOTAL_SD)
     ap.add_argument("--by-polls", action="store_true")
+    ap.add_argument("--df", type=int, default=0, help="Student t degrees of freedom for every miss (0 = normal)")
     a = ap.parse_args()
     hist = list(csv.DictReader(open(HIST)))
     per_race = {"old": [], "new": []}
@@ -62,7 +63,11 @@ def main() -> int:
             idio = np.full(len(races), math.sqrt(max(a.total ** 2 - shared ** 2 - fit["division_sd"] ** 2 - fit["state_sd"] ** 2, S.MIN_IDIO_SD ** 2)))
         sd_new = np.sqrt(shared ** 2 + fit["division_sd"] ** 2 + fit["state_sd"] ** 2 + idio ** 2)
         p_old = np.clip([phi(x / FLAT_SIGMA) for x in m], *CLAMP)
-        p_new = np.clip([phi(x / s) for x, s in zip(m, sd_new)], *CLAMP)
+        if a.df:
+            from scipy import stats
+            p_new = np.clip([stats.t.cdf(x / (s / math.sqrt(a.df / (a.df - 2))), a.df) for x, s in zip(m, sd_new)], *CLAMP)
+        else:
+            p_new = np.clip([phi(x / s) for x, s in zip(m, sd_new)], *CLAMP)
         for p, k in ((p_old, "old"), (p_new, "new")):
             per_race[k] += [(float(pi), float(w)) for pi, w in zip(p, won)]
         # Seat-count range: new = correlated draws; old = independent draws at sigma 5.
@@ -71,8 +76,10 @@ def main() -> int:
         divs = sorted({S.DIVISION[s] for s in states})
         si = np.array([states.index(r["state"]) for r in races])
         di = np.array([divs.index(S.DIVISION[r["state"]]) for r in races])
-        val = (m + rng.normal(0, shared, (N, 1)) + rng.normal(0, fit["division_sd"], (N, len(divs)))[:, di]
-               + rng.normal(0, fit["state_sd"], (N, len(states)))[:, si] + rng.normal(0, 1, (N, len(races))) * idio)
+        def draw(sd, shape):
+            return rng.standard_t(a.df, shape) * sd / math.sqrt(a.df / (a.df - 2)) if a.df else rng.normal(0, sd, shape)
+        val = (m + draw(shared, (N, 1)) + draw(fit["division_sd"], (N, len(divs)))[:, di]
+               + draw(fit["state_sd"], (N, len(states)))[:, si] + draw(1.0, (N, len(races))) * idio)
         cnt_new = (val > 0).sum(axis=1)
         cnt_old = (m + rng.normal(0, FLAT_SIGMA, (N, len(races))) > 0).sum(axis=1)
         actual = int(won.sum())
@@ -92,7 +99,7 @@ def main() -> int:
         return {"races": len(p), "brier": round(float(np.mean((p - w) ** 2)), 4),
                 "log_loss": round(float(-np.mean(w * np.log(p) + (1 - w) * np.log(1 - p))), 4), "calibration": bands}
 
-    out = {"method": __doc__.strip().splitlines()[0], "total_sd": a.total, "by_polls": a.by_polls, "years": years,
+    out = {"method": __doc__.strip().splitlines()[0], "total_sd": a.total, "by_polls": a.by_polls, "tail_df": a.df, "years": years,
            "old": scores(per_race["old"]), "new": scores(per_race["new"]),
            "seat_range_hits": {k: sum(1 for r in years if r[k]["inside"]) for k in ("old", "new")}, "seat_range_years": len(years)}
     print(json.dumps(out, indent=1))

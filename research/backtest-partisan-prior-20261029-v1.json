@@ -1,0 +1,282 @@
+{
+ "by_year": [
+  {
+   "year": 2010,
+   "prior_sd": {
+    "Sen": 20.64,
+    "Gov": 20.9
+   }
+  },
+  {
+   "year": 2012,
+   "prior_sd": {
+    "Sen": 19.44,
+    "Gov": 19.97
+   }
+  },
+  {
+   "year": 2014,
+   "prior_sd": {
+    "Sen": 18.38,
+    "Gov": 19.54
+   }
+  },
+  {
+   "year": 2016,
+   "prior_sd": {
+    "Sen": 17.5,
+    "Gov": 19.22
+   }
+  },
+  {
+   "year": 2018,
+   "prior_sd": {
+    "Sen": 16.99,
+    "Gov": 19.13
+   }
+  },
+  {
+   "year": 2020,
+   "prior_sd": {
+    "Sen": 16.52,
+    "Gov": 18.77
+   }
+  },
+  {
+   "year": 2022,
+   "prior_sd": {
+    "Sen": 15.88,
+    "Gov": 18.68
+   }
+  },
+  {
+   "year": 2024,
+   "prior_sd": {
+    "Sen": 15.28,
+    "Gov": 18.49
+   }
+  }
+ ],
+ "rows": [
+  {
+   "group": "all",
+   "mean_weight_on_polls": 0.91,
+   "polls": {
+    "races": 404,
+    "mae": 4.588,
+    "winner_right": 0.916,
+    "brier": 0.0612
+   },
+   "prior": {
+    "races": 404,
+    "mae": 9.659,
+    "winner_right": 0.797,
+    "brier": 0.1451
+   },
+   "blend": {
+    "races": 404,
+    "mae": 4.535,
+    "winner_right": 0.923,
+    "brier": 0.06
+   }
+  },
+  {
+   "group": "Sen 1-2 polls",
+   "mean_weight_on_polls": 0.79,
+   "polls": {
+    "races": 68,
+    "mae": 5.753,
+    "winner_right": 0.985,
+    "brier": 0.0136
+   },
+   "prior": {
+    "races": 68,
+    "mae": 8.377,
+    "winner_right": 0.971,
+    "brier": 0.015
+   },
+   "blend": {
+    "races": 68,
+    "mae": 5.546,
+    "winner_right": 0.985,
+    "brier": 0.0094
+   }
+  },
+  {
+   "group": "Sen 3-5 polls",
+   "mean_weight_on_polls": 0.92,
+   "polls": {
+    "races": 61,
+    "mae": 4.492,
+    "winner_right": 0.984,
+    "brier": 0.0133
+   },
+   "prior": {
+    "races": 61,
+    "mae": 9.024,
+    "winner_right": 0.918,
+    "brier": 0.0724
+   },
+   "blend": {
+    "races": 61,
+    "mae": 4.497,
+    "winner_right": 0.984,
+    "brier": 0.0168
+   }
+  },
+  {
+   "group": "Sen 6-10 polls",
+   "mean_weight_on_polls": 0.93,
+   "polls": {
+    "races": 42,
+    "mae": 4.587,
+    "winner_right": 0.952,
+    "brier": 0.0627
+   },
+   "prior": {
+    "races": 42,
+    "mae": 7.762,
+    "winner_right": 0.833,
+    "brier": 0.1281
+   },
+   "blend": {
+    "races": 42,
+    "mae": 4.31,
+    "winner_right": 0.952,
+    "brier": 0.0565
+   }
+  },
+  {
+   "group": "Sen 11-+ polls",
+   "mean_weight_on_polls": 0.94,
+   "polls": {
+    "races": 67,
+    "mae": 3.686,
+    "winner_right": 0.821,
+    "brier": 0.1354
+   },
+   "prior": {
+    "races": 67,
+    "mae": 6.902,
+    "winner_right": 0.627,
+    "brier": 0.2409
+   },
+   "blend": {
+    "races": 67,
+    "mae": 3.677,
+    "winner_right": 0.821,
+    "brier": 0.1358
+   }
+  },
+  {
+   "group": "Gov 1-2 polls",
+   "mean_weight_on_polls": 0.89,
+   "polls": {
+    "races": 54,
+    "mae": 5.572,
+    "winner_right": 0.981,
+    "brier": 0.0199
+   },
+   "prior": {
+    "races": 54,
+    "mae": 13.963,
+    "winner_right": 0.852,
+    "brier": 0.1229
+   },
+   "blend": {
+    "races": 54,
+    "mae": 5.857,
+    "winner_right": 0.981,
+    "brier": 0.0218
+   }
+  },
+  {
+   "group": "Gov 3-5 polls",
+   "mean_weight_on_polls": 0.94,
+   "polls": {
+    "races": 52,
+    "mae": 4.246,
+    "winner_right": 0.942,
+    "brier": 0.0377
+   },
+   "prior": {
+    "races": 52,
+    "mae": 13.755,
+    "winner_right": 0.75,
+    "brier": 0.2105
+   },
+   "blend": {
+    "races": 52,
+    "mae": 4.23,
+    "winner_right": 0.942,
+    "brier": 0.0401
+   }
+  },
+  {
+   "group": "Gov 6-10 polls",
+   "mean_weight_on_polls": 0.95,
+   "polls": {
+    "races": 27,
+    "mae": 4.528,
+    "winner_right": 0.667,
+    "brier": 0.1833
+   },
+   "prior": {
+    "races": 27,
+    "mae": 8.166,
+    "winner_right": 0.704,
+    "brier": 0.1796
+   },
+   "blend": {
+    "races": 27,
+    "mae": 4.124,
+    "winner_right": 0.741,
+    "brier": 0.1667
+   }
+  },
+  {
+   "group": "Gov 11-+ polls",
+   "mean_weight_on_polls": 0.96,
+   "polls": {
+    "races": 33,
+    "mae": 3.18,
+    "winner_right": 0.848,
+    "brier": 0.0999
+   },
+   "prior": {
+    "races": 33,
+    "mae": 9.208,
+    "winner_right": 0.576,
+    "brier": 0.28
+   },
+   "blend": {
+    "races": 33,
+    "mae": 3.204,
+    "winner_right": 0.879,
+    "brier": 0.1011
+   }
+  },
+  {
+   "group": "thin (1-2 polls), within 15",
+   "mean_weight_on_polls": 0.85,
+   "polls": {
+    "races": 28,
+    "mae": 4.507,
+    "winner_right": 0.929,
+    "brier": 0.0683
+   },
+   "prior": {
+    "races": 28,
+    "mae": 10.611,
+    "winner_right": 0.75,
+    "brier": 0.1838
+   },
+   "blend": {
+    "races": 28,
+    "mae": 4.299,
+    "winner_right": 0.929,
+    "brier": 0.062
+   }
+  }
+ ]
+}

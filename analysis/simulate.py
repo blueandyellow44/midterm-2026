@@ -27,7 +27,7 @@ from collections import Counter, defaultdict
 
 import numpy as np
 
-SIM_VERSION = "1.2"   # 1.2: odds across the dial; 1.1: race spread held at RACE_TOTAL_SD (backtest); 1.0 scaled it by poll count
+SIM_VERSION = "1.3"   # 1.3: fat tails (t5); 1.2: 1.2: odds across the dial; 1.1: race spread held at RACE_TOTAL_SD (backtest); 1.0 scaled it by poll count
 SIM_N = 20000
 SIM_SEED = 20261102   # fixed so the same release always gives the same numbers
 SIM_QUANTILES = (0.05, 0.25, 0.5, 0.75, 0.95)
@@ -61,6 +61,11 @@ MIN_IDIO_SD = 1.0
 # range 8 of 8 years; races treated as independent at 5.0 missed 3 of 8 (2014, 2020, 2022). So the spread stays and the
 # correlation is added. 4.5 scored a hair better; the difference is within noise and 5 is what the cards already carry.
 RACE_TOTAL_SD = 5.0
+# Fat tails (2026-10-29). Every miss is drawn from a Student t with TAIL_DF degrees of freedom, scaled to the same SD, so
+# big misses are a little more likely and small ones too. Same backtest: normal Brier 0.0612, t10 0.0607, t5 0.0602,
+# t3 0.0598; seat ranges 8 of 8 for all. t5 is used: t3 scored a hair better within noise but makes a 15-point miss on a
+# well-polled race implausibly common. Professional 2026 models (FiftyPlusOne) also fit fat-tailed race errors.
+TAIL_DF = 5
 
 
 def _num(v):
@@ -147,6 +152,11 @@ def _seat_specs(chambers: dict, per_race: dict, poll_counts: dict, fit: dict, na
     return specs
 
 
+def _t(rng, sd, shape):
+    """Student t draws with TAIL_DF degrees of freedom, scaled to standard deviation sd."""
+    return rng.standard_t(TAIL_DF, shape) * (sd / math.sqrt(TAIL_DF / (TAIL_DF - 2)))
+
+
 def _draw(specs, fit, national_sd, n, seed, correlated=True, values=False):
     """Returns an (n, seats) boolean array: True where the D slot wins. not_up seats are filled by their holder.
     With values=True also returns the (n, up seats) outcome margins and the up-seat column indexes."""
@@ -163,14 +173,14 @@ def _draw(specs, fit, national_sd, n, seed, correlated=True, values=False):
         divs = sorted({DIVISION.get(st, "PAC") for st in states})
         s_idx = np.array([states.index(specs[i]["state"]) for i in up])
         d_idx = np.array([divs.index(DIVISION.get(specs[i]["state"], "PAC")) for i in up])
-        S = rng.normal(0, national_sd, (n, 1))
-        D = rng.normal(0, fit["division_sd"], (n, len(divs)))[:, d_idx]
-        T = rng.normal(0, fit["state_sd"], (n, len(states)))[:, s_idx]
-        E = rng.normal(0, 1, (n, len(up))) * idio
+        S = _t(rng, national_sd, (n, 1))
+        D = _t(rng, fit["division_sd"], (n, len(divs)))[:, d_idx]
+        T = _t(rng, fit["state_sd"], (n, len(states)))[:, s_idx]
+        E = _t(rng, 1.0, (n, len(up))) * idio
         val = center + S + D + T + E
     else:   # same spread per race, no shared parts: what counting races one by one assumes
         total = np.sqrt(national_sd ** 2 + fit["division_sd"] ** 2 + fit["state_sd"] ** 2 + idio ** 2)
-        val = center + rng.normal(0, 1, (n, len(up))) * total
+        val = center + _t(rng, 1.0, (n, len(up))) * total
     out[:, up] = val > 0
     return (out, val, up) if values else out
 
@@ -230,7 +240,7 @@ def run(chambers: dict | None, signals: dict | None, poll_counts: dict, history:
     wins, val, up = _draw(specs, fit, national_sd, n, seed, correlated=True, values=True)
     indep = _draw(specs, fit, national_sd, n, seed + 1, correlated=False)
     tie, maj = chambers.get("tie_breaker", "R"), chambers.get("majority") or {}
-    out = {"version": SIM_VERSION, "sims": n, "seed": seed, "national_sd": round(national_sd, 4), "race_total_sd": RACE_TOTAL_SD, "error_structure": fit,
+    out = {"version": SIM_VERSION, "sims": n, "seed": seed, "national_sd": round(national_sd, 4), "race_total_sd": RACE_TOTAL_SD, "tail_df": TAIL_DF, "error_structure": fit,
            "projection_residual_sd": PROJECTION_RESIDUAL_SD, "rated_center": RATED_CENTER,
            "rated_center_note": "assumption, not a fit: Cook ratings turned into centers so untracked governors move with the shared draws",
            "chambers": {}, "independent": {}, "per_seat": {}}
