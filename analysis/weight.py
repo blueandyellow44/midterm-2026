@@ -2285,6 +2285,19 @@ class Bundle:
         counts = {k: v.get("polls") for k, v in (((signals or {}).get("polling_v2") or {}).get("per_race") or {}).items()}
         return simulate.run(chambers, signals, counts, getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR, ctx.get("national_sd"))
 
+    def models_block(self, chambers: dict | None, signals: dict | None, simulation: dict | None) -> dict | None:
+        """Other ways to read the same polls (Max, 2026-10-29: "what if we made our own?"; "Go"): analysis/models.py builds
+        polls-only, fundamentals, a forecaster-style blend and Cook's ratings as margins, each with centers for every seat up,
+        a backtest on the archive and odds from simulate.run_model. Changes no reading; the bet stays the graded call."""
+        if not chambers or not simulation:
+            return None
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import models, simulate
+        counts = {k: v.get("polls") for k, v in (((signals or {}).get("polling_v2") or {}).get("per_race") or {}).items()}
+        return models.build(chambers, signals, getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR, counts, simulation.get("error_structure"),
+                            (signals or {}).get("partisan_model"), PARTISAN_BANDS, CHAMBER_INCUMBENCY_BONUS, simulate.RATED_CENTER,
+                            simulate.RACE_TOTAL_SD, simulate.PROJECTION_RESIDUAL_SD, simulate.MIN_IDIO_SD, simulate.run_model)
+
     def compute(self, calc_version: str, release_id: str | None) -> dict:
         ss = (self.run_state or {}).get("stage_outcomes", {})
         stage2c = ss.get("stage2c") == "PASSED"
@@ -2353,6 +2366,7 @@ class Bundle:
             derived["signals"]["polling_v2"] = v2
         derived["chambers"] = self.chambers_block(blocks, derived["signals"])
         derived["simulation"] = self.simulation_block(derived["chambers"], derived["signals"])
+        derived["models"] = self.models_block(derived["chambers"], derived["signals"], derived["simulation"])
         if (self.run_state or {}).get("changes_since") is not None:
             derived["changes"] = self.run_state["changes_since"]
         return derived

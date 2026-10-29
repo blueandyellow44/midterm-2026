@@ -27,7 +27,7 @@ from collections import Counter, defaultdict
 
 import numpy as np
 
-SIM_VERSION = "1.3"   # 1.3: fat tails (t5); 1.2: 1.2: odds across the dial; 1.1: race spread held at RACE_TOTAL_SD (backtest); 1.0 scaled it by poll count
+SIM_VERSION = "1.4"   # 1.4: run_model for the alternative models (analysis/models.py)   # 1.3: fat tails (t5); 1.2: 1.2: odds across the dial; 1.1: race spread held at RACE_TOTAL_SD (backtest); 1.0 scaled it by poll count
 SIM_N = 20000
 SIM_SEED = 20261102   # fixed so the same release always gives the same numbers
 SIM_QUANTILES = (0.05, 0.25, 0.5, 0.75, 0.95)
@@ -195,7 +195,7 @@ DIAL_SPAN = 10.0
 def _dial_grid(specs, wins, val, up, national, chambers_meta, tracked):
     tie, maj = chambers_meta.get("tie_breaker", "R"), chambers_meta.get("majority") or {}
     values = [round(-DIAL_SPAN + k * DIAL_STEP, 2) for k in range(int(2 * DIAL_SPAN / DIAL_STEP) + 1)]
-    movable = np.array([specs[i]["kind"] in ("reading", "projection") for i in up])
+    movable = np.array([specs[i]["kind"] in ("reading", "projection") or specs[i].get("movable", False) for i in up])
     col_of = {i: j for j, i in enumerate(up)}
     grid = {"step": DIAL_STEP, "values": values, "chambers": {ch: [] for ch in maj}, "per_race": {r: [] for r in tracked},
             "rule": "odds at each dial value; the dial moves every reading and projection by (dial - national lean) and keeps the spread"}
@@ -227,6 +227,27 @@ def _summary(wins: np.ndarray, majority: int | None, chamber: str, tie_breaker: 
     hist = Counter(int(x) for x in d)
     res["distribution"] = {str(k): round(v / len(d), 5) for k, v in sorted(hist.items())}
     return res
+
+
+def run_model(specs: list[dict], fit: dict, national_sd: float, chambers_meta: dict, tracked: list[str], n: int = SIM_N, seed: int = SIM_SEED) -> dict:
+    """Odds for one alternative model (Max, 2026-10-29: "what if we made our own?"): the same correlated draws around a
+    different set of centers. specs are built by analysis/models.py; every up seat is movable, so the dial grid shifts all
+    of them by m (the model's own national lean is 0). Returns chamber summaries (no distribution), the dial grid and p_d
+    per seat."""
+    wins, val, up = _draw(specs, fit, national_sd, n, seed, correlated=True, values=True)
+    tie, maj = chambers_meta.get("tie_breaker", "R"), chambers_meta.get("majority") or {}
+    out = {"national_sd": round(national_sd, 4), "chambers": {}, "per_seat": {}}
+    for ch in ("SEN", "GOV", "HOUSE"):
+        cols = [i for i, s in enumerate(specs) if s["chamber"] == ch]
+        summ = _summary(wins[:, cols], maj.get(ch), ch, tie)
+        summ.pop("distribution", None)
+        out["chambers"][ch] = summ
+    out["dial"] = _dial_grid(specs, wins, val, up, 0.0, chambers_meta, tracked)
+    p = wins.mean(axis=0)
+    for i, s in enumerate(specs):
+        if "fixed" not in s:
+            out["per_seat"][s["race"] or s["seat"]] = round(float(p[i]), 4)
+    return out
 
 
 def run(chambers: dict | None, signals: dict | None, poll_counts: dict, history: list[dict] | None, target_year: int,

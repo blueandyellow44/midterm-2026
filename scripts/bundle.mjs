@@ -95,5 +95,18 @@ export function validateBundle(directory) {
       if (dd!==c.at_bet.D || rr!==c.at_bet.R || un!==c.at_bet.undecided || dd+rr+un!==c.seats) throw new Error(`Chamber ${ch} tally does not add up`);
     }
   }
+  // Alternative models (Max, 2026-10-29): optional; when present each model carries a center for every seat up, its up-seat
+  // counts match its centers, and its dial grid has one odds value per dial step for every chamber with a majority line.
+  if (d.models) {
+    const up=new Set(); for (const c of Object.values(d.chambers?.chambers||{})) for (const i of c.items) if (i.kind!=='not_up') up.add(i.race||i.seat);
+    for (const [k,mo] of Object.entries(d.models.models)) {
+      const ids=Object.keys(mo.centers||{});
+      if (ids.length!==up.size || ids.some(id=>!up.has(id))) throw new Error(`Model ${k}: centers do not cover the seats up`);
+      for (const [ch,c] of Object.entries(mo.up_at_default)) { let dd=0,rr=0,un=0; for (const cc of Object.values(d.chambers.chambers[ch].items.filter(i=>i.kind!=='not_up').map(i=>mo.centers[i.race||i.seat]))) { if (cc>=0.05) dd++; else if (cc<=-0.05) rr++; else un++; } if (dd!==c.D||rr!==c.R||un!==c.undecided) throw new Error(`Model ${k}: ${ch} counts disagree with centers`); }
+      const g=mo.simulation?.dial; if (!g || !Array.isArray(g.values)) throw new Error(`Model ${k}: no dial grid`);
+      for (const [ch,arr] of Object.entries(g.chambers)) if (arr.length!==g.values.length) throw new Error(`Model ${k}: ${ch} grid length`);
+      if (typeof mo.default_dial!=='number' || !(mo.national_sd>0)) throw new Error(`Model ${k}: dial or spread missing`);
+    }
+  }
   return { manifest:m, derived:d, manifestHash:sha256(manifestBytes) };
 }

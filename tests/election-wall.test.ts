@@ -81,3 +81,32 @@ describe('scenario notches', () => {
   expect(notchAt(wall, seats, null, odds, 0)).toBeNull();
  });
 });
+
+// In-house models (Max, 2026-10-29: "Go"): a model's center replaces the bet's arithmetic for that seat, the dial still adds,
+// a settled result still wins, a rated seat takes a side under a model, and notchAt counts with the model's centers.
+import { seatSideAt } from '@/components/ElectionWall';
+describe('model centers', () => {
+ const r = { id: 'X', polls: 2, stateAdj: 1, spending: 0, earlyVote: 0, partisan: 0 } as WallRace;
+ const rated = { id: 'G', office: 'GOV', kind: 'rated', side: 'R', base: 0, stateAdj: 0, spending: 0, earlyVote: 0 } as WallSeat;
+ it('reads the center plus the dial, and falls back to the bet without one', () => {
+  expect(marginAt(r, 1, { X: -4 })).toBeCloseTo(-3, 6);
+  expect(marginAt(r, 1, { Y: -4 })).toBeCloseTo(4, 6);
+  expect(marginAt(r, 1, null)).toBeCloseTo(4, 6);
+  expect(marginAt({ ...r, result: { margin: 7, called: 'D', reporting: 100, settled: true } }, 1, { X: -4 })).toBe(7);
+ });
+ it('moves a rated seat under a model and leaves it fixed under the bet', () => {
+  expect(seatSideAt(rated, 0, null)).toBe('R');
+  expect(seatSideAt(rated, 0, { G: 3.5 })).toBe('D');
+  expect(seatSideAt(rated, -4, { G: 3.5 })).toBe('R');
+  expect(seatMarginAt(rated, 2, { G: 3.5 })).toBeCloseTo(5.5, 6);
+ });
+ it('counts a chamber from the model centers', () => {
+  const totals: ChamberTotals = { SEN: { notUp: { D: 1, R: 1 }, majority: 2, seats: 4 }, GOV: { notUp: { D: 0, R: 0 }, majority: null, seats: 0 }, HOUSE: { notUp: { D: 0, R: 0 }, majority: 1, seats: 1 } };
+  const races = [{ ...r, office: 'SEN' }, { ...r, id: 'H', office: 'HOUSE' }] as WallRace[];
+  const seats = [{ ...rated, id: 'S', office: 'SEN', kind: 'projection', side: null, base: 1 }] as WallSeat[];
+  const n = notchAt(races, seats, totals, null, 0, { X: -1, H: -2, S: -3 })!;
+  expect([n.sD, n.sR, n.hD, n.hR]).toEqual([1, 3, 0, 1]);
+  const bet = notchAt(races, seats, totals, null, 0, null)!;
+  expect([bet.sD, bet.sR, bet.hD, bet.hR]).toEqual([3, 1, 1, 0]);
+ });
+});
