@@ -41,6 +41,15 @@ export function oddsAt(o: Odds | null | undefined, arr: number[] | undefined, m:
 export const chanceLabel = (p: number) => (p < 0.005 ? '<1%' : p > 0.995 ? '>99%' : `${Math.round(100 * p)}%`);
 const officeName = (o: Office) => (o === 'SEN' ? 'Senate' : o === 'GOV' ? 'Governor' : 'House');
 export type HistoryPreset = { year: number; miss_toward_d: number };
+// Seat counts and control odds at one dial setting (Max, 2026-10-29: "comparison and strip"; "I like everything on the landing page
+// changing the maps and numbers"). Years are scenarios: the same model at a past year's miss. Other forecasters never move the
+// map, so they live on the Method page (/method/#field).
+export type Notch = { sD: number; sR: number; hD: number; hR: number; pS: number | null; pH: number | null };
+export function notchAt(races: WallRace[], seats: WallSeat[], totals: ChamberTotals | null, odds: Odds | null | undefined, v: number): Notch | null {
+  if (!totals) return null;
+  const s = chamberSplit('SEN', races, seats, totals, v), h = chamberSplit('HOUSE', races, seats, totals, v);
+  return { sD: s.dSafe + s.dPlay, sR: s.rSafe + s.rPlay, hD: h.dSafe + h.dPlay, hR: h.rSafe + h.rPlay, pS: oddsAt(odds, odds?.chambers.SEN, v), pH: oddsAt(odds, odds?.chambers.HOUSE, v) };
+}
 // Dial presets are real past national misses from the archive, then no miss, my bet and last fall (Max, 2026-10-27).
 function presetList(history: HistoryPreset[], national: number, lastFall: number, live: LiveDial = null): [string, number][] {
   return [...(live ? [[`Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, Math.round(live.m * 10) / 10] as [string, number]] : []), ...history.map(h => [`${h.year} again`, Math.round(h.miss_toward_d * 10) / 10] as [string, number]), ['No miss', 0], [`My bet ${national.toFixed(1)}`, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
@@ -80,7 +89,7 @@ export function shade(v: number) { const a = Math.abs(v); const side = v > 0 ? '
 const letter = (v: number, r: WallRace) => (v > 0 ? r.dLetter : 'R');
 const side = (v: number) => (v >= EVEN ? 'is-d' : v <= -EVEN ? 'is-r' : 'is-even');
 
-function Dial({ m, setM, national, lastFall, history, compact, live = null }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean; live?: LiveDial }) {
+function Dial({ m, setM, national, lastFall, history, compact, live = null, at }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean; live?: LiveDial; at?: (v: number) => Notch | null }) {
   const span = Math.max(8, Math.ceil(lastFall));
   const near = (x: number) => Math.abs(m - x) < 0.05;
   const hit = presetList(history, national, lastFall, live).find(([, v]) => near(v));
@@ -92,7 +101,7 @@ function Dial({ m, setM, national, lastFall, history, compact, live = null }: { 
     <p className="wall-dial-dir">Polls {dir}{mark ? <> · <strong>{mark}</strong></> : null}</p>
     <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
     <div className="wall-scale"><span className="is-r">◀ Republicans</span><span className="is-d">Democrats ▶</span></div>
-    <div className="wall-presets">{presetList(history, national, lastFall, live).map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}><span>{label}</span><small>{Math.abs(v) < EVEN ? 'polls right' : `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`}</small></button>)}</div>
+    <div className="wall-presets">{presetList(history, national, lastFall, live).map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}><span>{label}</span><small>{Math.abs(v) < EVEN ? 'polls right' : `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`}</small>{(() => { const n = at?.(v); return n ? <em>S <b className="is-d">{n.sD}</b>–<b className="is-r">{n.sR}</b> · H <b className="is-d">{n.hD}</b>–<b className="is-r">{n.hR}</b></em> : null; })()}</button>)}</div>
     {!compact && (live ? <p className="wall-note"><strong>Live:</strong> the {live.settled} races counted so far put this year’s miss at {Math.abs(live.m).toFixed(1)} toward {live.m >= 0 ? 'Democrats' : 'Republicans'}{live.se !== null ? ` (± ${live.se.toFixed(1)})` : ''}. The dial starts there; counted races show their count. My graded call stays at my bet.</p> : <p className="wall-note">Slide to set this year’s national polling miss. Each race keeps its own state record, spending and early vote. The call I am graded on stays at my bet.</p>)}
   </section>;
 }
@@ -137,7 +146,7 @@ function Tally({ races, m, seats, totals, scope = 'all', setScope, odds }: { rac
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(c.dSafe)}`}/><i className={`is-d-play gw-${w(c.dPlay)}`}/><i className={`is-even gw-${w(c.even)}`}/><i className={`is-r-play gw-${w(c.rPlay)}`}/><i className={`is-r gw-${w(c.rSafe)}`}/>{c.majority && <em className={`wall-tally-maj ga-${pct(100 * c.majority / c.n)}`}/>}</span>
         {totals && <span className="wall-tally-play">{c.play} in play: <b className="is-d">{c.dPlay} D</b>, <b className="is-r">{c.rPlay} R</b>{c.even - c.tossUp > 0 ? `, ${c.even - c.tossUp} even` : ''}{c.tossUp ? ` · ${c.tossUp} Cook toss-up` : ''}<span className="is-extra">{c.noPolls ? ` · ${c.noPolls} of them projected, no polls` : ''}{o === 'HOUSE' && c.n > c.play ? ` · the other ${c.n - c.play} are projections or Cook ratings, not my reading` : ''}{c.majority ? ` · ${c.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
       </div>; })}
-    {totals && <p className="wall-tally-note wall-hide-phone">Hatched: the races I read, which the dial moves. The rest are projections. <a href="/method/#full-chamber">How</a></p>}
+    {totals && <p className="wall-tally-note wall-hide-phone">Hatched: the races I read, which the dial moves. The rest are projections. <a href="/method/#full-chamber">How</a> · <a href="/method/#field">Against the field</a></p>}
   </div>;
 }
 
@@ -256,7 +265,7 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
     <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope} odds={live ? null : odds}/></div>
-    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live}/></aside>
+    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live} at={v => notchAt(races, seats, totals, live ? null : odds, v)}/></aside>
     <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full}/> : shown && <Detail r={shown} m={m} national={national} odds={live ? null : odds}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office}/></aside>
   </div>;
@@ -293,6 +302,23 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice, odds }: { r
   </section>;
 }
 
+// Phone: the same scenarios as a table under the chamber block; a tap sets the dial.
+function Scenarios({ presets, m, setM, at }: { presets: [string, number][]; m: number; setM: (v: number) => void; at: (v: number) => Notch | null }) {
+  const rows = presets.map(([label, v]) => ({ label, v, n: at(v) })).filter(x => x.n) as { label: string; v: number; n: Notch }[];
+  if (!rows.length) return null;
+  const near = (x: number) => Math.abs(m - x) < 0.05;
+  return <section className="phone-scen" aria-label="If the polls miss like a past year">
+    <div className="phone-scen-head" aria-hidden="true"><span>If the polls miss like…</span><span>Senate</span><span>House</span><span>D control</span></div>
+    {rows.map(({ label, v, n }) => <button key={label} type="button" aria-pressed={near(v)} className={near(v) ? 'is-on' : ''} onClick={() => setM(v)} aria-label={`${label}: Senate ${n.sD} to ${n.sR}, House ${n.hD} to ${n.hR}${n.pS !== null && n.pH !== null ? `, Democrats control the Senate ${chanceLabel(n.pS)} and the House ${chanceLabel(n.pH)}` : ''}`}>
+      <span className="phone-scen-label">{label}<small>{Math.abs(v) < EVEN ? 'polls right' : `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`}</small></span>
+      <span className="phone-scen-num"><b className="is-d">{n.sD}</b><i>–</i><b className="is-r">{n.sR}</b></span>
+      <span className="phone-scen-num"><b className="is-d">{n.hD}</b><i>–</i><b className="is-r">{n.hR}</b></span>
+      <span className="phone-scen-odds">{n.pS !== null && n.pH !== null ? <>{chanceLabel(n.pS)}<small>Sen</small> {chanceLabel(n.pH)}<small>House</small></> : '—'}</span>
+    </button>)}
+    <p className="phone-scen-note">Tap a row to set the dial. <a href="/method/#field">Against the field →</a></p>
+  </section>;
+}
+
 export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null, odds = null }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null }) {
   const [m, setM] = useState(live ? live.m : national);
   const [open, setOpen] = useState<string | null>(null);
@@ -303,6 +329,7 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const pick = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
     {totals ? <PhoneChambers races={races} m={m} seats={seats} totals={totals} office={office} setOffice={setOffice} odds={live ? null : odds}/> : <Tally races={races} m={m} seats={seats} totals={totals}/>}
+    <Scenarios presets={presetList(history, national, lastFall, live)} m={m} setM={setM} at={v => notchAt(races, seats, totals, live ? null : odds, v)}/>
     <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pick} noRead={noRead} seats={seats} full={full} hideToggle={!!totals}/>
     {openSeat && <SeatDetail s={openSeat} m={m} national={national} full={full}/>}
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>

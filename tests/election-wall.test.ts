@@ -56,3 +56,28 @@ describe('election night', () => {
   for (const m of [-5, 0, 3]) { expect(marginAt(done, m)).toBe(7); expect(marginAt(counting, m)).toBeCloseTo(2 + m, 6); }
  });
 });
+
+// Scenario notches (Max, 2026-10-29: "comparison and strip"): at the national lean the notch reproduces the sealed at-bet
+// chamber counts and the sealed control odds; at zero it reproduces the polls-alone odds. Skipped before the simulation.
+import { notchAt, oddsAt, type Odds } from '@/components/ElectionWall';
+describe('scenario notches', () => {
+ const ch = (derived as any).chambers, sim = (derived as any).simulation;
+ const it3 = ch && sim?.dial && sim?.polls_no_lean ? it : it.skip;
+ const national = Number((derived as any).signals?.rules?.poll_error_toward_d);
+ it3('reproduce the sealed counts and odds at the bet and at zero', () => {
+  const seats: WallSeat[] = Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: 0, shift: 0, undertow: null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls, dLetter: 'D' })));
+  const wall: WallRace[] = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0, partisan: Number(r.signal.delta_partisan) || 0 } as WallRace));
+  const totals: ChamberTotals = { SEN: { notUp: { D: ch.chambers.SEN.not_up.D || 0, R: ch.chambers.SEN.not_up.R || 0 }, majority: ch.chambers.SEN.majority, seats: ch.chambers.SEN.seats }, GOV: { notUp: { D: 0, R: 0 }, majority: null, seats: ch.chambers.GOV.seats }, HOUSE: { notUp: { D: 0, R: 0 }, majority: ch.chambers.HOUSE.majority, seats: ch.chambers.HOUSE.seats } };
+  const odds: Odds = { values: sim.dial.values, chambers: sim.dial.chambers, perRace: sim.dial.per_race };
+  const bet = notchAt(wall, seats, totals, odds, national)!;
+  expect(bet.sD).toBe(ch.chambers.SEN.at_bet.D); expect(bet.sR).toBe(ch.chambers.SEN.at_bet.R);
+  expect(bet.hD).toBe(ch.chambers.HOUSE.at_bet.D); expect(bet.hR).toBe(ch.chambers.HOUSE.at_bet.R);
+  expect(Math.abs((bet.pS as number) - sim.chambers.SEN.p_control_d)).toBeLessThan(0.02);
+  expect(Math.abs((bet.pH as number) - sim.chambers.HOUSE.p_control_d)).toBeLessThan(0.02);
+  const zero = notchAt(wall, seats, totals, odds, 0)!;
+  expect(Math.abs((zero.pS as number) - sim.polls_no_lean.chambers.SEN.p_control_d)).toBeLessThan(0.02);
+  expect(Math.abs((zero.pH as number) - sim.polls_no_lean.chambers.HOUSE.p_control_d)).toBeLessThan(0.02);
+  expect(oddsAt(odds, odds.chambers.SEN, 0)).toBe(zero.pS);
+  expect(notchAt(wall, seats, null, odds, 0)).toBeNull();
+ });
+});
