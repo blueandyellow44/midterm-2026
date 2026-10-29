@@ -304,7 +304,7 @@ def snapshot(path: str, bundle_dir: str) -> str | None:
 # ----------------------------------------------------------------------------- signal-adjusted reading
 # Method: Resources/methods/midterm-2026-signal-adjusted-reading.md (Max's big-swing ruling, 2026-10-26).
 # Signs: every signal is expressed as "points toward D". Positive means the R side reads as lagging its own internals.
-SIGNAL_METHOD_VERSION = "2.2"  # 2.2: witness model, spending and the state record weighed against each other for the race-specific miss, national lean untouched (Max, 2026-10-27: "We are switching from stacking"; "historically different outlier"); 2.1: early vote counted where party registration is reported and a 2022 baseline exists; rhetoric off the cards (Max, 2026-10-27); 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
+SIGNAL_METHOD_VERSION = "2.3"  # 2.3: early-vote baseline over registration states only; Senate partisan-record term (Max, 2026-10-29, "both."); 2.2: witness model, spending and the state record weighed against each other for the race-specific miss, national lean untouched (Max, 2026-10-27: "We are switching from stacking"; "historically different outlier"); 2.1: early vote counted where party registration is reported and a 2022 baseline exists; rhetoric off the cards (Max, 2026-10-27); 2.0: polling average v2 published; lean fit on regular odd-year generals only; 1.9: early vote shown and frozen, not counted; 1.8: no abandonment direction within 2 points; 1.7: every lean input computed from poll-error-history.csv, built-in backtest; 1.6: rhetoric tested but not counted; 1.5: lean refit on all 13 pairs, its SE in the range; 1.4: state-specific polling-error lean; 1.3: national polling-error lean; 1.1: missing money points to the poll leader; 1.2: governor digital spend (Max, 2026-10-26)
 SIGNAL_PRIOR_BETA = (1.5, 1.0)    # points toward the fundamentals underdog per SD of excess outside spending
 SIGNAL_PRIOR_GAMMA = (0.75, 0.5)  # points against the hotter side per point of LITMUS heat gap (halved from 1.5 on Max's word, 2026-10-26)
 SIGNAL_RHETORIC_CAP = 1.5         # |rhetoric contribution| ceiling, points (halved from 3.0, 2026-10-26)
@@ -819,7 +819,7 @@ def live_miss(per_race: dict, live_races: dict, slug_of) -> dict:
         if not (c.get("called") in ("D", "R") or (num(c.get("reporting_pct")) or 0) >= LIVE_SETTLED_REPORTING):
             continue
         count = num(c["d_pct"]) - num(c["r_pct"])
-        terms = (num((sig.get("polling_error") or {}).get("state_adjustment")) or 0.0) + (sig.get("delta_spending") or 0.0) + (sig.get("delta_early_vote") or 0.0)
+        terms = (num((sig.get("polling_error") or {}).get("state_adjustment")) or 0.0) + (sig.get("delta_spending") or 0.0) + (sig.get("delta_early_vote") or 0.0) + (sig.get("delta_partisan") or 0.0)
         used.append({"race": race, "count": r4(count), "polls": sig["polling_margin"], "undertow": sig["adjusted_margin"],
                      "implied_miss": r4(count - sig["polling_margin"] - terms), "polls_miss_toward_d": r4(count - sig["polling_margin"]),
                      "polls_error": r4(abs(count - sig["polling_margin"])), "undertow_error": r4(abs(count - sig["adjusted_margin"]))})
@@ -959,10 +959,54 @@ def early_vote_model(ev_history: list[dict] | None, poll_history: list[dict] | N
             "method": "state miss and early-vote change each demeaned by year; slope through the origin; leave-one-year-out check"}
 
 
+# Senate partisan record (Max, 2026-10-29, "both."). A Senate race's polls are blended with its state's partisan record:
+# prior = 2024 presidential margin + this year's environment (mean of polls minus 2024 margin across polled Senate and
+# governor races), weight on the polls = v_prior / (v_prior + v_polls(poll count)), both fit on the 538 archive's Senate
+# generals before the target year. scripts/backtest_partisan_prior.py, 2010-2024 held out a year at a time: Senate mean miss
+# 4.64 -> 4.53, races with 1-2 polls Brier 0.0136 -> 0.0094; governors got worse (5.57 -> 5.86 on thin races), so they are
+# excluded, as they are from the swing projection. A race with an independent in the D slot carries no partisan term: the
+# record measures Democratic partisanship, which an independent does not inherit.
+PARTISAN_BANDS = ((1, 2), (3, 5), (6, 10), (11, 10 ** 6))
+
+
+def partisan_prior_model(history: list[dict] | None, target_year: int) -> dict | None:
+    rows = list(history or [])
+    pres = {(int(r["year"]), r["state"]): num(r["actual_margin"]) for r in rows if r.get("type") == "Pres-G" and len(r.get("state", "")) == 2 and num(r.get("actual_margin")) is not None}
+    races = []
+    for r in rows:
+        if r.get("type") not in ("Sen-G", "Gov-G") or len(r.get("state", "")) != 2 or int(r["year"]) >= target_year:
+            continue
+        py = [y for (y, st) in pres if st == r["state"] and y < int(r["year"])]
+        pm, am, n = num(r.get("poll_margin")), num(r.get("actual_margin")), num(r.get("n_polls"))
+        if py and None not in (pm, am, n):
+            races.append({"y": int(r["year"]), "office": r["type"], "n": int(n), "poll": pm, "act": am, "pres": pres[(max(py), r["state"])]})
+    env = defaultdict(list)
+    for x in races:
+        env[x["y"]].append(x["poll"] - x["pres"])
+    env = {y: sum(v) / len(v) for y, v in env.items()}
+    sen = [x for x in races if x["office"] == "Sen-G"]
+    if len(sen) < 100:
+        return None
+    v_prior = sum((x["act"] - x["pres"] - env[x["y"]]) ** 2 for x in sen) / len(sen)
+    v_polls = {}
+    for lo, hi in PARTISAN_BANDS:
+        e = [(x["act"] - x["poll"]) ** 2 for x in sen if lo <= x["n"] <= hi]
+        v_polls[f"{lo}-{hi}"] = sum(e) / len(e)
+    return {"v_prior": r4(v_prior), "prior_sd": r4(math.sqrt(v_prior)), "v_polls": {k: r4(v) for k, v in v_polls.items()},
+            "races": len(sen), "test": "scripts/backtest_partisan_prior.py", "offices": ["SEN"]}
+
+
+def partisan_weight(model: dict, polls: int) -> float:
+    band = next(f"{lo}-{hi}" for lo, hi in PARTISAN_BANDS if lo <= max(polls, 1) <= hi)
+    return model["v_prior"] / (model["v_prior"] + model["v_polls"][band])
+
+
 def early_vote_block(rows: list[dict] | None, state: str, model: dict | None = None) -> dict | None:
     """Early-vote reading for one state. Counted (delta toward D) where the party basis is registration, a 2022 baseline
     exists and the fitted model exists: delta = slope x (state shift - mean shift across states with a 2022 baseline)."""
-    shifts = [num(r.get("shift_vs_2022")) for r in rows or [] if num(r.get("shift_vs_2022")) is not None]
+    # The baseline is the mean over the states the slope was fit on: registration states only (Max, 2026-10-29, "both.";
+    # pre-share audit defect: Iowa had been compared against a mean that included the modeled-party states).
+    shifts = [num(r.get("shift_vs_2022")) for r in rows or [] if num(r.get("shift_vs_2022")) is not None and r.get("party_basis") == EV_COUNTED_BASIS]
     mean_shift = sum(shifts) / len(shifts) if shifts else None
     for r in rows or []:
         if r.get("state") == state:
@@ -977,6 +1021,8 @@ def early_vote_block(rows: list[dict] | None, state: str, model: dict | None = N
                     "party_basis": r.get("party_basis"), "source_url": r.get("source_url")}
     return None
 
+
+PARTISAN_INDEPENDENT_D = {"2026-NE-SEN"}   # Dan Osborn, independent, in the D slot
 
 HISTORY_PRESET_YEARS = (2020, 2016, 2024, 2022)   # dial presets: "what if this year's polling miss repeats that year's"
 
@@ -2072,6 +2118,9 @@ class Bundle:
                 covered += rows
         ev_model = early_vote_model(getattr(self, "early_vote_history", None), getattr(self, "poll_error_history", None))
         wit = witness_model(getattr(self, "state_poll_error", None), self.spend_history, (leans or {}).get("slope"))
+        pp_model = partisan_prior_model(getattr(self, "poll_error_history", None), SIGNAL_TARGET_YEAR)
+        env_rows = [polling[r] - fund[r] for r in races if ("-SEN" in r or "-GOV" in r) and polling.get(r) is not None and fund.get(r) is not None]
+        environment = sum(env_rows) / len(env_rows) if env_rows else None
         self._signal_ctx = {"national": national, "national_sd": national_sd, "leans": leans, "ev_model": ev_model, "witness": wit, "fund": fund, "spend": spend}
         per_race = {}
         for race in races:
@@ -2115,8 +2164,22 @@ class Bundle:
                                   **({"state_adjustment": r4(lean - national), "lean": r4(lean)} if wit else {})},
                 "witness": witness,
             })
+            # Senate partisan record term (see partisan_prior_model). Polls stay the published polls number.
+            out["delta_partisan"] = 0.0
+            if pp_model and environment is not None and "-SEN" in race and race not in PARTISAN_INDEPENDENT_D and polling[race] is not None and fund.get(race) is not None and out.get("adjusted_margin") is not None:
+                n_polls = int(((blocks.get(race) or {}).get("polling_read") or {}).get("poll_count") or 1)
+                w = partisan_weight(pp_model, n_polls)
+                prior = fund[race] + environment
+                term = (1 - w) * (prior - polling[race])
+                out["delta_partisan"] = r4(term)
+                out["partisan"] = {"prior": r4(prior), "pres2024": fund[race], "environment": r4(environment), "weight_on_polls": r4(w), "polls": n_polls}
+                out["adjusted_margin"] = r4(out["adjusted_margin"] + term)
+                out["delta_total"] = r4(out["delta_total"] + term)
+                out["range"] = [r4(out["range"][0] + term), r4(out["range"][1] + term)]
+                out["lagging_side"] = None if out["delta_total"] == 0 else ("R" if out["delta_total"] > 0 else "D")
             per_race[race] = out
         return {
+            "partisan_model": {**pp_model, "environment": r4(environment) if environment is not None else None} if pp_model else None,
             "method_version": SIGNAL_METHOD_VERSION,
             "method_note": "midterm-2026-signal-adjusted-reading.md",
             "ruling": "Max, 2026-10-26: spending and rhetoric enter an adjusted reading beside the polling read (big swing)",
@@ -2176,7 +2239,7 @@ class Bundle:
                 if sig and sig.get("adjusted_margin") is not None:
                     items.append({**base, "kind": "reading", "polls": sig["polling_margin"], "undertow": sig["adjusted_margin"], "side": seat_side(sig["adjusted_margin"]),
                                   "parts": {"national_lean": r4(national), "state_adjustment": r4((sig.get("polling_error") or {}).get("state_adjustment") or 0.0),
-                                            "spending": sig.get("delta_spending") or 0.0, "early_vote": sig.get("delta_early_vote") or 0.0, "incumbency": 0.0},
+                                            "spending": sig.get("delta_spending") or 0.0, "early_vote": sig.get("delta_early_vote") or 0.0, "partisan": sig.get("delta_partisan") or 0.0, "incumbency": 0.0},
                                   "graded": True})
                     continue
                 if chamber == "GOV" and CHAMBER_GOV_BASE == "COOK":

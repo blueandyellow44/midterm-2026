@@ -13,7 +13,7 @@ const SNAP = 0.2;
 // adjustment + spending + early vote, so at m = the national lean it reproduces Undertow's frozen number exactly.
 export type WallRace = {
   id: string; slug: string; state: string; office: 'SEN' | 'GOV' | 'HOUSE'; name: string; district?: string; d: string; r: string;
-  polls: number; stateAdj: number; spending: number; earlyVote: number; undertow: number; sd: number; pollCount: number | null; sponsoredOnly?: boolean;
+  polls: number; stateAdj: number; spending: number; earlyVote: number; partisan: number; undertow: number; sd: number; pollCount: number | null; sponsoredOnly?: boolean;
   spendLabel: string; dLetter: string;
   result?: { margin: number; called: 'D' | 'R' | null; reporting: number; settled: boolean };   // election night, from live/results.json
 };
@@ -60,7 +60,7 @@ const TILES: Record<string, [number, number]> = {
 const BOARD_SPAN = 20;
 
 
-export function marginAt(r: WallRace, m: number) { return r.result?.settled ? r.result.margin : r.polls + m + r.stateAdj + r.spending + r.earlyVote; }
+export function marginAt(r: WallRace, m: number) { return r.result?.settled ? r.result.margin : r.polls + m + r.stateAdj + r.spending + r.earlyVote + r.partisan; }
 // Election night (Max, 2026-10-28): weight.py's implied national miss from the settled races, written by set_result.py.
 export type LiveDial = { m: number; settled: number; se: number | null; pollsMae: number | null; undertowMae: number | null; undertowCloser: number; pollsCloser: number } | null;
 export function seatMarginAt(s: WallSeat, m: number) { return s.base + m + s.stateAdj + s.spending + s.earlyVote; }
@@ -186,7 +186,7 @@ function WinChance({ r, p, moved }: { r: WallRace; p: number | null; moved: bool
 }
 function Detail({ r, m, national, odds }: { r: WallRace; m: number; national: number; odds?: Odds | null }) {
   const at = marginAt(r, m); const pull = r.undertow - r.polls; const moved = Math.abs(m - national) >= 0.05 && !r.result?.settled;
-  const parts: [string, number][] = [['Last fall’s polling miss', national], ['This state’s polling record', r.stateAdj], [r.spendLabel, r.spending], ['Early vote', r.earlyVote]];
+  const parts: [string, number][] = [['Last fall’s polling miss', national], ['This state’s polling record', r.stateAdj], [r.spendLabel, r.spending], ['Early vote', r.earlyVote], ...(r.office === 'SEN' ? [['The state’s partisan record', r.partisan] as [string, number]] : [])];
   return <section className="wall-panel wall-detail" aria-label={`${r.name} breakdown`}>
     <div className="wall-panel-head"><p className="wall-kicker">{r.name}</p><a className="wall-link" href={`/race/${r.slug}/`}>Full race and every poll →</a></div>
     <p className="wall-matchup"><span className="is-d">{r.d} ({r.dLetter})</span> vs <span className="is-r">{r.r} (R)</span></p>

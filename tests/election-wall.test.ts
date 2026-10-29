@@ -8,7 +8,7 @@ describe('election wall', () => {
   const national = Number((derived as any).signals.rules.poll_error_toward_d);
   for (const r of races as any[]) {
    if (!r.signal || !Number.isFinite(r.signal.adjusted_margin)) continue;
-   const w = { polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0 } as WallRace;
+   const w = { polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0, partisan: Number(r.signal.delta_partisan) || 0 } as WallRace;
    expect(Math.abs(marginAt(w, national) - r.signal.adjusted_margin)).toBeLessThan(0.01);
   }
  });
@@ -26,7 +26,7 @@ describe('full chamber', () => {
   for (const s of seats) if (s.kind === 'projection') expect(Math.abs(seatMarginAt(s, national) - (s.undertow as number))).toBeLessThan(0.01);
  });
  it2('counts every chamber at the lean exactly as sealed', () => {
-  const wall = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0 })) as WallRace[];
+  const wall = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0, partisan: Number(r.signal.delta_partisan) || 0 })) as WallRace[];
   const totals: ChamberTotals = { SEN: { notUp: ch.chambers.SEN.not_up, majority: 51, seats: 100 }, GOV: { notUp: ch.chambers.GOV.not_up, majority: null, seats: 50 }, HOUSE: { notUp: { D: 0, R: 0 }, majority: 218, seats: 435 } };
   for (const o of ['SEN', 'GOV', 'HOUSE'] as const) {
    const c = chamberCount(o, wall, seats, totals, national);
@@ -34,7 +34,7 @@ describe('full chamber', () => {
   }
  });
  it2('the one-bar split adds up to the chamber and agrees with the count at every notch', () => {
-  const wall = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0 })) as WallRace[];
+  const wall = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0, partisan: Number(r.signal.delta_partisan) || 0 })) as WallRace[];
   const totals: ChamberTotals = { SEN: { notUp: ch.chambers.SEN.not_up, majority: 51, seats: 100 }, GOV: { notUp: ch.chambers.GOV.not_up, majority: null, seats: 50 }, HOUSE: { notUp: { D: 0, R: 0 }, majority: 218, seats: 435 } };
   for (const o of ['SEN', 'GOV', 'HOUSE'] as const) for (const m of [-8, -5.5, 0, national, 7.3, 8]) {
    const x = chamberSplit(o, wall, seats, totals, m); const c = chamberCount(o, wall, seats, totals, m);
@@ -50,7 +50,7 @@ describe('full chamber', () => {
 
 describe('election night', () => {
  it('a settled race shows its count at every dial value; an unsettled one keeps moving', () => {
-  const base = { polls: 2, stateAdj: -0.5, spending: 0.5, earlyVote: 0 } as WallRace;
+  const base = { polls: 2, stateAdj: -0.5, spending: 0.5, earlyVote: 0, partisan: 0 } as WallRace;
   const done = { ...base, result: { margin: 7, called: 'D', reporting: 99, settled: true } } as WallRace;
   const counting = { ...base, result: { margin: 7, called: null, reporting: 40, settled: false } } as WallRace;
   for (const m of [-5, 0, 3]) { expect(marginAt(done, m)).toBe(7); expect(marginAt(counting, m)).toBeCloseTo(2 + m, 6); }

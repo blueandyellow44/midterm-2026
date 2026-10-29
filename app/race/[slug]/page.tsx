@@ -55,7 +55,7 @@ function HouseFacts({r}:{r:any}){const c=(derived as any).candidates?.[r.id];if(
 
 function WhyPull({r}:{r:any}){const s=r.signal;if(!s||!Number.isFinite(s.adjusted_margin))return null;const names={D:r.heat.candidates.D.candidate,R:r.heat.candidates.R.candidate};
  const national=Number(s.polling_error?.national)||0;const state=Number(s.polling_error?.state_adjustment)||0;
- const parts=[{label:'Last fall’s polling miss',v:national},{label:'This state’s polling record',v:state},{label:s.spending?.coverage==='DIGITAL_CANDIDATE'?'Campaign ad spending':'Outside spending',v:Number(s.delta_spending)||0},{label:'Early vote',v:Number(s.delta_early_vote)||0}];
+ const parts=[{label:'Last fall’s polling miss',v:national},{label:'This state’s polling record',v:state},{label:s.spending?.coverage==='DIGITAL_CANDIDATE'?'Campaign ad spending':'Outside spending',v:Number(s.delta_spending)||0},{label:'Early vote',v:Number(s.delta_early_vote)||0},...(r.id.includes('-SEN')?[{label:'The state’s partisan record',v:Number(s.delta_partisan)||0}]:[])];
  const lines=signalLines(s,names,signalsMeta);
  return <Panel className="race-why" kicker="Why the pull">
   <FactorBars parts={parts}/>

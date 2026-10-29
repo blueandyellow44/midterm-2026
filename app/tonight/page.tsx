@@ -17,7 +17,7 @@ export default function Tonight() {
   const h2020 = ((derived as any).signals?.history_presets || []).find((h: any) => h.year === 2020)?.miss_toward_d as number | undefined;
   const rows = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => {
     const s = r.signal; const c = closeFor(r.id); const dl = /^independent/i.test(String((derived as any).candidates?.[r.id]?.D?.party || '')) || r.id === '2026-NE-SEN' ? 'I' : 'D';
-    const at2020 = h2020 === undefined ? null : s.polling_margin + h2020 + (Number(s.polling_error?.state_adjustment) || 0) + (Number(s.delta_spending) || 0) + (Number(s.delta_early_vote) || 0);
+    const at2020 = h2020 === undefined ? null : s.polling_margin + h2020 + (Number(s.polling_error?.state_adjustment) || 0) + (Number(s.delta_spending) || 0) + (Number(s.delta_early_vote) || 0) + (Number(s.delta_partisan) || 0);
     return { r, s, c, dl, at2020, d: r.heat.candidates.D.candidate, rep: r.heat.candidates.R.candidate };
   }).filter(x => x.c).sort((a, b) => a.c!.order - b.c!.order || Math.abs(a.s.adjusted_margin) - Math.abs(b.s.adjusted_margin));
   const hours = [...new Set(rows.map(x => x.c!.at))];

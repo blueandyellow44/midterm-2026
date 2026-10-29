@@ -73,9 +73,9 @@ export function validateBundle(directory) {
       if (!read) throw new Error(`Signal reading for an unknown race: ${race}`);
       if (s.polling_margin!==read.margin) throw new Error(`Signal reading starts from a different polling number: ${race}`);
       if (s.adjusted_margin===null) { if (read.margin!==null) throw new Error(`Signal reading missing: ${race}`); continue; }
-      if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric+(s.delta_polling_error??0)+(s.delta_early_vote??0)))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
+      if (!Number.isFinite(s.adjusted_margin) || Math.abs(s.adjusted_margin-(read.margin+s.delta_total))>0.001 || Math.abs(s.delta_total-(s.delta_spending+s.delta_rhetoric+(s.delta_polling_error??0)+(s.delta_early_vote??0)+(s.delta_partisan??0)))>0.001) throw new Error(`Signal arithmetic inconsistent: ${race}`);
       if (!['ALIGNED','OPPOSED','SPENDING_ONLY','RHETORIC_ONLY','NO_SIGNAL','WITNESS'].includes(s.alignment)) throw new Error(`Unknown signal alignment: ${race}`);
-      if (s.alignment==='NO_SIGNAL' && Math.abs(s.delta_total-(s.delta_polling_error??0)-(s.delta_early_vote??0))>0.001) throw new Error(`No-signal race was adjusted: ${race}`);
+      if (s.alignment==='NO_SIGNAL' && Math.abs(s.delta_total-(s.delta_polling_error??0)-(s.delta_early_vote??0)-(s.delta_partisan??0))>0.001) throw new Error(`No-signal race was adjusted: ${race}`);
     }
   }
   // The full-chamber projection is optional (older releases lack it); when present every seat has a side or is marked undecided,
