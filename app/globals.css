@@ -478,3 +478,25 @@ html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(150px + env(
 .scope-toggle button.is-on {background:var(--panel);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12);}
 .wall-top .scope-toggle {grid-column:1 / -1;justify-self:start;}
 .wall-mobile .scope-toggle button {min-height:32px;}
+
+/* Overflow guards (Max, 2026-10-28: "fix this", then "audit for other bugs"). Big figures shrink with their column so a
+   long one-word surname (Knickerbocker, Benitez-Thompson) stays inside it; the map key wraps when the map panel is narrow. */
+.wall-figures > div {container-type:inline-size;min-width:0;}
+/* A word only shrinks when its own length would not fit the column: big-len-N carries the longest word's character count
+   (6 to 20), and this face runs about 0.43em a character, so 200cqi / N keeps every word inside its column. */
+.wall-big > .big-len-6 {font-size:min(30px,33.33cqi);} .wall-mobile .wall-big > .big-len-6 {font-size:min(22px,33.33cqi);}
+.wall-big > .big-len-7 {font-size:min(30px,28.57cqi);} .wall-mobile .wall-big > .big-len-7 {font-size:min(22px,28.57cqi);}
+.wall-big > .big-len-8 {font-size:min(30px,25.0cqi);} .wall-mobile .wall-big > .big-len-8 {font-size:min(22px,25.0cqi);}
+.wall-big > .big-len-9 {font-size:min(30px,22.22cqi);} .wall-mobile .wall-big > .big-len-9 {font-size:min(22px,22.22cqi);}
+.wall-big > .big-len-10 {font-size:min(30px,20.0cqi);} .wall-mobile .wall-big > .big-len-10 {font-size:min(22px,20.0cqi);}
+.wall-big > .big-len-11 {font-size:min(30px,18.18cqi);} .wall-mobile .wall-big > .big-len-11 {font-size:min(22px,18.18cqi);}
+.wall-big > .big-len-12 {font-size:min(30px,16.67cqi);} .wall-mobile .wall-big > .big-len-12 {font-size:min(22px,16.67cqi);}
+.wall-big > .big-len-13 {font-size:min(30px,15.38cqi);} .wall-mobile .wall-big > .big-len-13 {font-size:min(22px,15.38cqi);}
+.wall-big > .big-len-14 {font-size:min(30px,14.29cqi);} .wall-mobile .wall-big > .big-len-14 {font-size:min(22px,14.29cqi);}
+.wall-big > .big-len-15 {font-size:min(30px,13.33cqi);} .wall-mobile .wall-big > .big-len-15 {font-size:min(22px,13.33cqi);}
+.wall-big > .big-len-16 {font-size:min(30px,12.5cqi);} .wall-mobile .wall-big > .big-len-16 {font-size:min(22px,12.5cqi);}
+.wall-big > .big-len-17 {font-size:min(30px,11.76cqi);} .wall-mobile .wall-big > .big-len-17 {font-size:min(22px,11.76cqi);}
+.wall-big > .big-len-18 {font-size:min(30px,11.11cqi);} .wall-mobile .wall-big > .big-len-18 {font-size:min(22px,11.11cqi);}
+.wall-big > .big-len-19 {font-size:min(30px,10.53cqi);} .wall-mobile .wall-big > .big-len-19 {font-size:min(22px,10.53cqi);}
+.wall-big > .big-len-20 {font-size:min(30px,10.0cqi);} .wall-mobile .wall-big > .big-len-20 {font-size:min(22px,10.0cqi);}
+.wall-legend {flex-wrap:wrap;row-gap:4px;}

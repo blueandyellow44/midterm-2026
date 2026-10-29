@@ -64,7 +64,7 @@ export function chamberCount(o: Office, races: WallRace[], seats: WallSeat[], to
 }
 // Big figures wrap between the name and the number, never inside a name (Max, 2026-10-28 screenshot: "Hyde-Smith +5.2"
 // ran into the next column on desktop).
-function Big({ text }: { text: string }) { const i = text.lastIndexOf(' '); return i < 0 ? <>{text}</> : <><span>{text.slice(0, i)}</span> <span>{text.slice(i + 1)}</span></>; }
+function Big({ text }: { text: string }) { const i = text.lastIndexOf(' '); const len = Math.min(20, Math.max(6, ...text.split(' ').map(w => w.length))); const cls = `big-len-${len}`; return i < 0 ? <span className={cls}>{text}</span> : <><span className={cls}>{text.slice(0, i)}</span> <span className={cls}>{text.slice(i + 1)}</span></>; }
 export function marginLabel(v: number, r: WallRace) { return Math.abs(v) < EVEN ? 'Even' : `${last(v > 0 ? r.d : r.r)} +${Math.abs(v).toFixed(1)}`; }
 export function shade(v: number) { const a = Math.abs(v); const side = v > 0 ? 'd' : 'r'; return a < 1 ? 'toss' : a < 4 ? `${side}-lean` : a < 9 ? `${side}-likely` : `${side}-safe`; }
 const letter = (v: number, r: WallRace) => (v > 0 ? r.dLetter : 'R');
