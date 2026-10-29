@@ -104,7 +104,7 @@ function ModelChips({ models, model, pick }: { models: ModelDef[]; model: string
     <a className="wall-models-link" href="/method/#models">How</a>
   </div>;
 }
-function Dial({ m, setM, national, lastFall, history, compact, live = null, at, chips = null }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean; live?: LiveDial; at?: (v: number) => Notch | null; chips?: React.ReactNode }) {
+function Dial({ m, setM, national, lastFall, history, compact, live = null, chips = null }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean; live?: LiveDial; chips?: React.ReactNode }) {
   const span = Math.max(8, Math.ceil(lastFall));
   const near = (x: number) => Math.abs(m - x) < 0.05;
   const hit = presetList(history, national, lastFall, live).find(([, v]) => near(v));
@@ -117,7 +117,7 @@ function Dial({ m, setM, national, lastFall, history, compact, live = null, at, 
     <p className="wall-dial-dir">Polls {dir}{mark ? <> · <strong>{mark}</strong></> : null}</p>
     <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label="National polling miss in points; negative means polls understate Republicans"/>
     <div className="wall-scale"><span className="is-r">◀ Republicans</span><span className="is-d">Democrats ▶</span></div>
-    <div className="wall-presets">{presetList(history, national, lastFall, live).map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}><span>{label}</span><small>{Math.abs(v) < EVEN ? 'polls right' : `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`}</small>{(() => { const n = at?.(v); return n ? <em>S <b className="is-d">{n.sD}</b>–<b className="is-r">{n.sR}</b> · H <b className="is-d">{n.hD}</b>–<b className="is-r">{n.hR}</b></em> : null; })()}</button>)}</div>
+    <div className="wall-presets">{presetList(history, national, lastFall, live).map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}><span>{label}</span><small>{Math.abs(v) < EVEN ? 'polls right' : `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`}</small></button>)}</div>
     {!compact && (live ? <p className="wall-note"><strong>Live:</strong> the {live.settled} races counted so far put this year’s miss at {Math.abs(live.m).toFixed(1)} toward {live.m >= 0 ? 'Democrats' : 'Republicans'}{live.se !== null ? ` (± ${live.se.toFixed(1)})` : ''}. The dial starts there; counted races show their count. My graded call stays at my bet.</p> : <p className="wall-note">Slide to set this year’s national polling miss. Each race keeps its own state record, spending and early vote. The call I am graded on stays at my bet.</p>)}
   </section>;
 }
@@ -284,7 +284,7 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
     <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope} odds={live ? null : o} c={c}/></div>
-    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live} at={v => notchAt(races, seats, totals, live ? null : o, v, c)} chips={<ModelChips models={models} model={model} pick={pick}/>}/></aside>
+    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live} chips={<ModelChips models={models} model={model} pick={pick}/>}/></aside>
     <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full} c={c}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full} c={c}/> : shown && <Detail r={shown} m={m} national={national} odds={live ? null : o} c={c} model={cur}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office} c={c}/></aside>
   </div>;
