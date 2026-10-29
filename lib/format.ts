@@ -22,3 +22,29 @@ export function surname(name: string): string {
   while (w.length > 1 && SUFFIX.test(w[w.length - 1])) w.pop();
   return w[w.length - 1] || String(name ?? '');
 }
+
+// Poll count under a polls number (Max, 2026-10-28: internal polls flagged). sponsoredOnly comes from weight.py's
+// polling_v2 sponsored_only: every poll behind the number was paid for by a campaign, party, PAC or partisan group.
+export function pollCountLabel(n: number | null | undefined, sponsoredOnly = false): string {
+  if (!n) return 'weighted average';
+  const base = n === 1 ? '1 poll' : `${n} polls, weighted`;
+  return sponsoredOnly ? `${base} · all paid for by campaigns or partisan groups` : base;
+}
+
+// Who paid, per poll, from weight.py's sponsor_tier.
+export const SPONSOR_TIER_TAG: Record<string, string> = {
+  INTERNAL: 'Campaign or PAC internal',
+  PARTISAN_SPONSORED: 'Paid by a partisan group',
+  UNKNOWN: 'Sponsor not stated',
+};
+
+// Per-page share metadata (Max, 2026-10-28 pre-share audit): each page names its own address and preview text, so a
+// shared link carries the apex URL and the page's own title instead of the home card's.
+export const SITE_PREVIEW_IMAGE = { url: '/og.png', width: 1200, height: 630, alt: 'Undertow, 2026 midterm field notes' };
+export function pageShare(path: string, title: string, description: string, image: { url: string; width: number; height: number; alt: string } = SITE_PREVIEW_IMAGE) {
+  return {
+    alternates: { canonical: path },
+    openGraph: { title: `${title} · Undertow`, description, url: path, siteName: 'Undertow', type: 'website' as const, images: [image] },
+    twitter: { card: 'summary_large_image' as const, title: `${title} · Undertow`, description, images: [image.url] },
+  };
+}

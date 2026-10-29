@@ -1,11 +1,11 @@
-import { surname } from '@/lib/format';
+import { surname, pageShare } from '@/lib/format';
 import type { Metadata } from 'next';
 import { races, derived } from '@/lib/data';
 import { closeFor, CLOSING_SOURCE } from '@/lib/closing';
 import { PageTitle } from '@/components/UI';
 import { MarginTrack } from '@/components/Console';
 
-export const metadata: Metadata = { title: 'Tonight', description: 'Every race Undertow reads, in the order its polls close on November 3, with the polls, my number, and what a 2020-sized miss would say.' };
+export const metadata:Metadata={title:'Tonight',description:'Every race Undertow reads, in the order its polls close on November 3, with the polls, my number, and what a 2020-sized miss would say.',...pageShare('/tonight/','Tonight','Every race Undertow reads, in the order its polls close on November 3, with the polls, my number, and what a 2020-sized miss would say.')};
 
 // Election night in poll-closing order (Max, 2026-10-28, "Do it" to the election-night plan): the first hours test the bet.
 const EVEN = 0.05;

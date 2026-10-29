@@ -1,4 +1,4 @@
-import { surname } from '@/lib/format';
+import { surname, pageShare } from '@/lib/format';
 import type { Metadata } from 'next';
 import { races, derived } from '@/lib/data';
 import { loadLive, settled, SETTLED_REPORTING } from '@/lib/live';
@@ -6,7 +6,7 @@ import { PageTitle } from '@/components/UI';
 import { Signup } from '@/components/Signup';
 import { MarginTrack } from '@/components/Console';
 
-export const metadata: Metadata = { title: 'Scoreboard', description: 'Election night: the polls against Undertow, race by race, as the votes are counted.' };
+export const metadata:Metadata={title:'Scoreboard',description:'Election night: the polls against Undertow, race by race, as the votes are counted.',...pageShare('/scoreboard/','Scoreboard','Election night: the polls against Undertow, race by race, as the votes are counted.')};
 
 const EVEN = 0.05;
 const last = surname;

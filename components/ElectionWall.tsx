@@ -1,5 +1,5 @@
 'use client';
-import { surname } from '@/lib/format';
+import { surname, pollCountLabel } from '@/lib/format';
 import { useMemo, useState } from 'react';
 import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
@@ -13,7 +13,7 @@ const SNAP = 0.2;
 // adjustment + spending + early vote, so at m = the national lean it reproduces Undertow's frozen number exactly.
 export type WallRace = {
   id: string; slug: string; state: string; office: 'SEN' | 'GOV' | 'HOUSE'; name: string; district?: string; d: string; r: string;
-  polls: number; stateAdj: number; spending: number; earlyVote: number; undertow: number; sd: number; pollCount: number | null;
+  polls: number; stateAdj: number; spending: number; earlyVote: number; undertow: number; sd: number; pollCount: number | null; sponsoredOnly?: boolean;
   spendLabel: string; dLetter: string;
   result?: { margin: number; called: 'D' | 'R' | null; reporting: number; settled: boolean };   // election night, from live/results.json
 };
@@ -164,7 +164,7 @@ function Detail({ r, m, national }: { r: WallRace; m: number; national: number }
     <div className="wall-panel-head"><p className="wall-kicker">{r.name}</p><a className="wall-link" href={`/race/${r.slug}/`}>Full race and every poll →</a></div>
     <p className="wall-matchup"><span className="is-d">{r.d} ({r.dLetter})</span> vs <span className="is-r">{r.r} (R)</span></p>
     <div className="wall-figures">
-      <div><p className="wall-label">Polls</p><p className={`wall-big ${side(r.polls)}`}>{marginLabel(r.polls, r)}</p><p className="wall-sub">{r.pollCount ? `${r.pollCount} polls, weighted` : 'weighted average'}</p></div>
+      <div><p className="wall-label">Polls</p><p className={`wall-big ${side(r.polls)}`}>{marginLabel(r.polls, r)}</p><p className="wall-sub">{pollCountLabel(r.pollCount, r.sponsoredOnly)}</p></div>
       <div><p className="wall-label">Undertow</p><p className={`wall-big ${side(r.undertow)}`}>{marginLabel(r.undertow, r)}</p><p className="wall-sub">± {r.sd.toFixed(1)} · my call, frozen Nov 2</p></div>
       {r.result ? <div><p className="wall-label">The count</p><p className={`wall-big ${side(r.result.margin)}`}>{marginLabel(r.result.margin, r)}</p><p className="wall-sub">{r.result.reporting.toFixed(0)}% counted{r.result.called ? ` · called for ${last(r.result.called === 'D' ? r.d : r.r)}` : ''}</p></div> : null}
       <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? r.dLetter : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>

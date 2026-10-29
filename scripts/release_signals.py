@@ -30,10 +30,13 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--bundle-dir", default=weight.DEFAULT_BUNDLE_DIR)
     ap.add_argument("--refresh", action="store_true", help="new analytical cutoff: polling inputs and numbers may change; the cutoff must be later than the superseded release's")
-    ap.add_argument("--reason", help="supersedes reason recorded in the manifest (required with --refresh)")
+    ap.add_argument("--correction", action="store_true", help="method correction at the same analytical cutoff: polling inputs must be byte-identical, numbers may change, the reason is recorded (Max, 2026-10-25: a correction is a new release with supersedes and reason)")
+    ap.add_argument("--reason", help="supersedes reason recorded in the manifest (required with --refresh or --correction)")
     a = ap.parse_args()
-    if a.refresh and not a.reason:
-        raise weight.ValidationError("--refresh needs --reason")
+    if a.refresh and a.correction:
+        raise weight.ValidationError("--refresh and --correction are separate kinds of release")
+    if (a.refresh or a.correction) and not a.reason:
+        raise weight.ValidationError("--refresh and --correction need --reason")
     root = Path(__file__).resolve().parents[1]
     bundle = Path(a.bundle_dir)
     if subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"], cwd=root, text=True).strip():
@@ -70,7 +73,7 @@ def main() -> int:
     new["counts"]["races_with_contrast_stratum"] = sorted(r for r, x in new["races"].items() if x["contrast_stratum"])
     changed = sorted(k for k in set(old) | set(new) if k not in VOLATILE and json.dumps(old.get(k), sort_keys=True) != json.dumps(new.get(k), sort_keys=True))
     moved = {}
-    if a.refresh:
+    if a.refresh or a.correction:
         moved = {r: [old["races"].get(r, {}).get("polling_read", {}).get("margin"), new["races"][r]["polling_read"]["margin"]] for r in new["races"]
                  if old["races"].get(r, {}).get("polling_read", {}).get("margin") != new["races"][r]["polling_read"]["margin"]}  # a new race moves from None
     elif changed:
@@ -78,7 +81,7 @@ def main() -> int:
     if not new.get("signals"):
         raise weight.ValidationError("signals block missing from compute")
     digest = weight.sha256_bytes(b"".join((bundle / n).read_bytes() for n in ("spending.csv", "fundamentals.csv", "spend-history.csv", "state-poll-error.csv", "poll-error-history.csv", "early-vote.csv", "recent-misses.csv", "early-vote-history.csv", "house-races.csv", "heat.csv", "seats.csv", "generic-ballot.csv") if (bundle / n).is_file()))[:10]
-    release_id = f"{cutoff.strftime('%Y%m%dT%H%M%S%z')}-{'stage2-refresh' if a.refresh else 'stage2-signals'}-{commit[:7]}-{digest}"
+    release_id = f"{cutoff.strftime('%Y%m%dT%H%M%S%z')}-{'stage2-refresh' if a.refresh else 'stage2-correction' if a.correction else 'stage2-signals'}-{commit[:7]}-{digest}"
     proposed["changes_since"] = weight.release_changes(old, new)   # what moved, shown under the headline
     b.run_state = proposed
     sealed = Path(b.release(release_id, commit, weight.DEFAULT_NOTE))
@@ -91,9 +94,9 @@ def main() -> int:
     rs["current_release_id"] = release_id
     rs.setdefault("release_ids", []).append(release_id)
     rs["last_checkpoint"] = datetime.now().astimezone().isoformat(timespec="seconds")
-    rs.setdefault("checkpoints", []).append({"at": rs["last_checkpoint"], "note": f"signal-adjusted reading sealed; immutable release {release_id}; supersedes {current_id}; " + ("refresh: polling reads moved in " + ", ".join(sorted(moved)) if a.refresh else "all existing derived fields reproduced unchanged")})
+    rs.setdefault("checkpoints", []).append({"at": rs["last_checkpoint"], "note": f"signal-adjusted reading sealed; immutable release {release_id}; supersedes {current_id}; " + (("refresh" if a.refresh else "method correction at the same cutoff") + ": polling reads moved in " + ", ".join(sorted(moved)) if (a.refresh or a.correction) else "all existing derived fields reproduced unchanged")})
     rs["signal_release"] = {"release_id": release_id, "supersedes": current_id, "calculator_commit": commit[:7],
-                            "manifest_sha256": weight.sha256_file(str(sealed / "manifest.json")), "existing_fields_unchanged": not a.refresh, "polling_reads_moved": moved}
+                            "manifest_sha256": weight.sha256_file(str(sealed / "manifest.json")), "existing_fields_unchanged": not (a.refresh or a.correction), "polling_reads_moved": moved}
     rs["resume_command"] = f"Continue from run-state.json and immutable release {release_id} (signal-adjusted reading added beside the polling read); Stage 3 freeze on 2026-11-02 records both readings."
     state_path.write_text(json.dumps(rs, indent=2) + "\n")
     print(json.dumps({"release_id": release_id, "supersedes": current_id, "adjusted": {r: v["adjusted_margin"] for r, v in new["signals"]["per_race"].items()}}, indent=2))

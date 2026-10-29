@@ -586,6 +586,33 @@ V2_ROUND_RANK = {"FINAL": 0, "NA": 1, "FIRST": 2}   # UNVERIFIED rounds are excl
 V2_RCV_ROUND = "FIRST"
 V2_POP_RANK = {"LV": 0, "RV": 1, "A": 2}
 V2_DEN_RANK = {"FULL": 0, "LEANERS": 1, "TWO_WAY": 2}
+# Who paid for the poll (Max, 2026-10-28, pre-share audit: "internal polls weighted down and flagged"). The v2 average had
+# dropped the sponsor discount the method still described, so 25 readings rested on campaign or partisan-sponsored polls at
+# full weight. The rule is about the payer, the same for both parties: a campaign, party or PAC internal counts 0.3; a poll
+# paid for by a partisan or advocacy group counts 0.6; a poll whose sponsor is not stated counts 0.6; a firm polling on its
+# own counts 1.0 whatever its lean, because its lean is measured and removed as a house effect.
+V2_SPONSOR_WEIGHT = {"INTERNAL": 0.3, "PARTISAN_SPONSORED": 0.6, "UNKNOWN": 0.6}
+
+
+def is_self_funded(sponsor: str | None) -> bool:
+    s = (sponsor or "").strip().lower()
+    return s.startswith("self") or "(self" in s or "self-released" in s
+
+
+def v2_sponsor_tier(e: dict) -> str:
+    """INTERNAL, PARTISAN_SPONSORED, UNKNOWN or INDEPENDENT (self-funded, media, nonpartisan or bipartisan sponsor)."""
+    sc = e.get("sponsor_class")
+    if sc == "INTERNAL":
+        return "INTERNAL"
+    if sc == "UNKNOWN":
+        return "UNKNOWN"
+    if sc == "PARTISAN_PUBLIC" and not is_self_funded(e.get("sponsor")):
+        return "PARTISAN_SPONSORED"
+    return "INDEPENDENT"
+
+
+def v2_sponsor_weight(e: dict) -> float:
+    return V2_SPONSOR_WEIGHT.get(v2_sponsor_tier(e), 1.0)
 
 
 def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
@@ -620,7 +647,7 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
         age = max(0.0, (as_of_date - (fs + (fe - fs) / 2)).days) if fe else 30.0
         n = e.get("n") if isinstance(e.get("n"), (int, float)) and e["n"] > 0 else 600
         return (math.exp(-math.log(2) * age / V2_HALF_LIFE_DAYS) * math.sqrt(min(n, V2_SAMPLE_CAP) / V2_SAMPLE_CAP)
-                * V2_POP_WEIGHT.get(e["pop"], 0.4) * ((e.get("factors") or {}).get("f_track") or 1.0))
+                * V2_POP_WEIGHT.get(e["pop"], 0.4) * ((e.get("factors") or {}).get("f_track") or 1.0) * v2_sponsor_weight(e))
 
     by_race = defaultdict(list)
     for e in use:
@@ -643,8 +670,11 @@ def polling_average_v2(estimates: list[dict], as_of_date: date) -> dict:
                      "estimate_ids": sorted(e["estimate_id"] for e in es), "newest_field_end": max(e["field_end"] for e in es),
                      "rounds": "+".join(sorted({e["round"] for e in es})),
                      "pollsters": len({e["pollster_id"] for e in es}),
+                     "sponsor_mix": {t: sum(1 for e in es if v2_sponsor_tier(e) == t) for t in ("INDEPENDENT", "INTERNAL", "PARTISAN_SPONSORED", "UNKNOWN")},
+                     "sponsored_only": all(v2_sponsor_tier(e) != "INDEPENDENT" for e in es),
                      "house_adjustments": {e["pollster_id"]: r4(house.get(e["pollster_id"], 0.0)) for e in es if abs(house.get(e["pollster_id"], 0.0)) >= 0.05}}
-    return {"method": "v2: every verified principal poll since September 1; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; shrunk house effects; RV/A shifted by measured LV-RV gap",
+    return {"method": "v2: every verified principal poll since September 1; 7-day half-life; sqrt(n) capped 1500; RV 0.7, A 0.4; track rating; who paid (internal 0.3, partisan-sponsored 0.6, sponsor not stated 0.6); shrunk house effects; RV/A shifted by measured LV-RV gap",
+            "sponsor_weights": V2_SPONSOR_WEIGHT,
             "lv_minus_rv_gap": r4(lv_shift), "lv_rv_pairs": len(gaps), "backtest": {"races": 259, "two_newest_polls": 4.50, "every_poll": 4.16, "every_poll_house_adjusted": 4.06, "source": "538 raw polls archive 2010-2024, scored 7 days out"},
             "per_race": out}
 
@@ -2206,13 +2236,13 @@ class Bundle:
                 "stage3_sigma": STAGE3_SIGMA, "stage3_clamp": STAGE3_CLAMP, "scenario_shifts_toward_R": SCENARIO_SHIFTS, "scenario_shifts_toward_D": SCENARIO_SHIFTS_TOWARD_D,
             },
             "estimates": [
-                {k: e[k] for k in ("estimate_id", "poll_id", "sample_id", "tracking_series_id", "race", "pollster_id", "method_id", "sponsor_class",
+                {k: e[k] for k in ("estimate_id", "poll_id", "sample_id", "tracking_series_id", "race", "pollster_id", "method_id", "sponsor", "sponsor_class",
                                     "pollster_alignment", "disclosure_status", "field_start", "field_end", "release_date", "pop", "denominator_class",
                                     "round", "window", "recall_weighted", "selected", "exclusion_reason", "source_url", "primary_verified")}
                 | {"n": e["n_num"], "D": e["D_num"], "R": e["R_num"], "margin": e["margin_num"], "quarantined": e["quarantined"],
                    "field_midpoint": (e["fs"].toordinal() + e["fe"].toordinal()) / 2.0 - date(2026, 1, 1).toordinal() + 1 if e["fs"] and e["fe"] else None,
                    "flags": {"principal": e["flag_principal"], "recall_contrast": e["flag_recall_contrast"], "sponsor_restricted": e["flag_sponsor_restricted"], "weighted_average": e["flag_weighted_average"]},
-                   "flag_reasons": e["flag_reasons"], "factors": e["factors"], "weight": e["weight"]}
+                   "flag_reasons": e["flag_reasons"], "factors": e["factors"], "weight": e["weight"], "sponsor_tier": v2_sponsor_tier(e)}
                 for e in sorted(ests, key=lambda e: e["estimate_id"])
             ],
             "races": blocks,
@@ -2460,6 +2490,14 @@ def self_test(bundle_dir_for_tmp: str) -> int:
     check("f_sample n=None -> None", f_sample(None) is None)
     # pop, sponsor, disclosure
     check("f_pop", (f_pop("LV"), f_pop("RV"), f_pop("A")) == (1.0, 0.7, 0.4))
+    check("v2 sponsor tier: payer, not lean", (v2_sponsor_tier({"sponsor_class": "INTERNAL", "sponsor": "DCCC"}),
+          v2_sponsor_tier({"sponsor_class": "PARTISAN_PUBLIC", "sponsor": "self"}),
+          v2_sponsor_tier({"sponsor_class": "PARTISAN_PUBLIC", "sponsor": "Data for Progress (self; progressive pollster)"}),
+          v2_sponsor_tier({"sponsor_class": "PARTISAN_PUBLIC", "sponsor": "House Majority PAC"}),
+          v2_sponsor_tier({"sponsor_class": "UNKNOWN", "sponsor": "UNKNOWN"}),
+          v2_sponsor_tier({"sponsor_class": "NONPARTISAN", "sponsor": "Nexstar Media"})) == ("INTERNAL", "INDEPENDENT", "INDEPENDENT", "PARTISAN_SPONSORED", "UNKNOWN", "INDEPENDENT"))
+    check("v2 sponsor weights", (v2_sponsor_weight({"sponsor_class": "INTERNAL"}), v2_sponsor_weight({"sponsor_class": "PARTISAN_PUBLIC", "sponsor": "AARP"}),
+          v2_sponsor_weight({"sponsor_class": "PARTISAN_PUBLIC", "sponsor": "self"})) == (0.3, 0.6, 1.0))
     check("f_sponsor precedence", (f_sponsor("INTERNAL"), f_sponsor("PARTISAN_PUBLIC"), f_sponsor("NONPARTISAN"), f_sponsor("BIPARTISAN"), f_sponsor("UNKNOWN")) == (0.3, 0.6, 1.0, 1.0, None))
     check("f_disclosure", (f_disclosure("DISCLOSED"), f_disclosure("UNDISCLOSED"), f_disclosure("UNVERIFIED")) == (1.0, 0.7, 0.7))
     # track thresholds on Simple Average Error only
