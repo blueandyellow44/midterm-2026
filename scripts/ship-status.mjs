@@ -5,12 +5,24 @@ import { execSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 const sh = c => execSync(c, { encoding: 'utf8' }).trim();
 const head = sh('git rev-parse HEAD');
-const dirty = sh('git status --porcelain --untracked-files=no');
+const dirtyAll = sh('git diff --name-only HEAD').split('\n').filter(Boolean);   // tracked files edited, staged or not
 if (!existsSync('.deploys/last.json')) { console.log('No deploy recorded yet (.deploys/last.json missing): deploy with npm run deploy.'); process.exit(2); }
 const last = JSON.parse(readFileSync('.deploys/last.json', 'utf8'));
-const pending = last.commit === head ? [] : sh(`git log --format="%h %s" ${last.commit}..HEAD`).split('\n').filter(Boolean);
+if (process.env.SHIP_FROM) last.commit = sh(`git rev-parse ${process.env.SHIP_FROM}`);   // test hook: pretend an older commit is live
+// A commit counts as unshipped only if it touches what the site is built from. QA, deploy tooling, tests and notes do
+// not change a single served byte, and flagging them would teach everyone to ignore this check.
+const NOT_SITE = [/^tests\//, /^scripts\/qa\//, /^scripts\/(deploy|ship-status)\.mjs$/, /^research\//, /^docs\//, /^\.gitignore$/, /^AGENTS\.md$/, /^README\.md$/];
+const touchesSite = sha => sh(`git show --name-only --format= ${sha}`).split('\n').filter(Boolean).some(f => {
+  if (f === 'package.json') return /^[+-]\s+"[^"]+": "[\^~]?\d/m.test(sh(`git show ${sha} -- package.json`).replace(/^[+-]\s+"(dev|build|deploy|test|typecheck|preview|qa:serve|ship:status|build:cloudflare)":.*$/gm, ''));
+  return !NOT_SITE.some(re => re.test(f));
+});
+const after = last.commit === head ? [] : sh(`git log --format="%h %s" ${last.commit}..HEAD`).split('\n').filter(Boolean);
+const pending = after.filter(l => touchesSite(l.split(' ')[0]));
+const toolingOnly = after.length - pending.length;
+const dirty = dirtyAll.filter(f => !NOT_SITE.some(re => re.test(f))).join('\n');
 console.log(`Live: ${last.commit.slice(0, 7)} (Cloudflare ${last.cloudflare_version}) at ${last.at}; live matched build: ${last.live_matches_build}`);
 if (pending.length) console.log(`NOT LIVE: ${pending.length} commit(s) after the deploy:\n  ` + pending.join('\n  '));
 if (dirty) console.log('NOT COMMITTED:\n  ' + dirty.split('\n').join('\n  '));
-if (!pending.length && !dirty) console.log('Everything committed is live.');
+if (toolingOnly) console.log(`${toolingOnly} later commit(s) change only tooling, tests or notes (nothing served).`);
+if (!pending.length && !dirty) console.log('Everything that changes the site is live.');
 process.exit(pending.length || dirty ? 2 : 0);
