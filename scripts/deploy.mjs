@@ -23,11 +23,21 @@ if (!existing) {
 const release = JSON.parse(readFileSync('data/derived.json', 'utf8')).release_id;
 const routes = JSON.parse(readFileSync('.next/csp-routes.json', 'utf8')).map(r => r.route).filter(r => r !== '/404/');
 const sha = b => createHash('sha256').update(b).digest('hex');
-const mismatched = [];
-for (const route of routes) {
+// A route that differs right after upload is usually the edge still propagating (2026-10-29: 12 of 75 routes
+// differed at +10 s and all 75 matched at +40 s), so a mismatch is rechecked up to three times, 20 s apart.
+const check = async route => {
   const local = readFileSync(`.open-next/assets${route === '/' ? '/' : route}index.html`);
   const live = Buffer.from(await (await fetch(`${ORIGIN}${route}?deploy-check=${Date.now()}`, { signal: AbortSignal.timeout(15000) })).arrayBuffer());
-  if (sha(local) !== sha(live)) mismatched.push(route);
+  return sha(local) === sha(live);
+};
+let mismatched = [];
+for (const route of routes) if (!(await check(route))) mismatched.push(route);
+for (let attempt = 1; mismatched.length && attempt <= 3; attempt++) {
+  console.log(`${mismatched.length} route(s) differ; waiting 20 s for the edge (recheck ${attempt} of 3)`);
+  await new Promise(r => setTimeout(r, 20000));
+  const still = [];
+  for (const route of mismatched) if (!(await check(route))) still.push(route);
+  mismatched = still;
 }
 const rec = { at: new Date().toISOString(), commit, subject, cloudflare_version: version, release_id: release, routes_checked: routes.length, live_matches_build: mismatched.length === 0, mismatched };
 mkdirSync('.deploys', { recursive: true });
