@@ -45,7 +45,9 @@ export type HistoryPreset = { year: number; miss_toward_d: number };
 // (derived.models, built by analysis/models.py) plus its own odds grid; the dial adds m to every center. 'bet' is the site's own
 // reading and the only graded call. The site never computes a center or an odds number; it reads them.
 export type Centers = Record<string, number> | null;
-export type ModelDef = { key: string; name: string; short: string; defaultDial: number; centers: Record<string, number>; odds: Odds | null };
+export type ModelDef = { key: string; name: string; short: string; desc: string; defaultDial: number; centers: Record<string, number>; odds: Odds | null };
+// One sentence per reading, shown under the chips when it is picked (Max, 2026-10-29: "describe each model somewhere on landing page, best if upon toggle").
+export const BET_DESC = 'The polls plus what I think they are missing: last fall’s miss carried forward, each state’s record, spending and early vote. The call I am graded on.';
 // Seat counts and control odds at one dial setting (Max, 2026-10-29: "comparison and strip"; "I like everything on the landing page
 // changing the maps and numbers"). Years are scenarios: the same model at a past year's miss. Other forecasters never move the
 // map, so they live on the Method page (/method/#field).
@@ -98,10 +100,13 @@ const side = (v: number) => (v >= EVEN ? 'is-d' : v <= -EVEN ? 'is-r' : 'is-even
 // other ways to read the same polls, built from the same sealed data, each with a backtest on the Method page.
 function ModelChips({ models, model, pick }: { models: ModelDef[]; model: string; pick: (k: string) => void }) {
   if (!models.length) return null;
-  return <div className="wall-models" role="group" aria-label="Whose reading?">
-    <button type="button" aria-pressed={model === 'bet'} className={model === 'bet' ? 'is-on' : ''} onClick={() => pick('bet')}>My bet</button>
-    {models.map(x => <button key={x.key} type="button" aria-pressed={model === x.key} className={model === x.key ? 'is-on' : ''} onClick={() => pick(x.key)} title={x.name}>{x.short}</button>)}
-    <a className="wall-models-link" href="/method/#models">How</a>
+  const cur = models.find(x => x.key === model);
+  return <div className="wall-models-wrap">
+    <div className="wall-models" role="group" aria-label="Whose reading?">
+      <button type="button" aria-pressed={model === 'bet'} className={model === 'bet' ? 'is-on' : ''} onClick={() => pick('bet')}>My bet</button>
+      {models.map(x => <button key={x.key} type="button" aria-pressed={model === x.key} className={model === x.key ? 'is-on' : ''} onClick={() => pick(x.key)} title={x.name}>{x.short}</button>)}
+    </div>
+    <p className="wall-models-desc" aria-live="polite"><strong>{cur ? cur.name : 'My bet'}.</strong> {cur ? cur.desc : BET_DESC} <a href="/method/#models">{cur ? 'Its record →' : 'How →'}</a></p>
   </div>;
 }
 function Dial({ m, setM, national, lastFall, history, compact, live = null, chips = null }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean; live?: LiveDial; chips?: React.ReactNode }) {
