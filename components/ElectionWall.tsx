@@ -47,7 +47,7 @@ export type HistoryPreset = { year: number; miss_toward_d: number };
 export type Centers = Record<string, number> | null;
 export type ModelDef = { key: string; name: string; short: string; desc: string; defaultDial: number; centers: Record<string, number>; odds: Odds | null };
 // One sentence per reading, shown under the chips when it is picked (Max, 2026-10-29: "describe each model somewhere on landing page, best if upon toggle").
-export const BET_DESC = 'The polls plus what I think they are missing: last fall’s miss carried forward, each state’s record, spending and early vote. The call I am graded on.';
+export const BET_DESC = 'A polling average plus a declared lean: my call on how the polls are wrong this year, stated before the vote and graded after it. The only reading that is graded.';
 // Seat counts and control odds at one dial setting (Max, 2026-10-29: "comparison and strip"; "I like everything on the landing page
 // changing the maps and numbers"). Years are scenarios: the same model at a past year's miss. Other forecasters never move the
 // map, so they live on the Method page (/method/#field).
