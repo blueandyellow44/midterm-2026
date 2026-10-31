@@ -1,6 +1,6 @@
 'use client';
 import { surname, pollCountLabel } from '@/lib/format';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
 
@@ -49,7 +49,7 @@ export type HistoryPreset = { year: number; miss_toward_d: number };
 export type Centers = Record<string, number> | null;
 export type ModelDef = { key: string; name: string; short: string; desc: string; defaultDial: number; centers: Record<string, number>; odds: Odds | null };
 // One sentence per reading, shown under the chips when it is picked (Max, 2026-10-29: "describe each model somewhere on landing page, best if upon toggle").
-export const BET_DESC = 'A polling average plus a declared lean: my call on how the polls are wrong this year, stated before the vote and graded after it. The only reading that is graded.';
+export const BET_DESC = 'A polling average plus a declared lean: my call on how the polls are wrong this year, stated before the vote and graded after it, beside the polls themselves.';
 // Seat counts and control odds at one dial setting (Max, 2026-10-29: "comparison and strip"; "I like everything on the landing page
 // changing the maps and numbers"). Years are scenarios: the same model at a past year's miss. Other forecasters never move the
 // map, so they live on the Method page (/method/#field).
@@ -74,6 +74,8 @@ export type ScenarioExtras = { fundYears?: Record<string, number>; fundDefault?:
 export type ScenarioCtx = { history: HistoryPreset[]; national: number; lastFall: number; live?: LiveDial; extras?: ScenarioExtras };
 const toward = (v: number) => `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`;
 const yy = (y: string | number) => `’${String(y).slice(2, 4)}`;
+// The accessible value says what the readout says (Fundamentals shows the swing, not the native offset; audit 2026-10-31).
+export const valueText = (sc: Scenario, m: number) => `${sc.show(m)} ${sc.unit}, ${sc.dir(m)}`;
 export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
   const { history, national, lastFall, live = null, extras = {} } = ctx;
   if (key === 'fundamentals') {
@@ -108,7 +110,7 @@ export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
   ].sort((a, b) => a.v - b.v);
   return { key, question: 'How wrong are the polls?', unit: 'pts', scope: 'race', tableHead: 'If the polls miss like…', left: '◀ Republicans', right: 'Democrats ▶',
     zero: key === 'bet' ? 'With no national miss' : key === 'polls' ? 'If the polls are right' : 'Forecaster blend, no miss',
-    note: 'Pick a past year’s miss or set your own. Every race and count follows.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
+    note: 'Pick a past year’s miss or set your own. Every race and projected seat follows; untracked governors keep Cook’s rating.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
     show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way' };
 }
 // Picking a reading (Max, 2026-10-29: "picking a model sets the dial to 0"): each model's headline is its own center set
@@ -174,7 +176,7 @@ function Dial({ m, setM, sc, compact, live = null, chips = null }: { m: number; 
     <p className="wall-kicker">{sc.question}</p>
     <p className={`wall-dial-readout ${side(m)}`}><span className="wall-num">{sc.show(m)}</span><span className="wall-dial-unit">{sc.unit}</span></p>
     <p className="wall-dial-dir">{sc.dir(m)}{hit ? <> · <strong>{hit.name}</strong></> : null}</p>
-    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label={sc.aria}/>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label={sc.aria} aria-valuetext={valueText(sc, m)}/>
     <div className="wall-scale"><span className="is-r">{sc.left}</span><span className="is-d">{sc.right}</span></div>
     <div className="wall-presets">{sc.ticks.map(t => <button key={t.name} type="button" aria-pressed={near(t.v)} onClick={() => setM(t.v)}><span>{t.name}</span><small>{t.sub}</small></button>)}</div>
     {!compact && (live ? <p className="wall-note"><strong>Live:</strong> the {live.settled} races counted so far put this year’s miss at {Math.abs(live.m).toFixed(1)} toward {live.m >= 0 ? 'Democrats' : 'Republicans'}{live.se !== null ? ` (± ${live.se.toFixed(1)})` : ''}. The dial starts there; counted races show their count.</p> : <p className="wall-note">{sc.note}</p>)}
@@ -184,18 +186,18 @@ function Dial({ m, setM, sc, compact, live = null, chips = null }: { m: number; 
 // One count per chamber (Max, 2026-10-28: "people want to see that threshold cross over 50 for the Senate, and they want to see
 // the whole picture"; layout ruling: "One bar, tracked band inside"). Solid ends are seats not up plus projections and
 // rated seats; the hatched band in the middle is the races Undertow reads, the part the dial moves. Numbers are the chamber.
-export type ChamberSplit = { dSafe: number; dPlay: number; even: number; rPlay: number; rSafe: number; n: number; majority: number | null; play: number; noPolls: number; tossUp: number };
+export type ChamberSplit = { dSafe: number; dPlay: number; even: number; evenPlay: number; rPlay: number; rSafe: number; n: number; majority: number | null; play: number; noPolls: number; tossUp: number };
 // Scope (Max, 2026-10-28: "I want to be able to toggle between all seats and seats in this election"): 'all' is the whole
 // chamber, seats not up included; 'up' counts only the contests on this year's ballot, so there is no control line.
 export type Scope = 'all' | 'up';
 export function chamberSplit(o: Office, races: WallRace[], seats: WallSeat[], totals: ChamberTotals, m: number, scope: Scope = 'all', c: Centers = null): ChamberSplit {
   const t = totals[o]; const all = scope === 'all';
-  const x = { dSafe: all ? t.notUp.D : 0, dPlay: 0, even: 0, rPlay: 0, rSafe: all ? t.notUp.R : 0, n: t.seats, majority: all ? t.majority : null, play: 0, noPolls: 0, tossUp: 0 };
+  const x = { dSafe: all ? t.notUp.D : 0, dPlay: 0, even: 0, evenPlay: 0, rPlay: 0, rSafe: all ? t.notUp.R : 0, n: t.seats, majority: all ? t.majority : null, play: 0, noPolls: 0, tossUp: 0 };
   let up = 0;
-  for (const r of races) if (r.office === o) { const v = marginAt(r, m, c); x.play++; up++; if (v >= EVEN) x.dPlay++; else if (v <= -EVEN) x.rPlay++; else x.even++; }
+  for (const r of races) if (r.office === o) { const v = marginAt(r, m, c); x.play++; up++; if (v >= EVEN) x.dPlay++; else if (v <= -EVEN) x.rPlay++; else { x.even++; x.evenPlay++; } }
   for (const s of seats) if (s.office === o && s.kind !== 'not_up') {
     const side = seatSideAt(s, m, c); up++;
-    if (s.noPolls) { x.play++; x.noPolls++; if (side === 'D') x.dPlay++; else if (side === 'R') x.rPlay++; else x.even++; }
+    if (s.noPolls) { x.play++; x.noPolls++; if (side === 'D') x.dPlay++; else if (side === 'R') x.rPlay++; else { x.even++; x.evenPlay++; } }
     else if (side === 'D') x.dSafe++; else if (side === 'R') x.rSafe++; else { x.even++; if (s.kind === 'rated') x.tossUp++; }
   }
   if (!all) x.n = up;
@@ -210,7 +212,7 @@ function ControlOdds({ p }: { p: number | null }) {
   return <span className="wall-tally-odds">Chance of control: <b className={d ? 'is-d' : 'is-r'}>{d ? 'D' : 'R'} {chanceLabel(d ? p : 1 - p)}</b></span>;
 }
 function Tally({ races, m, seats, totals, scope = 'all', setScope, odds, c = null }: { races: WallRace[]; m: number; seats: WallSeat[]; totals: ChamberTotals | null; scope?: Scope; setScope?: (s: Scope) => void; odds?: Odds | null; c?: Centers }) {
-  const tracked = (o: Office) => { const rs = races.filter(r => r.office === o).map(r => marginAt(r, m, c)); const n = rs.length; return { dSafe: 0, dPlay: rs.filter(v => v >= EVEN).length, even: rs.filter(v => Math.abs(v) < EVEN).length, rPlay: rs.filter(v => v <= -EVEN).length, rSafe: 0, n, majority: null, play: n, noPolls: 0, tossUp: 0 } as ChamberSplit; };
+  const tracked = (o: Office) => { const rs = races.filter(r => r.office === o).map(r => marginAt(r, m, c)); const n = rs.length; const ev = rs.filter(v => Math.abs(v) < EVEN).length; return { dSafe: 0, dPlay: rs.filter(v => v >= EVEN).length, even: ev, evenPlay: ev, rPlay: rs.filter(v => v <= -EVEN).length, rSafe: 0, n, majority: null, play: n, noPolls: 0, tossUp: 0 } as ChamberSplit; };
   return <div className="wall-tally" aria-live="polite">
     {totals && setScope && <ScopeToggle scope={scope} setScope={setScope}/>}
     {OFFICES.filter(o => races.some(r => r.office === o) || (totals && totals[o].seats > 0)).map(o => { const sc: Scope = o === 'HOUSE' ? 'all' : scope; const cs = totals ? chamberSplit(o, races, seats, totals, m, sc, c) : tracked(o); const d = cs.dSafe + cs.dPlay, r = cs.rSafe + cs.rPlay; const w = (k: number) => pct(100 * k / cs.n);
@@ -219,7 +221,7 @@ function Tally({ races, m, seats, totals, scope = 'all', setScope, odds, c = nul
         <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
         {cs.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[o], m)}/> : null}
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(cs.dSafe)}`}/><i className={`is-d-play gw-${w(cs.dPlay)}`}/><i className={`is-even gw-${w(cs.even)}`}/><i className={`is-r-play gw-${w(cs.rPlay)}`}/><i className={`is-r gw-${w(cs.rSafe)}`}/>{cs.majority && <em className={`wall-tally-maj ga-${pct(100 * cs.majority / cs.n)}`}/>}</span>
-        {totals && <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.even - cs.tossUp > 0 ? `, ${cs.even - cs.tossUp} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}<span className="is-extra">{cs.noPolls ? ` · ${cs.noPolls} of them projected, no polls` : ''}{o === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
+        {totals && <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.evenPlay > 0 ? `, ${cs.evenPlay} even` : ''}{cs.even - cs.evenPlay - cs.tossUp > 0 ? ` · ${cs.even - cs.evenPlay - cs.tossUp} projected ${cs.even - cs.evenPlay - cs.tossUp === 1 ? 'seat' : 'seats'} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}<span className="is-extra">{cs.noPolls ? ` · ${cs.noPolls} of them projected, no polls` : ''}{o === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
       </div>; })}
     {totals && <p className="wall-tally-note wall-hide-phone">Hatched: the races I read, which the dial moves. The rest are projections. <a href="/method/#full-chamber">How</a> · <a href="/method/#models">Other readings</a></p>}
   </div>;
@@ -359,10 +361,11 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
 
 function DialBar({ m, setM, sc }: { m: number; setM: (v: number) => void; sc: Scenario }) {
   const span = Math.max(8, ...sc.ticks.map(t => Math.ceil(Math.abs(t.v))));
+  const byKey = useRef(false);   // the snap serves the thumb; a key press moves one native step (audit 2026-10-31)
   const near = (x: number) => Math.abs(m - x) < 0.05;
   return <section className="wall-dialbar" aria-label={sc.question}>
     <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{sc.show(m)}</span><span className="wall-dialbar-dir">{sc.dir(m)}<small>{sc.question} Drag to change every {sc.scope}.</small></span></div>
-    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => { const v = Number(e.target.value); const hit = sc.ticks.find(t => Math.abs(t.v - v) <= SNAP); setM(hit ? hit.v : v); }} aria-label={sc.aria}/>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onKeyDown={() => { byKey.current = true; }} onPointerDown={() => { byKey.current = false; }} onChange={e => { const v = Number(e.target.value); if (byKey.current) { setM(v); return; } const hit = sc.ticks.find(t => Math.abs(t.v - v) <= SNAP); setM(hit ? hit.v : v); }} aria-label={sc.aria} aria-valuetext={valueText(sc, m)}/>
     <div className="wall-ruler" role="group" aria-label={sc.tableHead}>{sc.ticks.map(t => <button key={t.name} type="button" className={`wall-ruler-mark ga-${pct(100 * (t.v + span) / (2 * span))}${near(t.v) ? ' is-on' : ''}`} aria-pressed={near(t.v)} aria-label={`${t.name}: ${t.sub}`} onClick={() => setM(t.v)}><i aria-hidden="true"/><span>{t.label}</span></button>)}</div>
   <div className="phone-key" aria-hidden="true"><span className="phone-key-bar"><i className="r-safe"/><i className="r-likely"/><i className="r-lean"/><i className="toss"/><i className="d-lean"/><i className="d-likely"/><i className="d-safe"/></span><span className="phone-key-labels"><b>Safe R</b><b>Toss-up</b><b>Safe D</b></span></div>
   </section>;
@@ -380,7 +383,7 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice, odds, c = n
       <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
       {cs.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[office], m)}/> : null}
       <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(cs.dSafe)}`}/><i className={`is-d-play gw-${w(cs.dPlay)}`}/><i className={`is-even gw-${w(cs.even)}`}/><i className={`is-r-play gw-${w(cs.rPlay)}`}/><i className={`is-r gw-${w(cs.rSafe)}`}/>{cs.majority && <em className={`wall-tally-maj ga-${pct(100 * cs.majority / cs.n)}`}/>}</span>
-      <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.even - cs.tossUp > 0 ? `, ${cs.even - cs.tossUp} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}{office === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
+      <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.evenPlay > 0 ? `, ${cs.evenPlay} even` : ''}{cs.even - cs.evenPlay - cs.tossUp > 0 ? ` · ${cs.even - cs.evenPlay - cs.tossUp} projected ${cs.even - cs.evenPlay - cs.tossUp === 1 ? 'seat' : 'seats'} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}{office === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
     </div>
     {office !== 'HOUSE' && <ScopeToggle scope={scope} setScope={setScope}/>}
   </section>;

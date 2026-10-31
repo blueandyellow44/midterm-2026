@@ -37,6 +37,6 @@ export function ModelNotes() {
       </tbody></table></div>
       <p>{bt.ratings_note}. Fundamentals misses by more than twice the polls at the end of a campaign, which is the usual finding and why forecasters let it fade by Election Day; it is here to show what the structure alone says, not as a rival call. The blend edges the polls by a hair, as it should: it is the polls with a little regression toward the state’s record.</p>
     </> : null}
-    <p><strong>Against the published field.</strong> {field.map(f => `${f.name} ${pct(f.house)}`).join(', ')} on the House as of their dates (sources on the <a href="#field">field table</a>). The forecaster blend built here gives {odds('blend', 'HOUSE')}, inside that {pct(lo)} to {pct(hi)} range, which is the check that the clone is honest. My bet is {pct(sim.chambers?.HOUSE?.p_control_d)}, and the Method sections above say why.</p>
+    <p><strong>Against the published field.</strong> {field.map(f => `${f.name} ${pct(f.house)}`).join(', ')} on the House as of their dates (sources on the <a href="#field">field table</a>). The forecaster blend built here gives {odds('blend', 'HOUSE')}, inside that {pct(lo)} to {pct(hi)} range. That says only that a blend built here lands where the published ones do; it tests none of them against a result. My bet is {pct(sim.chambers?.HOUSE?.p_control_d)}, and the Method sections above say why.</p>
   </section>;
 }

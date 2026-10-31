@@ -218,3 +218,16 @@ describe('model counts against the release', () => {
   }
  });
 });
+
+// Tie labels (audit 2026-10-31): ties among the seats in play are counted apart from ties elsewhere in the chamber, so the
+// "in play" subtotal adds up and a projected tie never lands in it.
+describe('tie scope', () => {
+ it('keeps a projected tie out of the in-play count', () => {
+  const totals: ChamberTotals = { SEN: { notUp: { D: 0, R: 0 }, majority: 2, seats: 3 }, GOV: { notUp: { D: 0, R: 0 }, majority: null, seats: 0 }, HOUSE: { notUp: { D: 0, R: 0 }, majority: 1, seats: 0 } };
+  const races = [{ id: 'A', office: 'SEN', polls: 0, stateAdj: 0, spending: 0, earlyVote: 0, partisan: 0 }, { id: 'B', office: 'SEN', polls: 5, stateAdj: 0, spending: 0, earlyVote: 0, partisan: 0 }] as WallRace[];
+  const seats = [{ id: 'P', office: 'SEN', kind: 'projection', side: null, base: 0, stateAdj: 0, spending: 0, earlyVote: 0 }] as WallSeat[];
+  const x = chamberSplit('SEN', races, seats, totals, 0);
+  expect(x.play).toBe(2); expect(x.dPlay + x.rPlay + x.evenPlay).toBe(x.play);
+  expect(x.evenPlay).toBe(1); expect(x.even).toBe(2);
+ });
+});

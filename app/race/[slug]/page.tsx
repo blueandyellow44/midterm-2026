@@ -67,7 +67,7 @@ const WINDOW_LABEL:Record<string,string>={BOTH:'October',HOUSE_ONLY:'September',
 function ThePolls({r}:{r:any}){const read=r.polling_read?.kind==='UNAVAILABLE'?null:r.polling_read;const latest=read?.kind==='LATEST_POLL'?read.latest_poll:null;if(!read&&!/-ME-|-AK-/.test(r.id))return null;
  return <Panel className="race-polls" kicker="The polls">
   <ul className="race-facts">
-   {read&&<li>{latest?'One published poll':`${read.poll_count} comparable polls`} · newest finished {shortDate(read.field_end)} ({read.age_days} {read.age_days===1?'day':'days'} old)</li>}
+   {read&&<li>{latest?'One published poll':`${read.poll_count} comparable polls`} · newest finished {shortDate(read.field_end)} ({read.age_days} {read.age_days===1?'day':'days'} old at the {shortDate(String(derived.analytical_as_of).slice(0,10))} cutoff)</li>}
    {read&&(latest||Number(read.poll_count)<=2)&&<li className="c-flag">Thin evidence: {latest?'one published poll':Number(read.poll_count)===1?'only 1 poll':`only ${read.poll_count} polls`} behind this number.</li>}
    {/-ME-|-AK-/.test(r.id)&&<li className="c-flag">{r.id.includes('-ME-')?'Maine':'Alaska'} uses ranked-choice voting. These are first-choice numbers, and second choices can change the result.</li>}
   </ul>
