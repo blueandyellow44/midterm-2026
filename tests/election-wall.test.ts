@@ -126,7 +126,7 @@ describe('control contract', () => {
    const p = presetList(history, national, lastFall, null, key);
    expect(p.find(([l]) => l === '2020 again')![1]).toBe(-5.5);
    expect(p.find(([l]) => l === '2022 again')![1]).toBe(-1.3);
-   expect(p.find(([l]) => l === 'No miss')![1]).toBe(0);
+   expect(p.find(([l]) => l === (key === 'fundamentals' ? 'No shift' : 'No miss'))![1]).toBe(0);   // a poll-free reading has no miss to speak of
    expect(p.find(([l]) => l.startsWith('Last fall'))![1]).toBe(lastFall);
   }
  });

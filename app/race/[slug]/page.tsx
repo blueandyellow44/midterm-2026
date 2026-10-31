@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { derived,races,publicEstimates,pollsterNames,signalsMeta } from '@/lib/data';
+import { derived,races,publicEstimates,pollsterNames,signalsMeta,predictions } from '@/lib/data';
 import { MethodNotes, signalLines } from '@/components/SignalReading';
 import { Both,RecallLegend,Empty } from '@/components/UI';
 import { Conditions } from '@/components/RaceLedger';
@@ -31,7 +31,7 @@ function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates
   <p className="race-matchup"><span className="is-d">{names.D} ({dl})</span> vs <span className="is-r">{names.R} (R)</span></p>
   {ok?<><div className="race-figures">
    <Figure label="Polls" value={label(polls,names)} v={polls} sub={r.polling_read?.kind==='LATEST_POLL'?'one published poll':pollCountLabel(r.polling_read?.poll_count,(derived as any).signals?.polling_v2?.per_race?.[r.id]?.sponsored_only===true)}/>
-   <Figure label="Undertow" value={label(und,names)} v={und} sub={`± ${Number(s.range_sd).toFixed(1)} · my call, frozen Nov 2`}/>
+   <Figure label="Undertow" value={label(und,names)} v={und} sub={`± ${Number(s.range_sd).toFixed(1)} · my call, ${predictions?'frozen':'freezes'} Nov 2`}/>
    <Figure label="The pull" value={Math.abs(pull)<EVEN?'None':`${Math.abs(pull).toFixed(1)} → ${pull>0?dl:'R'}`} v={pull} sub="Undertow minus the polls"/>
   </div>
   <div className="race-trackrow"><span className="is-r">◀ {lastName(names.R)}</span><MarginTrack v={und} tick={polls} large/><span className="is-d">{lastName(names.D)} ▶</span></div>

@@ -5,7 +5,7 @@ import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
 
 // Short ruler labels for the mobile dial (Max, 2026-10-27: horizontal scrolling of the steps confuses people).
-const short = (label: string) => label.startsWith('Counted') ? 'Now' : label.startsWith('My bet') ? 'Bet' : label.startsWith('My lean') ? 'Lean' : label.startsWith('Last fall') ? '’25' : label === 'No miss' ? '0' : `’${label.slice(2, 4)}`;
+const short = (label: string) => label.startsWith('Counted') ? 'Now' : label.startsWith('My bet') ? 'Bet' : label.startsWith('My lean') ? 'Lean' : label.startsWith('Last fall') ? '’25' : label === 'No miss' || label === 'No shift' ? '0' : `’${label.slice(2, 4)}`;
 const SNAP = 0.2;
 
 // The election-night wall (Max, 2026-10-27: "almost a console. Multi panel, don't need to scroll to slider"; "that American
@@ -66,7 +66,8 @@ export function notchAt(races: WallRace[], seats: WallSeat[], totals: ChamberTot
 // center + 1.9 is not the bet (audit 2026-10-31: 'My bet' lit under Polls while the Senate read 56-44, not the bet's 54-45).
 export function presetList(history: HistoryPreset[], national: number, lastFall: number, live: LiveDial = null, modelKey: string = 'bet'): [string, number][] {
   const lean = modelKey === 'bet' ? `My bet ${national.toFixed(1)}` : `My lean ${national.toFixed(1)}`;
-  return [...(live ? [[`Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, Math.round(live.m * 10) / 10] as [string, number]] : []), ...history.map(h => [`${h.year} again`, Math.round(h.miss_toward_d * 10) / 10] as [string, number]), ['No miss', 0], [lean, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
+  const zero = POLL_FREE[modelKey] ? 'No shift' : 'No miss';
+  return [...(live ? [[`Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, Math.round(live.m * 10) / 10] as [string, number]] : []), ...history.map(h => [`${h.year} again`, Math.round(h.miss_toward_d * 10) / 10] as [string, number]), [zero, 0], [lean, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
 }
 // What zero means depends on the reading (audit 2026-10-31). Under the bet, zero is no NATIONAL miss: each race keeps its
 // state record, spending, early vote and partisan terms. Under Polls only, zero is the polls exactly. Under the others,
