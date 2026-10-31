@@ -112,51 +112,71 @@ describe('model centers', () => {
  });
 });
 
-// The control contract (audit 2026-10-31). Two independent choices with one canonical state each: `model` picks the reading,
-// `m` is the national shift. Presets set m only; a chip resets m to the reading's default; labels say what zero and the lean
-// preset mean under each reading; the graded call is read from the release and no control can move it.
-import { presetList, presetSmall, pickModel, dialWords, zeroLabel, POLL_FREE, type ModelDef, type HistoryPreset } from '@/components/ElectionWall';
+// The control contract (audit 2026-10-31; Max: "chips + slider on both. build it"). The chips pick the reading; the slider
+// sets ONE uniform shift m; the slider's question, marks and words come from the reading's scenario (scenarioFor). Presets set m
+// only; a chip resets m to the reading's default; the graded call is read from the release and no control can move it.
+import { scenarioFor, pickModel, type ModelDef, type HistoryPreset } from '@/components/ElectionWall';
 describe('control contract', () => {
  const history: HistoryPreset[] = [{ year: 2020, miss_toward_d: -5.4893 }, { year: 2022, miss_toward_d: -1.3245 }];
  const national = 1.9359, lastFall = 7.3102;
+ const extras = { fundYears: { '2002': -0.67, '2006': 10.99, '2010': 10.91, '2014': 8.0, '2018': 5.8, '2022': 4.88 }, fundDefault: 6.6522, level: 3.5 };
+ const ctx = { history, national, lastFall, extras };
  const mk = (key: string, name: string, centers: Record<string, number>): ModelDef => ({ key, name, short: name, desc: '', defaultDial: 0, centers, odds: null });
- const models = [mk('polls', 'Polls only', { X: 2 }), mk('blend', 'Forecaster blend', { X: 1.5 }), mk('fundamentals', 'Fundamentals', { X: -3 })];
- it('a historical preset carries the archive miss to one decimal and the same value under every reading', () => {
-  for (const key of ['bet', 'polls', 'fundamentals']) {
-   const p = presetList(history, national, lastFall, null, key);
-   expect(p.find(([l]) => l === '2020 again')![1]).toBe(-5.5);
-   expect(p.find(([l]) => l === '2022 again')![1]).toBe(-1.3);
-   expect(p.find(([l]) => l === (key === 'fundamentals' ? 'No shift' : 'No miss'))![1]).toBe(0);   // a poll-free reading has no miss to speak of
-   expect(p.find(([l]) => l.startsWith('Last fall'))![1]).toBe(lastFall);
+ const models = [mk('polls', 'Polls only', { X: 2 }), mk('blend', 'Forecaster blend', { X: 1.5 }), mk('fundamentals', 'Fundamentals', { X: -3 }), mk('ratings', 'Ratings', { X: 3.5 })];
+ const tick = (key: string, name: RegExp) => scenarioFor(key, ctx).ticks.find(t => name.test(t.name))!;
+ it('the polls-built readings carry past polling misses to one decimal, no miss and last fall; only the bet carries its lean', () => {
+  for (const key of ['bet', 'polls', 'blend']) {
+   const sc = scenarioFor(key, ctx);
+   expect(sc.question).toBe('How wrong are the polls?');
+   expect(tick(key, /^2020 again$/).v).toBe(-5.5); expect(tick(key, /^2022 again$/).v).toBe(-1.3);
+   expect(tick(key, /^No miss$/).v).toBe(0); expect(tick(key, /^Last fall/).v).toBe(lastFall);
+   expect(sc.ticks.map(t => t.v)).toEqual([...sc.ticks.map(t => t.v)].sort((a, b) => a - b));   // ruler order
   }
- });
- it('the lean preset is "My bet" only under the bet; under a model it is "My lean", because center + lean is not the bet', () => {
-  expect(presetList(history, national, lastFall, null, 'bet').map(([l]) => l)).toContain('My bet 1.9');
-  expect(presetList(history, national, lastFall, null, 'polls').map(([l]) => l)).toContain('My lean 1.9');
-  expect(presetList(history, national, lastFall, null, 'polls').map(([l]) => l)).not.toContain('My bet 1.9');
+  expect(tick('bet', /^My bet/).v).toBe(national);
+  expect(scenarioFor('polls', ctx).ticks.some(t => /My bet|My lean/.test(t.name))).toBe(false);
+  expect(scenarioFor('blend', ctx).ticks.some(t => /My bet|My lean/.test(t.name))).toBe(false);
   const r = { id: 'X', polls: 2, stateAdj: 1, spending: 0.5, earlyVote: 0, partisan: 0, undertow: 2 + national + 1.5 } as WallRace;
   expect(marginAt(r, national, null)).toBeCloseTo(r.undertow, 6);                 // the bet
-  expect(marginAt(r, national, models[0].centers)).not.toBeCloseTo(r.undertow, 1);  // polls + lean, not the bet
+  expect(marginAt(r, national, models[0].centers)).not.toBeCloseTo(r.undertow, 1);  // polls + lean is not the bet, so no such mark exists
  });
- it('zero means no national miss under the bet (race terms kept), the polls under Polls only, no shift otherwise', () => {
-  expect(presetSmall(0, 'bet')).toBe('no national miss');
-  expect(presetSmall(0, 'polls')).toBe('polls right');
-  expect(presetSmall(0, 'blend')).toBe('no shift');
-  expect(presetSmall(-5.5, 'bet')).toBe('5.5 toward R');
+ it('zero means no national miss under the bet (race terms kept), the polls under Polls only, and is said so on every surface', () => {
+  expect(tick('bet', /^No miss$/).sub).toBe('no national miss');
+  expect(tick('polls', /^No miss$/).sub).toBe('polls right');
+  expect(tick('blend', /^No miss$/).sub).toBe('no miss');
+  expect(tick('bet', /^2020/).sub).toBe('5.5 toward R');
+  expect(scenarioFor('bet', ctx).zero).toBe('With no national miss');
+  expect(scenarioFor('polls', ctx).zero).toBe('If the polls are right');
   const r = { id: 'X', polls: 2, stateAdj: 1, spending: 0.5, earlyVote: 0, partisan: 0 } as WallRace;
   expect(marginAt(r, 0, null)).toBeCloseTo(3.5, 6);              // not the polls: the race terms remain
   expect(marginAt(r, 0, models[0].centers)).toBeCloseTo(2, 6);   // the polls exactly
-  expect(zeroLabel(null)).toBe('With no national miss');
-  expect(zeroLabel(models[0])).toBe('If the polls are right');
-  expect(zeroLabel(models[2])).toBe('Fundamentals, no shift');
  });
- it('a poll-free reading describes the dial as a shift of the year, never as a polling miss', () => {
-  expect(POLL_FREE.fundamentals).toBe(true);
-  expect(dialWords(2, 'bet').dir).toBe('Polls understate Democrats');
-  expect(dialWords(2, 'fundamentals').dir).toMatch(/^Year runs more Democratic/);
-  expect(dialWords(0, 'fundamentals').dir).not.toMatch(/Polls/);
-  expect(dialWords(0, 'fundamentals').kicker).not.toMatch(/polls/i);
-  expect(dialWords(-1, 'polls').kicker).toBe('How wrong are the polls?');
+ it('fundamentals asks which midterm the year looks like, with the sealed swings as marks and the average at zero', () => {
+  const sc = scenarioFor('fundamentals', ctx);
+  expect(sc.question).toBe('Which midterm does this year look like?');
+  expect(sc.unit).toBe('pt swing');
+  expect(tick('fundamentals', /^Average midterm$/).v).toBe(0);
+  expect(tick('fundamentals', /^2022 again$/).v).toBeCloseTo(4.88 - 6.6522, 1);
+  expect(tick('fundamentals', /^2002 again$/).v).toBeCloseTo(-0.67 - 6.6522, 1);
+  const shared = sc.ticks.find(t => /2006/.test(t.name))!;   // 2006 and 2010 land within half a point: one mark
+  expect(shared.name).toMatch(/2010/); expect(sc.ticks.filter(t => /2010/.test(t.name)).length).toBe(1);
+  expect(sc.show(0)).toBe('6.7'); expect(sc.show(4.3)).toBe('11.0');
+  expect(sc.dir(2)).toMatch(/Harsher/); expect(sc.dir(-2)).toMatch(/Gentler/); expect(sc.dir(0)).not.toMatch(/Polls/);
+  expect(sc.ticks.map(t => t.v)).toEqual([...sc.ticks.map(t => t.v)].sort((a, b) => a - b));
+  expect(scenarioFor('fundamentals', { history, national, lastFall }).ticks.map(t => t.name)).toEqual(['Average midterm']);   // no swing table sealed: only the default
+ });
+ it('ratings asks whether Cook ran too far, in levels of the release’s Lean center', () => {
+  const sc = scenarioFor('ratings', ctx);
+  expect(sc.ticks.map(t => t.v)).toEqual([-7, -3.5, 0, 3.5, 7]);
+  expect(tick('ratings', /^One level toward R$/).v).toBe(-3.5);
+  expect(tick('ratings', /^As published$/).sub).toBe('as published');
+  expect(sc.dir(3.5)).toMatch(/too Republican by 1\.0 levels/); expect(sc.dir(0)).toBe('Ratings as published');
+  expect(scenarioFor('ratings', { history, national, lastFall, extras: { level: 4 } }).ticks.map(t => t.v)).toEqual([-8, -4, 0, 4, 8]);
+  expect(scenarioFor('ratings', { history, national, lastFall }).ticks.map(t => t.v)).toEqual([-7, -3.5, 0, 3.5, 7]);   // 3.5 when the release has no center
+ });
+ it('on election night the counted miss joins the polls-built readings as a mark and not the others', () => {
+  const live = { m: -2.1, settled: 4, se: 0.4, pollsMae: 3, undertowMae: 2, undertowCloser: 3, pollsCloser: 1 };
+  expect(scenarioFor('bet', { ...ctx, live }).ticks.find(t => t.label === 'Now')!.v).toBe(-2.1);
+  expect(scenarioFor('fundamentals', { ...ctx, live }).ticks.some(t => t.label === 'Now')).toBe(false);
  });
  it('picking a reading resets the dial to that reading\'s default; the bet restores its lean, or the counted miss on election night', () => {
   expect(pickModel(models, 'polls', national)).toEqual({ model: 'polls', m: 0 });
@@ -168,12 +188,11 @@ describe('control contract', () => {
  it('repeated switching is deterministic and the graded number never moves', () => {
   const r = { id: 'X', polls: 2, stateAdj: 1, spending: 0.5, earlyVote: 0.2, partisan: -0.1, undertow: 2 + national + 1.6 } as WallRace;
   let state = pickModel(models, 'bet', national);
-  const seq = ['polls', 'bet', 'blend', 'fundamentals', 'bet', 'polls'];
-  const run = () => { const out: number[] = []; for (const k of seq) { state = pickModel(models, k, national); const c = models.find(x => x.key === state.model)?.centers ?? null; out.push(marginAt(r, state.m, c)); state.m = -5.5; out.push(marginAt(r, state.m, c)); } return out; };
+  const seq = ['polls', 'bet', 'blend', 'fundamentals', 'ratings', 'bet', 'polls'];
+  const run = () => { const out: number[] = []; for (const k of seq) { state = pickModel(models, k, national); const c = models.find(x => x.key === state.model)?.centers ?? null; out.push(marginAt(r, state.m, c)); state.m = scenarioFor(state.model, ctx).ticks[0].v; out.push(marginAt(r, state.m, c)); } return out; };
   const a = run(), b = run();
   expect(a).toEqual(b);
   expect(marginAt(r, national, null)).toBeCloseTo(r.undertow, 6);   // the bet is arithmetic on the release, untouched by any pick
-  expect(r.undertow).toBeCloseTo(2 + national + 1.6, 6);
  });
 });
 

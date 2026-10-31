@@ -5,7 +5,6 @@ import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
 
 // Short ruler labels for the mobile dial (Max, 2026-10-27: horizontal scrolling of the steps confuses people).
-const short = (label: string) => label.startsWith('Counted') ? 'Now' : label.startsWith('My bet') ? 'Bet' : label.startsWith('My lean') ? 'Lean' : label.startsWith('Last fall') ? '’25' : label === 'No miss' || label === 'No shift' ? '0' : `’${label.slice(2, 4)}`;
 const SNAP = 0.2;
 
 // The election-night wall (Max, 2026-10-27: "almost a console. Multi panel, don't need to scroll to slider"; "that American
@@ -60,22 +59,57 @@ export function notchAt(races: WallRace[], seats: WallSeat[], totals: ChamberTot
   const s = chamberSplit('SEN', races, seats, totals, v, 'all', c), h = chamberSplit('HOUSE', races, seats, totals, v, 'all', c);
   return { sD: s.dSafe + s.dPlay, sR: s.rSafe + s.rPlay, hD: h.dSafe + h.dPlay, hR: h.rSafe + h.rPlay, pS: oddsAt(odds, odds?.chambers.SEN, v), pH: oddsAt(odds, odds?.chambers.HOUSE, v) };
 }
-// Dial presets are real past national misses from the archive, then no miss, my bet and last fall (Max, 2026-10-27).
-// The presets and the slider set ONE value, the national shift m; the model chips pick which reading m is added to.
-// Under another model the lean preset reads 'My lean', because the bet is polls + lean + the race terms, and a model
-// center + 1.9 is not the bet (audit 2026-10-31: 'My bet' lit under Polls while the Senate read 56-44, not the bet's 54-45).
-export function presetList(history: HistoryPreset[], national: number, lastFall: number, live: LiveDial = null, modelKey: string = 'bet'): [string, number][] {
-  const lean = modelKey === 'bet' ? `My bet ${national.toFixed(1)}` : `My lean ${national.toFixed(1)}`;
-  const zero = POLL_FREE[modelKey] ? 'No shift' : 'No miss';
-  return [...(live ? [[`Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, Math.round(live.m * 10) / 10] as [string, number]] : []), ...history.map(h => [`${h.year} again`, Math.round(h.miss_toward_d * 10) / 10] as [string, number]), [zero, 0], [lean, national], [`Last fall ${lastFall.toFixed(1)}`, lastFall]];
-}
-// What zero means depends on the reading (audit 2026-10-31). Under the bet, zero is no NATIONAL miss: each race keeps its
-// state record, spending, early vote and partisan terms. Under Polls only, zero is the polls exactly. Under the others,
-// zero is that reading as published. Fundamentals has no polls in it, so its dial is a shift of the year, not a polling miss.
-export const POLL_FREE: Record<string, boolean> = { fundamentals: true };
-export function presetSmall(v: number, modelKey: string = 'bet'): string {
-  if (Math.abs(v) >= EVEN) return `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`;
-  return modelKey === 'bet' ? 'no national miss' : modelKey === 'polls' ? 'polls right' : 'no shift';
+// Each reading carries its own scenario (Max, 2026-10-31: "models and past years are very different things, no?"; "chips +
+// slider on both. build it"). The chips pick the reading; the slider below asks the question that reading can answer, and its
+// marks, preset buttons and words come from here. The slider's value m is still ONE uniform shift added to every seat of the
+// active reading (the sealed odds grids are built on exactly that), so switching the words never changes the arithmetic.
+//   bet, polls, blend  a national polling miss; marks are past years' misses from the archive, no miss, the bet's lean (bet only),
+//                      last fall. The blend's prior is set by this year's polls, so a national miss moves all of it.
+//   fundamentals       no polls in it, so the scenario is which past midterm this year looks like: marks from the sealed swing
+//                      table (derived.models.fundamentals_env.years), the average at the default.
+//   ratings            Cook's calls a level or two too far one way; one level = the release's Lean center (simulation.rated_center).
+export type Tick = { label: string; name: string; v: number; sub: string };
+export type Scenario = { key: string; question: string; unit: string; scope: 'race' | 'seat'; tableHead: string; left: string; right: string; zero: string; note: string; aria: string; ticks: Tick[]; show: (m: number) => string; dir: (m: number) => string };
+export type ScenarioExtras = { fundYears?: Record<string, number>; fundDefault?: number; level?: number };
+export type ScenarioCtx = { history: HistoryPreset[]; national: number; lastFall: number; live?: LiveDial; extras?: ScenarioExtras };
+const toward = (v: number) => `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`;
+const yy = (y: string | number) => `’${String(y).slice(2, 4)}`;
+export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
+  const { history, national, lastFall, live = null, extras = {} } = ctx;
+  if (key === 'fundamentals') {
+    const base = Number.isFinite(extras.fundDefault) ? (extras.fundDefault as number) : 0;
+    const years = Object.entries(extras.fundYears || {}).map(([y, v]) => ({ y, m: Math.round((Number(v) - base) * 10) / 10 })).filter(x => Number.isFinite(x.m)).sort((a, b) => a.m - b.m);
+    const ticks: Tick[] = [];
+    for (const x of years) {   // two midterms within half a point share one mark (2006 and 2010 both land near 11)
+      const near = ticks.find(t => Math.abs(t.v - x.m) <= 0.5);
+      if (near) { near.label += `/${yy(x.y)}`; near.name = near.name.replace(/ again$/, '') + ` or ${x.y} again`; continue; }
+      ticks.push({ label: yy(x.y), name: `${x.y} again`, v: x.m, sub: `${(base + x.m).toFixed(1)} pt swing` });
+    }
+    ticks.push({ label: 'Avg', name: 'Average midterm', v: 0, sub: `${base.toFixed(1)} pt swing` });
+    ticks.sort((a, b) => a.v - b.v);
+    return { key, question: 'Which midterm does this year look like?', unit: 'pt swing', scope: 'seat', tableHead: 'If the year swings like…', left: '◀ Gentler', right: 'Harsher ▶', zero: 'At the average midterm swing',
+      note: 'Pick a past midterm or set your own swing. Every seat follows.', aria: 'Midterm swing against the president’s party, in points', ticks,
+      show: m => (base + m).toFixed(1), dir: m => m >= EVEN ? 'Harsher on the president’s party than average' : m <= -EVEN ? 'Gentler on the president’s party than average' : 'The average midterm penalty' };
+  }
+  if (key === 'ratings') {
+    const L = Number.isFinite(extras.level) && (extras.level as number) > 0 ? (extras.level as number) : 3.5;
+    const lv = (k: number) => `${Math.abs(k)} ${Math.abs(k) === 1 ? 'level' : 'levels'} toward ${k > 0 ? 'D' : 'R'}`;
+    const ticks: Tick[] = [-2, -1, 0, 1, 2].map(k => k === 0 ? { label: 'As is', name: 'As published', v: 0, sub: 'as published' } : { label: `${Math.abs(k)}${k > 0 ? 'D' : 'R'}`, name: lv(k).replace(/^(\d)/, d => ['', 'One', 'Two'][Number(d)]), v: k * L, sub: toward(k * L) });
+    return { key, question: 'If Cook’s calls run too far one way', unit: 'pts', scope: 'seat', tableHead: 'If Cook is off by…', left: '◀ Too Democratic', right: 'Too Republican ▶', zero: 'Ratings as published',
+      note: 'Test Cook’s calls a level or two off. Every rated seat follows.', aria: 'Rating miss in points; negative means the ratings run too Democratic', ticks,
+      show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? `Ratings too Republican by ${(Math.abs(m) / L).toFixed(1)} levels` : m <= -EVEN ? `Ratings too Democratic by ${(Math.abs(m) / L).toFixed(1)} levels` : 'Ratings as published' };
+  }
+  const ticks: Tick[] = [
+    ...(live ? [{ label: 'Now', name: `Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, v: Math.round(live.m * 10) / 10, sub: 'the count so far' }] : []),
+    ...history.map(h => { const v = Math.round(h.miss_toward_d * 10) / 10; return { label: yy(h.year), name: `${h.year} again`, v, sub: toward(v) }; }),
+    { label: '0', name: 'No miss', v: 0, sub: key === 'bet' ? 'no national miss' : key === 'polls' ? 'polls right' : 'no miss' },
+    ...(key === 'bet' ? [{ label: 'Bet', name: `My bet ${national.toFixed(1)}`, v: national, sub: toward(national) }] : []),
+    { label: '’25', name: `Last fall ${lastFall.toFixed(1)}`, v: lastFall, sub: toward(lastFall) },
+  ].sort((a, b) => a.v - b.v);
+  return { key, question: 'How wrong are the polls?', unit: 'pts', scope: 'race', tableHead: 'If the polls miss like…', left: '◀ Republicans', right: 'Democrats ▶',
+    zero: key === 'bet' ? 'With no national miss' : key === 'polls' ? 'If the polls are right' : 'Forecaster blend, no miss',
+    note: 'Pick a past year’s miss or set your own. Every race and count follows.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
+    show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way' };
 }
 // Picking a reading (Max, 2026-10-29: "picking a model sets the dial to 0"): each model's headline is its own center set
 // at its default dial, so the pick resets m to that default; the bet restores its lean (or the counted miss on election night).
@@ -131,30 +165,19 @@ function ModelChips({ models, model, pick }: { models: ModelDef[]; model: string
     <p className="wall-models-desc" aria-live="polite"><strong>{cur ? cur.name : 'My bet'}.</strong> {cur ? cur.desc : BET_DESC} <a href="/method/#models">{cur ? 'Its record →' : 'How →'}</a></p>
   </div>;
 }
-// The dial's words follow the reading (audit 2026-10-31). Polls-based readings: a national polling miss. Fundamentals has
-// no polls, so the same shift is described as the year running more one way than the structure says.
-export function dialWords(m: number, modelKey: string = 'bet') {
-  const pollFree = !!POLL_FREE[modelKey];
-  const dir = m >= EVEN ? (pollFree ? 'Year runs more Democratic than the structure says' : 'Polls understate Democrats') : m <= -EVEN ? (pollFree ? 'Year runs more Republican than the structure says' : 'Polls understate Republicans') : (pollFree ? 'Year as the structure says' : 'Polls miss neither way');
-  return { pollFree, kicker: pollFree ? 'How different is the year?' : 'How wrong are the polls?', dir, aria: pollFree ? 'National shift in points; negative means a more Republican year' : 'National polling miss in points; negative means polls understate Republicans' };
-}
-function Dial({ m, setM, national, lastFall, history, compact, live = null, chips = null, model = null }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; compact?: boolean; live?: LiveDial; chips?: React.ReactNode; model?: ModelDef | null }) {
-  const span = Math.max(8, Math.ceil(lastFall));
-  const key = model ? model.key : 'bet';
+function Dial({ m, setM, sc, compact, live = null, chips = null }: { m: number; setM: (v: number) => void; sc: Scenario; compact?: boolean; live?: LiveDial; chips?: React.ReactNode }) {
+  const span = Math.max(8, ...sc.ticks.map(t => Math.ceil(Math.abs(t.v))));
   const near = (x: number) => Math.abs(m - x) < 0.05;
-  const presets = presetList(history, national, lastFall, live, key);
-  const hit = presets.find(([, v]) => near(v));
-  const mark = hit ? (hit[1] === national ? (model ? 'my lean' : 'My bet') : hit[0].startsWith('Counted') ? 'the count so far' : hit[0]) : null;
-  const w = dialWords(m, key);
-  return <section className={`wall-panel wall-dial${compact ? ' is-compact' : ''}`} aria-label={w.kicker}>
+  const hit = sc.ticks.find(t => near(t.v));
+  return <section className={`wall-panel wall-dial${compact ? ' is-compact' : ''}`} aria-label={sc.question}>
     {chips}
-    <p className="wall-kicker">{w.kicker}</p>
-    <p className={`wall-dial-readout ${side(m)}`}><span className="wall-num">{Math.abs(m).toFixed(1)}</span><span className="wall-dial-unit">pts</span></p>
-    <p className="wall-dial-dir">{w.dir}{mark ? <> · <strong>{mark}</strong></> : null}</p>
-    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label={w.aria}/>
-    <div className="wall-scale"><span className="is-r">◀ Republicans</span><span className="is-d">Democrats ▶</span></div>
-    <div className="wall-presets">{presets.map(([label, v]) => <button key={label} type="button" aria-pressed={near(v)} onClick={() => setM(v)}><span>{label}</span><small>{presetSmall(v, key)}</small></button>)}</div>
-    {!compact && (live ? <p className="wall-note"><strong>Live:</strong> the {live.settled} races counted so far put this year’s miss at {Math.abs(live.m).toFixed(1)} toward {live.m >= 0 ? 'Democrats' : 'Republicans'}{live.se !== null ? ` (± ${live.se.toFixed(1)})` : ''}. The dial starts there; counted races show their count.</p> : <p className="wall-note">{w.pollFree ? 'Pick a past year’s miss or set your own shift. Every seat in this reading follows.' : 'Pick a past year’s miss or set your own. Every race and count follows.'}</p>)}
+    <p className="wall-kicker">{sc.question}</p>
+    <p className={`wall-dial-readout ${side(m)}`}><span className="wall-num">{sc.show(m)}</span><span className="wall-dial-unit">{sc.unit}</span></p>
+    <p className="wall-dial-dir">{sc.dir(m)}{hit ? <> · <strong>{hit.name}</strong></> : null}</p>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => setM(Number(e.target.value))} aria-label={sc.aria}/>
+    <div className="wall-scale"><span className="is-r">{sc.left}</span><span className="is-d">{sc.right}</span></div>
+    <div className="wall-presets">{sc.ticks.map(t => <button key={t.name} type="button" aria-pressed={near(t.v)} onClick={() => setM(t.v)}><span>{t.name}</span><small>{t.sub}</small></button>)}</div>
+    {!compact && (live ? <p className="wall-note"><strong>Live:</strong> the {live.settled} races counted so far put this year’s miss at {Math.abs(live.m).toFixed(1)} toward {live.m >= 0 ? 'Democrats' : 'Republicans'}{live.se !== null ? ` (± ${live.se.toFixed(1)})` : ''}. The dial starts there; counted races show their count.</p> : <p className="wall-note">{sc.note}</p>)}
   </section>;
 }
 
@@ -240,23 +263,23 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
 // The second line shows the same race with no national miss (the dial's "No miss · polls right" preset), so a reader sees
 // how much of the chance is the bet (fix 3 of six, Max, 2026-10-29: "please do the six fixes").
 // The second line's label says what dial zero is for the active reading (audit 2026-10-31): under the bet the race keeps its
-// state, spending, early-vote and partisan terms, so zero is 'no national miss', not 'the polls are right'.
-export function zeroLabel(model: ModelDef | null): string { return !model ? 'With no national miss' : model.key === 'polls' ? 'If the polls are right' : `${model.name}, no shift`; }
-function WinChance({ r, p, p0, moved, model = null }: { r: WallRace; p: number | null; p0?: number | null; moved: boolean; model?: ModelDef | null }) {
+// state, spending, early-vote and partisan terms, so zero is 'no national miss', not 'the polls are right'. The words come
+// from the reading's scenario (scenarioFor).
+function WinChance({ r, p, p0, moved, zero }: { r: WallRace; p: number | null; p0?: number | null; moved: boolean; zero: string }) {
   if (p === null || r.result?.settled) return null;
   const showBase = typeof p0 === 'number' && chanceLabel(p0) !== chanceLabel(p);
   return <div className="wall-chance">
     <p className="wall-label">Chance to win{moved ? ' at your dial' : ''}</p>
     <p className="wall-chance-names"><span className="is-d">{last(r.d)} {chanceLabel(p)}</span><span className="is-r">{last(r.r)} {chanceLabel(1 - p)}</span></p>
     <span className="wall-chance-bar" aria-hidden="true"><i className={`is-d gw-${pct(100 * p)}`}/><i className={`is-r gw-${100 - pct(100 * p)}`}/></span>
-    {showBase && <p className="wall-chance-sub">{zeroLabel(model)}: {last(r.d)} {chanceLabel(p0)}, {last(r.r)} {chanceLabel(1 - p0)}.</p>}
+    {showBase && <p className="wall-chance-sub">{zero}: {last(r.d)} {chanceLabel(p0)}, {last(r.r)} {chanceLabel(1 - p0)}.</p>}
   </div>;
 }
 // The bet's terms, named as Method names them: the national lean is the carried share of last fall's miss, not the miss itself
 // (audit 2026-10-31: the bar read 'Last fall's polling miss 1.9' beside a 7.3 headline). The race page's 'Recent polling error' is
 // this lean plus the state record together.
 export const LEAN_LABEL = 'National lean';
-function Detail({ r, m, national, odds, c = null, model = null, locked = false }: { r: WallRace; m: number; national: number; odds?: Odds | null; c?: Centers; model?: ModelDef | null; locked?: boolean }) {
+function Detail({ r, m, national, odds, c = null, model = null, locked = false, zero = 'With no national miss' }: { r: WallRace; m: number; national: number; odds?: Odds | null; c?: Centers; model?: ModelDef | null; locked?: boolean; zero?: string }) {
   const at = marginAt(r, m, c); const pull = r.undertow - r.polls; const moved = Math.abs(m - (model ? model.defaultDial : national)) >= 0.05 && !r.result?.settled;
   const parts: [string, number][] = [[LEAN_LABEL, national], ['This state’s polling record', r.stateAdj], [r.spendLabel, r.spending], ['Early vote', r.earlyVote], ...(r.office === 'SEN' ? [['The state’s partisan record', r.partisan] as [string, number]] : [])];
   return <section className="wall-panel wall-detail" aria-label={`${r.name} breakdown`}>
@@ -268,7 +291,7 @@ function Detail({ r, m, national, odds, c = null, model = null, locked = false }
       {r.result ? <div><p className="wall-label">The count</p><p className={`wall-big ${side(r.result.margin)}`}><Big text={marginLabel(r.result.margin, r)}/></p><p className="wall-sub">{r.result.reporting.toFixed(0)}% counted{r.result.called ? ` · called for ${last(r.result.called === 'D' ? r.d : r.r)}` : ''}</p></div> : null}
       {model && typeof model.centers[r.id] === 'number' ? <div><p className="wall-label">{model.name}</p><p className={`wall-big ${side(model.centers[r.id])}`}><Big text={marginLabel(model.centers[r.id], r)}/></p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'another reading, not graded'}</p></div> : <div><p className="wall-label">The pull</p><p className={`wall-big ${side(pull)}`}>{Math.abs(pull) < EVEN ? 'None' : `${Math.abs(pull).toFixed(1)} → ${pull > 0 ? r.dLetter : 'R'}`}</p><p className="wall-sub">{moved ? <>At your dial: <b className={side(at)}>{marginLabel(at, r)}</b></> : 'Undertow minus the polls'}</p></div>}
     </div>
-    <WinChance r={r} p={oddsAt(odds, odds?.perRace[r.id], m)} p0={oddsAt(odds, odds?.perRace[r.id], 0)} moved={moved} model={model}/>
+    <WinChance r={r} p={oddsAt(odds, odds?.perRace[r.id], m)} p0={oddsAt(odds, odds?.perRace[r.id], 0)} moved={moved} zero={zero}/>
     {!model && <FactorBars parts={parts.map(([label, v]) => ({ label, v }))} dLetter={r.dLetter}/>}
   </section>;
 }
@@ -312,7 +335,7 @@ function Board({ races, m, selected, select, office, c = null }: { races: WallRa
   </section>;
 }
 
-export function ElectionWall({ races, national, lastFall, initial, history, noRead = [], seats = [], totals = null, live = null, odds = null, models = [], locked = false }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null; models?: ModelDef[]; locked?: boolean }) {
+export function ElectionWall({ races, national, lastFall, initial, history, noRead = [], seats = [], totals = null, live = null, odds = null, models = [], locked = false, extras = {} }: { races: WallRace[]; national: number; lastFall: number; initial: string; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null; models?: ModelDef[]; locked?: boolean; extras?: ScenarioExtras }) {
   const [m, setM] = useState(live ? live.m : national);
   const [office, setOffice] = useState<Office>('SEN');
   const [selected, setSelected] = useState(initial);
@@ -320,6 +343,7 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const [model, setModel] = useState('bet');
   const cur = models.find(x => x.key === model) || null; const c: Centers = cur ? cur.centers : null; const o = cur ? cur.odds : odds;
   const pick = (k: string) => { const next = pickModel(models, k, national, live); setModel(next.model); setM(next.m); };
+  const sc = scenarioFor(model, { history, national, lastFall, live, extras });
   const full = !!totals;
   const sel = races.find(r => r.id === selected);
   const selSeat = !sel ? seats.find(x => x.id === selected) : undefined;
@@ -327,21 +351,19 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const select = (id: string) => { setSelected(id); const r = races.find(x => x.id === id) || seats.find(x => x.id === id); if (r) setOffice(r.office); };
   return <div className="wall">
     <div className="wall-top"><Tally races={races} m={m} seats={seats} totals={totals} scope={scope} setScope={setScope} odds={live ? null : o} c={c}/></div>
-    <aside className="wall-left"><Dial m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live} model={cur} chips={<ModelChips models={models} model={model} pick={pick}/>}/></aside>
-    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full} c={c}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full} c={c} model={cur}/> : shown && <Detail r={shown} m={m} national={national} odds={live ? null : o} c={c} model={cur} locked={locked}/>}</div>
+    <aside className="wall-left"><Dial m={m} setM={setM} sc={sc} live={live} chips={<ModelChips models={models} model={model} pick={pick}/>}/></aside>
+    <div className="wall-center"><TileMap races={races} m={m} office={office} setOffice={setOffice} selected={selected} select={select} noRead={noRead} seats={seats} full={full} c={c}/>{selSeat ? <SeatDetail s={selSeat} m={m} national={national} full={full} c={c} model={cur}/> : shown && <Detail r={shown} m={m} national={national} odds={live ? null : o} c={c} model={cur} locked={locked} zero={sc.zero}/>}</div>
     <aside className="wall-right"><Board races={races} m={m} selected={selected} select={select} office={office} c={c}/></aside>
   </div>;
 }
 
-function DialBar({ m, setM, national, lastFall, history, live = null, modelKey = 'bet' }: { m: number; setM: (v: number) => void; national: number; lastFall: number; history: HistoryPreset[]; live?: LiveDial; modelKey?: string }) {
-  const span = Math.max(8, Math.ceil(lastFall));
+function DialBar({ m, setM, sc }: { m: number; setM: (v: number) => void; sc: Scenario }) {
+  const span = Math.max(8, ...sc.ticks.map(t => Math.ceil(Math.abs(t.v))));
   const near = (x: number) => Math.abs(m - x) < 0.05;
-  const w = dialWords(m, modelKey);
-  const presets = presetList(history, national, lastFall, live, modelKey);
-  return <section className="wall-dialbar" aria-label={w.kicker}>
-    <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{Math.abs(m).toFixed(1)}</span><span className="wall-dialbar-dir">{w.dir}<small>{w.kicker} Drag to change every {w.pollFree ? 'seat' : 'race'}.</small></span></div>
-    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => { const v = Number(e.target.value); const hit = presets.find(([, p]) => Math.abs(p - v) <= SNAP); setM(hit ? hit[1] : v); }} aria-label={w.aria}/>
-    <div className="wall-ruler" role="group" aria-label="Past polling misses">{presets.map(([label, v]) => <button key={label} type="button" className={`wall-ruler-mark ga-${pct(100 * (v + span) / (2 * span))}${near(v) ? ' is-on' : ''}`} aria-pressed={near(v)} aria-label={`${label}: ${Math.abs(v) < EVEN ? 'no miss' : `${Math.abs(v).toFixed(1)} points toward ${v > 0 ? 'Democrats' : 'Republicans'}`}`} onClick={() => setM(v)}><i aria-hidden="true"/><span>{short(label)}</span></button>)}</div>
+  return <section className="wall-dialbar" aria-label={sc.question}>
+    <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{sc.show(m)}</span><span className="wall-dialbar-dir">{sc.dir(m)}<small>{sc.question} Drag to change every {sc.scope}.</small></span></div>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onChange={e => { const v = Number(e.target.value); const hit = sc.ticks.find(t => Math.abs(t.v - v) <= SNAP); setM(hit ? hit.v : v); }} aria-label={sc.aria}/>
+    <div className="wall-ruler" role="group" aria-label={sc.tableHead}>{sc.ticks.map(t => <button key={t.name} type="button" className={`wall-ruler-mark ga-${pct(100 * (t.v + span) / (2 * span))}${near(t.v) ? ' is-on' : ''}`} aria-pressed={near(t.v)} aria-label={`${t.name}: ${t.sub}`} onClick={() => setM(t.v)}><i aria-hidden="true"/><span>{t.label}</span></button>)}</div>
   <div className="phone-key" aria-hidden="true"><span className="phone-key-bar"><i className="r-safe"/><i className="r-likely"/><i className="r-lean"/><i className="toss"/><i className="d-lean"/><i className="d-likely"/><i className="d-safe"/></span><span className="phone-key-labels"><b>Safe R</b><b>Toss-up</b><b>Safe D</b></span></div>
   </section>;
 }
@@ -364,16 +386,15 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice, odds, c = n
   </section>;
 }
 
-// Phone: the same scenarios as a table under the chamber block; a tap sets the dial.
-function Scenarios({ presets, m, setM, at, modelKey = 'bet' }: { presets: [string, number][]; m: number; setM: (v: number) => void; at: (v: number) => Notch | null; modelKey?: string }) {
-  const rows = presets.map(([label, v]) => ({ label, v, n: at(v) })).filter(x => x.n) as { label: string; v: number; n: Notch }[];
+// Phone: the reading's scenarios as a table under the chamber block; a tap sets the dial.
+function Scenarios({ sc, m, setM, at }: { sc: Scenario; m: number; setM: (v: number) => void; at: (v: number) => Notch | null }) {
+  const rows = sc.ticks.map(t => ({ t, n: at(t.v) })).filter(x => x.n) as { t: Tick; n: Notch }[];
   if (!rows.length) return null;
   const near = (x: number) => Math.abs(m - x) < 0.05;
-  const pollFree = !!POLL_FREE[modelKey];
-  return <section className="phone-scen" aria-label={pollFree ? 'If the year shifts like a past polling miss' : 'If the polls miss like a past year'}>
-    <div className="phone-scen-head" aria-hidden="true"><span>{pollFree ? 'If the year shifts like…' : 'If the polls miss like…'}</span><span>Senate</span><span>House</span><span>D control</span></div>
-    {rows.map(({ label, v, n }) => <button key={label} type="button" aria-pressed={near(v)} className={near(v) ? 'is-on' : ''} onClick={() => setM(v)} aria-label={`${label}: Senate ${n.sD} to ${n.sR}, House ${n.hD} to ${n.hR}${n.pS !== null && n.pH !== null ? `, Democrats control the Senate ${chanceLabel(n.pS)} and the House ${chanceLabel(n.pH)}` : ''}`}>
-      <span className="phone-scen-label">{label}<small>{presetSmall(v, modelKey)}</small></span>
+  return <section className="phone-scen" aria-label={sc.tableHead}>
+    <div className="phone-scen-head" aria-hidden="true"><span>{sc.tableHead}</span><span>Senate</span><span>House</span><span>D control</span></div>
+    {rows.map(({ t, n }) => <button key={t.name} type="button" aria-pressed={near(t.v)} className={near(t.v) ? 'is-on' : ''} onClick={() => setM(t.v)} aria-label={`${t.name}: Senate ${n.sD} to ${n.sR}, House ${n.hD} to ${n.hR}${n.pS !== null && n.pH !== null ? `, Democrats control the Senate ${chanceLabel(n.pS)} and the House ${chanceLabel(n.pH)}` : ''}`}>
+      <span className="phone-scen-label">{t.name}<small>{t.sub}</small></span>
       <span className="phone-scen-num"><b className="is-d">{n.sD}</b><i>–</i><b className="is-r">{n.sR}</b></span>
       <span className="phone-scen-num"><b className="is-d">{n.hD}</b><i>–</i><b className="is-r">{n.hR}</b></span>
       <span className="phone-scen-odds">{n.pS !== null && n.pH !== null ? <>{chanceLabel(n.pS)}<small>Sen</small> {chanceLabel(n.pH)}<small>House</small></> : '—'}</span>
@@ -382,7 +403,7 @@ function Scenarios({ presets, m, setM, at, modelKey = 'bet' }: { presets: [strin
   </section>;
 }
 
-export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null, odds = null, models = [], locked = false }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null; models?: ModelDef[]; locked?: boolean }) {
+export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null, odds = null, models = [], locked = false, extras = {} }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null; models?: ModelDef[]; locked?: boolean; extras?: ScenarioExtras }) {
   const [m, setM] = useState(live ? live.m : national);
   const [open, setOpen] = useState<string | null>(null);
   const [office, setOffice] = useState<Office>('SEN');
@@ -391,21 +412,22 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const [model, setModel] = useState('bet');
   const cur = models.find(x => x.key === model) || null; const c: Centers = cur ? cur.centers : null; const o = cur ? cur.odds : odds;
   const pick = (k: string) => { const next = pickModel(models, k, national, live); setModel(next.model); setM(next.m); };
+  const sc = scenarioFor(model, { history, national, lastFall, live, extras });
   const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m, c) })).sort((a, b) => b.v - a.v), [races, m, office, c]);
   const pickRace = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
     <ModelChips models={models} model={model} pick={pick}/>
     {totals ? <PhoneChambers races={races} m={m} seats={seats} totals={totals} office={office} setOffice={setOffice} odds={live ? null : o} c={c}/> : <Tally races={races} m={m} seats={seats} totals={totals} c={c}/>}
-    <Scenarios presets={presetList(history, national, lastFall, live, model)} m={m} setM={setM} at={v => notchAt(races, seats, totals, live ? null : o, v, c)} modelKey={model}/>
+    <Scenarios sc={sc} m={m} setM={setM} at={v => notchAt(races, seats, totals, live ? null : o, v, c)}/>
     <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pickRace} noRead={noRead} seats={seats} full={full} hideToggle={!!totals} c={c}/>
     {openSeat && <SeatDetail s={openSeat} m={m} national={national} full={full} c={c} model={cur}/>}
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>
       <button type="button" className={`wall-mrow ${shade(v)}`} aria-expanded={open === r.id} onClick={() => setOpen(open === r.id ? null : r.id)}>
         <span className="wall-mrow-name">{r.name}<small>{last(r.d)} ({r.dLetter}) vs {last(r.r)} (R)</small></span>
         <span className="wall-mrow-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${Math.abs(v).toFixed(1)}`}</span></button>
-      {open === r.id && <Detail r={r} m={m} national={national} odds={live ? null : o} c={c} model={cur} locked={locked}/>}
+      {open === r.id && <Detail r={r} m={m} national={national} odds={live ? null : o} c={c} model={cur} locked={locked} zero={sc.zero}/>}
     </li>)}
     {office === 'HOUSE' && noRead.map(n => <li key={n.id}><a className="wall-mrow is-noread" href={`/race/${n.slug}/`}><span className="wall-mrow-name">{n.name}<small>{last(n.d)} ({n.dLetter}) vs {last(n.r)} (R) · {n.rating}</small></span><span className="wall-mrow-v">no polls</span></a></li>)}</ol>
-    <DialBar m={m} setM={setM} national={national} lastFall={lastFall} history={history} live={live} modelKey={model}/>
+    <DialBar m={m} setM={setM} sc={sc}/>
   </div>;
 }
