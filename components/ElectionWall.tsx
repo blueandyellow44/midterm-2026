@@ -1,6 +1,7 @@
 'use client';
 import { surname, pollCountLabel } from '@/lib/format';
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState, useRef, useEffect } from 'react';
+import { writeSelection } from '@/lib/selection';
 import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
 
@@ -309,7 +310,8 @@ function SeatDetail({ s, m, national, full, c = null, model = null }: { s: WallS
   if (s.kind !== 'projection') return <section className="wall-panel wall-detail" aria-label={`${s.name} rating`}>
     <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p><span className="wall-badge">Not tracked</span></div>
     <p className="wall-matchup">Cook Political Report rating: <strong>{s.rating}</strong>{s.holder === 'D' || s.holder === 'R' ? <> · seat held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}</> : null}</p>
-    <p className="wall-note">Governor races Undertow does not track carry Cook’s rating as given. Governor results track the presidential vote badly (in 2022 a swing projection missed them by 10.5 points on average against 4.2 for the polls), so no projection is made and the dial does not move this seat.</p>
+    {typeof c?.[s.id] === 'number' && model ? <p className="wall-matchup">{model.name} reads it <strong className={side(seatMarginAt(s, m, c))}>{Math.abs(seatMarginAt(s, m, c)) < EVEN ? 'Even' : `${seatMarginAt(s, m, c) > 0 ? 'D' : 'R'} +${Math.abs(seatMarginAt(s, m, c)).toFixed(1)}`}</strong> at this setting; the dial moves it under this reading.</p> : null}
+    <p className="wall-note">{typeof c?.[s.id] === 'number' ? 'Under my bet this seat carries Cook’s rating as given and the dial does not move it: g' : 'Governor races Undertow does not track carry Cook’s rating as given. G'}overnor results track the presidential vote badly (in 2022 a swing projection missed them by 10.5 points on average against 4.2 for the polls), so no projection is made{typeof c?.[s.id] === 'number' ? '' : ' and the dial does not move this seat'}.</p>
   </section>;
   const at = seatMarginAt(s, m, c); const moved = Math.abs(m - (model ? model.defaultDial : national)) >= 0.05;
   const parts: [string, number][] = [['Generic-ballot swing since 2024', s.shift], ['Incumbent on the ballot', s.incumbency], [LEAN_LABEL, national], ['This state’s polling record', s.stateAdj], ['Early vote', s.earlyVote]];
@@ -346,6 +348,7 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const cur = models.find(x => x.key === model) || null; const c: Centers = cur ? cur.centers : null; const o = cur ? cur.odds : odds;
   const pick = (k: string) => { const next = pickModel(models, k, national, live); setModel(next.model); setM(next.m); };
   const sc = scenarioFor(model, { history, national, lastFall, live, extras });
+  useEffect(() => { const hit = sc.ticks.find(t => Math.abs(t.v - m) < 0.05); writeSelection({ model, name: cur ? cur.name : 'My bet', m, label: hit ? hit.name : `${sc.show(m)} ${sc.unit}`, at: new Date().toISOString() }); }, [model, m]);   // eslint-disable-line react-hooks/exhaustive-deps -- sc and cur derive from model
   const full = !!totals;
   const sel = races.find(r => r.id === selected);
   const selSeat = !sel ? seats.find(x => x.id === selected) : undefined;
@@ -389,23 +392,6 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice, odds, c = n
   </section>;
 }
 
-// Phone: the reading's scenarios as a table under the chamber block; a tap sets the dial.
-function Scenarios({ sc, m, setM, at }: { sc: Scenario; m: number; setM: (v: number) => void; at: (v: number) => Notch | null }) {
-  const rows = sc.ticks.map(t => ({ t, n: at(t.v) })).filter(x => x.n) as { t: Tick; n: Notch }[];
-  if (!rows.length) return null;
-  const near = (x: number) => Math.abs(m - x) < 0.05;
-  return <section className="phone-scen" aria-label={sc.tableHead}>
-    <div className="phone-scen-head" aria-hidden="true"><span>{sc.tableHead}</span><span>Senate</span><span>House</span><span>D control</span></div>
-    {rows.map(({ t, n }) => <button key={t.name} type="button" aria-pressed={near(t.v)} className={near(t.v) ? 'is-on' : ''} onClick={() => setM(t.v)} aria-label={`${t.name}: Senate ${n.sD} to ${n.sR}, House ${n.hD} to ${n.hR}${n.pS !== null && n.pH !== null ? `, Democrats control the Senate ${chanceLabel(n.pS)} and the House ${chanceLabel(n.pH)}` : ''}`}>
-      <span className="phone-scen-label">{t.name}<small>{t.sub}</small></span>
-      <span className="phone-scen-num"><b className="is-d">{n.sD}</b><i>–</i><b className="is-r">{n.sR}</b></span>
-      <span className="phone-scen-num"><b className="is-d">{n.hD}</b><i>–</i><b className="is-r">{n.hR}</b></span>
-      <span className="phone-scen-odds">{n.pS !== null && n.pH !== null ? <>{chanceLabel(n.pS)}<small>Sen</small> {chanceLabel(n.pH)}<small>House</small></> : '—'}</span>
-    </button>)}
-    <p className="phone-scen-note">Tap a row to set the dial. <a href="/method/#models">Other readings →</a></p>
-  </section>;
-}
-
 export function MobileWall({ races, national, lastFall, history, noRead = [], seats = [], totals = null, live = null, odds = null, models = [], locked = false, extras = {} }: { races: WallRace[]; national: number; lastFall: number; history: HistoryPreset[]; noRead?: NoReadRace[]; seats?: WallSeat[]; totals?: ChamberTotals | null; live?: LiveDial; odds?: Odds | null; models?: ModelDef[]; locked?: boolean; extras?: ScenarioExtras }) {
   const [m, setM] = useState(live ? live.m : national);
   const [open, setOpen] = useState<string | null>(null);
@@ -416,12 +402,12 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const cur = models.find(x => x.key === model) || null; const c: Centers = cur ? cur.centers : null; const o = cur ? cur.odds : odds;
   const pick = (k: string) => { const next = pickModel(models, k, national, live); setModel(next.model); setM(next.m); };
   const sc = scenarioFor(model, { history, national, lastFall, live, extras });
+  useEffect(() => { const hit = sc.ticks.find(t => Math.abs(t.v - m) < 0.05); writeSelection({ model, name: cur ? cur.name : 'My bet', m, label: hit ? hit.name : `${sc.show(m)} ${sc.unit}`, at: new Date().toISOString() }); }, [model, m]);   // eslint-disable-line react-hooks/exhaustive-deps -- sc and cur derive from model
   const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m, c) })).sort((a, b) => b.v - a.v), [races, m, office, c]);
   const pickRace = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
     <ModelChips models={models} model={model} pick={pick}/>
     {totals ? <PhoneChambers races={races} m={m} seats={seats} totals={totals} office={office} setOffice={setOffice} odds={live ? null : o} c={c}/> : <Tally races={races} m={m} seats={seats} totals={totals} c={c}/>}
-    <Scenarios sc={sc} m={m} setM={setM} at={v => notchAt(races, seats, totals, live ? null : o, v, c)}/>
     <TileMap races={races} m={m} office={office} setOffice={setOffice} selected={open || ''} select={pickRace} noRead={noRead} seats={seats} full={full} hideToggle={!!totals} c={c}/>
     {openSeat && <SeatDetail s={openSeat} m={m} national={national} full={full} c={c} model={cur}/>}
     <ol className="wall-mobile-list">{rows.map(({ r, v }) => <li key={r.id} id={`m-${r.id}`}>

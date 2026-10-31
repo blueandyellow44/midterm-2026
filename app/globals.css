@@ -240,20 +240,6 @@ html[data-view=mobile] .method-document h2 {font-size:21px;}
 .wall-models-desc {margin:5px 0 0;font-size:11.5px;line-height:1.45;color:var(--muted);} .wall-models-desc strong {color:var(--ink);font-weight:600;} .wall-models-desc a {white-space:nowrap;}
 html[data-view=mobile] .wall-models-desc {font-size:12px;}
 html[data-view=mobile] .wall-models {margin:0 0 8px;} html[data-view=mobile] .wall-models button {min-height:36px;}
-/* Phone scenarios (Max, 2026-10-29): the dial's presets as rows with seats and control odds; a tap sets the dial. */
-.phone-scen {margin:10px 0 0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);}
-.phone-scen-head,.phone-scen button {display:grid;grid-template-columns:1.4fr .9fr 1fr 1.3fr;gap:6px;align-items:center;padding:6px 10px;}
-.phone-scen-head {font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--line);}
-.phone-scen button {width:100%;text-align:left;background:none;color:var(--ink);border:0;border-bottom:1px solid var(--line);min-height:44px;font-size:12px;border-radius:0;}
-.phone-scen button:last-of-type {border-bottom:0;}
-.phone-scen button.is-on {background:var(--panel2);box-shadow:inset 3px 0 0 var(--ink);}
-.phone-scen-label {font-weight:600;line-height:1.15;} .phone-scen-label small {display:block;font-weight:500;font-family:var(--font-mono);font-size:10px;opacity:.7;}
-.phone-scen-num,.phone-scen-odds {font-family:var(--font-num);font-variant-numeric:tabular-nums;font-weight:700;font-size:12px;} .phone-scen-num i {font-style:normal;color:var(--muted);margin:0 2px;}
-.phone-scen-odds small {font-family:var(--font-mono);font-weight:500;font-size:9px;color:var(--muted);margin:0 4px 0 2px;}
-#field .field-note {font-size:11px;color:var(--muted);margin-left:6px;white-space:nowrap;}
-html[data-view=mobile] #field .field-note {display:block;margin:2px 0 0;white-space:normal;}
-#field td small:not(.field-note) {font-size:11px;color:var(--muted);}
-.phone-scen-note {margin:0;padding:6px 10px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);}
 .wall-tally {display:flex;flex-direction:column;gap:12px;}
 .wall-tally-row {display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 10px;}
 .wall-tally-label {font-size:13px;font-weight:600;}

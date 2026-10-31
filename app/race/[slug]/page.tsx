@@ -4,6 +4,7 @@ import { derived,races,publicEstimates,pollsterNames,signalsMeta,predictions } f
 import { MethodNotes, signalLines } from '@/components/SignalReading';
 import { Both,RecallLegend,Empty } from '@/components/UI';
 import { Conditions } from '@/components/RaceLedger';
+import { Followed, type FollowedData } from '@/components/Followed';
 import { RecallComparison } from '@/components/RecallComparison';
 import { DotPlot, CandidateChart } from '@/components/Charts';
 import { Panel, Figure, FactorBars, MarginTrack, tone, EVEN } from '@/components/Console';
@@ -13,6 +14,10 @@ import { join } from 'node:path';
 export function generateStaticParams(){return races.map(r=>({slug:r.slug}));}
 export const dynamicParams=false;
 // Races with no polling read have no per-race card (build_share_cards.py draws only read races); they share the site card.
+// The console's picked reading and scenario, applied to this race under the official figures (Max, 2026-10-31: cards
+// follow by model and dial). Centers and odds grids are read from the sealed release; the island computes nothing new.
+function followedData(r:any,s:any,names:{D:string;R:string},dl:string):FollowedData{const md=(derived as any).models?.models||{};const sim=(derived as any).simulation;const centers:Record<string,number>={};const grids:Record<string,number[]|undefined>={bet:sim?.dial?.per_race?.[r.id]};for(const [k,x] of Object.entries(md) as [string,any][]){if(typeof x.centers?.[r.id]==='number')centers[k]=x.centers[r.id];grids[k]=x.simulation?.dial?.per_race?.[r.id];}return {id:r.id,d:names.D,r:names.R,dLetter:dl,national:Number((derived as any).signals?.rules?.poll_error_toward_d)||0,bet:{polls:Number(s.polling_margin)||0,stateAdj:Number(s.polling_error?.state_adjustment)||0,spending:Number(s.delta_spending)||0,earlyVote:Number(s.delta_early_vote)||0,partisan:Number(s.delta_partisan)||0},centers,grids,values:sim?.dial?.values||null};}
+
 const raceImage=(slug:string)=>existsSync(join(process.cwd(),'public/og',`${slug}.png`))?`/og/${slug}.png`:SITE_PREVIEW_IMAGE.url;
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const r=races.find(r=>r.slug===slug);const img=r?raceImage(r.slug):'';return {title:r?.name||'Race not found',alternates:r?{canonical:`/race/${r.slug}/`}:undefined,openGraph:r?{title:`${r.name} · Undertow`,siteName:'Undertow',type:'website',url:`/race/${r.slug}/`,description:'The polls, my number, and the pull between them. By Max Sheahan.',images:[{url:img,width:1200,height:630,alt:img===SITE_PREVIEW_IMAGE.url?SITE_PREVIEW_IMAGE.alt:`${r.name}: polls, Undertow and the pull`}]}:undefined,twitter:r?{card:'summary_large_image',images:[img]}:undefined,description:r?`${r.name}: the polls, my number and the pull between them, with every poll and source behind it.`:'Race not found'};}
 
@@ -34,6 +39,7 @@ function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates
    <Figure label="Undertow" value={label(und,names)} v={und} sub={`± ${Number(s.range_sd).toFixed(1)} · my call, ${predictions?'frozen':'freezes'} Nov 2`}/>
    <Figure label="The pull" value={Math.abs(pull)<EVEN?'None':`${Math.abs(pull).toFixed(1)} → ${pull>0?dl:'R'}`} v={pull} sub="Undertow minus the polls"/>
   </div>
+  <Followed data={followedData(r,s,names,dl)}/>
   <div className="race-trackrow"><span className="is-r">◀ {lastName(names.R)}</span><MarginTrack v={und} tick={polls} large/><span className="is-d">{lastName(names.D)} ▶</span></div>
   <p className="c-sub race-trackkey"><i className="c-key-tick"/> polls · bar: Undertow</p>
   {(()=>{const p=Number((derived as any).simulation?.per_seat?.[r.id]?.p_d);if(!Number.isFinite(p))return null;const pc=Math.max(0,Math.min(100,Math.round(100*p)));const cl=(x:number)=>x<0.005?'<1%':x>0.995?'>99%':`${Math.round(100*x)}%`;

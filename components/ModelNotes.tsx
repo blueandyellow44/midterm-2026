@@ -19,7 +19,7 @@ export function ModelNotes() {
   const sc = (g: any, k: string) => g?.[k];
   return <section className="method-document mb-10" id="models">
     <h2>Other ways to read the same polls</h2>
-    <p>The home page has a switch beside the dial: my bet, then four other readings built here from the same sealed data. None of them is graded; the bet is. Each one gives every seat up this year a center, keeps the same correlated spread, and moves with the dial. They exist so a reader can see where the bet sits against the standard ways of reading a midterm, with the arithmetic in the open.</p>
+    <p>The home page has a switch beside the dial: my bet, then four other readings built here from the same sealed data. None of them is graded; the bet is, beside the polling average it starts from. Each one gives every seat up this year a center, keeps the same correlated spread, and moves with the dial. They exist so a reader can see where the bet sits against the standard ways of reading a midterm, with the arithmetic in the open.</p>
     <ul>
       <li><strong>Polls only.</strong> The polling average as published, no lean. Seats without a poll carry the 2024 result, the generic-ballot shift and the incumbency bonus; untracked governors keep Cook’s rating.</li>
       <li><strong>Forecaster blend.</strong> The shape of a professional forecast: each race’s polls blended with a prior from the state’s 2024 result and this year’s environment, the polls weighted more the more of them there are (the same inverse-variance weights as the Senate partisan term, applied to every office alike). Its national spread is the one its own backtest measured, {number(m.blend?.national_sd, 1)} points.</li>
