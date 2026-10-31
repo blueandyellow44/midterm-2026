@@ -14,6 +14,9 @@ try {
   }
   cpSync(join(source,'manifest.json'),join(temp,'manifest.json'));
   validateBundle(temp);
+  // Stage 3 (audit 2026-10-31): once the site carries a frozen release (predictions.csv), a release without one cannot
+  // replace it, so a refresh after the freeze cannot change what gets graded. Override only with --unfreeze, on Max's word.
+  if (existsSync(join('data','predictions.csv')) && !existsSync(join(temp,'predictions.csv')) && !process.argv.includes('--unfreeze')) throw new Error('data/ carries a frozen release (predictions.csv); refusing to replace it with an unfrozen one (pass --unfreeze only on Max\'s word)');
   if (existsSync('data')) { mkdirSync('.backups',{recursive:true});renameSync('data',join('.backups',`data-${Date.now()}`)); }
   renameSync(temp,'data');
   console.log(`Synced and verified ${id}`);

@@ -2,7 +2,7 @@
 
 A static research tracker for thirteen 2026 Senate and governor races, with traceable poll-weighting evidence and a separate record of campaign rhetoric.
 
-It serves readers who want to inspect the sources and assumptions behind a polling comparison. Missing evidence is visible. Descriptive recall-vote differences are not causal estimates, debate heat is not vote choice, and probabilities remain absent until the scheduled freeze.
+It serves readers who want to inspect the sources and assumptions behind a polling comparison. Missing evidence is visible. Descriptive recall-vote differences are not causal estimates, debate heat is not vote choice, and the published win probabilities are preliminary until the November 2 freeze writes predictions.csv, the record that is graded.
 
 ![Election Weather desktop and mobile](docs/election-weather-desktop-v3.jpg)
 

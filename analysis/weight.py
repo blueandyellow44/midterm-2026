@@ -42,7 +42,7 @@ DEFAULT_NOTE = os.path.expanduser("~/Second Brain V2/Resources/methods/midterm-2
 BUNDLE_SCHEMA = "1.0"
 CSV_SCHEMAS = {
     "polls": "1.2", "pollsters": "1.0", "exclusions": "1.0", "heat": "1.0",
-    "coverage": "1.0", "backtest": "1.2", "predictions": "1.0", "results": "1.0",
+    "coverage": "1.0", "backtest": "1.2", "predictions": "1.1", "results": "1.0",
     "spending": "1.0", "fundamentals": "1.0", "spend_history": "1.0", "state_poll_error": "1.0", "poll_error_history": "1.0", "early_vote": "1.0", "recent_misses": "1.0", "early_vote_history": "1.0", "house_races": "1.0", "seats": "1.0", "generic_ballot": "1.0",
 }
 
@@ -81,7 +81,12 @@ EARLY_VOTE_HEADER = "state,d_margin_2022_same_day,d_margin_2024_same_day,d_margi
 SEATS_HEADER = "chamber,seat,state,district,up_2026,special,holder_party,incumbent_on_ballot,cook_rating,cook_rating_date,pres2024_d_minus_r,tracked_race,source_sha256".split(",")
 GENERIC_BALLOT_HEADER = "poll_id,pollster,sponsor,field_start,field_end,release_date,n,pop,D,R,other,undecided,source_url,confirmed_at_source,notes".split(",")
 POLL_ERROR_HISTORY_HEADER = "year,state,race,type,n_polls,poll_margin,actual_margin,bias,source_sha256".split(",")
-PREDICTIONS_HEADER = "race,vector,p_d_slot,weighted_margin,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
+# 1.1 (2026-10-31): p_d_simulation is the correlated simulation's chance at the bet, the number the site shows; p_d_slot stays the
+# documented flat curve (STAGE3_SIGMA). polling_margin and the terms are frozen beside the reading so grading can score the
+# pull and each term, not only the total: reading = polling_margin + polling_error_lean + spending + early_vote + partisan,
+# where polling_error_lean = the national lean + state_adjustment (the state part is also listed on its own). NA where a column
+# does not apply to the vector.
+PREDICTIONS_HEADER = "race,vector,p_d_slot,p_d_simulation,weighted_margin,polling_margin,polling_error_lean,state_adjustment,spending,early_vote,partisan,stratum_round,stratum_denominator,stratum_pop,n_retained,heat_race_set,frozen_at".split(",")
 RESULTS_HEADER = "race,resolution_status,winner_slot,certified_margin,denominator_note,result_url,resolved_at".split(",")
 
 SENATE_RACES = ["2026-TX-SEN", "2026-IA-SEN", "2026-ME-SEN", "2026-AK-SEN", "2026-OH-SEN-SPECIAL", "2026-MI-SEN", "2026-NC-SEN", "2026-GA-SEN",
@@ -2405,13 +2410,15 @@ class Bundle:
         rows = []
         heat_set = ",".join(derived["section9_heat"]["races_with_defined_debate_gap"]) or "NA"
         ests = {e["estimate_id"]: e for e in derived["estimates"]}
+        per_seat = ((derived.get("simulation") or {}).get("per_seat") or {})
+        na_terms = {"p_d_simulation": "NA", "polling_margin": "NA", "polling_error_lean": "NA", "state_adjustment": "NA", "spending": "NA", "early_vote": "NA", "partisan": "NA"}
         for race, blk in derived["races"].items():
             if blk["weighted_margin"] is None:
                 continue
             read = blk.get("polling_read") or {}
             # The published average is frozen for every race (Codex audit 2026-10-27: Alaska and Maine had Undertow rows
             # but no polling rows); its ballot rounds are recorded so an incompatible result can be left ungraded.
-            rows.append({"race": race, "vector": "ALL_ELIGIBLE", "p_d_slot": f"{stage3_probability(blk['weighted_margin']):.4f}",
+            rows.append({"race": race, "vector": "ALL_ELIGIBLE", "p_d_slot": f"{stage3_probability(blk['weighted_margin']):.4f}", **na_terms,
                          "weighted_margin": f"{blk['weighted_margin']:.2f}", "stratum_round": read.get("rounds") or "NA",
                          "stratum_denominator": "MIXED" if read.get("method") == "v2" else "NA", "stratum_pop": "MIXED" if read.get("method") == "v2" else "NA",
                          "n_retained": blk["retained_count"], "heat_race_set": heat_set, "frozen_at": frozen_at})
@@ -2429,7 +2436,7 @@ class Bundle:
                 if not pool or not any(e["recall_weighted"] == other and same(e) for e in in_avg) or not sum(e["weight"] for e in pool):
                     continue
                 m = sum(e["weight"] * e["margin"] for e in pool) / sum(e["weight"] for e in pool)
-                rows.append({"race": race, "vector": vector, "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
+                rows.append({"race": race, "vector": vector, "p_d_slot": f"{stage3_probability(m):.4f}", **na_terms, "weighted_margin": f"{m:.2f}",
                              "stratum_round": cs["round"], "stratum_denominator": cs["denominator_class"], "stratum_pop": cs["pop"],
                              "n_retained": len(pool), "heat_race_set": heat_set, "frozen_at": frozen_at})
         # Our reading (signal-adjusted, method v1.3) is frozen beside the polling vectors so both are graded (Max, 2026-10-26).
@@ -2439,7 +2446,13 @@ class Bundle:
                 continue
             read = derived["races"].get(race, {}).get("polling_read") or {}
             strat = {"round": read.get("rounds") or "NA", "denominator_class": "MIXED", "pop": "MIXED"}
-            rows.append({"race": race, "vector": "SIGNAL_ADJUSTED", "p_d_slot": f"{stage3_probability(m):.4f}", "weighted_margin": f"{m:.2f}",
+            ps = per_seat.get(race) or {}
+            f2 = lambda v: "NA" if v is None or not isinstance(v, (int, float)) or not math.isfinite(v) else f"{v:.2f}"
+            terms = {"p_d_simulation": f"{ps['p_d']:.4f}" if isinstance(ps.get("p_d"), (int, float)) else "NA",
+                     "polling_margin": f2(sig.get("polling_margin")), "polling_error_lean": f2(sig.get("delta_polling_error")),
+                     "state_adjustment": f2((sig.get("polling_error") or {}).get("state_adjustment") if isinstance(sig.get("polling_error"), dict) else None),
+                     "spending": f2(sig.get("delta_spending")), "early_vote": f2(sig.get("delta_early_vote")), "partisan": f2(sig.get("delta_partisan"))}
+            rows.append({"race": race, "vector": "SIGNAL_ADJUSTED", "p_d_slot": f"{stage3_probability(m):.4f}", **terms, "weighted_margin": f"{m:.2f}",
                          "stratum_round": strat.get("round", "NA"), "stratum_denominator": strat.get("denominator_class", "NA"), "stratum_pop": strat.get("pop", "NA"),
                          "n_retained": derived["races"].get(race, {}).get("retained_count", 0), "heat_race_set": heat_set, "frozen_at": frozen_at})
         return rows

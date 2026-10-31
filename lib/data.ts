@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { validateBundle, readCsv } from '../scripts/bundle.mjs';
 import { toPublicNote } from './public-note';
@@ -25,4 +25,6 @@ export const publicEstimates=(id:string)=>derived.estimates.filter((e:{race:stri
 export const method=toPublicNote(readFileSync(join(process.cwd(),'data/midterm-2026-poll-weighting.md'),'utf8'));
 export const excluded=readCsv(readFileSync(join(process.cwd(),'data/exclusions.csv'),'utf8'));
 export const quarantine=derived.estimates.filter((e:{quarantined:boolean})=>e.quarantined);
+// The frozen record (Stage 3): present only in a release sealed with --freeze; null before November 2.
+export const predictions: Record<string,string>[]|null=existsSync(join(process.cwd(),'data/predictions.csv'))?readCsv(readFileSync(join(process.cwd(),'data/predictions.csv'),'utf8'),['race','vector','p_d_slot','weighted_margin','frozen_at']):null;
 export const pollsterNames: Record<string,string>=Object.fromEntries(readCsv(readFileSync(join(process.cwd(),'data/pollsters.csv'),'utf8')).map((p:Record<string,string>)=>[p.pollster_id,p.pollster_name||p.pollster_id]));
