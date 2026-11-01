@@ -224,7 +224,11 @@ def main(argv=None) -> int:
     if a.gov_digital:
         with open(a.gov_digital, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
-                g = num(r["google_usd_2026-09-27_to_2026-10-24"]); m = num(r["meta_in_state_usd_2026-09-24_to_2026-10-23"])
+                # column names carry each read's window (2026-10-26 read, 2026-11-01 refresh); exactly one of each
+                gcol = [k for k in r if k.startswith("google_usd_")]; mcol = [k for k in r if k.startswith("meta_in_state_usd_")]
+                if len(gcol) != 1 or len(mcol) != 1:
+                    raise SystemExit(f"governor digital spend needs one google_usd_* and one meta_in_state_usd_* column: {list(r)}")
+                g = num(r[gcol[0]]); m = num(r[mcol[0]])
                 if g is None or m is None:
                     raise SystemExit(f"governor digital spend incomplete: {r['race']} {r['slot']}")
                 gov[(r["race"], r["slot"])] = g + m
