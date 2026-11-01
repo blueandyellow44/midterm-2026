@@ -400,7 +400,6 @@ html[data-view=mobile] .recall-chart-key {font-size:13px;gap:4px 12px;}
 .wall-strip-moved {font-size:12px;color:var(--muted);} .wall-strip-night b,.wall-strip-moved b {font-weight:700;}
 .wall-strip-night {padding:6px 10px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);}
 .tonight-hour {margin:22px 0 8px;font-family:var(--font-num);font-size:22px;font-weight:700;}
-.tonight-local {display:inline-block;margin-left:10px;font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--muted);}
 .tonight-hour small {font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--muted);margin-left:8px;letter-spacing:.04em;text-transform:uppercase;}
 
 /* 2026-10-28 (Max: "ui all fucked up. crammed. hidden. boxes too tight"): panels size to their content, nothing clips. */

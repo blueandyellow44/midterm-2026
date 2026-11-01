@@ -19,3 +19,19 @@ describe('poll-closing instants', () => {
     for (const c of Object.values(STATE_CLOSE)) if (c.note) expect(c.note.replace(/(\d{1,2}:\d\d|midnight) ET/g, '')).not.toMatch(/\d{1,2}:\d\d|midnight/);
   });
 });
+
+import { localClock, noteInstant } from '../components/LocalClose';
+describe('local clock', () => {
+  it('shows the reader zone, with a weekday only when the day is not Nov 3', () => {
+    expect(localClock('2026-11-04T00:00:00.000Z', 'America/Los_Angeles')).toBe('4:00 PM PST');
+    expect(localClock('2026-11-04T00:00:00.000Z', 'America/New_York')).toBe('7:00 PM EST');
+    expect(localClock('2026-11-04T00:00:00.000Z', 'Europe/London')).toBe('Wed 12:00 AM GMT');
+    expect(localClock('2026-11-04T06:00:00.000Z', 'Pacific/Honolulu')).toBe('8:00 PM HST');
+  });
+  it('reads note hours as evening Eastern, midnight and 1:00 as Nov 4', () => {
+    expect(noteInstant(6, 0)).toBe('2026-11-03T23:00:00.000Z');
+    expect(noteInstant(9, 0)).toBe('2026-11-04T02:00:00.000Z');
+    expect(noteInstant(12, 0)).toBe('2026-11-04T05:00:00.000Z');
+    expect(noteInstant(1, 0)).toBe('2026-11-04T06:00:00.000Z');
+  });
+});
