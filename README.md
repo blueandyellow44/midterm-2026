@@ -1,10 +1,10 @@
-# Election Weather
+# Undertow
 
-A static research tracker for thirteen 2026 Senate and governor races, with traceable poll-weighting evidence and a separate record of campaign rhetoric.
+Live at [midtermundertow.com](https://midtermundertow.com). The 2026 Senate, governor and House races I track: the polls, and my bet on where last fall's polling miss, campaign money and early voting say they are off. Every figure tied to a verified release. Formerly called Election Weather; that name survives in a few file and Worker names below.
 
 It serves readers who want to inspect the sources and assumptions behind a polling comparison. Missing evidence is visible. Descriptive recall-vote differences are not causal estimates, debate heat is not vote choice, and the published win probabilities are preliminary until the November 2 freeze writes predictions.csv, the record that is graded.
 
-![Election Weather desktop and mobile](docs/election-weather-desktop-v3.jpg)
+![Undertow desktop and mobile](docs/election-weather-desktop-v3.jpg)
 
 ## Stack
 
