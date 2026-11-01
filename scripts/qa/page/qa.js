@@ -56,6 +56,7 @@
     win.scrollTo(0, 0);
     return out;
   }
+  window.__qaCheck = check;   // exposed so a doctored document can prove the checks fail (ROE: a detector is untrusted until seen to fail)
   const add = items => { for (const i of items) (i.level === 'FAIL' ? report.failures : report.warnings).push(i); };
   const status = s => { bar.textContent = `Undertow QA: ${s}\nruns ${report.runs} · FAIL ${report.failures.length} · WARN ${report.warnings.length}`; };
   async function homePanels(doc, w) {
