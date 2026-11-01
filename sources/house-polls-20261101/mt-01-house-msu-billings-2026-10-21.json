@@ -1,0 +1,38 @@
+{
+ "file": "mt-01-house-msu-billings-2026-10-21.json",
+ "race": "2026-MT-01-HOUSE",
+ "pid": "msu-billings",
+ "name": "Montana State University Billings (Mountain State Poll)",
+ "sponsor": "self (MSU Billings Office of the Provost, College of Liberal Arts and Social Sciences, Dept. of Social Sciences and Cultural Studies)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "msu-billings-h-2026-MT-01-HOUSE-2026-10-21",
+ "poll": {
+  "field_start": "2026-10-05",
+  "field_end": "2026-10-21",
+  "release_date": "2026-10-27",
+  "n": null,
+  "pop": "A",
+  "D": 49.0,
+  "R": 32.0,
+  "other": 4.0,
+  "undecided": 11.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.msubillings.edu/class/nams/polls/2026-mountain-states-poll-report.pdf",
+  "source_locator": "Q12 'which of the following candidates would you choose to support for US House Representative in District 1? (+/- 5.78%)' Total column: Aaron Flint (R) 32%, Sam Forstag (D) 49%, Nick Sheedy (L) 4%, Don't know 11%",
+  "notes": "District 1 subsample of a 720-response statewide poll (129 RDD phone, 591 online quota via Centiment), Oct 5-21. District n not printed; USPOLLINGDATA LISTS n=287 (consistent with the stated +/-5.78% MOE), left null. Daily Montanan (Oct 29) says the poll did not screen for registered or likely voters, so pop=A. other = Sheedy 4. release_date = PDF creation/last-modified date Oct 27 2026; Daily Montanan Oct 29 says 'released this week'.",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Responses are weighted according to Montana census data.",
+  "method_url": "https://www.msubillings.edu/class/nams/polls/2026-mountain-states-poll-report.pdf",
+  "method_locator": "Introduction and Acknowledgements (p.2)",
+  "mode": "random digit dial phone (Scientific Telephone Samples) plus online quota sample (Centiment)",
+  "method_owner": "Montana State University Billings",
+  "method_date": "2026-10-27",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-mitchell-2026-10-27.json",
+ "race": "2026-MI-SEN",
+ "pid": "mitchell",
+ "name": "Mitchell Research & Communications",
+ "sponsor": "CBS Detroit and other Michigan television stations",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "mitchell-s-2026-MI-SEN-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-28",
+  "n": 636,
+  "pop": "LV",
+  "D": 51,
+  "R": 44,
+  "other": null,
+  "undecided": 3,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.cbsnews.com/detroit/news/el-sayed-widens-lead-rogers-michigan-senate-poll/",
+  "source_locator": "CBS Detroit (sponsor) article, published 2026-10-28: 'El-Sayed was the choice of 51% of likely voters, with Rogers at 44% ... Three percent were undecided, and third-party candidates each drew 1% or less.'",
+  "notes": "Sponsor's own article (co-sponsor precedent: Glengariff/WDIV). Third-party total not stated, so other null (Wikipedia shows 2). No Mitchell-hosted release found. MoE +/-3.9.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "The late October poll of 636 likely voters, using online panels along with survey links sent to randomly selected registered voters' cell phones, was weighted by demographics and 2022 and 2024 election results to project likely voter turnout in 2026.",
+  "method_url": "https://www.cbsnews.com/detroit/news/el-sayed-widens-lead-rogers-michigan-senate-poll/",
+  "method_locator": "Article paragraph on method (sponsor wording; whether this is respondent recall weighting is not stated)",
+  "mode": "online panels plus text links to registered voters",
+  "method_owner": "Mitchell Research & Communications",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

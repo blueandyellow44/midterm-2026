@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-a2-insights-2026-10-27.json",
+ "race": "2026-TX-SEN",
+ "pid": "a2-insights",
+ "name": "A2 Insights",
+ "sponsor": "none stated (document says Sponsor: N/A)",
+ "scls": "UNKNOWN",
+ "align": "UNKNOWN",
+ "method_id": "a2-insights-s-2026-TX-SEN-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-27",
+  "release_date": null,
+  "n": 631,
+  "pop": "LV",
+  "D": 50.2,
+  "R": 47.2,
+  "other": 2.3,
+  "undecided": 0.3,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://drive.google.com/file/d/1UACnmnM84Dd1hU0l6iqHNgXkyh5oCelO/view",
+  "source_locator": "PDF 'A2 Insights Texas Statewide Survey (10/23/2026 - 10/27/2026)', Results, Overall row: Ken Paxton 47.2%, James Talarico 50.2%, Other candidate 2.3%, Undecided 0.3%",
+  "notes": "New pollster. Pollster's own PDF hosted on Google Drive (the link Wikipedia cites); no pollster website release found. Opt-in online panel; estimates are model-based. Release date not printed; 270toWin lists 10/29/2026.",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighting targets reflect population benchmarks synthesized from Census data and exit polls. A statistical model was fitted on age, sex, race, education, party identification, and recalled 2024 vote to produce subgroup-level estimates.",
+  "method_url": "https://drive.google.com/file/d/1UACnmnM84Dd1hU0l6iqHNgXkyh5oCelO/view",
+  "method_locator": "Methodology, p.1",
+  "mode": "online opt-in panel (English)",
+  "method_owner": "A2 Insights, LLC",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": null
+ }
+}

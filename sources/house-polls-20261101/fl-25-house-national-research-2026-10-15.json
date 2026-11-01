@@ -1,0 +1,38 @@
+{
+ "file": "fl-25-house-national-research-2026-10-15.json",
+ "race": "2026-FL-25-HOUSE",
+ "pid": "national-research",
+ "name": "National Research Inc.",
+ "sponsor": "Scott Singer campaign and NRCC",
+ "scls": "INTERNAL",
+ "align": "R",
+ "method_id": "national-research-s-2026-FL-25-HOUSE-2026-10-15",
+ "poll": {
+  "field_start": "2026-10-12",
+  "field_end": "2026-10-15",
+  "release_date": "2026-10-21",
+  "n": 400,
+  "pop": "LV",
+  "D": 42.0,
+  "R": 49.0,
+  "other": null,
+  "undecided": 6.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://floridapolitics.com/archives/826146-internal-poll-gives-scott-singer-7-point-lead-over-incumbent-jared-moskowitz-in-cd-25/",
+  "source_locator": "Florida Politics (Jesse Scheckner, Oct 21 2026): 'Singer ... now leads Moskowitz 49% to 42% among likely voters, according to a survey Singer's campaign and the National Republican Congressional Committee commissioned'; 'share of voters who didn't know whom they'd choose ... shrank from 17% to 6%'; 'National Research surveyed 400 likely CD 25 voters Oct. 12-15. The poll had a 4.9-point margin of error'",
+  "notes": "Toplines, n, dates, MoE and undecided from the Florida Politics article (returned HTTP 200 with full text to a plain request this session; the 2026-10-27 sweep had logged it as 402, no bypass used). No pollster memo seen. Wikipedia lists undecided 24%, which conflicts with the article's 6%; article used. Other not stated.",
+  "retrieved_at": "2026-11-01T12:07:24-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "National Research Inc.",
+  "retrieved_at": "2026-11-01T12:07:24-08:00",
+  "method_date": "2026-10-21"
+ }
+}

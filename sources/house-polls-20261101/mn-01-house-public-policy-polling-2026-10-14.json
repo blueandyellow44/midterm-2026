@@ -1,0 +1,38 @@
+{
+ "file": "mn-01-house-public-policy-polling-2026-10-14.json",
+ "race": "2026-MN-01-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-MN-01-HOUSE-2026-10-14",
+ "poll": {
+  "field_start": "2026-10-13",
+  "field_end": "2026-10-14",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 43.0,
+  "R": 43.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "HMP memo table (Oct 21 2026): 'MN-01 | Trump +12.2 | 43% | 43% | PPP | 10/13/26- 10/14/26' (Democratic candidate % then Republican candidate %)",
+  "notes": "Toplines and dates from the HMP memo only; memo gives no n, population, undecided or mode. LV AND n=588 COME FROM WIKIPEDIA/USPOLLINGDATA ONLY; n left null. CJ Warnke X post (api.fxtwitter.com/cjwarnke/status/2112877284684341727) confirms the Oct 21 release, numbers only in an image not read. Stays PARTISAN_PUBLIC per Max 2026-11-01 PAC ruling: HMP has no IE filed in this district (ie2026.csv as of Oct 27).",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Public Policy Polling",
+  "method_date": "2026-10-21",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "oh-sen-suffolk-university-political-research-center-2026-10-26.json",
+ "race": "2026-OH-SEN-SPECIAL",
+ "pid": "suffolk-university-political-research-center",
+ "name": "Suffolk University Political Research Center",
+ "sponsor": "USA TODAY Network Ohio",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "suffolk-university-political-research-center-s-2026-OH-SEN-SPECIAL-2026-10-26",
+ "poll": {
+  "field_start": "2026-10-21",
+  "field_end": "2026-10-26",
+  "release_date": "2026-10-28",
+  "n": 500,
+  "pop": "LV",
+  "D": 46.6,
+  "R": 43.8,
+  "other": 3.2,
+  "undecided": 4.4,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_28_2026_ohio_statewide_marginals.pdf",
+  "source_locator": "Marginals Q7 (N=500): Sherrod Brown 233 (46.60), Jon Husted 219 (43.80), Greg Levy (Other-Party) 8 (1.60), William B. Redpath (L) 8 (1.60), Write-in 0, Undecided 22 (4.40), Refused 10 (2.00)",
+  "notes": "Question asks 'plan to vote for or lean toward', so LEANERS. other = Levy 1.6 + Redpath 1.6; Refused 2.0 not folded in. Field dates and LV definition from the press release (https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_28_2026_ohio_press_release.pdf), which rounds to 47-44, other 3, undecided 4. 270toWin mislabels this poll 'Siena College'.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_28_2026_ohio_press_release.pdf",
+  "method_locator": "Methodology paragraph (no weighting stated)",
+  "mode": "live telephone",
+  "method_owner": "Suffolk University Political Research Center",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

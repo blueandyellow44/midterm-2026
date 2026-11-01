@@ -1,0 +1,38 @@
+{
+ "file": "ca-48-house-usc-democracy-lab-2026-10-28.json",
+ "race": "2026-CA-48-HOUSE",
+ "pid": "usc-democracy-lab",
+ "name": "USC Democracy and Fair Elections Lab (California Elections and Policy Poll)",
+ "sponsor": "USC Dornsife Center for the Political Future (no political, corporate, or external sponsorship)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "usc-democracy-lab-h-2026-CA-48-HOUSE-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-30",
+  "n": 474,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 40.0,
+  "other": null,
+  "undecided": 10.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thedemocracylab.com/pdfs/capolling.pdf",
+  "source_locator": "PDF p2 table 'who do you plan to vote for to be US House Representative? [no push on undecideds]': CA-48 Dem 48%, Rep 40%; page data (polls/ca-polling-2026.js initialBars): undecided 10, won't vote/skip 2",
+  "notes": "Headline = release table without pushing undecideds. Pushed-undecided version: Von Wilpert 52, Desmond 44, skip 4 (https://www.thedemocracylab.com/ca-polling-2026 data file). 'Won't vote / skip' 2% not counted in other. n=474, MoE +/-4.5. NEW pollster_id.",
+  "retrieved_at": "2026-11-01T12:08:58-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "voter file sample (PDI); weights included party, race/ethnicity, gender, age, 2024 presidential vote recall, and vote propensity using previous vote validated data; universe set using PDI estimates of 2026 general electorate composition; raking (anesrake in R)",
+  "method_url": "https://www.thedemocracylab.com/pdfs/capolling.pdf",
+  "method_locator": "Survey methodology paragraph, p1",
+  "mode": "email to probability-based voter-file sample in three districts, email and text in a fourth (district not specified)",
+  "method_owner": "USC Democracy and Fair Elections Lab",
+  "method_date": "2026-10-30",
+  "retrieved_at": "2026-11-01T12:08:58-08:00"
+ }
+}

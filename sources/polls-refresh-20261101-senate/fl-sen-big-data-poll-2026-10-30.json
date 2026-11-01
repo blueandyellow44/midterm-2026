@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-big-data-poll-2026-10-30.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "big-data-poll",
+ "name": "Big Data Poll",
+ "sponsor": "1776 Law Center",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "big-data-poll-s-2026-FL-SEN-SPECIAL-2026-10-30",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-30",
+  "release_date": "2026-10-30",
+  "n": 1129,
+  "pop": "LV",
+  "D": 44.7,
+  "R": 51.6,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.bigdatapoll.com/blog/sunshine-state-poll-ashley-moody-leads-angie-craig-governors-race-tight/",
+  "source_locator": "Release paragraph 2: 'Ashley Moody leads Angie Nixon 51.6% to 44.7% when undecideds are leaned.'",
+  "notes": "The release does not say which population the headline figure uses; the methodology lists 1,201 RV and 1,129 LV, and Big Data Poll's convention is LV toplines, so recorded LV with n=1,129 (inference, flagged). Wikipedia lists 1,067 LV, 52/45, Gillespie 4; those figures are not on the release (crosstabs on MarketSight, not read). Release headline misnames Nixon as 'Angie Craig'. other/undecided not stated. Sponsor statement: publicly conducted surveys crowdfunded via the Public Polling Project, not funded by any candidate or committee. Sponsor per the release (1776 Law Center); class per big-data-poll majority precedent (PARTISAN_PUBLIC, R). LV is inferred: the release does not label the headline population.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results were weighted for sex, age, race and ethnicity, education, and geography.",
+  "method_url": "https://www.bigdatapoll.com/blog/sunshine-state-poll-ashley-moody-leads-angie-craig-governors-race-tight/",
+  "method_locator": "Methodology paragraph",
+  "mode": "mixed: online (Lucid/CINT, ~40%) and live-agent phone, P2P SMS and text-to-online from the L2 voter file (~60%)",
+  "method_owner": "Big Data Poll",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

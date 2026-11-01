@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-redbox-research-2026-10-31.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (super PAC, FEC C00933085)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-s-2026-FL-SEN-SPECIAL-2026-10-31",
+ "poll": {
+  "field_start": "2026-10-30",
+  "field_end": "2026-10-31",
+  "release_date": "2026-11-01",
+  "n": 2898,
+  "pop": "LV",
+  "D": 45,
+  "R": 48,
+  "other": 2,
+  "undecided": 2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/florida",
+  "source_locator": "Florida statewide page (Oct 30-31 poll), Full results, U.S. Senate: Ashley Moody (R) 48%, Angie Nixon (D) 45%, Prefer not to answer 4%, Undecided 2%, Neil J. Gillespie (NPA) 1%, Did not vote in this race 1%, Someone else 1%",
+  "notes": "New fresh statewide wave, distinct from the Oct 20-23 RedBox Florida poll already in polls.csv (n=4,832). other = Gillespie 1 + someone else 1; Prefer not 4 and Did not vote 1 not folded in. Page prints whole numbers only. Released November 1, 2026; text-to-web in English and Spanish (278 Spanish). The pollster states both new weighting targets (party, Oct 31; 2024 vote, Nov 1) were set after fieldwork and after seeing earlier results, and that its Oct 20-23 interviews re-run through the new model give Moody +4. Sensitivity table on the page: with the certified 2024 result as target Moody 48, Nixon 44; with no 2024-vote target Nixon +4. Found on the AFWH polling index (not yet on Wikipedia/270toWin at fetch time).",
+  "retrieved_at": "2026-11-01T12:40:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "So we set the 2024 target to the records-based estimate for this year's projected voters (42.7% Harris), then adjusted it for that measured misremembering, giving 44.0%. Both inputs come from outside our poll.",
+  "method_url": "https://afightworthhaving.com/polling/2026/florida",
+  "method_locator": "Florida page, How we built this poll > Update 2: how we account for 2024 votes",
+  "mode": "text-to-web from the voter file (English and Spanish)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:40:00-08:00",
+  "method_date": "2026-11-01"
+ }
+}

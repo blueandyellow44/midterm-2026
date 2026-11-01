@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-data-for-progress-2026-10-25.json",
+ "race": "2026-MI-GOV",
+ "pid": "data-for-progress",
+ "name": "Data for Progress",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "data-for-progress-s-2026-MI-GOV-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-30",
+  "n": 622,
+  "pop": "LV",
+  "D": 52,
+  "R": 43,
+  "other": 2,
+  "undecided": 3,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.filesforprogress.org/datasets/2026/10/dfp_2026_mi_ge_tabs.pdf",
+  "source_locator": "Q4 'If the November 2026 general election for Michigan governor were held tomorrow': Democrat Jocelyn Benson 52, Republican John James 43, Libertarian Anthony Hudson 1, U.S. Taxpayers Party candidate Donna Brandenburg 1, Green Party candidate Douglas Campbell <0.5, Not sure / Refused 3",
+  "notes": "other = Hudson 1 + Brandenburg 1 + Campbell <0.5. Field dates Oct 23-25 per the Michigan tabs header; the blog post (https://www.dataforprogress.org/blog/2026/10/30/democratic-senate-candidates-lead-in-maine-michigan-and-texas) gives Oct 23-27 for the three-state set and Benson 52-43. WIKIPEDIA ERROR: the MI governor page lists this poll as 50-46 with 3% undecided, which are the Senate numbers (El-Sayed 50, Rogers 46); 270toWin has 52-43. MoE +/-4. Same sample as the MI Senate item.",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to be representative of likely voters by age, gender, education, race, geography, and recalled presidential vote.",
+  "mode": "SMS, live caller, and web panel",
+  "method_owner": "Data for Progress",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-30",
+  "method_url": "https://www.filesforprogress.org/datasets/2026/10/dfp_2026_mi_ge_tabs.pdf",
+  "method_locator": "Methodology paragraph, top of p.1"
+ }
+}

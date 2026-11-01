@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-the-citadel-2026-10-25-rv.json",
+ "race": "2026-SC-SEN",
+ "pid": "the-citadel",
+ "name": "The Citadel Poll",
+ "sponsor": "The Citadel (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "the-citadel-s-2026-SC-SEN-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-14",
+  "field_end": "2026-10-25",
+  "release_date": null,
+  "n": 1009,
+  "pop": "RV",
+  "D": 40,
+  "R": 35,
+  "other": 3,
+  "undecided": 20,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://poll.citadel.edu/wp-content/uploads/2026/10/The-Citadel-Poll-Oct2026.pdf",
+  "source_locator": "Q12 RV column: Annie Andrews 40%, Darline Graham 35%, Kasie Whitener 1%, Mark Hackett 2%, Not sure 20%, Not voting 2%",
+  "notes": "other = Whitener 1 + Hackett 2; Not voting 2 not folded in. Norman write-in variant (RV): Andrews 40, Graham 34, Whitener 1, Hackett 2, Norman 3, truly undecided 18, not voting 2.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The information was based on known registration and participation statistics by gender and age. An additional measure interacted participation by race, as reported by the state, with the education attainment of each racial group as reported by the American Community Survey. Another interaction measure captured the 2024 presidential votes within the designated market area to account for the differential turnout of voters in each area of the state.",
+  "method_url": "https://poll.citadel.edu/wp-content/uploads/2026/10/The-Citadel-Poll-Oct2026.pdf",
+  "method_locator": "About the poll / weighting paragraph, p.1-2",
+  "mode": "live telephone and text",
+  "method_owner": "The Citadel Poll",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "fl-25-house-redbox-research-2026-10-23.json",
+ "race": "2026-FL-25-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-FL-25-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 643,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 40.4,
+  "other": 4.0,
+  "undecided": 6.4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/fl-25",
+  "source_locator": "U.S. House: Moskowitz (D) 45.976, Singer (R) 40.441, Jassenoff (L) 2.3933, Someone else 1.6228, Undecided 6.4083, Prefer not to answer 2.0799, Did not vote in race 1.0767 (crosstabs.csv Q10/Q11 Total); page shows Moskowitz 46% Singer 40%; 643 LV, Oct 20-23, MOE +/-4.7",
+  "notes": "other = Jassenoff 2.4 + someone else 1.6; prefer not 2.1 and did-not-vote 1.1 excluded. Design effect 1.45. Release version 5 of crosstabs.csv (https://afightworthhaving.com/polling/2026/fl-25/crosstabs.csv). Early voters asked how they voted.",
+  "retrieved_at": "2026-11-01T12:07:24-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "party registration, gender, age, education and race and ethnicity, and to the certified 2024 result through how people told us they voted (methodology page); recipes anchored to the 2024 presidential vote, certified result and file-validated 2024 voters",
+  "method_url": "https://afightworthhaving.com/polling/2026/fl-25/methodology",
+  "method_locator": "How this poll's estimate was built; Weighting",
+  "mode": "text message invitation to a self-administered web survey (English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:07:24-08:00",
+  "method_date": "2026-10-25"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-yougov-2026-10-29.json",
+ "race": "2026-MI-SEN",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-MI-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-29",
+  "release_date": "2026-11-01",
+  "n": 2093,
+  "pop": "LV",
+  "D": 51,
+  "R": 47,
+  "other": 1,
+  "undecided": 1,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_mi_20261026_lv.pdf",
+  "source_locator": "Toplines p.2, Q6 U.S. Senator: Abdul El-Sayed (D) 51, Mike Rogers (R) 47, Someone else 1, Not sure 1, I would not vote 1",
+  "notes": "I would not vote 1 not folded into other/undecided. Question note: already-voted respondents report their vote; undecided voters asked which candidate they lean toward and leaners included, so LEANERS. Same 'ttw' series as the earlier YouGov state polls in polls.csv (sponsor not named in the document). Release date is the 270toWin listing date (11/01/2026); the PDF is undated. Governor item from the same sample is in the same PDF. YouGov ttw series: NONPARTISAN per Max 2026-11-01 ruling (a firm polling on its own).",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to gender, age, race, in-state geography (using the current Michigan voter list), and imputed education, party score, and 2024 presidential vote. Weights were computed using the method of raking. Likely voters are defined using a model that takes into account past vote, demographics, and self-reported likelihood to vote. The likely voter weights range from less than 0.1 to 7.4 with a coefficient of variation of 1.0.",
+  "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_mi_20261026_lv.pdf",
+  "method_locator": "Methodology box, last page of the PDF (Weighting)",
+  "mode": "online; stratified random sample from the state voter list contacted by text message, interviewed on YouGov web system",
+  "method_owner": "YouGov",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-11-01"
+ }
+}

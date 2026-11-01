@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-yougov-blue-254-labs-2026-10-26.json",
+ "race": "2026-TX-SEN",
+ "pid": "yougov-blue-254-labs",
+ "name": "YouGov Blue",
+ "sponsor": "254 Labs",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "yougov-blue-254-labs-s-2026-TX-SEN-2026-10-26",
+ "poll": {
+  "field_start": "2026-10-21",
+  "field_end": "2026-10-26",
+  "release_date": "2026-10-28",
+  "n": 1000,
+  "pop": "LV",
+  "D": 51,
+  "R": 43,
+  "other": null,
+  "undecided": 5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://254labs.io/news/2026-10-tx",
+  "source_locator": "Release Key findings: 'Talarico leads Paxton 51% to 43%, with 5% undecided.' (headline 'Talarico Leads 51-43 Among Likely Voters')",
+  "notes": "1,000 registered voters interviewed, weighted to likely-voter targets provided by 254 Labs (including early-vote turnout), and the release reports the result 'Among Likely Voters', so pop LV with n=1,000 interviewed (LV n not stated). Wikipedia lists '1,000 (RV)' and Brown 2; other not stated in the release. Leaners combined into the vote per the methodology. Alignment D: Wikipedia labels YouGov Blue (D); 254 Labs serves 'mission-aligned subscribers'. Full crosstabs are subscriber-only (not read).",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample fielded on quotas according to gender, age, race/ethnicity, education, state geographic region ... as well as 2020 Presidential vote, 2022 general election turnout, and approximate 2024 Presidential vote based on available results. ... The sample was weighted to likely voter targets provided by 254 Labs, which include the above based on a likely voter frame, as well as a benchmark for early vote turnout as of fielding completion date.",
+  "method_url": "https://254labs.io/news/2026-10-tx",
+  "method_locator": "Methodology section of the release",
+  "mode": "online and text-to-web",
+  "method_owner": "YouGov Blue for 254 Labs",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

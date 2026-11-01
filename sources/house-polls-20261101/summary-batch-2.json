@@ -1,0 +1,327 @@
+{
+ "batch": 2,
+ "districts": {
+  "2026-FL-13-HOUSE": {
+   "polls_written": 1,
+   "files": [
+    "fl-13-house-redbox-research-2026-10-23.json"
+   ],
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Florida&action=raw",
+    "https://uspollingdata.com/races/house/fl-13/",
+    "https://poliagg.com/race/us-house-2026-fl-13/",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://afightworthhaving.com/polling/2026/fl-13",
+    "https://afightworthhaving.com/polling/2026/fl-13/methodology",
+    "https://afightworthhaving.com/polling/2026/fl-13/crosstabs.csv"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/florida/district-13",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Public Policy Polling (HMP), Oct 14-15 2026, Gray 47 Luna 46",
+     "reason": "already in-window"
+    },
+    {
+     "pollster": "Hart Research (HMP) Aug 25-27; Fabrizio Lee (Luna) Aug 4-6; GQR (Gray) Aug 4-6; PPP (Gray) May 19-20",
+     "reason": "out of window"
+    }
+   ],
+   "note": "New: RedBox Research (A Fight Worth Having) Oct 20-23, 875 LV, Gray 45.1 Luna 48.1."
+  },
+  "2026-FL-14-HOUSE": {
+   "polls_written": 1,
+   "files": [
+    "fl-14-house-redbox-research-2026-10-23.json"
+   ],
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Florida&action=raw",
+    "https://uspollingdata.com/races/house/fl-14/",
+    "https://poliagg.com/race/us-house-2026-fl-14/",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts",
+    "https://afightworthhaving.com/polling/2026/fl-14",
+    "https://afightworthhaving.com/polling/2026/fl-14/methodology",
+    "https://afightworthhaving.com/polling/2026/fl-14/crosstabs.csv"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/florida/district-14",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College (Poll Vault), Oct 12-14 2026, 315 LV, Castor 48 Beltran 43 Und 9",
+     "reason": "paywall: only source is the paid Poll Vault post (not bypassed); no Emerson release in its WP posts feed; Wikipedia/uspollingdata/poliagg only"
+    }
+   ],
+   "excluded": [
+    {
+     "pollster": "St. Pete Polls, Jul 14-15 2026, Castor 46 Beltran 38",
+     "reason": "out of window (already on file)"
+    }
+   ],
+   "note": "New: RedBox Research (AFWH) Oct 20-23, 708 LV, Castor 45.6 Beltran 44.7."
+  },
+  "2026-FL-22-HOUSE": {
+   "polls_written": 1,
+   "files": [
+    "fl-22-house-redbox-research-2026-10-23.json"
+   ],
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Florida&action=raw",
+    "https://uspollingdata.com/races/house/fl-22/",
+    "https://poliagg.com/race/us-house-2026-fl-22/",
+    "https://afightworthhaving.com/polling/2026/fl-22",
+    "https://afightworthhaving.com/polling/2026/fl-22/methodology",
+    "https://afightworthhaving.com/polling/2026/fl-22/crosstabs.csv"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/florida/district-22",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Tulchin/Impact (HMP) Aug 24-31 46-44; Tavern Aug 10-12 50-50; GQR (Dandiya) Jun 18-25 43-45",
+     "reason": "out of window"
+    }
+   ],
+   "note": "New: RedBox Research (AFWH) Oct 20-23, 550 LV, Dandiya 46.3 Askar 45.5. Searches found no Askar/GOP poll."
+  },
+  "2026-FL-25-HOUSE": {
+   "polls_written": 3,
+   "files": [
+    "fl-25-house-redbox-research-2026-10-23.json",
+    "fl-25-house-public-policy-polling-2026-10-27.json",
+    "fl-25-house-national-research-2026-10-15.json"
+   ],
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Florida&action=raw",
+    "https://uspollingdata.com/races/house/fl-25/",
+    "https://poliagg.com/race/us-house-2026-fl-25/",
+    "https://api.fxtwitter.com/cjwarnke/status/2115165777342972342",
+    "https://floridapolitics.com/archives/826146-internal-poll-gives-scott-singer-7-point-lead-over-incumbent-jared-moskowitz-in-cd-25/",
+    "https://afightworthhaving.com/polling/2026/fl-25",
+    "https://afightworthhaving.com/polling/2026/fl-25/methodology",
+    "https://afightworthhaving.com/polling/2026/fl-25/crosstabs.csv"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/florida/district-25",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Public Policy Polling (HMP), Oct 21-22 2026, 47-42",
+     "reason": "already in-window"
+    },
+    {
+     "pollster": "Beacon Insights (Moskowitz), May 1-2 2026, 43-33",
+     "reason": "out of window"
+    }
+   ],
+   "note": "New: RedBox (AFWH) Oct 20-23 643 LV 46.0-40.4; PPP (HMP) Oct 26-27 523 LV 47-41 (reporter post); National Research Inc. (NRCC + Singer campaign) Oct 12-15 400 LV Moskowitz 42 Singer 49, undecided 6 per Florida Politics, which loaded free (HTTP 200) this session though the 10-27 sweep logged it 402. NEW pollster_id national-research. Wikipedia's 24% undecided for NRI conflicts with the article; not used."
+  },
+  "2026-FL-27-HOUSE": {
+   "polls_written": 1,
+   "files": [
+    "fl-27-house-redbox-research-2026-10-23.json"
+   ],
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Florida&action=raw",
+    "https://uspollingdata.com/races/house/fl-27/",
+    "https://poliagg.com/race/us-house-2026-fl-27/",
+    "https://afightworthhaving.com/polling/2026/fl-27",
+    "https://afightworthhaving.com/polling/2026/fl-27/methodology",
+    "https://afightworthhaving.com/polling/2026/fl-27/crosstabs.csv"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/florida/district-27",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Tulchin (HMP) Sep 8-13 46-47; Bendixen & Amandi (DCCC) Aug 25-30 45-45; Blueprint Mar 6-8",
+     "reason": "out of window"
+    }
+   ],
+   "note": "New: RedBox Research (AFWH) Oct 20-23, 523 LV, Rodriguez 46.4 Salazar 49.1."
+  },
+  "2026-IA-01-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Iowa&action=raw",
+    "https://uspollingdata.com/races/house/ia-01/",
+    "https://poliagg.com/race/us-house-2026-ia-1/",
+    "https://www.270towin.com/2026-house-polls/iowa/district-1",
+    "https://www.foxnews.com/politics/iowa-poll-shows-democrats-position-flip-2-gop-house-seats",
+    "https://foxnews.com/politics/iowa-poll-flashes-warning-sign-republican-congresswoman-competitive-district.amp"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/ia-01",
+     "reason": "HTTP 404 (no AFWH poll of this district)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Wavefield Research, Sep 29-Oct 2 2026, Bohannan 45 Miller-Meeks 29 (Bridgford 18)",
+     "reason": "out of window (already on file)"
+    },
+    {
+     "pollster": "Des Moines Register/Selzer Oct 28-31; co/efficient Oct 15-19; Marist Oct 8-11 (surfaced by web search)",
+     "reason": "2024 race, not 2026 (Fox article dated 2024-11-04)"
+    }
+   ],
+   "note": "No in-window 2026 poll found."
+  },
+  "2026-IA-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Iowa&action=raw",
+    "https://uspollingdata.com/races/house/ia-02/",
+    "https://poliagg.com/race/us-house-2026-ia-2/",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts",
+    "https://emersoncollegepolling.com/iowa-2026-poll-u-s-senate-race-tightens-sand-maintains-edge-for-governor/"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/iowa/district-2",
+     "reason": "HTTP 404"
+    },
+    {
+     "url": "https://afightworthhaving.com/polling/2026/ia-02",
+     "reason": "HTTP 404 (no AFWH poll of this district)"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College (Poll Vault), Oct 12-14 2026, 344 LV, James 50 Mitchell 47 Und 3",
+     "reason": "paywall: only source is the paid Poll Vault post (not bypassed); Emerson's Oct 9 Iowa statewide release has no IA-02 ballot; Wikipedia/aggregators only"
+    }
+   ],
+   "excluded": [
+    {
+     "pollster": "Global Strategy Group (HMP) Jul 14-19 46-45; PPP (James) Apr 13-14",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No writable new poll."
+  },
+  "2026-IA-03-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Iowa&action=raw",
+    "https://poliagg.com/race/us-house-2026-ia-3/"
+   ],
+   "failed": [
+    {
+     "url": "https://uspollingdata.com/races/house/ia-03/",
+     "reason": "HTTP 404"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/iowa/district-3",
+     "reason": "HTTP 404"
+    },
+    {
+     "url": "https://afightworthhaving.com/polling/2026/ia-03",
+     "reason": "HTTP 404 (no AFWH poll of this district)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Ragnar Research (CFA) Mar 12-14 2026, Garriott 42 Nunn 48; Change Research Oct 2025 (primary-era bio test)",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No in-window poll found."
+  },
+  "2026-KY-06-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Kentucky&action=raw",
+    "https://uspollingdata.com/races/house/ky-06/",
+    "https://poliagg.com/race/us-house-2026-ky-6/",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/kentucky/district-6",
+     "reason": "HTTP 404"
+    },
+    {
+     "url": "https://afightworthhaving.com/polling/2026/ky-06",
+     "reason": "HTTP 404 (no AFWH poll of this district)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Public Policy Polling (HMP), Oct 19-20 2026, 47-41",
+     "reason": "already in-window"
+    },
+    {
+     "pollster": "DCCC Oct 2-5; Change Research Sep 29-Oct 5; Lake Sep 30-Oct 4; GQR Sep 25-30",
+     "reason": "out of window (already on file)"
+    }
+   ],
+   "note": "No new poll; no Alvarado/GOP poll surfaced."
+  },
+  "2026-ME-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Maine&action=raw",
+    "https://uspollingdata.com/races/house/me-02/",
+    "https://poliagg.com/race/us-house-2026-me-2/",
+    "https://www.270towin.com/2026-house-polls/maine/district-2",
+    "https://www.pressherald.com/?p=7735839",
+    "https://www.pressherald.com/?p=7695389"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/me-02",
+     "reason": "HTTP 404 (no AFWH poll of this district)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Tulchin Research (Dunlap), Oct 12-14 2026, 50-46",
+     "reason": "already in-window"
+    },
+    {
+     "pollster": "Tulchin Sep 27-30; UNH Sep 17-21 51-45; Impact (HMP) Sep 8-12",
+     "reason": "out of window"
+    }
+   ],
+   "note": "A web-search summary mentioned an 'Oct 16-21' poll but no source with it was found; nothing written."
+  }
+ }
+}

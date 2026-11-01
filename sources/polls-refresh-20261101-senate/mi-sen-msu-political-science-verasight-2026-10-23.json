@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-msu-political-science-verasight-2026-10-23.json",
+ "race": "2026-MI-SEN",
+ "pid": "verasight",
+ "name": "Michigan State University (Dept. of Political Science, Office for Survey Research) / Verasight",
+ "sponsor": "Michigan State University College of Social Science and Department of Political Science",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "verasight-s-2026-MI-SEN-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-08",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-29",
+  "n": 1383,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 41.8,
+  "other": 3.4,
+  "undecided": 6.8,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://polisci.msu.edu/_assets/MI_2026_pre_election_report.pdf",
+  "source_locator": "Report p.4 'Senate MRP estimates', Initial Response column: Abdul El-Sayed 48.0%, Mike Rogers 41.8%, Someone else or none of these 3.4%, Don't know yet/Undecided 6.8%",
+  "notes": "Headline is an MRP estimate (county-level, projected onto a voter-file sample of ~160,000 RV, ~100,000 likely electorate) from 1,383 respondents (Verasight Oct 8-23 plus MSU OSR mail Oct 13-23). Leaner follow-up MRP: 50.5 / 43.1 / 6.4. Traditional weighted survey estimates (p.9): initial 49.6 / 41.4 / 3.3 / 5.8; with leaners 51.4 / 42.2 / 6.4 (Wikipedia's 51/43/7 row matches the weighted-with-leaners column). Not the IPPSR/YouGov State of the State poll already in polls.csv. Release page: https://polisci.msu.edu/news-events/news/smidt-poll102926.html (October 29, 2026). pid and sponsor set to match the governor file from the same sample (one sample_id).",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The primary descriptive estimates are calibrated to age, August 2026 primary participation, primary-party status among August voters, congressional district, race, and selected county targets. The MRP analysis models candidate preferences using age, gender, geography, and August primary categories, then projects the modeled preferences onto the September 2026 voter-file sample using existing November turnout probabilities.",
+  "method_url": "https://polisci.msu.edu/_assets/MI_2026_pre_election_report.pdf",
+  "method_locator": "About the survey and analysis, p.7 (2024 Trump vote % enters only as a county-level MRP predictor, not respondent recall)",
+  "mode": "text-to-web (Verasight, voter file and commercial records) and email (Verasight community); mail (MSU OSR, n=130)",
+  "method_owner": "Corwin D. Smidt, MSU Department of Political Science",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-29"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "pa-07-house-muhlenberg-college-2026-10-15.json",
+ "race": "2026-PA-07-HOUSE",
+ "pid": "muhlenberg-college",
+ "name": "Muhlenberg College Institute of Public Opinion",
+ "sponsor": "Muhlenberg College Institute of Public Opinion (self-funded)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "muhlenberg-college-h-2026-PA-07-HOUSE-2026-10-15",
+ "poll": {
+  "field_start": "2026-10-06",
+  "field_end": "2026-10-15",
+  "release_date": "2026-10-29",
+  "n": 529,
+  "pop": "LV",
+  "D": 49.0,
+  "R": 43.0,
+  "other": 3.0,
+  "undecided": 5.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.muhlenberg.edu/muhlenberg-now/pa-7th-congressional-survey-october-2026/",
+  "source_locator": "Q11: ...race was between Democrat Bob Brooks and Republican Ryan Mackenzie, who would you vote for? Bob Brooks 49%, Ryan Mackenzie 43%, Neither/Other (Vol) 3%, Not sure (Vol) 5%; telephone survey of 529 likely voters, October 6-15, 2026, MOE +/-5%",
+  "notes": "Headline ballot is Q11 without leaners. Q12 (leaners, asked only of Q11 'not sure'): Brooks 18%, Mackenzie 33%, Not sure 49%; not folded in. Release page dated 2026-10-29 (article:published_time); full PDF linked at https://www.muhlenberg.edu/wp-content/uploads/7thDist_2026_final_LB.pdf (not fetched). Interviewing by Communication Concepts of Easton, PA. NEW pollster_id.",
+  "retrieved_at": "2026-11-01T12:08:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data has been weighted to gender, age, party, race and educational attainment to reflect voter population parameters.",
+  "method_url": "https://www.muhlenberg.edu/muhlenberg-now/pa-7th-congressional-survey-october-2026/",
+  "method_locator": "Methodological Statement",
+  "mode": "live telephone, landlines and cell phones, English; registered-voter file sample",
+  "method_owner": "Muhlenberg College Institute of Public Opinion",
+  "retrieved_at": "2026-11-01T12:08:00-08:00",
+  "method_date": "2026-10-29"
+ }
+}

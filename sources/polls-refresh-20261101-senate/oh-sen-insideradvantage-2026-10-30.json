@@ -1,0 +1,38 @@
+{
+ "file": "oh-sen-insideradvantage-2026-10-30.json",
+ "race": "2026-OH-SEN-SPECIAL",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-OH-SEN-SPECIAL-2026-10-30",
+ "poll": {
+  "field_start": "2026-10-29",
+  "field_end": "2026-10-30",
+  "release_date": "2026-11-01",
+  "n": 1200,
+  "pop": "LV",
+  "D": 49,
+  "R": 47,
+  "other": 3,
+  "undecided": 1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://insideradvantage.com/final-insideradvantage-ohio-survey-brown-49-husted-47-acton-49-ramaswamy-46/",
+  "source_locator": "Post 'Posted on November 1, 2026', Results, U.S. Senate: Sherrod Brown 49%, Jon Husted 47%, Other 3%, Undecided 1%",
+  "notes": "Header line: 'Conducted 10/29-10/30; 1200 LV; Mixed Mode Text/Panel; Weighted for Age, Race, Gender, and Political Affiliation; MOE 2.83%'. Titled 'Final InsiderAdvantage Ohio Survey'. Distinct from the Oct 21-22 InsiderAdvantage Ohio poll in polls.csv. Found on the InsiderAdvantage home page (not yet on Wikipedia/270toWin at fetch time). Class set 2026-11-01 to this pollster's majority precedent in polls.csv (self, PARTISAN_PUBLIC, R) per the refresh audit.",
+  "retrieved_at": "2026-11-01T12:40:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighted for Age, Race, Gender, and Political Affiliation",
+  "method_url": "https://insideradvantage.com/final-insideradvantage-ohio-survey-brown-49-husted-47-acton-49-ramaswamy-46/",
+  "method_locator": "Header line of the post",
+  "mode": "mixed mode text/panel",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-11-01T12:40:00-08:00",
+  "method_date": "2026-11-01"
+ }
+}

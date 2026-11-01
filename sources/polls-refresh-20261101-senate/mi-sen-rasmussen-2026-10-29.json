@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-rasmussen-2026-10-29.json",
+ "race": "2026-MI-SEN",
+ "pid": "rasmussen",
+ "name": "Rasmussen Reports",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "rasmussen-s-2026-MI-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-10-29",
+  "release_date": "2026-10-30",
+  "n": 745,
+  "pop": "LV",
+  "D": 49,
+  "R": 44,
+  "other": 3,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_michigan_senate",
+  "source_locator": "Article 'Michigan Senate: El-Sayed 49%, Rogers 44%' (Friday, October 30, 2026), paragraph 1: El-Sayed 49, Rogers 44, Christensen (L) 2, Long (U.S. Taxpayers) 1, undecided 4",
+  "notes": "other = Christensen 2 + Long 1. Survey of 745 Michigan Likely Voters conducted October 28-29, 2026; fieldwork by Pulse Opinion Research. The free portion of the article carries the toplines; the remainder is behind a subscriber wall and was not read. Sponsor/alignment follow the existing Rasmussen rows. Class set 2026-11-01 to this pollster's majority precedent in polls.csv (self, PARTISAN_PUBLIC, R) per the refresh audit.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_michigan_senate",
+  "method_locator": "Methodology not on the free portion",
+  "mode": "telephone and online",
+  "method_owner": "Rasmussen Reports / Pulse Opinion Research",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

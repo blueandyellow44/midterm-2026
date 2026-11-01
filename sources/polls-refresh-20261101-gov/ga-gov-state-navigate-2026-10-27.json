@@ -1,0 +1,38 @@
+{
+ "file": "ga-gov-state-navigate-2026-10-27.json",
+ "race": "2026-GA-GOV",
+ "pid": "state-navigate",
+ "name": "State Navigate",
+ "sponsor": "self (State Navigate Polling Team; 'not sponsored by any candidate or candidate's committee')",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "state-navigate-s-2026-GA-GOV-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-28",
+  "n": 679,
+  "pop": "LV",
+  "D": 50,
+  "R": 47,
+  "other": 2,
+  "undecided": 2,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://articles.statenavigate.com/ga/keisha-lance-bottoms-holds-narrow-lead-in-georgia-governor-race/",
+  "source_locator": "Article para 1: 'Keisha Lance Bottoms (D) leads Rick Jackson (R) 50% to 47% ... October poll of 679 likely Georgia voters'; briefing PDF PAGE 04 'Governor Race & Trump Approval': 'leads Rick Jackson (R) 50-47 with leaners, with 2% who don't know and 2% who already voted but don't remember or would not say'",
+  "notes": "other = 2 already-voted 'don't remember / would not say'; undecided = 2 don't know. Ballot includes already-voted respondents; leaners included. 741 respondents, 679 likely voters, MoE +/-3.8. Briefing PDF: https://projects.statenavigate.com/interactives/ga/statewide-poll-october-2026/georgia-statewide-poll-october-23-27-2026.pdf. State Navigate describes itself as a nonpartisan 501(c)(3); new pollster_id (not in pollsters.csv; its July 10-13 GA poll is not in polls.csv either). Briefing reports raw recalled 2024 vote Harris +1 among LVs, but recall is reported, not weighted.",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was drawn from a voter file provided by L2, and results were weighted by gender, race, education, race by education, age, leaned party identification, and region to reflect the likely November 2026 general electorate, with weighting benchmarks derived from L2 voter file data in conjunction with AP VoteCast.",
+  "mode": "text-to-web (texts sent by AllianceForge to an online SurveyMonkey survey; L2 voter-file sample)",
+  "method_owner": "State Navigate Polling Team",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-28",
+  "method_url": "https://projects.statenavigate.com/interactives/ga/statewide-poll-october-2026/georgia-statewide-poll-october-23-27-2026.pdf",
+  "method_locator": "PAGE 01, 'Methodology' paragraph"
+ }
+}

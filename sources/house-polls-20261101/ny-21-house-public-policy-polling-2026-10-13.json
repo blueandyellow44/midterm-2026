@@ -1,0 +1,38 @@
+{
+ "file": "ny-21-house-public-policy-polling-2026-10-13.json",
+ "race": "2026-NY-21-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-NY-21-HOUSE-2026-10-13",
+ "poll": {
+  "field_start": "2026-10-12",
+  "field_end": "2026-10-13",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 44.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "Table row: NY-21 | Trump +20.8 | 44% | 46% | PPP | 10/12/26- 10/13-26 (columns: Democratic Candidate, Republican Candidate)",
+  "notes": "Toplines and field dates from the HMP memo table only (Gendebien D 44, Constantino R 46); no n, MoE, undecided or mode in the memo. pop LV and n=613 come from WIKIPEDIA and USPOLLINGDATA only (both list 613 LV); n not filled. Same HMP release as the TX-35/OH-15 rows; X post https://x.com/cjwarnke/status/2112877284684341727 (2026-10-21) links it. scls PARTISAN_PUBLIC per HMP convention. Stays PARTISAN_PUBLIC per Max 2026-11-01 PAC ruling: HMP has no IE filed in this district (ie2026.csv as of Oct 27).",
+  "retrieved_at": "2026-11-01T12:08:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Public Policy Polling",
+  "retrieved_at": "2026-11-01T12:08:00-08:00",
+  "method_date": "2026-10-21"
+ }
+}

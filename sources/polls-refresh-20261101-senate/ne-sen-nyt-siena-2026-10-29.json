@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-nyt-siena-2026-10-29.json",
+ "race": "2026-NE-SEN",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-NE-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-29",
+  "release_date": "2026-10-30",
+  "n": 809,
+  "pop": "LV",
+  "D": 43,
+  "R": 49,
+  "other": 0,
+  "undecided": 8,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.nytimes.com/interactive/2026/10/31/polls/times-siena-ne-poll-toplines.html",
+  "source_locator": "Toplines, '(Combined Senate ballot, includes leaners)': Dan Osborn, the third-party candidate 43%, Pete Ricketts, the Republican 49%, [VOL] Another candidate 0%, [VOL] Don't know/Refused 8%",
+  "notes": "D slot = Dan Osborn (Independent). Initial ask (N=809 LV): Osborn 41, Ricketts 46, another <0.5, DK/Refused 13. Page dated Oct. 30, 2026 (URL path 10/31). Fetched by plain HTTP, served in full.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls. Vote choice was modeled as a function of information available on the L2 voter file and self-reported education, adjusted to match precinct-level election results)",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/31/polls/times-siena-ne-poll-toplines.html",
+  "method_locator": "Methodology > Weighting list",
+  "mode": "live telephone (L2 voter file)",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

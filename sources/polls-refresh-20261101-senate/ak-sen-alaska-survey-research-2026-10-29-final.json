@@ -1,0 +1,38 @@
+{
+ "file": "ak-sen-alaska-survey-research-2026-10-29-final.json",
+ "race": "2026-AK-SEN",
+ "pid": "alaska-survey-research",
+ "name": "Alaska Survey Research",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "alaska-survey-research-s-2026-AK-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-29",
+  "release_date": "2026-10-30",
+  "n": 1326,
+  "pop": "LV",
+  "D": 50.8,
+  "R": 49.2,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "TWO_WAY",
+  "round": "FINAL",
+  "source_url": "https://x.com/The_Real_ASR/status/2116291676176331181",
+  "source_locator": "Thread tweet 3/10 (status 2116291680966209892): 'Final Round: Mary Peltola (D) 50.8% / Dan S. Sullivan (R) 49.2%'",
+  "notes": "Final RCV round from the same sample as the -2026-10-29 FIRST file; n for the final round not stated (1,326 is the full LV sample). Separate file because polls.csv carries FIRST and FINAL rows for each Alaska poll. Early voters (37.5% of sample) final round: Peltola 59, Sullivan 41 (tweet 9/10). n set to the full-sample 1326, as earlier ASR FINAL rows carry the FIRST row's n.",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data was weighted to population proportions by respondent gender, age, Alaska region, marital status, education level, party affiliation, political ideology and 2024 vote for president. / A further weight was then overlaid on the voter sample, initially anchoring results to a Trump-Harris 2024 vote ratio, with a general election voter distribution by gender, age and AK region.",
+  "method_url": "https://x.com/The_Real_ASR/status/2107851752464884167",
+  "method_locator": "Weighting text from the ASR Oct 1-3 2026 thread (house method); not restated in this wave",
+  "mode": "text-to-online + ASR Survey Panel",
+  "method_owner": "Alaska Survey Research",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

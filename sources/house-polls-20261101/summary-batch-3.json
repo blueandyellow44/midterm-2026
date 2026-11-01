@@ -1,0 +1,320 @@
+{
+ "batch": 3,
+ "districts": {
+  "2026-MI-04-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Michigan&action=raw",
+    "https://afightworthhaving.com/polling/2026/mi-04",
+    "https://uspollingdata.com/races/house/mi-04/",
+    "https://www.270towin.com/2026-house-polls/michigan/district-4",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=<candidate>"
+   ],
+   "failed": [
+    {
+     "url": "https://uspollingdata.com/races/house/mi-04/",
+     "reason": "HTTP 404"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/michigan/district-4",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "RedBox Research (A Fight Worth Having), Oct 20-23, McCann 43.7 Huizenga 46.9",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "GBAO (McCann campaign), Sep 13-16, McCann 47 Huizenga 46",
+     "reason": "out of window; already on file"
+    }
+   ],
+   "note": "No new in-window poll found. WebSearch 'Huizenga McCann poll October' surfaced only the September GBAO poll."
+  },
+  "2026-MI-07-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Michigan&action=raw",
+    "https://uspollingdata.com/races/house/mi-07/",
+    "https://www.270towin.com/2026-house-polls/michigan/district-7",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=<candidate>"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/mi-07",
+     "reason": "HTTP 404 (no RedBox poll)"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/michigan/district-7",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College (RCP Poll Vault), Oct 12-14, n=314 LV, Lawrence 53 Barrett 45",
+     "reason": "Only source is the paywalled Poll Vault post https://pollvault.substack.com/p/levee-math (not fetched, not bypassed); no release on emersoncollegepolling.com (WP API search returned none); toplines seen only on Wikipedia/uspollingdata/270toWin"
+    }
+   ],
+   "excluded": [
+    {
+     "poll": "Global Strategy Group, Aug 11-13, Lawrence 49 Barrett 47 (uspollingdata)",
+     "reason": "out of window"
+    }
+   ],
+   "note": ""
+  },
+  "2026-MI-10-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Michigan&action=raw",
+    "https://afightworthhaving.com/polling/2026/mi-10",
+    "https://uspollingdata.com/races/house/mi-10/",
+    "https://www.270towin.com/2026-house-polls/michigan/district-10"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "RedBox Research (A Fight Worth Having), Oct 20-23, Hines 42.4 Bouchard 47.2",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "House Majority PAC poll, Aug 10-13, 600 LV, 45-45 (search snippet)",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No new in-window poll found."
+  },
+  "2026-MN-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Minnesota&action=raw",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://uspollingdata.com/races/house/mn-01/",
+    "https://www.270towin.com/2026-house-polls/minnesota/district-1"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/mn-01",
+     "reason": "HTTP 404 (no RedBox poll)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "SurveyUSA (KAAL), Oct 4-9, Johnson 46 Finstad 44",
+     "reason": "out of window; already on file"
+    },
+    {
+     "poll": "GBAO (HMP), Sep 18-21, 47-46",
+     "reason": "out of window; already on file"
+    },
+    {
+     "poll": "Big Data Poll, Sep 29-30 (search snippet, generic-style D 47 R 37)",
+     "reason": "out of window; not verified as candidate matchup"
+    }
+   ],
+   "note": "PPP/HMP Oct 13-14 43-43 written from the HMP memo; n=588 only on Wikipedia/uspollingdata, left null."
+  },
+  "2026-MT-01-HOUSE": {
+   "polls_written": 3,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Montana&action=raw",
+    "https://afightworthhaving.com/polling/2026/mt-01",
+    "https://afightworthhaving.com/polling/2026/mt-01/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/mt-01/methodology",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://uspollingdata.com/races/house/mt-01/",
+    "https://www.270towin.com/2026-house-polls/montana/district-1",
+    "https://www.msubillings.edu/class/nams/polls/2026-mountain-states-poll-report.pdf",
+    "https://dailymontanan.com/2026/10/29/mountain-state-poll-shows-close-races-for-federal-offices/",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=<candidate>"
+   ],
+   "failed": [],
+   "unverified": [
+    {
+     "pollster": "Emerson College (RCP Poll Vault), Oct 12-14, n=329 LV, Forstag 50 Flint 46",
+     "reason": "Only source is the paywalled Poll Vault post https://pollvault.substack.com/p/levee-math (not fetched, not bypassed); no release on emersoncollegepolling.com (WP API search returned none); toplines seen only on Wikipedia/uspollingdata/270toWin"
+    }
+   ],
+   "excluded": [
+    {
+     "poll": "American Pulse (NonStop Local), Sep 19-24, Flint 46 Forstag 45",
+     "reason": "out of window"
+    },
+    {
+     "poll": "Impact Research, Sep 20-23; PPP (The Bench), Sep 9-10; Rutgers-Eagleton Aug 27-Sep 7",
+     "reason": "out of window; already on file"
+    }
+   ],
+   "note": "MSU Billings Mountain State Poll is NEW pollster_id msu-billings; pop=A (no voter screen), district n not printed (uspollingdata says 287)."
+  },
+  "2026-NC-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_North_Carolina&action=raw",
+    "https://afightworthhaving.com/polling/2026/nc-01",
+    "https://afightworthhaving.com/polling/2026/nc-01/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/nc-01/methodology",
+    "https://uspollingdata.com/races/house/nc-01/",
+    "https://www.carolinajournal.com/exclusive-nrcc-polling-puts-buckhout-davis-in-dead-heat/"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/north-carolina/district-1",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "co/efficient (Buckhout campaign), Oct 6-8, 623 LV, Davis 42 Buckhout 43 (Wikipedia)",
+     "reason": "out of window (field_end Oct 8)"
+    },
+    {
+     "poll": "East Carolina University, Sep 29-Oct 2, 810 LV, Davis 50 Buckhout 46 (search snippet only)",
+     "reason": "out of window"
+    },
+    {
+     "poll": "Neighborhood Research, Oct 1-6; GQR, Sep 29-Oct 4; GBAO (HMP), Sep 8-11",
+     "reason": "out of window"
+    },
+    {
+     "poll": "NRCC internal, May 2026, 41-41 (Carolina Journal)",
+     "reason": "out of window"
+    }
+   ],
+   "note": ""
+  },
+  "2026-NC-11-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_North_Carolina&action=raw",
+    "https://afightworthhaving.com/polling/2026/nc-11",
+    "https://afightworthhaving.com/polling/2026/nc-11/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/nc-11/methodology",
+    "https://uspollingdata.com/races/house/nc-11/",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=<candidate>"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/north-carolina/district-11",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College (RCP Poll Vault), Oct 12-14, n=388 LV, Ager 56 Balkcom 43",
+     "reason": "Only source is the paywalled Poll Vault post https://pollvault.substack.com/p/levee-math (not fetched, not bypassed); no release on emersoncollegepolling.com (WP API search returned none); toplines seen only on Wikipedia/uspollingdata/270toWin"
+    }
+   ],
+   "excluded": [
+    {
+     "poll": "PPP (The Bench), Sep 10-11, 531 RV, Ager 47 Balkcom 44",
+     "reason": "out of window; already on file"
+    }
+   ],
+   "note": ""
+  },
+  "2026-NJ-07-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_New_Jersey&action=raw",
+    "https://uspollingdata.com/races/house/nj-07/",
+    "https://www.270towin.com/2026-house-polls/new-jersey/district-7",
+    "https://newjerseyglobe.com/polling/pro-shah-groups-poll-also-found-bennett-leading-kean/amp/",
+    "https://newjerseyglobe.com/congress/patrick-murray-poll-gives-bennett-clear-lead-in-nj-7/amp/",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=<candidate>"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/nj-07",
+     "reason": "HTTP 404 (no RedBox poll)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "StimSight (InsiderNJ), Sep 8-12, Bennett 47 Kean 42",
+     "reason": "out of window; already on file"
+    },
+    {
+     "poll": "Z to A Research (314 Action), May 24-26, Bennett 47 Kean 43",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No in-window poll found."
+  },
+  "2026-NM-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_New_Mexico&action=raw",
+    "https://uspollingdata.com/races/house/nm-02/",
+    "https://www.270towin.com/2026-house-polls/new-mexico/district-2",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=<candidate>"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/nm-02",
+     "reason": "HTTP 404 (no RedBox poll)"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/new-mexico/district-2",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Research & Polling (Albuquerque Journal), Oct 1-9, Vasquez 48 Cunningham 44",
+     "reason": "out of window; already on file"
+    },
+    {
+     "poll": "KOB/SurveyUSA, Vasquez 46 Cunningham 43 (search snippet; on file as Aug 28-Sep 2)",
+     "reason": "out of window; already on file"
+    }
+   ],
+   "note": "No in-window poll found."
+  },
+  "2026-NV-02-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Nevada&action=raw",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://uspollingdata.com/races/house/nv-02/",
+    "https://www.270towin.com/2026-house-polls/nevada/district-2"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/nv-02",
+     "reason": "HTTP 404 (no RedBox poll)"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "GBAO, Aug 31-Sep 3, 38-37",
+     "reason": "out of window; already on file"
+    },
+    {
+     "poll": "Concord Public Opinion Partners (Education Reform Now Advocacy), Sep 26-30, statewide congressional generic D 48 R 33",
+     "reason": "statewide generic, not the NV-02 matchup; out of window"
+    }
+   ],
+   "note": "PPP/HMP Oct 12-13 Benitez-Thompson 44 Flippo 46 written from the HMP memo; n=560 only on uspollingdata, left null."
+  }
+ }
+}

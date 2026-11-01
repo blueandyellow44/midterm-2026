@@ -30,7 +30,7 @@ import weight  # noqa: E402
 from build_signals import pres2024_margins  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAMBERS = ROOT / "sources/chambers-20261027/chambers.json"
+CHAMBERS = ROOT / "sources/chambers-20261101/chambers.json"   # 2026-11-01 refresh: Cook changes since Oct 23 (prior: chambers-20261027)
 DISTRICTS = ROOT / "sources/house-all-20261027/districts.csv"
 PRES2024 = ROOT / "sources/signals-20261027/2024presgeresults.xlsx"
 INCUMBENTS = ROOT / "sources/incumbents-20261027/incumbents.csv"   # optional: is the holder on the November ballot (YES/NO/VACANT/UNKNOWN)

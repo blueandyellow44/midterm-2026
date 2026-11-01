@@ -1,0 +1,38 @@
+{
+ "file": "pa-10-house-redbox-research-2026-10-23.json",
+ "race": "2026-PA-10-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-PA-10-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 1022,
+  "pop": "LV",
+  "D": 47.6,
+  "R": 45.2,
+  "other": 1.7,
+  "undecided": 4.1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/pa-10",
+  "source_locator": "crosstabs.csv Q6/Q7 U.S. House, banner Total: Janelle Stelson (D) 47.6, Scott Perry (R) 45.2, Someone else 1.7, Undecided 4.1, Prefer not to answer 1.2, Did not vote in this race 0.2; 1022 likely voters, field 2026-10-20 to 2026-10-23, MOE +/-3.9",
+  "notes": "Toplines from the poll's crosstabs.csv (weighted_pct, Total banner); page headline shows rounded 48/45. other = someone else 1.7; prefer not to answer 1.2 and did-not-vote 0.2 excluded from other/undecided. Effective n 617.9. Early voters were asked how they voted. Release version 5.",
+  "retrieved_at": "2026-11-01T12:08:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "party registration, gender, age, education and race and ethnicity, and to the certified 2024 result through how people told us they voted",
+  "method_url": "https://afightworthhaving.com/polling/2026/pa-10/methodology",
+  "method_locator": "Weighting / How this poll's estimate was built",
+  "mode": "text message invitation to a self-administered web survey (voters drawn at random from the voter file; English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:08:00-08:00",
+  "method_date": "2026-10-25"
+ }
+}

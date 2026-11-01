@@ -1,0 +1,38 @@
+{
+ "file": "mt-01-house-redbox-research-2026-10-23.json",
+ "race": "2026-MT-01-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-MT-01-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 754,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 48.0,
+  "other": 2.3,
+  "undecided": 2.5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/mt-01",
+  "source_locator": "crosstabs.csv house_vote Total: Aaron Flint, Republican 48.0055; Sam Forstag, Democrat 46.0250; Nick Sheedy, Libertarian 1.9892; Someone else 0.3243; Undecided 2.4711; Prefer not to answer 1.1849; 754 likely voters, Oct 20-23, MOE +/-4.6",
+  "notes": "Shares from https://afightworthhaving.com/polling/2026/mt-01/crosstabs.csv rounded to 0.1 (page headline Flint 48, Forstag 46). other = Sheedy 2.0 + someone else 0.3; prefer not to answer 1.2 excluded. Design effect 1.69. Released Oct 25 per page.",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "We weighted the results to gender, age, education, voting history and race and ethnicity, and to the certified 2024 result through how people told us they voted.",
+  "method_url": "https://afightworthhaving.com/polling/2026/mt-01/methodology",
+  "method_locator": "Weighting",
+  "mode": "text message invitation to a self-administered web survey",
+  "method_owner": "RedBox Research",
+  "method_date": "2026-10-25",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ }
+}

@@ -1,0 +1,355 @@
+{
+ "batch": 4,
+ "districts": {
+  "2026-NY-17-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "ny-17-house-redbox-research-2026-10-23.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_New_York&action=raw",
+    "https://afightworthhaving.com/polling/2026/ny-17",
+    "https://afightworthhaving.com/polling/2026/ny-17/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/ny-17/methodology",
+    "https://uspollingdata.com/races/house/ny-17/",
+    "https://www.270towin.com/2026-house-polls/new-york/district-17",
+    "https://caitconley.com/ny-17-poll-cait-conley-leads-mike-lawler-51-to-45/",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=Lawler&after=2026-10-01T00:00:00"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "HMP poll (caitconley.com release)",
+     "dates": "released 2026-07-08",
+     "D-R": "Conley 51 Lawler 45",
+     "reason": "out of window"
+    },
+    {
+     "pollster": "McLaughlin & Associates (Lawler campaign)",
+     "dates": "2026-09-28 to 09-30",
+     "D-R": "47-50",
+     "reason": "out of window (already on file)"
+    },
+    {
+     "pollster": "Emerson College/WPIX",
+     "dates": "2026-09-27 to 09-29",
+     "D-R": "48-46",
+     "reason": "out of window (already on file)"
+    }
+   ],
+   "note": "No NY-17 poll ending Oct 24 or later found."
+  },
+  "2026-NY-21-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "ny-21-house-public-policy-polling-2026-10-13.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_New_York&action=raw",
+    "https://afightworthhaving.com/polling/2026/ny-21",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://api.fxtwitter.com/cjwarnke/status/2112877284684341727",
+    "https://uspollingdata.com/races/house/ny-21/",
+    "https://www.270towin.com/2026-house-polls/new-york/district-21",
+    "https://wnyt.com/top-stories/wnyt-surveyusa-democrat-holds-narrow-lead-over-republican-in-ny-21/",
+    "https://wnyt.com/top-stories/wnyt-surveyusa-poll-gendebien-leads-ny-21-congressional-race/",
+    "https://www.wcax.com/2026/10/12/poll-shows-tight-race-elise-stefaniks-congressional-seat/"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/ny-21",
+     "reason": "404, no RedBox NY-21 poll"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Impact Research (D, Gendebien)",
+     "dates": "2026-09-29 to 10-04",
+     "D-R": "Wikipedia only: Gendebien 45 Constantino 48",
+     "reason": "out of window (field_end Oct 4)"
+    },
+    {
+     "pollster": "Siena (Times Union/WPTZ/WAMC)",
+     "dates": "2026-09-30 to 10-06",
+     "D-R": "46-42",
+     "reason": "out of window (already on file)"
+    },
+    {
+     "pollster": "SurveyUSA/WNYT",
+     "dates": "published 2026-08-13",
+     "D-R": "43-39",
+     "reason": "out of window"
+    }
+   ],
+   "note": "PPP/HMP Oct 12-13 row found in the HMP Oct 21 memo table (prior sweep only had the X image). n=613 LV is Wikipedia/USPollingData only, not written."
+  },
+  "2026-OH-07-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "oh-07-house-redbox-research-2026-10-23.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Ohio&action=raw",
+    "https://afightworthhaving.com/polling/2026/oh-07",
+    "https://afightworthhaving.com/polling/2026/oh-07/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/oh-07/methodology",
+    "https://uspollingdata.com/races/house/oh-07/",
+    "https://www.270towin.com/2026-house-polls/ohio/district-7"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/ohio/district-7",
+     "reason": "404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "unnamed poll in a search snippet, 616 LV",
+     "dates": "2026-09-22 to 10-01",
+     "D-R": "no toplines seen",
+     "reason": "out of window; no numbers"
+    }
+   ],
+   "note": "Other OH-07 polls on Wikipedia are August (Bedrock, co/efficient, Tavern)."
+  },
+  "2026-OH-09-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "oh-09-house-redbox-research-2026-10-23.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Ohio&action=raw",
+    "https://afightworthhaving.com/polling/2026/oh-09",
+    "https://afightworthhaving.com/polling/2026/oh-09/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/oh-09/methodology",
+    "https://uspollingdata.com/races/house/oh-09/",
+    "https://www.270towin.com/2026-house-polls/ohio/district-9"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/ohio/district-9",
+     "reason": "404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [],
+   "note": ""
+  },
+  "2026-OH-10-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Ohio&action=raw",
+    "https://afightworthhaving.com/polling/2026/oh-10",
+    "https://uspollingdata.com/races/house/oh-10/",
+    "https://www.270towin.com/2026-house-polls/ohio/district-10"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/oh-10",
+     "reason": "404"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/ohio/district-10",
+     "reason": "404"
+    },
+    {
+     "url": "https://dccc.org/?s=polling+memo",
+     "reason": "403 Cloudflare block; not bypassed"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "DCCC",
+     "dates": "2026-10-12 to 10-13",
+     "D-R": "47-44",
+     "reason": "already in-window"
+    }
+   ],
+   "note": "No new poll."
+  },
+  "2026-OH-15-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Ohio&action=raw",
+    "https://afightworthhaving.com/polling/2026/oh-15",
+    "https://uspollingdata.com/races/house/oh-15/",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://afightworthhaving.com/polling/2026/oh-15",
+     "reason": "404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Hart Research (HMP)",
+     "dates": "2026-10-09 to 10-12",
+     "D-R": "48-45",
+     "reason": "already in-window"
+    }
+   ],
+   "note": "No new poll."
+  },
+  "2026-PA-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "pa-01-house-redbox-research-2026-10-23.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Pennsylvania&action=raw",
+    "https://afightworthhaving.com/polling/2026/pa-01",
+    "https://afightworthhaving.com/polling/2026/pa-01/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/pa-01/methodology",
+    "https://uspollingdata.com/races/house/pa-01/",
+    "https://www.270towin.com/2026-house-polls/pennsylvania/district-1"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/pennsylvania/district-1",
+     "reason": "404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "Global Strategy Group (Harvie campaign)",
+     "dates": "2026-10-01 to 10-08",
+     "D-R": "Wikipedia only: 46-46",
+     "reason": "out of window"
+    },
+    {
+     "pollster": "NYT/Inquirer/Siena",
+     "dates": "2026-10-16 to 10-22",
+     "D-R": "48-46",
+     "reason": "already in-window"
+    },
+    {
+     "pollster": "Franklin & Marshall, Oct 7-18 (search snippet, Dem 48 Rep 41 RV)",
+     "dates": "2026-10-07 to 10-18",
+     "D-R": "n/a",
+     "reason": "appears to be a statewide generic ballot, not the PA-01 matchup; not verified"
+    }
+   ],
+   "note": ""
+  },
+  "2026-PA-07-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "files": [
+    "pa-07-house-redbox-research-2026-10-23.json",
+    "pa-07-house-muhlenberg-college-2026-10-15.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Pennsylvania&action=raw",
+    "https://afightworthhaving.com/polling/2026/pa-07",
+    "https://afightworthhaving.com/polling/2026/pa-07/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/pa-07/methodology",
+    "https://www.muhlenberg.edu/muhlenberg-now/pa-7th-congressional-survey-october-2026/",
+    "https://uspollingdata.com/races/house/pa-07/",
+    "https://www.270towin.com/2026-house-polls/pennsylvania/district-7"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "NYT/Inquirer/Siena",
+     "dates": "2026-10-16 to 10-22",
+     "D-R": "49-44",
+     "reason": "already in-window"
+    }
+   ],
+   "note": "Muhlenberg is a NEW pollster_id (muhlenberg-college)."
+  },
+  "2026-PA-08-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "pa-08-house-redbox-research-2026-10-23.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Pennsylvania&action=raw",
+    "https://afightworthhaving.com/polling/2026/pa-08",
+    "https://afightworthhaving.com/polling/2026/pa-08/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/pa-08/methodology",
+    "https://uspollingdata.com/races/house/pa-08/",
+    "https://www.270towin.com/2026-house-polls/pennsylvania/district-8",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=Cognetti",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?search=Bresnahan",
+    "https://emersoncollegepolling.com/pa-08-2026-poll/"
+   ],
+   "failed": [
+    {
+     "url": "https://emersoncollegepolling.com/pa-08-2026-poll/",
+     "reason": "404"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College, Oct 12-14, 396 LV, Cognetti 52 Bresnahan 48 (aggregators: Wikipedia, 270toWin, USPollingData)",
+     "reason": "only primary is the paywalled Poll Vault post https://pollvault.substack.com/p/levee-math (not fetched); no release on emersoncollegepolling.com"
+    }
+   ],
+   "excluded": [
+    {
+     "pollster": "NYT/Inquirer/Siena",
+     "dates": "2026-10-16 to 10-22",
+     "D-R": "51-46",
+     "reason": "already in-window"
+    }
+   ],
+   "note": ""
+  },
+  "2026-PA-10-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "files": [
+    "pa-10-house-redbox-research-2026-10-23.json"
+   ],
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Pennsylvania&action=raw",
+    "https://afightworthhaving.com/polling/2026/pa-10",
+    "https://afightworthhaving.com/polling/2026/pa-10/crosstabs.csv",
+    "https://afightworthhaving.com/polling/2026/pa-10/methodology",
+    "https://politicspa.com/pa10-new-york-times-siena-college-poll-rep-perry-45-scott-43/89343/",
+    "https://uspollingdata.com/races/house/pa-10/",
+    "https://www.270towin.com/2026-house-polls/pennsylvania/district-10"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "pollster": "NYT/Siena 'Perry 45 Scott 43' (politicspa.com)",
+     "dates": "Oct 23-26, article dated October 29, 2018",
+     "D-R": "Scott (D) 43 Perry (R) 45",
+     "reason": "wrong cycle and matchup: 2018 race vs George Scott, not Stelson"
+    },
+    {
+     "pollster": "NYT/Inquirer/Siena",
+     "dates": "2026-10-16 to 10-22",
+     "D-R": "48-48",
+     "reason": "already in-window"
+    },
+    {
+     "pollster": "Susquehanna",
+     "dates": "2026-10-05 to 10-11",
+     "D-R": "49-46",
+     "reason": "already in-window"
+    }
+   ],
+   "note": ""
+  }
+ }
+}

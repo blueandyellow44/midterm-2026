@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-ssrs-2026-10-27.json",
+ "race": "2026-MI-GOV",
+ "pid": "ssrs",
+ "name": "SSRS",
+ "sponsor": "CNN",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "ssrs-s-2026-MI-GOV-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-29",
+  "n": 768,
+  "pop": "LV",
+  "D": 53,
+  "R": 41,
+  "other": 5,
+  "undecided": 1,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.documentcloud.org/documents/28856720-cnn-poll-conducted-by-ssrs-michigan-october/",
+  "source_locator": "GOVVOTEMI combined G1MI/G1aMI table (governor vote plus leaners), Michigan likely voters, Oct. 20-Oct. 27, 2026: Benson 53, James 41, Neither 3, Other 2, No opinion 1",
+  "notes": "other = Neither 3 + Other 2; undecided = No opinion 1. n=768 is the registered-voter total; likely-voter results are the full RV sample weighted by predicted probability of voting, so no separate LV n is published (same treatment as the held Sept 6 wave, n=843). LV MoE +/-4.7. Embargoed to Thursday Oct 29, 5:00 a.m. Text read from DocumentCloud's own text layer in the browser (s3.documentcloud.org/.../cnn-poll-conducted-by-ssrs-michigan-october.txt); scripted fetch returned 403.",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The entire sample was weighted to reflect Census figures for the state's registered voters for education, race/ethnicity and race/ethnicity by education. The sample was also weighed to parameters from the L2 voter file for gender by age, gender by race, age by race, Voter Poll region, Census tract-level population density, 2024 vote mode, modeled 2024 vote preference alone and crossed with age, race, L2 modeled party registration, and 2024 vote mode. Additional weighting parameters included 2022 by 2024 turnout, 2024 partisan primary participation, 2026 early voter turnout, and L2 modeled party registration by a modeled voter-file likely voter score. Finally, the samples for each state were weighted among validated 2024 voters for recalled 2024 vote within Voter Poll regions.",
+  "mode": "online + telephone (L2 registration-based sample n=456 via postcard/SMS/email/phone; SSRS Opinion Panel n=312)",
+  "method_owner": "SSRS",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-29",
+  "method_url": "https://www.documentcloud.org/documents/28856720-cnn-poll-conducted-by-ssrs-michigan-october/",
+  "method_locator": "METHODOLOGY section, weighting paragraph"
+ }
+}

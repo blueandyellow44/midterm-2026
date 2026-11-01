@@ -1,0 +1,38 @@
+{
+ "file": "oh-gov-suffolk-university-political-research-center-2026-10-26.json",
+ "race": "2026-OH-GOV",
+ "pid": "suffolk-university-political-research-center",
+ "name": "Suffolk University Political Research Center",
+ "sponsor": "USA TODAY Network Ohio",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "suffolk-university-political-research-center-s-2026-OH-GOV-2026-10-26",
+ "poll": {
+  "field_start": "2026-10-21",
+  "field_end": "2026-10-26",
+  "release_date": "2026-10-28",
+  "n": 500,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 44.0,
+  "other": 4.0,
+  "undecided": 3.2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_28_2026_ohio_statewide_marginals.pdf",
+  "source_locator": "Q8 'There are 3 candidates for governor ... who you plan to vote for or lean toward': Amy Acton 48.00 (240), Don Kissick (L) 3.60 (18), Vivek Ramaswamy 44.00 (220), Vote/Lean Write-in 0.40, Undecided 3.20, Refused 0.80",
+  "notes": "other = Kissick 3.6 + write-in 0.4; refused 0.8 excluded. 'Plan to vote for or lean toward' wording (leaners folded into the single item); kept FULL to match the held Sept 23-27 Ohio wave. 17.2% already voted (Q1). Marginals header: 'SUPRC / USA TODAY NETWORK OHIO', 'Likely Ohio Voters 10/21 - 10/26'. MoE +/-4.4 per Wikipedia (not printed in marginals).",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "mode": "live telephone (interviewer script, landline + cell)",
+  "method_owner": "Suffolk University Political Research Center",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-28",
+  "method_url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_28_2026_ohio_statewide_marginals.pdf",
+  "method_locator": "Marginals contain the interviewer script and a recalled 2024 vote question (Q18) but no weighting statement; no methodology release found"
+ }
+}

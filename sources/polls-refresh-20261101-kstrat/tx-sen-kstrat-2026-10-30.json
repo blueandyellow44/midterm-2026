@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-kstrat-2026-10-30.json",
+ "race": "2026-TX-SEN",
+ "pid": "kstrat",
+ "name": "KStrat",
+ "sponsor": "None named on document",
+ "scls": "UNKNOWN",
+ "align": "NONE",
+ "method_id": "kstrat-s-2026-TX-SEN-2026-10-30",
+ "poll": {
+  "field_start": "2026-10-27",
+  "field_end": "2026-10-30",
+  "release_date": "2026-10-30",
+  "n": 900,
+  "pop": "LV",
+  "D": 48.1,
+  "R": 45.1,
+  "other": 0.7,
+  "undecided": 6.1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://kstrat.net/press/texas-2026-senate-governor-talarico-leads-paxton-october",
+  "source_locator": "Release: 'Talarico receiving 48% support to Ken Paxton's 45%'; 'Six percent of voters remain undecided.' Exact shares from the release's 'Export full survey results' workbook (Texas_Public_Opinion_Poll_102226.xlsx, Topline for download, Q8 frequencies of 900): Paxton 406, Talarico 433, Brown (L) 3, another candidate 3, not sure 55.",
+  "notes": "D/R/other/undecided are the workbook frequencies over 900 (the release rounds to 48/45/6). other = Ted Brown (L) 3 + another/write-in 3. Release dated Houston, Oct 30, 2026. No client or sponsor named in the release; the workbook's crosstab sheet is titled 'for client crosstabs' and its last editor is 'Kreate Strategies', so a client may exist: classed UNKNOWN (sponsor not stated, 0.6), not self-funded. KStrat describes itself as a market research firm (Fortune 500 clients); no party alignment stated. Same survey: Governor Abbott 49, Hinojosa 47 (not a tracked race). Workbook archived at sources/polls-refresh-20261101-kstrat/, sha256 a06418f0b37636704bd1f3301345342bca66acdbc914be31eb812fe117bcdd37. Max downloaded it from the release page 2026-11-01.",
+  "retrieved_at": "2026-11-01T12:30:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "method_url": "https://kstrat.net/press/texas-2026-senate-governor-talarico-leads-paxton-october",
+  "method_locator": "About the Survey: 'conducted October 27-30, 2026, among 900 likely Texas voters using an online panel methodology. The margin of error is +/-3.3%.' No weighting statement in the release or the workbook.",
+  "mode": "online panel",
+  "method_owner": "KStrat",
+  "retrieved_at": "2026-11-01T12:30:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

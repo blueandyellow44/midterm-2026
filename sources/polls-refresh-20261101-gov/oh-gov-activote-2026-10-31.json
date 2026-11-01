@@ -1,0 +1,38 @@
+{
+ "file": "oh-gov-activote-2026-10-31.json",
+ "race": "2026-OH-GOV",
+ "pid": "activote",
+ "name": "ActiVote",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "activote-s-2026-OH-GOV-2026-10-31",
+ "poll": {
+  "field_start": "2026-10-16",
+  "field_end": "2026-10-31",
+  "release_date": "2026-10-31",
+  "n": 400,
+  "pop": "LV",
+  "D": 50.8,
+  "R": 49.2,
+  "other": 0,
+  "undecided": 0,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://www.activote.net/polls/2026/oh-governor/",
+  "source_locator": "'Every poll in this race' table, October 31, 2026 row: Acton 50.8%, Ramaswamy 49.2%, D+1.6%, 400, +/-4.9%; text: 'in the field between October 16 and October 31 (median field date of October 24)'",
+  "notes": "Two-way forced choice (no undecided reported). Field window overlaps the held Sept 27-Oct 19 wave by four days (Oct 16-19); ActiVote publishes rolling waves. Wikipedia rounds 51-49; Wikipedia cites the site as 'YouGov' in error. scls/align match the held ActiVote rows (self, NONPARTISAN, NONE).",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Responses weighted by Demographics and Spectrum.",
+  "mode": "app panel (nonprobability, in-app polling)",
+  "method_owner": "ActiVote",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-31",
+  "method_url": "https://www.activote.net/trust/aapor",
+  "method_locator": "Poll page 'Methodology.' line; cycle boilerplate (AAPOR TI disclosure) lists nine weighting variables, no past vote"
+ }
+}

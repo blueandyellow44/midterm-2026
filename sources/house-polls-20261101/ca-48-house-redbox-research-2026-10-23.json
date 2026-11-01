@@ -1,0 +1,38 @@
+{
+ "file": "ca-48-house-redbox-research-2026-10-23.json",
+ "race": "2026-CA-48-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-CA-48-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 1151,
+  "pop": "LV",
+  "D": 47.7,
+  "R": 42.6,
+  "other": 2.2,
+  "undecided": 3.8,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/ca-48",
+  "source_locator": "U.S. House: von Wilpert (D) 47.6890, Desmond (R) 42.5864, Someone else 2.2320, Undecided 3.7848, Prefer not to answer 2.7227, Did not vote in this race 0.9851 (crosstabs.csv Q10/Q11 house_vote, banner Total); page shows von Wilpert 48% Desmond 43%; 1,151 LV, Oct 20-23, MOE +/-3.6",
+  "notes": "other = someone else 2.2; prefer not 2.7 and did-not-vote 1.0 excluded. Design effect 1.59. Shares from crosstabs.csv weighted_pct rounded to 0.1, release version 5 (https://afightworthhaving.com/polling/2026/ca-48/crosstabs.csv). Added by the coordinator after the batch-1 worker missed it; the AFWH polling index lists CA-48 among its Oct 20-23 House polls.",
+  "retrieved_at": "2026-11-01T12:11:57-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "party registration, gender, age group, education (college degree), race and ethnicity; corrected 2024 recall of file-validated 2024 voters",
+  "method_url": "https://afightworthhaving.com/polling/2026/ca-48/methodology",
+  "method_locator": "Weighting",
+  "mode": "text message invitation to a self-administered web survey (English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:11:57-08:00",
+  "method_date": "2026-10-25"
+ }
+}

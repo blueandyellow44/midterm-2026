@@ -1,0 +1,38 @@
+{
+ "file": "me-sen-marist-2026-10-25-rv.json",
+ "race": "2026-ME-SEN",
+ "pid": "marist",
+ "name": "Marist Poll",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "marist-s-2026-ME-SEN-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-27",
+  "n": 1449,
+  "pop": "RV",
+  "D": 53,
+  "R": 44,
+  "other": 0,
+  "undecided": 2,
+  "denominator_class": "FULL",
+  "round": "FIRST",
+  "source_url": "https://maristpoll.marist.edu/wp-content/uploads/2026/10/Marist-Poll_Maine-NOS-and-Tables_202610261228-3_43sjl2.pdf",
+  "source_locator": "SNVT26R Weighted Crosstab, Maine Registered Voters table, 'Registered voters' row: Troy Jackson 53%, Susan Collins 44%, Another party's candidate <1%, Undecided 2%, Vol: No response <1%",
+  "notes": "RV sample of the Marist Maine poll whose LV row (49/47) is already in polls.csv; the RV row was not recorded then. Other <1 recorded 0; No response <1 not folded in. First-choice question in a ranked-choice race; round FIRST as with the LV row. RV MoE +/-4.1.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "To ensure representativeness, data was balanced to match current estimates for registered voters by age, gender, income, and race/ethnicity using L2 voter parameters. Education was balanced to match current CPS estimates for registered voters. Region was adjusted for turnout in similar elections. A likely voter weight was applied to registered voters based on each respondent's estimated probability of voting in the November 2026 election.",
+  "method_url": "https://maristpoll.marist.edu/wp-content/uploads/2026/10/Marist-Poll_Maine-NOS-and-Tables_202610261228-3_43sjl2.pdf",
+  "method_locator": "Methodology page, p.1",
+  "mode": "phone (live, 261), text (1,170), online (18)",
+  "method_owner": "Marist Poll",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-27"
+ }
+}

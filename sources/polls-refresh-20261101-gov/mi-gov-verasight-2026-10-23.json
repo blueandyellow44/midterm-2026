@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-verasight-2026-10-23.json",
+ "race": "2026-MI-GOV",
+ "pid": "verasight",
+ "name": "Michigan State University (Dept. of Political Science, Office for Survey Research) / Verasight",
+ "sponsor": "Michigan State University College of Social Science and Department of Political Science",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "verasight-s-2026-MI-GOV-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-08",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-29",
+  "n": 1383,
+  "pop": "LV",
+  "D": 48.5,
+  "R": 38.7,
+  "other": 3.3,
+  "undecided": 9.6,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://polisci.msu.edu/_assets/MI_2026_pre_election_report.pdf",
+  "source_locator": "p.3-4 'Governor MRP estimates', Initial Response column: Benson 48.5, James 38.7, Someone else or none of these 3.3, Don't know yet / Undecided 9.6",
+  "notes": "Headline (release p.1 and the MSU news page https://polisci.msu.edu/news-events/news/smidt-poll102926.html) is the MRP initial response. Leaner follow-up MRP column: Benson 50.9, James 41.5, Someone else or none 7.7 (Wikipedia rounds to 51-42-8). Traditional weighted toplines (p.8): initial 49.5/38.7/2.9/8.9, leaner 51.4/41.2/7.4. A different program from the held MSU IPPSR / YouGov State of the State poll (Oct 2-19, pollster_id michigan-state-ippsr): this is Prof. Corwin Smidt's 2026 Michigan Election Survey pre-election wave, 1,530 respondents (Verasight 1,400 Oct 8-23 + OSR mail 130 Oct 13-23); 1,383 likely voters. pollster_id 'verasight' reused as field vendor; consider a separate id if the method record wants MSU as owner. MSU news page sits behind an Incapsula bot wall (read in browser); the PDF fetched directly.",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The percentages reported in this report are only of likely voters, weighted by age, gender, congressional district, county, August primary vote choice, and race to be reflective of the expected 2026 November electorate.",
+  "mode": "online (Verasight: text-message recruit from voter file and commercial records 60.3%, Verasight community email 39.7%) + OSR mail-to-web (n=130)",
+  "method_owner": "Michigan State University Department of Political Science / OSR (Corwin D. Smidt)",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-29",
+  "method_url": "https://polisci.msu.edu/_assets/MI_2026_pre_election_report.pdf",
+  "method_locator": "p.1 'About the Survey and the results'; p.3-4 MRP description (county-level 2024 Trump vote % is a model covariate, not individual recalled-vote weighting); p.7 'About the survey and analysis'"
+ }
+}

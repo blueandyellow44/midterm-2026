@@ -1,0 +1,38 @@
+{
+ "file": "ia-gov-co-efficient-2026-10-28.json",
+ "race": "2026-IA-GOV",
+ "pid": "co-efficient",
+ "name": "co/efficient",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "co-efficient-s-2026-IA-GOV-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-29",
+  "n": 1020,
+  "pop": "LV",
+  "D": 50,
+  "R": 45,
+  "other": null,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://battlegrounds.coefficient.org/ia/",
+  "source_locator": "Full toplines Q5 'If the November 3rd general election for Governor of Iowa were held today': Rob Sand, Democrat 50; Zach Lahn, Republican 45; Undecided 5",
+  "notes": "One-day field (October 28). MoE +/-3.05. Release date from the Senate Battlegrounds index ('Iowa: October 29, 2026'). No third-party option offered on the governor item. Same sample as the Iowa Senate item (Hinson 48, Turek 46).",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted on age, gender, race, education, geography, and registered party to reflect the likely 2026 general electorate.",
+  "mode": "mobile text responses + landline interviews",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-29",
+  "method_url": "https://battlegrounds.coefficient.org/ia/",
+  "method_locator": "'Methodology' paragraph at foot of Iowa page"
+ }
+}

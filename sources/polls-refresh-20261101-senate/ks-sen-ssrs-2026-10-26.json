@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-ssrs-2026-10-26.json",
+ "race": "2026-KS-SEN",
+ "pid": "ssrs",
+ "name": "SSRS",
+ "sponsor": "CNN",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "ssrs-s-2026-KS-SEN-2026-10-26",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-26",
+  "release_date": "2026-10-29",
+  "n": 838,
+  "pop": "LV",
+  "D": 49,
+  "R": 45,
+  "other": 5,
+  "undecided": 0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.documentcloud.org/documents/28856723-cnn-poll-conducted-by-ssrs-kansas-october/",
+  "source_locator": "SENVOTEKS combined S1KS/S1aKS table, Kansas likely voters Oct. 20-Oct. 26, 2026: Adam Hamilton 49%, Roger Marshall 45%, Neither 4%, Other 1%, No opinion *",
+  "notes": "other = Neither 4 + Other 1; No opinion < 0.5 recorded 0. n is the registered-voter sample; likely-voter results are all RV weighted by predicted probability of voting (LV n not stated). Combined vote-choice/lean table, so LEANERS. Embargoed for release Thursday, October 29, 5:00 a.m. DocumentCloud text read in a browser (curl gets 403) before the coordinator's no-browser instruction.",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The entire sample was weighted to reflect Census figures for the state's registered voters for education, race/ethnicity and race/ethnicity by education. The sample was also weighed to parameters from the L2 voter file for gender by age, gender by race, age by race, Voter Poll region, Census tract-level population density, 2024 vote mode, modeled 2024 vote preference alone and crossed with age, race, party registration, and 2024 vote mode. Additional weighting parameters included 2022 by 2024 turnout, 2024 partisan primary participation, 2026 early voter turnout, and party registration by a modeled voter-file likely voter score.",
+  "method_url": "https://www.documentcloud.org/documents/28856723-cnn-poll-conducted-by-ssrs-kansas-october/",
+  "method_locator": "Methodology section (Kansas document wording; the four state documents share the paragraph)",
+  "mode": "online and telephone",
+  "method_owner": "SSRS",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-29"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-npa-polling-national-public-affairs-2026-10-29.json",
+ "race": "2026-NE-SEN",
+ "pid": "npa-polling-national-public-affairs",
+ "name": "NPA Polling (National Public Affairs)",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "npa-polling-national-public-affairs-s-2026-NE-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-25",
+  "field_end": "2026-10-29",
+  "release_date": "2026-11-01",
+  "n": 800,
+  "pop": "LV",
+  "D": 45,
+  "R": 48,
+  "other": 4,
+  "undecided": 3,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://backend.natpublicaffairs.com/media/Nebraska_General_Election_Memo_103126.2.pdf",
+  "source_locator": "Memo dated November 1st, 2026, U.S. Senate section: 'voters favor Pete Ricketts (R) 48% to Dan Osborn (I) 45%, with the three minor-party candidates at 4% combined and 3% undecided.' ('Ballot totals include voters leaning toward a candidate')",
+  "notes": "D slot = Dan Osborn (Independent). Head-to-head also reported: Ricketts 49, Osborn 48. Found via PollCheck's Nebraska list (not on Wikipedia/270toWin at fetch time); read at NPA's own memo PDF. Distinct from the Oct 15-18 NPA Nebraska tracker in polls.csv.",
+  "retrieved_at": "2026-11-01T12:50:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "responses were weighted to match the expected electorate on key demographics.",
+  "method_url": "https://backend.natpublicaffairs.com/media/Nebraska_General_Election_Memo_103126.2.pdf",
+  "method_locator": "Methodology paragraph, p.2",
+  "mode": "live calls and text-to-web, voter file",
+  "method_owner": "NPA Polling",
+  "retrieved_at": "2026-11-01T12:50:00-08:00",
+  "method_date": "2026-11-01"
+ }
+}

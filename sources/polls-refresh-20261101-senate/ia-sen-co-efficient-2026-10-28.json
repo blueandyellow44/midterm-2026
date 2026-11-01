@@ -1,0 +1,38 @@
+{
+ "file": "ia-sen-co-efficient-2026-10-28.json",
+ "race": "2026-IA-SEN",
+ "pid": "co-efficient",
+ "name": "co/efficient",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "co-efficient-s-2026-IA-SEN-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-10-28",
+  "release_date": null,
+  "n": 1020,
+  "pop": "LV",
+  "D": 46,
+  "R": 48,
+  "other": 1,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://battlegrounds.coefficient.org/ia/",
+  "source_locator": "Q8 full ballot: Ashley Hinson 48%, Josh Turek 46%, Thomas Laehn (L) 1%, Undecided 5%",
+  "notes": "Page now shows the Oct 28 wave (the Oct 15-19 wave in polls.csv was on the same URL earlier). Q9 head-to-head (Hinson vs. Turek): Hinson 48, Turek 46, Undecided 6. Page says only 'Released October 2026'; 270toWin lists 10/29/2026. Footer: 'Independent public polling. Not sponsored by any candidate committee, party committee or other independent expenditure.' Class set 2026-11-01 to this pollster's majority precedent in polls.csv (self, PARTISAN_PUBLIC, R) per the refresh audit.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Results are weighted on age, gender, race, education, geography, and registered party to reflect the likely 2026 general electorate.",
+  "method_url": "https://battlegrounds.coefficient.org/ia/",
+  "method_locator": "Methodology paragraph",
+  "mode": "mobile text responses and landline interviews",
+  "method_owner": "co/efficient",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": null
+ }
+}

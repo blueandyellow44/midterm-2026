@@ -1,0 +1,38 @@
+{
+ "file": "fl-14-house-redbox-research-2026-10-23.json",
+ "race": "2026-FL-14-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-FL-14-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 708,
+  "pop": "LV",
+  "D": 45.6,
+  "R": 44.7,
+  "other": 4.6,
+  "undecided": 3.2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/fl-14",
+  "source_locator": "U.S. House: Castor (D) 45.598, Beltran (R) 44.726, Lambert (L) 3.4626, Someone else 1.1221, Undecided 3.1618, Prefer not to answer 1.8386, Did not vote in race 0.0893 (crosstabs.csv Q10/Q11 Total); page shows Castor 46% Beltran 45%; 708 LV, Oct 20-23, MOE +/-4.5",
+  "notes": "other = Lambert 3.5 + someone else 1.1; prefer not 1.8 and did-not-vote 0.1 excluded. Design effect 1.48. Release version 5 of crosstabs.csv (https://afightworthhaving.com/polling/2026/fl-14/crosstabs.csv). Early voters asked how they voted.",
+  "retrieved_at": "2026-11-01T12:07:24-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "party registration, gender, age, education and race and ethnicity, and to the certified 2024 result through how people told us they voted (methodology page); recipes anchored to the 2024 presidential vote, certified result and file-validated 2024 voters",
+  "method_url": "https://afightworthhaving.com/polling/2026/fl-14/methodology",
+  "method_locator": "How this poll's estimate was built; Weighting",
+  "mode": "text message invitation to a self-administered web survey (English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:07:24-08:00",
+  "method_date": "2026-10-25"
+ }
+}

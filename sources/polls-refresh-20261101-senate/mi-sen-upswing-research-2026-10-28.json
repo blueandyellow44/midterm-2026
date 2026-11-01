@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-upswing-research-2026-10-28.json",
+ "race": "2026-MI-SEN",
+ "pid": "upswing-research",
+ "name": "Upswing Research",
+ "sponsor": "Demand Justice",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "upswing-research-s-2026-MI-SEN-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-24",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-29",
+  "n": 505,
+  "pop": "LV",
+  "D": 50,
+  "R": 45,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://x.com/joshorton/status/2115883461076545615",
+  "source_locator": "Sponsor thread on X by Josh Orton (Demand Justice): tweet 2115882056081346742 'NEW SCOTUS MICHIGAN POLL for Demand Justice: [Upswing - Oct 24-28, N505, LV, MOE 4.4]'; tweet 2115883461076545615 'Senate head-to-head: El-Sayed leads Rogers 50%-45%'",
+  "notes": "NO PRIMARY DOCUMENT: numbers come only from the sponsor's X thread (read via api.fxtwitter.com/2/conversation/2115883461076545615), like the PPP Alaska row. 'Head-to-head' wording suggests a two-name question; other/undecided not stated. Primarily an issue poll (Supreme Court). New pollster. Found via PollCheck's Michigan list and Wikipedia (Wikipedia gives no URL).",
+  "retrieved_at": "2026-11-01T12:55:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": null,
+  "method_url": "https://x.com/joshorton/status/2115882056081346742",
+  "method_locator": "No methodology published beyond the thread header",
+  "mode": null,
+  "method_owner": "Upswing Research",
+  "retrieved_at": "2026-11-01T12:55:00-08:00",
+  "method_date": "2026-10-29"
+ }
+}

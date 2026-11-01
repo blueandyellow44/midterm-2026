@@ -1,0 +1,38 @@
+{
+ "file": "wi-gov-wick-2026-10-23.json",
+ "race": "2026-WI-GOV",
+ "pid": "wick",
+ "name": "Wick",
+ "sponsor": "League of American Workers",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "wick-s-2026-WI-GOV-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-28",
+  "n": 1213,
+  "pop": "LV",
+  "D": 47.7,
+  "R": 44.6,
+  "other": null,
+  "undecided": 7.7,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://wick.io/law-wisconsin-poll",
+  "source_locator": "Embedded WICK_PACKET_DATA, Q9 'Governor ballot' ('If the November 2026 election for governor of Wisconsin were held today, for whom would you vote?'): David Crowley, the Democrat 47.71; Tom Tiffany, the Republican 44.63; Undecided / Not sure 7.66",
+  "notes": "n is the published weighted total (1,213); unweighted n not disclosed. MoE +/-3.0. Leaner follow-up Q10 among the undecided base (weighted 92.9): Crowley 15.7, Tiffany 19.5, still undecided 64.8; not combined here. League of American Workers is a conservative advocacy group founded by Steve Cortes (Wikipedia efn); same sponsor as the TIPP Aug WI poll. No release date on the page; Wikipedia access-date 2026-10-28. Wikipedia rounds 48-45-8. New pollster_id 'wick' (not in pollsters.csv). release_date 2026-10-28 is an upper bound: the page carries no date and the earliest dated public citation is the Wikipedia access-date (set 2026-11-01 for the merge, which requires a release date).",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": "NA",
+  "mode": "UNKNOWN (not stated on the results page)",
+  "method_owner": "Wick",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "NA",
+  "method_url": "https://wick.io/law-wisconsin-poll",
+  "method_locator": "survey.methodology field: 'Percentages, counts, and question bases are weighted'; weighting field reads only 'Weight Variable'; no weighting targets disclosed"
+ }
+}

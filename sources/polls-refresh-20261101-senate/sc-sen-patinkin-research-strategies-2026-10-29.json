@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-patinkin-research-strategies-2026-10-29.json",
+ "race": "2026-SC-SEN",
+ "pid": "patinkin-research-strategies",
+ "name": "Patinkin Research Strategies",
+ "sponsor": "Project VOTE (independent expenditure PAC supporting Annie Andrews)",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "patinkin-research-strategies-s-2026-SC-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-27",
+  "field_end": "2026-10-29",
+  "release_date": "2026-10-30",
+  "n": 500,
+  "pop": "LV",
+  "D": 48,
+  "R": 43,
+  "other": 8,
+  "undecided": 0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "http://prospect-pdx-slje.squarespace.com/s/PRSSCStatewidePollToplines103026.pdf",
+  "source_locator": "Toplines q8: Annie Andrews 48%, Darline Graham 43%, Mark Hackett (Constitution) 3%, Kasie Whitener (L) 3%, Someone else 2%, Undecided 0%",
+  "notes": "other = Hackett 3 + Whitener 3 + someone else 2. Methodology describes 500 registered voters screened to already voted / almost certain / probably / 50-50, recorded LV. Release PDF: https://static1.squarespace.com/static/54512d3ce4b07de69d8320c7/t/6ae4f0f24aec54388059c463/1793388786248/PRS%2BProjectVOTE.SCSW+Poll+Release.103026.pdf ('This survey was commissioned by Project VOTE, an independent expenditure organization that supports Dr. Annie Andrews'). Class INTERNAL per Max 2026-11-01 PAC ruling: Project VOTE describes itself as an independent expenditure organization supporting Andrews.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was controlled to match this likely voter model using data collection quotas and weighting on the following variables: age, education, race, gender, media market, vote propensity score, ideology, and self-reported vote in the 2024 Presidential election.",
+  "method_url": "https://static1.squarespace.com/static/54512d3ce4b07de69d8320c7/t/6ae4f0f24aec54388059c463/1793388786248/PRS%2BProjectVOTE.SCSW+Poll+Release.103026.pdf",
+  "method_locator": "Survey Methodology, release p.3",
+  "mode": "text-to-web from the TargetSmart voter file",
+  "method_owner": "Patinkin Research Strategies",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

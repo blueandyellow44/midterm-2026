@@ -1,0 +1,38 @@
+{
+ "file": "az-01-house-keating-research-2026-10-28.json",
+ "race": "2026-AZ-01-HOUSE",
+ "pid": "keating-research",
+ "name": "Keating Research",
+ "sponsor": "None named; memo from Keating Research to Interested Parties",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "keating-research-h-2026-AZ-01-HOUSE-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-29",
+  "n": 500,
+  "pop": "LV",
+  "D": 49.0,
+  "R": 45.0,
+  "other": null,
+  "undecided": 6.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://keatingresearch.com/polls/az-01-october-2026/kr-az-01-poll-oct-2026-memo.pdf",
+  "source_locator": "Memo p1: 'Democrat Amish Shah at 49% and Republican Jay Feely at 45% on the ballot for Congress, including voters who lean toward a candidate, with 6% undecided'; topline PDF Q3: Total Shah 49%, Total Feely 45%, Remain Undecided / Don't know 6%",
+  "notes": "Two-candidate question; leaners counted with candidates (only figure published). No sponsor named in memo or topline; Keating Research is a Democratic firm, classed PARTISAN_PUBLIC/D as a self-release. Topline: https://keatingresearch.com/polls/az-01-october-2026/kr-az-01-poll-oct-2026-topline.pdf (Q2: 61% already voted). MoE +/-4.4. NEW pollster_id.",
+  "retrieved_at": "2026-11-01T12:08:58-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Respondents are weighted to represent likely voters based on party registration, gender, age, region, ethnicity, vote history, and education.",
+  "method_url": "https://keatingresearch.com/polls/az-01-october-2026/kr-az-01-poll-oct-2026-memo.pdf",
+  "method_locator": "Methodology paragraph, memo p1",
+  "mode": "hybrid (live-interviewer and text-to-online)",
+  "method_owner": "Keating Research",
+  "method_date": "2026-10-29",
+  "retrieved_at": "2026-11-01T12:08:58-08:00"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-east-carolina-university-ecu-center-for-survey-research-2026-10-24.json",
+ "race": "2026-SC-SEN",
+ "pid": "east-carolina-university-ecu-center-for-survey-research",
+ "name": "East Carolina University Center for Survey Research",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "east-carolina-university-ecu-center-for-survey-research-s-2026-SC-SEN-2026-10-24",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-24",
+  "release_date": "2026-10-29",
+  "n": 955,
+  "pop": "LV",
+  "D": 47,
+  "R": 51,
+  "other": 2,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://surveyresearch-ecu.reportablenews.com/pr/ecu-poll-finds-graham-leading-andrews-by-four-points",
+  "source_locator": "Release paragraph 3: 'Darline Graham leading Democratic challenger Annie Andrews by four percentage points among likely voters, 51% to 47%. Another 2% support an independent, minor-party, or write-in candidate.'",
+  "notes": "Undecided not reported (shares sum to 100); left null. Credibility interval +/-3.7.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data were weighted to reflect the population of likely 2026 general election voters in South Carolina based on age, education level, race/ethnicity, gender, region, and party identification, as well as election modeling based on previous statewide elections in South Carolina.",
+  "method_url": "https://surveyresearch-ecu.reportablenews.com/pr/ecu-poll-finds-graham-leading-andrews-by-four-points",
+  "method_locator": "Methodology section of the release (past-election modeling, respondent recall not stated)",
+  "mode": "MMS-to-web (n=413, L2 via ReconMR), landline IVR (n=184), Bovitz online panel (n=358)",
+  "method_owner": "ECU Center for Survey Research",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-29"
+ }
+}

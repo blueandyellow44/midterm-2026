@@ -1,0 +1,38 @@
+{
+ "file": "nh-sen-umass-lowell-2026-10-19.json",
+ "race": "2026-NH-SEN",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "UMass Lowell Center for Public Opinion",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-NH-SEN-2026-10-19",
+ "poll": {
+  "field_start": "2026-10-02",
+  "field_end": "2026-10-19",
+  "release_date": "2026-10-28",
+  "n": 600,
+  "pop": "LV",
+  "D": 48,
+  "R": 41,
+  "other": 4,
+  "undecided": 7,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.uml.edu/docs/TOPLINE%20-%20UMass%20Lowell%20NEW%20HAMPSHIRE%20GEN%201%20202610XX%20FINAL_tcm18-424375.pdf",
+  "source_locator": "Topline Table 1, Total column: Chris Pappas 48%, John E. Sununu 41%, Edmond Laplante (Constitution) 4%, Another candidate 0%, Undecided 7%, I would not vote 0%",
+  "notes": "Found via 270toWin (listed 10/29/2026); not on Wikipedia's NH table. other = Laplante 4 + another 0. Press release: https://www.uml.edu/news/press-releases/2026/102826-new-england-polls.aspx. Adjusted MoE +/-5. Filed under pid yougov (fieldwork firm), sponsor UMass Lowell, matching existing UMass Lowell rows.",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The matched cases were then iteratively proportionally fitted (IPF) on 2024 presidential vote choice. Additionally, an IPF was run on a three-way stratification of gender, age (4 categories), and education (4 categories)",
+  "method_url": "https://www.uml.edu/docs/METHODOLOGY%20-%20UMass%20Lowell%20NEW%20HAMPSHIRE%20GEN%201%2020261028_tcm18-424417.pdf",
+  "method_locator": "Methodology statement, Weighting",
+  "mode": "online, YouGov opt-in panel with sample matching",
+  "method_owner": "UMass Lowell Center for Public Opinion",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

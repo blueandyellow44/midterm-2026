@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-cor-strategies-2026-10-15.json",
+ "race": "2026-TX-SEN",
+ "pid": "cor-strategies",
+ "name": "Cor Strategies",
+ "sponsor": "Heritage Action (paid all costs)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "cor-strategies-s-2026-TX-SEN-2026-10-15",
+ "poll": {
+  "field_start": "2026-10-10",
+  "field_end": "2026-10-15",
+  "release_date": null,
+  "n": 1409,
+  "pop": "LV",
+  "D": 44,
+  "R": 40,
+  "other": null,
+  "undecided": 16,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://static.dailysignalmedia.org/2026/10/TX-Poll-Crosstabs.pdf",
+  "source_locator": "Crosstabs '11 Senate', Statewide column: James Talarico 44%, Ken Paxton 40%, Undecided 16%",
+  "notes": "Two-name question (Libertarian not offered), so other null. Poll titled 'TX Election Integrity'; 'This poll was directed by Stefani Buhajla in partnership with Cor Strategies, LLC. Heritage Action paid for all costs associated with this survey.' Release date not printed (Wikipedia access-date 2026-10-28). Weighted to a fixed party target (42 R / 34 D / 24 I).",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data were post-stratified using weighted demographic information from the U.S. Census Bureau's Current Population Survey Voting and Registration Supplement and the state election authorities. Survey results were weighted to reflect a target political affiliation distribution of 42% Republican, 34% Democrat, and 24% Independent, and a gender distribution of 48% male and 52% female.",
+  "method_url": "https://static.dailysignalmedia.org/2026/10/TX-Poll-Crosstabs.pdf",
+  "method_locator": "Methodology, last page",
+  "mode": "online panels and automated telephone interviews",
+  "method_owner": "Cor Strategies, LLC",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": null
+ }
+}

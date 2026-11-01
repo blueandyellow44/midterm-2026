@@ -1,0 +1,38 @@
+{
+ "file": "ia-gov-yougov-2026-10-29.json",
+ "race": "2026-IA-GOV",
+ "pid": "yougov",
+ "name": "YouGov",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "yougov-s-2026-IA-GOV-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-29",
+  "release_date": "2026-11-01",
+  "n": 2020,
+  "pop": "LV",
+  "D": 53,
+  "R": 46,
+  "other": 0,
+  "undecided": 0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ia_20261026_lv.pdf",
+  "source_locator": "Q7 'Who did you vote for, or who will you vote for, in the election for Governor': Rob Sand (Democrat) 53, Zach Lahn (Republican) 46, Someone else 0, Not sure 0, I would not vote 0",
+  "notes": "Already-voted respondents report their vote; undecided asked to lean and leaners included (per question note). No sponsor named on the document (same 'ttw' series as the held Oct 6-12 Iowa report). MoE from header. Unweighted N 2,019 on the crosstab. Release date from Wikipedia citation and 270toWin listing (11/01); the PDF itself carries no release date. YouGov ttw series: NONPARTISAN per Max 2026-11-01 ruling (a firm polling on its own).",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to gender, age, in-state geography (using the current Iowa voter list), party registration, and imputed education and 2024 presidential vote. Weights were computed using the method of raking. Likely voters are defined using a model that takes into account past vote, demographics, and self-reported likelihood to vote.",
+  "mode": "online (text-message invitation from the Iowa registered-voter list to YouGov's web survey system)",
+  "method_owner": "YouGov",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-11-01",
+  "method_url": "https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ia_20261026_lv.pdf",
+  "method_locator": "Methodology page (last page), 'Weighting' row"
+ }
+}

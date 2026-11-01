@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-quantus-2026-10-28.json",
+ "race": "2026-TX-SEN",
+ "pid": "quantus",
+ "name": "Quantus Insights",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "quantus-s-2026-TX-SEN-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-30",
+  "n": 1221,
+  "pop": "LV",
+  "D": 47.6,
+  "R": 48.7,
+  "other": 1.4,
+  "undecided": 2.2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://quantusinsights.org/polling/f/texas-survey-paxton-up-one-abbott-ahead-by-five",
+  "source_locator": "Post (October 30, 2026): 'Paxton at 48.7 percent and James Talarico at 47.6. Ted Brown, the Libertarian, takes 1.4 and 2.2 percent are undecided.'",
+  "notes": "With undecided leaners pushed: Paxton 49.4, Talarico 48.4. Post text read in a browser (JS-rendered) before the coordinator's no-browser instruction; full report PDF fetched by curl from the Google Drive link on the post. Sponsor/alignment follow existing Quantus rows. Class set 2026-11-01 to this pollster's majority precedent in polls.csv (self, PARTISAN_PUBLIC, R) per the refresh audit.",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Iterative proportional fitting, or raking, to benchmarks for the Texas likely general-election electorate on six dimensions: sex, age range, race and ethnicity (modeled), education (modeled), metro type and congressional district. Weights were trimmed to limit the influence of individual respondents and renormalized each iteration.",
+  "method_url": "https://drive.google.com/file/d/1ARCDbN8BXrLNkeMWZAhCC0uytZtvWnhW/view",
+  "method_locator": "Full report, Population / Weighting panel",
+  "mode": "SMS text-to-web (voter file)",
+  "method_owner": "Quantus Insights",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

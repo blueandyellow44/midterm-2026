@@ -1,0 +1,38 @@
+{
+ "file": "fl-13-house-redbox-research-2026-10-23.json",
+ "race": "2026-FL-13-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-FL-13-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 875,
+  "pop": "LV",
+  "D": 45.1,
+  "R": 48.1,
+  "other": 2.4,
+  "undecided": 3.3,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/fl-13",
+  "source_locator": "U.S. House: Luna (R) 48.054, Gray (D) 45.078, D'Arrigo (NPA) 1.6151, Someone else 0.8176, Undecided 3.3128, Prefer not to answer 1.0640, Did not vote in race 0.0573 (crosstabs.csv Q10/Q11 Total); page shows Luna 48% Gray 45%; 875 LV, Oct 20-23, MOE +/-4.0",
+  "notes": "other = D'Arrigo 1.6 + someone else 0.8; prefer not 1.1 and did-not-vote 0.1 excluded. Design effect 1.43. Shares from crosstabs.csv weighted_pct rounded to 0.1. Release version 5 of crosstabs.csv (https://afightworthhaving.com/polling/2026/fl-13/crosstabs.csv). Early voters asked how they voted.",
+  "retrieved_at": "2026-11-01T12:07:24-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "party registration, gender, age, education and race and ethnicity, and to the certified 2024 result through how people told us they voted (methodology page); recipes anchored to the 2024 presidential vote, certified result and file-validated 2024 voters",
+  "method_url": "https://afightworthhaving.com/polling/2026/fl-13/methodology",
+  "method_locator": "How this poll's estimate was built; Weighting",
+  "mode": "text message invitation to a self-administered web survey (English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:07:24-08:00",
+  "method_date": "2026-10-25"
+ }
+}

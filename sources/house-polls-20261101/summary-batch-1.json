@@ -1,0 +1,345 @@
+{
+ "batch": 1,
+ "districts": {
+  "2026-AK-AL-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_election_in_Alaska&action=raw",
+    "https://uspollingdata.com/races/house/ak-01/",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://alaskapublic.org/news/politics/elections/2026-10-21/hill-campaign-gains-ground-but-supporters-worry-its-too-late"
+   ],
+   "failed": [
+    {
+     "url": "https://uspollingdata.com/races/house/ak-al/",
+     "reason": "404"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/alaska/district-0",
+     "reason": "404"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/alaska-us-house-at-large-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Data for Progress Oct 8-16 and PPP Oct 14-15",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "NYT/Siena Sep 24-Oct 1, Begich 47 Hill 35 (Wikipedia)",
+     "reason": "out of window (field_end < 2026-10-10)"
+    },
+    {
+     "poll": "Alaska Survey Research Oct 1-3, Begich 50 Hill 40 first choice (Wikipedia)",
+     "reason": "out of window; already on file"
+    }
+   ],
+   "note": "No poll ending after Oct 16 found."
+  },
+  "2026-AL-02-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Alabama&action=raw",
+    "https://uspollingdata.com/races/house/al-02/",
+    "https://www.270towin.com/2026-house-polls/alabama/district-2",
+    "https://1819news.com/news/item/al-2-poll-marques-48-figures-46",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/alabama-us-house-2-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [],
+   "note": "Remington Oct 23-25 written from 1819 News only; sponsor not stated; no Remington release found."
+  },
+  "2026-AZ-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Arizona&action=raw",
+    "https://uspollingdata.com/races/house/az-01/",
+    "https://www.270towin.com/2026-house-polls/arizona/district-1",
+    "https://keatingresearch.com/polls/az-01-october-2026/kr-az-01-poll-oct-2026-memo.pdf",
+    "https://keatingresearch.com/polls/az-01-october-2026/kr-az-01-poll-oct-2026-topline.pdf",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/arizona-us-house-1-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "RedBox Research Oct 20-23",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "FirstStrategic Oct 1, Shah 44 Feely 42",
+     "reason": "out of window"
+    }
+   ],
+   "note": "Keating Research Oct 26-28 written; no sponsor named in memo."
+  },
+  "2026-AZ-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Arizona&action=raw",
+    "https://uspollingdata.com/races/house/az-02/",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/wp-json/wp/v2/posts?after=2026-10-10T00:00:00&per_page=100",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://www.jonathannezforaz.com/news/icymi-poll-shows-dem-jonathan-nez-tied-with-rep-eli-crane-in-district-trump-won-by-double-digits"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/arizona/district-2",
+     "reason": "404"
+    },
+    {
+     "url": "https://insideelections.com/arizona-2-poll-sleeper-race-awakens/",
+     "reason": "403"
+    },
+    {
+     "url": "https://www.axios.com/local/phoenix/2026/10/27/jonathan-nez-eli-crane-arizona-cd2",
+     "reason": "403"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/arizona-us-house-2-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Emerson College for Poll Vault, Oct 12-14, 345 LV (Wikipedia/uspollingdata/VoteHub: Nez 50, Crane 48)",
+     "reason": "paywall: Poll Vault post audience only_paid, no House numbers in free portion; no Emerson release on emersoncollegepolling.com since Oct 10"
+    }
+   ],
+   "excluded": [
+    {
+     "poll": "Noble Predictive Insights for Inside Elections Oct 8-10, Crane 42 Nez 42, 414 LV (search snippet)",
+     "reason": "appears to be the 2024 cycle poll (article refers to Crane flipping the seat in 2022; IE page 403); not written"
+    }
+   ],
+   "note": "No writable in-window poll."
+  },
+  "2026-AZ-06-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Arizona&action=raw",
+    "https://uspollingdata.com/races/house/az-06/",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+    "https://www.joannamendoza.com/?p=12037",
+    "https://www.joannamendoza.com/?p=11974",
+    "https://www.news247plus.com/news/politics/democrat-joanna-mendoza-beats-juan-ciscomani-in-new-poll-heading-to-intermediate-elections-42077"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/arizona/district-6",
+     "reason": "404"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/arizona-us-house-6-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "RedBox Research Oct 20-23",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "PPP for HMP Oct 14-15 2025, Mendoza 42 Ciscomani 41",
+     "reason": "2025, out of window"
+    }
+   ],
+   "note": "No new poll found."
+  },
+  "2026-CA-22-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/ca-22/",
+    "https://www.thedemocracylab.com/ca-polling-2026",
+    "https://www.thedemocracylab.com/polls/ca-polling-2026.js",
+    "https://www.thedemocracylab.com/pdfs/capolling.pdf",
+    "https://api.votehub.com/polls",
+    "https://en.wikipedia.org/w/index.php?title=California%27s_22nd_congressional_district&action=raw",
+    "https://www.villegasforcongress.com/news/randy-villegas-leads-republican-david-valadao-in-ca-22-in-new-poll",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/california/district-22",
+     "reason": "404"
+    },
+    {
+     "url": "https://en.wikipedia.org/w/index.php?title=2026_California%27s_22nd_congressional_district_election&action=raw",
+     "reason": "404 (no page)"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/california-us-house-22-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Tulchin Jun 15-21, Villegas 48 Valadao 44",
+     "reason": "out of window"
+    }
+   ],
+   "note": "USC CEPP Oct 22-28 written with no-push headline 52-41; pushed 54-44 in notes."
+  },
+  "2026-CA-48-HOUSE": {
+   "polls_written": 2,
+   "no_polls_found": false,
+   "searched": [
+    "https://uspollingdata.com/races/house/ca-48/",
+    "https://www.270towin.com/2026-house-polls/california/district-48",
+    "https://www.thedemocracylab.com/ca-polling-2026",
+    "https://www.thedemocracylab.com/polls/ca-polling-2026.js",
+    "https://www.thedemocracylab.com/pdfs/capolling.pdf",
+    "https://api.votehub.com/polls",
+    "https://en.wikipedia.org/w/index.php?title=California%27s_48th_congressional_district&action=raw",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://en.wikipedia.org/w/index.php?title=2026_California%27s_48th_congressional_district_election&action=raw",
+     "reason": "404 (no page)"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/california-us-house-48-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Tarrance Group Oct 17-20",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "SurveyUSA Oct 1-7, 47-38",
+     "reason": "out of window; already on file"
+    }
+   ],
+   "note": "USC CEPP Oct 22-28 written with no-push headline 48-40; pushed 52-44 in notes. COORDINATOR ADDITION: RedBox Research (A Fight Worth Having) Oct 20-23, 1,151 LV, von Wilpert 47.7 Desmond 42.6 written from crosstabs.csv after the worker missed it; listed on https://afightworthhaving.com/polling."
+  },
+  "2026-CO-04-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Colorado&action=raw",
+    "https://uspollingdata.com/races/house/co-04/",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/colorado/district-4",
+     "reason": "404"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/colorado-us-house-4-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Impact Research Sep 21-24, Boebert 45 Laubacher 40",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No new poll found."
+  },
+  "2026-CO-05-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Colorado&action=raw",
+    "https://drive.google.com/uc?export=download&id=1iF5NKlbiwGQmlEOEd8AaZz_Pe2vu8-De",
+    "https://www.coloradopolitics.com/2026/10/25/crank-v-killin-election-could-be-closest-ever-result-in-5th-district/",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://uspollingdata.com/races/house/co-05/",
+     "reason": "404"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/colorado/district-5",
+     "reason": "404"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/colorado-us-house-5-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Global Strategy Group Oct 14-18 (multi-candidate 43-38; two-way 46-44)",
+     "reason": "already in-window; Colorado Politics 46-44 is the same poll's two-way ballot"
+    },
+    {
+     "poll": "PPP for HMP Oct 19-20, 47-47",
+     "reason": "already in-window"
+    }
+   ],
+   "note": "GSG memo p2: 46 Killin/44 Crank two-way, 43/38/4 Mitchell/3 Elworth multi-candidate; 44/44 on Wikipedia is the generic ballot per the memo. Crank campaign says it has internals it will not share."
+  },
+  "2026-CO-08-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Colorado&action=raw",
+    "https://api.votehub.com/polls",
+    "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory"
+   ],
+   "failed": [
+    {
+     "url": "https://uspollingdata.com/races/house/co-08/",
+     "reason": "404"
+    },
+    {
+     "url": "https://www.270towin.com/2026-house-polls/colorado/district-8",
+     "reason": "404"
+    },
+    {
+     "url": "https://integration-votes.decisiondeskhq.com/races/2026-11-03/colorado-us-house-8-general-election/forecast",
+     "reason": "HTTP 429 rate limited"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "McLaughlin Sep 16-17, Evans 48 Rutinel 46",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No new poll found."
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "nc-01-house-redbox-research-2026-10-23.json",
+ "race": "2026-NC-01-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-NC-01-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 1468,
+  "pop": "LV",
+  "D": 45.3,
+  "R": 43.5,
+  "other": 2.8,
+  "undecided": 5.2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/nc-01",
+  "source_locator": "crosstabs.csv house_vote Total: Don Davis, Democrat 45.3260; Laurie Buckhout, Republican 43.5278; Tom Bailey, Libertarian 2.0888; Someone else 0.6782; Did not vote in this race 0.2467; Undecided 5.2324; Prefer not to answer 2.9001; 1,468 likely voters, Oct 20-23, MOE +/-3.6",
+  "notes": "Shares from https://afightworthhaving.com/polling/2026/nc-01/crosstabs.csv rounded to 0.1 (page headline Davis 45, Buckhout 44). other = Bailey 2.1 + someone else 0.7; prefer not to answer 2.9 and did-not-vote-in-race 0.2 excluded. Design effect 1.95.",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "We weighted the results to party registration, gender, age, education and race and ethnicity, and to the certified 2024 result through how people told us they voted.",
+  "method_url": "https://afightworthhaving.com/polling/2026/nc-01/methodology",
+  "method_locator": "Weighting",
+  "mode": "text message invitation to a self-administered web survey",
+  "method_owner": "RedBox Research",
+  "method_date": "2026-10-25",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ }
+}

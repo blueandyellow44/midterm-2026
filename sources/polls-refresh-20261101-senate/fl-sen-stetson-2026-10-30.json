@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-stetson-2026-10-30.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "stetson",
+ "name": "Stetson University CPOR",
+ "sponsor": "Stetson University (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "stetson-s-2026-FL-SEN-SPECIAL-2026-10-30",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-30",
+  "release_date": "2026-10-30",
+  "n": 861,
+  "pop": "LV",
+  "D": 45,
+  "R": 49,
+  "other": 3,
+  "undecided": 3,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.stetson.edu/artsci/cpor/media/cpor-fall-2026-report-wave-3-october.pdf",
+  "source_locator": "p1 release: 'Moody leads Democrat Angie Nixon 49% to 45%'; '3% remain undecided and 3% prefer another candidate'; Table 1 (p.38) All likely voters 49/45/3/3, n 859",
+  "notes": "Electoral items computed on 861 self-reported registered voters weighted by modeled turnout probability (already-voted fixed at 1), described as 'likely voters'; 55% of weighted LV report having voted. Undecided leaners allocated. Wikipedia lists '852 (RV)'; the report says the estimates are likely-voter estimates. Opt-in Qualtrics panel; +/-3.6 is a design-effect-adjusted precision estimate, not an MoE.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "w_weight is the electoral weight, computed among registered voters (n = 861): respondents are raked to the demographic margins above plus the certified 2024 Florida presidential result (Trump 56.09%, Harris 42.99%, other 0.92%, scaled to the share of respondents reporting a 2024 vote), and the resulting weight is multiplied by each respondent's predicted likelihood of voting",
+  "method_url": "https://www.stetson.edu/artsci/cpor/media/cpor-fall-2026-report-wave-3-october.pdf",
+  "method_locator": "Methodology section, Weighting paragraph",
+  "mode": "online non-probability panel (Qualtrics)",
+  "method_owner": "Stetson CPOR",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

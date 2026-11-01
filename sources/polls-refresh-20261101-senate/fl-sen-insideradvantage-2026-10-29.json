@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-insideradvantage-2026-10-29.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-FL-SEN-SPECIAL-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-10-29",
+  "release_date": "2026-10-30",
+  "n": 1200,
+  "pop": "LV",
+  "D": 43,
+  "R": 49,
+  "other": 2,
+  "undecided": 6,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://insideradvantage.com/insideradvantage-florida-survey-donalds-49-jolly-45-moody-49-nixon-43/",
+  "source_locator": "Post 'Posted on October 30, 2026', Results, U.S. Senate: Ashley Moody 49%, Angie Nixon 43%, Other 2%, Undecided 6%",
+  "notes": "Header line: '1200 LV; Mixed Mode Text/Panel; Weighted for Age, Race, Gender, and Political Affiliation; MOE 2.83% Conducted 10/28-10/29'. Sponsor not named; alignment R per Wikipedia label, as in existing InsiderAdvantage files. Tabs 'to be posted on X @InsiderPolling' (not read). Class set 2026-11-01 to this pollster's majority precedent in polls.csv (self, PARTISAN_PUBLIC, R) per the refresh audit.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighted for Age, Race, Gender, and Political Affiliation",
+  "method_url": "https://insideradvantage.com/insideradvantage-florida-survey-donalds-49-jolly-45-moody-49-nixon-43/",
+  "method_locator": "Header line of the post",
+  "mode": "mixed mode text/panel",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

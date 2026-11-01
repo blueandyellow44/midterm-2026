@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-emerson-2026-10-28.json",
+ "race": "2026-KS-SEN",
+ "pid": "emerson",
+ "name": "Emerson College Polling",
+ "sponsor": "self (no sponsor named on the release)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "emerson-s-2026-KS-SEN-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-30",
+  "n": 800,
+  "pop": "LV",
+  "D": 49,
+  "R": 45,
+  "other": 3,
+  "undecided": 3,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://emersoncollegepolling.com/october-2026-kansas-poll-hamilton-maintains-edge-over-marshall/",
+  "source_locator": "Release paragraph 1: '49% of voters support Democrat Adam Hamilton and 45% Republican incumbent Roger Marshall ... Three percent support the Libertarian candidate David Graham, and 3% are undecided.'",
+  "notes": "With undecideds' lean: Hamilton 50, Marshall 47 (release). Prior Emerson KS file named Nexstar as sponsor; this release names none. Weighting now explicitly includes previous vote recall.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data sets were weighted by gender, education, race, age, previous vote recall, and region based on U.S. Census parameters and voter file data.",
+  "method_url": "https://emersoncollegepolling.com/october-2026-kansas-poll-hamilton-maintains-edge-over-marshall/",
+  "method_locator": "Methodology paragraph",
+  "mode": "MMS text-to-web (n=443), landline IVR (n=141), PureSpectrum panel (n=216)",
+  "method_owner": "Emerson College Polling",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

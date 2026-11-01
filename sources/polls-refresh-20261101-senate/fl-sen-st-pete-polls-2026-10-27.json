@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-st-pete-polls-2026-10-27.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "st-pete-polls",
+ "name": "St. Pete Polls",
+ "sponsor": "FloridaPolitics.com",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "st-pete-polls-s-2026-FL-SEN-SPECIAL-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-25",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-27",
+  "n": 916,
+  "pop": "LV",
+  "D": 44.7,
+  "R": 49.0,
+  "other": 2.6,
+  "undecided": 3.7,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://data.ddhq.io/polls/2026/10/28/St.-Pete-Polls-Florida",
+  "source_locator": "PDF p.2 Senate question TOTAL column: Ashley Moody 49.0%, Angie Nixon 44.7%, Someone else 2.6%, Undecided/Refused 3.7%",
+  "notes": "Pollster's own PDF (St. Pete Polls letterhead, 'Subject: Florida Statewide survey conducted for FloridaPolitics.com', dated October 27, 2026), hosted by DDHQ. Plan-to-vote column Moody 57.1/Nixon 34.0; already-voted column Nixon 56.4/Moody 40.5. Voters not planning to vote excluded.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The results were then weighted to account for proportional differences between the respondents' demographics and the demographics of the active voter population for the state of Florida. The weighting demographics used were: political party, race, age, gender and media market.",
+  "method_url": "https://data.ddhq.io/polls/2026/10/28/St.-Pete-Polls-Florida",
+  "method_locator": "Methodology paragraph, p.1",
+  "mode": "automated phone (71%) and manual P2P SMS (29%), state voter list",
+  "method_owner": "St. Pete Polls",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-27"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "me-sen-data-for-progress-2026-10-27.json",
+ "race": "2026-ME-SEN",
+ "pid": "data-for-progress",
+ "name": "Data for Progress",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "data-for-progress-s-2026-ME-SEN-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-30",
+  "n": 652,
+  "pop": "LV",
+  "D": 50,
+  "R": 45,
+  "other": null,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "FIRST",
+  "source_url": "https://www.filesforprogress.org/datasets/2026/10/dfp_2026_me_ge_tabs.pdf",
+  "source_locator": "Tabs Q[2] Topline: Democrat Troy Jackson 50, Republican Susan Collins 45, Not sure / Refused 4",
+  "notes": "Two named candidates only; other null (not offered). Not ranked-choice; round FIRST. Release blog post: https://www.dataforprogress.org/blog/2026/10/30/democratic-senate-candidates-lead-in-maine-michigan-and-texas (dated October 30, 2026). Field dates from the tabs PDF header (state-specific).",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to be representative of likely voters by age, gender, education, race, geography, and recalled presidential vote.",
+  "method_url": "https://www.filesforprogress.org/datasets/2026/10/dfp_2026_me_ge_tabs.pdf",
+  "method_locator": "Methodology paragraph, p.1 of the tabs PDF",
+  "mode": "SMS, live caller, and web panel",
+  "method_owner": "Data for Progress",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-mitchell-2026-10-27.json",
+ "race": "2026-MI-GOV",
+ "pid": "mitchell",
+ "name": "Mitchell Research & Communications",
+ "sponsor": "a number of television stations in Michigan (CBS Detroit / WWJ-TV named in coverage)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "mitchell-s-2026-MI-GOV-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-29",
+  "n": 636,
+  "pop": "LV",
+  "D": 49,
+  "R": 44,
+  "other": 3,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.mitchellresearch.net/s/Mitchell-MI-Gov-Race-952AM-10-29-26.pdf",
+  "source_locator": "Press release p.1 para 1: 'Benson (49%) holds a five percent lead ... James (44%) ... Third-party candidates combine for 3%, while four percent remain undecided'",
+  "notes": "MoE +/-3.9. Release says 'for a number of television stations in Michigan'; CBS Detroit coverage (https://www.cbsnews.com/detroit/news/jocelyn-benson-john-james-october-michigan-gubernatorial-poll/) names CBS Detroit. Third-party split not itemized in the release text. Sample: online panels N=121 + MMS-to-web N=515.",
+  "retrieved_at": "2026-11-01T12:10:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data is weighted by age, gender, race, area, education, and 2022 and 2024 election results to resemble likely voter turnout in November 2026.",
+  "mode": "online panels (N=121) + MMS-to-web text to registered voters' cell phones (N=515), SurveyMonkey",
+  "method_owner": "Mitchell Research & Communications",
+  "retrieved_at": "2026-11-01T12:10:00-08:00",
+  "method_date": "2026-10-29",
+  "method_url": "https://www.mitchellresearch.net/s/Mitchell-MI-Gov-Race-952AM-10-29-26.pdf",
+  "method_locator": "Methodology paragraph, p.1-2 ('2022 and 2024 election results' does not say whether recalled vote or area results; left UNVERIFIED as for the Oct 1 wave)"
+ }
+}

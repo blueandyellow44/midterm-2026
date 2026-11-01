@@ -1,0 +1,38 @@
+{
+ "file": "sc-sen-nyt-siena-2026-10-26.json",
+ "race": "2026-SC-SEN",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-SC-SEN-2026-10-26",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-26",
+  "release_date": "2026-10-28",
+  "n": 707,
+  "pop": "LV",
+  "D": 48,
+  "R": 48,
+  "other": 0,
+  "undecided": 3,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.nytimes.com/interactive/2026/10/28/polls/times-siena-sc-poll-toplines.html",
+  "source_locator": "Toplines, '(Combined Senate ballot, includes leaners)' N=707 LV: Annie Andrews 48%, Darline Graham 48%, [VOL] Another candidate <.5%, [VOL] Don't know/Refused 3%",
+  "notes": "Another candidate < 0.5 recorded 0. Initial ask: Andrews 45, Graham 46, another <1, DK/Refused 8. Fetched by plain HTTP, served in full.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls. Vote choice was modeled as a function of information available on the L2 voter file and self-reported education, adjusted to match precinct-level election results)",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/28/polls/times-siena-sc-poll-toplines.html",
+  "method_locator": "Methodology > Weighting list",
+  "mode": "live telephone (L2 voter file)",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

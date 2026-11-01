@@ -1,0 +1,271 @@
+{
+ "batch": 5,
+ "districts": {
+  "2026-SC-01-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_South_Carolina&action=raw",
+    "https://uspollingdata.com/races/house/sc-01/",
+    "https://www.thehousemajoritypac.com/news"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/south-carolina/district-1",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Public Policy Polling (HMP), Oct 21-22, 770 LV, Lacore 47 Honeycutt 45",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "GQR, Sep 30-Oct 4, Lacore 48 Honeycutt 45",
+     "reason": "out of window (field_end < 2026-10-10)"
+    },
+    {
+     "poll": "co/efficient, Sep 30-Oct 1, Honeycutt 46 Lacore 40",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No new in-window poll found."
+  },
+  "2026-TX-15-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Texas&action=raw",
+    "https://uspollingdata.com/races/house/tx-15/",
+    "https://www.270towin.com/2026-house-polls/texas/district-15",
+    "https://www.tpr.org/government-politics/2026-10-21/new-poll-shows-in-battle-for-border-voters-tejano-star-poised-to-flip-tx-15",
+    "https://newsweek.com/democrats-flip-texas-house-seat-trump-won-12280819",
+    "https://www.latintimes.com/bobby-pulido-leads-texas-house-race-600652"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Normington Petts (HMP), Sep 24-28, 400 LV, Pulido 54 De La Cruz 41",
+     "reason": "out of window, already on file"
+    },
+    {
+     "poll": "Latin Times Oct 28 cites TSU Pulido 50 De La Cruz 45",
+     "reason": "that is the August TSU poll (out of window)"
+    }
+   ],
+   "note": "Wrote tx-15-house-texas-southern-2026-10-16.json from TPR; expressnews.com primary paywalled, not opened; n not published in any free source."
+  },
+  "2026-TX-23-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Texas&action=raw",
+    "https://uspollingdata.com/races/house/tx-23/"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/texas/district-23",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Normington Petts (HMP), Oct 5-7, Herrera 46 Padilla Stout 46",
+     "reason": "out of window (field_end 2026-10-07), already on file"
+    }
+   ],
+   "note": "No new in-window poll found."
+  },
+  "2026-TX-34-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Texas&action=raw",
+    "https://uspollingdata.com/races/house/tx-34/",
+    "https://www.270towin.com/2026-house-polls/texas/district-34",
+    "https://www.washingtonpost.com/politics/2026/10/23/two-texas-districts-gop-had-counted-now-feature-tight-house-races/",
+    "https://www.texastribune.org/2026/10/26/texas-vicente-gonzalez-eric-flores-district-34-2026-election/"
+   ],
+   "failed": [
+    {
+     "url": "https://www.washingtonpost.com/politics/2026/10/23/two-texas-districts-gop-had-counted-now-feature-tight-house-races/",
+     "reason": "HTTP 403 (paywall)"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Washington Post-Schar School, Oct 14-19, 626 LV, MoE 5.4, Gonzalez 50 Flores 43",
+     "reason": "Primary paywalled (403); numbers only on aggregators (Wikipedia, 270toWin, uspollingdata agree). Kept unverified, matching the 20261027 sweep; coordinator may write it as aggregator-only under the CAPITALS-note rule."
+    }
+   ],
+   "excluded": [],
+   "note": "No free primary source for the only in-window poll."
+  },
+  "2026-TX-35-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Texas&action=raw",
+    "https://uspollingdata.com/races/house/tx-35/",
+    "https://www.270towin.com/2026-house-polls/texas/district-35",
+    "https://pollvault.substack.com/p/levee-math",
+    "https://emersoncollegepolling.com/?s=texas+35th"
+   ],
+   "failed": [
+    {
+     "url": "https://www.washingtonpost.com/politics/2026/10/23/two-texas-districts-gop-had-counted-now-feature-tight-house-races/",
+     "reason": "HTTP 403 (paywall)"
+    }
+   ],
+   "unverified": [
+    {
+     "pollster": "Washington Post-Schar School, Oct 14-19, MoE 6.2, De La Cruz 48 Garcia 47",
+     "reason": "Paywalled primary; aggregator-only (Wikipedia n=606, 270toWin n=605, conflict); not written"
+    },
+    {
+     "pollster": "Emerson College for RCP Poll Vault, Oct 12-14, 417 LV, Garcia 51 De La Cruz 49",
+     "reason": "Poll Vault post paywalled (free preview has no numbers); no Emerson release; aggregator-only (Wikipedia, uspollingdata, 270toWin)"
+    }
+   ],
+   "excluded": [
+    {
+     "poll": "Normington Petts (HMP), Oct 12-14, Garcia 47 De La Cruz 45",
+     "reason": "already in-window"
+    }
+   ],
+   "note": "No new writable poll."
+  },
+  "2026-VA-01-HOUSE": {
+   "polls_written": 1,
+   "no_polls_found": false,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Virginia&action=raw",
+    "https://uspollingdata.com/races/house/va-01/",
+    "https://www.270towin.com/2026-house-polls/virginia/district-1",
+    "https://dccc.org/dccc-polling-memo-va-01-is-a-pure-toss-up-in-final-stretch/",
+    "https://dccc.org/?s=polling+memo"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Public Policy Polling (HMP), Oct 21-22, 570 LV, Taylor 47 Wittman 46",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "Washington Post-Schar School, Sep 23-28, Taylor 50 Wittman 46",
+     "reason": "out of window"
+    }
+   ],
+   "note": "Wrote va-01-house-dccc-2026-10-25.json (DCCC memo, Oct 24-25, 478 LV, Taylor 48 Wittman 47)."
+  },
+  "2026-VA-02-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Virginia&action=raw",
+    "https://uspollingdata.com/races/house/va-02/",
+    "https://www.foxnews.com/politics/competitive-virginia-house-race-tied-republican-incumbent-battles-challenger",
+    "https://stocks.observer-reporter.com/observerreporter/news/read/42772479/virginia_congressional_race_in_closely_watched_swing_district_tied_between_luria",
+    "https://chrissaxman.substack.com/p/poll-kiggansluria-tied-ides-of-october"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/virginia/district-2",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "CNU Wason, Oct 1-10, 702 LV, Luria 46 Kiggans 43",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "CNU 'tied 45-45, Oct 12-18' surfaced by search",
+     "reason": "2022 cycle poll (Luria vs Kiggans 2022), not 2026"
+    }
+   ],
+   "note": "No new in-window poll found."
+  },
+  "2026-WA-03-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Washington&action=raw",
+    "https://uspollingdata.com/races/house/wa-03/",
+    "https://www.270towin.com/2026-house-polls/washington/district-3"
+   ],
+   "failed": [],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Change Research (NPI), Oct 19-21, 551 LV, MGP 45 Braun 44",
+     "reason": "already in-window"
+    },
+    {
+     "poll": "DHM Research (OPB), released Oct 1",
+     "reason": "out of window"
+    }
+   ],
+   "note": "No new in-window poll found."
+  },
+  "2026-WI-01-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Wisconsin&action=raw",
+    "https://uspollingdata.com/races/house/wi-01/",
+    "https://www.wispolitics.com/2026/berman-campaign-berman-leading-steil-in-new-poll/"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/wisconsin/district-1",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "Impact Research (HMP), Sep 28-Oct 1, 500 LV, Berman 48 Steil 47",
+     "reason": "out of window, already on file"
+    }
+   ],
+   "note": "No new in-window poll found."
+  },
+  "2026-WI-03-HOUSE": {
+   "polls_written": 0,
+   "no_polls_found": true,
+   "searched": [
+    "https://en.wikipedia.org/w/index.php?title=2026_United_States_House_of_Representatives_elections_in_Wisconsin&action=raw",
+    "https://uspollingdata.com/races/house/wi-03/",
+    "https://wisconsinwatch.org/2026/10/western-wisconsin-democrats-seek-to-flip-3rd-congressional-district-cooke-van-orden/"
+   ],
+   "failed": [
+    {
+     "url": "https://www.270towin.com/2026-house-polls/wisconsin/district-3",
+     "reason": "HTTP 404"
+    },
+    {
+     "url": "https://www.aol.com/democratic-challenger-edges-ahead-trump-212115056.html",
+     "reason": "HTTP 404"
+    }
+   ],
+   "unverified": [],
+   "excluded": [
+    {
+     "poll": "FM3 Research (HMP), Jun 20-25, Cooke 50 Van Orden 46",
+     "reason": "out of window"
+    },
+    {
+     "poll": "DCCC 'Cooke +1 early October' (Oct 4-8, 49-48) surfaced by search",
+     "reason": "2024 cycle poll, not 2026"
+    }
+   ],
+   "note": "Wisconsin Watch (Oct 26) says Democratic polls show Cooke up to +4 and a September GOP poll Van Orden +5, with no pollster/dates/numbers -> nothing writable."
+  }
+ }
+}

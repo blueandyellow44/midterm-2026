@@ -1,0 +1,38 @@
+{
+ "file": "va-01-house-dccc-2026-10-25.json",
+ "race": "2026-VA-01-HOUSE",
+ "pid": "dccc",
+ "name": "DCCC Analytics Department",
+ "sponsor": "DCCC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "dccc-s-2026-VA-01-HOUSE-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-24",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-27",
+  "n": 478,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 47.0,
+  "other": null,
+  "undecided": 5.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://dccc.org/dccc-polling-memo-va-01-is-a-pure-toss-up-in-final-stretch/",
+  "source_locator": "DCCC Polling Memo: VA-01 is a Pure Toss-Up in Final Stretch (Oct 27, 2026): Shannon Taylor 48%, Rob Wittman 47%, undecided 5%; survey of 478 likely general election voters in VA-01, Oct 24-25, 2026, MoE +/-4.5% at 95% confidence",
+  "notes": "All numbers from the DCCC memo page. No other/third-party share stated (48+47+5=100), so other left null. Conducted by DCCC Analytics Department; party committee -> INTERNAL.",
+  "retrieved_at": "2026-11-01T12:06:48-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": "https://dccc.org/dccc-polling-memo-va-01-is-a-pure-toss-up-in-final-stretch/",
+  "method_locator": "memo methodology sentence",
+  "mode": "phone and text-to-web interviews",
+  "method_owner": "DCCC",
+  "retrieved_at": "2026-11-01T12:06:48-08:00",
+  "method_date": "2026-10-27"
+ }
+}

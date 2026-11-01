@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-nyt-siena-2026-10-25.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-FL-SEN-SPECIAL-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-19",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-28",
+  "n": 813,
+  "pop": "LV",
+  "D": 44,
+  "R": 50,
+  "other": 0,
+  "undecided": 5,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.nytimes.com/interactive/2026/10/28/polls/times-siena-fl-poll-toplines.html",
+  "source_locator": "Toplines, '(Combined Senate ballot, includes leaners)': Angie Nixon 44%, Ashley Moody 50%, [VOL] Another candidate 0%, [VOL] Don't know/Refused 5%",
+  "notes": "Initial ask (N=813 LV): Nixon 43, Moody 49, another 0, DK/Refused 8. Page fetched by plain HTTP (served in full, no paywall interstitial). Sums to 99 (rounding).",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls. Vote choice was modeled as a function of information available on the L2 voter file and self-reported education, adjusted to match precinct-level election results)",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/28/polls/times-siena-fl-poll-toplines.html",
+  "method_locator": "Methodology > Weighting list",
+  "mode": "live telephone (L2 voter file), English and Spanish",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

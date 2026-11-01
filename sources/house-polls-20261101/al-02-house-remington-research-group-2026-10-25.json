@@ -1,0 +1,38 @@
+{
+ "file": "al-02-house-remington-research-group-2026-10-25.json",
+ "race": "2026-AL-02-HOUSE",
+ "pid": "remington-research-group",
+ "name": "Remington Research Group",
+ "sponsor": "Not named in source",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "remington-research-group-h-2026-AL-02-HOUSE-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-29",
+  "n": 642,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 48.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://1819news.com/news/item/al-2-poll-marques-48-figures-46",
+  "source_locator": "'According to a poll of 642 likely voters conducted October 23-25, with a margin of error of +/-4%, Marques is clinging to a two-point 48-46% advantage over Figures.' (1819 News, Jeff Poor, 10.29.26)",
+  "notes": "SECONDARY SOURCE ONLY: numbers from a 1819 News article; no Remington release found. Sponsor not stated; Remington is a Republican-aligned firm, classed PARTISAN_PUBLIC/R provisionally. Undecided/other not given (implied 6% remainder not filed). 270toWin and VoteHub list the same 48-46, n=642 LV. NEW pollster_id.",
+  "retrieved_at": "2026-11-01T12:08:58-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Remington Research Group",
+  "method_date": "2026-10-29",
+  "retrieved_at": "2026-11-01T12:08:58-08:00"
+ }
+}

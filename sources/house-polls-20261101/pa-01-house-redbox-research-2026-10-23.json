@@ -1,0 +1,38 @@
+{
+ "file": "pa-01-house-redbox-research-2026-10-23.json",
+ "race": "2026-PA-01-HOUSE",
+ "pid": "redbox-research",
+ "name": "RedBox Research",
+ "sponsor": "A Fight Worth Having (progressive super PAC)",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "redbox-research-h-2026-PA-01-HOUSE-2026-10-23",
+ "poll": {
+  "field_start": "2026-10-20",
+  "field_end": "2026-10-23",
+  "release_date": "2026-10-25",
+  "n": 733,
+  "pop": "LV",
+  "D": 46.0,
+  "R": 46.1,
+  "other": 2.2,
+  "undecided": 4.3,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://afightworthhaving.com/polling/2026/pa-01",
+  "source_locator": "crosstabs.csv Q6/Q7 U.S. House, banner Total: Bob Harvie (D) 46.0, Brian Fitzpatrick (R) 46.1, Someone else 2.2, Undecided 4.3, Prefer not to answer 1.1, Did not vote in this race 0.3; 733 likely voters, field 2026-10-20 to 2026-10-23, MOE +/-4.6",
+  "notes": "Toplines from the poll's crosstabs.csv (weighted_pct, Total banner); page headline shows rounded 46/46. other = someone else 2.2; prefer not to answer 1.1 and did-not-vote 0.3 excluded from other/undecided. Effective n 463.7. Early voters were asked how they voted. Release version 5.",
+  "retrieved_at": "2026-11-01T12:08:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "party registration, gender, age, education and race and ethnicity, and to the certified 2024 result through how people told us they voted",
+  "method_url": "https://afightworthhaving.com/polling/2026/pa-01/methodology",
+  "method_locator": "Weighting / How this poll's estimate was built",
+  "mode": "text message invitation to a self-administered web survey (voters drawn at random from the voter file; English)",
+  "method_owner": "RedBox Research",
+  "retrieved_at": "2026-11-01T12:08:00-08:00",
+  "method_date": "2026-10-25"
+ }
+}

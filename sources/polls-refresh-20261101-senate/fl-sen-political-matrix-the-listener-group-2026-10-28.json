@@ -1,0 +1,38 @@
+{
+ "file": "fl-sen-political-matrix-the-listener-group-2026-10-28.json",
+ "race": "2026-FL-SEN-SPECIAL",
+ "pid": "political-matrix-the-listener-group",
+ "name": "Political Matrix / The Listener Group (Palafox Media Network)",
+ "sponsor": "self (Palafox Media Network)",
+ "scls": "UNKNOWN",
+ "align": "UNKNOWN",
+ "method_id": "political-matrix-the-listener-group-s-2026-FL-SEN-SPECIAL-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-28",
+  "release_date": null,
+  "n": 500,
+  "pop": "LV",
+  "D": 35.8,
+  "R": 41.8,
+  "other": null,
+  "undecided": 22.4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://palafoxproductions.com/new-florida-statewide-poll-for-november-election/",
+  "source_locator": "Section 'U.S. Senate Special Election: Moody Holds Clearer Edge': 'Moody leads Democrat Angie Nixon 41.8 percent to 35.8 percent, with 22.4 percent undecided'",
+  "notes": "Among decided voters Moody 53.8, Nixon 46.2. New pollster; no prior record. Release quotes staff from both a 'Democratic Campaigns' and a Republican-side strategist, so alignment left UNKNOWN. Release undated on the page; methodology is one line ('500 recorded responses from likely Florida voters', MOE +/-4.38%); no mode or weighting disclosed.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNKNOWN",
+  "disclosure_status": "UNDISCLOSED",
+  "weighting_quote": null,
+  "method_url": "https://palafoxproductions.com/new-florida-statewide-poll-for-november-election/",
+  "method_locator": "Methodology line (no weighting stated)",
+  "mode": null,
+  "method_owner": "Palafox Media Network",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": null
+ }
+}

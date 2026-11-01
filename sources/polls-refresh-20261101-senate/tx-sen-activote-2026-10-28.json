@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-activote-2026-10-28.json",
+ "race": "2026-TX-SEN",
+ "pid": "activote",
+ "name": "ActiVote",
+ "sponsor": "ActiVote (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "activote-s-2026-TX-SEN-2026-10-28",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-28",
+  "release_date": "2026-10-29",
+  "n": 400,
+  "pop": "LV",
+  "D": 52.1,
+  "R": 47.9,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://www.activote.net/polls/2026/tx-u-s-senate/",
+  "source_locator": "Texas U.S. Senate poll published October 29, 2026: Talarico 52.1%, Paxton 47.9% (D+4.2%); 'in the field between October 22 and October 28'",
+  "notes": "Two-candidate shares only.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "We weight our polls for underrepresentation of any group, based on age, gender, party affiliation, ethnicity, income, education and region",
+  "method_url": "https://www.activote.net/trust/methodology",
+  "method_locator": "How to interpret the data (house method)",
+  "mode": "app-based online",
+  "method_owner": "ActiVote",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-29"
+ }
+}

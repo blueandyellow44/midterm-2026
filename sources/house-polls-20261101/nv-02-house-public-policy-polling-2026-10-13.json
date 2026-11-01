@@ -1,0 +1,38 @@
+{
+ "file": "nv-02-house-public-policy-polling-2026-10-13.json",
+ "race": "2026-NV-02-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-NV-02-HOUSE-2026-10-13",
+ "poll": {
+  "field_start": "2026-10-12",
+  "field_end": "2026-10-13",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 44.0,
+  "R": 46.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thehousemajoritypac.com/news/hmp-memo-house-battleground-extends-deep-into-trump-territory",
+  "source_locator": "HMP memo table (Oct 21 2026): 'NV-02 | Trump +14.2 | 44% | 46% | PPP | 10/12/26- 10/13-26' (Democratic candidate % then Republican candidate %)",
+  "notes": "Toplines and dates from the HMP memo only (memo prints end date as '10/13-26'); no n, population, undecided or mode. LV AND n=560 COME FROM USPOLLINGDATA ONLY (Wikipedia NV page no longer lists this poll); n left null. Stays PARTISAN_PUBLIC per Max 2026-11-01 PAC ruling: HMP has no IE filed in this district (ie2026.csv as of Oct 27).",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Public Policy Polling",
+  "method_date": "2026-10-21",
+  "retrieved_at": "2026-11-01T12:07:49-08:00"
+ }
+}

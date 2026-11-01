@@ -1,0 +1,1772 @@
+{
+ "as_of": "2026-11-01",
+ "senate": {
+  "not_up": {
+   "D": 34,
+   "R": 31,
+   "list": [
+    {
+     "state": "Alabama",
+     "holder": "Katie Britt",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Alaska",
+     "holder": "Lisa Murkowski",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Arizona",
+     "holder": "Mark Kelly",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Arizona",
+     "holder": "Ruben Gallego",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Arkansas",
+     "holder": "John Boozman",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "California",
+     "holder": "Alex Padilla",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "California",
+     "holder": "Adam Schiff",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Colorado",
+     "holder": "Michael Bennet",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Connecticut",
+     "holder": "Richard Blumenthal",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Connecticut",
+     "holder": "Chris Murphy",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Delaware",
+     "holder": "Lisa Blunt Rochester",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Florida",
+     "holder": "Rick Scott",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Georgia",
+     "holder": "Raphael Warnock",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Hawaii",
+     "holder": "Brian Schatz",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Hawaii",
+     "holder": "Mazie Hirono",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Idaho",
+     "holder": "Mike Crapo",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Illinois",
+     "holder": "Tammy Duckworth",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Indiana",
+     "holder": "Todd Young",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Indiana",
+     "holder": "Jim Banks",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Iowa",
+     "holder": "Chuck Grassley",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Kansas",
+     "holder": "Jerry Moran",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Kentucky",
+     "holder": "Rand Paul",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Louisiana",
+     "holder": "John Kennedy",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Maine",
+     "holder": "Angus King",
+     "caucus": "D",
+     "party": "I",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Maryland",
+     "holder": "Chris Van Hollen",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Maryland",
+     "holder": "Angela Alsobrooks",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Massachusetts",
+     "holder": "Elizabeth Warren",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Michigan",
+     "holder": "Elissa Slotkin",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Minnesota",
+     "holder": "Amy Klobuchar",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Mississippi",
+     "holder": "Roger Wicker",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Missouri",
+     "holder": "Josh Hawley",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Missouri",
+     "holder": "Eric Schmitt",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Montana",
+     "holder": "Tim Sheehy",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Nebraska",
+     "holder": "Deb Fischer",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Nevada",
+     "holder": "Catherine Cortez Masto",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Nevada",
+     "holder": "Jacky Rosen",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "New Hampshire",
+     "holder": "Maggie Hassan",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "New Jersey",
+     "holder": "Andy Kim",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "New Mexico",
+     "holder": "Martin Heinrich",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "New York",
+     "holder": "Chuck Schumer",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "New York",
+     "holder": "Kirsten Gillibrand",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "North Carolina",
+     "holder": "Ted Budd",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "North Dakota",
+     "holder": "John Hoeven",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "North Dakota",
+     "holder": "Kevin Cramer",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Ohio",
+     "holder": "Bernie Moreno",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Oklahoma",
+     "holder": "James Lankford",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Oregon",
+     "holder": "Ron Wyden",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Pennsylvania",
+     "holder": "John Fetterman",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Pennsylvania",
+     "holder": "Dave McCormick",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Rhode Island",
+     "holder": "Sheldon Whitehouse",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "South Carolina",
+     "holder": "Tim Scott",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "South Dakota",
+     "holder": "John Thune",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Tennessee",
+     "holder": "Marsha Blackburn",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Texas",
+     "holder": "Ted Cruz",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Utah",
+     "holder": "Mike Lee",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Utah",
+     "holder": "John Curtis",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Vermont",
+     "holder": "Bernie Sanders",
+     "caucus": "D",
+     "party": "I",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Vermont",
+     "holder": "Peter Welch",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Virginia",
+     "holder": "Tim Kaine",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Washington",
+     "holder": "Patty Murray",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Washington",
+     "holder": "Maria Cantwell",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "West Virginia",
+     "holder": "Jim Justice",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Wisconsin",
+     "holder": "Ron Johnson",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2028,
+     "class": 3
+    },
+    {
+     "state": "Wisconsin",
+     "holder": "Tammy Baldwin",
+     "caucus": "D",
+     "party": "D",
+     "next_election": 2030,
+     "class": 1
+    },
+    {
+     "state": "Wyoming",
+     "holder": "John Barrasso",
+     "caucus": "R",
+     "party": "R",
+     "next_election": 2030,
+     "class": 1
+    }
+   ]
+  },
+  "races": [
+   {
+    "state": "Alabama",
+    "state_abbr": "AL",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Alaska",
+    "state_abbr": "AK",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Arkansas",
+    "state_abbr": "AR",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Colorado",
+    "state_abbr": "CO",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Delaware",
+    "state_abbr": "DE",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Florida",
+    "state_abbr": "FL",
+    "special": true,
+    "incumbent_party": "R",
+    "cook_rating": "Likely R",
+    "cook_rating_date": "2026-10-30"
+   },
+   {
+    "state": "Georgia",
+    "state_abbr": "GA",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Likely D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Idaho",
+    "state_abbr": "ID",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Illinois",
+    "state_abbr": "IL",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Iowa",
+    "state_abbr": "IA",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Kansas",
+    "state_abbr": "KS",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Kentucky",
+    "state_abbr": "KY",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Louisiana",
+    "state_abbr": "LA",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Maine",
+    "state_abbr": "ME",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Massachusetts",
+    "state_abbr": "MA",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Michigan",
+    "state_abbr": "MI",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Minnesota",
+    "state_abbr": "MN",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Mississippi",
+    "state_abbr": "MS",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Likely R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Montana",
+    "state_abbr": "MT",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Nebraska",
+    "state_abbr": "NE",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Lean R",
+    "cook_rating_date": "2026-10-30"
+   },
+   {
+    "state": "New Hampshire",
+    "state_abbr": "NH",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "New Jersey",
+    "state_abbr": "NJ",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "New Mexico",
+    "state_abbr": "NM",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "North Carolina",
+    "state_abbr": "NC",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Likely D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "special": true,
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Oklahoma",
+    "state_abbr": "OK",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Oregon",
+    "state_abbr": "OR",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Rhode Island",
+    "state_abbr": "RI",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "South Carolina",
+    "state_abbr": "SC",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Lean R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "South Dakota",
+    "state_abbr": "SD",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Tennessee",
+    "state_abbr": "TN",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Texas",
+    "state_abbr": "TX",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Virginia",
+    "state_abbr": "VA",
+    "special": false,
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "West Virginia",
+    "state_abbr": "WV",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   },
+   {
+    "state": "Wyoming",
+    "state_abbr": "WY",
+    "special": false,
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-20"
+   }
+  ],
+  "up_incumbents": {
+   "D": 13,
+   "R": 22
+  },
+  "current_composition": {
+   "R": 53,
+   "D": 45,
+   "I_caucusing_D": 2
+  },
+  "tie_breaker": {
+   "name": "JD Vance",
+   "party": "R",
+   "office": "Vice President (President of the Senate)"
+  },
+  "cook_implied_total": {
+   "D_I": 47,
+   "R": 46,
+   "toss_up": 7,
+   "note": "Cook (Oct 20, 2026) seat tally including seats not up, as reported in the Wikipedia predictions table summary row; reproduced exactly by not_up + races here"
+  },
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
+    "used_for": "35 races, special flags, incumbent party, Cook column (header 'Oct 20, 2026', cites https://www.cookpolitical.com/ratings/senate-race-ratings)",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://www.270towin.com/2026-senate-election/cook-political-report-2026-senate",
+    "used_for": "independent cross-check of all 35 Cook Senate ratings ('As of October 20, 2026'); 35/35 match",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/List_of_current_United_States_senators",
+    "used_for": "the 65 seats not up (holder, party, class, next election); 53 R / 45 D / 2 I; VP JD Vance (R) as President of the Senate",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://www.cookpolitical.com/ratings/senate-race-ratings",
+    "used_for": "primary source; direct fetch returned HTTP 403 (bot wall), not bypassed",
+    "fetched": null
+   },
+   {
+    "url": "https://www.cookpolitical.com/ratings/senate-race-ratings",
+    "read": "2026-11-01"
+   }
+  ]
+ },
+ "governors": {
+  "not_up": {
+   "D": 6,
+   "R": 8,
+   "list": [
+    {
+     "state": "Delaware",
+     "governor": "Matt Meyer",
+     "party": "D",
+     "term_end": "2029"
+    },
+    {
+     "state": "Indiana",
+     "governor": "Mike Braun",
+     "party": "R",
+     "term_end": "2029"
+    },
+    {
+     "state": "Kentucky",
+     "governor": "Andy Beshear",
+     "party": "D",
+     "term_end": "2027 (term limits)"
+    },
+    {
+     "state": "Louisiana",
+     "governor": "Jeff Landry",
+     "party": "R",
+     "term_end": "2028"
+    },
+    {
+     "state": "Mississippi",
+     "governor": "Tate Reeves",
+     "party": "R",
+     "term_end": "2028 (term limits)"
+    },
+    {
+     "state": "Missouri",
+     "governor": "Mike Kehoe",
+     "party": "R",
+     "term_end": "2029"
+    },
+    {
+     "state": "Montana",
+     "governor": "Greg Gianforte",
+     "party": "R",
+     "term_end": "2029 (term limits)"
+    },
+    {
+     "state": "New Jersey",
+     "governor": "Mikie Sherrill",
+     "party": "D",
+     "term_end": "2030"
+    },
+    {
+     "state": "North Carolina",
+     "governor": "Josh Stein",
+     "party": "D",
+     "term_end": "2029"
+    },
+    {
+     "state": "North Dakota",
+     "governor": "Kelly Armstrong",
+     "party": "R",
+     "term_end": "2028"
+    },
+    {
+     "state": "Utah",
+     "governor": "Spencer Cox",
+     "party": "R",
+     "term_end": "2029 (retiring)"
+    },
+    {
+     "state": "Virginia",
+     "governor": "Abigail Spanberger",
+     "party": "D",
+     "term_end": "2030 (term limits)"
+    },
+    {
+     "state": "Washington",
+     "governor": "Bob Ferguson",
+     "party": "D",
+     "term_end": "2029"
+    },
+    {
+     "state": "West Virginia",
+     "governor": "Patrick Morrisey",
+     "party": "R",
+     "term_end": "2029"
+    }
+   ]
+  },
+  "races": [
+   {
+    "state": "Alabama",
+    "state_abbr": "AL",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Alaska",
+    "state_abbr": "AK",
+    "incumbent_party": "R",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Arizona",
+    "state_abbr": "AZ",
+    "incumbent_party": "D",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Arkansas",
+    "state_abbr": "AR",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "California",
+    "state_abbr": "CA",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Colorado",
+    "state_abbr": "CO",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Connecticut",
+    "state_abbr": "CT",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Florida",
+    "state_abbr": "FL",
+    "incumbent_party": "R",
+    "cook_rating": "Lean R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Georgia",
+    "state_abbr": "GA",
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Hawaii",
+    "state_abbr": "HI",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Idaho",
+    "state_abbr": "ID",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Illinois",
+    "state_abbr": "IL",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Iowa",
+    "state_abbr": "IA",
+    "incumbent_party": "R",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Kansas",
+    "state_abbr": "KS",
+    "incumbent_party": "D",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Maine",
+    "state_abbr": "ME",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Maryland",
+    "state_abbr": "MD",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Massachusetts",
+    "state_abbr": "MA",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Michigan",
+    "state_abbr": "MI",
+    "incumbent_party": "D",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Minnesota",
+    "state_abbr": "MN",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Nebraska",
+    "state_abbr": "NE",
+    "incumbent_party": "R",
+    "cook_rating": "Lean R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Nevada",
+    "state_abbr": "NV",
+    "incumbent_party": "R",
+    "cook_rating": "Toss-up",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "New Hampshire",
+    "state_abbr": "NH",
+    "incumbent_party": "R",
+    "cook_rating": "Likely R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "New Mexico",
+    "state_abbr": "NM",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "New York",
+    "state_abbr": "NY",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Ohio",
+    "state_abbr": "OH",
+    "incumbent_party": "R",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Oklahoma",
+    "state_abbr": "OK",
+    "incumbent_party": "R",
+    "cook_rating": "Likely R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Oregon",
+    "state_abbr": "OR",
+    "incumbent_party": "D",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Pennsylvania",
+    "state_abbr": "PA",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Rhode Island",
+    "state_abbr": "RI",
+    "incumbent_party": "D",
+    "cook_rating": "Solid D",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "South Carolina",
+    "state_abbr": "SC",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "South Dakota",
+    "state_abbr": "SD",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Tennessee",
+    "state_abbr": "TN",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Texas",
+    "state_abbr": "TX",
+    "incumbent_party": "R",
+    "cook_rating": "Lean R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Vermont",
+    "state_abbr": "VT",
+    "incumbent_party": "R",
+    "cook_rating": "Likely R",
+    "cook_rating_date": "2026-10-27"
+   },
+   {
+    "state": "Wisconsin",
+    "state_abbr": "WI",
+    "incumbent_party": "D",
+    "cook_rating": "Lean D",
+    "cook_rating_date": "2026-10-29"
+   },
+   {
+    "state": "Wyoming",
+    "state_abbr": "WY",
+    "incumbent_party": "R",
+    "cook_rating": "Solid R",
+    "cook_rating_date": "2026-10-27"
+   }
+  ],
+  "current_composition": {
+   "R": 26,
+   "D": 24
+  },
+  "cook_implied_total": {
+   "D": 26,
+   "R": 21,
+   "toss_up": 3,
+   "note": "Cook seat tally including seats not up, per Wikipedia predictions table summary row; reproduced exactly by not_up + races here; WI moved Toss-up -> Lean D in the 2026-11-01 refresh"
+  },
+  "cross_check_diffs": [
+   {
+    "state": "Kansas",
+    "wikipedia_cook_oct27": "Toss-up",
+    "two70towin_cook_oct13": "Lean R"
+   },
+   {
+    "state": "Nebraska",
+    "wikipedia_cook_oct27": "Lean R",
+    "two70towin_cook_oct13": "Likely R"
+   },
+   {
+    "state": "Ohio",
+    "wikipedia_cook_oct27": "Lean D",
+    "two70towin_cook_oct13": "Toss-up"
+   }
+  ],
+  "cook_rating_date_note": "2026-10-27 is the date in the Wikipedia Cook column header (its citation access-date is also Oct 27, 2026); Cook's own page could not be fetched to confirm the exact update day. 270toWin's Cook map is older (as of Oct 13, 2026) and differs on the races listed in cross_check_diffs; Wikipedia's later column is used.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_elections",
+    "used_for": "36 races, incumbent party, Cook column (header 'Oct. 27, 2026', cites https://www.cookpolitical.com/ratings/governor-race-ratings)",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://www.270towin.com/2026-governor-election/cook-political-report-2026-governor",
+    "used_for": "cross-check of Cook governor ratings ('As of October 13, 2026')",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/List_of_current_United_States_governors",
+    "used_for": "the 14 governors not up and their party; incumbent-party check for the 36 races",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://www.cookpolitical.com/ratings/governor-race-ratings",
+    "used_for": "primary source; direct fetch returned HTTP 403, not bypassed",
+    "fetched": null
+   },
+   {
+    "url": "https://www.cookpolitical.com/ratings/governor-race-ratings",
+    "read": "2026-11-01"
+   }
+  ]
+ },
+ "house": {
+  "ratings": {
+   "Solid D": [
+    "AL-07",
+    "AZ-03",
+    "AZ-04",
+    "AZ-07",
+    "CA-01",
+    "CA-02",
+    "CA-03",
+    "CA-04",
+    "CA-06",
+    "CA-07",
+    "CA-08",
+    "CA-09",
+    "CA-10",
+    "CA-11",
+    "CA-12",
+    "CA-14",
+    "CA-15",
+    "CA-16",
+    "CA-17",
+    "CA-18",
+    "CA-19",
+    "CA-21",
+    "CA-24",
+    "CA-25",
+    "CA-26",
+    "CA-27",
+    "CA-28",
+    "CA-29",
+    "CA-30",
+    "CA-31",
+    "CA-32",
+    "CA-33",
+    "CA-34",
+    "CA-35",
+    "CA-36",
+    "CA-37",
+    "CA-38",
+    "CA-39",
+    "CA-41",
+    "CA-42",
+    "CA-43",
+    "CA-44",
+    "CA-46",
+    "CA-47",
+    "CA-49",
+    "CA-50",
+    "CA-51",
+    "CA-52",
+    "CO-01",
+    "CO-02",
+    "CO-06",
+    "CO-07",
+    "CT-01",
+    "CT-02",
+    "CT-03",
+    "CT-04",
+    "CT-05",
+    "DE-AL",
+    "FL-10",
+    "FL-20",
+    "FL-23",
+    "FL-24",
+    "GA-02",
+    "GA-04",
+    "GA-05",
+    "GA-06",
+    "GA-13",
+    "HI-01",
+    "HI-02",
+    "IL-01",
+    "IL-02",
+    "IL-03",
+    "IL-04",
+    "IL-05",
+    "IL-06",
+    "IL-07",
+    "IL-08",
+    "IL-09",
+    "IL-10",
+    "IL-11",
+    "IL-13",
+    "IL-14",
+    "IL-17",
+    "IN-07",
+    "KS-03",
+    "KY-03",
+    "LA-02",
+    "MA-01",
+    "MA-02",
+    "MA-03",
+    "MA-04",
+    "MA-05",
+    "MA-06",
+    "MA-07",
+    "MA-08",
+    "MA-09",
+    "MD-02",
+    "MD-03",
+    "MD-04",
+    "MD-05",
+    "MD-06",
+    "MD-07",
+    "MD-08",
+    "ME-01",
+    "MI-03",
+    "MI-06",
+    "MI-11",
+    "MI-12",
+    "MI-13",
+    "MN-03",
+    "MN-04",
+    "MN-05",
+    "MO-01",
+    "MO-05",
+    "MS-02",
+    "NC-02",
+    "NC-04",
+    "NC-12",
+    "NH-02",
+    "NJ-01",
+    "NJ-03",
+    "NJ-05",
+    "NJ-06",
+    "NJ-08",
+    "NJ-10",
+    "NJ-11",
+    "NJ-12",
+    "NM-01",
+    "NM-03",
+    "NY-05",
+    "NY-06",
+    "NY-07",
+    "NY-08",
+    "NY-09",
+    "NY-10",
+    "NY-12",
+    "NY-13",
+    "NY-14",
+    "NY-15",
+    "NY-16",
+    "NY-18",
+    "NY-20",
+    "NY-22",
+    "NY-25",
+    "NY-26",
+    "OH-03",
+    "OH-11",
+    "OR-01",
+    "OR-03",
+    "OR-04",
+    "OR-05",
+    "OR-06",
+    "PA-02",
+    "PA-03",
+    "PA-04",
+    "PA-05",
+    "PA-06",
+    "PA-12",
+    "PA-17",
+    "RI-01",
+    "RI-02",
+    "SC-06",
+    "TX-07",
+    "TX-16",
+    "TX-18",
+    "TX-20",
+    "TX-29",
+    "TX-30",
+    "TX-33",
+    "TX-37",
+    "UT-01",
+    "VA-03",
+    "VA-04",
+    "VA-08",
+    "VA-10",
+    "VA-11",
+    "VT-AL",
+    "WA-01",
+    "WA-02",
+    "WA-06",
+    "WA-07",
+    "WA-08",
+    "WA-09",
+    "WA-10",
+    "WI-02",
+    "WI-04"
+   ],
+   "Likely D": [
+    "CA-13",
+    "CA-45",
+    "IN-01",
+    "MI-08",
+    "MN-02",
+    "NE-02",
+    "NH-01",
+    "NJ-09",
+    "NV-01",
+    "NV-03",
+    "NV-04",
+    "NY-03",
+    "NY-04",
+    "NY-19",
+    "OH-01",
+    "OH-13",
+    "TX-28",
+    "VA-07"
+   ],
+   "Lean D": [
+    "AZ-01",
+    "AZ-06",
+    "CA-48",
+    "CO-08",
+    "FL-25",
+    "IA-01",
+    "IA-03",
+    "NC-11",
+    "NJ-07",
+    "NM-02",
+    "PA-07",
+    "PA-10",
+    "TX-34",
+    "VA-02",
+    "WA-03",
+    "WI-03",
+    "OH-09",
+    "PA-08"
+   ],
+   "Toss-up": [
+    "CA-22",
+    "FL-14",
+    "FL-22",
+    "IA-02",
+    "KY-06",
+    "MI-04",
+    "MI-07",
+    "MI-10",
+    "MT-01",
+    "NC-01",
+    "NY-17",
+    "OH-07",
+    "TX-15",
+    "TX-35",
+    "VA-01",
+    "CO-05",
+    "PA-01",
+    "SC-01"
+   ],
+   "Lean R": [
+    "AK-AL",
+    "AL-02",
+    "AZ-02",
+    "CO-04",
+    "FL-13",
+    "FL-27",
+    "ME-02",
+    "MN-01",
+    "NV-02",
+    "NY-21",
+    "OH-10",
+    "OH-15",
+    "TX-23",
+    "WI-01"
+   ],
+   "Likely R": [
+    "AR-02",
+    "CO-03",
+    "FL-07",
+    "FL-09",
+    "FL-16",
+    "IN-05",
+    "KS-02",
+    "MO-02",
+    "NC-03",
+    "NC-13",
+    "NE-01",
+    "TX-09",
+    "VA-05"
+   ],
+   "Solid R": [
+    "AL-01",
+    "AL-03",
+    "AL-04",
+    "AL-05",
+    "AL-06",
+    "AR-01",
+    "AR-03",
+    "AR-04",
+    "AZ-05",
+    "AZ-08",
+    "AZ-09",
+    "CA-05",
+    "CA-20",
+    "CA-23",
+    "CA-40",
+    "FL-01",
+    "FL-02",
+    "FL-03",
+    "FL-04",
+    "FL-05",
+    "FL-06",
+    "FL-08",
+    "FL-11",
+    "FL-12",
+    "FL-15",
+    "FL-17",
+    "FL-18",
+    "FL-19",
+    "FL-21",
+    "FL-26",
+    "FL-28",
+    "GA-01",
+    "GA-03",
+    "GA-07",
+    "GA-08",
+    "GA-09",
+    "GA-10",
+    "GA-11",
+    "GA-12",
+    "GA-14",
+    "IA-04",
+    "ID-01",
+    "ID-02",
+    "IL-12",
+    "IL-15",
+    "IL-16",
+    "IN-02",
+    "IN-03",
+    "IN-04",
+    "IN-06",
+    "IN-08",
+    "IN-09",
+    "KS-01",
+    "KS-04",
+    "KY-01",
+    "KY-02",
+    "KY-04",
+    "KY-05",
+    "LA-01",
+    "LA-03",
+    "LA-04",
+    "LA-05",
+    "LA-06",
+    "MD-01",
+    "MI-01",
+    "MI-02",
+    "MI-05",
+    "MI-09",
+    "MN-06",
+    "MN-07",
+    "MN-08",
+    "MO-03",
+    "MO-04",
+    "MO-06",
+    "MO-07",
+    "MO-08",
+    "MS-01",
+    "MS-03",
+    "MS-04",
+    "MT-02",
+    "NC-05",
+    "NC-06",
+    "NC-07",
+    "NC-08",
+    "NC-09",
+    "NC-10",
+    "NC-14",
+    "ND-AL",
+    "NE-03",
+    "NJ-02",
+    "NJ-04",
+    "NY-01",
+    "NY-02",
+    "NY-11",
+    "NY-23",
+    "NY-24",
+    "OH-02",
+    "OH-04",
+    "OH-05",
+    "OH-06",
+    "OH-08",
+    "OH-12",
+    "OH-14",
+    "OK-01",
+    "OK-02",
+    "OK-03",
+    "OK-04",
+    "OK-05",
+    "OR-02",
+    "PA-09",
+    "PA-11",
+    "PA-13",
+    "PA-14",
+    "PA-15",
+    "PA-16",
+    "SC-02",
+    "SC-03",
+    "SC-04",
+    "SC-05",
+    "SC-07",
+    "SD-AL",
+    "TN-01",
+    "TN-02",
+    "TN-03",
+    "TN-04",
+    "TN-05",
+    "TN-06",
+    "TN-07",
+    "TN-08",
+    "TN-09",
+    "TX-01",
+    "TX-02",
+    "TX-03",
+    "TX-04",
+    "TX-05",
+    "TX-06",
+    "TX-08",
+    "TX-10",
+    "TX-11",
+    "TX-12",
+    "TX-13",
+    "TX-14",
+    "TX-17",
+    "TX-19",
+    "TX-21",
+    "TX-22",
+    "TX-24",
+    "TX-25",
+    "TX-26",
+    "TX-27",
+    "TX-31",
+    "TX-32",
+    "TX-36",
+    "TX-38",
+    "UT-02",
+    "UT-03",
+    "UT-04",
+    "VA-06",
+    "VA-09",
+    "WA-04",
+    "WA-05",
+    "WI-05",
+    "WI-06",
+    "WI-07",
+    "WI-08",
+    "WV-01",
+    "WV-02",
+    "WY-AL"
+   ]
+  },
+  "counts": {
+   "Solid D": 186,
+   "Likely D": 18,
+   "Lean D": 18,
+   "Toss-up": 18,
+   "Lean R": 14,
+   "Likely R": 13,
+   "Solid R": 168
+  },
+  "total": 435,
+  "cook_rating_date": "2026-10-30",
+  "cook_implied_total": {
+   "D": 222,
+   "R": 195,
+   "toss_up": 18
+  },
+  "vacancies": [
+   {
+    "district": "FL-20",
+    "last_holder": "Sheila Cherfilus-McCormick",
+    "party": "D",
+    "vacated": "2026-04-21",
+    "note": "resigned; seat stays vacant until the next Congress"
+   },
+   {
+    "district": "TX-23",
+    "last_holder": "Tony Gonzales",
+    "party": "R",
+    "vacated": "2026-04-14",
+    "note": "resigned; seat stays vacant until the next Congress"
+   }
+  ],
+  "district_lines_note": "District ids are on the 2026 lines (several states redrew mid-decade); party in a Solid category is Cook's favored party, not necessarily the current holder's.",
+  "sources": [
+   {
+    "url": "https://www.270towin.com/2026-house-election/cook-political-report-2026-house-ratings",
+    "used_for": "all 435 district Cook ratings (embedded Cook map, 'As of October 23, 2026'); decoded map_string in the page's district order",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_election_ratings",
+    "used_for": "cross-check: Cook column (header 'Oct. 23, 2026') for the 144 seats any forecaster rates competitive; 144/144 match, overall row 'D 220 / R 198 / 17 tossups' matches",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
+    "used_for": "vacancies (Resignations section: two seats vacant through election day)",
+    "fetched": "2026-10-27"
+   },
+   {
+    "url": "https://www.cookpolitical.com/ratings/house-race-ratings",
+    "used_for": "primary source; direct fetch returned HTTP 403, not bypassed",
+    "fetched": null
+   },
+   {
+    "url": "https://www.cookpolitical.com/ratings/house-race-ratings",
+    "read": "2026-11-01"
+   }
+  ]
+ },
+ "refresh_note": "2026-11-01 refresh: Cook pages read 2026-11-01 (House 2026-10-30, Senate 2026-10-30, Governor 2026-10-29). Changes vs chambers-20261027: House CO-05, PA-01, SC-01 Lean R -> Toss-up; OH-09, PA-08 Toss-up -> Lean D. Senate FL special Solid R -> Likely R; NE Likely R -> Lean R. Governor WI Toss-up -> Lean D. Exact change dates for Senate/Governor are behind Cook paywall; the date recorded is the page date read. Source notes: sources/field-20261101/README.md."
+}

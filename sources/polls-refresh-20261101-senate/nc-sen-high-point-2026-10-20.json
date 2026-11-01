@@ -1,0 +1,38 @@
+{
+ "file": "nc-sen-high-point-2026-10-20.json",
+ "race": "2026-NC-SEN",
+ "pid": "high-point",
+ "name": "High Point University Survey Research Center / YouGov",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "high-point-s-2026-NC-SEN-2026-10-20",
+ "poll": {
+  "field_start": "2026-10-01",
+  "field_end": "2026-10-20",
+  "release_date": "2026-10-28",
+  "n": 620,
+  "pop": "LV",
+  "D": 54,
+  "R": 40,
+  "other": 3,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.highpoint.edu/blog/2026/10/hpu-yougov-poll-north-carolina-likely-voters-weigh-in-on-u-s-senate-race-and-more/",
+  "source_locator": "Release list 'North Carolina Likely Voters - U.S. Senate Election (October 2026)': Michael Dublin (Green) 1%, Roy Cooper 54%, Shannon Bray (Libertarian) 2%, Michael Whatley 40%, Unsure/Would not vote 4%",
+  "notes": "other = Dublin 1 + Bray 2. Undecided field holds the combined 'Unsure/Would not vote' 4. HPU Poll 128; LV n=620 from the 800 self-identified RV (RV ballot not shown in the release). Credibility interval +/-4.7 for LV.",
+  "retrieved_at": "2026-11-01T12:05:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The weights were then raked along 2024 presidential vote choice and a four-way stratification of gender, age (4-categories), race (4-categories), and education (4-categories), to produce the final weight.",
+  "method_url": "https://www.highpoint.edu/blog/2026/10/hpu-yougov-poll-north-carolina-likely-voters-weigh-in-on-u-s-senate-race-and-more/",
+  "method_locator": "Methodology paragraphs at the end of the release",
+  "mode": "online, YouGov panel with sample matching",
+  "method_owner": "High Point University Survey Research Center",
+  "retrieved_at": "2026-11-01T12:05:00-08:00",
+  "method_date": "2026-10-28"
+ }
+}

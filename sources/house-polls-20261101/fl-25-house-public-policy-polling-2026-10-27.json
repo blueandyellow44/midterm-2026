@@ -1,0 +1,38 @@
+{
+ "file": "fl-25-house-public-policy-polling-2026-10-27.json",
+ "race": "2026-FL-25-HOUSE",
+ "pid": "public-policy-polling",
+ "name": "Public Policy Polling",
+ "sponsor": "House Majority PAC",
+ "scls": "INTERNAL",
+ "align": "D",
+ "method_id": "public-policy-polling-h-2026-FL-25-HOUSE-2026-10-27",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-27",
+  "release_date": "2026-10-27",
+  "n": 523,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 41.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://api.fxtwitter.com/cjwarnke/status/2115165777342972342",
+  "source_locator": "https://x.com/cjwarnke/status/2115165777342972342 (CJ Warnke, Oct 27 2026 19:36 UTC): 'NEW @HouseMajPAC poll in #FL25 ... Jared Moskowitz: 47% ... Scott Singer: 41% ... 2024 Recall: Trump+7 ... PPP, 10/26-/10/27, 523 Likely Voters'",
+  "notes": "Reporter post quoting the HMP-sponsored PPP toplines; no memo, MoE, mode or undecided read. Wikipedia lists undecided 12% (residual); NOT USED. 2024 recall Trump+7 per post. Distinct from the PPP Oct 21-22 poll already on file. Class INTERNAL per Max 2026-11-01 PAC ruling: HMP has general-election IEs in FL-25.",
+  "retrieved_at": "2026-11-01T12:07:24-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": null,
+  "retrieved_at": "2026-11-01T12:07:24-08:00",
+  "method_date": null
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "tx-15-house-texas-southern-2026-10-16.json",
+ "race": "2026-TX-15-HOUSE",
+ "pid": "texas-southern",
+ "name": "Texas Southern University (Barbara Jordan Public Policy Research and Survey Center)",
+ "sponsor": "San Antonio Express-News, El Pais and Puente News Collaborative",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "texas-southern-h-2026-TX-15-HOUSE-2026-10-16",
+ "poll": {
+  "field_start": "2026-10-13",
+  "field_end": "2026-10-16",
+  "release_date": "2026-10-21",
+  "n": null,
+  "pop": "LV",
+  "D": 51.0,
+  "R": 44.0,
+  "other": null,
+  "undecided": 5.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.tpr.org/government-politics/2026-10-21/new-poll-shows-in-battle-for-border-voters-tejano-star-poised-to-flip-tx-15",
+  "source_locator": "TPR, Oct 21, 2026: poll commissioned by the San Antonio Express-News, El Pais and Puente News Collaborative found likely voters favor Pulido 51% to 44% over De La Cruz; conducted Oct 13-16 in Spanish and English by TSU's Barbara Jordan Public Policy Research and Survey Center; MoE 3.8%; 5% undecided",
+  "notes": "Toplines, dates, MoE and undecided from free TPR coverage. Primary outlet (expressnews.com) is paywalled, not opened. No TSU release found. Sample size not stated in TPR; 270toWin also lists 'Sample size not reported'; n left null. The 20261027 sweep held this poll as unverified for the missing n only.",
+  "retrieved_at": "2026-11-01T12:06:48-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "method_url": null,
+  "method_locator": null,
+  "mode": null,
+  "method_owner": "Texas Southern University",
+  "retrieved_at": "2026-11-01T12:06:48-08:00",
+  "method_date": "2026-10-21"
+ }
+}

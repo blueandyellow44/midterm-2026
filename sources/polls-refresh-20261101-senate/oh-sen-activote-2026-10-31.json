@@ -1,0 +1,38 @@
+{
+ "file": "oh-sen-activote-2026-10-31.json",
+ "race": "2026-OH-SEN-SPECIAL",
+ "pid": "activote",
+ "name": "ActiVote",
+ "sponsor": "ActiVote (self)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "activote-s-2026-OH-SEN-SPECIAL-2026-10-31",
+ "poll": {
+  "field_start": "2026-10-18",
+  "field_end": "2026-10-31",
+  "release_date": "2026-10-31",
+  "n": 400,
+  "pop": "LV",
+  "D": 50.2,
+  "R": 49.8,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://www.activote.net/polls/2026/oh-u-s-senate/",
+  "source_locator": "Ohio U.S. Senate poll published October 31, 2026: Sherrod Brown 50.2%, Jon Husted 49.8% (D+0.4%); 'in the field between October 18 and October 31 (median field date of October 24)'",
+  "notes": "Two-candidate shares only. Found via 270toWin (10/31/2026). Field window overlaps the prior ActiVote Ohio wave's end date (Sep 26-Oct 18) by one day.",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "We weight our polls for underrepresentation of any group, based on age, gender, party affiliation, ethnicity, income, education and region",
+  "method_url": "https://www.activote.net/trust/methodology",
+  "method_locator": "How to interpret the data (house method; the poll page says weighted by Demographics and Spectrum)",
+  "mode": "app-based online",
+  "method_owner": "ActiVote",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-31"
+ }
+}

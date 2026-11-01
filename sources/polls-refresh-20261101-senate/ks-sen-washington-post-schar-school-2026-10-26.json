@@ -1,0 +1,38 @@
+{
+ "file": "ks-sen-washington-post-schar-school-2026-10-26.json",
+ "race": "2026-KS-SEN",
+ "pid": "washington-post-schar-school",
+ "name": "The Washington Post-Schar School (fieldwork Braun Research)",
+ "sponsor": "The Washington Post / George Mason University Schar School",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "washington-post-schar-school-s-2026-KS-SEN-2026-10-26",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-26",
+  "release_date": "2026-10-30",
+  "n": 801,
+  "pop": "LV",
+  "D": 52,
+  "R": 43,
+  "other": 4,
+  "undecided": 0,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.washingtonpost.com/documents/91bad124-1d3a-437b-b1ba-07af61cb729d.pdf",
+  "source_locator": "Q2 Kansas LV: Adam Hamilton 52, Roger Marshall 43, David Graham (L) 4, Other (vol.) *, Would not vote 1, No opin. *",
+  "notes": "Question includes a 'which one are you leaning toward' probe, so LEANERS. other = Graham 4 (Other vol. < 0.5); undecided = No opinion < 0.5 recorded 0; Would not vote 1 not folded in. The document's red note: 'This poll experienced significantly higher cooperation rates among registered Democrats than Republicans and additional signs of nonresponse error.' Topline PDF is a free document file (read in a browser before the coordinator's no-browser instruction; curl got no connection); the article itself (paywalled) was not read. Release date from the article URL (2026/10/30).",
+  "retrieved_at": "2026-11-01T12:15:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The sample was weighted to match population estimates for the demographic makeup of Kansas registered voters ... Weighting factors: Race/Ethnicity, Education, White/Nonwhite by college grad/non-grad (CPS); Gender by age group, Party registration by general election turnout, 2024 Presidential turnout by vote method (L2 Kansas voter file); Kansas regions; 2024 Presidential vote choice by party (Federal Elections Commission, AP VoteCast)",
+  "method_url": "https://www.washingtonpost.com/documents/91bad124-1d3a-437b-b1ba-07af61cb729d.pdf",
+  "method_locator": "p.5 methodology and weighting table",
+  "mode": "telephone: live callers on cellphones 74%, landlines 9%, cellphone text-to-web 17%; L2 voter file sample",
+  "method_owner": "The Washington Post",
+  "retrieved_at": "2026-11-01T12:15:00-08:00",
+  "method_date": "2026-10-30"
+ }
+}
