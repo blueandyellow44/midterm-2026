@@ -143,7 +143,7 @@ describe('control contract', () => {
   expect(tick('bet', /^No miss$/).sub).toBe('no national miss');
   expect(tick('polls', /^No miss$/).sub).toBe('polls right');
   expect(tick('blend', /^No miss$/).sub).toBe('no miss');
-  expect(tick('bet', /^2020/).sub).toBe('5.5 toward R');
+  expect(tick('bet', /^2020/).sub).toBe('polls under R by 5.5');
   expect(scenarioFor('bet', ctx).zero).toBe('With no national miss');
   expect(scenarioFor('polls', ctx).zero).toBe('If the polls are right');
   const r = { id: 'X', polls: 2, stateAdj: 1, spending: 0.5, earlyVote: 0, partisan: 0 } as WallRace;

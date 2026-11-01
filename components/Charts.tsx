@@ -66,6 +66,6 @@ export function CandidateChart({estimates,trend,name,names,compact}:{estimates:E
 {!compact&&<><text x={R+14} y={yd-2} className="cand-label cand-d">{sur(names.D)}</text><text x={R+14} y={yd+22} className="cand-value cand-d">{last.d.toFixed(1)}</text>
 <text x={R+14} y={yr-2} className="cand-label cand-r">{sur(names.R)}</text><text x={R+14} y={yr+22} className="cand-value cand-r">{last.r.toFixed(1)}</text></>}
 </svg>
-<p className="recall-chart-key" aria-hidden="true"><><span className="cand-d">— {sur(names.D)}{compact?` ${last.d.toFixed(1)}`:''}</span><span className="cand-r">— {sur(names.R)}{compact?` ${last.r.toFixed(1)}`:''}</span><span className="muted">lines: weekly average</span></><span>▲ weights on 2024 vote</span><span>● does not</span><span>■ unverified</span><span className="cand-hollow-key"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5"/></svg> two-candidate poll, on the full-ballot scale</span></p>
+<p className="recall-chart-key" aria-hidden="true"><><span className="cand-d">— {sur(names.D)}{compact?` ${last.d.toFixed(1)}`:''}</span><span className="cand-r">— {sur(names.R)}{compact?` ${last.r.toFixed(1)}`:''}</span><span className="muted">lines: weekly average</span></><span>▲ poll weights on 2024 vote</span><span>● poll does not</span><span>■ unknown</span><span className="cand-hollow-key"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5"/></svg> two-candidate poll, on the full-ballot scale</span></p>
 </figure>;
 }

@@ -37,6 +37,14 @@
       const range = doc.createRange(); range.selectNodeContents(e); const tr = range.getBoundingClientRect(), pr = p.getBoundingClientRect();
       if (tr.right > pr.right + 2) fail('SPILL', `${desc(e)} text ends ${Math.round(tr.right)}px, its box ends ${Math.round(pr.right)}px`);
     }
+    // Consistency (2026-11-01): every 'in play' subtotal sums; every visible slider announces a value; every stacked phone
+    // table cell carries its header; every in-page anchor resolves; a race page's Undertow figure matches the sealed release.
+    for (const m of text.matchAll(/(\d+) in play: (\d+) D, (\d+) R(?:, (\d+) even)?/g)) { const [, play, d, r, e] = m.map(Number); if (d + r + (e || 0) !== play) fail('SUM', `"${m[0]}" does not add up`); }
+    for (const e of rootEl.querySelectorAll('input[type=range]')) if (vis(e) && !e.getAttribute('aria-valuetext')) fail('A11Y-VALUE', `${desc(e)} has no aria-valuetext`);
+    if (win.innerWidth < 1000) for (const t of rootEl.querySelectorAll('table')) { const th = t.querySelector('thead'); if (!th || win.getComputedStyle(th).display !== 'none') continue; for (const td of t.querySelectorAll('tbody td')) if (vis(td) && td.textContent.trim() && !td.hasAttribute('data-label') && td !== td.parentElement.firstElementChild) fail('NO-LABEL', `${desc(td)} stacked without data-label`); }
+    for (const a of rootEl.querySelectorAll('a[href^="#"]')) { const id = decodeURIComponent(a.getAttribute('href').slice(1)); if (id && !doc.getElementById(id)) fail('ANCHOR', `#${id} has no target`); }
+    const head = rootEl.querySelector('section.race-head[data-race]');
+    if (head && window.__sealed) { const id = head.getAttribute('data-race'); const sig = window.__sealed.signals?.per_race?.[id]; const fig = [...head.querySelectorAll('.c-figure, .c-fig')].find(x => /Undertow/i.test(x.textContent)); const shown = fig && fig.textContent.match(/[+−-]\s?(\d+\.\d)/); if (sig && shown && Math.abs(Math.abs(Number(sig.adjusted_margin)) - Number(shown[1])) > 0.051) fail('RELEASE', `${id} shows ${shown[0]} but the release says ${sig.adjusted_margin}`); }
     const taps = [...rootEl.querySelectorAll('a[href],button,summary,input,select,textarea,[role=button],[role=tab],[role=slider]')].filter(vis);
     for (const e of taps) {
       e.scrollIntoView({ block: 'center', inline: 'nearest' });
@@ -64,6 +72,7 @@
   }
   (async () => {
     const routes = ONLY || await (await fetch('/__qa/routes.json')).json();
+    try { window.__sealed = await (await fetch('/__qa/derived.json')).json(); } catch { window.__sealed = null; }
     for (const w of WIDTHS) for (const route of routes) {
       status(`${route} at ${w}px`);
       const doc = await load(route, w); add(check(doc, `${route} @${w}`)); report.runs++;

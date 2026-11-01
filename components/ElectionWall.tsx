@@ -72,7 +72,7 @@ export type Tick = { label: string; name: string; v: number; sub: string };
 export type Scenario = { key: string; question: string; unit: string; scope: 'race' | 'seat'; tableHead: string; left: string; right: string; zero: string; note: string; aria: string; ticks: Tick[]; show: (m: number) => string; dir: (m: number) => string };
 export type ScenarioExtras = { fundYears?: Record<string, number>; fundDefault?: number; level?: number };
 export type ScenarioCtx = { history: HistoryPreset[]; national: number; lastFall: number; live?: LiveDial; extras?: ScenarioExtras };
-const toward = (v: number) => `${Math.abs(v).toFixed(1)} toward ${v > 0 ? 'D' : 'R'}`;
+const toward = (v: number) => `polls under ${v > 0 ? 'D' : 'R'} by ${Math.abs(v).toFixed(1)}`;
 const yy = (y: string | number) => `’${String(y).slice(2, 4)}`;
 // The accessible value says what the readout says (Fundamentals shows the swing, not the native offset; audit 2026-10-31).
 export const valueText = (sc: Scenario, m: number) => `${sc.show(m)} ${sc.unit}, ${sc.dir(m)}`;
@@ -108,7 +108,7 @@ export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
     ...(key === 'bet' ? [{ label: 'Bet', name: `My bet ${national.toFixed(1)}`, v: national, sub: toward(national) }] : []),
     { label: '’25', name: `Last fall ${lastFall.toFixed(1)}`, v: lastFall, sub: toward(lastFall) },
   ].sort((a, b) => a.v - b.v);
-  return { key, question: 'How wrong are the polls?', unit: 'pts', scope: 'race', tableHead: 'If the polls miss like…', left: '◀ Republicans', right: 'Democrats ▶',
+  return { key, question: 'How wrong are the polls?', unit: 'pts', scope: 'race', tableHead: 'If the polls miss like…', left: '◀ Polls under R', right: 'Polls under D ▶',
     zero: key === 'bet' ? 'With no national miss' : key === 'polls' ? 'If the polls are right' : 'Forecaster blend, no miss',
     note: 'Pick a past year’s miss or set your own. Every race and projected seat follows; untracked governors keep Cook’s rating.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
     show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way' };
@@ -221,7 +221,7 @@ function Tally({ races, m, seats, totals, scope = 'all', setScope, odds, c = nul
         <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
         {cs.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[o], m)}/> : null}
         <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(cs.dSafe)}`}/><i className={`is-d-play gw-${w(cs.dPlay)}`}/><i className={`is-even gw-${w(cs.even)}`}/><i className={`is-r-play gw-${w(cs.rPlay)}`}/><i className={`is-r gw-${w(cs.rSafe)}`}/>{cs.majority && <em className={`wall-tally-maj ga-${pct(100 * cs.majority / cs.n)}`}/>}</span>
-        {totals && <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.evenPlay > 0 ? `, ${cs.evenPlay} even` : ''}{cs.even - cs.evenPlay - cs.tossUp > 0 ? ` · ${cs.even - cs.evenPlay - cs.tossUp} projected ${cs.even - cs.evenPlay - cs.tossUp === 1 ? 'seat' : 'seats'} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}<span className="is-extra">{cs.noPolls ? ` · ${cs.noPolls} of them projected, no polls` : ''}{o === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} for control${o === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span></span>}
+        {totals && <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.evenPlay > 0 ? `, ${cs.evenPlay} even` : ''}{cs.even - cs.evenPlay - cs.tossUp > 0 ? ` · ${cs.even - cs.evenPlay - cs.tossUp} projected ${cs.even - cs.evenPlay - cs.tossUp === 1 ? 'seat' : 'seats'} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}<span className="is-extra">{cs.noPolls ? ` · ${cs.noPolls} of them projected, no polls` : ''}{o === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} seats to control${o === 'SEN' ? '; a 50-50 tie goes to R' : ''}` : ''}</span></span>}
       </div>; })}
     {totals && <p className="wall-tally-note wall-hide-phone">Hatched: the races I read, which the dial moves. The rest are projections. <a href="/method/#full-chamber">How</a> · <a href="/method/#models">Other readings</a></p>}
   </div>;
@@ -258,7 +258,7 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
         return <button key={st} type="button" className={`wall-tile is-proj ${pos} ${shade(sv)}${selected === sx.id ? ' is-selected' : ''}`} aria-pressed={selected === sx.id} aria-label={`${sx.name}: ${sx.kind === 'projection' ? `projected ${seatLabel(sv)}` : `Cook ${sx.rating}, not tracked`}`} onClick={() => select(sx.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v wall-tile-rated">{lab}</span></button>; }
       return <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>}
     {full && !hideToggle && <p className="wall-note">{office === 'HOUSE' ? 'Ringed dots are tracked races; plain dots are projections from the 2024 vote, not readings.' : 'Dashed tiles are projections or Cook ratings, not Undertow readings.'}</p>}
-    {!hideToggle && <div className="wall-legend" aria-hidden="true"><span className="r-safe">Safe R</span><span className="r-likely">Likely</span><span className="r-lean">Lean</span><span className="toss">Toss-up</span><span className="d-lean">Lean</span><span className="d-likely">Likely</span><span className="d-safe">Safe D</span></div>}
+    {!hideToggle && <div className="wall-legend" aria-hidden="true"><span className="r-safe">Safe R</span><span className="r-likely">Likely R</span><span className="r-lean">Lean R</span><span className="toss">Toss-up</span><span className="d-lean">Lean D</span><span className="d-likely">Likely D</span><span className="d-safe">Safe D</span></div>}
   </section>;
 }
 
@@ -384,7 +384,7 @@ function PhoneChambers({ races, m, seats, totals, office, setOffice, odds, c = n
       <span className="wall-tally-num"><b className="is-d">D {d}</b> <b className="is-r">R {r}</b></span>
       {cs.majority ? <ControlOdds p={oddsAt(odds, odds?.chambers[office], m)}/> : null}
       <span className="wall-tally-bar" aria-hidden="true"><i className={`is-d gw-${w(cs.dSafe)}`}/><i className={`is-d-play gw-${w(cs.dPlay)}`}/><i className={`is-even gw-${w(cs.even)}`}/><i className={`is-r-play gw-${w(cs.rPlay)}`}/><i className={`is-r gw-${w(cs.rSafe)}`}/>{cs.majority && <em className={`wall-tally-maj ga-${pct(100 * cs.majority / cs.n)}`}/>}</span>
-      <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.evenPlay > 0 ? `, ${cs.evenPlay} even` : ''}{cs.even - cs.evenPlay - cs.tossUp > 0 ? ` · ${cs.even - cs.evenPlay - cs.tossUp} projected ${cs.even - cs.evenPlay - cs.tossUp === 1 ? 'seat' : 'seats'} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}{office === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} for control${office === 'SEN' ? ' (50-50 goes R)' : ''}` : ''}</span>
+      <span className="wall-tally-play">{cs.play} in play: <b className="is-d">{cs.dPlay} D</b>, <b className="is-r">{cs.rPlay} R</b>{cs.evenPlay > 0 ? `, ${cs.evenPlay} even` : ''}{cs.even - cs.evenPlay - cs.tossUp > 0 ? ` · ${cs.even - cs.evenPlay - cs.tossUp} projected ${cs.even - cs.evenPlay - cs.tossUp === 1 ? 'seat' : 'seats'} even` : ''}{cs.tossUp ? ` · ${cs.tossUp} Cook toss-up` : ''}{office === 'HOUSE' && cs.n > cs.play ? ` · the other ${cs.n - cs.play} are projections or Cook ratings, not my reading` : ''}{cs.majority ? ` · ${cs.majority} seats to control${office === 'SEN' ? '; a 50-50 tie goes to R' : ''}` : ''}</span>
     </div>
     {office !== 'HOUSE' && <ScopeToggle scope={scope} setScope={setScope}/>}
   </section>;

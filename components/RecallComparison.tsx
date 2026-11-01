@@ -21,7 +21,7 @@ export function RecallComparison({r,pollsterNames={}}:{r:any;pollsterNames?:Reco
    const candidate=value>0?candidates.D.candidate:candidates.R.candidate;
    return <div className="recall-group" key={key}>
     <dt>{labels[key]}</dt>
-    <dd className={`recall-group-margin ${even?'':value>0?'lead-number-d':'lead-number-r'}`}>{even?'Even':<>{number(Math.abs(value))}<small> point lead</small></>}</dd>
+    <dd className={`recall-group-margin ${even?'':value>0?'lead-number-d':'lead-number-r'}`}>{even?'Even':<>{number(Math.abs(value))}<small>-point lead</small></>}</dd>
     <dd className="recall-group-candidate">{even?'At displayed precision':`for ${candidate}`}</dd>
     <dd className="recall-group-count">{group.estimates} {group.estimates===1?'poll':'polls'} · {group.pollsters} {group.pollsters===1?'pollster':'pollsters'}</dd>
    </div>;

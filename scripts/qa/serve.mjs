@@ -20,6 +20,7 @@ function file(path) {
 createServer((req, res) => {
   const url = new URL(req.url, 'http://x');
   const p = decodeURIComponent(url.pathname);
+  if (p === '/__qa/derived.json') { res.writeHead(200, { 'content-type': TYPES['.json'] }); return res.end(readFileSync(join(fileURLToPath(new URL('../..', import.meta.url)), 'data/derived.json'))); }
   if (p === '/__qa/routes.json') {
     const routes = JSON.parse(readFileSync(routesFile, 'utf8')).map(r => r.route).filter(r => r !== '/404/');
     res.writeHead(200, { 'content-type': TYPES['.json'] }); return res.end(JSON.stringify(routes));

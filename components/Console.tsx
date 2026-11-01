@@ -6,8 +6,8 @@ export const EVEN = 0.05;
 export const tone = (v: number) => (v >= EVEN ? 'is-d' : v <= -EVEN ? 'is-r' : 'is-even');
 export const pct = (x: number) => Math.max(0, Math.min(100, Math.round(x)));
 
-export function Panel({ kicker, action, className = '', children, label }: { kicker?: ReactNode; action?: ReactNode; className?: string; children: ReactNode; label?: string }) {
-  return <section className={`c-panel ${className}`} aria-label={label}>{(kicker || action) && <div className="c-head">{kicker && <p className="c-kicker">{kicker}</p>}{action}</div>}{children}</section>;
+export function Panel({ kicker, action, className = '', children, label, dataRace }: { kicker?: ReactNode; action?: ReactNode; className?: string; children: ReactNode; label?: string; dataRace?: string }) {
+  return <section className={`c-panel ${className}`} aria-label={label} data-race={dataRace}>{(kicker || action) && <div className="c-head">{kicker && <p className="c-kicker">{kicker}</p>}{action}</div>}{children}</section>;
 }
 
 export function Figure({ label, value, v, sub }: { label: string; value: ReactNode; v?: number; sub?: ReactNode }) {

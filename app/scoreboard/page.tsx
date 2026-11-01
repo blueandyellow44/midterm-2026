@@ -32,17 +32,17 @@ export default function Scoreboard() {
       {started ? <><p className="tally-line"><strong>Undertow closer in {ours}</strong> · polls closer in {theirs} · {done.length} of {rows.length} races settled</p><p className="muted text-sm">Last updated {live.updated_at ? new Date(live.updated_at).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' Pacific' : 'NA'}.</p></>
         : <p className="tally-line">Counting starts the evening of November 3. Until then, this page shows the numbers the night will test.</p>}
     </section>
-    <div className="c-panel scoreboard-table method-table"><p className="c-sub scoreboard-key">Bar: the count once it starts, Undertow until then · <i className="c-key-tick"/> polls</p><table><thead><tr><th>Race</th><th>Board</th><th>Polls</th><th>Undertow</th><th>The count</th><th>Closer</th></tr></thead><tbody>
+    <div className="c-panel scoreboard-table method-table"><p className="c-sub scoreboard-key"><span><i className="c-key-tick"/> the polls</span><span><i className="c-key-bar"/> Undertow until the count starts, then the count</span></p><table><thead><tr><th>Race</th><th>Status</th><th>Polls</th><th>Undertow</th><th>Result so far</th><th>Which was closer</th></tr></thead><tbody>
       {rows.map(x => <tr key={x.r.id}>
         <th scope="row"><a href={`/race/${x.r.slug}/`}>{x.r.name}</a></th>
-        <td data-label="Board" className="scoreboard-board"><MarginTrack v={Number.isFinite(x.count) ? x.count : x.s.adjusted_margin} tick={x.s.polling_margin}/></td>
+        <td data-label="Status" className="scoreboard-board"><MarginTrack v={Number.isFinite(x.count) ? x.count : x.s.adjusted_margin} tick={x.s.polling_margin}/></td>
         <td data-label="Polls" className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep)}</td>
         <td data-label="Undertow" className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep)}</td>
-        <td data-label="The count" className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>
-        <td data-label="Closer">{x.winner === 'undertow' ? <strong className="accent-text">Undertow, by {(x.pollErr - x.ourErr).toFixed(1)}</strong> : x.winner === 'polls' ? <strong>Polls, by {(x.ourErr - x.pollErr).toFixed(1)}</strong> : x.winner === 'tie' ? 'Even' : x.c ? <span className="muted">Still counting</span> : <span className="muted">Not yet</span>}</td>
+        <td data-label="Result so far" className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>
+        <td data-label="Which was closer">{x.winner === 'undertow' ? <strong className="accent-text">Undertow, by {(x.pollErr - x.ourErr).toFixed(1)}</strong> : x.winner === 'polls' ? <strong>Polls, by {(x.ourErr - x.pollErr).toFixed(1)}</strong> : x.winner === 'tie' ? 'Even' : x.c ? <span className="muted">Still counting</span> : <span className="muted">Not yet</span>}</td>
       </tr>)}
     </tbody></table></div>
-    <p className="muted mt-4 text-sm">Closer means nearer to the count's margin between the two candidates. Early counts swing as different kinds of ballots are added, so a race is only scored once it is called or nearly complete. The final grade uses certified results.</p>
+    <p className="muted mt-4 text-sm">Closer means nearer to the counted margin between the two candidates. Early counts swing as different kinds of ballots are added, so a race is only scored once it is called or nearly complete. The final grade uses certified results.</p>
     <Signup placement="scoreboard"/>
   </>;
 }

@@ -26,7 +26,7 @@ function RaceHead({r}:{r:any}){const s=r.signal;const names={D:r.heat.candidates
  const n=(v:unknown)=>v===null||v===undefined||v===''?NaN:Number(v);   // Number(null) is 0, which read a no-poll race as a tie
  const polls=n(s?.polling_margin??r.polling_read?.margin);const und=n(s?.adjusted_margin);const pull=und-polls;const ok=Number.isFinite(polls)&&Number.isFinite(und);
  const proj=((derived as any).chambers?.chambers?.HOUSE?.items||[]).find((i:any)=>i.race===r.id&&i.kind==='projection');
- return <Panel className="race-head" kicker={<>2026 · {r.id.split('-')[1]} · {r.id.endsWith('HOUSE')?`House · ${r.id.split('-')[2]==='AL'?'at-large':`district ${Number(r.id.split('-')[2])}`}`:r.id.includes('GOV')?'Governor':'Senate'}{r.id.includes('SPECIAL')?' · special':''}</>} action={<a className="c-link" href="/">← All races</a>}>
+ return <Panel className="race-head" dataRace={r.id} kicker={<>2026 · {r.id.split('-')[1]} · {r.id.endsWith('HOUSE')?`House · ${r.id.split('-')[2]==='AL'?'at-large':`district ${Number(r.id.split('-')[2])}`}`:r.id.includes('GOV')?'Governor':'Senate'}{r.id.includes('SPECIAL')?' · special':''}</>} action={<a className="c-link" href="/">← All races</a>}>
   <h1 className="race-title">{r.name}</h1>
   <p className="race-matchup"><span className="is-d">{names.D} ({dl})</span> vs <span className="is-r">{names.R} (R)</span></p>
   {ok?<><div className="race-figures">
