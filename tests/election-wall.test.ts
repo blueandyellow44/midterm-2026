@@ -132,6 +132,11 @@ describe('control contract', () => {
    expect(tick(key, /^No miss$/).v).toBe(0); expect(tick(key, /^Last fall/).v).toBe(lastFall);
    expect(sc.ticks.map(t => t.v)).toEqual([...sc.ticks.map(t => t.v)].sort((a, b) => a - b));   // ruler order
   }
+  // a near-zero past year shares the No-miss mark instead of stacking on it (2018, Max 2026-11-01)
+  const with18 = scenarioFor('bet', { ...ctx, history: [...history, { year: 2018, miss_toward_d: -0.0846 }] });
+  const zero = with18.ticks.filter(t => t.v === 0);
+  expect(zero).toHaveLength(1); expect(zero[0].name).toBe('No miss or 2018 again'); expect(zero[0].label).toBe('0/’18');
+  expect(with18.ticks.some(t => t.name === '2018 again')).toBe(false);
   expect(tick('bet', /^My bet/).v).toBe(national);
   expect(scenarioFor('polls', ctx).ticks.some(t => /My bet|My lean/.test(t.name))).toBe(false);
   expect(scenarioFor('blend', ctx).ticks.some(t => /My bet|My lean/.test(t.name))).toBe(false);

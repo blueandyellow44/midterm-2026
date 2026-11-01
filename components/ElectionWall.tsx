@@ -101,10 +101,12 @@ export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
       note: 'Test Cook’s calls a level or two off. Every rated seat follows.', aria: 'Rating miss in points; negative means the ratings run too Democratic', ticks,
       show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? `Ratings too Republican by ${(Math.abs(m) / L).toFixed(1)} levels` : m <= -EVEN ? `Ratings too Democratic by ${(Math.abs(m) / L).toFixed(1)} levels` : 'Ratings as published' };
   }
+  // A past year whose miss rounds near zero shares the No-miss mark (2018 at -0.1; Max, 2026-11-01: "add it").
+  const atZero = history.filter(h => Math.abs(h.miss_toward_d) <= 0.5).map(h => h.year);
   const ticks: Tick[] = [
     ...(live ? [{ label: 'Now', name: `Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, v: Math.round(live.m * 10) / 10, sub: 'the count so far' }] : []),
-    ...history.map(h => { const v = Math.round(h.miss_toward_d * 10) / 10; return { label: yy(h.year), name: `${h.year} again`, v, sub: toward(v) }; }),
-    { label: '0', name: 'No miss', v: 0, sub: key === 'bet' ? 'no national miss' : key === 'polls' ? 'polls right' : 'no miss' },
+    ...history.filter(h => !atZero.includes(h.year)).map(h => { const v = Math.round(h.miss_toward_d * 10) / 10; return { label: yy(h.year), name: `${h.year} again`, v, sub: toward(v) }; }),
+    { label: ['0', ...atZero.map(yy)].join('/'), name: ['No miss', ...atZero.map(y => `${y} again`)].join(' or '), v: 0, sub: key === 'bet' ? 'no national miss' : key === 'polls' ? 'polls right' : 'no miss' },
     ...(key === 'bet' ? [{ label: 'Bet', name: `My bet ${national.toFixed(1)}`, v: national, sub: toward(national) }] : []),
     { label: '’25', name: `Last fall ${lastFall.toFixed(1)}`, v: lastFall, sub: toward(lastFall) },
   ].sort((a, b) => a.v - b.v);

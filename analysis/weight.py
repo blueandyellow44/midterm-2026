@@ -1029,7 +1029,8 @@ def early_vote_block(rows: list[dict] | None, state: str, model: dict | None = N
 
 PARTISAN_INDEPENDENT_D = {"2026-NE-SEN"}   # Dan Osborn, independent, in the D slot
 
-HISTORY_PRESET_YEARS = (2020, 2016, 2024, 2022)   # dial presets: "what if this year's polling miss repeats that year's"
+HISTORY_PRESET_YEARS = (2020, 2016, 2024, 2022, 2018)   # dial presets: "what if this year's polling miss repeats that year's"
+# 2018 added (Max, 2026-11-01: "add it"): the last midterm under a Republican president; its miss (-0.08) shares the No-miss mark.
 
 
 def national_misses(poll_history: list[dict] | None, years=HISTORY_PRESET_YEARS) -> list[dict]:
