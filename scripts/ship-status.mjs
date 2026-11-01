@@ -11,7 +11,7 @@ const last = JSON.parse(readFileSync('.deploys/last.json', 'utf8'));
 if (process.env.SHIP_FROM) last.commit = sh(`git rev-parse ${process.env.SHIP_FROM}`);   // test hook: pretend an older commit is live
 // A commit counts as unshipped only if it touches what the site is built from. QA, deploy tooling, tests and notes do
 // not change a single served byte, and flagging them would teach everyone to ignore this check.
-const NOT_SITE = [/^tests\//, /^scripts\/qa\//, /^scripts\/(deploy|ship-status)\.mjs$/, /^research\//, /^docs\//, /^\.gitignore$/, /^AGENTS\.md$/, /^README\.md$/];
+const NOT_SITE = [/^tests\//, /^scripts\/qa\//, /^scripts\/(deploy|ship-status)\.mjs$/, /^research\//, /^docs\//, /^\.gitignore$/, /^AGENTS\.md$/, /^README\.md$/, /^LICENSE$/];
 const touchesSite = sha => sh(`git show --name-only --format= ${sha}`).split('\n').filter(Boolean).some(f => {
   if (f === 'package.json') return /^[+-]\s+"[^"]+": "[\^~]?\d/m.test(sh(`git show ${sha} -- package.json`).replace(/^[+-]\s+"(dev|build|deploy|test|typecheck|preview|qa:serve|ship:status|build:cloudflare)":.*$/gm, ''));
   return !NOT_SITE.some(re => re.test(f));
