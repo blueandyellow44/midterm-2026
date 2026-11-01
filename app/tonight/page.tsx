@@ -1,7 +1,8 @@
 import { surname, pageShare } from '@/lib/format';
 import type { Metadata } from 'next';
 import { races, derived } from '@/lib/data';
-import { closeFor, CLOSING_SOURCE } from '@/lib/closing';
+import { closeFor, closeInstant, CLOSING_SOURCE } from '@/lib/closing';
+import { LocalClose } from '@/components/LocalClose';
 import { PageTitle } from '@/components/UI';
 import { MarginTrack } from '@/components/Console';
 
@@ -24,7 +25,7 @@ export default function Tonight() {
   return <>
     <PageTitle kicker="Election night · November 3 · Eastern Time" title="What to watch, in order."><p>Every race I read, listed by when its polls close. Each shows the polling average, my number, and what the race looks like if the polls miss the way they did in 2020{h2020 !== undefined ? <> ({Math.abs(h2020).toFixed(1)} points toward Republicans)</> : null}. The first two hours carry most of the test: if Georgia, North Carolina and Ohio come in closer to my number than to the polls, the bet is holding.</p></PageTitle>
     {hours.map(h => <section key={h}>
-      <h2 className="tonight-hour">{h}<small>{(n => `${n} ${n === 1 ? "race" : "races"}`)(rows.filter(x => x.c!.at === h).length)}</small></h2>
+      <h2 className="tonight-hour">{h} ET<LocalClose iso={closeInstant(h)}/><small>{(n => `${n} ${n === 1 ? "race" : "races"}`)(rows.filter(x => x.c!.at === h).length)}</small></h2>
       <div className="c-panel method-table"><table><thead><tr><th>Race</th><th>Status</th><th>Polls</th><th>Undertow</th><th>If 2020 again</th></tr></thead><tbody>
         {rows.filter(x => x.c!.at === h).map(x => <tr key={x.r.id}>
           <th scope="row"><a href={`/race/${x.r.slug}/`}>{x.r.name}</a>{x.c!.note ? <small className="muted block">{x.c!.note}</small> : null}</th>
