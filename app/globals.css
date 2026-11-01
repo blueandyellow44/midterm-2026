@@ -100,6 +100,8 @@ html[data-view=mobile] .theme-button {min-height:30px;padding:4px 10px;font-size
 .c-track-tick {position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--ink);transition:left .25s ease;}
 .c-track.is-large {height:22px;} .c-track.is-large .c-track-bar {top:3px;bottom:3px;}
 .c-key-tick {display:inline-block;width:2px;height:12px;background:var(--ink);vertical-align:middle;}
+.c-key-bar {display:inline-block;width:14px;height:8px;border-radius:3px;background:var(--d-safe);vertical-align:middle;margin-right:4px;}
+.race-trackkey {display:flex;gap:14px;flex-wrap:wrap;}
 .c-drawer {border-top:1px solid var(--line);margin-top:12px;}
 .c-drawer>summary,.signal-details>summary,.recall-sources>summary {display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;cursor:pointer;color:var(--ink);font-weight:600;font-size:14px;list-style:none;}
 .c-drawer>summary::-webkit-details-marker {display:none;}
