@@ -1,7 +1,6 @@
 'use client';
 import { surname, pollCountLabel } from '@/lib/format';
-import { useMemo, useState, useRef, useEffect } from 'react';
-import { writeSelection } from '@/lib/selection';
+import { useMemo, useState, useRef } from 'react';
 import { FactorBars, MarginTrack, pct } from './Console';
 import { Hemicycle, type HemiSeat } from './Hemicycle';
 
@@ -348,7 +347,6 @@ export function ElectionWall({ races, national, lastFall, initial, history, noRe
   const cur = models.find(x => x.key === model) || null; const c: Centers = cur ? cur.centers : null; const o = cur ? cur.odds : odds;
   const pick = (k: string) => { const next = pickModel(models, k, national, live); setModel(next.model); setM(next.m); };
   const sc = scenarioFor(model, { history, national, lastFall, live, extras });
-  useEffect(() => { const hit = sc.ticks.find(t => Math.abs(t.v - m) < 0.05); writeSelection({ model, name: cur ? cur.name : 'My bet', m, label: hit ? hit.name : `${sc.show(m)} ${sc.unit}`, at: new Date().toISOString() }); }, [model, m]);   // eslint-disable-line react-hooks/exhaustive-deps -- sc and cur derive from model
   const full = !!totals;
   const sel = races.find(r => r.id === selected);
   const selSeat = !sel ? seats.find(x => x.id === selected) : undefined;
@@ -402,7 +400,6 @@ export function MobileWall({ races, national, lastFall, history, noRead = [], se
   const cur = models.find(x => x.key === model) || null; const c: Centers = cur ? cur.centers : null; const o = cur ? cur.odds : odds;
   const pick = (k: string) => { const next = pickModel(models, k, national, live); setModel(next.model); setM(next.m); };
   const sc = scenarioFor(model, { history, national, lastFall, live, extras });
-  useEffect(() => { const hit = sc.ticks.find(t => Math.abs(t.v - m) < 0.05); writeSelection({ model, name: cur ? cur.name : 'My bet', m, label: hit ? hit.name : `${sc.show(m)} ${sc.unit}`, at: new Date().toISOString() }); }, [model, m]);   // eslint-disable-line react-hooks/exhaustive-deps -- sc and cur derive from model
   const rows = useMemo(() => races.filter(r => r.office === office).map(r => ({ r, v: marginAt(r, m, c) })).sort((a, b) => b.v - a.v), [races, m, office, c]);
   const pickRace = (id: string) => { setOpen(id); if (typeof document !== 'undefined') document.getElementById(`m-${id}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
   return <div className="wall-mobile">
