@@ -10,6 +10,7 @@
     "preview": "wrangler dev --port 8788",
     "deploy": "node scripts/deploy.mjs",
     "test": "vitest run",
+    "test:evals": "node tests/evals/run.mjs",
     "typecheck": "tsc --noEmit",
     "qa:serve": "node scripts/qa/serve.mjs",
     "ship:status": "node scripts/ship-status.mjs"
