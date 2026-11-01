@@ -132,11 +132,12 @@ describe('control contract', () => {
    expect(tick(key, /^No miss$/).v).toBe(0); expect(tick(key, /^Last fall/).v).toBe(lastFall);
    expect(sc.ticks.map(t => t.v)).toEqual([...sc.ticks.map(t => t.v)].sort((a, b) => a - b));   // ruler order
   }
-  // a near-zero past year shares the No-miss mark instead of stacking on it (2018, Max 2026-11-01)
+  // 2018 is its own button at its real miss, two decimals so it does not read as zero; No miss stays (Max, 2026-11-01)
   const with18 = scenarioFor('bet', { ...ctx, history: [...history, { year: 2018, miss_toward_d: -0.0846 }] });
-  const zero = with18.ticks.filter(t => t.v === 0);
-  expect(zero).toHaveLength(1); expect(zero[0].name).toBe('No miss or 2018 again'); expect(zero[0].label).toBe('0/’18');
-  expect(with18.ticks.some(t => t.name === '2018 again')).toBe(false);
+  const y18 = with18.ticks.find(t => t.name === '2018 again')!;
+  expect(y18.v).toBe(-0.08); expect(y18.sub).toBe('polls under R by 0.08'); expect(y18.ruler).toBe(false);
+  expect(with18.ticks.find(t => t.name === 'No miss')!.v).toBe(0);
+  expect(with18.show(-0.08)).toBe('0.08'); expect(with18.show(-5.5)).toBe('5.5'); expect(with18.show(0)).toBe('0.0');
   expect(tick('bet', /^My bet/).v).toBe(national);
   expect(scenarioFor('polls', ctx).ticks.some(t => /My bet|My lean/.test(t.name))).toBe(false);
   expect(scenarioFor('blend', ctx).ticks.some(t => /My bet|My lean/.test(t.name))).toBe(false);

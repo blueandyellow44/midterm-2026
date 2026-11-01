@@ -68,11 +68,13 @@ export function notchAt(races: WallRace[], seats: WallSeat[], totals: ChamberTot
 //   fundamentals       no polls in it, so the scenario is which past midterm this year looks like: marks from the sealed swing
 //                      table (derived.models.fundamentals_env.years), the average at the default.
 //   ratings            Cook's calls a level or two too far one way; one level = the release's Lean center (simulation.rated_center).
-export type Tick = { label: string; name: string; v: number; sub: string };
+export type Tick = { label: string; name: string; v: number; sub: string; ruler?: boolean };
 export type Scenario = { key: string; question: string; unit: string; scope: 'race' | 'seat'; tableHead: string; left: string; right: string; zero: string; note: string; aria: string; ticks: Tick[]; show: (m: number) => string; dir: (m: number) => string };
 export type ScenarioExtras = { fundYears?: Record<string, number>; fundDefault?: number; level?: number };
 export type ScenarioCtx = { history: HistoryPreset[]; national: number; lastFall: number; live?: LiveDial; extras?: ScenarioExtras };
-const toward = (v: number) => `polls under ${v > 0 ? 'D' : 'R'} by ${Math.abs(v).toFixed(1)}`;
+// One decimal, except a miss under 0.1 shows two so it does not read as zero (2018 at 0.08; Max, 2026-11-01: "if it was -.08 reflect that").
+const pts = (v: number) => Math.abs(v).toFixed(v !== 0 && Math.abs(v) < 0.1 ? 2 : 1);
+const toward = (v: number) => `polls under ${v > 0 ? 'D' : 'R'} by ${pts(v)}`;
 const yy = (y: string | number) => `’${String(y).slice(2, 4)}`;
 // The accessible value says what the readout says (Fundamentals shows the swing, not the native offset; audit 2026-10-31).
 export const valueText = (sc: Scenario, m: number) => `${sc.show(m)} ${sc.unit}, ${sc.dir(m)}`;
@@ -101,19 +103,18 @@ export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
       note: 'Test Cook’s calls a level or two off. Every rated seat follows.', aria: 'Rating miss in points; negative means the ratings run too Democratic', ticks,
       show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? `Ratings too Republican by ${(Math.abs(m) / L).toFixed(1)} levels` : m <= -EVEN ? `Ratings too Democratic by ${(Math.abs(m) / L).toFixed(1)} levels` : 'Ratings as published' };
   }
-  // A past year whose miss rounds near zero shares the No-miss mark (2018 at -0.1; Max, 2026-11-01: "add it").
-  const atZero = history.filter(h => Math.abs(h.miss_toward_d) <= 0.5).map(h => h.year);
   const ticks: Tick[] = [
     ...(live ? [{ label: 'Now', name: `Counted ${live.m >= 0 ? 'D' : 'R'} ${Math.abs(live.m).toFixed(1)}`, v: Math.round(live.m * 10) / 10, sub: 'the count so far' }] : []),
-    ...history.filter(h => !atZero.includes(h.year)).map(h => { const v = Math.round(h.miss_toward_d * 10) / 10; return { label: yy(h.year), name: `${h.year} again`, v, sub: toward(v) }; }),
-    { label: ['0', ...atZero.map(yy)].join('/'), name: ['No miss', ...atZero.map(y => `${y} again`)].join(' or '), v: 0, sub: key === 'bet' ? 'no national miss' : key === 'polls' ? 'polls right' : 'no miss' },
+    // its own button at its real miss; a year too close to zero to draw apart on the phone ruler stays off the ruler (2018)
+    ...history.map(h => { const v = Math.abs(h.miss_toward_d) < 0.1 ? Math.round(h.miss_toward_d * 100) / 100 : Math.round(h.miss_toward_d * 10) / 10; return { label: yy(h.year), name: `${h.year} again`, v, sub: toward(v), ruler: Math.abs(v) > 0.5 }; }),
+    { label: '0', name: 'No miss', v: 0, sub: key === 'bet' ? 'no national miss' : key === 'polls' ? 'polls right' : 'no miss' },
     ...(key === 'bet' ? [{ label: 'Bet', name: `My bet ${national.toFixed(1)}`, v: national, sub: toward(national) }] : []),
     { label: '’25', name: `Last fall ${lastFall.toFixed(1)}`, v: lastFall, sub: toward(lastFall) },
   ].sort((a, b) => a.v - b.v);
   return { key, question: 'How wrong are the polls?', unit: 'pts', scope: 'race', tableHead: 'If the polls miss like…', left: '◀ Polls under R', right: 'Polls under D ▶',
     zero: key === 'bet' ? 'With no national miss' : key === 'polls' ? 'If the polls are right' : 'Forecaster blend, no miss',
     note: 'Pick a past year’s miss or set your own. Every race and projected seat follows; untracked governors keep Cook’s rating.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
-    show: m => Math.abs(m).toFixed(1), dir: m => m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way' };
+    show: m => pts(m), dir: m => m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way' };
 }
 // Picking a reading (Max, 2026-10-29: "picking a model sets the dial to 0"): each model's headline is its own center set
 // at its default dial, so the pick resets m to that default; the bet restores its lean (or the counted miss on election night).
@@ -368,8 +369,8 @@ function DialBar({ m, setM, sc }: { m: number; setM: (v: number) => void; sc: Sc
   const near = (x: number) => Math.abs(m - x) < 0.05;
   return <section className="wall-dialbar" aria-label={sc.question}>
     <div className="wall-dialbar-top"><span className={`wall-num wall-dialbar-num ${side(m)}`}>{sc.show(m)}</span><span className="wall-dialbar-dir">{sc.dir(m)}<small>{sc.question} Drag to change every {sc.scope}.</small></span></div>
-    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onKeyDown={() => { byKey.current = true; }} onPointerDown={() => { byKey.current = false; }} onChange={e => { const v = Number(e.target.value); if (byKey.current) { setM(v); return; } const hit = sc.ticks.find(t => Math.abs(t.v - v) <= SNAP); setM(hit ? hit.v : v); }} aria-label={sc.aria} aria-valuetext={valueText(sc, m)}/>
-    <div className="wall-ruler" role="group" aria-label={sc.tableHead}>{sc.ticks.map(t => <button key={t.name} type="button" className={`wall-ruler-mark ga-${pct(100 * (t.v + span) / (2 * span))}${near(t.v) ? ' is-on' : ''}`} aria-pressed={near(t.v)} aria-label={`${t.name}: ${t.sub}`} onClick={() => setM(t.v)}><i aria-hidden="true"/><span>{t.label}</span></button>)}</div>
+    <input className="wall-range" type="range" min={-span} max={span} step={0.1} value={m} onKeyDown={() => { byKey.current = true; }} onPointerDown={() => { byKey.current = false; }} onChange={e => { const v = Number(e.target.value); if (byKey.current) { setM(v); return; } const hit = sc.ticks.filter(t => t.ruler !== false && Math.abs(t.v - v) <= SNAP).sort((x, y) => Math.abs(x.v - v) - Math.abs(y.v - v))[0]; setM(hit ? hit.v : v); }} aria-label={sc.aria} aria-valuetext={valueText(sc, m)}/>
+    <div className="wall-ruler" role="group" aria-label={sc.tableHead}>{sc.ticks.filter(t => t.ruler !== false).map(t => <button key={t.name} type="button" className={`wall-ruler-mark ga-${pct(100 * (t.v + span) / (2 * span))}${near(t.v) ? ' is-on' : ''}`} aria-pressed={near(t.v)} aria-label={`${t.name}: ${t.sub}`} onClick={() => setM(t.v)}><i aria-hidden="true"/><span>{t.label}</span></button>)}</div>
   <div className="phone-key" aria-hidden="true"><span className="phone-key-bar"><i className="r-safe"/><i className="r-likely"/><i className="r-lean"/><i className="toss"/><i className="d-lean"/><i className="d-likely"/><i className="d-safe"/></span><span className="phone-key-labels"><b>Safe R</b><b>Toss-up</b><b>Safe D</b></span></div>
   </section>;
 }
