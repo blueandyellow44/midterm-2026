@@ -24,7 +24,7 @@ export const MUTATIONS = {
   // The pre-2026-11-01 labels: a bare number pointing at a letter, slider ends that read as who wins.
   'strip-direction': [['polls under R by 5.5', '5.5 toward R'], ['polls under R by 4.2', '4.2 toward R'], ['polls under R by 2.5', '2.5 toward R'], ['polls under R by 1.3', '1.3 toward R'], ['polls under D by 1.9', '1.9 toward D'], ['polls under D by 7.3', '7.3 toward D'], ['◀ Polls under R Polls under D ▶', '◀ Republicans Democrats ▶']],
   // The freeze date gone from the race page.
-  'hide-freeze': [['freezes Nov 2', ''], ['both readings are frozen on November 2 and graded against the results', 'both readings are graded against the results'], ['Frozen on November 2 and graded against certified results', 'Graded against certified results']],
+  'hide-freeze': [['freezes Nov 2', ''], [', frozen Nov 2', ''], ['both readings are frozen on November 2 and graded against the results', 'both readings are graded against the results'], ['Frozen on November 2 and graded against certified results', 'Graded against certified results']],
   // Two sentence losses: the tie rule gone from the chamber line, the ranked-choice note gone from the scoreboard.
   'drop-tie-rule': [['; a 50-50 tie goes to R', '']],
   'drop-rcv-note': [[' Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages.', '']],
