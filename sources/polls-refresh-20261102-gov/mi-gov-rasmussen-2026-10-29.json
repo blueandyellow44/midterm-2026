@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-rasmussen-2026-10-29.json",
+ "race": "2026-MI-GOV",
+ "pid": "rasmussen",
+ "name": "Rasmussen Reports",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "rasmussen-s-2026-MI-GOV-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-10-29",
+  "release_date": "2026-10-30",
+  "n": 745,
+  "pop": "LV",
+  "D": 50,
+  "R": 40,
+  "other": 3,
+  "undecided": 7,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_michigan_governor",
+  "source_locator": "Article 'Michigan Governor: Democrat Benson Has 10-Point Lead' (Friday, October 30, 2026), paragraph 1: 50% Benson, 40% James; Hudson (L), Brandenburg (U.S. Taxpayers), Campbell (Green) 1% each; 7% undecided",
+  "notes": "other = Hudson 1 + Brandenburg 1 + Campbell 1. 'The survey of 745 Michigan Likely Voters was conducted on October 28-29, 2026'; MoE +/-3; fieldwork by Pulse Opinion Research. Same survey as the MI-SEN row collected 2026-11-01. Article text calls Benson 'Democratic Attorney General' (she is Secretary of State; text error, numbers unaffected). Free portion carries the toplines; remainder behind subscriber wall, not read. Found via PollCheck; not on Wikipedia or 270toWin at fetch time. Class follows this pollster's majority precedent (self, PARTISAN_PUBLIC, R). AUDIT 2026-11-02: recall UNVERIFIED, matching the stored Senate row from the same survey.",
+  "retrieved_at": "2026-11-02T08:40:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": null,
+  "mode": "telephone and online",
+  "method_owner": "Rasmussen Reports / Pulse Opinion Research",
+  "retrieved_at": "2026-11-02T08:40:00-08:00",
+  "method_date": "2026-10-30",
+  "method_url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_michigan_governor",
+  "method_locator": "Methodology not on the free portion"
+ }
+}

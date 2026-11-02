@@ -1,0 +1,38 @@
+{
+ "file": "ia-sen-grayhouse-2026-10-31.json",
+ "race": "2026-IA-SEN",
+ "pid": "grayhouse",
+ "name": "GrayHouse",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "grayhouse-s-2026-IA-SEN-2026-10-31",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-10-31",
+  "release_date": "2026-11-02",
+  "n": 601,
+  "pop": "LV",
+  "D": 46,
+  "R": 48,
+  "other": 2,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.grayhouse.com/post/grayhouse-poll-hinson-leads-in-iowa-by-2",
+  "source_locator": "Post body: 'Republican Ashley Hinson leads Democrat Josh Turek 48% to 46% ... Libertarian Thomas Laehn receives 2%, while 4% are undecided. These are the initial ballot results.'; 'The survey of 601 likely voters was conducted October 28–31, 2026.'",
+  "notes": "other = Laehn (L) 2. Initial ballot (no leaner version reported). Self-funded: 'GrayHouse funded this poll as part of its public polling of the Iowa and Nebraska U.S. Senate races.' Founder Landon Wall is described on the firm's site as 'the go-to pollster for the Senate Republican Conference' (align R). Toplines PDF is a script-rendered Wix download; numbers taken from the post. Release date = 270toWin listing (11/02/2026); post said '9 hours ago' when read. MoE +/-4.0. New pollster_id (not in pollsters.csv). AUDIT 2026-11-02: recall UNVERIFIED (weights to 2024 vote on a voter-file sample; recalled vs modeled not stated).",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighted to reflect the modeled likely November 2026 electorate in Iowa. The weights balance gender, age, race, region, urban, suburban and rural community, party registration and 2024 presidential vote (Trump 54%, Harris 43%). Final weights are calibrated to GrayHouse’s political engagement model, so that voters across the full range of turnout propensity are represented in their expected share of the electorate.",
+  "method_url": "https://www.grayhouse.com/post/grayhouse-poll-hinson-leads-in-iowa-by-2",
+  "method_locator": "Methodology section of the post",
+  "mode": "SMS text-to-web, live-to-cell, live-to-landline (voter-file sample)",
+  "method_owner": "GrayHouse",
+  "method_date": "2026-11-02",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

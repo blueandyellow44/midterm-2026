@@ -1,0 +1,38 @@
+{
+ "file": "oh-sen-research-co-2026-11-01.json",
+ "race": "2026-OH-SEN-SPECIAL",
+ "pid": "research-co",
+ "name": "Research Co.",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "research-co-s-2026-OH-SEN-SPECIAL-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-30",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 450,
+  "pop": "LV",
+  "D": 45,
+  "R": 44,
+  "other": 2,
+  "undecided": 9,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://researchco.ca/wp-content/uploads/2026/11/Tables_MidTerms_USA_01Nov2026.pdf",
+  "source_locator": "Tables, Ohio page, 'Election for U.S. Senator', Base: 450 voters in Ohio, Ohio column: Sherrod Brown (D) 45%, Jon Husted (R) 44%, Some other candidate 2%, Undecided / Would not vote 9%",
+  "notes": "Release page headlines the decided-voter split (408 decided: Brown 49, Husted 48, other 2); the all-voter rows are used here. undecided = 'Undecided / Would not vote' 9. MoE +/-4.6. Online. New pollster_id (not in pollsters.csv).",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data has been statistically weighted according to U.S. census figures for age and gender in each state.",
+  "method_url": "https://researchco.ca/2026/11/01/midterms-2026-one/",
+  "method_locator": "Release page 'Methodology:' paragraph (complete weighting list: age and gender; no past vote)",
+  "mode": "online survey",
+  "method_owner": "Research Co.",
+  "method_date": "2026-11-01",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-atlasintel-2026-11-01.json",
+ "race": "2026-TX-SEN",
+ "pid": "atlasintel",
+ "name": "AtlasIntel",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "atlasintel-s-2026-TX-SEN-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-28",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 1678,
+  "pop": "A",
+  "D": 51.3,
+  "R": 45.4,
+  "other": 1.5,
+  "undecided": 1.1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://cdn1.atlasintel.org/2026_midterms__texas_110126_73e0a3a507f76a2e.pdf",
+  "source_locator": "p.14 chart 'If the Texas midterm election for US Senate were held today...': James Talarico 51.3%, Ken Paxton 45.4%, Other 1.5%, Don't know 1.1%, Would not vote 0.7%; p.5 Sample Profile: target population 'Texas adult population', 1,678 respondents, polling period 10/28/2026 - 11/01/2026, MoE +/-2 p.p.",
+  "notes": "pop A as the PDF states its target population (Texas adult population); the methodology page says post-stratified samples 'match the profile of the US adult population and that of likely voters', and no LV subsample is reported. 'Would not vote' 0.7 not folded into undecided. p.15 valid-votes version: Talarico 52.2, Paxton 46.2, Other 1.5. Numbers read from chart images (rendered pages), not text. Only Texas and a national poll were published in this AtlasIntel wave (atlasintel.org/polls lists no other 2026 state PDF). New pollster_id (not in pollsters.csv). Sponsor not named; recorded self. AUDIT 2026-11-02: recall UNVERIFIED ('previous electoral behavior', no recalled-vote statement); adults sample, no LV/RV subsample anywhere in the PDF.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "To ensure representativeness at the national level, the AtlasIntel samples are post-stratified using an iterative algorithm on a minimum set of target variables: gender, age group, education level, income level, region, and previous electoral behavior.",
+  "method_url": "https://cdn1.atlasintel.org/2026_midterms__texas_110126_73e0a3a507f76a2e.pdf",
+  "method_locator": "p.4 'Methodology: Atlas RDR'",
+  "mode": "Random Digital Recruitment (online, Atlas RDR)",
+  "method_owner": "AtlasIntel",
+  "method_date": "2026-11-01",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

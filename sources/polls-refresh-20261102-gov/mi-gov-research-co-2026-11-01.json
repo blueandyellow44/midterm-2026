@@ -1,0 +1,38 @@
+{
+ "file": "mi-gov-research-co-2026-11-01.json",
+ "race": "2026-MI-GOV",
+ "pid": "research-co",
+ "name": "Research Co.",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "research-co-s-2026-MI-GOV-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-30",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 450,
+  "pop": "LV",
+  "D": 53,
+  "R": 41,
+  "other": 1,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://researchco.ca/wp-content/uploads/2026/11/Tables_MidTerms_USA_01Nov2026.pdf",
+  "source_locator": "Tables PDF p.1, 'Election for Governor', Michigan column: Jocelyn Benson (Democratic Party) 53%, John James (Republican Party) 41%, Some other candidate 1%, Undecided 5%; Base: 450 voters in Michigan",
+  "notes": "Release page https://researchco.ca/2026/11/01/midterms-2026-one/ gives the decided-voter split (427 decided: Benson 56, James 43, other 1); the tables PDF gives the all-voter rows used here (Base: 450 voters). MoE +/-4.6. Online survey. New pollster_id (not in pollsters.csv). Vancouver-based independent firm, no sponsor named; class NONPARTISAN/NONE by that reading.",
+  "retrieved_at": "2026-11-02T08:40:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data has been statistically weighted according to U.S. census figures for age and gender in each state.",
+  "mode": "online survey",
+  "method_owner": "Research Co.",
+  "retrieved_at": "2026-11-02T08:40:00-08:00",
+  "method_date": "2026-11-01",
+  "method_url": "https://researchco.ca/2026/11/01/midterms-2026-one/",
+  "method_locator": "Release page 'Methodology:' paragraph (complete weighting list: age and gender; no past vote)"
+ }
+}

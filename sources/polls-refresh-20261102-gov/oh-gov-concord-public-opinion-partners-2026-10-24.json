@@ -1,0 +1,38 @@
+{
+ "file": "oh-gov-concord-public-opinion-partners-2026-10-24.json",
+ "race": "2026-OH-GOV",
+ "pid": "concord-public-opinion-partners",
+ "name": "Concord Public Opinion Partners",
+ "sponsor": "Education Reform Now Advocacy",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "concord-public-opinion-partners-s-2026-OH-GOV-2026-10-24",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-24",
+  "release_date": "2026-10-24",
+  "n": 469,
+  "pop": "LV",
+  "D": 49,
+  "R": 39,
+  "other": 5,
+  "undecided": 6,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://concordpublicopinionpartners.org/polls/ohio-ge-2026-oct",
+  "source_locator": "Memo 'Ohio Statewide General Election Survey Results', Date: October 24, 2026, Key Findings para 1: '49% Acton / 39% Ramaswamy), with 5% supporting Libertarian Don Kissick and 6% undecided'; Methodology: 'conducted between 10/22-10/24 with a sample size of 469 respondents'",
+  "notes": "Missed by the 2026-11-01 sweep (released Oct 24). n: the primary says 469; Wikipedia and PollCheck list 496 (transposition). Sponsor: primary says 'for Education Reform Now Advocacy'; Wikipedia/PollCheck say Democrats for Education Reform. MoE +/-4.53. Crosstabs 'available upon request' (not public). scls/align follow the held Concord NE-SEN row (Education Reform Now Advocacy, PARTISAN_PUBLIC, D). Prior Concord Ohio wave (Aug 29-31) is out of window.",
+  "retrieved_at": "2026-11-02T08:40:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data was weighted by Race, Age, Gender, College Attainment, Partisanship, Mode, Primary voter turnout history, and County.",
+  "mode": "live calls (cell + landline) and text-to-web",
+  "method_owner": "Concord Public Opinion Partners",
+  "retrieved_at": "2026-11-02T08:40:00-08:00",
+  "method_date": "2026-10-24",
+  "method_url": "https://concordpublicopinionpartners.org/polls/ohio-ge-2026-oct",
+  "method_locator": "Methodology paragraph (weighting list has partisanship but no recalled/past vote)"
+ }
+}

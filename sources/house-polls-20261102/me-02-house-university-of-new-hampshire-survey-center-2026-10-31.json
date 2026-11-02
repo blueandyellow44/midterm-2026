@@ -1,0 +1,38 @@
+{
+ "file": "me-02-house-university-of-new-hampshire-survey-center-2026-10-31.json",
+ "race": "2026-ME-02-HOUSE",
+ "pid": "university-of-new-hampshire-survey-center",
+ "name": "University of New Hampshire Survey Center",
+ "sponsor": "self (UNH Survey Center, Pine Tree State Poll)",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "university-of-new-hampshire-survey-center-h-2026-ME-02-HOUSE-2026-10-31",
+ "poll": {
+  "field_start": "2026-10-27",
+  "field_end": "2026-10-31",
+  "release_date": "2026-11-01",
+  "n": 802,
+  "pop": "LV",
+  "D": 47.0,
+  "R": 52.0,
+  "other": 1.0,
+  "undecided": 1.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2012&context=survey_center_polls",
+  "source_locator": "Report p.4 '2026 Congressional Elections': with leaners, LePage 52, Dunlap 47, another candidate 1, undecided 1; methodology p.9: Oct 27-31, 802 likely voters in CD2 (MOE 3.5). Read in Max's Chrome 2026-11-02 ~08:45 PST (the PDF answers a browser; curl gets a Cloudflare 403).",
+  "notes": "PRIMARY VERIFIED 2026-11-02 on the UNH report PDF. The UNH report PDF https://scholars.unh.edu/cgi/viewcontent.cgi?article=2012&context=survey_center_polls returned a Cloudflare challenge (HTTP 403) to curl and WebFetch on 2026-11-02; not bypassed. D/R/other/n/MoE from 270toWin, field dates from VoteHub; the two agree on n and toplines. Same wave as the ME-SEN UNH row (polls-refresh-20261102-senate, Oct 27-31, n=1,654 statewide); 802 is the CD2 likely-voter subsample. Round UNVERIFIED: 47+52+1 = 100 with no undecided suggests a pushed or ranked-choice-resolved ballot; the prior UNH CD2 reading (Sep 24 release, 51-45) is out of window. Integrator: verify on the PDF before ingesting, or hold.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data were weighted by respondent sex, age, education, and region of the state to targets from the most recent American Community Survey (ACS) conducted by the U.S. Census Bureau, as well as party registration levels provided by the ME Secretary of State and to 2024 election results in Maine.",
+  "method_url": "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2006&context=survey_center_polls",
+  "method_locator": "Cycle method from pollsters.csv (September Pine Tree State Poll report); this wave's PDF unreachable",
+  "mode": "online probability panel",
+  "method_owner": "UNH Survey Center",
+  "retrieved_at": "2026-11-02T08:43:00-08:00",
+  "method_date": "2026-11-01"
+ }
+}

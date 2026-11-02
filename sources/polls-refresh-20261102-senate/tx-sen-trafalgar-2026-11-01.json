@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-trafalgar-2026-11-01.json",
+ "race": "2026-TX-SEN",
+ "pid": "trafalgar",
+ "name": "Trafalgar Group",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "trafalgar-s-2026-TX-SEN-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-31",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 1089,
+  "pop": "LV",
+  "D": 47.5,
+  "R": 48.1,
+  "other": 2.4,
+  "undecided": 2.0,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/11/TX-Midterms-Report-1101.pdf",
+  "source_locator": "'In the race for U.S. Senate, which candidate do you support?' Total column: Ken Paxton 48.1%, James Talarico 47.5%, Ted Brown 2.4%, Undecided 2.0%; cover: 'Conducted 10/31/26 - 11/01/26', '1089 Respondents', 'Likely General Election Voters'",
+  "notes": "other = Ted Brown (L) 2.4. Release date from the PDF filename (1101) and 270toWin listing (11/01/2026). MoE 2.9, response rate 4.5%. Report gives no weighting variables; methodology link only. AUDIT 2026-11-02: sponsor/scls set to self/PARTISAN_PUBLIC to match 17 of 18 stored Trafalgar rows (sources/audit-20261102/senate-gov.md).",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "https://thetrafalgargroup.org/polling-methodology/",
+  "method_locator": "methodology page (modes only); not re-read this run",
+  "mode": "mixed: live, IVR, text, email, online",
+  "method_owner": "Trafalgar Group",
+  "method_date": "2026-11-01",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

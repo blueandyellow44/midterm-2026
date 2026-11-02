@@ -1,0 +1,38 @@
+{
+ "file": "nc-sen-east-carolina-university-ecu-center-for-survey-research-2026-10-29.json",
+ "race": "2026-NC-SEN",
+ "pid": "east-carolina-university-ecu-center-for-survey-research",
+ "name": "ECU Center for Survey Research",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "east-carolina-university-ecu-center-for-survey-research-s-2026-NC-SEN-2026-10-29",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-10-29",
+  "release_date": "2026-11-01",
+  "n": 1041,
+  "pop": "LV",
+  "D": 54.0,
+  "R": 44.9,
+  "other": 1.1,
+  "undecided": null,
+  "denominator_class": "TWO_WAY",
+  "round": "NA",
+  "source_url": "https://cdn.filestackcontent.com/Ate3DAqcTseEGYP8Qslu",
+  "source_locator": "Toplines Poll #3 p.2-3, 'Q5R COMBINED RESULTS' (Q5 forced choice + Q5b already voted): Roy Cooper (Democrat) 54.0%, Michael Whatley (Republican) 44.9%, Shannon W. Bray (Libertarian Party) 0.8%, Michael Dublin (Green Party) 0.3%",
+  "notes": "other = Bray 0.8 + Dublin 0.3. Toplines note: 'All respondents were asked to choose a Senate candidate, including those who initially said they were undecided' (Q4: 4.7% still undecided), so LEANERS and no undecided row. Release https://surveyresearch-ecu.reportablenews.com/pr/ecu-poll-cooper-leads-whatley-by-9-points-as-election-day-nears dated November 1, 2026. Credibility interval +/-3.5. 56.9% said they had already voted. Missed by the 2026-11-01 sweep (not on Wikipedia's NC table). AUDIT 2026-11-02: denominator TWO_WAY (same forced-choice item as ECU's stored NC row); recall UNVERIFIED.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data were weighted to reflect the population of likely 2026 general election voters in North Carolina based on age, education level, race/ethnicity, gender, region, and party identification, as well as election modeling based on previous statewide elections in North Carolina.",
+  "method_url": "https://surveyresearch-ecu.reportablenews.com/pr/ecu-poll-cooper-leads-whatley-by-9-points-as-election-day-nears",
+  "method_locator": "Methodology section of the release (past-election modeling, respondent recall not stated)",
+  "mode": "MMS-to-web (n=508, L2 via ReconMR), landline IVR (n=236), Bovitz online panel (n=297)",
+  "method_owner": "ECU Center for Survey Research",
+  "method_date": "2026-11-01",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

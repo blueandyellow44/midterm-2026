@@ -79,7 +79,7 @@ describe('page text', () => {
     expect(mutate(home, 'drop-tie-rule')).not.toContain('tie goes to R');
     expect(mutate(pageText('/scoreboard/'), 'drop-rcv-note')).not.toMatch(/ranked|first-round/i);
     const nc = mutate(pageText('/race/nc-sen/'), 'hide-freeze');
-    expect(nc).not.toMatch(/nov(ember)?\.? ?2\b/i);
+    expect(nc).not.toMatch(/(freez\w*|frozen)[^.]{0,30}nov(ember)?\.? ?2\b/i);  // data dates ('as of Nov 2', 'the Nov 2 cutoff') remain after the freeze; only the freeze wording goes
   });
   it.skipIf(!built)('every case names a built page', () => {
     for (const c of cases) expect(existsSync(`${ROOT}${c.page}index.html`), c.page).toBe(true);

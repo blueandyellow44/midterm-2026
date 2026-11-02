@@ -1,0 +1,15 @@
+state,d_margin_2022_same_day,d_margin_2024_same_day,d_margin_2026,shift_vs_2022,as_of,source_url,party_basis
+TX,-13.4,-22.7,-8.3,5.1,2026-11-02,https://onpointpolitics.us/maps/early-vote/texas,modeled
+MI,27.8,18.8,33.6,5.8,2026-11-02,https://onpointpolitics.us/maps/early-vote/michigan,modeled
+WI,18.6,9.6,23.0,4.4,2026-11-02,https://onpointpolitics.us/maps/early-vote/wisconsin,modeled
+OH,1.7,-7.6,7.9,6.2,2026-11-02,https://onpointpolitics.us/maps/early-vote/ohio,modeled
+GA,1.0,-8.0,8.4,7.4,2026-11-02,https://onpointpolitics.us/maps/early-vote/georgia,modeled
+NC,7.0,-0.8,12.2,5.2,2026-11-02,https://onpointpolitics.us/maps/early-vote/north-carolina,registration
+IA,18.0,-1.3,12.3,-5.7,2026-11-02,https://onpointpolitics.us/maps/early-vote/iowa,registration
+ME,24.3,15.6,24.2,-0.1,2026-11-02,https://onpointpolitics.us/maps/early-vote/maine,registration
+AK,-12.6,-22.1,-7.3,5.3,2026-11-02,https://onpointpolitics.us/maps/early-vote/alaska,modeled
+KS,10.9,1.5,-2.4,-13.3,2026-11-02,https://onpointpolitics.us/maps/early-vote/kansas,registration
+NE,-9.9,-15.0,-5.8,4.1,2026-11-02,https://onpointpolitics.us/maps/early-vote/nebraska,registration
+SC,NA,NA,-21.5,NA,2026-11-02,https://onpointpolitics.us/maps/early-vote/south-carolina,modeled
+MS,-8.6,-18.2,-1.8,6.8,2026-11-02,https://onpointpolitics.us/maps/early-vote/mississippi,modeled
+FL,-5.3,-9.3,-2.4,2.9,2026-11-02,https://onpointpolitics.us/maps/early-vote/florida,registration
