@@ -1,0 +1,38 @@
+{
+ "file": "oh-sen-concord-public-opinion-partners-2026-10-24.json",
+ "race": "2026-OH-SEN-SPECIAL",
+ "pid": "concord-public-opinion-partners",
+ "name": "Concord Public Opinion Partners",
+ "sponsor": "Education Reform Now Advocacy",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "D",
+ "method_id": "concord-public-opinion-partners-s-2026-OH-SEN-SPECIAL-2026-10-24",
+ "poll": {
+  "field_start": "2026-10-22",
+  "field_end": "2026-10-24",
+  "release_date": "2026-10-24",
+  "n": 469,
+  "pop": "LV",
+  "D": 46,
+  "R": 42,
+  "other": 8,
+  "undecided": 4,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://concordpublicopinionpartners.org/polls/ohio-ge-2026-oct",
+  "source_locator": "Key Findings: 'Democrat Sherrod Brown leads Republican Jon Husted by +4 points (46% Brown / 42% Husted), with 8% choosing someone else and 4% undecided'; Methodology: 'between 10/22–10/24 with a sample size of 469 respondents'",
+  "notes": "Missed by the 2026-11-01 sweep (memo dated Oct 24). n: the primary says 469; Wikipedia and PollCheck list 496 (transposition). Sponsor per the memo: 'Conducted by Concord Public Opinion Partners for Education Reform Now Advocacy'. MoE +/-4.53. Crosstabs 'available upon request' (not public).",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Data was weighted by Race, Age, Gender, College Attainment, Partisanship, Mode, Primary voter turnout history, and County.",
+  "method_url": "https://concordpublicopinionpartners.org/polls/ohio-ge-2026-oct",
+  "method_locator": "Methodology paragraph (weighting list has partisanship but no recalled/past vote)",
+  "mode": "live calls (cell + landline) and text-to-web",
+  "method_owner": "Concord Public Opinion Partners",
+  "method_date": "2026-10-24",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

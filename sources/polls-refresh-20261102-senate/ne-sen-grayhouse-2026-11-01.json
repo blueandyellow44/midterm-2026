@@ -1,0 +1,38 @@
+{
+ "file": "ne-sen-grayhouse-2026-11-01.json",
+ "race": "2026-NE-SEN",
+ "pid": "grayhouse",
+ "name": "GrayHouse",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "grayhouse-s-2026-NE-SEN-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-29",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-02",
+  "n": 534,
+  "pop": "LV",
+  "D": 44,
+  "R": 48,
+  "other": 3,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.grayhouse.com/post/grayhouse-poll-ricketts-leads-in-nebraska-by-4",
+  "source_locator": "Post body: 'Republican Senator Pete Ricketts leads independent Dan Osborn 50% to 46%, including leaners ... On the initial ballot, Ricketts leads 48% to 44%, with 5% undecided. Mike Marvin, Robin Richards and Chuck Conboy each receive 1%.'; 'The survey of 534 likely voters was conducted October 29–November 1, 2026.'",
+  "notes": "D slot = Dan Osborn (Independent). Headline is the leaner ballot (50-46); its other/undecided split is not given, so null. Initial ballot (FULL): Osborn 44, Ricketts 48, others 3 (Marvin 1, Richards 1, Conboy 1), undecided 5. Self-funded GrayHouse public poll; align R (founder described as Senate Republican Conference pollster). Release date = 270toWin listing (11/02/2026). MoE +/-4.2. New pollster_id. AUDIT 2026-11-02: switched to the initial ballot without leaners (Osborn 44, Ricketts 48, others 3, undecided 5) so GrayHouse is on the same ballot in IA and NE; recall UNVERIFIED.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighted to reflect the modeled likely November 2026 electorate in Nebraska. The weights balance gender, age, race, region, urbanicity, party registration and 2024 presidential vote (Trump 56%, Harris 40%). Final weights are calibrated to GrayHouse’s political engagement model, so that voters across the full range of turnout propensity are represented in their expected share of the electorate.",
+  "method_url": "https://www.grayhouse.com/post/grayhouse-poll-ricketts-leads-in-nebraska-by-4",
+  "method_locator": "Methodology section of the post",
+  "mode": "SMS text-to-web, live-to-cell, live-to-landline (voter-file sample)",
+  "method_owner": "GrayHouse",
+  "method_date": "2026-11-02",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "file": "oh-gov-insideradvantage-2026-10-30.json",
+ "race": "2026-OH-GOV",
+ "pid": "insideradvantage",
+ "name": "InsiderAdvantage",
+ "sponsor": "self",
+ "scls": "PARTISAN_PUBLIC",
+ "align": "R",
+ "method_id": "insideradvantage-s-2026-OH-GOV-2026-10-30",
+ "poll": {
+  "field_start": "2026-10-29",
+  "field_end": "2026-10-30",
+  "release_date": "2026-11-01",
+  "n": 1200,
+  "pop": "LV",
+  "D": 49,
+  "R": 46,
+  "other": 3,
+  "undecided": 2,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://insideradvantage.com/final-insideradvantage-ohio-survey-brown-49-husted-47-acton-49-ramaswamy-46/",
+  "source_locator": "Post 'Posted on November 1, 2026', Results, Governor: Amy Acton 49%, Vivek Ramaswamy 46%, Other 3%, Undecided 2%",
+  "notes": "Header line: 'Conducted 10/29-10/30; 1200 LV; Mixed Mode Text/Panel; Weighted for Age, Race, Gender, and Political Affiliation; MOE 2.83%'. Same survey as the OH-SEN-SPECIAL row collected 2026-11-01 (oh-sen-insideradvantage-2026-10-30.json); the governor question was not collected then. Tabs said to be posted on X only. Class follows this pollster's majority precedent (self, PARTISAN_PUBLIC, R).",
+  "retrieved_at": "2026-11-02T08:40:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Weighted for Age, Race, Gender, and Political Affiliation",
+  "mode": "mixed mode text/panel",
+  "method_owner": "InsiderAdvantage",
+  "retrieved_at": "2026-11-02T08:40:00-08:00",
+  "method_date": "2026-11-01",
+  "method_url": "https://insideradvantage.com/final-insideradvantage-ohio-survey-brown-49-husted-47-acton-49-ramaswamy-46/",
+  "method_locator": "Header line of the post"
+ }
+}

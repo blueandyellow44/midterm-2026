@@ -1,0 +1,38 @@
+{
+ "file": "me-sen-nyt-siena-2026-11-01.json",
+ "race": "2026-ME-SEN",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-ME-SEN-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-27",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 714,
+  "pop": "LV",
+  "D": 51,
+  "R": 45,
+  "other": 0,
+  "undecided": 4,
+  "denominator_class": "LEANERS",
+  "round": "UNVERIFIED",
+  "source_url": "https://www.nytimes.com/interactive/2026/11/01/polls/times-siena-me-poll-toplines.html",
+  "source_locator": "Combined ballot including leaners, Oct 2026 Times/Siena toplines, first L.V. row; read in Max's Chrome 2026-11-02 ~08:45 PST (curl gets a DataDome 403). See sources/audit-20261102/nyt-siena-primary.md.",
+  "notes": "PRIMARY VERIFIED 2026-11-02 in a browser (D, R, other, undecided, n, field dates match the toplines page; LEANERS read from the question label / IF NEEDED push). D and R read at the pollster's own release (primary). Field dates, n, other and undecided are SECONDARY: the NYT toplines page https://www.nytimes.com/interactive/2026/11/01/polls/times-siena-me-poll-toplines.html (linked from the SRI release) returned HTTP 403 with a DataDome captcha to curl and WebFetch on 2026-11-02; not bypassed. Those fields come from the Wikipedia general-election row citing that toplines page, and agree with PollCheck and 270toWin (Siena College, 11/01/2026). Wikipedia row: Collins 45, Jackson 51, Other 0, Undecided 4. Ranked-choice race; SRI's RCV asterisk is on the governor line only, so this is treated as the first-choice/head-to-head ballot (round left UNVERIFIED). denominator_class LEANERS inferred from the Times/Siena house format (combined ballot with leaners, Other 0, DK remainder), not read. Integrator: verify on the NYT toplines before ingesting, or hold the secondary fields.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls. Vote choice was modeled as a function of information available on the L2 voter file and self-reported education, adjusted to match precinct-level election results)",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/31/polls/times-siena-ne-poll-toplines.html",
+  "method_locator": "Cycle method: Methodology > Weighting list, read on the NE toplines 2026-11-01 (this wave's toplines pages return 403/DataDome)",
+  "mode": "live telephone (L2 voter file)",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "method_date": "2026-11-01",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

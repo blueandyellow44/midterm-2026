@@ -1,0 +1,38 @@
+{
+ "file": "tx-sen-texas-southern-2026-10-25.json",
+ "race": "2026-TX-SEN",
+ "pid": "texas-southern",
+ "name": "Texas Southern University (Barbara Jordan Public Policy Research and Survey Center)",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "texas-southern-s-2026-TX-SEN-2026-10-25",
+ "poll": {
+  "field_start": "2026-10-21",
+  "field_end": "2026-10-25",
+  "release_date": "2026-10-29",
+  "n": 2000,
+  "pop": "LV",
+  "D": 49,
+  "R": 47,
+  "other": 3,
+  "undecided": 1,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://www.fox4news.com/news/talarico-holds-slim-lead-over-paxton-new-poll-election-day-approaches",
+  "source_locator": "SECONDARY. FOX 4 (Oct 29, 2026): 'The poll of 2,000 likely Texas voters ... conducted between Oct. 21 and 25 ... margin of error of +/- 2.19%'; '49% of respondents planned to vote for Talarico, while 47% planned to vote for Paxton. Only 1% were undecided.' Ted Brown (L) 3 from the Wikipedia row (FOX 4 does not give it).",
+  "notes": "SECONDARY-ONLY: NOT VERIFIED ON PRIMARY. Excluded by the 2026-11-01 sweep because WFAA gave neither n nor field dates; FOX 4 now supplies both. No TSU release or PDF found (tsu.edu, texastribune.org uploads guessed paths 404). other = Brown (L) 3 per Wikipedia. Integrator: hold unless a TSU document is found.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "UNVERIFIED",
+  "disclosure_status": "UNVERIFIED",
+  "weighting_quote": "NA",
+  "method_url": "NA",
+  "method_locator": "no primary document found",
+  "mode": "unknown (prior TSU waves: SMS-to-web)",
+  "method_owner": "Texas Southern University",
+  "method_date": "2026-10-29",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

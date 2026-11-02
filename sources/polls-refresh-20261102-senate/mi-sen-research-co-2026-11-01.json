@@ -1,0 +1,38 @@
+{
+ "file": "mi-sen-research-co-2026-11-01.json",
+ "race": "2026-MI-SEN",
+ "pid": "research-co",
+ "name": "Research Co.",
+ "sponsor": "self",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "research-co-s-2026-MI-SEN-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-30",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 450,
+  "pop": "LV",
+  "D": 48,
+  "R": 46,
+  "other": 1,
+  "undecided": 5,
+  "denominator_class": "FULL",
+  "round": "NA",
+  "source_url": "https://researchco.ca/wp-content/uploads/2026/11/Tables_MidTerms_USA_01Nov2026.pdf",
+  "source_locator": "Tables p.1, 'Election for U.S. Senator', Base: 450 voters in Michigan, Michigan column: Abdul El-Sayed (Democratic Party) 48%, Mike Rogers (Republican Party) 46%, Some other candidate 1%, Undecided 5%",
+  "notes": "Release page https://researchco.ca/2026/11/01/midterms-2026-one/ headlines the decided-voter split (426 decided: El-Sayed 51, Rogers 48, other 1); the all-voter rows are used here. MoE +/-4.6. Online survey of six states (MI, MN, NY, OH, PA, WI). New pollster_id (not in pollsters.csv). Vancouver-based independent firm, self-funded.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "NO",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "The data has been statistically weighted according to U.S. census figures for age and gender in each state.",
+  "method_url": "https://researchco.ca/2026/11/01/midterms-2026-one/",
+  "method_locator": "Release page 'Methodology:' paragraph (complete weighting list: age and gender; no past vote)",
+  "mode": "online survey",
+  "method_owner": "Research Co.",
+  "method_date": "2026-11-01",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ }
+}

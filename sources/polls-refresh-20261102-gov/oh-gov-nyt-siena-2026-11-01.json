@@ -1,0 +1,38 @@
+{
+ "file": "oh-gov-nyt-siena-2026-11-01.json",
+ "race": "2026-OH-GOV",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-s-2026-OH-GOV-2026-11-01",
+ "poll": {
+  "field_start": "2026-10-26",
+  "field_end": "2026-11-01",
+  "release_date": "2026-11-01",
+  "n": 717,
+  "pop": "LV",
+  "D": 49,
+  "R": 43,
+  "other": 0,
+  "undecided": 8,
+  "denominator_class": "LEANERS",
+  "round": "NA",
+  "source_url": "https://www.nytimes.com/interactive/2026/11/01/polls/times-siena-oh-poll-toplines.html",
+  "source_locator": "Combined ballot including leaners, Oct 2026 Times/Siena toplines, first L.V. row; read in Max's Chrome 2026-11-02 ~08:45 PST (curl gets a DataDome 403). See sources/audit-20261102/nyt-siena-primary.md.",
+  "notes": "PRIMARY VERIFIED 2026-11-02 in a browser (D, R, other, undecided, n, field dates match the toplines page; LEANERS read from the question label / IF NEEDED push). Primary toplines https://www.nytimes.com/interactive/2026/11/01/polls/times-siena-oh-poll-toplines.html (linked from the Siena Research Institute release https://sri.siena.edu/2026/11/01/nytimes-siena-poll-of-likely-voters-alaska-iowa-kansas-maine-michigan-ohio-and-texas/) returned HTTP 403 with a DataDome captcha page to curl and WebFetch on 2026-11-02; not bypassed. denominator_class LEANERS is inferred from the Times/Siena house format (combined ballot with leaners, other 0, DK remainder), not read. Integrator: verify on the NYT toplines page before ingesting, or hold.",
+  "retrieved_at": "2026-11-02T08:45:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls. Vote choice was modeled as a function of information available on the L2 voter file and self-reported education, adjusted to match precinct-level election results)",
+  "mode": "live telephone (L2 voter file)",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "retrieved_at": "2026-11-02T08:40:00-08:00",
+  "method_date": "2026-10-30",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/31/polls/times-siena-ne-poll-toplines.html",
+  "method_locator": "Cycle method: Methodology > Weighting list, read on the NE toplines 2026-11-01 (this wave's page unreachable)"
+ }
+}

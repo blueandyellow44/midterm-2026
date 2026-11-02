@@ -1,0 +1,38 @@
+{
+ "file": "ak-al-house-nyt-siena-2026-10-30.json",
+ "race": "2026-AK-AL-HOUSE",
+ "pid": "nyt-siena",
+ "name": "Siena Research Institute",
+ "sponsor": "The New York Times",
+ "scls": "NONPARTISAN",
+ "align": "NONE",
+ "method_id": "nyt-siena-h-2026-AK-AL-HOUSE-2026-10-30",
+ "poll": {
+  "field_start": "2026-10-23",
+  "field_end": "2026-10-30",
+  "release_date": "2026-11-01",
+  "n": 610,
+  "pop": "LV",
+  "D": 48.0,
+  "R": 52.0,
+  "other": null,
+  "undecided": null,
+  "denominator_class": "FULL",
+  "round": "UNVERIFIED",
+  "source_url": "https://api.votehub.com/polls",
+  "source_locator": "SECONDARY, SINGLE AGGREGATOR. VoteHub API record id us-202the4a3fa27d (created 2026-11-02): poll_type us-representative, seat AK-01, pollster 'The New York Times/Siena University', 2026-10-23 to 2026-10-30, n=610 lv, Nick Begich 52.0, Bill Hill 48.0; url https://www.nytimes.com/interactive/2026/11/01/polls/times-siena-ak-poll-toplines.html. The SRI release https://sri.siena.edu/2026/11/01/nytimes-siena-poll-of-likely-voters-alaska-iowa-kansas-maine-michigan-ohio-and-texas/ (reachable) is tagged 'US House' and gives Alaska MoE 5.0 points but prints only Senate and Governor numbers.",
+  "notes": "SECONDARY-ONLY, ONE AGGREGATOR: NOT VERIFIED ON PRIMARY. The NYT toplines page returned HTTP 403 (DataDome / 'enable JS') to curl and WebFetch on 2026-11-02; not bypassed. No Wikipedia, 270toWin (AK page 404) or news row found to corroborate. D = Bill Hill (independent, D slot per house-races.csv), R = Nick Begich. Round UNVERIFIED but probably the ranked-choice FINAL round, not first choice: 52+48 = 100 with no undecided, and VoteHub's record for the Data for Progress Oct 8-16 AK poll is its RCV final round (Begich 51, Hill 49) while the file on hand uses DFP's first choice (Begich 48, Hill 42, round FIRST). So this row is NOT comparable to the other AK-AL rows, which are all FIRST. n and field dates match the sibling AK-SEN Times/Siena file (polls-refresh-20261102-senate). denominator_class FULL is a placeholder (two-way allocated shares), not read. Integrator: verify on the NYT toplines (first-choice and final-round lines) before ingesting, or hold.",
+  "retrieved_at": "2026-11-02T08:43:00-08:00"
+ },
+ "pollster": {
+  "recall_weighted": "YES",
+  "disclosure_status": "DISCLOSED",
+  "weighting_quote": "Synthetic 2024 past vote (for the respondent, synthetic 2024 past vote is self-reported recall vote among validated voters, with major party vote imputed among validated voters who do not report supporting a major party candidate. For the target population, synthetic 2024 past vote is the simulated binomial outcome of major party vote choice in the 2024 election among validated voters, based on a model of vote choice in past Times/Siena polls. Vote choice was modeled as a function of information available on the L2 voter file and self-reported education, adjusted to match precinct-level election results)",
+  "method_url": "https://www.nytimes.com/interactive/2026/10/31/polls/times-siena-ne-poll-toplines.html",
+  "method_locator": "Cycle method as filed in polls-refresh-20261102-senate/ak-sen-nyt-siena-2026-10-30.json (Methodology > Weighting, read on the NE toplines 2026-11-01); this wave's toplines pages return 403/DataDome",
+  "mode": "live telephone (L2 voter file)",
+  "method_owner": "Siena Research Institute / The New York Times",
+  "retrieved_at": "2026-11-02T08:43:00-08:00",
+  "method_date": "2026-11-01"
+ }
+}
