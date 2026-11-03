@@ -22,11 +22,15 @@ export type WallRace = {
 type Office = 'SEN' | 'GOV' | 'HOUSE';
 // Every seat the full-chamber view adds beyond the tracked races (Max, 2026-10-27: "100 senate seats, 50 governors, and a bunch of
 // house districts"). A projection moves with the dial exactly like a race, with the swing base standing in for the polls:
-// margin = base + m + state adjustment + spending + early vote. A rated seat (untracked governors) and a seat not up are fixed.
+// margin = base + m + state adjustment + spending + early vote. A seat not up is fixed. A rated seat (an untracked governor)
+// sits at its Cook rating's center at the bet's resting dial and moves with the dial from there (Max, 2026-11-03, on a reader
+// finding the slider never moved Texas governor: "That is inexcusable"); it was fixed under the bet from 2026-10-27.
 export type WallSeat = {
   id: string; state: string; office: Office; district?: string; name: string; kind: 'projection' | 'rated' | 'not_up';
   side: 'D' | 'R' | null; base: number; stateAdj: number; spending: number; earlyVote: number; incumbency: number; shift: number; undertow: number | null;
   rating: string | null; holder: string; noPolls: boolean; slug?: string; d?: string; r?: string; dLetter?: string;
+  // A rated seat sits at its Cook center when the dial is at `rest` (the bet's lean) and moves point for point from there.
+  rest?: number;
 };
 export type ChamberTotals = Record<Office, { notUp: { D: number; R: number }; majority: number | null; seats: number }>;
 export type NoReadRace = { id: string; slug: string; state: string; district: string; name: string; d: string; r: string; rating: string; dLetter: string };
@@ -113,7 +117,7 @@ export function scenarioFor(key: string, ctx: ScenarioCtx): Scenario {
   ].sort((a, b) => a.v - b.v);
   return { key, question: 'How wrong are the polls?', unit: 'pts', scope: 'race', tableHead: 'If the polls miss like…', left: '◀ Polls under R', right: 'Polls under D ▶',
     zero: key === 'bet' ? 'With no national miss' : key === 'polls' ? 'If the polls are right' : 'Forecaster blend, no miss',
-    note: 'Pick a past year’s miss or set your own. Every race and projected seat follows; untracked governors keep Cook’s rating.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
+    note: 'Pick a past year’s miss or set your own. Every race and seat follows; untracked governors start from Cook’s rating.', aria: 'National polling miss in points; negative means polls understate Republicans', ticks,
     show: m => pts(m), dir: m => m >= EVEN ? 'Polls understate Democrats' : m <= -EVEN ? 'Polls understate Republicans' : 'Polls miss neither way' };
 }
 // Picking a reading (Max, 2026-10-29: "picking a model sets the dial to 0"): each model's headline is its own center set
@@ -140,9 +144,9 @@ const BOARD_SPAN = 20;
 export function marginAt(r: WallRace, m: number, c: Centers = null) { if (r.result?.settled) return r.result.margin; const x = c?.[r.id]; return typeof x === 'number' ? x + m : r.polls + m + r.stateAdj + r.spending + r.earlyVote + r.partisan; }
 // Election night (Max, 2026-10-28): weight.py's implied national miss from the settled races, written by set_result.py.
 export type LiveDial = { m: number; settled: number; se: number | null; pollsMae: number | null; undertowMae: number | null; undertowCloser: number; pollsCloser: number } | null;
-export function seatMarginAt(s: WallSeat, m: number, c: Centers = null) { const x = c?.[s.id]; return typeof x === 'number' ? x + m : s.base + m + s.stateAdj + s.spending + s.earlyVote; }
-export function seatSideAt(s: WallSeat, m: number, c: Centers = null): 'D' | 'R' | null { if (s.kind !== 'projection' && typeof c?.[s.id] !== 'number') return s.side; const v = seatMarginAt(s, m, c); return v >= EVEN ? 'D' : v <= -EVEN ? 'R' : null; }
-// Chamber count at dial value m: seats not up, tracked races at the dial, projections at the dial, rated seats fixed.
+export function seatMarginAt(s: WallSeat, m: number, c: Centers = null) { const x = c?.[s.id]; if (typeof x === 'number') return x + m; if (s.kind === 'rated') return s.base + m - (s.rest ?? 0); return s.base + m + s.stateAdj + s.spending + s.earlyVote; }
+export function seatSideAt(s: WallSeat, m: number, c: Centers = null): 'D' | 'R' | null { if (s.kind === 'not_up' && typeof c?.[s.id] !== 'number') return s.side; const v = seatMarginAt(s, m, c); return v >= EVEN ? 'D' : v <= -EVEN ? 'R' : null; }
+// Chamber count at dial value m: seats not up, tracked races, projections and rated seats at the dial.
 export function chamberCount(o: Office, races: WallRace[], seats: WallSeat[], totals: ChamberTotals, m: number, c: Centers = null) {
   const t = totals[o]; let d = t.notUp.D, r = t.notUp.R, u = 0;
   for (const x of races) if (x.office === o) { const v = marginAt(x, m, c); if (v >= EVEN) d++; else if (v <= -EVEN) r++; else u++; }
@@ -257,7 +261,7 @@ function TileMap({ races, m, office, setOffice, selected, select, noRead = [], s
       return <Hemicycle seats={hs} majority={218} selected={selected} select={select} dCount={d} rCount={r} count={full} title={full ? 'All 435 House seats, most Democratic to most Republican' : 'The House: tracked seats colored, others as held'}/>; })() : <div className="wall-tiles">{Object.entries(TILES).map(([st, [tc, rw]]) => { const r = byState.get(st); const v = r ? marginAt(r, m, c) : 0;
       const pos = `tc-${tc} tr-${rw}`; const sx = r ? undefined : seatByState.get(st);
       if (r) return <button key={st} type="button" className={`wall-tile ${pos} ${shade(v)}${selected === r.id ? ' is-selected' : ''}`} aria-pressed={selected === r.id} aria-label={`${r.name}: ${marginLabel(v, r)}`} onClick={() => select(r.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v">{Math.abs(v) < EVEN ? 'EVEN' : `${letter(v, r)}+${tileNum(v)}`}</span></button>;
-      if (sx) { const sv = sx.kind === 'projection' || typeof c?.[sx.id] === 'number' ? seatMarginAt(sx, m, c) : (sx.side === 'D' ? 20 : sx.side === 'R' ? -20 : 0); const lab = sx.kind === 'projection' || typeof c?.[sx.id] === 'number' ? (Math.abs(sv) < EVEN ? 'EVEN' : `${sv > 0 ? 'D' : 'R'}+${tileNum(sv)}`) : (sx.rating || 'rated');
+      if (sx) { const atRating = sx.kind === 'rated' && typeof c?.[sx.id] !== 'number' && Math.abs(m - (sx.rest ?? 0)) < 0.05; const sv = !atRating && (sx.kind !== 'not_up' || typeof c?.[sx.id] === 'number') ? seatMarginAt(sx, m, c) : (sx.side === 'D' ? 20 : sx.side === 'R' ? -20 : 0); const lab = !atRating && (sx.kind !== 'not_up' || typeof c?.[sx.id] === 'number') ? (Math.abs(sv) < EVEN ? 'EVEN' : `${sv > 0 ? 'D' : 'R'}+${tileNum(sv)}`) : (sx.rating || 'rated');
         return <button key={st} type="button" className={`wall-tile is-proj ${pos} ${shade(sv)}${selected === sx.id ? ' is-selected' : ''}`} aria-pressed={selected === sx.id} aria-label={`${sx.name}: ${sx.kind === 'projection' ? `projected ${seatLabel(sv)}` : `Cook ${sx.rating}, not tracked`}`} onClick={() => select(sx.id)}><span className="wall-tile-st">{st}</span><span className="wall-tile-v wall-tile-rated">{lab}</span></button>; }
       return <span key={st} className={`wall-tile is-off ${pos}`} aria-hidden="true"><span className="wall-tile-st">{st}</span></span>; })}</div>}
     {full && !hideToggle && <p className="wall-note">{office === 'HOUSE' ? 'Ringed dots are tracked races; plain dots are projections from the 2024 vote, not readings.' : 'Dashed tiles are projections or Cook ratings, not Undertow readings.'}</p>}
@@ -313,7 +317,8 @@ function SeatDetail({ s, m, national, full, c = null, model = null }: { s: WallS
     <div className="wall-panel-head"><p className="wall-kicker">{s.name}</p><span className="wall-badge">Not tracked</span></div>
     <p className="wall-matchup">Cook Political Report rating: <strong>{s.rating}</strong>{s.holder === 'D' || s.holder === 'R' ? <> · seat held by {s.holder === 'D' ? 'a Democrat' : 'a Republican'}</> : null}</p>
     {typeof c?.[s.id] === 'number' && model ? <p className="wall-matchup">{model.name} reads it <strong className={side(seatMarginAt(s, m, c))}>{Math.abs(seatMarginAt(s, m, c)) < EVEN ? 'Even' : `${seatMarginAt(s, m, c) > 0 ? 'D' : 'R'} +${Math.abs(seatMarginAt(s, m, c)).toFixed(1)}`}</strong> at this setting; the dial moves it under this reading.</p> : null}
-    <p className="wall-note">{typeof c?.[s.id] === 'number' ? 'Under my bet this seat carries Cook’s rating as given and the dial does not move it: g' : 'Governor races Undertow does not track carry Cook’s rating as given. G'}overnor results track the presidential vote badly (in 2022 a swing projection missed them by 10.5 points on average against 4.2 for the polls), so no projection is made{typeof c?.[s.id] === 'number' ? '' : ' and the dial does not move this seat'}.</p>
+    {s.kind === 'rated' && typeof c?.[s.id] !== 'number' && Math.abs(m - (s.rest ?? 0)) >= 0.05 ? <p className="wall-matchup">At this setting it reads <strong className={side(seatMarginAt(s, m, c))}>{Math.abs(seatMarginAt(s, m, c)) < EVEN ? 'Even' : `${seatMarginAt(s, m, c) > 0 ? 'D' : 'R'} +${Math.abs(seatMarginAt(s, m, c)).toFixed(1)}`}</strong>: Cook’s rating, moved by the dial.</p> : null}
+    <p className="wall-note">{typeof c?.[s.id] === 'number' ? 'Under my bet this seat starts at Cook’s rating: g' : 'Governor races Undertow does not track start at Cook’s rating. G'}overnor results track the presidential vote badly (in 2022 a swing projection missed them by 10.5 points on average against 4.2 for the polls), so no projection is made. The dial still moves this seat by the same miss as every other race.</p>
   </section>;
   const at = seatMarginAt(s, m, c); const moved = Math.abs(m - (model ? model.defaultDial : national)) >= 0.05;
   const parts: [string, number][] = [['Generic-ballot swing since 2024', s.shift], ['Incumbent on the ballot', s.incumbency], [LEAN_LABEL, national], ['This state’s polling record', s.stateAdj], ['Early vote', s.earlyVote]];

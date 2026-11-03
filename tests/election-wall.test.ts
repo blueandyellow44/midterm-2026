@@ -14,14 +14,15 @@ describe('election wall', () => {
  });
 });
 
-// Full-chamber seats (Max, 2026-10-27): a projection reproduces weight.py's number at the national lean, rated seats never
-// move, and the chamber count at the lean equals the sealed at_bet tally. Skipped on releases sealed before the chambers block.
+// Full-chamber seats (Max, 2026-10-27): a projection reproduces weight.py's number at the national lean, rated seats sit at
+// their Cook center there (they move with the dial since 2026-11-03), and the chamber count at the lean equals the sealed at_bet tally. Skipped on releases sealed before the chambers block.
 import { seatMarginAt, chamberCount, chamberSplit, type WallSeat, type ChamberTotals } from '@/components/ElectionWall';
+import { ratedAtCenter } from '@/lib/rated-seats';
 describe('full chamber', () => {
  const ch = (derived as any).chambers;
  const it2 = ch ? it : it.skip;
  const national = Number((derived as any).signals?.rules?.poll_error_toward_d);
- const seats: WallSeat[] = ch ? Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: Number(i.parts?.incumbency) || 0, shift: Number(i.parts?.shift) || 0, undertow: i.undertow ?? null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls }))) : [];
+ const seats: WallSeat[] = ratedAtCenter(ch ? Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: Number(i.parts?.incumbency) || 0, shift: Number(i.parts?.shift) || 0, undertow: i.undertow ?? null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls }))) : [], (derived as any).simulation?.rated_center, Number((derived as any).signals?.rules?.poll_error_toward_d));
  it2('reproduces every projection at the national lean', () => {
   for (const s of seats) if (s.kind === 'projection') expect(Math.abs(seatMarginAt(s, national) - (s.undertow as number))).toBeLessThan(0.01);
  });
@@ -66,7 +67,7 @@ describe('scenario notches', () => {
  const it3 = ch && sim?.dial && sim?.polls_no_lean ? it : it.skip;
  const national = Number((derived as any).signals?.rules?.poll_error_toward_d);
  it3('reproduce the sealed counts and odds at the bet and at zero', () => {
-  const seats: WallSeat[] = Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: 0, shift: 0, undertow: null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls, dLetter: 'D' })));
+  const seats: WallSeat[] = ratedAtCenter(Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: 0, shift: 0, undertow: null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls, dLetter: 'D' }))), (derived as any).simulation?.rated_center, Number((derived as any).signals?.rules?.poll_error_toward_d));
   const wall: WallRace[] = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0, partisan: Number(r.signal.delta_partisan) || 0 } as WallRace));
   const totals: ChamberTotals = { SEN: { notUp: { D: ch.chambers.SEN.not_up.D || 0, R: ch.chambers.SEN.not_up.R || 0 }, majority: ch.chambers.SEN.majority, seats: ch.chambers.SEN.seats }, GOV: { notUp: { D: 0, R: 0 }, majority: null, seats: ch.chambers.GOV.seats }, HOUSE: { notUp: { D: 0, R: 0 }, majority: ch.chambers.HOUSE.majority, seats: ch.chambers.HOUSE.seats } };
   const odds: Odds = { values: sim.dial.values, chambers: sim.dial.chambers, perRace: sim.dial.per_race };
@@ -95,8 +96,14 @@ describe('model centers', () => {
   expect(marginAt(r, 1, null)).toBeCloseTo(4, 6);
   expect(marginAt({ ...r, result: { margin: 7, called: 'D', reporting: 100, settled: true } }, 1, { X: -4 })).toBe(7);
  });
- it('moves a rated seat under a model and leaves it fixed under the bet', () => {
-  expect(seatSideAt(rated, 0, null)).toBe('R');
+ it('moves a rated seat under a model and from its Cook center under the bet', () => {
+  // Max, 2026-11-03: the slider never moved Texas governor, "That is inexcusable". A rated seat now sits at its Cook center
+  // at the bet's resting dial (rest) and moves point for point from there.
+  const tx = { ...rated, base: -3.5, rest: 2 } as WallSeat;
+  expect(seatMarginAt(tx, 2, null)).toBeCloseTo(-3.5, 6);
+  expect(seatSideAt(tx, 2, null)).toBe('R');
+  expect(seatSideAt(tx, 6, null)).toBe('D');
+  expect(seatSideAt({ ...tx, base: 0 }, 2, null)).toBeNull();
   expect(seatSideAt(rated, 0, { G: 3.5 })).toBe('D');
   expect(seatSideAt(rated, -4, { G: 3.5 })).toBe('R');
   expect(seatMarginAt(rated, 2, { G: 3.5 })).toBeCloseTo(5.5, 6);
@@ -209,7 +216,7 @@ describe('model counts against the release', () => {
  const it4 = ch && mb?.models ? it : it.skip;
  it4('each model reproduces its sealed counts at dial 0 and the bet reproduces at_bet at the lean', () => {
   const national = Number((derived as any).signals.rules.poll_error_toward_d);
-  const seats: WallSeat[] = Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: 0, shift: 0, undertow: null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls, dLetter: 'D' })));
+  const seats: WallSeat[] = ratedAtCenter(Object.entries(ch.chambers).flatMap(([c, x]: [string, any]) => x.items.filter((i: any) => i.kind !== 'reading').map((i: any) => ({ id: i.race || i.seat, state: i.state, office: c as any, district: i.district ?? undefined, name: i.seat, kind: i.kind, side: i.side, base: Number(i.base) || 0, stateAdj: Number(i.parts?.state_adjustment) || 0, spending: Number(i.parts?.spending) || 0, earlyVote: Number(i.parts?.early_vote) || 0, incumbency: 0, shift: 0, undertow: null, rating: i.rating ?? null, holder: i.holder, noPolls: !!i.no_polls, dLetter: 'D' }))), (derived as any).simulation?.rated_center, Number((derived as any).signals?.rules?.poll_error_toward_d));
   const wall: WallRace[] = (races as any[]).filter(r => r.signal && Number.isFinite(r.signal.adjusted_margin)).map(r => ({ id: r.id, office: r.id.endsWith('HOUSE') ? 'HOUSE' : r.id.includes('GOV') ? 'GOV' : 'SEN', polls: r.signal.polling_margin, stateAdj: Number(r.signal.polling_error?.state_adjustment) || 0, spending: Number(r.signal.delta_spending) || 0, earlyVote: Number(r.signal.delta_early_vote) || 0, partisan: Number(r.signal.delta_partisan) || 0 } as WallRace));
   const totals: ChamberTotals = { SEN: { notUp: { D: ch.chambers.SEN.not_up.D || 0, R: ch.chambers.SEN.not_up.R || 0 }, majority: ch.chambers.SEN.majority, seats: ch.chambers.SEN.seats }, GOV: { notUp: { D: ch.chambers.GOV.not_up.D || 0, R: ch.chambers.GOV.not_up.R || 0 }, majority: null, seats: ch.chambers.GOV.seats }, HOUSE: { notUp: { D: 0, R: 0 }, majority: ch.chambers.HOUSE.majority, seats: ch.chambers.HOUSE.seats } };
   for (const [k, x] of Object.entries<any>(mb.models)) {
