@@ -16,7 +16,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 OUT_PDF = ROOT / "public/ballot/undertow-election-night-ballot.pdf"
 WORK = ROOT / ".ballot-print"
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+# A browser to print with: BALLOT_CHROME if set, else the first Chrome or Chromium found (Greptile on PR #3).
+CHROME_CANDIDATES = ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "google-chrome", "google-chrome-stable",
+                     "chromium", "chromium-browser", "chrome", r"C:\Program Files\Google\Chrome\Application\chrome.exe"]
+
+
+def find_chrome():
+    import os
+    import shutil
+    if os.environ.get("BALLOT_CHROME"):
+        path = os.environ["BALLOT_CHROME"]
+        if not (os.path.isfile(path) or shutil.which(path)):
+            raise SystemExit(f"BALLOT_CHROME points at {path}, which is not a browser on this machine")
+        return path
+    for c in CHROME_CANDIDATES:
+        if os.path.isfile(c) or shutil.which(c):
+            return c if os.path.isfile(c) else shutil.which(c)
+    raise SystemExit("No Chrome or Chromium found; set BALLOT_CHROME to the browser's path")
 POINTS = {"CONTROL": 1, "SEN": 1, "GOV": 1}   # every pick 1 point (Max, 2026-11-03); the score is a count of checks
 CATS = [("CONTROL", "Who wins control", "Senate and House"), ("SEN", "Senate races", "Toss-up to Likely"), ("GOV", "Governor races", "Toss-up to Likely")]
 RATINGS = ("Toss-up", "Lean D", "Lean R", "Likely D", "Likely R")
@@ -159,6 +175,6 @@ if __name__ == "__main__":
     WORK.mkdir(exist_ok=True)
     src = WORK / "ballot-print.html"
     src.write_text(page(rs))
-    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--allow-file-access-from-files",
+    subprocess.run([find_chrome(), "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--allow-file-access-from-files",
                     "--virtual-time-budget=5000", f"--print-to-pdf={OUT_PDF}", f"file://{src}"], check=True, capture_output=True)
     print(f"{len(rs)} picks, top score {sum(POINTS[x['cat']] for x in rs)}, wrote {OUT_PDF.relative_to(ROOT)}")

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { CATEGORIES, POINTS, toText, fromText, score, type BallotRace, type FriendBallot, type Side } from '@/lib/ballot-code';
+import { CATEGORIES, POINTS, toText, fromText, nextFriendName, score, type BallotRace, type FriendBallot, type Side } from '@/lib/ballot-code';
 
 // Election night ballot (Max, 2026-11-03). Picks live in this browser only; a friend's ballot reaches the scorekeeper as
 // copied text (the UB line) pasted into the Standings tab. Nothing leaves the page: the site has no server routes.
@@ -91,7 +91,8 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
   function addFriend() {
     const f = fromText(paste, races);
     if (!f) { setPasteNote('No picks found in that text. Ask them to tap Copy my picks and paste all of it, starting with “Undertow ballot”.'); return; }
-    const name = f.name || `Friend ${st.friends.length + 1}`, got = f.picks.replace(/-/g, '').length;
+    // A paste that carries a name replaces that name's earlier ballot (the update path); an unnamed one never does.
+    const name = f.name || nextFriendName(st.friends.map(x => x.name)), got = f.picks.replace(/-/g, '').length;
     update(s => ({ ...s, friends: [...s.friends.filter(x => x.name !== name), { ...f, name }] }));
     setPaste(''); setPasteNote(`Added ${name}: ${got} of ${n} picks read.`);
   }

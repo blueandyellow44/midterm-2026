@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { ballotRaces } from '@/lib/ballot';
-import { POINTS, toText, fromText, score, topScore, type Side } from '@/lib/ballot-code';
+import { POINTS, toText, fromText, nextFriendName, score, topScore, type Side } from '@/lib/ballot-code';
 import { surname } from '@/lib/format';
 import { readCsv } from '../scripts/bundle.mjs';
 
@@ -53,6 +53,12 @@ describe('election night ballot', () => {
     expect([at('2026-TX-SEN'), at('2026-AK-SEN'), at('2026-ME-SEN'), at('2026-AZ-GOV')]).toEqual(['D', 'R', '-', 'D']);
     expect(f.name).toBe('');
     expect(fromText('no picks here', races)).toBeNull();
+  });
+  it('names an unnamed paste with an unused Friend N, even after a removal', () => {
+    expect(nextFriendName([])).toBe('Friend 1');
+    expect(nextFriendName(['Friend 2', 'Friend 3'])).toBe('Friend 1');
+    expect(nextFriendName(['Friend 1', 'Friend 3'])).toBe('Friend 2');
+    expect(nextFriendName(['Friend 1', 'Ana', 'Friend 2'])).toBe('Friend 3');
   });
   it('gives every race two different surnames and a unique code within its section', () => {
     for (const r of races.filter(r => r.cat !== 'CONTROL')) expect(surname(r.d).toLowerCase()).not.toBe(surname(r.r).toLowerCase());

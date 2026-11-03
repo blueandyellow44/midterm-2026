@@ -69,6 +69,14 @@ export function fromText(text: string, races: BallotRace[]): FriendBallot | null
   return { name: head?.[1].trim() || '', picks, tb: [grab(/Senate D\s*([^·]*)/), grab(/House D\s*([^·]*)/), grab(/AP call\s*(.*)$/)] };
 }
 
+// The lowest Friend N not already taken, so an unnamed paste never replaces someone else's ballot (Greptile on PR #3).
+export function nextFriendName(taken: string[]) {
+  const used = new Set(taken);
+  let k = 1;
+  while (used.has(`Friend ${k}`)) k++;
+  return `Friend ${k}`;
+}
+
 export function score(races: BallotRace[], picks: string, results: Record<string, Side>) {
   return races.reduce((a, r, i) => (results[r.id] && picks[i] === results[r.id] ? a + POINTS[r.cat] : a), 0);
 }
