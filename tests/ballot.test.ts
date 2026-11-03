@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { ballotRaces } from '@/lib/ballot';
-import { CODE, POINTS, encode, parse, score, topScore, type Side } from '@/lib/ballot-code';
+import { POINTS, toText, fromText, score, topScore, type Side } from '@/lib/ballot-code';
+import { surname } from '@/lib/format';
 import { readCsv } from '../scripts/bundle.mjs';
 
 const races = ballotRaces();
@@ -33,15 +34,31 @@ describe('election night ballot', () => {
   it('yields no ballot, not a failed build, for a release without seats.csv', () => {
     expect(ballotRaces('/nonexistent/seats.csv')).toEqual([]);
   });
-  it('round-trips a copied ballot and refuses an older or damaged line', () => {
-    const picks: Record<string, Side> = { 'SENATE-CONTROL': 'D', '2026-TX-SEN': 'R' };
-    const line = encode(races, 'Max | Jr', picks, ['48', '221', '10:30 PM']);
-    const f = parse(`Undertow election night ballot · Max\n${line}`, races.length)!;
-    expect(f.name).toBe('Max   Jr');
+  it('round-trips a copied ballot as readable text and scores it', () => {
+    const picks: Record<string, Side> = { 'SENATE-CONTROL': 'D', 'HOUSE-CONTROL': 'R', '2026-TX-SEN': 'R', '2026-AK-GOV': 'R', '2026-NE-SEN': 'D' };
+    const text = toText(races, 'Max', picks, ['48', '221', '10:30 PM']);
+    expect(text).toContain('Control: Senate D, House R');
+    expect(text).toContain('TX Paxton');
+    expect(text).toContain('AK Wilson');
+    expect(text).not.toMatch(/\|/);
+    const f = fromText(`Here are mine!\n${text}`, races)!;
+    expect(f.name).toBe('Max');
     expect(f.tb).toEqual(['48', '221', '10:30 PM']);
-    expect(score(races, f.picks, { 'SENATE-CONTROL': 'D', '2026-TX-SEN': 'R', 'HOUSE-CONTROL': 'R' })).toBe(2);
-    expect(parse(line.replace(CODE, 'UB4'), races.length)).toBeNull();
-    expect(parse(`${CODE}|Ana|DDR`, races.length)).toBeNull();
-    expect(parse(`${CODE}|Ana|${'X'.repeat(races.length)}`, races.length)).toBeNull();
+    expect(f.picks).toBe(races.map(r => picks[r.id] || '-').join(''));
+    expect(score(races, f.picks, { 'SENATE-CONTROL': 'D', '2026-TX-SEN': 'R', 'HOUSE-CONTROL': 'D' })).toBe(2);
+  });
+  it('reads a hand-edited paste and skips a pick that names nobody in that race', () => {
+    const f = fromText('Senate: tx talarico,  ak SULLIVAN, ME Smith\nGovernors: AZ Hobbs', races)!;
+    const at = (id: string) => f.picks[races.findIndex(r => r.id === id)];
+    expect([at('2026-TX-SEN'), at('2026-AK-SEN'), at('2026-ME-SEN'), at('2026-AZ-GOV')]).toEqual(['D', 'R', '-', 'D']);
+    expect(f.name).toBe('');
+    expect(fromText('no picks here', races)).toBeNull();
+  });
+  it('gives every race two different surnames and a unique code within its section', () => {
+    for (const r of races.filter(r => r.cat !== 'CONTROL')) expect(surname(r.d).toLowerCase()).not.toBe(surname(r.r).toLowerCase());
+    for (const cat of ['CONTROL', 'SEN', 'GOV']) {
+      const codes = races.filter(r => r.cat === cat).map(r => r.code);
+      expect(new Set(codes).size).toBe(codes.length);
+    }
   });
 });

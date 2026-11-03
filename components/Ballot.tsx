@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { CATEGORIES, POINTS, encode, parse, score, type BallotRace, type FriendBallot, type Side } from '@/lib/ballot-code';
-import { surname } from '@/lib/format';
+import { CATEGORIES, POINTS, toText, fromText, score, type BallotRace, type FriendBallot, type Side } from '@/lib/ballot-code';
 
 // Election night ballot (Max, 2026-11-03). Picks live in this browser only; a friend's ballot reaches the scorekeeper as
 // copied text (the UB line) pasted into the Standings tab. Nothing leaves the page: the site has no server routes.
@@ -82,19 +81,7 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
   });
   const tb = (): [string, string, string] => [st.tb['tb-sen'] || '', st.tb['tb-house'] || '', st.tb['tb-time'] || ''];
 
-  function picksText() {
-    const who = st.name.trim() || 'Anonymous';
-    const lines = [`Undertow election night ballot · ${who}`];
-    for (const { cat, title } of CATEGORIES) lines.push(`${title}: ${races.filter(r => r.cat === cat).map(r => {
-      const s = st.picks[r.id], name = s ? (s === 'D' ? r.d : r.r) : '';
-      const who = surname(name), party = s === 'D' ? r.dParty || 'D' : 'R';
-      return `${r.label.replace(/^The /, '')} ${s ? (cat === 'CONTROL' ? name : `${who} (${party})`) : 'no pick'}`;
-    }).join(', ')}`);
-    const [a, b, c] = tb();
-    lines.push(`Tiebreakers: Senate D ${a || '?'} · House D ${b || '?'} · AP calls the House ${c || '?'}`);
-    lines.push(encode(races, st.name, st.picks, tb()));
-    return lines.join('\n');
-  }
+  const picksText = () => toText(races, st.name, st.picks, tb());
   function copy() {
     const text = picksText(), left = n - picked;
     const done = () => { setFallback(null); setToast(left ? `Copied. ${left} ${left === 1 ? 'pick is' : 'picks are'} still blank.` : 'Copied. Paste it in the group chat.'); };
@@ -102,10 +89,11 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
     try { navigator.clipboard.writeText(text).then(done, fail); } catch { fail(); }
   }
   function addFriend() {
-    const f = parse(paste, n);
-    if (!f) { setPasteNote(`That text has no readable ballot line (it starts with UB5). Ask them to tap Copy my picks again and paste all of it.`); return; }
-    update(s => ({ ...s, friends: [...s.friends.filter(x => x.name !== f.name), f] }));
-    setPaste(''); setPasteNote(`Added ${f.name}.`);
+    const f = fromText(paste, races);
+    if (!f) { setPasteNote('No picks found in that text. Ask them to tap Copy my picks and paste all of it, starting with “Undertow ballot”.'); return; }
+    const name = f.name || `Friend ${st.friends.length + 1}`, got = f.picks.replace(/-/g, '').length;
+    update(s => ({ ...s, friends: [...s.friends.filter(x => x.name !== name), { ...f, name }] }));
+    setPaste(''); setPasteNote(`Added ${name}: ${got} of ${n} picks read.`);
   }
 
   const called = Object.keys(st.results).length;

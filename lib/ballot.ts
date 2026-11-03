@@ -15,8 +15,8 @@ const UNTRACKED_NOMINEES = JSON.parse(readFileSync(join(process.cwd(), 'lib/ball
 const ORDER: Record<BallotCat, number> = { CONTROL: 0, SEN: 1, GOV: 2 };
 // Current majorities: Republicans hold both chambers going into November 3, 2026.
 const CONTROL: BallotRace[] = [
-  { id: 'SENATE-CONTROL', cat: 'CONTROL', label: 'The Senate', held: 'R', d: 'Democrats', r: 'Republicans', inc: null },
-  { id: 'HOUSE-CONTROL', cat: 'CONTROL', label: 'The House', held: 'R', d: 'Democrats', r: 'Republicans', inc: null },
+  { id: 'SENATE-CONTROL', cat: 'CONTROL', code: 'Senate', label: 'The Senate', held: 'R', d: 'Democrats', r: 'Republicans', inc: null },
+  { id: 'HOUSE-CONTROL', cat: 'CONTROL', code: 'House', label: 'The House', held: 'R', d: 'Democrats', r: 'Republicans', inc: null },
 ];
 
 // seats.csv is optional in a release bundle (scripts/bundle.mjs), so an older release yields no ballot rather than a
@@ -37,7 +37,7 @@ export function ballotRaces(seatsFile = join(process.cwd(), 'data/seats.csv')): 
       const label = `${states[s.state]}${s.special === '1' ? ' (special)' : ''}`;
       // Nebraska's Osborn runs as an independent in the D slot; the Tonight page marks him the same way.
       const dParty: 'D' | 'I' = s.seat === '2026-NE-SEN' || /^independent/i.test(String((sealed?.D as any)?.party || '')) ? 'I' : 'D';
-      return { id: s.seat, cat, label, held: s.holder_party as Side, d, r, inc, rating: s.cook_rating, dParty };
+      return { id: s.seat, cat, code: s.state, label, held: s.holder_party as Side, d, r, inc, rating: s.cook_rating, dParty };
     });
   // Control keeps Senate then House; seat races sort by state.
   return [...CONTROL, ...seatRaces.sort((a, b) => ORDER[a.cat] - ORDER[b.cat] || a.label.localeCompare(b.label))];
