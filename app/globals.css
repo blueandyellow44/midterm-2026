@@ -526,3 +526,79 @@ html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(150px + env(
 .wall-big > .big-len-19 {font-size:min(30px,10.53cqi);} .wall-mobile .wall-big > .big-len-19 {font-size:min(22px,10.53cqi);}
 .wall-big > .big-len-20 {font-size:min(30px,10.0cqi);} .wall-mobile .wall-big > .big-len-20 {font-size:min(22px,10.0cqi);}
 .wall-legend {flex-wrap:wrap;row-gap:4px;}
+
+/* ---------- election night ballot (Max, 2026-11-03) ---------- */
+.ballot-tabs {display:flex;gap:4px;padding:4px;background:var(--panel2);border-radius:10px;margin:0 0 20px;max-width:440px;}
+.ballot-tabs button {flex:1;min-height:44px;border:0;border-radius:7px;background:transparent;font-weight:700;font-size:14px;color:var(--muted);}
+.ballot-tabs button[aria-selected=true] {background:var(--panel);color:var(--ink);box-shadow:var(--shadow),0 0 0 1px var(--line);}
+.ballot-field {display:grid;gap:6px;margin-bottom:20px;max-width:440px;}
+.ballot-field label,.ballot-tb label {font-weight:600;font-size:14px;}
+.ballot-field input,.ballot-tb input {min-height:46px;border:1px solid var(--line);border-radius:8px;padding:0 12px;background:var(--panel);color:var(--ink);font:inherit;font-weight:600;}
+.ballot-cat {margin-bottom:24px;}
+.ballot-cat-head {display:flex;justify-content:space-between;align-items:baseline;gap:10px;background:var(--ink);color:var(--paper);border-radius:6px;padding:7px 12px;margin-bottom:4px;}
+.ballot-cat-head h2 {margin:0;font-family:var(--font-num);font-weight:800;font-size:21px;line-height:1.1;letter-spacing:.05em;text-transform:uppercase;}
+.ballot-cat-head span {font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;}
+.ballot-race {display:grid;gap:7px;padding:12px 0;border-bottom:1px solid var(--line);}
+.ballot-race-label {display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.ballot-race-label b {font-size:15px;}
+.ballot-race-label em {font-family:var(--font-mono);font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.ballot-pair {display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ballot-pick {display:flex;align-items:center;gap:9px;min-height:52px;padding:8px 11px;border:1.5px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);text-align:left;line-height:1.2;transition:background-color .12s ease,border-color .12s ease;}
+.ballot-dot {flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;}
+.ballot-name {font-weight:650;font-size:14px;min-width:0;overflow-wrap:anywhere;}
+.ballot-party {font-family:var(--font-mono);font-size:11px;font-weight:600;margin-left:5px;}
+.ballot-pick.is-d .ballot-party {color:var(--d);} .ballot-pick.is-r .ballot-party {color:var(--r);}
+.ballot-inc {font-size:11px;color:var(--muted);}
+.ballot-pick.is-d[aria-pressed=true] {background:var(--d-safe);border-color:var(--d-safe);color:#fff;}
+.ballot-pick.is-r[aria-pressed=true] {background:var(--r-safe);border-color:var(--r-safe);color:#fff;}
+.ballot-pick[aria-pressed=true] .ballot-party,.ballot-pick[aria-pressed=true] .ballot-inc {color:#fff;}
+.ballot-pick[aria-pressed=true] .ballot-dot {border-color:#fff;}
+.ballot-pick[aria-pressed=true] .ballot-dot::after {content:"";width:8px;height:8px;border-radius:50%;background:#fff;}
+/* Results: the called winner gets a heavy outline, so the scorekeeper's taps never read as a party pick. */
+.ballot-results .ballot-pick[aria-pressed=true] {background:var(--panel);color:var(--ink);border:3px solid var(--ink);}
+.ballot-results .ballot-pick.is-d[aria-pressed=true] .ballot-party {color:var(--d);} .ballot-results .ballot-pick.is-r[aria-pressed=true] .ballot-party {color:var(--r);}
+.ballot-results .ballot-pick[aria-pressed=true] .ballot-inc {color:var(--muted);}
+.ballot-results .ballot-pick[aria-pressed=true] .ballot-dot {border-color:var(--ink);}
+.ballot-results .ballot-pick[aria-pressed=true] .ballot-dot::after {background:var(--ink);}
+.ballot-results-kicker {margin:6px 0 10px;}
+.ballot-panel {margin-bottom:18px;}
+.ballot-panel h3 {margin:0 0 4px;font-family:var(--font-num);font-weight:800;font-size:21px;letter-spacing:.05em;text-transform:uppercase;}
+.ballot-panel-head {display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.ballot-panel-head span {font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+.ballot-tb {display:grid;gap:5px;margin-top:12px;}
+.ballot-tb label span {display:block;font-family:var(--font-mono);font-weight:400;font-size:11px;color:var(--muted);}
+.ballot-tb input {background:var(--panel2);font-variant-numeric:tabular-nums;}
+.ballot-text {display:block;width:100%;min-height:130px;margin-top:10px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--panel2);color:var(--ink);font-family:var(--font-mono);font-size:12px;line-height:1.45;}
+.ballot-actions {display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.ballot-btn {min-height:46px;padding:0 18px;border-radius:9px;border:0;background:var(--ink);color:var(--paper);font-weight:700;font-size:14.5px;white-space:nowrap;}
+.ballot-btn.is-ghost {background:transparent;color:var(--ink);border:1px solid var(--line);}
+.ballot-note {font-family:var(--font-mono);font-size:12px;color:var(--muted);margin:8px 0 0;}
+.ballot-note:empty {display:none;}
+.ballot-board {list-style:none;margin:8px 0 0;padding:0;}
+.ballot-board li {display:grid;grid-template-columns:28px minmax(0,1fr) auto 44px;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
+.ballot-rank {font-family:var(--font-num);font-weight:800;font-size:20px;color:var(--muted);text-align:center;}
+.ballot-who b {display:block;overflow-wrap:anywhere;}
+.ballot-who small {font-family:var(--font-mono);font-size:11px;color:var(--muted);}
+.ballot-score {font-family:var(--font-num);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums;text-align:right;}
+.ballot-score small {font-family:var(--font-mono);font-weight:400;font-size:11px;color:var(--muted);}
+.ballot-remove {min-height:44px;min-width:44px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--muted);}
+.ballot-count {flex:1;min-width:0;}
+.ballot-count b {font-family:var(--font-num);font-weight:800;font-size:26px;line-height:1;font-variant-numeric:tabular-nums;}
+.ballot-count small {display:block;font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.04em;}
+.ballot-meter {height:5px;background:var(--panel2);border-radius:3px;margin-top:5px;overflow:hidden;}
+.ballot-meter i {display:block;height:100%;width:0;background:linear-gradient(90deg,var(--d-safe),var(--r-safe));transition:width .2s ease;}
+/* Desktop: races on the left, a sticky rail with progress, the copy action and the tiebreakers. */
+html[data-view=desktop] .ballot-layout {display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start;}
+html[data-view=desktop] .ballot-main .ballot-list {display:grid;grid-template-columns:1fr 1fr;column-gap:28px;}
+html[data-view=desktop] .ballot-rail {position:sticky;top:16px;}
+html[data-view=desktop] .ballot-dock {background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:18px;box-shadow:var(--shadow);display:grid;gap:12px;}
+/* Phone: the races come first; progress and copy ride a bar pinned to the bottom of the screen. */
+/* The pinned bar must never cover the footer, so the whole page, not just the ballot, reserves its height. */
+html[data-view=mobile] body:has(.ballot-dock) {padding-bottom:var(--ballot-dock-h,calc(96px + env(safe-area-inset-bottom,0px)));}
+html[data-view=mobile] .ballot-dock {position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;}
+html[data-view=mobile] .ballot-dock .ballot-note,html[data-view=mobile] .ballot-dock .ballot-text {flex-basis:100%;}
+html[data-view=mobile] .ballot-dock .ballot-text {min-height:90px;margin-top:0;}
+@media (prefers-reduced-motion:reduce) {.ballot-pick,.ballot-meter i {transition:none;}}
+.ballot-key {display:flex;flex-wrap:wrap;gap:4px 18px;margin:0 0 14px;padding:8px 12px;background:var(--panel2);border-radius:8px;font-size:12px;color:var(--muted);}
+.ballot-key b {font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;margin-right:4px;}
+.ballot-key b.is-d {color:var(--d);} .ballot-key b.is-r {color:var(--r);}
