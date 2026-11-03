@@ -104,6 +104,11 @@ describe('model centers', () => {
   expect(seatSideAt(tx, 2, null)).toBe('R');
   expect(seatSideAt(tx, 6, null)).toBe('D');
   expect(seatSideAt({ ...tx, base: 0 }, 2, null)).toBeNull();
+  // No center for the rating (a release without the simulation block): the seat keeps its saved side at any dial.
+  const [kept] = ratedAtCenter([{ ...rated, rating: 'Lean R' } as WallSeat], undefined, 2);
+  expect(kept.rest).toBeUndefined();
+  expect(seatSideAt(kept, 2, null)).toBe('R');
+  expect(seatSideAt(kept, 8, null)).toBe('R');
   expect(seatSideAt(rated, 0, { G: 3.5 })).toBe('D');
   expect(seatSideAt(rated, -4, { G: 3.5 })).toBe('R');
   expect(seatMarginAt(rated, 2, { G: 3.5 })).toBeCloseTo(5.5, 6);
