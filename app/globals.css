@@ -594,7 +594,7 @@ html[data-view=desktop] .ballot-rail {position:sticky;top:16px;}
 html[data-view=desktop] .ballot-dock {background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:18px;box-shadow:var(--shadow);display:grid;gap:12px;}
 /* Phone: the races come first; progress and copy ride a bar pinned to the bottom of the screen. */
 /* The pinned bar must never cover the footer, so the whole page, not just the ballot, reserves its height. */
-html[data-view=mobile] body:has(.ballot-dock) {padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));}
+html[data-view=mobile] body:has(.ballot-dock) {padding-bottom:var(--ballot-dock-h,calc(96px + env(safe-area-inset-bottom,0px)));}
 html[data-view=mobile] .ballot-dock {position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--panel);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;}
 html[data-view=mobile] .ballot-dock .ballot-note,html[data-view=mobile] .ballot-dock .ballot-text {flex-basis:100%;}
 html[data-view=mobile] .ballot-dock .ballot-text {min-height:90px;margin-top:0;}

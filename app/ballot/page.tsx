@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PageTitle } from '@/components/UI';
+import { PageTitle, Empty } from '@/components/UI';
 import { Ballot } from '@/components/Ballot';
 import { ballotRaces, BALLOT_PDF, BALLOT_RATING_DATES } from '@/lib/ballot';
 import { topScore } from '@/lib/ballot-code';
@@ -14,6 +14,7 @@ export default function BallotPage() {
   const races = ballotRaces();
   return <>
     <PageTitle kicker="Election night · November 3 · A game, not a wager" title="Election night ballot."><p>Pick who wins the Senate and the House, and the winner of every Senate and governor race Cook does not call safe. Copy your picks into the group chat before polls close. Whoever keeps score pastes everyone’s picks into Standings and taps each winner as the AP calls it.</p></PageTitle>
-    <Ballot races={races} top={topScore(races)} pdf={BALLOT_PDF} ratingDates={BALLOT_RATING_DATES}/>
+    {races.length ? <Ballot races={races} top={topScore(races)} pdf={BALLOT_PDF} ratingDates={BALLOT_RATING_DATES}/>
+      : <Empty title="The ballot is unavailable for this release.">This release carries no seat ratings, so there is no race list to pick from.</Empty>}
   </>;
 }

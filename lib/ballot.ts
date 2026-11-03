@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { readCsv } from '../scripts/bundle.mjs';
 import { derived, states } from './data';
@@ -19,8 +19,11 @@ const CONTROL: BallotRace[] = [
   { id: 'HOUSE-CONTROL', cat: 'CONTROL', label: 'The House', held: 'R', d: 'Democrats', r: 'Republicans', inc: null },
 ];
 
-export function ballotRaces(): BallotRace[] {
-  const seats = readCsv(readFileSync(join(process.cwd(), 'data/seats.csv'), 'utf8')) as Record<string, string>[];
+// seats.csv is optional in a release bundle (scripts/bundle.mjs), so an older release yields no ballot rather than a
+// failed build (Greptile on PR #3); the page then says the ballot is unavailable.
+export function ballotRaces(seatsFile = join(process.cwd(), 'data/seats.csv')): BallotRace[] {
+  if (!existsSync(seatsFile)) return [];
+  const seats = readCsv(readFileSync(seatsFile, 'utf8')) as Record<string, string>[];
   const cands = (derived as any).candidates as Record<string, { D?: { candidate?: string }; R?: { candidate?: string } }>;
   const seatRaces = seats
     .filter(s => s.up_2026 === '1' && BALLOT_RATINGS.includes(s.cook_rating) && (s.chamber === 'SEN' || s.chamber === 'GOV'))

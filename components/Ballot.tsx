@@ -56,6 +56,7 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
   const [armed, setArmed] = useState(false);
   const meter = useRef<HTMLElement>(null);
   const fallbackRef = useRef<HTMLTextAreaElement>(null);
+  const dock = useRef<HTMLDivElement>(null);
 
   useEffect(() => { setSt(load(races)); setReady(true); }, [races]);
   useEffect(() => { if (!ready) return; try { localStorage.setItem(KEY, JSON.stringify(st)); } catch { /* storage blocked: picks last for this visit only */ } }, [st, ready]);
@@ -63,6 +64,15 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
   // The CSP allows no inline style attributes, so the meter width is set on the element after render.
   useEffect(() => { if (meter.current) meter.current.style.width = `${(100 * picked) / n}%`; }, [picked, n]);
   useEffect(() => { if (fallback !== null) fallbackRef.current?.select(); }, [fallback]);
+  // The phone bar is pinned over the page, so the page reserves the bar's measured height, which grows when the copy
+  // fallback opens (Greptile on PR #3). CSSOM, not a style attribute: the CSP allows none.
+  useEffect(() => {
+    const el = dock.current, root = document.documentElement;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(() => root.style.setProperty('--ballot-dock-h', `${Math.ceil(el.getBoundingClientRect().height)}px`));
+    ro.observe(el);
+    return () => { ro.disconnect(); root.style.removeProperty('--ballot-dock-h'); };
+  }, []);
 
   const update = (f: (s: Saved) => Saved) => setSt(s => f(s));
   const toggle = (key: 'picks' | 'results') => (id: string, side: Side) => update(s => {
@@ -143,7 +153,7 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
         </section>
       </div>
       <aside className="ballot-rail" aria-label="Your progress">
-        <div className="ballot-dock">
+        <div className="ballot-dock" ref={dock}>
           <div className="ballot-count"><b>{picked} of {n}</b><small>{picked === n ? 'every race picked' : `picked · ${n - picked} to go`}</small><div className="ballot-meter"><i ref={meter}/></div></div>
           <button type="button" className="ballot-btn" onClick={copy}>Copy my picks</button>
           <p className="ballot-note" role="status" aria-live="polite">{toast}</p>

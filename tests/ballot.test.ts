@@ -30,6 +30,9 @@ describe('election night ballot', () => {
     expect(races.find(r => r.id === '2026-NE-SEN')?.dParty).toBe('I');
     expect(races.some(r => r.id === '2026-MS-SEN')).toBe(true);
   });
+  it('yields no ballot, not a failed build, for a release without seats.csv', () => {
+    expect(ballotRaces('/nonexistent/seats.csv')).toEqual([]);
+  });
   it('round-trips a copied ballot and refuses an older or damaged line', () => {
     const picks: Record<string, Side> = { 'SENATE-CONTROL': 'D', '2026-TX-SEN': 'R' };
     const line = encode(races, 'Max | Jr', picks, ['48', '221', '10:30 PM']);
