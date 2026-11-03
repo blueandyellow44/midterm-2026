@@ -1,0 +1,51 @@
+{
+  "_note": "Nominees for ballot races outside Undertow's tracked scope (no sealed candidates), checked 2026-11-03. KS-GOV: Aug 4 primaries. NV-GOV: Jun 9. TX-GOV: Mar 3. FL-GOV: Aug 18. AZ-GOV: Jul 21. OR-GOV: May 19. NE-GOV: May 12. MN-SEN: Aug 11. NH-GOV: Sep 8. OK-GOV: Jun 16 and Aug 25 runoff. VT-GOV: Aug 11. AK-GOV is a ranked-choice top-four race (Aug 18) with one Democrat and three Republicans; the R side names Bernadette Wilson, the leading Republican in all three October polls (Max, 2026-11-03: 'the Republican pick needs a name'). Read by lib/ballot.ts and scripts/ballot/build_print.py.",
+  "2026-KS-GOV": {
+    "D": "Cindy Holscher",
+    "R": "Ty Masterson"
+  },
+  "2026-NV-GOV": {
+    "D": "Aaron Ford",
+    "R": "Joe Lombardo"
+  },
+  "2026-TX-GOV": {
+    "D": "Gina Hinojosa",
+    "R": "Greg Abbott"
+  },
+  "2026-FL-GOV": {
+    "D": "David Jolly",
+    "R": "Byron Donalds"
+  },
+  "2026-AZ-GOV": {
+    "D": "Katie Hobbs",
+    "R": "Andy Biggs"
+  },
+  "2026-OR-GOV": {
+    "D": "Tina Kotek",
+    "R": "Christine Drazan"
+  },
+  "2026-NE-GOV": {
+    "D": "Lynne Walz",
+    "R": "Jim Pillen"
+  },
+  "2026-AK-GOV": {
+    "D": "Jonathan Kreiss-Tomkins",
+    "R": "Bernadette Wilson"
+  },
+  "2026-MN-SEN": {
+    "D": "Peggy Flanagan",
+    "R": "Michele Tafoya"
+  },
+  "2026-NH-GOV": {
+    "D": "Cinde Warmington",
+    "R": "Kelly Ayotte"
+  },
+  "2026-OK-GOV": {
+    "D": "Cyndi Munson",
+    "R": "Mike Mazzei"
+  },
+  "2026-VT-GOV": {
+    "D": "Amanda Janoo",
+    "R": "Phil Scott"
+  }
+}
