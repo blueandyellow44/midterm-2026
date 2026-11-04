@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T02:43:10-08:00",
+  "updated_at": "2026-11-04T02:58:12-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -455,15 +455,15 @@
       "updated_at": "2026-11-03T23:13:39-08:00"
     },
     "ne-sen": {
-      "d_pct": 43.78,
-      "r_pct": 50.29,
-      "other_pct": 5.93,
+      "d_pct": 43.75,
+      "r_pct": 50.33,
+      "other_pct": 5.92,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 90.0,
       "called": "R",
       "source": "https://apnews.com/projects/elections-2026/nebraska-us-senate-results/",
-      "updated_at": "2026-11-04T02:14:05-08:00"
+      "updated_at": "2026-11-04T02:58:12-08:00"
     },
     "az-02-house": {
       "d_pct": 49.47,
@@ -741,15 +741,15 @@
       "updated_at": "2026-11-04T00:21:43-08:00"
     },
     "ca-48-house": {
-      "d_pct": 59.4,
-      "r_pct": 40.6,
+      "d_pct": 59.65,
+      "r_pct": 40.35,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 51.0,
+      "reporting_pct": 52.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/california-us-house-results/#48",
-      "updated_at": "2026-11-04T02:14:05-08:00"
+      "updated_at": "2026-11-04T02:58:11-08:00"
     },
     "ca-22-house": {
       "d_pct": 65.58,
@@ -990,13 +990,13 @@
       },
       {
         "race": "2026-NE-SEN",
-        "count": -6.51,
+        "count": -6.58,
         "polls": -2.433,
         "undertow": 0.3194,
-        "implied_miss": -4.8935,
-        "polls_miss_toward_d": -4.077,
-        "polls_error": 4.077,
-        "undertow_error": 6.8294
+        "implied_miss": -4.9635,
+        "polls_miss_toward_d": -4.147,
+        "polls_error": 4.147,
+        "undertow_error": 6.8994
       },
       {
         "race": "2026-NH-SEN",
@@ -1229,12 +1229,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.156,
-    "implied_miss_se": 0.6284,
+    "implied_miss": 4.1545,
+    "implied_miss_se": 0.6289,
     "dial_live": true,
-    "polls_mae": 4.8719,
-    "undertow_mae": 3.8828,
-    "polls_miss_mean": 4.1698,
+    "polls_mae": 4.8734,
+    "undertow_mae": 3.8843,
+    "polls_miss_mean": 4.1683,
     "undertow_closer": 29,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
