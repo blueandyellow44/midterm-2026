@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T22:14:01-08:00",
+  "updated_at": "2026-11-03T22:28:55-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -263,9 +263,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 88.0,
-      "called": null,
+      "called": "D",
       "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-03T22:14:01-08:00"
+      "updated_at": "2026-11-03T22:28:55-08:00"
     },
     "oh-10-house": {
       "d_pct": 49.34,
@@ -373,9 +373,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 75.0,
-      "called": null,
+      "called": "D",
       "source": "https://electionresults.sos.state.tx.us/results.html",
-      "updated_at": "2026-11-03T21:54:34-08:00"
+      "updated_at": "2026-11-03T22:28:55-08:00"
     },
     "az-01-house": {
       "d_pct": 54.89,
@@ -411,15 +411,15 @@
       "updated_at": "2026-11-03T20:43:28-08:00"
     },
     "mn-01-house": {
-      "d_pct": 49.64,
-      "r_pct": 50.24,
-      "other_pct": 0.12,
+      "d_pct": 49.58,
+      "r_pct": 50.29,
+      "other_pct": 0.13,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 89.0,
+      "reporting_pct": 90.0,
       "called": null,
       "source": "https://electionresults.sos.mn.gov/Results/Index?ersElectionId=201&scenario=USRepresentative&districtId=556",
-      "updated_at": "2026-11-03T22:14:01-08:00"
+      "updated_at": "2026-11-03T22:28:55-08:00"
     },
     "co-08-house": {
       "d_pct": 55.75,
@@ -455,15 +455,15 @@
       "updated_at": "2026-11-03T20:48:14-08:00"
     },
     "ne-sen": {
-      "d_pct": 45.41,
-      "r_pct": 48.67,
-      "other_pct": 5.92,
+      "d_pct": 45.24,
+      "r_pct": 48.87,
+      "other_pct": 5.89,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 68.0,
+      "reporting_pct": 72.0,
       "called": null,
       "source": "https://electionresults.nebraska.gov/resultsSW.aspx?type=SW&map=CTY",
-      "updated_at": "2026-11-03T22:14:01-08:00"
+      "updated_at": "2026-11-03T22:28:55-08:00"
     },
     "az-02-house": {
       "d_pct": 49.24,
@@ -533,7 +533,7 @@
     }
   },
   "derived": {
-    "settled": 30,
+    "settled": 31,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -698,6 +698,16 @@
         "undertow_error": 7.6603
       },
       {
+        "race": "2026-OH-07-HOUSE",
+        "count": 8.64,
+        "polls": 4.4693,
+        "undertow": 4.4786,
+        "implied_miss": 6.0973,
+        "polls_miss_toward_d": 4.1707,
+        "polls_error": 4.1707,
+        "undertow_error": 4.1614
+      },
+      {
         "race": "2026-OH-10-HOUSE",
         "count": 1.63,
         "polls": 3.9781,
@@ -838,12 +848,12 @@
         "undertow_error": 0.1425
       }
     ],
-    "implied_miss": 4.1977,
-    "implied_miss_se": 0.7982,
+    "implied_miss": 4.259,
+    "implied_miss_se": 0.7745,
     "dial_live": true,
-    "polls_mae": 4.8414,
-    "undertow_mae": 3.9081,
-    "polls_miss_mean": 4.2014,
+    "polls_mae": 4.8197,
+    "undertow_mae": 3.9162,
+    "polls_miss_mean": 4.2004,
     "undertow_closer": 19,
     "polls_closer": 10,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
