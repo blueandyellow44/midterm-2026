@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T02:28:13-08:00",
+  "updated_at": "2026-11-04T02:43:10-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -136,15 +136,15 @@
       "updated_at": "2026-11-03T23:59:42-08:00"
     },
     "oh-gov": {
-      "d_pct": 51.95,
-      "r_pct": 44.73,
-      "other_pct": 3.32,
+      "d_pct": 52.31,
+      "r_pct": 44.38,
+      "other_pct": 3.31,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 97.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/ohio-governor-results/",
-      "updated_at": "2026-11-04T00:57:49-08:00"
+      "updated_at": "2026-11-04T02:43:10-08:00"
     },
     "va-01-house": {
       "d_pct": 50.48,
@@ -257,15 +257,15 @@
       "updated_at": "2026-11-04T00:03:26-08:00"
     },
     "oh-07-house": {
-      "d_pct": 54.65,
-      "r_pct": 45.35,
+      "d_pct": 54.93,
+      "r_pct": 45.07,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 98.0,
+      "reporting_pct": 99.0,
       "called": "D",
-      "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-04T00:03:25-08:00"
+      "source": "https://apnews.com/projects/elections-2026/ohio-us-house-results/#7",
+      "updated_at": "2026-11-04T02:43:09-08:00"
     },
     "oh-10-house": {
       "d_pct": 49.34,
@@ -389,15 +389,15 @@
       "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "az-06-house": {
-      "d_pct": 53.97,
-      "r_pct": 43.98,
-      "other_pct": 2.05,
+      "d_pct": 52.97,
+      "r_pct": 44.96,
+      "other_pct": 2.07,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 74.0,
+      "reporting_pct": 80.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/arizona-us-house-results/#6",
-      "updated_at": "2026-11-04T01:27:48-08:00"
+      "updated_at": "2026-11-04T02:43:09-08:00"
     },
     "ny-17-house": {
       "d_pct": 52.17,
@@ -1030,13 +1030,13 @@
       },
       {
         "race": "2026-OH-07-HOUSE",
-        "count": 9.3,
+        "count": 9.86,
         "polls": 4.4693,
         "undertow": 4.4786,
-        "implied_miss": 6.7573,
-        "polls_miss_toward_d": 4.8307,
-        "polls_error": 4.8307,
-        "undertow_error": 4.8214
+        "implied_miss": 7.3173,
+        "polls_miss_toward_d": 5.3907,
+        "polls_error": 5.3907,
+        "undertow_error": 5.3814
       },
       {
         "race": "2026-OH-09-HOUSE",
@@ -1070,13 +1070,13 @@
       },
       {
         "race": "2026-OH-GOV",
-        "count": 7.22,
+        "count": 7.93,
         "polls": 4.2443,
         "undertow": 5.5999,
-        "implied_miss": 3.556,
-        "polls_miss_toward_d": 2.9757,
-        "polls_error": 2.9757,
-        "undertow_error": 1.6201
+        "implied_miss": 4.266,
+        "polls_miss_toward_d": 3.6857,
+        "polls_error": 3.6857,
+        "undertow_error": 2.3301
       },
       {
         "race": "2026-OH-SEN-SPECIAL",
@@ -1229,12 +1229,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.1284,
-    "implied_miss_se": 0.6273,
+    "implied_miss": 4.156,
+    "implied_miss_se": 0.6284,
     "dial_live": true,
-    "polls_mae": 4.8443,
-    "undertow_mae": 3.8552,
-    "polls_miss_mean": 4.1422,
+    "polls_mae": 4.8719,
+    "undertow_mae": 3.8828,
+    "polls_miss_mean": 4.1698,
     "undertow_closer": 29,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
