@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:43:28-08:00",
+  "updated_at": "2026-11-03T20:45:22-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -420,6 +420,17 @@
       "called": null,
       "source": "https://electionresults.sos.mn.gov/Results/Index?ersElectionId=201&scenario=USRepresentative&districtId=556",
       "updated_at": "2026-11-03T20:43:28-08:00"
+    },
+    "co-08-house": {
+      "d_pct": 55.84,
+      "r_pct": 40.47,
+      "other_pct": 3.69,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 75.0,
+      "called": null,
+      "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
+      "updated_at": "2026-11-03T20:45:22-08:00"
     }
   },
   "derived": {
