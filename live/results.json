@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T21:31:04-08:00",
+  "updated_at": "2026-11-03T21:32:16-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -257,15 +257,15 @@
       "updated_at": "2026-11-03T20:00:59-08:00"
     },
     "oh-07-house": {
-      "d_pct": 53.61,
-      "r_pct": 46.39,
+      "d_pct": 54.09,
+      "r_pct": 45.91,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 70.0,
+      "reporting_pct": 79.0,
       "called": null,
       "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-03T20:36:32-08:00"
+      "updated_at": "2026-11-03T21:32:16-08:00"
     },
     "oh-10-house": {
       "d_pct": 49.34,
@@ -356,26 +356,26 @@
       "updated_at": "2026-11-03T20:59:41-08:00"
     },
     "tx-23-house": {
-      "d_pct": 52.93,
-      "r_pct": 43.46,
-      "other_pct": 3.61,
+      "d_pct": 52.7,
+      "r_pct": 43.67,
+      "other_pct": 3.63,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 66.0,
+      "reporting_pct": 79.0,
       "called": null,
       "source": "https://electionresults.sos.state.tx.us/results.html",
-      "updated_at": "2026-11-03T20:35:22-08:00"
+      "updated_at": "2026-11-03T21:32:16-08:00"
     },
     "tx-35-house": {
-      "d_pct": 59.56,
-      "r_pct": 40.44,
+      "d_pct": 58.61,
+      "r_pct": 41.39,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 69.0,
+      "reporting_pct": 73.0,
       "called": null,
       "source": "https://electionresults.sos.state.tx.us/results.html",
-      "updated_at": "2026-11-03T20:35:22-08:00"
+      "updated_at": "2026-11-03T21:32:16-08:00"
     },
     "az-01-house": {
       "d_pct": 54.89,
@@ -508,6 +508,28 @@
       "called": null,
       "source": "https://results.votewa.gov/results/public/washington/elections/20261103",
       "updated_at": "2026-11-03T21:19:41-08:00"
+    },
+    "tx-15-house": {
+      "d_pct": 61.65,
+      "r_pct": 38.35,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 89.0,
+      "called": null,
+      "source": "https://electionresults.sos.state.tx.us/results.html",
+      "updated_at": "2026-11-03T21:32:16-08:00"
+    },
+    "tx-34-house": {
+      "d_pct": 56.91,
+      "r_pct": 38.57,
+      "other_pct": 4.52,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 99.0,
+      "called": "D",
+      "source": "https://electionresults.sos.state.tx.us/results.html",
+      "updated_at": "2026-11-03T21:32:16-08:00"
     }
   },
   "derived": {
