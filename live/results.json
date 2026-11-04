@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T19:58:39-08:00",
+  "updated_at": "2026-11-03T20:00:59-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -211,10 +211,54 @@
       "called": null,
       "source": "https://ent.sos.ks.gov/kssos_ent.html",
       "updated_at": "2026-11-03T19:43:45-08:00"
+    },
+    "pa-01-house": {
+      "d_pct": 53.72,
+      "r_pct": 46.28,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 69.0,
+      "called": null,
+      "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
+      "updated_at": "2026-11-03T20:00:59-08:00"
+    },
+    "pa-07-house": {
+      "d_pct": 56.48,
+      "r_pct": 43.52,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 80.0,
+      "called": "D",
+      "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
+      "updated_at": "2026-11-03T20:00:59-08:00"
+    },
+    "pa-08-house": {
+      "d_pct": 55.16,
+      "r_pct": 44.84,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 94.0,
+      "called": "D",
+      "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
+      "updated_at": "2026-11-03T20:00:59-08:00"
+    },
+    "pa-10-house": {
+      "d_pct": 55.18,
+      "r_pct": 44.82,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 99.0,
+      "called": "D",
+      "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
+      "updated_at": "2026-11-03T20:00:59-08:00"
     }
   },
   "derived": {
-    "settled": 13,
+    "settled": 16,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -339,6 +383,36 @@
         "undertow_error": 0.6699
       },
       {
+        "race": "2026-PA-07-HOUSE",
+        "count": 12.96,
+        "polls": 5.1203,
+        "undertow": 8.0788,
+        "implied_miss": 6.8171,
+        "polls_miss_toward_d": 7.8397,
+        "polls_error": 7.8397,
+        "undertow_error": 4.8812
+      },
+      {
+        "race": "2026-PA-08-HOUSE",
+        "count": 10.32,
+        "polls": 4.1414,
+        "undertow": 7.1013,
+        "implied_miss": 5.1546,
+        "polls_miss_toward_d": 6.1786,
+        "polls_error": 6.1786,
+        "undertow_error": 3.2187
+      },
+      {
+        "race": "2026-PA-10-HOUSE",
+        "count": 10.36,
+        "polls": 1.7771,
+        "undertow": 5.0921,
+        "implied_miss": 7.2038,
+        "polls_miss_toward_d": 8.5829,
+        "polls_error": 8.5829,
+        "undertow_error": 5.2679
+      },
+      {
         "race": "2026-SC-SEN",
         "count": 3.39,
         "polls": -0.9738,
@@ -349,13 +423,13 @@
         "undertow_error": 1.4225
       }
     ],
-    "implied_miss": 4.3094,
-    "implied_miss_se": 0.918,
+    "implied_miss": 4.6999,
+    "implied_miss_se": 0.7757,
     "dial_live": true,
-    "polls_mae": 4.4222,
-    "undertow_mae": 2.9078,
-    "polls_miss_mean": 4.369,
-    "undertow_closer": 10,
+    "polls_mae": 5.0056,
+    "undertow_mae": 3.1981,
+    "polls_miss_mean": 4.9624,
+    "undertow_closer": 13,
     "polls_closer": 2,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
