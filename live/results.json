@@ -1,18 +1,18 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T18:20:57-08:00",
+  "updated_at": "2026-11-03T18:25:01-08:00",
   "races": {
     "ga-sen": {
-      "d_pct": 59.92,
-      "r_pct": 40.08,
+      "d_pct": 59.86,
+      "r_pct": 40.14,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 73.0,
+      "reporting_pct": 75.0,
       "called": "D",
       "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
-      "updated_at": "2026-11-03T18:15:20-08:00"
+      "updated_at": "2026-11-03T18:25:00-08:00"
     },
     "ga-gov": {
       "d_pct": 55.59,
@@ -26,15 +26,15 @@
       "updated_at": "2026-11-03T18:15:20-08:00"
     },
     "nc-sen": {
-      "d_pct": 60.12,
-      "r_pct": 37.89,
-      "other_pct": 1.98,
+      "d_pct": 59.73,
+      "r_pct": 38.23,
+      "other_pct": 2.05,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 78.0,
+      "reporting_pct": 82.0,
       "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1383",
-      "updated_at": "2026-11-03T18:15:20-08:00"
+      "updated_at": "2026-11-03T18:25:00-08:00"
     },
     "fl-sen-special": {
       "d_pct": 48.0,
@@ -134,10 +134,21 @@
       "called": null,
       "source": "https://liveresults.ohiosos.gov/",
       "updated_at": "2026-11-03T18:20:57-08:00"
+    },
+    "oh-gov": {
+      "d_pct": 51.85,
+      "r_pct": 44.98,
+      "other_pct": 3.17,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 55.0,
+      "called": null,
+      "source": "https://liveresults.ohiosos.gov/",
+      "updated_at": "2026-11-03T18:25:01-08:00"
     }
   },
   "derived": {
-    "settled": 7,
+    "settled": 8,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -210,15 +221,25 @@
         "polls_miss_toward_d": 12.8844,
         "polls_error": 12.8844,
         "undertow_error": 9.8458
+      },
+      {
+        "race": "2026-NC-SEN",
+        "count": 21.5,
+        "polls": 9.9346,
+        "undertow": 15.0826,
+        "implied_miss": 8.3533,
+        "polls_miss_toward_d": 11.5654,
+        "polls_error": 11.5654,
+        "undertow_error": 6.4174
       }
     ],
-    "implied_miss": 3.5092,
-    "implied_miss_se": 1.4783,
+    "implied_miss": 4.1147,
+    "implied_miss_se": 1.4162,
     "dial_live": true,
-    "polls_mae": 3.5086,
-    "undertow_mae": 2.3742,
-    "polls_miss_mean": 3.4098,
-    "undertow_closer": 6,
+    "polls_mae": 4.5157,
+    "undertow_mae": 2.8796,
+    "polls_miss_mean": 4.4293,
+    "undertow_closer": 7,
     "polls_closer": 1,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
