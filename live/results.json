@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T21:19:41-08:00",
+  "updated_at": "2026-11-03T21:31:04-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -340,9 +340,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 93.0,
-      "called": null,
+      "called": "D",
       "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:59:41-08:00"
+      "updated_at": "2026-11-03T21:31:04-08:00"
     },
     "ia-03-house": {
       "d_pct": 53.9,
@@ -411,15 +411,15 @@
       "updated_at": "2026-11-03T20:43:28-08:00"
     },
     "mn-01-house": {
-      "d_pct": 49.37,
-      "r_pct": 50.52,
-      "other_pct": 0.11,
+      "d_pct": 48.88,
+      "r_pct": 51.0,
+      "other_pct": 0.12,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 69.0,
+      "reporting_pct": 77.0,
       "called": null,
       "source": "https://electionresults.sos.mn.gov/Results/Index?ersElectionId=201&scenario=USRepresentative&districtId=556",
-      "updated_at": "2026-11-03T21:13:36-08:00"
+      "updated_at": "2026-11-03T21:31:04-08:00"
     },
     "co-08-house": {
       "d_pct": 55.75,
@@ -455,15 +455,15 @@
       "updated_at": "2026-11-03T20:48:14-08:00"
     },
     "ne-sen": {
-      "d_pct": 48.52,
-      "r_pct": 45.93,
-      "other_pct": 5.55,
+      "d_pct": 46.06,
+      "r_pct": 48.15,
+      "other_pct": 5.79,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 52.0,
+      "reporting_pct": 60.0,
       "called": null,
       "source": "https://electionresults.nebraska.gov/resultsSW.aspx?type=SW&map=CTY",
-      "updated_at": "2026-11-03T20:49:06-08:00"
+      "updated_at": "2026-11-03T21:31:04-08:00"
     },
     "az-02-house": {
       "d_pct": 49.24,
