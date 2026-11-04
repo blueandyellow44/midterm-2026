@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T03:28:12-08:00",
+  "updated_at": "2026-11-04T03:43:18-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -26,15 +26,15 @@
       "updated_at": "2026-11-04T01:27:49-08:00"
     },
     "nc-sen": {
-      "d_pct": 58.71,
-      "r_pct": 39.1,
+      "d_pct": 58.72,
+      "r_pct": 39.09,
       "other_pct": 2.19,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1383",
-      "updated_at": "2026-11-04T01:27:49-08:00"
+      "updated_at": "2026-11-04T03:43:18-08:00"
     },
     "fl-sen-special": {
       "d_pct": 48.0,
@@ -103,15 +103,15 @@
       "updated_at": "2026-11-04T00:21:41-08:00"
     },
     "nc-01-house": {
-      "d_pct": 49.81,
-      "r_pct": 47.01,
-      "other_pct": 3.18,
+      "d_pct": 50.07,
+      "r_pct": 46.77,
+      "other_pct": 3.16,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 97.0,
+      "reporting_pct": 99.0,
       "called": null,
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1369",
-      "updated_at": "2026-11-04T01:27:49-08:00"
+      "updated_at": "2026-11-04T03:43:18-08:00"
     },
     "nc-11-house": {
       "d_pct": 57.14,
@@ -970,13 +970,13 @@
       },
       {
         "race": "2026-NC-01-HOUSE",
-        "count": 2.8,
+        "count": 3.3,
         "polls": 2.9654,
         "undertow": 6.4107,
-        "implied_miss": -1.6748,
-        "polls_miss_toward_d": -0.1654,
-        "polls_error": 0.1654,
-        "undertow_error": 3.6107
+        "implied_miss": -1.1748,
+        "polls_miss_toward_d": 0.3346,
+        "polls_error": 0.3346,
+        "undertow_error": 3.1107
       },
       {
         "race": "2026-NC-11-HOUSE",
@@ -990,13 +990,13 @@
       },
       {
         "race": "2026-NC-SEN",
-        "count": 19.61,
+        "count": 19.63,
         "polls": 9.9346,
         "undertow": 15.0826,
-        "implied_miss": 6.4633,
-        "polls_miss_toward_d": 9.6754,
-        "polls_error": 9.6754,
-        "undertow_error": 4.5274
+        "implied_miss": 6.4833,
+        "polls_miss_toward_d": 9.6954,
+        "polls_error": 9.6954,
+        "undertow_error": 4.5474
       },
       {
         "race": "2026-NE-SEN",
@@ -1239,12 +1239,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.1596,
-    "implied_miss_se": 0.6154,
+    "implied_miss": 4.1707,
+    "implied_miss_se": 0.6133,
     "dial_live": true,
-    "polls_mae": 4.8855,
-    "undertow_mae": 3.8412,
-    "polls_miss_mean": 4.1954,
+    "polls_mae": 4.8895,
+    "undertow_mae": 3.831,
+    "polls_miss_mean": 4.2065,
     "undertow_closer": 31,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
