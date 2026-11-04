@@ -1,40 +1,40 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T17:57:16-08:00",
+  "updated_at": "2026-11-03T18:15:20-08:00",
   "races": {
     "ga-sen": {
-      "d_pct": 60.49,
-      "r_pct": 39.51,
+      "d_pct": 59.92,
+      "r_pct": 40.08,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 66.0,
+      "reporting_pct": 73.0,
       "called": "D",
       "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
-      "updated_at": "2026-11-03T17:57:16-08:00"
+      "updated_at": "2026-11-03T18:15:20-08:00"
     },
     "ga-gov": {
-      "d_pct": 56.2,
-      "r_pct": 43.8,
+      "d_pct": 55.59,
+      "r_pct": 44.41,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 67.0,
+      "reporting_pct": 73.0,
       "called": null,
       "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
-      "updated_at": "2026-11-03T17:57:16-08:00"
+      "updated_at": "2026-11-03T18:15:20-08:00"
     },
     "nc-sen": {
-      "d_pct": 61.92,
-      "r_pct": 36.25,
-      "other_pct": 1.82,
+      "d_pct": 60.12,
+      "r_pct": 37.89,
+      "other_pct": 1.98,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 69.0,
-      "called": null,
+      "reporting_pct": 78.0,
+      "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1383",
-      "updated_at": "2026-11-03T17:57:16-08:00"
+      "updated_at": "2026-11-03T18:15:20-08:00"
     },
     "fl-sen-special": {
       "d_pct": 48.0,
