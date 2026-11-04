@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:13:30-08:00",
+  "updated_at": "2026-11-03T20:13:51-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -255,10 +255,43 @@
       "called": "D",
       "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
       "updated_at": "2026-11-03T20:00:59-08:00"
+    },
+    "oh-07-house": {
+      "d_pct": 53.86,
+      "r_pct": 46.14,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 69.0,
+      "called": null,
+      "source": "https://liveresults.ohiosos.gov/",
+      "updated_at": "2026-11-03T20:13:51-08:00"
+    },
+    "oh-10-house": {
+      "d_pct": 49.34,
+      "r_pct": 47.71,
+      "other_pct": 2.95,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 97.0,
+      "called": null,
+      "source": "https://liveresults.ohiosos.gov/",
+      "updated_at": "2026-11-03T20:13:51-08:00"
+    },
+    "oh-15-house": {
+      "d_pct": 52.19,
+      "r_pct": 44.99,
+      "other_pct": 2.82,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 97.0,
+      "called": "D",
+      "source": "https://liveresults.ohiosos.gov/",
+      "updated_at": "2026-11-03T20:13:51-08:00"
     }
   },
   "derived": {
-    "settled": 17,
+    "settled": 19,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -373,6 +406,26 @@
         "undertow_error": 3.6074
       },
       {
+        "race": "2026-OH-10-HOUSE",
+        "count": 1.63,
+        "polls": 3.9781,
+        "undertow": 5.0312,
+        "implied_miss": -1.4654,
+        "polls_miss_toward_d": -2.3481,
+        "polls_error": 2.3481,
+        "undertow_error": 3.4012
+      },
+      {
+        "race": "2026-OH-15-HOUSE",
+        "count": 7.2,
+        "polls": 2.6901,
+        "undertow": 3.8098,
+        "implied_miss": 5.3261,
+        "polls_miss_toward_d": 4.5099,
+        "polls_error": 4.5099,
+        "undertow_error": 3.3902
+      },
+      {
         "race": "2026-OH-GOV",
         "count": 4.93,
         "polls": 4.2443,
@@ -433,14 +486,14 @@
         "undertow_error": 1.4225
       }
     ],
-    "implied_miss": 4.431,
-    "implied_miss_se": 0.7767,
+    "implied_miss": 4.1678,
+    "implied_miss_se": 0.7615,
     "dial_live": true,
-    "polls_mae": 4.7393,
-    "undertow_mae": 3.1162,
-    "polls_miss_mean": 4.6424,
-    "undertow_closer": 13,
-    "polls_closer": 3,
+    "polls_mae": 4.6013,
+    "undertow_mae": 3.1456,
+    "polls_miss_mean": 4.2675,
+    "undertow_closer": 14,
+    "polls_closer": 4,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
