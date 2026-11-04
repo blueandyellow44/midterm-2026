@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T06:13:10-08:00",
+  "updated_at": "2026-11-04T06:28:11-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -224,15 +224,15 @@
       "updated_at": "2026-11-04T00:21:42-08:00"
     },
     "pa-07-house": {
-      "d_pct": 56.05,
-      "r_pct": 43.95,
+      "d_pct": 56.09,
+      "r_pct": 43.91,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/pennsylvania-us-house-results/#7",
-      "updated_at": "2026-11-04T01:27:49-08:00"
+      "updated_at": "2026-11-04T06:28:11-08:00"
     },
     "pa-08-house": {
       "d_pct": 54.37,
@@ -1120,13 +1120,13 @@
       },
       {
         "race": "2026-PA-07-HOUSE",
-        "count": 12.1,
+        "count": 12.18,
         "polls": 5.1203,
         "undertow": 8.0788,
-        "implied_miss": 5.9571,
-        "polls_miss_toward_d": 6.9797,
-        "polls_error": 6.9797,
-        "undertow_error": 4.0212
+        "implied_miss": 6.0371,
+        "polls_miss_toward_d": 7.0597,
+        "polls_error": 7.0597,
+        "undertow_error": 4.1012
       },
       {
         "race": "2026-PA-08-HOUSE",
@@ -1249,12 +1249,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.3345,
-    "implied_miss_se": 0.609,
+    "implied_miss": 4.3361,
+    "implied_miss_se": 0.6091,
     "dial_live": true,
-    "polls_mae": 5.0558,
-    "undertow_mae": 3.9011,
-    "polls_miss_mean": 4.4032,
+    "polls_mae": 5.0575,
+    "undertow_mae": 3.9028,
+    "polls_miss_mean": 4.4048,
     "undertow_closer": 32,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
