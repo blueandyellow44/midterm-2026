@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T06:43:16-08:00",
+  "updated_at": "2026-11-04T06:58:12-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -306,10 +306,10 @@
       "other_pct": 3.21,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 98.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-04T04:43:10-08:00"
+      "updated_at": "2026-11-04T06:58:12-08:00"
     },
     "ia-gov": {
       "d_pct": 55.42,
@@ -317,10 +317,10 @@
       "other_pct": 0.13,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 98.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-04T04:43:10-08:00"
+      "updated_at": "2026-11-04T06:58:12-08:00"
     },
     "ia-01-house": {
       "d_pct": 52.74,
@@ -350,10 +350,10 @@
       "other_pct": 0.25,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 97.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-04T04:43:10-08:00"
+      "updated_at": "2026-11-04T06:58:12-08:00"
     },
     "tx-23-house": {
       "d_pct": 52.13,
@@ -466,15 +466,15 @@
       "updated_at": "2026-11-04T06:43:16-08:00"
     },
     "az-02-house": {
-      "d_pct": 49.5,
-      "r_pct": 48.78,
-      "other_pct": 1.72,
+      "d_pct": 49.15,
+      "r_pct": 49.12,
+      "other_pct": 1.73,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 78.0,
+      "reporting_pct": 80.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/arizona-us-house-results/#2",
-      "updated_at": "2026-11-04T03:28:12-08:00"
+      "updated_at": "2026-11-04T06:58:11-08:00"
     },
     "nm-02-house": {
       "d_pct": 58.69,
