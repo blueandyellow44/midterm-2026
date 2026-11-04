@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:58:53-08:00",
+  "updated_at": "2026-11-03T20:59:41-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -323,37 +323,37 @@
       "updated_at": "2026-11-03T20:16:23-08:00"
     },
     "ia-01-house": {
-      "d_pct": 53.55,
-      "r_pct": 42.82,
-      "other_pct": 3.63,
-      "round": "NA",
-      "basis": "full_ballot",
-      "reporting_pct": 84.0,
-      "called": null,
-      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:35:22-08:00"
-    },
-    "ia-02-house": {
-      "d_pct": 49.79,
-      "r_pct": 45.25,
-      "other_pct": 4.96,
-      "round": "NA",
-      "basis": "full_ballot",
-      "reporting_pct": 91.0,
-      "called": null,
-      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:35:22-08:00"
-    },
-    "ia-03-house": {
-      "d_pct": 54.72,
-      "r_pct": 45.02,
-      "other_pct": 0.26,
+      "d_pct": 53.56,
+      "r_pct": 42.73,
+      "other_pct": 3.71,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 87.0,
       "called": null,
       "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:35:22-08:00"
+      "updated_at": "2026-11-03T20:59:41-08:00"
+    },
+    "ia-02-house": {
+      "d_pct": 49.5,
+      "r_pct": 45.53,
+      "other_pct": 4.97,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 93.0,
+      "called": null,
+      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-03T20:59:41-08:00"
+    },
+    "ia-03-house": {
+      "d_pct": 53.9,
+      "r_pct": 45.84,
+      "other_pct": 0.26,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 90.0,
+      "called": null,
+      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-03T20:59:41-08:00"
     },
     "tx-23-house": {
       "d_pct": 52.93,
