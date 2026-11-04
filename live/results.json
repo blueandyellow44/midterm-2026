@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T21:14:41-08:00",
+  "updated_at": "2026-11-03T21:19:41-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -497,6 +497,17 @@
       "called": null,
       "source": "https://nyenr.elections.ny.gov/",
       "updated_at": "2026-11-03T21:14:41-08:00"
+    },
+    "wa-03-house": {
+      "d_pct": 54.96,
+      "r_pct": 44.18,
+      "other_pct": 0.86,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 66.0,
+      "called": null,
+      "source": "https://results.votewa.gov/results/public/washington/elections/20261103",
+      "updated_at": "2026-11-03T21:19:41-08:00"
     }
   },
   "derived": {
