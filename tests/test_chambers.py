@@ -125,7 +125,7 @@ class ElectionNight(unittest.TestCase):
 
     def test_implied_miss_inverts_the_dial_arithmetic(self):
         # AA: count +10 = 2 + m - 0.5 + 0.5 -> m = 8; BB: count -1 = -3 + m -> m = 2; CC: called, count +4 = 1 + m -> m = 3
-        live = {'aa-sen': self.c(55, 45), 'bb-sen': self.c(49.5, 50.5), 'cc-sen': self.c(52, 48, rep=40, called='D')}
+        live = {'aa-sen': self.c(55, 45), 'bb-sen': self.c(49.5, 50.5), 'cc-sen': self.c(52, 48, rep=85, called='D')}
         out = weight.live_miss(self.SIG, live, self.slug)
         self.assertEqual(out['settled'], 3)
         self.assertAlmostEqual(out['implied_miss'], (8 + 2 + 3) / 3, places=3)
@@ -133,6 +133,13 @@ class ElectionNight(unittest.TestCase):
         self.assertAlmostEqual(out['polls_mae'], (8 + 2 + 3) / 3, places=3)
         self.assertAlmostEqual(out['undertow_mae'], (6 + 0 + 1) / 3, places=3)
         self.assertEqual((out['undertow_closer'], out['polls_closer']), (3, 0))
+
+    def test_an_early_call_does_not_settle(self):
+        # Max, 2026-11-03: Georgia was called at 37% counted; a call settles a race only once 80% is counted.
+        out = weight.live_miss(self.SIG, {'cc-sen': self.c(52, 48, rep=40, called='D')}, self.slug)
+        self.assertEqual(out['settled'], 0)
+        out = weight.live_miss(self.SIG, {'cc-sen': self.c(52, 48, rep=80, called='D')}, self.slug)
+        self.assertEqual(out['settled'], 1)
 
     def test_two_races_do_not_set_the_dial(self):
         out = weight.live_miss(self.SIG, {'aa-sen': self.c(55, 45), 'bb-sen': self.c(49.5, 50.5)}, self.slug)
