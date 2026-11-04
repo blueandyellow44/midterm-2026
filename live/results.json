@@ -1,31 +1,77 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T17:01:51-08:00",
+  "updated_at": "2026-11-03T17:57:16-08:00",
   "races": {
     "ga-sen": {
-      "d_pct": 61.78,
-      "r_pct": 38.22,
+      "d_pct": 60.49,
+      "r_pct": 39.51,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 46.0,
+      "reporting_pct": 66.0,
       "called": "D",
       "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
-      "updated_at": "2026-11-03T17:01:51-08:00"
+      "updated_at": "2026-11-03T17:57:16-08:00"
+    },
+    "ga-gov": {
+      "d_pct": 56.2,
+      "r_pct": 43.8,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 67.0,
+      "called": null,
+      "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+      "updated_at": "2026-11-03T17:57:16-08:00"
+    },
+    "nc-sen": {
+      "d_pct": 61.92,
+      "r_pct": 36.25,
+      "other_pct": 1.82,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 69.0,
+      "called": null,
+      "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1383",
+      "updated_at": "2026-11-03T17:57:16-08:00"
+    },
+    "fl-sen-special": {
+      "d_pct": 48.0,
+      "r_pct": 50.87,
+      "other_pct": 1.14,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 97.0,
+      "called": "R",
+      "source": "https://floridaelectionwatch.gov/FederalOffices/USSenator",
+      "updated_at": "2026-11-03T17:57:16-08:00"
     }
   },
   "derived": {
-    "settled": 0,
+    "settled": 1,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
-    "races": [],
-    "implied_miss": null,
+    "races": [
+      {
+        "race": "2026-FL-SEN-SPECIAL",
+        "count": -2.87,
+        "polls": -4.9466,
+        "undertow": -2.6942,
+        "implied_miss": 1.7601,
+        "polls_miss_toward_d": 2.0766,
+        "polls_error": 2.0766,
+        "undertow_error": 0.1758
+      }
+    ],
+    "implied_miss": 1.7601,
     "implied_miss_se": null,
     "dial_live": false,
-    "polls_mae": null,
-    "undertow_mae": null,
-    "polls_miss_mean": null,
+    "polls_mae": 2.0766,
+    "undertow_mae": 0.1758,
+    "polls_miss_mean": 2.0766,
+    "undertow_closer": 1,
+    "polls_closer": 0,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
