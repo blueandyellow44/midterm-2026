@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T08:43:10-08:00",
+  "updated_at": "2026-11-04T08:58:20-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -295,10 +295,10 @@
       "other_pct": 1.93,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 97.0,
+      "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/texas-us-senate-results/",
-      "updated_at": "2026-11-04T07:13:17-08:00"
+      "updated_at": "2026-11-04T08:58:20-08:00"
     },
     "ia-sen": {
       "d_pct": 50.45,
@@ -576,15 +576,15 @@
       "updated_at": "2026-11-04T08:28:11-08:00"
     },
     "me-sen": {
-      "d_pct": 53.67,
-      "r_pct": 46.28,
-      "other_pct": 0.05,
+      "d_pct": 53.79,
+      "r_pct": 46.15,
+      "other_pct": 0.06,
       "round": "FIRST",
       "basis": "full_ballot",
-      "reporting_pct": 87.0,
+      "reporting_pct": 91.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/maine-us-senate-results/",
-      "updated_at": "2026-11-04T08:43:10-08:00"
+      "updated_at": "2026-11-04T08:58:20-08:00"
     },
     "ms-sen": {
       "d_pct": 48.95,
@@ -631,15 +631,15 @@
       "updated_at": "2026-11-04T00:21:41-08:00"
     },
     "me-02-house": {
-      "d_pct": 50.07,
-      "r_pct": 49.88,
+      "d_pct": 50.02,
+      "r_pct": 49.93,
       "other_pct": 0.05,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 87.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/maine-us-house-results/#2",
-      "updated_at": "2026-11-04T08:43:10-08:00"
+      "updated_at": "2026-11-04T08:58:20-08:00"
     },
     "mi-04-house": {
       "d_pct": 50.26,
@@ -910,13 +910,13 @@
       },
       {
         "race": "2026-ME-SEN",
-        "count": 7.39,
+        "count": 7.64,
         "polls": 4.292,
         "undertow": 7.4476,
-        "implied_miss": 1.8783,
-        "polls_miss_toward_d": 3.098,
-        "polls_error": 3.098,
-        "undertow_error": 0.0576
+        "implied_miss": 2.1283,
+        "polls_miss_toward_d": 3.348,
+        "polls_error": 3.348,
+        "undertow_error": 0.1924
       },
       {
         "race": "2026-MI-04-HOUSE",
@@ -1249,12 +1249,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.3205,
-    "implied_miss_se": 0.6094,
+    "implied_miss": 4.3257,
+    "implied_miss_se": 0.609,
     "dial_live": true,
-    "polls_mae": 5.0465,
-    "undertow_mae": 3.8917,
-    "polls_miss_mean": 4.3892,
+    "polls_mae": 5.0517,
+    "undertow_mae": 3.8945,
+    "polls_miss_mean": 4.3944,
     "undertow_closer": 32,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
