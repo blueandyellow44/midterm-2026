@@ -1,7 +1,7 @@
 import { surname, pageShare } from '@/lib/format';
 import type { Metadata } from 'next';
 import { races, derived } from '@/lib/data';
-import { loadLive, settled, SETTLED_REPORTING } from '@/lib/live';
+import { loadLive, settled, SETTLED_REPORTING, CALLED_REPORTING } from '@/lib/live';
 import { PageTitle } from '@/components/UI';
 import { Signup } from '@/components/Signup';
 import { MarginTrack } from '@/components/Console';
@@ -27,7 +27,7 @@ export default function Scoreboard() {
   const ours = done.filter(x => x.winner === 'undertow').length, theirs = done.filter(x => x.winner === 'polls').length;
   const started = Object.keys(live.races).length > 0;
   return <>
-    <PageTitle kicker="Election night · November 3" title="The polls against Undertow."><p>Each race compares the polling average and my number with the count as it comes in. A race joins the tally once it is called or {SETTLED_REPORTING}% counted. Counts are unofficial, entered by hand from each state's official results page as shares of all votes cast, and linked on every row. Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages. My numbers are from {new Date(derived.analytical_as_of).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric' })}.</p></PageTitle>
+    <PageTitle kicker="Election night · November 3" title="The polls against Undertow."><p>Each race compares the polling average and my number with the count as it comes in. A race joins the tally once it is called and {CALLED_REPORTING}% counted, or {SETTLED_REPORTING}% counted; an early call stays out until then, since the first ballots counted can lean hard one way. Counts are unofficial, entered by hand from each state's official results page as shares of all votes cast, and linked on every row. Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages. My numbers are from {new Date(derived.analytical_as_of).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric' })}.</p></PageTitle>
     <section className="scoreboard-tally" aria-live="polite">
       {started ? <><p className="tally-line"><strong>Undertow closer in {ours}</strong> · polls closer in {theirs} · {done.length} of {rows.length} races settled</p><p className="muted text-sm">Last updated {live.updated_at ? new Date(live.updated_at).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' Pacific' : 'NA'}.</p></>
         : <p className="tally-line">Counting starts the evening of November 3. Until then, this page shows the numbers the night will test.</p>}

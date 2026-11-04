@@ -808,9 +808,12 @@ def seat_side(margin: float | None) -> str | None:
 # ----------------------------------------------------------------------------- election night
 # Max, 2026-10-28 ("Do it" to the election-night plan): as races are counted, each settled race implies a national miss,
 # the dial value m at which the race's Undertow arithmetic (polls + m + state adjustment + spending + early vote) equals
-# the count. Their mean sets the dial for every race still counting and for the chamber projections. Settled = called or
-# at least LIVE_SETTLED_REPORTING percent counted, the scoreboard's own rule (lib/live.ts SETTLED_REPORTING).
+# the count. Their mean sets the dial for every race still counting and for the chamber projections. Settled = called with
+# at least LIVE_CALLED_REPORTING percent counted, or LIVE_SETTLED_REPORTING percent counted either way, the scoreboard's own
+# rule (lib/live.ts). Max, 2026-11-03: a race called at 37% counted (Georgia Senate, mostly early vote) implied a 14-point
+# miss, so a call alone no longer settles a race: "Called and 80%+ counted".
 LIVE_SETTLED_REPORTING = 95.0
+LIVE_CALLED_REPORTING = 80.0
 LIVE_MIN_RACES = 3   # below this the dial stays at the bet: one or two races say little about a national miss
 
 
@@ -821,7 +824,8 @@ def live_miss(per_race: dict, live_races: dict, slug_of) -> dict:
         c = (live_races or {}).get(slug_of(race))
         if not c or sig.get("adjusted_margin") is None or sig.get("polling_margin") is None:
             continue
-        if not (c.get("called") in ("D", "R") or (num(c.get("reporting_pct")) or 0) >= LIVE_SETTLED_REPORTING):
+        rep = num(c.get("reporting_pct")) or 0
+        if not ((c.get("called") in ("D", "R") and rep >= LIVE_CALLED_REPORTING) or rep >= LIVE_SETTLED_REPORTING):
             continue
         count = num(c["d_pct"]) - num(c["r_pct"])
         terms = (num((sig.get("polling_error") or {}).get("state_adjustment")) or 0.0) + (sig.get("delta_spending") or 0.0) + (sig.get("delta_early_vote") or 0.0) + (sig.get("delta_partisan") or 0.0)
@@ -829,7 +833,7 @@ def live_miss(per_race: dict, live_races: dict, slug_of) -> dict:
                      "implied_miss": r4(count - sig["polling_margin"] - terms), "polls_miss_toward_d": r4(count - sig["polling_margin"]),
                      "polls_error": r4(abs(count - sig["polling_margin"])), "undertow_error": r4(abs(count - sig["adjusted_margin"]))})
     n = len(used)
-    out = {"settled": n, "min_races": LIVE_MIN_RACES, "settled_rule": f"called, or {LIVE_SETTLED_REPORTING:g}% counted", "races": used}
+    out = {"settled": n, "min_races": LIVE_MIN_RACES, "settled_rule": f"called and {LIVE_CALLED_REPORTING:g}% counted, or {LIVE_SETTLED_REPORTING:g}% counted", "races": used}
     if not n:
         return {**out, "implied_miss": None, "implied_miss_se": None, "dial_live": False, "polls_mae": None, "undertow_mae": None, "polls_miss_mean": None}
     vals = [u["implied_miss"] for u in used]

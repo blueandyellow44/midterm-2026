@@ -27,6 +27,8 @@ export function loadLive(): Live {
   return { updated_at: raw.updated_at ?? null, races: raw.races, derived: d };
 }
 
-// A race counts toward the tally once it is called or nearly fully counted.
+// A race counts toward the tally once it is called and mostly counted, or nearly fully counted either way (Max, 2026-11-03:
+// "Called and 80%+ counted"; a call at 37% counted is mostly early vote). Same rule as analysis/weight.py live_miss.
 export const SETTLED_REPORTING = 95;
-export const settled = (r: LiveRace) => r.called !== null || r.reporting_pct >= SETTLED_REPORTING;
+export const CALLED_REPORTING = 80;
+export const settled = (r: LiveRace) => (r.called !== null && r.reporting_pct >= CALLED_REPORTING) || r.reporting_pct >= SETTLED_REPORTING;
