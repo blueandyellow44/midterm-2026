@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:00:59-08:00",
+  "updated_at": "2026-11-03T20:13:30-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -125,15 +125,15 @@
       "updated_at": "2026-11-03T18:20:57-08:00"
     },
     "oh-sen-special": {
-      "d_pct": 48.53,
-      "r_pct": 46.6,
+      "d_pct": 48.63,
+      "r_pct": 46.5,
       "other_pct": 4.87,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 86.0,
-      "called": null,
+      "reporting_pct": 87.0,
+      "called": "D",
       "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-03T19:58:39-08:00"
+      "updated_at": "2026-11-03T20:13:30-08:00"
     },
     "oh-gov": {
       "d_pct": 50.79,
@@ -258,7 +258,7 @@
     }
   },
   "derived": {
-    "settled": 16,
+    "settled": 17,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -383,6 +383,16 @@
         "undertow_error": 0.6699
       },
       {
+        "race": "2026-OH-SEN-SPECIAL",
+        "count": 2.13,
+        "polls": 2.6078,
+        "undertow": 3.9361,
+        "implied_miss": 0.1297,
+        "polls_miss_toward_d": -0.4778,
+        "polls_error": 0.4778,
+        "undertow_error": 1.8061
+      },
+      {
         "race": "2026-PA-07-HOUSE",
         "count": 12.96,
         "polls": 5.1203,
@@ -423,14 +433,14 @@
         "undertow_error": 1.4225
       }
     ],
-    "implied_miss": 4.6999,
-    "implied_miss_se": 0.7757,
+    "implied_miss": 4.431,
+    "implied_miss_se": 0.7767,
     "dial_live": true,
-    "polls_mae": 5.0056,
-    "undertow_mae": 3.1981,
-    "polls_miss_mean": 4.9624,
+    "polls_mae": 4.7393,
+    "undertow_mae": 3.1162,
+    "polls_miss_mean": 4.6424,
     "undertow_closer": 13,
-    "polls_closer": 2,
+    "polls_closer": 3,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
