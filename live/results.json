@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T00:04:57-08:00",
+  "updated_at": "2026-11-04T00:06:18-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.02,
@@ -180,26 +180,26 @@
       "updated_at": "2026-11-03T19:58:39-08:00"
     },
     "sc-sen": {
-      "d_pct": 50.6,
-      "r_pct": 47.21,
-      "other_pct": 2.2,
+      "d_pct": 51.13,
+      "r_pct": 46.65,
+      "other_pct": 2.22,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 93.0,
+      "reporting_pct": 99.0,
       "called": "D",
-      "source": "https://www.enr-scvotes.org/SC/127300/web.345435/#/summary",
-      "updated_at": "2026-11-03T19:43:45-08:00"
+      "source": "https://results.enr.clarityelections.com/SC/127300/web.345435/#/summary",
+      "updated_at": "2026-11-04T00:06:18-08:00"
     },
     "sc-01-house": {
-      "d_pct": 49.52,
-      "r_pct": 48.78,
-      "other_pct": 1.7,
+      "d_pct": 49.65,
+      "r_pct": 48.64,
+      "other_pct": 1.71,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": null,
-      "source": "https://www.enr-scvotes.org/SC/127300/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:31:01-08:00"
+      "source": "https://results.enr.clarityelections.com/SC/127300/web.345435/#/summary",
+      "updated_at": "2026-11-04T00:06:18-08:00"
     },
     "ks-sen": {
       "d_pct": 50.93,
@@ -477,15 +477,15 @@
       "updated_at": "2026-11-03T20:49:44-08:00"
     },
     "nm-02-house": {
-      "d_pct": 57.87,
-      "r_pct": 42.13,
+      "d_pct": 58.69,
+      "r_pct": 41.31,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 80.0,
+      "reporting_pct": 98.0,
       "called": "D",
       "source": "https://electionresults.sos.nm.gov/resultsSW.aspx?type=FED&map=CTY",
-      "updated_at": "2026-11-03T21:14:41-08:00"
+      "updated_at": "2026-11-04T00:06:18-08:00"
     },
     "ny-21-house": {
       "d_pct": 48.79,
@@ -721,13 +721,13 @@
       },
       {
         "race": "2026-NM-02-HOUSE",
-        "count": 15.74,
+        "count": 17.38,
         "polls": 3.9466,
         "undertow": 8.0797,
-        "implied_miss": 9.5963,
-        "polls_miss_toward_d": 11.7934,
-        "polls_error": 11.7934,
-        "undertow_error": 7.6603
+        "implied_miss": 11.2363,
+        "polls_miss_toward_d": 13.4334,
+        "polls_error": 13.4334,
+        "undertow_error": 9.3003
       },
       {
         "race": "2026-OH-07-HOUSE",
@@ -821,23 +821,23 @@
       },
       {
         "race": "2026-SC-01-HOUSE",
-        "count": 0.74,
+        "count": 1.01,
         "polls": 0.8149,
         "undertow": 4.1114,
-        "implied_miss": -1.4355,
-        "polls_miss_toward_d": -0.0749,
-        "polls_error": 0.0749,
-        "undertow_error": 3.3714
+        "implied_miss": -1.1655,
+        "polls_miss_toward_d": 0.1951,
+        "polls_error": 0.1951,
+        "undertow_error": 3.1014
       },
       {
         "race": "2026-SC-SEN",
-        "count": 3.39,
+        "count": 4.48,
         "polls": -0.9738,
         "undertow": 1.9675,
-        "implied_miss": 3.3584,
-        "polls_miss_toward_d": 4.3638,
-        "polls_error": 4.3638,
-        "undertow_error": 1.4225
+        "implied_miss": 4.4484,
+        "polls_miss_toward_d": 5.4538,
+        "polls_error": 5.4538,
+        "undertow_error": 2.5125
       },
       {
         "race": "2026-TX-15-HOUSE",
@@ -900,12 +900,12 @@
         "undertow_error": 2.9675
       }
     ],
-    "implied_miss": 4.6598,
-    "implied_miss_se": 0.7492,
+    "implied_miss": 4.7481,
+    "implied_miss_se": 0.7573,
     "dial_live": true,
-    "polls_mae": 5.19,
-    "undertow_mae": 4.0978,
-    "polls_miss_mean": 4.5782,
+    "polls_mae": 5.2738,
+    "undertow_mae": 4.1701,
+    "polls_miss_mean": 4.6664,
     "undertow_closer": 23,
     "polls_closer": 10,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"

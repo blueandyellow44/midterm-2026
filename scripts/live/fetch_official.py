@@ -36,7 +36,7 @@ def clarity(out):
         ver = get(f'{base}/current_ver.txt').strip()
         for c in json.loads(get(f'{base}/{ver}/json/en/summary.json')):
             for pat, slug in want.items():
-                if re.search(pat, c['C'].strip()) and slug not in out:
+                if re.search(pat, ' '.join(c['C'].split())) and slug not in out:  # the feeds double-space some names
                     s = shares(list(zip(c['P'], c['V'])))
                     if s: out[slug] = (*s, f'{base}/web.345435/#/summary', f"{c['C']} PR {c.get('PR')}/{c.get('TP')}")
 
