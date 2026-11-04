@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T18:25:01-08:00",
+  "updated_at": "2026-11-03T18:39:39-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.86,
@@ -145,6 +145,39 @@
       "called": null,
       "source": "https://liveresults.ohiosos.gov/",
       "updated_at": "2026-11-03T18:25:01-08:00"
+    },
+    "va-01-house": {
+      "d_pct": 49.33,
+      "r_pct": 50.42,
+      "other_pct": 0.25,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 83.0,
+      "called": null,
+      "source": "https://enr.elections.virginia.gov/results/public/virginia/elections/2026-November-General",
+      "updated_at": "2026-11-03T18:39:39-08:00"
+    },
+    "va-02-house": {
+      "d_pct": 52.6,
+      "r_pct": 45.01,
+      "other_pct": 2.38,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 65.0,
+      "called": null,
+      "source": "https://enr.elections.virginia.gov/results/public/virginia/elections/2026-November-General",
+      "updated_at": "2026-11-03T18:39:39-08:00"
+    },
+    "ky-06-house": {
+      "d_pct": 56.39,
+      "r_pct": 43.61,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 80.0,
+      "called": null,
+      "source": "https://vrsws.sos.ky.gov/liveresults/",
+      "updated_at": "2026-11-03T18:39:39-08:00"
     }
   },
   "derived": {
