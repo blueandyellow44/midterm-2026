@@ -77,6 +77,31 @@ export function nextFriendName(taken: string[]) {
   return `Friend ${k}`;
 }
 
+// Standings fills in the races Undertow has called (Max, 2026-11-03: "Why does standings ask the user to fill in the
+// results?" then "Yes"). A seat's live slug is its id without "2026-", lowercased: the same rule as slug_of in
+// scripts/live/set_result.py. The two control picks have none. The call is the AP's, not the tally's settle rule: the
+// ballot scores who won. A race missing from live/results.json, or with no call, is not called, never a loss for either side.
+export const liveSlug = (id: string) => (id.startsWith('2026-') ? id.slice(5).toLowerCase() : null);
+export function siteCalls(races: BallotRace[], live: Record<string, { called: Side | null } | undefined>): Record<string, Side> {
+  const out: Record<string, Side> = {};
+  for (const r of races) {
+    const slug = liveSlug(r.id), c = slug ? live[slug]?.called : null;
+    if (c === 'D' || c === 'R') out[r.id] = c;
+  }
+  return out;
+}
+// Undertow's calls from the count (live/results.json) plus hand-entered AP calls (live/calls.json) for races with no
+// official count to enter. Both name the AP's winner, so a disagreement is a data-entry error: it fails the build rather
+// than lock either winner (scripts/live/set_call.py refuses to write one, too).
+export function mergeCalls(fromResults: Record<string, Side>, fromCalls: Record<string, Side>): Record<string, Side> {
+  for (const [id, w] of Object.entries(fromCalls)) {
+    if (fromResults[id] && fromResults[id] !== w) throw new Error(`Ballot: ${id} is called ${fromResults[id]} in live/results.json but ${w} in live/calls.json`);
+  }
+  return { ...fromCalls, ...fromResults };
+}
+// A site call always wins over a stored tap; taps fill only the races the site has not called.
+export const effectiveResults = (calls: Record<string, Side>, taps: Record<string, Side>): Record<string, Side> => ({ ...taps, ...calls });
+
 export function score(races: BallotRace[], picks: string, results: Record<string, Side>) {
   return races.reduce((a, r, i) => (results[r.id] && picks[i] === results[r.id] ? a + POINTS[r.cat] : a), 0);
 }
