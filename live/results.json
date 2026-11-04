@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:36:32-08:00",
+  "updated_at": "2026-11-03T20:40:54-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -307,9 +307,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 91.0,
-      "called": null,
+      "called": "D",
       "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:35:22-08:00"
+      "updated_at": "2026-11-03T20:40:54-08:00"
     },
     "ia-gov": {
       "d_pct": 55.82,
@@ -379,7 +379,7 @@
     }
   },
   "derived": {
-    "settled": 23,
+    "settled": 24,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -462,6 +462,16 @@
         "polls_miss_toward_d": 7.5225,
         "polls_error": 7.5225,
         "undertow_error": 5.0976
+      },
+      {
+        "race": "2026-IA-SEN",
+        "count": 5.06,
+        "polls": 0.2616,
+        "undertow": -1.3694,
+        "implied_miss": 8.3653,
+        "polls_miss_toward_d": 4.7984,
+        "polls_error": 4.7984,
+        "undertow_error": 6.4294
       },
       {
         "race": "2026-KS-SEN",
@@ -614,14 +624,14 @@
         "undertow_error": 2.9201
       }
     ],
-    "implied_miss": 3.5788,
-    "implied_miss_se": 0.7748,
+    "implied_miss": 3.7782,
+    "implied_miss_se": 0.7681,
     "dial_live": true,
-    "polls_mae": 4.0,
-    "undertow_mae": 3.3136,
-    "polls_miss_mean": 3.6148,
+    "polls_mae": 4.0333,
+    "undertow_mae": 3.4434,
+    "polls_miss_mean": 3.6642,
     "undertow_closer": 14,
-    "polls_closer": 8,
+    "polls_closer": 9,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
