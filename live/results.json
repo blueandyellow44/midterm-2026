@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T19:14:28-08:00",
+  "updated_at": "2026-11-03T19:19:20-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -26,15 +26,15 @@
       "updated_at": "2026-11-03T19:14:28-08:00"
     },
     "nc-sen": {
-      "d_pct": 59.73,
-      "r_pct": 38.23,
-      "other_pct": 2.05,
+      "d_pct": 58.27,
+      "r_pct": 39.58,
+      "other_pct": 2.16,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 82.0,
+      "reporting_pct": 96.0,
       "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1383",
-      "updated_at": "2026-11-03T18:25:00-08:00"
+      "updated_at": "2026-11-03T19:19:19-08:00"
     },
     "fl-sen-special": {
       "d_pct": 48.0,
@@ -200,6 +200,17 @@
       "called": null,
       "source": "https://www.enr-scvotes.org/SC/127300/web.345435/#/summary",
       "updated_at": "2026-11-03T19:03:41-08:00"
+    },
+    "ks-sen": {
+      "d_pct": 55.13,
+      "r_pct": 42.14,
+      "other_pct": 2.73,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 69.0,
+      "called": null,
+      "source": "https://ent.sos.ks.gov/kssos_ent.html",
+      "updated_at": "2026-11-03T19:19:20-08:00"
     }
   },
   "derived": {
@@ -299,21 +310,21 @@
       },
       {
         "race": "2026-NC-SEN",
-        "count": 21.5,
+        "count": 18.69,
         "polls": 9.9346,
         "undertow": 15.0826,
-        "implied_miss": 8.3533,
-        "polls_miss_toward_d": 11.5654,
-        "polls_error": 11.5654,
-        "undertow_error": 6.4174
+        "implied_miss": 5.5433,
+        "polls_miss_toward_d": 8.7554,
+        "polls_error": 8.7554,
+        "undertow_error": 3.6074
       }
     ],
-    "implied_miss": 4.7389,
-    "implied_miss_se": 1.1925,
+    "implied_miss": 4.4579,
+    "implied_miss_se": 1.1293,
     "dial_live": true,
-    "polls_mae": 5.1715,
-    "undertow_mae": 3.3636,
-    "polls_miss_mean": 5.1024,
+    "polls_mae": 4.8905,
+    "undertow_mae": 3.0826,
+    "polls_miss_mean": 4.8214,
     "undertow_closer": 9,
     "polls_closer": 1,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
