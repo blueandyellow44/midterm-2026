@@ -50,6 +50,11 @@
       "winner": "D",
       "called_at": "2026-11-03T22:58:48-08:00",
       "source": "https://apnews.com/projects/elections-2026/michigan-governor-results/"
+    },
+    "2026-MI-SEN": {
+      "winner": "D",
+      "called_at": "2026-11-03T23:28:59-08:00",
+      "source": "https://apnews.com/projects/elections-2026/michigan-us-senate-results/"
     }
   }
 }
