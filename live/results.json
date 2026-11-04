@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T21:32:16-08:00",
+  "updated_at": "2026-11-03T21:43:19-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -213,15 +213,15 @@
       "updated_at": "2026-11-03T20:31:01-08:00"
     },
     "pa-01-house": {
-      "d_pct": 52.79,
-      "r_pct": 47.21,
+      "d_pct": 52.71,
+      "r_pct": 47.29,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 91.0,
-      "called": null,
+      "called": "D",
       "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
-      "updated_at": "2026-11-03T21:13:36-08:00"
+      "updated_at": "2026-11-03T21:43:19-08:00"
     },
     "pa-07-house": {
       "d_pct": 56.48,
@@ -411,15 +411,15 @@
       "updated_at": "2026-11-03T20:43:28-08:00"
     },
     "mn-01-house": {
-      "d_pct": 48.88,
-      "r_pct": 51.0,
+      "d_pct": 49.58,
+      "r_pct": 50.3,
       "other_pct": 0.12,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 77.0,
+      "reporting_pct": 81.0,
       "called": null,
       "source": "https://electionresults.sos.mn.gov/Results/Index?ersElectionId=201&scenario=USRepresentative&districtId=556",
-      "updated_at": "2026-11-03T21:31:04-08:00"
+      "updated_at": "2026-11-03T21:43:19-08:00"
     },
     "co-08-house": {
       "d_pct": 55.75,
@@ -516,9 +516,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 89.0,
-      "called": null,
+      "called": "D",
       "source": "https://electionresults.sos.state.tx.us/results.html",
-      "updated_at": "2026-11-03T21:32:16-08:00"
+      "updated_at": "2026-11-03T21:43:19-08:00"
     },
     "tx-34-house": {
       "d_pct": 56.91,
@@ -533,7 +533,7 @@
     }
   },
   "derived": {
-    "settled": 27,
+    "settled": 29,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -738,6 +738,16 @@
         "undertow_error": 1.8061
       },
       {
+        "race": "2026-PA-01-HOUSE",
+        "count": 5.42,
+        "polls": 0.8642,
+        "undertow": 3.3136,
+        "implied_miss": 4.0423,
+        "polls_miss_toward_d": 4.5558,
+        "polls_error": 4.5558,
+        "undertow_error": 2.1064
+      },
+      {
         "race": "2026-PA-07-HOUSE",
         "count": 12.96,
         "polls": 5.1203,
@@ -788,6 +798,16 @@
         "undertow_error": 1.4225
       },
       {
+        "race": "2026-TX-15-HOUSE",
+        "count": 23.3,
+        "polls": 7.5542,
+        "undertow": 10.3246,
+        "implied_miss": 14.9112,
+        "polls_miss_toward_d": 15.7458,
+        "polls_error": 15.7458,
+        "undertow_error": 12.9754
+      },
+      {
         "race": "2026-VA-01-HOUSE",
         "count": 1.2,
         "polls": 1.5876,
@@ -808,13 +828,13 @@
         "undertow_error": 0.1425
       }
     ],
-    "implied_miss": 3.6542,
-    "implied_miss_se": 0.7685,
+    "implied_miss": 4.0558,
+    "implied_miss_se": 0.8131,
     "dial_live": true,
-    "polls_mae": 4.3019,
-    "undertow_mae": 3.5475,
-    "polls_miss_mean": 3.5909,
-    "undertow_closer": 16,
+    "polls_mae": 4.7053,
+    "undertow_mae": 3.8229,
+    "polls_miss_mean": 4.0433,
+    "undertow_closer": 18,
     "polls_closer": 10,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
