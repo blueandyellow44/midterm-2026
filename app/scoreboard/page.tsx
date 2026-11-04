@@ -19,15 +19,19 @@ export default function Scoreboard() {
     const s = r.signal; const d = r.heat.candidates.D.candidate; const rep = r.heat.candidates.R.candidate;
     const c = live.races[r.slug];
     const count = c ? c.d_pct - c.r_pct : NaN;
-    const pollErr = c ? Math.abs(s.polling_margin - count) : NaN, ourErr = c ? Math.abs(s.adjusted_margin - count) : NaN;
-    const winner = c && settled(c) ? (Math.abs(pollErr - ourErr) < EVEN ? 'tie' : ourErr < pollErr ? 'undertow' : 'polls') : null;
-    return { r, s, d, rep, c, count, pollErr, ourErr, winner };
+    const pollErr = c && s.polling_margin != null ? Math.abs(s.polling_margin - count) : NaN, ourErr = c && s.adjusted_margin != null ? Math.abs(s.adjusted_margin - count) : NaN;
+    const winner = c && settled(c) && Number.isFinite(pollErr) && Number.isFinite(ourErr) ? (Math.abs(pollErr - ourErr) < EVEN ? 'tie' : ourErr < pollErr ? 'undertow' : 'polls') : null;
+    // An unsettled race still shows which number is closer so far, outside the tally (Max, 2026-11-04: "Do both").
+    const soFar = c && !winner && Number.isFinite(pollErr) && Number.isFinite(ourErr) ? (Math.abs(pollErr - ourErr) < EVEN ? 'Even so far' : `So far: ${ourErr < pollErr ? 'Undertow' : 'Polls'} closer by ${Math.abs(pollErr - ourErr).toFixed(1)}`) : null;
+    // A state with no live official count is entered from the AP's count, labeled on the row (Max, 2026-11-04).
+    const ap = !!c && new URL(c.source).hostname.endsWith('apnews.com');
+    return { r, s, d, rep, c, count, pollErr, ourErr, winner, soFar, ap };
   });
   const done = rows.filter(x => x.winner);
   const ours = done.filter(x => x.winner === 'undertow').length, theirs = done.filter(x => x.winner === 'polls').length;
   const started = Object.keys(live.races).length > 0;
   return <>
-    <PageTitle kicker="Election night · November 3" title="The polls against Undertow."><p>Each race compares the polling average and my number with the count as it comes in. A race joins the tally once it is called and {CALLED_REPORTING}% counted, or {SETTLED_REPORTING}% counted; an early call stays out until then, since the first ballots counted can lean hard one way. Counts are unofficial, entered by hand from each state's official results page as shares of all votes cast, and linked on every row. Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages. My numbers are from {new Date(derived.analytical_as_of).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric' })}.</p></PageTitle>
+    <PageTitle kicker="Election night · November 3" title="The polls against Undertow."><p>Each race compares the polling average and my number with the count as it comes in. A race joins the tally once it is called and {CALLED_REPORTING}% counted, or {SETTLED_REPORTING}% counted; an early call stays out until then, since the first ballots counted can lean hard one way. Counts are unofficial, entered by hand from each state's official results page as shares of all votes cast, and linked on every row. Where a state posts no live count, the row uses the AP's count and says so, until the state's numbers post. A race not yet in the tally shows which number is closer so far. Maine and Alaska use ranked-choice voting; they are scored on the first-round count, the same full-ballot basis as their polling averages. My numbers are from {new Date(derived.analytical_as_of).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric' })}.</p></PageTitle>
     <section className="scoreboard-tally" aria-live="polite">
       {started ? <><p className="tally-line"><strong>Undertow closer in {ours}</strong> · polls closer in {theirs} · {done.length} of {rows.length} races settled</p><p className="muted text-sm">Last updated {live.updated_at ? new Date(live.updated_at).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' }) + ' Pacific' : 'NA'}.</p></>
         : <p className="tally-line">Counting starts the evening of November 3. Until then, this page shows the numbers the night will test.</p>}
@@ -38,8 +42,8 @@ export default function Scoreboard() {
         <td data-label="Status" className="scoreboard-board"><MarginTrack v={Number.isFinite(x.count) ? x.count : x.s.adjusted_margin} tick={x.s.polling_margin}/></td>
         <td data-label="Polls" className={`mono ${cls(x.s.polling_margin)}`}>{fmt(x.s.polling_margin, x.d, x.rep)}</td>
         <td data-label="Undertow" className={`mono ${cls(x.s.adjusted_margin)}`}>{fmt(x.s.adjusted_margin, x.d, x.rep)}</td>
-        <td data-label="Result so far" className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>
-        <td data-label="Which was closer">{x.winner === 'undertow' ? <strong className="accent-text">Undertow, by {(x.pollErr - x.ourErr).toFixed(1)}</strong> : x.winner === 'polls' ? <strong>Polls, by {(x.ourErr - x.pollErr).toFixed(1)}</strong> : x.winner === 'tie' ? 'Even' : x.c ? <span className="muted">Still counting</span> : <span className="muted">Not yet</span>}</td>
+        <td data-label="Result so far" className="mono">{x.c ? <><span className={cls(x.count)}>{fmt(x.count, x.d, x.rep)}</span><small className="muted block"><a href={x.c.source} target="_blank" rel="noopener noreferrer">{x.ap ? 'AP count · ' : ''}{x.c.reporting_pct.toFixed(0)}% counted</a>{x.c.called ? ` · called for ${last(x.c.called === 'D' ? x.d : x.rep)}` : ''}</small></> : <span className="muted">Not yet</span>}</td>
+        <td data-label="Which was closer">{x.winner === 'undertow' ? <strong className="accent-text">Undertow, by {(x.pollErr - x.ourErr).toFixed(1)}</strong> : x.winner === 'polls' ? <strong>Polls, by {(x.ourErr - x.pollErr).toFixed(1)}</strong> : x.winner === 'tie' ? 'Even' : x.soFar ? <span className="muted">{x.soFar}</span> : x.c ? <span className="muted">Still counting</span> : <span className="muted">Not yet</span>}</td>
       </tr>)}
     </tbody></table></div>
     <p className="muted mt-4 text-sm">Closer means nearer to the counted margin between the two candidates. Early counts swing as different kinds of ballots are added, so a race is only scored once it is called or nearly complete. The final grade uses certified results.</p>
