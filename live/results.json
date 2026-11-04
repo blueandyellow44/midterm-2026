@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:45:22-08:00",
+  "updated_at": "2026-11-03T20:48:14-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -431,6 +431,28 @@
       "called": null,
       "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
       "updated_at": "2026-11-03T20:45:22-08:00"
+    },
+    "co-04-house": {
+      "d_pct": 49.66,
+      "r_pct": 47.38,
+      "other_pct": 2.96,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 77.0,
+      "called": null,
+      "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
+      "updated_at": "2026-11-03T20:48:14-08:00"
+    },
+    "co-05-house": {
+      "d_pct": 51.78,
+      "r_pct": 45.19,
+      "other_pct": 3.03,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 70.0,
+      "called": null,
+      "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
+      "updated_at": "2026-11-03T20:48:14-08:00"
     }
   },
   "derived": {
