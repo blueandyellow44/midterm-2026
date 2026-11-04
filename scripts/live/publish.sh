@@ -10,10 +10,7 @@ VITEST="${PUBLISH_VITEST:-npx vitest run}"
 if ! $VITEST > "$log/vitest.log" 2>&1; then echo "STOP: vitest failed (see $log/vitest.log), nothing committed or deployed"; grep -E "FAIL|×" "$log/vitest.log" | head -5; exit 1; fi
 git add live/results.json live/calls.json
 git diff --cached --quiet && { echo "nothing new to publish"; exit 0; }
-git commit -q -m "$msg
-
-Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01LPzG9qPZ3RnuRtDWpF7mxc"
+git commit -q -m "$msg"
 if ! npm run build:cloudflare > "$log/build.log" 2>&1; then echo "STOP: build failed (see $log/build.log), committed $(git rev-parse --short HEAD) but NOT deployed"; exit 1; fi
 if ! SHIP_GUARD_ALLOW=1 npm run deploy > "$log/deploy.log" 2>&1; then echo "STOP: deploy failed (see $log/deploy.log)"; exit 1; fi
 grep "live matches" "$log/deploy.log"
