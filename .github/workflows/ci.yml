@@ -1,0 +1,26 @@
+# Tier-1 gate (Max, 2026-11-04): typecheck and tests on every pull request and on every push to
+# main; the `ci` job is a required status check on that branch. Only steps that passed on
+# 2026-11-04 are here; anything excluded is named in the PR that added this file, never dropped silently.
+# Never edit this file to make a red build pass.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
