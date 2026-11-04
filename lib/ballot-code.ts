@@ -90,6 +90,15 @@ export function siteCalls(races: BallotRace[], live: Record<string, { called: Si
   }
   return out;
 }
+// Undertow's calls from the count (live/results.json) plus hand-entered AP calls (live/calls.json) for races with no
+// official count to enter. Both name the AP's winner, so a disagreement is a data-entry error: it fails the build rather
+// than lock either winner (scripts/live/set_call.py refuses to write one, too).
+export function mergeCalls(fromResults: Record<string, Side>, fromCalls: Record<string, Side>): Record<string, Side> {
+  for (const [id, w] of Object.entries(fromCalls)) {
+    if (fromResults[id] && fromResults[id] !== w) throw new Error(`Ballot: ${id} is called ${fromResults[id]} in live/results.json but ${w} in live/calls.json`);
+  }
+  return { ...fromCalls, ...fromResults };
+}
 // A site call always wins over a stored tap; taps fill only the races the site has not called.
 export const effectiveResults = (calls: Record<string, Side>, taps: Record<string, Side>): Record<string, Side> => ({ ...taps, ...calls });
 

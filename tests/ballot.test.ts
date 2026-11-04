@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, readdirSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { ballotRaces } from '@/lib/ballot';
-import { POINTS, toText, fromText, nextFriendName, score, topScore, liveSlug, siteCalls, effectiveResults, type Side } from '@/lib/ballot-code';
+import { POINTS, toText, fromText, nextFriendName, score, topScore, liveSlug, siteCalls, effectiveResults, mergeCalls, type Side } from '@/lib/ballot-code';
+import { loadCalls } from '@/lib/live-calls';
+import { loadLive } from '@/lib/live';
 import { surname } from '@/lib/format';
 import { readCsv } from '../scripts/bundle.mjs';
 
@@ -106,5 +110,52 @@ describe('standings fills in the races Undertow has called', () => {
   it('keeps site calls when the taps are cleared', () => {
     const calls = { '2026-GA-SEN': 'D', '2026-FL-SEN-SPECIAL': 'R' } as Record<string, Side>;
     expect(effectiveResults(calls, {})).toEqual(calls);
+  });
+});
+
+describe('hand-entered AP calls (live/calls.json) for races with no official count', () => {
+  const ids = new Set(races.map(r => r.id));
+  const dir = mkdtempSync(join(tmpdir(), 'ballot-calls-'));
+  const file = (calls: unknown, name = 'calls.json') => { const f = join(dir, name); writeFileSync(f, JSON.stringify({ schema: '1.0', calls })); return f; };
+  const call = (winner: string, source = 'https://apnews.com/x') => ({ winner, called_at: '2026-11-03T20:15:00-08:00', source });
+  it('ships empty and loads', () => {
+    expect(loadCalls(ids)).toEqual({});
+  });
+  it('adds a hand call to the results calls, and keeps a race neither file has uncalled', () => {
+    const merged = mergeCalls(siteCalls(races, { 'ga-sen': { called: 'D' } }), loadCalls(ids, file({ '2026-NH-SEN': call('D'), '2026-TX-GOV': call('R') })));
+    expect(merged).toEqual({ '2026-GA-SEN': 'D', '2026-NH-SEN': 'D', '2026-TX-GOV': 'R' });
+    expect(merged['2026-WI-GOV']).toBeUndefined();
+  });
+  it('fails the build when live/calls.json contradicts a call in live/results.json, and accepts a matching one', () => {
+    expect(() => mergeCalls({ '2026-GA-SEN': 'D' }, { '2026-GA-SEN': 'R' })).toThrow(/GA-SEN is called D in live\/results.json but R/);
+    expect(mergeCalls({ '2026-GA-SEN': 'D' }, { '2026-GA-SEN': 'D' })).toEqual({ '2026-GA-SEN': 'D' });
+  });
+  it('rejects an id not on the ballot, a bad winner, a non-https source and a bad schema', () => {
+    expect(() => loadCalls(ids, file({ 'nh-sen': call('D') }))).toThrow(/not a ballot race/);
+    expect(() => loadCalls(ids, file({ '2026-PA-GOV': call('D') }))).toThrow(/not a ballot race/);
+    expect(() => loadCalls(ids, file({ '2026-NH-SEN': call('I') }))).toThrow(/bad winner/);
+    expect(() => loadCalls(ids, file({ '2026-NH-SEN': call('D', 'http://x') }))).toThrow(/missing source/);
+    expect(() => loadCalls(ids, file({ '2026-NH-SEN': { ...call('D'), called_at: 'tonight' } }))).toThrow(/called_at/);
+    writeFileSync(join(dir, 'bad.json'), JSON.stringify({ schema: '2.0', calls: {} }));
+    expect(() => loadCalls(ids, join(dir, 'bad.json'))).toThrow(/schema/);
+  });
+  it('takes the same ballot ids as scripts/live/set_call.py', () => {
+    const py = JSON.parse(execFileSync('python3', ['scripts/live/set_call.py', '--list'], { encoding: 'utf8' })) as string[];
+    expect([...py].sort()).toEqual([...ids].sort());
+  });
+  it('never reaches the grade, the dial, the scoreboard or analysis/', () => {
+    // Only the ballot page, its pure helpers, its loader and its CLI may name calls.json or loadCalls.
+    const walk = (d: string): string[] => readdirSync(d).flatMap(n => { const p = join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
+    const readers = ['app', 'components', 'lib', 'analysis', 'scripts'].flatMap(walk).filter(p => /\.(tsx?|mjs|py)$/.test(p))
+      .filter(p => /calls\.json|loadCalls|live-calls/.test(readFileSync(p, 'utf8'))).sort();
+    expect(readers).toEqual(['app/ballot/page.tsx', 'lib/ballot-code.ts', 'lib/live-calls.ts', 'scripts/live/set_call.py']);
+    // And the live grade read from live/results.json is the same with a populated calls file beside it.
+    const before = loadLive();
+    const f = 'live/calls.json', saved = readFileSync(f, 'utf8');
+    try {
+      writeFileSync(f, JSON.stringify({ schema: '1.0', calls: { '2026-NH-SEN': call('D'), '2026-WI-GOV': call('R'), 'SENATE-CONTROL': call('D') } }));
+      expect(loadLive()).toEqual(before);
+      expect(loadLive().derived).toEqual(before.derived);
+    } finally { writeFileSync(f, saved); }
   });
 });
