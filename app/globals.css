@@ -560,6 +560,9 @@ html[data-view=mobile] body:has(.wall-dialbar) {padding-bottom:calc(150px + env(
 .ballot-results .ballot-pick[aria-pressed=true] .ballot-inc {color:var(--muted);}
 .ballot-results .ballot-pick[aria-pressed=true] .ballot-dot {border-color:var(--ink);}
 .ballot-results .ballot-pick[aria-pressed=true] .ballot-dot::after {background:var(--ink);}
+/* A race Undertow has called is locked: the winner stays marked, the loser fades. */
+.ballot-pick:disabled {cursor:default;}
+.ballot-results .ballot-pick:disabled[aria-pressed=false] {opacity:.5;}
 .ballot-results-kicker {margin:6px 0 10px;}
 .ballot-panel {margin-bottom:18px;}
 .ballot-panel h3 {margin:0 0 4px;font-family:var(--font-num);font-weight:800;font-size:21px;letter-spacing:.05em;text-transform:uppercase;}
