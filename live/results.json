@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T23:43:27-08:00",
+  "updated_at": "2026-11-04T00:00:35-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -26,15 +26,15 @@
       "updated_at": "2026-11-03T19:14:28-08:00"
     },
     "nc-sen": {
-      "d_pct": 58.27,
-      "r_pct": 39.58,
-      "other_pct": 2.16,
+      "d_pct": 58.7,
+      "r_pct": 39.1,
+      "other_pct": 2.2,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 96.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1383",
-      "updated_at": "2026-11-03T19:19:19-08:00"
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "fl-sen-special": {
       "d_pct": 48.0,
@@ -103,37 +103,37 @@
       "updated_at": "2026-11-03T18:20:57-08:00"
     },
     "nc-01-house": {
-      "d_pct": 49.48,
-      "r_pct": 47.31,
+      "d_pct": 49.64,
+      "r_pct": 47.15,
       "other_pct": 3.21,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 95.0,
       "called": null,
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1369",
-      "updated_at": "2026-11-03T20:31:01-08:00"
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "nc-11-house": {
-      "d_pct": 58.88,
-      "r_pct": 39.7,
-      "other_pct": 1.42,
+      "d_pct": 57.14,
+      "r_pct": 41.3,
+      "other_pct": 1.56,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 88.0,
       "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1379",
-      "updated_at": "2026-11-03T18:20:57-08:00"
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "oh-sen-special": {
-      "d_pct": 48.63,
-      "r_pct": 46.5,
-      "other_pct": 4.87,
+      "d_pct": 49.67,
+      "r_pct": 45.48,
+      "other_pct": 4.85,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 87.0,
+      "reporting_pct": 97.0,
       "called": "D",
       "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-03T20:13:30-08:00"
+      "updated_at": "2026-11-03T23:59:42-08:00"
     },
     "oh-gov": {
       "d_pct": 50.79,
@@ -301,37 +301,37 @@
       "updated_at": "2026-11-03T20:15:10-08:00"
     },
     "ia-sen": {
-      "d_pct": 50.95,
-      "r_pct": 45.89,
-      "other_pct": 3.16,
+      "d_pct": 50.41,
+      "r_pct": 46.37,
+      "other_pct": 3.22,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 91.0,
+      "reporting_pct": 97.0,
       "called": "D",
-      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:40:54-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "ia-gov": {
-      "d_pct": 55.82,
-      "r_pct": 44.06,
-      "other_pct": 0.12,
+      "d_pct": 55.38,
+      "r_pct": 44.49,
+      "other_pct": 0.13,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 76.0,
+      "reporting_pct": 97.0,
       "called": "D",
-      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:16:23-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "ia-01-house": {
-      "d_pct": 53.56,
-      "r_pct": 42.73,
-      "other_pct": 3.71,
+      "d_pct": 52.74,
+      "r_pct": 43.51,
+      "other_pct": 3.75,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 87.0,
       "called": "D",
-      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T21:13:36-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "ia-02-house": {
       "d_pct": 49.5,
@@ -345,15 +345,15 @@
       "updated_at": "2026-11-03T21:31:04-08:00"
     },
     "ia-03-house": {
-      "d_pct": 53.9,
-      "r_pct": 45.84,
-      "other_pct": 0.26,
+      "d_pct": 53.47,
+      "r_pct": 46.28,
+      "other_pct": 0.25,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 90.0,
       "called": null,
-      "source": "https://electionresults.iowa.gov/IA/127077/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:59:41-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "tx-23-house": {
       "d_pct": 52.15,
@@ -433,15 +433,15 @@
       "updated_at": "2026-11-03T23:13:39-08:00"
     },
     "co-04-house": {
-      "d_pct": 49.26,
+      "d_pct": 49.15,
       "r_pct": 47.73,
-      "other_pct": 3.01,
+      "other_pct": 3.12,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 80.0,
       "called": null,
       "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
-      "updated_at": "2026-11-03T23:13:39-08:00"
+      "updated_at": "2026-11-04T00:00:35-08:00"
     },
     "co-05-house": {
       "d_pct": 51.6,
@@ -555,7 +555,7 @@
     }
   },
   "derived": {
-    "settled": 32,
+    "settled": 33,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -641,23 +641,33 @@
       },
       {
         "race": "2026-IA-01-HOUSE",
-        "count": 10.83,
+        "count": 9.23,
         "polls": 16.0,
         "undertow": 16.1687,
-        "implied_miss": -3.4028,
-        "polls_miss_toward_d": -5.17,
-        "polls_error": 5.17,
-        "undertow_error": 5.3387
+        "implied_miss": -5.0028,
+        "polls_miss_toward_d": -6.77,
+        "polls_error": 6.77,
+        "undertow_error": 6.9387
+      },
+      {
+        "race": "2026-IA-GOV",
+        "count": 10.89,
+        "polls": 7.3605,
+        "undertow": 7.0437,
+        "implied_miss": 5.7823,
+        "polls_miss_toward_d": 3.5295,
+        "polls_error": 3.5295,
+        "undertow_error": 3.8463
       },
       {
         "race": "2026-IA-SEN",
-        "count": 5.06,
+        "count": 4.04,
         "polls": 0.2616,
         "undertow": -1.3694,
-        "implied_miss": 8.3653,
-        "polls_miss_toward_d": 4.7984,
-        "polls_error": 4.7984,
-        "undertow_error": 6.4294
+        "implied_miss": 7.3453,
+        "polls_miss_toward_d": 3.7784,
+        "polls_error": 3.7784,
+        "undertow_error": 5.4094
       },
       {
         "race": "2026-KS-SEN",
@@ -681,33 +691,33 @@
       },
       {
         "race": "2026-NC-01-HOUSE",
-        "count": 2.17,
+        "count": 2.49,
         "polls": 2.9654,
         "undertow": 6.4107,
-        "implied_miss": -2.3048,
-        "polls_miss_toward_d": -0.7954,
-        "polls_error": 0.7954,
-        "undertow_error": 4.2407
+        "implied_miss": -1.9848,
+        "polls_miss_toward_d": -0.4754,
+        "polls_error": 0.4754,
+        "undertow_error": 3.9207
       },
       {
         "race": "2026-NC-11-HOUSE",
-        "count": 19.18,
+        "count": 15.84,
         "polls": 6.2956,
         "undertow": 9.3342,
-        "implied_miss": 11.7817,
-        "polls_miss_toward_d": 12.8844,
-        "polls_error": 12.8844,
-        "undertow_error": 9.8458
+        "implied_miss": 8.4417,
+        "polls_miss_toward_d": 9.5444,
+        "polls_error": 9.5444,
+        "undertow_error": 6.5058
       },
       {
         "race": "2026-NC-SEN",
-        "count": 18.69,
+        "count": 19.6,
         "polls": 9.9346,
         "undertow": 15.0826,
-        "implied_miss": 5.5433,
-        "polls_miss_toward_d": 8.7554,
-        "polls_error": 8.7554,
-        "undertow_error": 3.6074
+        "implied_miss": 6.4533,
+        "polls_miss_toward_d": 9.6654,
+        "polls_error": 9.6654,
+        "undertow_error": 4.5174
       },
       {
         "race": "2026-NM-02-HOUSE",
@@ -761,13 +771,13 @@
       },
       {
         "race": "2026-OH-SEN-SPECIAL",
-        "count": 2.13,
+        "count": 4.19,
         "polls": 2.6078,
         "undertow": 3.9361,
-        "implied_miss": 0.1297,
-        "polls_miss_toward_d": -0.4778,
-        "polls_error": 0.4778,
-        "undertow_error": 1.8061
+        "implied_miss": 2.1897,
+        "polls_miss_toward_d": 1.5822,
+        "polls_error": 1.5822,
+        "undertow_error": 0.2539
       },
       {
         "race": "2026-PA-01-HOUSE",
@@ -880,13 +890,13 @@
         "undertow_error": 0.1425
       }
     ],
-    "implied_miss": 4.6155,
-    "implied_miss_se": 0.8303,
+    "implied_miss": 4.5699,
+    "implied_miss_se": 0.787,
     "dial_live": true,
-    "polls_mae": 5.1734,
-    "undertow_mae": 4.2229,
-    "polls_miss_mean": 4.5734,
-    "undertow_closer": 20,
+    "polls_mae": 5.0913,
+    "undertow_mae": 4.0987,
+    "polls_miss_mean": 4.4609,
+    "undertow_closer": 21,
     "polls_closer": 10,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
