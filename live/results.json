@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:16:23-08:00",
+  "updated_at": "2026-11-03T20:31:01-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -103,15 +103,15 @@
       "updated_at": "2026-11-03T18:20:57-08:00"
     },
     "nc-01-house": {
-      "d_pct": 50.24,
-      "r_pct": 46.77,
-      "other_pct": 2.99,
+      "d_pct": 49.48,
+      "r_pct": 47.31,
+      "other_pct": 3.21,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 64.0,
+      "reporting_pct": 95.0,
       "called": null,
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1369",
-      "updated_at": "2026-11-03T18:20:57-08:00"
+      "updated_at": "2026-11-03T20:31:01-08:00"
     },
     "nc-11-house": {
       "d_pct": 58.88,
@@ -191,26 +191,26 @@
       "updated_at": "2026-11-03T19:43:45-08:00"
     },
     "sc-01-house": {
-      "d_pct": 50.98,
-      "r_pct": 47.35,
-      "other_pct": 1.67,
+      "d_pct": 49.52,
+      "r_pct": 48.78,
+      "other_pct": 1.7,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 77.0,
+      "reporting_pct": 99.0,
       "called": null,
       "source": "https://www.enr-scvotes.org/SC/127300/web.345435/#/summary",
-      "updated_at": "2026-11-03T19:26:14-08:00"
+      "updated_at": "2026-11-03T20:31:01-08:00"
     },
     "ks-sen": {
-      "d_pct": 53.19,
-      "r_pct": 43.95,
-      "other_pct": 2.86,
+      "d_pct": 52.08,
+      "r_pct": 44.96,
+      "other_pct": 2.96,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 83.0,
-      "called": null,
+      "reporting_pct": 91.0,
+      "called": "D",
       "source": "https://ent.sos.ks.gov/kssos_ent.html",
-      "updated_at": "2026-11-03T19:43:45-08:00"
+      "updated_at": "2026-11-03T20:31:01-08:00"
     },
     "pa-01-house": {
       "d_pct": 53.72,
@@ -324,7 +324,7 @@
     }
   },
   "derived": {
-    "settled": 19,
+    "settled": 22,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -409,6 +409,16 @@
         "undertow_error": 5.0976
       },
       {
+        "race": "2026-KS-SEN",
+        "count": 7.12,
+        "polls": 3.8033,
+        "undertow": 1.2076,
+        "implied_miss": 7.8483,
+        "polls_miss_toward_d": 3.3167,
+        "polls_error": 3.3167,
+        "undertow_error": 5.9124
+      },
+      {
         "race": "2026-KY-06-HOUSE",
         "count": 9.4,
         "polls": 5.8665,
@@ -417,6 +427,16 @@
         "polls_miss_toward_d": 3.5335,
         "polls_error": 3.5335,
         "undertow_error": 4.8834
+      },
+      {
+        "race": "2026-NC-01-HOUSE",
+        "count": 2.17,
+        "polls": 2.9654,
+        "undertow": 6.4107,
+        "implied_miss": -2.3048,
+        "polls_miss_toward_d": -0.7954,
+        "polls_error": 0.7954,
+        "undertow_error": 4.2407
       },
       {
         "race": "2026-NC-11-HOUSE",
@@ -509,6 +529,16 @@
         "undertow_error": 5.2679
       },
       {
+        "race": "2026-SC-01-HOUSE",
+        "count": 0.74,
+        "polls": 0.8149,
+        "undertow": 4.1114,
+        "implied_miss": -1.4355,
+        "polls_miss_toward_d": -0.0749,
+        "polls_error": 0.0749,
+        "undertow_error": 3.3714
+      },
+      {
         "race": "2026-SC-SEN",
         "count": 3.39,
         "polls": -0.9738,
@@ -519,14 +549,14 @@
         "undertow_error": 1.4225
       }
     ],
-    "implied_miss": 4.1678,
-    "implied_miss_se": 0.7615,
+    "implied_miss": 3.7862,
+    "implied_miss_se": 0.7812,
     "dial_live": true,
-    "polls_mae": 4.6013,
-    "undertow_mae": 3.1456,
-    "polls_miss_mean": 4.2675,
+    "polls_mae": 4.1642,
+    "undertow_mae": 3.3314,
+    "polls_miss_mean": 3.7968,
     "undertow_closer": 14,
-    "polls_closer": 4,
+    "polls_closer": 7,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
