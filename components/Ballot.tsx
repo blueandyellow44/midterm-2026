@@ -1,9 +1,10 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { CATEGORIES, POINTS, toText, fromText, nextFriendName, score, type BallotRace, type FriendBallot, type Side } from '@/lib/ballot-code';
+import { CATEGORIES, POINTS, toText, fromText, nextFriendName, score, effectiveResults, type BallotRace, type FriendBallot, type Side } from '@/lib/ballot-code';
 
 // Election night ballot (Max, 2026-11-03). Picks live in this browser only; a friend's ballot reaches the scorekeeper as
-// copied text (the UB line) pasted into the Standings tab. Nothing leaves the page: the site has no server routes.
+// copied text pasted into the Standings tab. Nothing leaves the page: the site has no server routes. Races Undertow has
+// called arrive as `calls` from the build (live/results.json) and fill Standings locked; `results` holds only the taps.
 const KEY = 'undertow-ballot-2026';
 const TIEBREAKERS: { id: string; label: string; hint: string; numeric: boolean }[] = [
   { id: 'tb-sen', label: 'Senate seats for Democrats', hint: 'of 100, with the independents who caucus with them', numeric: true },
@@ -26,25 +27,25 @@ function load(races: BallotRace[]): Saved {
   };
 }
 
-function PickButton({ race, side, chosen, onPick }: { race: BallotRace; side: Side; chosen: boolean; onPick: () => void }) {
+function PickButton({ race, side, chosen, locked, onPick }: { race: BallotRace; side: Side; chosen: boolean; locked: boolean; onPick: () => void }) {
   const name = side === 'D' ? race.d : race.r;
-  return <button type="button" className={`ballot-pick is-${side.toLowerCase()}`} aria-pressed={chosen} onClick={onPick}>
+  return <button type="button" className={`ballot-pick is-${side.toLowerCase()}`} aria-pressed={chosen} disabled={locked} onClick={onPick}>
     <span className="ballot-dot" aria-hidden="true"/>
     <span className="ballot-name">{name}{race.cat !== 'CONTROL' && <span className="ballot-party">{side === 'D' ? race.dParty || 'D' : 'R'}</span>}{race.inc === side && <span className="ballot-inc" title="Incumbent"> ★</span>}</span>
   </button>;
 }
 
-function RaceList({ races, chosen, onPick, mode }: { races: BallotRace[]; chosen: Record<string, Side>; onPick: (id: string, s: Side) => void; mode: 'mine' | 'results' }) {
+function RaceList({ races, chosen, onPick, mode, locked = {} }: { races: BallotRace[]; chosen: Record<string, Side>; onPick: (id: string, s: Side) => void; mode: 'mine' | 'results'; locked?: Record<string, Side> }) {
   return <>{CATEGORIES.map(({ cat, title, note }) => <section key={cat} className={`ballot-cat ballot-cat-${cat.toLowerCase()}`} aria-label={title}>
     <div className="ballot-cat-head"><h2>{title}</h2><span>{note}</span></div>
     <div className="ballot-list">{races.filter(r => r.cat === cat).map(r => <div key={r.id} className="ballot-race" role="group" aria-label={r.label}>
-      <div className="ballot-race-label"><b>{r.label}</b><em>{mode === 'results' && chosen[r.id] ? 'called' : cat === 'CONTROL' ? `${r.held === 'R' ? 'Republicans' : 'Democrats'} hold it now` : `${r.rating} · held ${r.held}`}</em></div>
-      <div className="ballot-pair">{(['D', 'R'] as Side[]).map(s => <PickButton key={s} race={r} side={s} chosen={chosen[r.id] === s} onPick={() => onPick(r.id, s)}/>)}</div>
+      <div className="ballot-race-label"><b>{r.label}</b><em>{mode === 'results' && locked[r.id] ? 'called · AP' : mode === 'results' && chosen[r.id] ? 'called' : cat === 'CONTROL' ? `${r.held === 'R' ? 'Republicans' : 'Democrats'} hold it now` : `${r.rating} · held ${r.held}`}</em></div>
+      <div className="ballot-pair">{(['D', 'R'] as Side[]).map(s => <PickButton key={s} race={r} side={s} chosen={chosen[r.id] === s} locked={!!locked[r.id]} onPick={() => onPick(r.id, s)}/>)}</div>
     </div>)}</div>
   </section>)}</>;
 }
 
-export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; top: number; pdf: string; ratingDates: string }) {
+export function Ballot({ races, calls, top, pdf, ratingDates }: { races: BallotRace[]; calls: Record<string, Side>; top: number; pdf: string; ratingDates: string }) {
   const [st, setSt] = useState<Saved>(EMPTY);
   const [ready, setReady] = useState(false);
   const [tab, setTab] = useState<'ballot' | 'score'>('ballot');
@@ -97,11 +98,14 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
     setPaste(''); setPasteNote(`Added ${name}: ${got} of ${n} picks read.`);
   }
 
-  const called = Object.keys(st.results).length;
-  const awarded = races.reduce((a, r) => a + (st.results[r.id] ? POINTS[r.cat] : 0), 0);
+  // A site call always wins over a stored tap, and a called race cannot be tapped.
+  const results = effectiveResults(calls, st.results);
+  const tapResult = (id: string, side: Side) => { if (!calls[id]) toggle('results')(id, side); };
+  const called = Object.keys(results).length;
+  const awarded = races.reduce((a, r) => a + (results[r.id] ? POINTS[r.cat] : 0), 0);
   const mine: FriendBallot & { you: true; fi: -1 } = { name: st.name.trim(), picks: races.map(r => st.picks[r.id] || '-').join(''), tb: tb(), you: true, fi: -1 };
   const standings = [mine, ...st.friends.map((f, fi) => ({ ...f, you: false as const, fi }))]
-    .map(f => ({ ...f, s: score(races, f.picks, st.results) })).sort((a, b) => b.s - a.s);
+    .map(f => ({ ...f, s: score(races, f.picks, results) })).sort((a, b) => b.s - a.s);
 
   return <div className="ballot">
     <div className="ballot-tabs" role="tablist" aria-label="Your picks or the standings">
@@ -133,12 +137,12 @@ export function Ballot({ races, top, pdf, ratingDates }: { races: BallotRace[]; 
             <textarea id="ballot-paste" className="ballot-text" placeholder="Paste here" value={paste} onChange={e => setPaste(e.target.value)}/>
             <div className="ballot-actions">
               <button type="button" className="ballot-btn" onClick={addFriend}>Add ballot</button>
-              <button type="button" className="ballot-btn is-ghost" onBlur={() => setArmed(false)} onClick={() => { if (armed) { update(s => ({ ...s, results: {} })); setArmed(false); } else setArmed(true); }}>{armed ? 'Tap again to clear every call' : 'Clear results'}</button>
+              <button type="button" className="ballot-btn is-ghost" onBlur={() => setArmed(false)} onClick={() => { if (armed) { update(s => ({ ...s, results: {} })); setArmed(false); } else setArmed(true); }}>{armed ? 'Tap again to clear your taps' : 'Clear tapped results'}</button>
             </div>
             <p className="ballot-note" role="status">{pasteNote}</p>
           </div>
-          <p className="eyebrow ballot-results-kicker">Results · tap the winner when the AP calls it</p>
-          <div className="ballot-results"><RaceList races={races} chosen={st.results} onPick={toggle('results')} mode="results"/></div>
+          <p className="eyebrow ballot-results-kicker">Results · races Undertow has called fill in · tap the rest when the AP calls them</p>
+          <div className="ballot-results"><RaceList races={races} chosen={results} onPick={tapResult} mode="results" locked={calls}/></div>
         </section>
       </div>
       <aside className="ballot-rail" aria-label="Your progress">
