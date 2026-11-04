@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T19:22:50-08:00",
+  "updated_at": "2026-11-03T19:26:14-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -191,15 +191,15 @@
       "updated_at": "2026-11-03T19:03:41-08:00"
     },
     "sc-01-house": {
-      "d_pct": 50.75,
-      "r_pct": 47.55,
-      "other_pct": 1.7,
+      "d_pct": 50.98,
+      "r_pct": 47.35,
+      "other_pct": 1.67,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 75.0,
+      "reporting_pct": 77.0,
       "called": null,
       "source": "https://www.enr-scvotes.org/SC/127300/web.345435/#/summary",
-      "updated_at": "2026-11-03T19:03:41-08:00"
+      "updated_at": "2026-11-03T19:26:14-08:00"
     },
     "ks-sen": {
       "d_pct": 55.13,
