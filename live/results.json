@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T06:58:12-08:00",
+  "updated_at": "2026-11-04T07:13:17-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -290,15 +290,15 @@
       "updated_at": "2026-11-04T00:21:42-08:00"
     },
     "tx-sen": {
-      "d_pct": 55.07,
-      "r_pct": 43.0,
+      "d_pct": 55.08,
+      "r_pct": 42.99,
       "other_pct": 1.93,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 97.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/texas-us-senate-results/",
-      "updated_at": "2026-11-04T06:43:16-08:00"
+      "updated_at": "2026-11-04T07:13:17-08:00"
     },
     "ia-sen": {
       "d_pct": 50.45,
@@ -1200,13 +1200,13 @@
       },
       {
         "race": "2026-TX-SEN",
-        "count": 12.07,
+        "count": 12.09,
         "polls": 3.4522,
         "undertow": 6.2088,
-        "implied_miss": 7.7971,
-        "polls_miss_toward_d": 8.6178,
-        "polls_error": 8.6178,
-        "undertow_error": 5.8612
+        "implied_miss": 7.8171,
+        "polls_miss_toward_d": 8.6378,
+        "polls_error": 8.6378,
+        "undertow_error": 5.8812
       },
       {
         "race": "2026-VA-01-HOUSE",
@@ -1249,12 +1249,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.3276,
-    "implied_miss_se": 0.609,
+    "implied_miss": 4.328,
+    "implied_miss_se": 0.6091,
     "dial_live": true,
-    "polls_mae": 5.0536,
-    "undertow_mae": 3.8989,
-    "polls_miss_mean": 4.3963,
+    "polls_mae": 5.054,
+    "undertow_mae": 3.8993,
+    "polls_miss_mean": 4.3967,
     "undertow_closer": 32,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
