@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T08:58:20-08:00",
+  "updated_at": "2026-11-04T09:13:12-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -488,15 +488,15 @@
       "updated_at": "2026-11-04T00:06:18-08:00"
     },
     "ny-21-house": {
-      "d_pct": 48.79,
-      "r_pct": 51.0,
+      "d_pct": 48.8,
+      "r_pct": 50.99,
       "other_pct": 0.21,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 81.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/new-york-us-house-results/#21",
-      "updated_at": "2026-11-04T00:21:42-08:00"
+      "updated_at": "2026-11-04T09:13:12-08:00"
     },
     "wa-03-house": {
       "d_pct": 54.96,
@@ -598,26 +598,26 @@
       "updated_at": "2026-11-04T00:17:01-08:00"
     },
     "mi-sen": {
-      "d_pct": 52.53,
-      "r_pct": 45.47,
+      "d_pct": 52.51,
+      "r_pct": 45.49,
       "other_pct": 2.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 97.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-us-senate-results/",
-      "updated_at": "2026-11-04T08:28:11-08:00"
+      "updated_at": "2026-11-04T09:13:12-08:00"
     },
     "mi-gov": {
-      "d_pct": 54.56,
-      "r_pct": 43.73,
+      "d_pct": 54.54,
+      "r_pct": 43.75,
       "other_pct": 1.71,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 97.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-governor-results/",
-      "updated_at": "2026-11-04T08:28:11-08:00"
+      "updated_at": "2026-11-04T09:13:12-08:00"
     },
     "al-02-house": {
       "d_pct": 53.75,
@@ -642,15 +642,15 @@
       "updated_at": "2026-11-04T08:58:20-08:00"
     },
     "mi-04-house": {
-      "d_pct": 50.26,
-      "r_pct": 48.21,
+      "d_pct": 50.14,
+      "r_pct": 48.33,
       "other_pct": 1.53,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 95.0,
+      "reporting_pct": 98.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/michigan-us-house-results/#4",
-      "updated_at": "2026-11-04T03:28:12-08:00"
+      "updated_at": "2026-11-04T09:13:12-08:00"
     },
     "mi-07-house": {
       "d_pct": 50.95,
@@ -920,13 +920,13 @@
       },
       {
         "race": "2026-MI-04-HOUSE",
-        "count": 2.05,
+        "count": 1.81,
         "polls": -2.7717,
         "undertow": 0.2109,
-        "implied_miss": 3.775,
-        "polls_miss_toward_d": 4.8217,
-        "polls_error": 4.8217,
-        "undertow_error": 1.8391
+        "implied_miss": 3.535,
+        "polls_miss_toward_d": 4.5817,
+        "polls_error": 4.5817,
+        "undertow_error": 1.5991
       },
       {
         "race": "2026-MI-10-HOUSE",
@@ -940,23 +940,23 @@
       },
       {
         "race": "2026-MI-GOV",
-        "count": 10.83,
+        "count": 10.79,
         "polls": 9.3042,
         "undertow": 12.4756,
-        "implied_miss": 0.2903,
-        "polls_miss_toward_d": 1.5258,
-        "polls_error": 1.5258,
-        "undertow_error": 1.6456
+        "implied_miss": 0.2503,
+        "polls_miss_toward_d": 1.4858,
+        "polls_error": 1.4858,
+        "undertow_error": 1.6856
       },
       {
         "race": "2026-MI-SEN",
-        "count": 7.06,
+        "count": 7.02,
         "polls": 4.8382,
         "undertow": 8.6695,
-        "implied_miss": 0.3263,
-        "polls_miss_toward_d": 2.2218,
-        "polls_error": 2.2218,
-        "undertow_error": 1.6095
+        "implied_miss": 0.2863,
+        "polls_miss_toward_d": 2.1818,
+        "polls_error": 2.1818,
+        "undertow_error": 1.6495
       },
       {
         "race": "2026-MN-01-HOUSE",
@@ -1249,12 +1249,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.3257,
-    "implied_miss_se": 0.609,
+    "implied_miss": 4.3191,
+    "implied_miss_se": 0.6093,
     "dial_live": true,
-    "polls_mae": 5.0517,
-    "undertow_mae": 3.8945,
-    "polls_miss_mean": 4.3944,
+    "polls_mae": 5.045,
+    "undertow_mae": 3.8911,
+    "polls_miss_mean": 4.3878,
     "undertow_closer": 32,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
