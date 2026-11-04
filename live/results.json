@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T04:43:10-08:00",
+  "updated_at": "2026-11-04T04:58:12-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -598,26 +598,26 @@
       "updated_at": "2026-11-04T00:17:01-08:00"
     },
     "mi-sen": {
-      "d_pct": 52.47,
-      "r_pct": 45.53,
+      "d_pct": 52.52,
+      "r_pct": 45.48,
       "other_pct": 2.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 96.0,
+      "reporting_pct": 97.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-us-senate-results/",
-      "updated_at": "2026-11-04T04:43:10-08:00"
+      "updated_at": "2026-11-04T04:58:12-08:00"
     },
     "mi-gov": {
-      "d_pct": 54.49,
-      "r_pct": 43.79,
+      "d_pct": 54.54,
+      "r_pct": 43.74,
       "other_pct": 1.72,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 96.0,
+      "reporting_pct": 97.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-governor-results/",
-      "updated_at": "2026-11-04T04:43:10-08:00"
+      "updated_at": "2026-11-04T04:58:12-08:00"
     },
     "al-02-house": {
       "d_pct": 53.75,
@@ -940,23 +940,23 @@
       },
       {
         "race": "2026-MI-GOV",
-        "count": 10.7,
+        "count": 10.8,
         "polls": 9.3042,
         "undertow": 12.4756,
-        "implied_miss": 0.1603,
-        "polls_miss_toward_d": 1.3958,
-        "polls_error": 1.3958,
-        "undertow_error": 1.7756
+        "implied_miss": 0.2603,
+        "polls_miss_toward_d": 1.4958,
+        "polls_error": 1.4958,
+        "undertow_error": 1.6756
       },
       {
         "race": "2026-MI-SEN",
-        "count": 6.94,
+        "count": 7.04,
         "polls": 4.8382,
         "undertow": 8.6695,
-        "implied_miss": 0.2063,
-        "polls_miss_toward_d": 2.1018,
-        "polls_error": 2.1018,
-        "undertow_error": 1.7295
+        "implied_miss": 0.3063,
+        "polls_miss_toward_d": 2.2018,
+        "polls_error": 2.2018,
+        "undertow_error": 1.6295
       },
       {
         "race": "2026-MN-01-HOUSE",
@@ -1249,12 +1249,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.3024,
-    "implied_miss_se": 0.6127,
+    "implied_miss": 4.3066,
+    "implied_miss_se": 0.6121,
     "dial_live": true,
-    "polls_mae": 5.0399,
-    "undertow_mae": 3.9236,
-    "polls_miss_mean": 4.3711,
+    "polls_mae": 5.0441,
+    "undertow_mae": 3.9195,
+    "polls_miss_mean": 4.3753,
     "undertow_closer": 32,
     "polls_closer": 13,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
