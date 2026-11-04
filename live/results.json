@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:42:15-08:00",
+  "updated_at": "2026-11-03T20:43:28-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -398,6 +398,28 @@
       "called": null,
       "source": "https://app.enhancedvoting.com/results/public/Arizona/elections/110326GeneralElection",
       "updated_at": "2026-11-03T20:42:15-08:00"
+    },
+    "ny-17-house": {
+      "d_pct": 52.31,
+      "r_pct": 47.59,
+      "other_pct": 0.1,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 57.0,
+      "called": null,
+      "source": "https://nyenr.elections.ny.gov/",
+      "updated_at": "2026-11-03T20:43:28-08:00"
+    },
+    "mn-01-house": {
+      "d_pct": 48.72,
+      "r_pct": 51.17,
+      "other_pct": 0.11,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 52.0,
+      "called": null,
+      "source": "https://electionresults.sos.mn.gov/Results/Index?ersElectionId=201&scenario=USRepresentative&districtId=556",
+      "updated_at": "2026-11-03T20:43:28-08:00"
     }
   },
   "derived": {
