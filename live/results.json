@@ -1,1 +1,31 @@
-{"schema": "1.0", "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.", "updated_at": null, "races": {}}
+{
+  "schema": "1.0",
+  "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
+  "updated_at": "2026-11-03T17:01:51-08:00",
+  "races": {
+    "ga-sen": {
+      "d_pct": 61.78,
+      "r_pct": 38.22,
+      "other_pct": 0.0,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 46.0,
+      "called": "D",
+      "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+      "updated_at": "2026-11-03T17:01:51-08:00"
+    }
+  },
+  "derived": {
+    "settled": 0,
+    "min_races": 3,
+    "settled_rule": "called and 80% counted, or 95% counted",
+    "races": [],
+    "implied_miss": null,
+    "implied_miss_se": null,
+    "dial_live": false,
+    "polls_mae": null,
+    "undertow_mae": null,
+    "polls_miss_mean": null,
+    "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
+  }
+}
