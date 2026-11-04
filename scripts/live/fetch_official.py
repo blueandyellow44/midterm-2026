@@ -8,7 +8,7 @@ import json, re, subprocess, sys
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
 def get(url):
     # curl, not urllib: this Python has no CA bundle installed, and curl uses the system's.
-    return subprocess.run(['curl', '-sf', '--max-time', '15', '-A', UA, url], check=True, capture_output=True, text=True).stdout
+    return subprocess.run(['curl', '-sf', '--compressed', '--max-time', '15', '-A', UA, url], check=True, capture_output=True, text=True).stdout
 
 # Clarity ENR: state/election id, and contest-name -> slug.
 CLARITY = {

@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T01:12:49-08:00",
+  "updated_at": "2026-11-04T01:13:40-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 58.94,
@@ -301,59 +301,59 @@
       "updated_at": "2026-11-04T00:42:31-08:00"
     },
     "ia-sen": {
-      "d_pct": 50.47,
-      "r_pct": 46.43,
-      "other_pct": 3.1,
+      "d_pct": 50.4,
+      "r_pct": 46.38,
+      "other_pct": 3.22,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
-      "source": "https://apnews.com/projects/elections-2026/iowa-us-senate-results/",
-      "updated_at": "2026-11-04T01:12:49-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "ia-gov": {
-      "d_pct": 55.46,
-      "r_pct": 44.54,
-      "other_pct": 0.0,
+      "d_pct": 55.38,
+      "r_pct": 44.49,
+      "other_pct": 0.13,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
-      "source": "https://apnews.com/projects/elections-2026/iowa-governor-results/",
-      "updated_at": "2026-11-04T01:12:49-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "ia-01-house": {
-      "d_pct": 52.8,
-      "r_pct": 43.56,
-      "other_pct": 3.64,
+      "d_pct": 52.74,
+      "r_pct": 43.51,
+      "other_pct": 3.75,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
-      "source": "https://apnews.com/projects/elections-2026/iowa-us-house-results/#1",
-      "updated_at": "2026-11-04T01:12:49-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "ia-02-house": {
-      "d_pct": 49.54,
-      "r_pct": 45.56,
-      "other_pct": 4.9,
+      "d_pct": 49.5,
+      "r_pct": 45.53,
+      "other_pct": 4.97,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
-      "source": "https://apnews.com/projects/elections-2026/iowa-us-house-results/#2",
-      "updated_at": "2026-11-04T01:12:49-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "ia-03-house": {
-      "d_pct": 53.55,
-      "r_pct": 46.45,
-      "other_pct": 0.0,
+      "d_pct": 53.42,
+      "r_pct": 46.33,
+      "other_pct": 0.25,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 95.0,
       "called": "D",
-      "source": "https://apnews.com/projects/elections-2026/iowa-us-house-results/#3",
-      "updated_at": "2026-11-04T01:12:49-08:00"
+      "source": "https://results.enr.clarityelections.com/IA/127077/web.345435/#/summary",
+      "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "tx-23-house": {
       "d_pct": 52.04,
@@ -383,10 +383,10 @@
       "other_pct": 1.92,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 73.0,
+      "reporting_pct": 71.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/arizona-us-house-results/#1",
-      "updated_at": "2026-11-04T00:21:41-08:00"
+      "updated_at": "2026-11-04T01:13:40-08:00"
     },
     "az-06-house": {
       "d_pct": 53.97,
@@ -849,33 +849,33 @@
       },
       {
         "race": "2026-IA-01-HOUSE",
-        "count": 9.24,
+        "count": 9.23,
         "polls": 16.0,
         "undertow": 16.1687,
-        "implied_miss": -4.9928,
-        "polls_miss_toward_d": -6.76,
-        "polls_error": 6.76,
-        "undertow_error": 6.9287
+        "implied_miss": -5.0028,
+        "polls_miss_toward_d": -6.77,
+        "polls_error": 6.77,
+        "undertow_error": 6.9387
       },
       {
         "race": "2026-IA-GOV",
-        "count": 10.92,
+        "count": 10.89,
         "polls": 7.3605,
         "undertow": 7.0437,
-        "implied_miss": 5.8123,
-        "polls_miss_toward_d": 3.5595,
-        "polls_error": 3.5595,
-        "undertow_error": 3.8763
+        "implied_miss": 5.7823,
+        "polls_miss_toward_d": 3.5295,
+        "polls_error": 3.5295,
+        "undertow_error": 3.8463
       },
       {
         "race": "2026-IA-SEN",
-        "count": 4.04,
+        "count": 4.02,
         "polls": 0.2616,
         "undertow": -1.3694,
-        "implied_miss": 7.3453,
-        "polls_miss_toward_d": 3.7784,
-        "polls_error": 3.7784,
-        "undertow_error": 5.4094
+        "implied_miss": 7.3253,
+        "polls_miss_toward_d": 3.7584,
+        "polls_error": 3.7584,
+        "undertow_error": 5.3894
       },
       {
         "race": "2026-KS-SEN",
@@ -1218,12 +1218,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.1206,
+    "implied_miss": 4.1193,
     "implied_miss_se": 0.6333,
     "dial_live": true,
-    "polls_mae": 4.8521,
-    "undertow_mae": 3.8873,
-    "polls_miss_mean": 4.1344,
+    "polls_mae": 4.8512,
+    "undertow_mae": 3.8865,
+    "polls_miss_mean": 4.1331,
     "undertow_closer": 29,
     "polls_closer": 14,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
