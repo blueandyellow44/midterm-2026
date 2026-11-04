@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:31:01-08:00",
+  "updated_at": "2026-11-03T20:31:41-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -147,26 +147,26 @@
       "updated_at": "2026-11-03T19:58:39-08:00"
     },
     "va-01-house": {
-      "d_pct": 49.33,
-      "r_pct": 50.42,
-      "other_pct": 0.25,
+      "d_pct": 50.48,
+      "r_pct": 49.28,
+      "other_pct": 0.24,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 83.0,
+      "reporting_pct": 99.0,
       "called": null,
       "source": "https://enr.elections.virginia.gov/results/public/virginia/elections/2026-November-General",
-      "updated_at": "2026-11-03T18:39:39-08:00"
+      "updated_at": "2026-11-03T20:31:41-08:00"
     },
     "va-02-house": {
-      "d_pct": 52.6,
-      "r_pct": 45.01,
-      "other_pct": 2.38,
+      "d_pct": 51.45,
+      "r_pct": 46.24,
+      "other_pct": 2.31,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 65.0,
+      "reporting_pct": 87.0,
       "called": null,
       "source": "https://enr.elections.virginia.gov/results/public/virginia/elections/2026-November-General",
-      "updated_at": "2026-11-03T18:39:39-08:00"
+      "updated_at": "2026-11-03T20:31:41-08:00"
     },
     "ky-06-house": {
       "d_pct": 52.7,
@@ -324,7 +324,7 @@
     }
   },
   "derived": {
-    "settled": 22,
+    "settled": 23,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -547,16 +547,26 @@
         "polls_miss_toward_d": 4.3638,
         "polls_error": 4.3638,
         "undertow_error": 1.4225
+      },
+      {
+        "race": "2026-VA-01-HOUSE",
+        "count": 1.2,
+        "polls": 1.5876,
+        "undertow": 4.1201,
+        "implied_miss": -0.9842,
+        "polls_miss_toward_d": -0.3876,
+        "polls_error": 0.3876,
+        "undertow_error": 2.9201
       }
     ],
-    "implied_miss": 3.7862,
-    "implied_miss_se": 0.7812,
+    "implied_miss": 3.5788,
+    "implied_miss_se": 0.7748,
     "dial_live": true,
-    "polls_mae": 4.1642,
-    "undertow_mae": 3.3314,
-    "polls_miss_mean": 3.7968,
+    "polls_mae": 4.0,
+    "undertow_mae": 3.3136,
+    "polls_miss_mean": 3.6148,
     "undertow_closer": 14,
-    "polls_closer": 7,
+    "polls_closer": 8,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
