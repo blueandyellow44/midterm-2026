@@ -12,7 +12,7 @@ git add live/results.json live/calls.json
 git diff --cached --quiet && { echo "nothing new to publish"; exit 0; }
 git commit -q -m "$msg
 
-Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01LPzG9qPZ3RnuRtDWpF7mxc"
 if ! npm run build:cloudflare > "$log/build.log" 2>&1; then echo "STOP: build failed (see $log/build.log), committed $(git rev-parse --short HEAD) but NOT deployed"; exit 1; fi
 if ! SHIP_GUARD_ALLOW=1 npm run deploy > "$log/deploy.log" 2>&1; then echo "STOP: deploy failed (see $log/deploy.log)"; exit 1; fi

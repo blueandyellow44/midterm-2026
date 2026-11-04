@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T01:42:48-08:00",
+  "updated_at": "2026-11-04T01:48:24-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -460,10 +460,10 @@
       "other_pct": 5.92,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 89.0,
+      "reporting_pct": 90.0,
       "called": "R",
       "source": "https://apnews.com/projects/elections-2026/nebraska-us-senate-results/",
-      "updated_at": "2026-11-04T01:42:48-08:00"
+      "updated_at": "2026-11-04T01:48:24-08:00"
     },
     "az-02-house": {
       "d_pct": 49.96,
@@ -598,26 +598,26 @@
       "updated_at": "2026-11-04T00:17:01-08:00"
     },
     "mi-sen": {
-      "d_pct": 52.21,
-      "r_pct": 45.79,
+      "d_pct": 52.2,
+      "r_pct": 45.8,
       "other_pct": 2.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 94.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-us-senate-results/",
-      "updated_at": "2026-11-04T01:42:48-08:00"
+      "updated_at": "2026-11-04T01:48:24-08:00"
     },
     "mi-gov": {
-      "d_pct": 54.21,
-      "r_pct": 44.07,
+      "d_pct": 54.2,
+      "r_pct": 44.08,
       "other_pct": 1.72,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 94.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-governor-results/",
-      "updated_at": "2026-11-04T01:42:48-08:00"
+      "updated_at": "2026-11-04T01:48:24-08:00"
     },
     "al-02-house": {
       "d_pct": 53.75,
@@ -653,15 +653,15 @@
       "updated_at": "2026-11-04T01:27:49-08:00"
     },
     "mi-07-house": {
-      "d_pct": 50.97,
-      "r_pct": 47.78,
-      "other_pct": 1.25,
+      "d_pct": 50.95,
+      "r_pct": 47.79,
+      "other_pct": 1.26,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 96.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/michigan-us-house-results/#7",
-      "updated_at": "2026-11-04T01:42:48-08:00"
+      "updated_at": "2026-11-04T01:48:24-08:00"
     },
     "mi-10-house": {
       "d_pct": 51.73,
@@ -920,23 +920,23 @@
       },
       {
         "race": "2026-MI-GOV",
-        "count": 10.14,
+        "count": 10.12,
         "polls": 9.3042,
         "undertow": 12.4756,
-        "implied_miss": -0.3997,
-        "polls_miss_toward_d": 0.8358,
-        "polls_error": 0.8358,
-        "undertow_error": 2.3356
+        "implied_miss": -0.4197,
+        "polls_miss_toward_d": 0.8158,
+        "polls_error": 0.8158,
+        "undertow_error": 2.3556
       },
       {
         "race": "2026-MI-SEN",
-        "count": 6.42,
+        "count": 6.4,
         "polls": 4.8382,
         "undertow": 8.6695,
-        "implied_miss": -0.3137,
-        "polls_miss_toward_d": 1.5818,
-        "polls_error": 1.5818,
-        "undertow_error": 2.2495
+        "implied_miss": -0.3337,
+        "polls_miss_toward_d": 1.5618,
+        "polls_error": 1.5618,
+        "undertow_error": 2.2695
       },
       {
         "race": "2026-MN-01-HOUSE",
@@ -1229,12 +1229,12 @@
         "undertow_error": 0.8409
       }
     ],
-    "implied_miss": 4.1325,
-    "implied_miss_se": 0.6318,
+    "implied_miss": 4.1316,
+    "implied_miss_se": 0.6319,
     "dial_live": true,
-    "polls_mae": 4.8445,
-    "undertow_mae": 3.8832,
-    "polls_miss_mean": 4.1463,
+    "polls_mae": 4.8436,
+    "undertow_mae": 3.8841,
+    "polls_miss_mean": 4.1455,
     "undertow_closer": 29,
     "polls_closer": 14,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
