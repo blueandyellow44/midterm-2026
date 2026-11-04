@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:48:14-08:00",
+  "updated_at": "2026-11-03T20:49:06-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -453,6 +453,17 @@
       "called": null,
       "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
       "updated_at": "2026-11-03T20:48:14-08:00"
+    },
+    "ne-sen": {
+      "d_pct": 48.52,
+      "r_pct": 45.93,
+      "other_pct": 5.55,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 52.0,
+      "called": null,
+      "source": "https://electionresults.nebraska.gov/resultsSW.aspx?type=SW&map=CTY",
+      "updated_at": "2026-11-03T20:49:06-08:00"
     }
   },
   "derived": {
