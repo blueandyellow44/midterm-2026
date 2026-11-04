@@ -1,29 +1,29 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T19:03:41-08:00",
+  "updated_at": "2026-11-03T19:14:28-08:00",
   "races": {
     "ga-sen": {
-      "d_pct": 59.86,
-      "r_pct": 40.14,
+      "d_pct": 59.07,
+      "r_pct": 40.93,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 75.0,
+      "reporting_pct": 82.0,
       "called": "D",
       "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
-      "updated_at": "2026-11-03T18:25:00-08:00"
+      "updated_at": "2026-11-03T19:14:28-08:00"
     },
     "ga-gov": {
-      "d_pct": 55.59,
-      "r_pct": 44.41,
+      "d_pct": 54.58,
+      "r_pct": 45.42,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 73.0,
-      "called": null,
+      "reporting_pct": 82.0,
+      "called": "D",
       "source": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
-      "updated_at": "2026-11-03T18:15:20-08:00"
+      "updated_at": "2026-11-03T19:14:28-08:00"
     },
     "nc-sen": {
       "d_pct": 59.73,
@@ -125,26 +125,26 @@
       "updated_at": "2026-11-03T18:20:57-08:00"
     },
     "oh-sen-special": {
-      "d_pct": 50.26,
-      "r_pct": 45.35,
-      "other_pct": 4.38,
+      "d_pct": 47.94,
+      "r_pct": 47.28,
+      "other_pct": 4.78,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 51.0,
+      "reporting_pct": 74.0,
       "called": null,
       "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-03T18:20:57-08:00"
+      "updated_at": "2026-11-03T19:14:28-08:00"
     },
     "oh-gov": {
-      "d_pct": 51.85,
-      "r_pct": 44.98,
-      "other_pct": 3.17,
+      "d_pct": 50.09,
+      "r_pct": 46.56,
+      "other_pct": 3.35,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 55.0,
+      "reporting_pct": 74.0,
       "called": null,
       "source": "https://liveresults.ohiosos.gov/",
-      "updated_at": "2026-11-03T18:25:01-08:00"
+      "updated_at": "2026-11-03T19:14:28-08:00"
     },
     "va-01-house": {
       "d_pct": 49.33,
@@ -203,7 +203,7 @@
     }
   },
   "derived": {
-    "settled": 8,
+    "settled": 10,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -268,6 +268,26 @@
         "undertow_error": 0.1758
       },
       {
+        "race": "2026-GA-GOV",
+        "count": 9.16,
+        "polls": 1.0923,
+        "undertow": 3.658,
+        "implied_miss": 7.4379,
+        "polls_miss_toward_d": 8.0677,
+        "polls_error": 8.0677,
+        "undertow_error": 5.502
+      },
+      {
+        "race": "2026-GA-SEN",
+        "count": 18.14,
+        "polls": 10.6175,
+        "undertow": 13.0424,
+        "implied_miss": 7.0335,
+        "polls_miss_toward_d": 7.5225,
+        "polls_error": 7.5225,
+        "undertow_error": 5.0976
+      },
+      {
         "race": "2026-NC-11-HOUSE",
         "count": 19.18,
         "polls": 6.2956,
@@ -288,13 +308,13 @@
         "undertow_error": 6.4174
       }
     ],
-    "implied_miss": 4.1147,
-    "implied_miss_se": 1.4162,
+    "implied_miss": 4.7389,
+    "implied_miss_se": 1.1925,
     "dial_live": true,
-    "polls_mae": 4.5157,
-    "undertow_mae": 2.8796,
-    "polls_miss_mean": 4.4293,
-    "undertow_closer": 7,
+    "polls_mae": 5.1715,
+    "undertow_mae": 3.3636,
+    "polls_miss_mean": 5.1024,
+    "undertow_closer": 9,
     "polls_closer": 1,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
