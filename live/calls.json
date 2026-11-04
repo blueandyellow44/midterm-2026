@@ -45,6 +45,11 @@
       "winner": "D",
       "called_at": "2026-11-03T22:17:01-08:00",
       "source": "https://apnews.com/projects/elections-2026/new-hampshire-us-senate-results/"
+    },
+    "2026-MI-GOV": {
+      "winner": "D",
+      "called_at": "2026-11-03T22:58:48-08:00",
+      "source": "https://apnews.com/projects/elections-2026/michigan-governor-results/"
     }
   }
 }
