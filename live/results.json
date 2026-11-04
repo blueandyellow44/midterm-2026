@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T07:13:17-08:00",
+  "updated_at": "2026-11-04T07:28:18-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -631,15 +631,15 @@
       "updated_at": "2026-11-04T00:21:41-08:00"
     },
     "me-02-house": {
-      "d_pct": 50.09,
-      "r_pct": 49.85,
-      "other_pct": 0.06,
+      "d_pct": 50.08,
+      "r_pct": 49.87,
+      "other_pct": 0.05,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 85.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/maine-us-house-results/#2",
-      "updated_at": "2026-11-04T02:28:13-08:00"
+      "updated_at": "2026-11-04T07:28:18-08:00"
     },
     "mi-04-house": {
       "d_pct": 50.26,
@@ -669,21 +669,21 @@
       "other_pct": 2.3,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 95.0,
+      "reporting_pct": 99.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/michigan-us-house-results/#10",
-      "updated_at": "2026-11-04T04:43:10-08:00"
+      "updated_at": "2026-11-04T07:28:18-08:00"
     },
     "mt-01-house": {
-      "d_pct": 51.49,
-      "r_pct": 45.74,
-      "other_pct": 2.77,
+      "d_pct": 49.63,
+      "r_pct": 47.53,
+      "other_pct": 2.84,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 78.0,
+      "reporting_pct": 87.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/montana-us-house-results/#1",
-      "updated_at": "2026-11-04T02:14:05-08:00"
+      "updated_at": "2026-11-04T07:28:18-08:00"
     },
     "nj-07-house": {
       "d_pct": 57.1,
