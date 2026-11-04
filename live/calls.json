@@ -1,4 +1,50 @@
 {
   "schema": "1.0",
-  "calls": {}
+  "calls": {
+    "2026-VT-GOV": {
+      "winner": "R",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/vermont-governor-results/"
+    },
+    "2026-FL-GOV": {
+      "winner": "R",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/florida-governor-results/"
+    },
+    "2026-NH-GOV": {
+      "winner": "R",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/new-hampshire-governor-results/"
+    },
+    "2026-OK-GOV": {
+      "winner": "R",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/oklahoma-governor-results/"
+    },
+    "2026-TX-GOV": {
+      "winner": "D",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/texas-governor-results/"
+    },
+    "2026-WI-GOV": {
+      "winner": "D",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/wisconsin-governor-results/"
+    },
+    "2026-ME-SEN": {
+      "winner": "D",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/maine-us-senate-results/"
+    },
+    "2026-MN-SEN": {
+      "winner": "D",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/minnesota-us-senate-results/"
+    },
+    "2026-NH-SEN": {
+      "winner": "D",
+      "called_at": "2026-11-03T22:17:01-08:00",
+      "source": "https://apnews.com/projects/elections-2026/new-hampshire-us-senate-results/"
+    }
+  }
 }
