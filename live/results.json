@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T07:28:18-08:00",
+  "updated_at": "2026-11-04T07:43:20-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.0,
@@ -141,10 +141,10 @@
       "other_pct": 3.31,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 99.0,
+      "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/ohio-governor-results/",
-      "updated_at": "2026-11-04T02:43:10-08:00"
+      "updated_at": "2026-11-04T07:43:20-08:00"
     },
     "va-01-house": {
       "d_pct": 51.03,
@@ -262,10 +262,10 @@
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 99.0,
+      "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/ohio-us-house-results/#7",
-      "updated_at": "2026-11-04T02:43:09-08:00"
+      "updated_at": "2026-11-04T07:43:20-08:00"
     },
     "oh-10-house": {
       "d_pct": 49.34,
