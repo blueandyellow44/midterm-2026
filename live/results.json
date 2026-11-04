@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-03T20:49:44-08:00",
+  "updated_at": "2026-11-03T20:58:53-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.07,
@@ -158,15 +158,15 @@
       "updated_at": "2026-11-03T20:31:41-08:00"
     },
     "va-02-house": {
-      "d_pct": 51.45,
-      "r_pct": 46.24,
-      "other_pct": 2.31,
+      "d_pct": 51.52,
+      "r_pct": 46.13,
+      "other_pct": 2.35,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 87.0,
-      "called": null,
+      "reporting_pct": 88.0,
+      "called": "D",
       "source": "https://enr.elections.virginia.gov/results/public/virginia/elections/2026-November-General",
-      "updated_at": "2026-11-03T20:31:41-08:00"
+      "updated_at": "2026-11-03T20:58:53-08:00"
     },
     "ky-06-house": {
       "d_pct": 52.7,
@@ -422,15 +422,15 @@
       "updated_at": "2026-11-03T20:43:28-08:00"
     },
     "co-08-house": {
-      "d_pct": 55.84,
-      "r_pct": 40.47,
+      "d_pct": 55.75,
+      "r_pct": 40.56,
       "other_pct": 3.69,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 75.0,
-      "called": null,
+      "called": "D",
       "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
-      "updated_at": "2026-11-03T20:45:22-08:00"
+      "updated_at": "2026-11-03T20:58:53-08:00"
     },
     "co-04-house": {
       "d_pct": 49.66,
@@ -478,7 +478,7 @@
     }
   },
   "derived": {
-    "settled": 24,
+    "settled": 25,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -721,15 +721,25 @@
         "polls_miss_toward_d": -0.3876,
         "polls_error": 0.3876,
         "undertow_error": 2.9201
+      },
+      {
+        "race": "2026-VA-02-HOUSE",
+        "count": 5.39,
+        "polls": 3.0,
+        "undertow": 5.5325,
+        "implied_miss": 1.7934,
+        "polls_miss_toward_d": 2.39,
+        "polls_error": 2.39,
+        "undertow_error": 0.1425
       }
     ],
-    "implied_miss": 3.7782,
-    "implied_miss_se": 0.7681,
+    "implied_miss": 3.6988,
+    "implied_miss_se": 0.741,
     "dial_live": true,
-    "polls_mae": 4.0333,
-    "undertow_mae": 3.4434,
-    "polls_miss_mean": 3.6642,
-    "undertow_closer": 14,
+    "polls_mae": 3.9675,
+    "undertow_mae": 3.3113,
+    "polls_miss_mean": 3.6132,
+    "undertow_closer": 15,
     "polls_closer": 9,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
