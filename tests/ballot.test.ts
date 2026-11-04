@@ -118,8 +118,11 @@ describe('hand-entered AP calls (live/calls.json) for races with no official cou
   const dir = mkdtempSync(join(tmpdir(), 'ballot-calls-'));
   const file = (calls: unknown, name = 'calls.json') => { const f = join(dir, name); writeFileSync(f, JSON.stringify({ schema: '1.0', calls })); return f; };
   const call = (winner: string, source = 'https://apnews.com/x') => ({ winner, called_at: '2026-11-03T20:15:00-08:00', source });
-  it('ships empty and loads', () => {
-    expect(loadCalls(ids)).toEqual({});
+  // The committed file is filled on election night (set_call.py); it must load, and every entry must be a ballot race
+  // called D or R. (Was "ships empty", true only until the first call was entered.)
+  it('loads the committed file, every entry a ballot race called D or R', () => {
+    const calls = loadCalls(ids);
+    for (const [id, w] of Object.entries(calls)) { expect(ids.has(id)).toBe(true); expect(['D', 'R']).toContain(w); }
   });
   it('adds a hand call to the results calls, and keeps a race neither file has uncalled', () => {
     const merged = mergeCalls(siteCalls(races, { 'ga-sen': { called: 'D' } }), loadCalls(ids, file({ '2026-NH-SEN': call('D'), '2026-TX-GOV': call('R') })));
