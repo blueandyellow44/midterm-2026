@@ -1,7 +1,7 @@
 {
   "schema": "1.0",
   "note": "Unofficial election-night counts, entered by hand from official state results pages. Not part of any sealed release; certified results enter a release separately.",
-  "updated_at": "2026-11-04T15:20:40-08:00",
+  "updated_at": "2026-11-06T11:35:56-08:00",
   "races": {
     "ga-sen": {
       "d_pct": 59.03,
@@ -12,18 +12,18 @@
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/georgia-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "ga-gov": {
-      "d_pct": 54.34,
-      "r_pct": 45.66,
+      "d_pct": 54.33,
+      "r_pct": 45.67,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/georgia-governor-results/",
-      "updated_at": "2026-11-04T15:20:39-08:00"
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "nc-sen": {
       "d_pct": 58.72,
@@ -54,53 +54,53 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
-      "called": null,
+      "called": "R",
       "source": "https://apnews.com/projects/elections-2026/florida-us-house-results/#13",
-      "updated_at": "2026-11-04T00:21:41-08:00"
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "fl-14-house": {
-      "d_pct": 51.21,
-      "r_pct": 45.88,
+      "d_pct": 51.22,
+      "r_pct": 45.87,
       "other_pct": 2.91,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/florida-us-house-results/#14",
-      "updated_at": "2026-11-04T00:21:41-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "fl-22-house": {
-      "d_pct": 51.89,
-      "r_pct": 48.11,
+      "d_pct": 51.9,
+      "r_pct": 48.1,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/florida-us-house-results/#22",
-      "updated_at": "2026-11-04T00:21:41-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "fl-25-house": {
-      "d_pct": 51.26,
-      "r_pct": 46.64,
+      "d_pct": 51.27,
+      "r_pct": 46.63,
       "other_pct": 2.1,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/florida-us-house-results/#25",
-      "updated_at": "2026-11-04T00:21:41-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "fl-27-house": {
-      "d_pct": 49.77,
-      "r_pct": 50.23,
+      "d_pct": 49.78,
+      "r_pct": 50.22,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/florida-us-house-results/#27",
-      "updated_at": "2026-11-04T00:21:41-08:00"
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "nc-01-house": {
       "d_pct": 50.07,
@@ -109,9 +109,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
-      "called": null,
+      "called": "D",
       "source": "https://er.ncsbe.gov/?election_dt=11/03/2026&county_id=0&office=FED&contest=1369",
-      "updated_at": "2026-11-04T03:43:18-08:00"
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "nc-11-house": {
       "d_pct": 57.14,
@@ -147,26 +147,26 @@
       "updated_at": "2026-11-04T07:43:20-08:00"
     },
     "va-01-house": {
-      "d_pct": 51.04,
-      "r_pct": 48.72,
-      "other_pct": 0.24,
+      "d_pct": 51.07,
+      "r_pct": 48.68,
+      "other_pct": 0.25,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 98.0,
-      "called": null,
+      "reporting_pct": 99.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/virginia-us-house-results/#1",
-      "updated_at": "2026-11-04T08:43:10-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "va-02-house": {
-      "d_pct": 53.06,
-      "r_pct": 44.56,
-      "other_pct": 2.38,
+      "d_pct": 53.01,
+      "r_pct": 44.57,
+      "other_pct": 2.42,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/virginia-us-house-results/#2",
-      "updated_at": "2026-11-04T08:28:11-08:00"
+      "updated_at": "2026-11-06T11:35:56-08:00"
     },
     "ky-06-house": {
       "d_pct": 52.7,
@@ -202,15 +202,15 @@
       "updated_at": "2026-11-04T00:06:18-08:00"
     },
     "ks-sen": {
-      "d_pct": 50.96,
-      "r_pct": 46.02,
+      "d_pct": 50.99,
+      "r_pct": 45.99,
       "other_pct": 3.02,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/kansas-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "pa-01-house": {
       "d_pct": 52.74,
@@ -235,26 +235,26 @@
       "updated_at": "2026-11-04T15:20:40-08:00"
     },
     "pa-08-house": {
-      "d_pct": 54.37,
-      "r_pct": 45.63,
+      "d_pct": 54.4,
+      "r_pct": 45.6,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
-      "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
-      "updated_at": "2026-11-04T00:03:26-08:00"
+      "source": "https://apnews.com/projects/elections-2026/pennsylvania-us-house-results/#8",
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "pa-10-house": {
-      "d_pct": 55.03,
-      "r_pct": 44.97,
+      "d_pct": 55.05,
+      "r_pct": 44.95,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
-      "source": "https://www.electionreturns.pa.gov/General/OfficeResults?officeId=11&ElectionID=117&ElectionType=G&IsActive=1",
-      "updated_at": "2026-11-04T00:03:26-08:00"
+      "source": "https://apnews.com/projects/elections-2026/pennsylvania-us-house-results/#10",
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "oh-07-house": {
       "d_pct": 54.93,
@@ -274,9 +274,9 @@
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
-      "called": null,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/ohio-us-house-results/#10",
-      "updated_at": "2026-11-04T00:57:49-08:00"
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "oh-15-house": {
       "d_pct": 51.9,
@@ -284,21 +284,21 @@
       "other_pct": 2.83,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 98.0,
+      "reporting_pct": 97.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/ohio-us-house-results/#15",
-      "updated_at": "2026-11-04T00:21:42-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "tx-sen": {
-      "d_pct": 55.08,
+      "d_pct": 55.09,
       "r_pct": 42.99,
-      "other_pct": 1.93,
+      "other_pct": 1.92,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/texas-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "ia-sen": {
       "d_pct": 50.45,
@@ -356,15 +356,15 @@
       "updated_at": "2026-11-04T06:58:12-08:00"
     },
     "tx-23-house": {
-      "d_pct": 52.13,
-      "r_pct": 43.97,
+      "d_pct": 52.14,
+      "r_pct": 43.96,
       "other_pct": 3.9,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/texas-us-house-results/#23",
-      "updated_at": "2026-11-04T06:13:10-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "tx-35-house": {
       "d_pct": 55.43,
@@ -378,37 +378,37 @@
       "updated_at": "2026-11-04T15:20:40-08:00"
     },
     "az-01-house": {
-      "d_pct": 52.57,
-      "r_pct": 45.38,
-      "other_pct": 2.05,
+      "d_pct": 52.42,
+      "r_pct": 45.42,
+      "other_pct": 2.16,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 85.0,
-      "called": null,
+      "reporting_pct": 96.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/arizona-us-house-results/#1",
-      "updated_at": "2026-11-04T03:28:11-08:00"
+      "updated_at": "2026-11-06T11:35:54-08:00"
     },
     "az-06-house": {
       "d_pct": 52.85,
-      "r_pct": 45.07,
-      "other_pct": 2.08,
+      "r_pct": 45.02,
+      "other_pct": 2.13,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 81.0,
-      "called": null,
+      "reporting_pct": 89.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/arizona-us-house-results/#6",
-      "updated_at": "2026-11-04T15:20:39-08:00"
+      "updated_at": "2026-11-06T11:35:54-08:00"
     },
     "ny-17-house": {
-      "d_pct": 52.11,
-      "r_pct": 47.78,
+      "d_pct": 52.89,
+      "r_pct": 47.0,
       "other_pct": 0.11,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 84.0,
-      "called": null,
+      "reporting_pct": 94.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/new-york-us-house-results/#17",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "mn-01-house": {
       "d_pct": 49.99,
@@ -422,92 +422,92 @@
       "updated_at": "2026-11-04T00:21:42-08:00"
     },
     "co-08-house": {
-      "d_pct": 55.52,
-      "r_pct": 40.76,
-      "other_pct": 3.72,
+      "d_pct": 55.42,
+      "r_pct": 40.7,
+      "other_pct": 3.88,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 79.0,
+      "reporting_pct": 97.0,
       "called": "D",
       "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
-      "updated_at": "2026-11-04T15:20:39-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "co-04-house": {
-      "d_pct": 49.16,
-      "r_pct": 47.72,
-      "other_pct": 3.12,
-      "round": "NA",
-      "basis": "full_ballot",
-      "reporting_pct": 83.0,
-      "called": null,
-      "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
-      "updated_at": "2026-11-04T15:20:39-08:00"
-    },
-    "co-05-house": {
-      "d_pct": 50.9,
-      "r_pct": 45.79,
+      "d_pct": 48.75,
+      "r_pct": 47.94,
       "other_pct": 3.31,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 80.0,
+      "reporting_pct": 95.0,
       "called": null,
       "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
-      "updated_at": "2026-11-04T15:20:39-08:00"
+      "updated_at": "2026-11-06T11:35:54-08:00"
+    },
+    "co-05-house": {
+      "d_pct": 50.52,
+      "r_pct": 45.8,
+      "other_pct": 3.68,
+      "round": "NA",
+      "basis": "full_ballot",
+      "reporting_pct": 95.0,
+      "called": "D",
+      "source": "https://results.enr.clarityelections.com/CO/127407/web.345435/#/summary",
+      "updated_at": "2026-11-06T11:35:54-08:00"
     },
     "ne-sen": {
-      "d_pct": 43.62,
-      "r_pct": 50.44,
-      "other_pct": 5.94,
+      "d_pct": 43.8,
+      "r_pct": 50.24,
+      "other_pct": 5.96,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 92.0,
+      "reporting_pct": 96.0,
       "called": "R",
       "source": "https://apnews.com/projects/elections-2026/nebraska-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "az-02-house": {
-      "d_pct": 48.97,
-      "r_pct": 49.31,
-      "other_pct": 1.72,
+      "d_pct": 48.52,
+      "r_pct": 49.68,
+      "other_pct": 1.8,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 85.0,
+      "reporting_pct": 96.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/arizona-us-house-results/#2",
-      "updated_at": "2026-11-04T15:20:39-08:00"
+      "updated_at": "2026-11-06T11:35:54-08:00"
     },
     "nm-02-house": {
-      "d_pct": 58.69,
-      "r_pct": 41.31,
+      "d_pct": 58.75,
+      "r_pct": 41.25,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
-      "source": "https://electionresults.sos.nm.gov/resultsSW.aspx?type=FED&map=CTY",
-      "updated_at": "2026-11-04T00:06:18-08:00"
+      "source": "https://apnews.com/projects/elections-2026/new-mexico-us-house-results/#2",
+      "updated_at": "2026-11-05T12:12:30-08:00"
     },
     "ny-21-house": {
-      "d_pct": 48.85,
-      "r_pct": 50.94,
-      "other_pct": 0.21,
+      "d_pct": 48.93,
+      "r_pct": 50.83,
+      "other_pct": 0.24,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 96.0,
-      "called": null,
+      "reporting_pct": 97.0,
+      "called": "R",
       "source": "https://apnews.com/projects/elections-2026/new-york-us-house-results/#21",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "wa-03-house": {
-      "d_pct": 54.96,
-      "r_pct": 44.18,
-      "other_pct": 0.86,
+      "d_pct": 53.62,
+      "r_pct": 45.48,
+      "other_pct": 0.9,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 67.0,
+      "reporting_pct": 92.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/washington-us-house-results/#3",
-      "updated_at": "2026-11-04T10:22:22-08:00"
+      "updated_at": "2026-11-06T11:35:56-08:00"
     },
     "tx-15-house": {
       "d_pct": 62.32,
@@ -532,92 +532,92 @@
       "updated_at": "2026-11-04T00:21:42-08:00"
     },
     "ak-sen": {
-      "d_pct": 48.18,
+      "d_pct": 48.17,
       "r_pct": 47.88,
-      "other_pct": 3.94,
+      "other_pct": 3.95,
       "round": "FIRST",
       "basis": "full_ballot",
       "reporting_pct": 74.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/alaska-us-senate-results/",
-      "updated_at": "2026-11-04T05:58:09-08:00"
+      "updated_at": "2026-11-05T12:12:29-08:00"
     },
     "ak-al-house": {
-      "d_pct": 40.4,
-      "r_pct": 49.59,
-      "other_pct": 10.01,
+      "d_pct": 40.38,
+      "r_pct": 49.6,
+      "other_pct": 10.02,
       "round": "FIRST",
       "basis": "full_ballot",
       "reporting_pct": 74.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/alaska-us-house-results/#1",
-      "updated_at": "2026-11-04T03:58:16-08:00"
+      "updated_at": "2026-11-05T12:12:29-08:00"
     },
     "wi-gov": {
-      "d_pct": 54.08,
-      "r_pct": 45.92,
+      "d_pct": 54.0,
+      "r_pct": 46.0,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 98.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/wisconsin-governor-results/",
-      "updated_at": "2026-11-04T00:17:00-08:00"
+      "updated_at": "2026-11-05T12:12:31-08:00"
     },
     "nh-sen": {
-      "d_pct": 55.96,
-      "r_pct": 42.16,
-      "other_pct": 1.88,
+      "d_pct": 55.92,
+      "r_pct": 42.18,
+      "other_pct": 1.9,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 94.0,
+      "reporting_pct": 99.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/new-hampshire-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "me-sen": {
-      "d_pct": 53.43,
-      "r_pct": 46.52,
+      "d_pct": 53.13,
+      "r_pct": 46.82,
       "other_pct": 0.05,
       "round": "FIRST",
       "basis": "full_ballot",
-      "reporting_pct": 91.0,
+      "reporting_pct": 94.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/maine-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "ms-sen": {
-      "d_pct": 48.95,
-      "r_pct": 48.94,
+      "d_pct": 49.05,
+      "r_pct": 48.84,
       "other_pct": 2.11,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 95.0,
+      "reporting_pct": 96.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/mississippi-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "mi-sen": {
-      "d_pct": 52.5,
-      "r_pct": 45.49,
-      "other_pct": 2.01,
+      "d_pct": 52.54,
+      "r_pct": 45.46,
+      "other_pct": 2.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-us-senate-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "mi-gov": {
-      "d_pct": 54.52,
-      "r_pct": 43.76,
+      "d_pct": 54.56,
+      "r_pct": 43.72,
       "other_pct": 1.72,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 98.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/michigan-governor-results/",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "al-02-house": {
       "d_pct": 53.75,
@@ -631,15 +631,15 @@
       "updated_at": "2026-11-04T00:21:41-08:00"
     },
     "me-02-house": {
-      "d_pct": 49.68,
-      "r_pct": 50.26,
-      "other_pct": 0.06,
+      "d_pct": 48.31,
+      "r_pct": 49.89,
+      "other_pct": 1.8,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 92.0,
+      "reporting_pct": 98.0,
       "called": null,
       "source": "https://apnews.com/projects/elections-2026/maine-us-house-results/#2",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "mi-04-house": {
       "d_pct": 50.14,
@@ -675,37 +675,37 @@
       "updated_at": "2026-11-04T09:28:10-08:00"
     },
     "mt-01-house": {
-      "d_pct": 49.97,
-      "r_pct": 47.16,
+      "d_pct": 50.34,
+      "r_pct": 46.79,
       "other_pct": 2.87,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 96.0,
-      "called": null,
+      "reporting_pct": 98.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/montana-us-house-results/#1",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "nj-07-house": {
-      "d_pct": 57.1,
-      "r_pct": 41.37,
-      "other_pct": 1.53,
+      "d_pct": 57.12,
+      "r_pct": 41.34,
+      "other_pct": 1.54,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 95.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/new-jersey-us-house-results/#7",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "nv-02-house": {
-      "d_pct": 50.6,
-      "r_pct": 44.17,
-      "other_pct": 5.23,
+      "d_pct": 50.13,
+      "r_pct": 44.44,
+      "other_pct": 5.43,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 89.0,
-      "called": null,
+      "reporting_pct": 96.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/nevada-us-house-results/#2",
-      "updated_at": "2026-11-04T15:20:40-08:00"
+      "updated_at": "2026-11-06T11:35:55-08:00"
     },
     "oh-09-house": {
       "d_pct": 52.73,
@@ -741,30 +741,30 @@
       "updated_at": "2026-11-04T00:21:43-08:00"
     },
     "ca-48-house": {
-      "d_pct": 59.59,
-      "r_pct": 40.41,
+      "d_pct": 59.44,
+      "r_pct": 40.56,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
-      "reporting_pct": 52.0,
-      "called": null,
+      "reporting_pct": 55.0,
+      "called": "D",
       "source": "https://apnews.com/projects/elections-2026/california-us-house-results/#48",
-      "updated_at": "2026-11-04T04:28:11-08:00"
+      "updated_at": "2026-11-06T11:35:54-08:00"
     },
     "ca-22-house": {
-      "d_pct": 66.41,
-      "r_pct": 33.59,
+      "d_pct": 66.58,
+      "r_pct": 33.42,
       "other_pct": 0.0,
       "round": "NA",
       "basis": "full_ballot",
       "reporting_pct": 57.0,
       "called": "D",
       "source": "https://apnews.com/projects/elections-2026/california-us-house-results/#22",
-      "updated_at": "2026-11-04T10:22:22-08:00"
+      "updated_at": "2026-11-06T11:35:54-08:00"
     }
   },
   "derived": {
-    "settled": 50,
+    "settled": 59,
     "min_races": 3,
     "settled_rule": "called and 80% counted, or 95% counted",
     "races": [
@@ -779,6 +779,56 @@
         "undertow_error": 7.5706
       },
       {
+        "race": "2026-AZ-01-HOUSE",
+        "count": 7.0,
+        "polls": 4.6843,
+        "undertow": 7.7071,
+        "implied_miss": 1.2288,
+        "polls_miss_toward_d": 2.3157,
+        "polls_error": 2.3157,
+        "undertow_error": 0.7071
+      },
+      {
+        "race": "2026-AZ-06-HOUSE",
+        "count": 7.83,
+        "polls": 5.0822,
+        "undertow": 7.9593,
+        "implied_miss": 1.8066,
+        "polls_miss_toward_d": 2.7478,
+        "polls_error": 2.7478,
+        "undertow_error": 0.1293
+      },
+      {
+        "race": "2026-CO-04-HOUSE",
+        "count": 0.81,
+        "polls": -6.0258,
+        "undertow": -3.8119,
+        "implied_miss": 6.5578,
+        "polls_miss_toward_d": 6.8358,
+        "polls_error": 6.8358,
+        "undertow_error": 4.6219
+      },
+      {
+        "race": "2026-CO-05-HOUSE",
+        "count": 4.72,
+        "polls": 3.4675,
+        "undertow": 7.9947,
+        "implied_miss": -1.3388,
+        "polls_miss_toward_d": 1.2525,
+        "polls_error": 1.2525,
+        "undertow_error": 3.2747
+      },
+      {
+        "race": "2026-CO-08-HOUSE",
+        "count": 14.72,
+        "polls": -0.8136,
+        "undertow": 3.2021,
+        "implied_miss": 13.4538,
+        "polls_miss_toward_d": 15.5336,
+        "polls_error": 15.5336,
+        "undertow_error": 11.5179
+      },
+      {
         "race": "2026-FL-13-HOUSE",
         "count": -0.8,
         "polls": -2.1183,
@@ -790,43 +840,43 @@
       },
       {
         "race": "2026-FL-14-HOUSE",
-        "count": 5.33,
+        "count": 5.35,
         "polls": 1.3849,
         "undertow": 3.3378,
-        "implied_miss": 3.9282,
-        "polls_miss_toward_d": 3.9451,
-        "polls_error": 3.9451,
-        "undertow_error": 1.9922
+        "implied_miss": 3.9482,
+        "polls_miss_toward_d": 3.9651,
+        "polls_error": 3.9651,
+        "undertow_error": 2.0122
       },
       {
         "race": "2026-FL-22-HOUSE",
-        "count": 3.78,
+        "count": 3.8,
         "polls": 1.2929,
         "undertow": 3.3055,
-        "implied_miss": 2.4104,
-        "polls_miss_toward_d": 2.4871,
-        "polls_error": 2.4871,
-        "undertow_error": 0.4745
+        "implied_miss": 2.4304,
+        "polls_miss_toward_d": 2.5071,
+        "polls_error": 2.5071,
+        "undertow_error": 0.4945
       },
       {
         "race": "2026-FL-25-HOUSE",
-        "count": 4.62,
+        "count": 4.64,
         "polls": 4.9656,
         "undertow": 7.2474,
-        "implied_miss": -0.6915,
-        "polls_miss_toward_d": -0.3456,
-        "polls_error": 0.3456,
-        "undertow_error": 2.6274
+        "implied_miss": -0.6715,
+        "polls_miss_toward_d": -0.3256,
+        "polls_error": 0.3256,
+        "undertow_error": 2.6074
       },
       {
         "race": "2026-FL-27-HOUSE",
-        "count": -0.46,
+        "count": -0.44,
         "polls": -2.2028,
         "undertow": -1.6235,
-        "implied_miss": 3.0994,
-        "polls_miss_toward_d": 1.7428,
-        "polls_error": 1.7428,
-        "undertow_error": 1.1635
+        "implied_miss": 3.1194,
+        "polls_miss_toward_d": 1.7628,
+        "polls_error": 1.7628,
+        "undertow_error": 1.1835
       },
       {
         "race": "2026-FL-SEN-SPECIAL",
@@ -840,13 +890,13 @@
       },
       {
         "race": "2026-GA-GOV",
-        "count": 8.68,
+        "count": 8.66,
         "polls": 1.0923,
         "undertow": 3.658,
-        "implied_miss": 6.9579,
-        "polls_miss_toward_d": 7.5877,
-        "polls_error": 7.5877,
-        "undertow_error": 5.022
+        "implied_miss": 6.9379,
+        "polls_miss_toward_d": 7.5677,
+        "polls_error": 7.5677,
+        "undertow_error": 5.002
       },
       {
         "race": "2026-GA-SEN",
@@ -890,13 +940,13 @@
       },
       {
         "race": "2026-KS-SEN",
-        "count": 4.94,
+        "count": 5.0,
         "polls": 3.8033,
         "undertow": 1.2076,
-        "implied_miss": 5.6683,
-        "polls_miss_toward_d": 1.1367,
-        "polls_error": 1.1367,
-        "undertow_error": 3.7324
+        "implied_miss": 5.7283,
+        "polls_miss_toward_d": 1.1967,
+        "polls_error": 1.1967,
+        "undertow_error": 3.7924
       },
       {
         "race": "2026-KY-06-HOUSE",
@@ -909,14 +959,24 @@
         "undertow_error": 4.8834
       },
       {
+        "race": "2026-ME-02-HOUSE",
+        "count": -1.58,
+        "polls": -4.6236,
+        "undertow": -2.5625,
+        "implied_miss": 2.9184,
+        "polls_miss_toward_d": 3.0436,
+        "polls_error": 3.0436,
+        "undertow_error": 0.9825
+      },
+      {
         "race": "2026-ME-SEN",
-        "count": 6.91,
+        "count": 6.31,
         "polls": 4.292,
         "undertow": 7.4476,
-        "implied_miss": 1.3983,
-        "polls_miss_toward_d": 2.618,
-        "polls_error": 2.618,
-        "undertow_error": 0.5376
+        "implied_miss": 0.7983,
+        "polls_miss_toward_d": 2.018,
+        "polls_error": 2.018,
+        "undertow_error": 1.1376
       },
       {
         "race": "2026-MI-04-HOUSE",
@@ -940,23 +1000,23 @@
       },
       {
         "race": "2026-MI-GOV",
-        "count": 10.76,
+        "count": 10.84,
         "polls": 9.3042,
         "undertow": 12.4756,
-        "implied_miss": 0.2203,
-        "polls_miss_toward_d": 1.4558,
-        "polls_error": 1.4558,
-        "undertow_error": 1.7156
+        "implied_miss": 0.3003,
+        "polls_miss_toward_d": 1.5358,
+        "polls_error": 1.5358,
+        "undertow_error": 1.6356
       },
       {
         "race": "2026-MI-SEN",
-        "count": 7.01,
+        "count": 7.08,
         "polls": 4.8382,
         "undertow": 8.6695,
-        "implied_miss": 0.2763,
-        "polls_miss_toward_d": 2.1718,
-        "polls_error": 2.1718,
-        "undertow_error": 1.6595
+        "implied_miss": 0.3463,
+        "polls_miss_toward_d": 2.2418,
+        "polls_error": 2.2418,
+        "undertow_error": 1.5895
       },
       {
         "race": "2026-MN-01-HOUSE",
@@ -970,23 +1030,23 @@
       },
       {
         "race": "2026-MS-SEN",
-        "count": 0.01,
+        "count": 0.21,
         "polls": -4.9656,
         "undertow": -4.9553,
-        "implied_miss": 6.9012,
-        "polls_miss_toward_d": 4.9756,
-        "polls_error": 4.9756,
-        "undertow_error": 4.9653
+        "implied_miss": 7.1012,
+        "polls_miss_toward_d": 5.1756,
+        "polls_error": 5.1756,
+        "undertow_error": 5.1653
       },
       {
         "race": "2026-MT-01-HOUSE",
-        "count": 2.81,
+        "count": 3.55,
         "polls": 2.6584,
         "undertow": 4.9454,
-        "implied_miss": -0.1995,
-        "polls_miss_toward_d": 0.1516,
-        "polls_error": 0.1516,
-        "undertow_error": 2.1354
+        "implied_miss": 0.5405,
+        "polls_miss_toward_d": 0.8916,
+        "polls_error": 0.8916,
+        "undertow_error": 1.3954
       },
       {
         "race": "2026-NC-01-HOUSE",
@@ -1020,53 +1080,73 @@
       },
       {
         "race": "2026-NE-SEN",
-        "count": -6.82,
+        "count": -6.44,
         "polls": -2.433,
         "undertow": 0.3194,
-        "implied_miss": -5.2035,
-        "polls_miss_toward_d": -4.387,
-        "polls_error": 4.387,
-        "undertow_error": 7.1394
+        "implied_miss": -4.8235,
+        "polls_miss_toward_d": -4.007,
+        "polls_error": 4.007,
+        "undertow_error": 6.7594
       },
       {
         "race": "2026-NH-SEN",
-        "count": 13.8,
+        "count": 13.74,
         "polls": 9.5511,
         "undertow": 11.5344,
-        "implied_miss": 4.2015,
-        "polls_miss_toward_d": 4.2489,
-        "polls_error": 4.2489,
-        "undertow_error": 2.2656
+        "implied_miss": 4.1415,
+        "polls_miss_toward_d": 4.1889,
+        "polls_error": 4.1889,
+        "undertow_error": 2.2056
       },
       {
         "race": "2026-NJ-07-HOUSE",
-        "count": 15.73,
+        "count": 15.78,
         "polls": 5.0,
         "undertow": 7.5368,
-        "implied_miss": 10.1291,
-        "polls_miss_toward_d": 10.73,
-        "polls_error": 10.73,
-        "undertow_error": 8.1932
+        "implied_miss": 10.1791,
+        "polls_miss_toward_d": 10.78,
+        "polls_error": 10.78,
+        "undertow_error": 8.2432
       },
       {
         "race": "2026-NM-02-HOUSE",
-        "count": 17.38,
+        "count": 17.5,
         "polls": 3.9466,
         "undertow": 8.0797,
-        "implied_miss": 11.2363,
-        "polls_miss_toward_d": 13.4334,
-        "polls_error": 13.4334,
-        "undertow_error": 9.3003
+        "implied_miss": 11.3563,
+        "polls_miss_toward_d": 13.5534,
+        "polls_error": 13.5534,
+        "undertow_error": 9.4203
+      },
+      {
+        "race": "2026-NV-02-HOUSE",
+        "count": 5.69,
+        "polls": -1.498,
+        "undertow": 0.0765,
+        "implied_miss": 7.5494,
+        "polls_miss_toward_d": 7.188,
+        "polls_error": 7.188,
+        "undertow_error": 5.6135
+      },
+      {
+        "race": "2026-NY-17-HOUSE",
+        "count": 5.89,
+        "polls": 2.8691,
+        "undertow": 4.7087,
+        "implied_miss": 3.1172,
+        "polls_miss_toward_d": 3.0209,
+        "polls_error": 3.0209,
+        "undertow_error": 1.1813
       },
       {
         "race": "2026-NY-21-HOUSE",
-        "count": -2.09,
+        "count": -1.9,
         "polls": 1.2748,
         "undertow": 3.7104,
-        "implied_miss": -3.8645,
-        "polls_miss_toward_d": -3.3648,
-        "polls_error": 3.3648,
-        "undertow_error": 5.8004
+        "implied_miss": -3.6745,
+        "polls_miss_toward_d": -3.1748,
+        "polls_error": 3.1748,
+        "undertow_error": 5.6104
       },
       {
         "race": "2026-OH-07-HOUSE",
@@ -1150,23 +1230,23 @@
       },
       {
         "race": "2026-PA-08-HOUSE",
-        "count": 8.74,
+        "count": 8.8,
         "polls": 4.1414,
         "undertow": 7.1013,
-        "implied_miss": 3.5746,
-        "polls_miss_toward_d": 4.5986,
-        "polls_error": 4.5986,
-        "undertow_error": 1.6387
+        "implied_miss": 3.6346,
+        "polls_miss_toward_d": 4.6586,
+        "polls_error": 4.6586,
+        "undertow_error": 1.6987
       },
       {
         "race": "2026-PA-10-HOUSE",
-        "count": 10.06,
+        "count": 10.1,
         "polls": 1.7771,
         "undertow": 5.0921,
-        "implied_miss": 6.9038,
-        "polls_miss_toward_d": 8.2829,
-        "polls_error": 8.2829,
-        "undertow_error": 4.9679
+        "implied_miss": 6.9438,
+        "polls_miss_toward_d": 8.3229,
+        "polls_error": 8.3229,
+        "undertow_error": 5.0079
       },
       {
         "race": "2026-SC-01-HOUSE",
@@ -1200,13 +1280,13 @@
       },
       {
         "race": "2026-TX-23-HOUSE",
-        "count": 8.16,
+        "count": 8.18,
         "polls": -0.7972,
         "undertow": 1.6123,
-        "implied_miss": 8.4836,
-        "polls_miss_toward_d": 8.9572,
-        "polls_error": 8.9572,
-        "undertow_error": 6.5477
+        "implied_miss": 8.5036,
+        "polls_miss_toward_d": 8.9772,
+        "polls_error": 8.9772,
+        "undertow_error": 6.5677
       },
       {
         "race": "2026-TX-35-HOUSE",
@@ -1220,33 +1300,43 @@
       },
       {
         "race": "2026-TX-SEN",
-        "count": 12.09,
+        "count": 12.1,
         "polls": 3.4522,
         "undertow": 6.2088,
-        "implied_miss": 7.8171,
-        "polls_miss_toward_d": 8.6378,
-        "polls_error": 8.6378,
-        "undertow_error": 5.8812
+        "implied_miss": 7.8271,
+        "polls_miss_toward_d": 8.6478,
+        "polls_error": 8.6478,
+        "undertow_error": 5.8912
       },
       {
         "race": "2026-VA-01-HOUSE",
-        "count": 2.32,
+        "count": 2.39,
         "polls": 1.5876,
         "undertow": 4.1201,
-        "implied_miss": 0.1358,
-        "polls_miss_toward_d": 0.7324,
-        "polls_error": 0.7324,
-        "undertow_error": 1.8001
+        "implied_miss": 0.2058,
+        "polls_miss_toward_d": 0.8024,
+        "polls_error": 0.8024,
+        "undertow_error": 1.7301
       },
       {
         "race": "2026-VA-02-HOUSE",
-        "count": 8.5,
+        "count": 8.44,
         "polls": 3.0,
         "undertow": 5.5325,
-        "implied_miss": 4.9034,
-        "polls_miss_toward_d": 5.5,
-        "polls_error": 5.5,
-        "undertow_error": 2.9675
+        "implied_miss": 4.8434,
+        "polls_miss_toward_d": 5.44,
+        "polls_error": 5.44,
+        "undertow_error": 2.9075
+      },
+      {
+        "race": "2026-WA-03-HOUSE",
+        "count": 8.14,
+        "polls": -0.6646,
+        "undertow": 4.8161,
+        "implied_miss": 5.2598,
+        "polls_miss_toward_d": 8.8046,
+        "polls_error": 8.8046,
+        "undertow_error": 3.3239
       },
       {
         "race": "2026-WI-01-HOUSE",
@@ -1260,23 +1350,23 @@
       },
       {
         "race": "2026-WI-GOV",
-        "count": 8.16,
+        "count": 8.0,
         "polls": 4.9826,
         "undertow": 7.3191,
-        "implied_miss": 2.7767,
-        "polls_miss_toward_d": 3.1774,
-        "polls_error": 3.1774,
-        "undertow_error": 0.8409
+        "implied_miss": 2.6167,
+        "polls_miss_toward_d": 3.0174,
+        "polls_error": 3.0174,
+        "undertow_error": 0.6809
       }
     ],
-    "implied_miss": 4.0436,
-    "implied_miss_se": 0.6156,
+    "implied_miss": 4.1357,
+    "implied_miss_se": 0.5594,
     "dial_live": true,
-    "polls_mae": 4.8973,
-    "undertow_mae": 3.9011,
-    "polls_miss_mean": 4.1266,
-    "undertow_closer": 32,
-    "polls_closer": 15,
+    "polls_mae": 5.0119,
+    "undertow_mae": 3.8267,
+    "polls_miss_mean": 4.3787,
+    "undertow_closer": 40,
+    "polls_closer": 16,
     "release_id": "20261102T085010-0800-stage3-freeze-6b3a0b3-a26b6247ca"
   }
 }
