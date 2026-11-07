@@ -53,6 +53,10 @@ QA runs on the built assets: `npm run qa:serve`, then `/__qa/` in a real browser
 
 Rollback is the previously recorded Cloudflare version plus a sync of the prior immutable release. No release is ever modified. The current release ID, analytical cutoff and manifest SHA-256 appear in every footer.
 
+## Election night
+
+Results enter from the AP and state data feeds, one round at a time: `scripts/live/README.md` has the rules (entry, settle, grade), the feed addresses, and the three commands a round takes.
+
 ## Verification
 
 ```sh
